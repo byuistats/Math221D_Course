@@ -6,7 +6,7 @@ project:
     - "!Student_Work/"
 
 website:
-  title: "Math221 Notebook"
+  title: "PSYCH 302 Notebook"
   navbar:
     background: primary
     search: true
