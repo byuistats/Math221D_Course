@@ -1,11 +1,10 @@
 ---
-title: "BYU-Idaho PSYCH 302: Research Methods and Statistics Using R"
+title: "BYU-Idaho PSYCH 302: Research Methods"
+subtitle: "Research Design and Statistical Analysis Using R"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-Testing Testing Testing
 
 
 ## An Interactive Textbook
