@@ -5,6 +5,8 @@ title: "BYU-Idaho PSYCH 302: Research Methods and Statistics Using R"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Testing Testing Testing
+
 
 ## An Interactive Textbook
 
