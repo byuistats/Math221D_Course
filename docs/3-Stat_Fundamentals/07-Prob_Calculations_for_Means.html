@@ -532,7 +532,7 @@ window.Quarto = {
 </ul>
 <p>Previously, you learned how to use the normal probability applet and R to convert a <span class="math inline">\(z\)</span>-score to a corresponding area under the curve. These skills will be applied again in this activity. The following questions will help you brush up on how to calculate probabilities for a normal distribution.</p>
 <center>
-&lt;img src/Images/L04_A06_Graph.jpg”&gt;
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/L04_A06_Graph.jpg" class="img-fluid"></p>
 </center>
 <p><br></p>
 <div class="QuestionsHeading">
@@ -651,7 +651,7 @@ Show/Hide Solution
 <p>The <span class="math inline">\(z\)</span>-score is</p>
 <p><span class="math display">\[z=\frac{\bar x-\mu}{\sigma / \sqrt{n} } = \frac{10 - 7}{3 / \sqrt{4} }=2.0\]</span></p>
 <p>The probability that <span class="math inline">\(z\)</span> will be greater than <span class="math inline">\(2.00\)</span> is the area under the standard normal distribution to the right of <span class="math inline">\(2.00\)</span>. We find this area using the normal probability using R:</p>
-<p>&lt;img src/Images/L04_A06_Graph_2.jpg”&gt;</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/L04_A06_Graph_2.jpg" class="img-fluid"></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="dv">10</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">7</span></span>
@@ -706,18 +706,18 @@ Show/Hide Solution
 <pre><code>[1] 0.9594819</code></pre>
 </div>
 </div>
-<p>&lt;img src/Images/L04_A06_Graph_3.jpg”&gt;</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images//L04_A06_Graph_3.jpg" class="img-fluid"></p>
 <p><strong>NOTE</strong>: Recall the the Normal Probabilty Applet rounds the <span class="math inline">\(z\)</span>-scores first, then calculates the probabilities so they differ slightly from R.</p>
 <p>The area to the left of <span class="math inline">\(z= -1.745\)</span> is <span class="math inline">\(0.04052\)</span>. This is the probability that the mean costs for the <span class="math inline">\(n = 40\)</span> weeks will be less than $20,000.</p>
 <p><br></p>
 <section id="example-environmental-clean-up" class="level4">
 <h4 class="anchored" data-anchor-id="example-environmental-clean-up">Example: Environmental Clean Up</h4>
 <!-- This picture comes from http://happeningstock.deviantart.com/art/Grass-Hill-Area-Closed-Sign-255592183 and has an open license -->
-<p>&lt;img src/Images/L07_AREA_CLOSED_sign.jpg”&gt;</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images//L07_AREA_CLOSED_sign.jpg" class="img-fluid"></p>
 <p>We will now consider a complete example that shows how these probabilities are used in practice.</p>
 <p>The United States Government decided to open some land near a uranium enrichment facility to public use. After a few years of the public hiking, biking, and sometimes even hunting on this land, workers from the facility noticed that there were several unnatural-looking mounds in the earth near the area. Because this land was once used by the facility and nobody knew the origin of these piles, the government closed public access to the land until they could assess if the mounds were safe.</p>
 <p><br></p>
-<p>&lt;img src/Images/Step1.png”&gt;</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png" class="img-fluid"></p>
 <p><strong>Step 1: Design the study.</strong></p>
 <p>Measurements were taken from the mounds to assess one of the contaminants, lead. The tests involved are very expensive. Each sample costs about $600 to process. The Environmental Protection Agency (EPA) has set a “No Action Level” (NAL) for lead. If the mean concentration in the soil of the contaminant is less than the NAL, then the area can be declared safe for public use. If the concentration of the contaminant reaches or exceeds the NAL, the site must be cleaned additionally before it is declared safe. The NAL for lead is 50 milligrams of lead per kilogram of soil (mg/kg).</p>
 <p>The hypothesis for this test are:</p>
@@ -725,11 +725,11 @@ Show/Hide Solution
 <p><span class="math inline">\(H_a:~~\mu &lt; 50 \frac{\text{mg}}{\text{kg}}\)</span></p>
 <p>In environmental testing, we always assume the site is dirty. That is, our null hypothesis is that the mean level of contamination is at the NAL. We gather data to determine if there is sufficient evidence to support rejecting the null hypothesis.</p>
 <p><br></p>
-<p>&lt;img src/Images/Step2.png”&gt;</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images//Step2.png" class="img-fluid"></p>
 <p><strong>Step 2: Collect Data</strong></p>
 <p>Scientists collected <span class="math inline">\(n = 61\)</span> measurements of the lead concentration in the soil, measured in mg/kg. The data are given in the file <a href="..\Data/UraniumPlantData-Lead.xlsx" target="&quot;_blank">Uranium Plant Data-Lead</a>.</p>
 <p><br></p>
-<p>&lt;img src/Images/Step3.png”&gt;</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png" class="img-fluid"></p>
 <p><strong>Step 3: Describe the Data</strong></p>
 <div class="QuestionsHeading">
 Answer the following question:
@@ -883,7 +883,7 @@ Show/Hide Solution
 </details>
 </div>
 <p><br></p>
-<p>&lt;img src/Images/Step4.png”&gt;</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Step4.png" class="img-fluid"></p>
 <p><strong>Step 4: Make Inferences</strong></p>
 <p>We assume the null hypothesis is true and we gather evidence against this requirement. We will find the probability that the mean lead concentration is less than <span class="math inline">\(\bar x\)</span> = 29.13 mg/kg, assuming that the true mean lead concentration is <span class="math inline">\(\mu\)</span> = 50 mg/kg. This probability is called the <span class="math inline">\(P\)</span>-value.</p>
 <p>Since the sample size is large (<span class="math inline">\(n = 61\)</span>), we can conclude that the sample mean is normally distributed. So, we can use R to find the probability that the sample mean will be less than 29.13. Historical analyses show that the population standard deviation is <span class="math inline">\(\sigma\)</span> = 24 mg/kg.</p>
@@ -907,11 +907,11 @@ Show/Hide Solution
 </div>
 </div>
 <p>Using the <code>pnorm()</code> function, we find the area to the left of <span class="math inline">\(z = -6.79\)</span>. This is the <span class="math inline">\(P\)</span>-value. It is not clear from the image of the applet, but the area to the left was shaded before the <span class="math inline">\(z\)</span>-score was entered.</p>
-<p>&lt;img src/Images/L04_A06_Graph_4.jpg”&gt;</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/L04_A06_Graph_4.jpg" class="img-fluid"></p>
 <p>The <span class="math inline">\(P\)</span>-value for this test is so small we have to resort to scientific notation. <span class="math inline">\(5.54 \times 10^{-12} = 0.000~000~000~005~6\)</span>. This is a very small probability. Assuming the null hypothesis is true-that is, the site is unacceptably contaminated-it is very unlikely that we would find such a low mean contamination level among the <span class="math inline">\(n = 61\)</span> randomly selected soil samples.</p>
 <p>Since the <span class="math inline">\(P\)</span>-value is low, we reject the null hypothesis.</p>
 <p><br></p>
-<p>&lt;img src/Images/Step5.png”&gt;</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Step5.png" class="img-fluid"></p>
 <p><strong>Step 5: Take Action</strong></p>
 <p>There is sufficient evidence to suggest that the mean lead level is less than 50 mg/kg. We conclude that the lead concentration in the soil is low enough that it is not a danger to the public. Based on the results of this and other similar test results, the government has reopened public access to this area.</p>
 <p><br></p>

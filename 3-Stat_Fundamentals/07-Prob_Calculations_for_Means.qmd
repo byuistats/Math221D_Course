@@ -17,7 +17,8 @@ For the mean of draws from a random variable with mean $\mu$ and standard deviat
 Previously, you learned how to use the normal probability applet and R to convert a $z$-score to a corresponding area under the curve.  These skills will be applied again in this activity.  The following questions will help you brush up on how to calculate probabilities for a normal distribution.
 
 <center>
-<img src/Images/L04_A06_Graph.jpg">
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/L04_A06_Graph.jpg)
+
 </center>
 <br>
 
@@ -115,7 +116,8 @@ $$z=\frac{\bar x-\mu}{\sigma / \sqrt{n} } = \frac{10 - 7}{3 / \sqrt{4} }=2.0$$
 
 The probability that $z$ will be greater than $2.00$ is the area under the standard normal distribution to the right of $2.00$.  We find this area using the normal probability using R:
 
-<img src/Images/L04_A06_Graph_2.jpg">
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/L04_A06_Graph_2.jpg)
+
 
 
 ```{r}
@@ -171,7 +173,7 @@ pnorm(z)
 
 ```
 
-<img src/Images/L04_A06_Graph_3.jpg">
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images//L04_A06_Graph_3.jpg)
 
 
 __NOTE__:  Recall the the Normal Probabilty Applet rounds the $z$-scores first, then calculates the probabilities so they differ slightly from R.  
@@ -184,7 +186,7 @@ The area to the left of $z= -1.745$ is $0.04052$.  This is the probability that 
 
 <!-- This picture comes from http://happeningstock.deviantart.com/art/Grass-Hill-Area-Closed-Sign-255592183 and has an open license -->
 
-<img src/Images/L07_AREA_CLOSED_sign.jpg">
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images//L07_AREA_CLOSED_sign.jpg)
 
 We will now consider a complete example that shows how these probabilities are used in practice.
 
@@ -193,7 +195,7 @@ The United States Government decided to open some land near a uranium enrichment
 
 <br>
 
-<img src/Images/Step1.png">
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png)
 
 **Step 1: Design the study.**
 
@@ -211,7 +213,7 @@ In environmental testing, we always assume the site is dirty.  That is, our null
 
 <br>
 
-<img src/Images/Step2.png">
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images//Step2.png)
 
 **Step 2: Collect Data**
 
@@ -220,7 +222,7 @@ Scientists collected $n = 61$ measurements of the lead concentration in the soil
 
 <br>
 
-<img src/Images/Step3.png">
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png)
 
 **Step 3: Describe the Data**
 
@@ -275,7 +277,8 @@ knitr::kable(favstats(uranium$`Lead (mg/kg)`))
 </div>
 <br>
 
-<img src/Images/Step4.png">
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Step4.png)
+
 
 **Step 4: Make Inferences**
 
@@ -303,7 +306,7 @@ pnorm(z)
 
 Using the `pnorm()` function, we find the area to the left of $z = -6.79$.  This is the $P$-value.  It is not clear from the image of the applet, but the area to the left was shaded before the $z$-score was entered.
 
-<img src/Images/L04_A06_Graph_4.jpg">
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/L04_A06_Graph_4.jpg)
 
 The $P$-value for this test is  so small we have to resort to scientific notation.  $5.54 \times 10^{-12} = 0.000~000~000~005~6$.  This is a very small probability.  Assuming the null hypothesis is true-that is, the site is unacceptably contaminated-it is very unlikely that we would find such a low mean contamination level among the $n = 61$ randomly selected soil samples.
 
@@ -312,7 +315,8 @@ Since the $P$-value is low, we reject the null hypothesis.
 
 <br>
 
-<img src/Images/Step5.png">
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Step5.png)
+
 
 **Step 5: Take Action**
 
