@@ -9,6 +9,7 @@ format:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+
 # Life Expectancy of Female Authors
 
 ## Introduction
@@ -65,31 +66,31 @@ Perform an Analysis of Variance test including checking for the appropriateness 
 
 ```
 
-__Question__:  What is the test statistic?
+__Question__:  What is the test statistic?  
 __Answer__:  
 
 
-__Question__:  What are the degrees of freedom for your analysis?
-  a. Numerator (between Groups) Degrees of Freedom
-  b. Denominator (within groups) Degrees of Freedom
+__Question__:  What are the degrees of freedom for your analysis?  
+  a. Numerator (between Groups) Degrees of Freedom  
+  b. Denominator (within groups) Degrees of Freedom  
 __Answer__:  
 
 
-__Question__:  What is the P-value?
+__Question__:  What is the P-value?  
 __Answer__:  
 
 
-__Question__:  Do you reject the null hypothesis?  Why?
+__Question__:  Do you reject the null hypothesis?  Why?  
 __Answer__:  
 
 
-__Question__:  State your conclusion in context of the problem.
+__Question__:  State your conclusion in context of the problem.  
 __Answer__:  
 
 
 __Question__:  Can we trust the p-value?
   a. Check for equal standard deviation (is the ratio of the largest SD / smallest SD greater than 2?)
-  b. Check Normality of the residuals (`qqPlot()`)
+  b. Check Normality of the residuals (`qqPlot()`)  
 __Answer__:  
 
 
@@ -126,13 +127,13 @@ Create a summary statistics table for human contact for each of the treatment gr
 
 ```
 
-__Question__:  What do you observe?
+__Question__:  What do you observe?  
 __Answer__:  
 
-__Question__:  What is the maximum standard deviation?
+__Question__:  What is the maximum standard deviation?  
 __Answer__:  
 
-__Question__:  What is the minimum standard deviation?
+__Question__:  What is the minimum standard deviation?  
 __Answer__:  
 
 
@@ -146,27 +147,27 @@ Perform an Analysis of Variance test including checking for the appropriateness 
 
 ```
 
-__Question__:  What is the test statistic (F-value)?
+__Question__:  What is the test statistic (F-value)?  
 __Answer__:  
 
-__Question__:  What are the degrees of freedom for your analysis?
+__Question__:  What are the degrees of freedom for your analysis?  
 
-  a. Numerator (between Groups) Degrees of Freedom
-  b. Denominator (within groups) Degrees of Freedom
+  a. Numerator (between Groups) Degrees of Freedom  
+  b. Denominator (within groups) Degrees of Freedom  
 __Answer__:  
   
-__Question__:  What is the P-value?
+__Question__:  What is the P-value?  
 __Answer__:  
 
-__Question__:  Do you reject the null hypothesis?  Why?
+__Question__:  Do you reject the null hypothesis?  Why?  
 __Answer__:  
 
-__Question__:  State your conclusion in context of the problem.
+__Question__:  State your conclusion in context of the problem.  
 __Answer__:  
 
 __Question__:  Can we trust the p-value?
   a. Check for equal standard deviation (is the ratio of the largest SD / smallest SD greater than 2?)
-  b. Check Normality of the residuals (`qqPlot()`)
+  b. Check Normality of the residuals (`qqPlot()`)  
 __Answer__:  
 
 

@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 When we want to compare 3 or more groups, the math get's more complicated.  Analysis of Variance (ANOVA) compares how spread out the means are relative to the average _within_ group variation. The formula for the new test statistic, $F$, is messy, but we can get a sense for what it's doing visually.
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/one-way-anova-basics.png)
+![](../Images/one-way-anova-basics.png)
 
 The test statistic is the ratio of the variation between groups and the average variation within groups.  The further spread out the sample means are relative to the noise within the groups, the more significant the result.  
 
@@ -38,11 +38,11 @@ To summarize:
   3. $F$ changes shape depending on the number of groups (numerator degrees of freedom) and the number of total data points (denominator degrees of freedom)
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/F_distribution.png)
+![](../Images/F_distribution.png)
 
 The P-value for an F-statistic is always one-tailed.  The probability of observing a test statistic, $F$, if the null hypothesis is true can be visualized:
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Fdistr_pvalue.png)
+![](../Images/Fdistr_pvalue.png)
 
 
 In practice, the computer calculates the test statistic, P-value, and degrees of freedom and we interpret the output as with other statistical tests. 
@@ -176,9 +176,22 @@ Create a side-by-side boxplot of species and Sepal Length.
 
 ```{r}
 
-boxplot(Sepal.Length ~ Species, data=iris, col = c(2,3,4))
+boxplot(Sepal.Length ~ Species, data=iris, col = c(2,3,4), ylab="Sepal Length", main = "Sepal Length by Species")
 
 ```
+
+Using GGPlot:
+
+```{r}
+ggplot(iris, aes(x=Species, y = Sepal.Length)) +
+  geom_boxplot(fill=c(2,3,4)) +
+  theme_bw() +
+  labs(
+    y = "Sepal Length",
+    title = "Sepal Length by Species"
+  )
+```
+
 
 
 ## Step 4: Perform the appropriate analysis

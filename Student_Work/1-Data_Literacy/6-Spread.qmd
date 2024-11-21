@@ -37,20 +37,20 @@ In the previous lesson, we introduced two important characteristics of a distrib
 
 This activity introduces two measures of spread: the standard deviation and the variance.
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/StepsAll.png">
+![](../Images/StepsAll.png)
 
 **Bird Flu Fever **
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Peuquito.jpg">
+![](../Images/Peuquito.jpg)
 
 Avian Influenza A H5N1, commonly called the bird flu, is a deadly illness that is currently only passed to humans from infected birds. This illness is particularly dangerous because at some point it is likely to mutate to allow human-to-human transmission. Health officials worldwide are preparing for the possibility of a bird flu pandemic.
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png">
+![](../Images/Step1.png)
 
 Dr. K. Y. Yuen led a team of researchers who reported the body temperatures of people admitted to Chinese hospitals with confirmed cases of Avian Influenza.
 Their research team collected data on the body temperature at the time that people with the bird flu were admitted to the hospital. In the article, they reported on two groups of people, those with relatively uncomplicated cases of the bird flu and those with severe cases.
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step2.png">
+![](../Images/Step2.png)
 
 The table below presents the data representative of the body temperatures for the two groups of bird flu patients:
 
@@ -69,7 +69,7 @@ The table below presents the data representative of the body temperatures for th
 | 39.7 | Severe |
 | 39.0 | Severe |
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png">
+![](../Images/Step3.png)
 
 Let us focus on the relatively uncomplicated cases. Creating a histogram of such a small dataset does not provide much benefit. With only a handful of values, there is not much shape to the distribution.
 
@@ -133,11 +133,11 @@ It is a little tedious to compute the standard deviation by hand. You will usual
 
 First, observe the number line below, where each x represents the temperature of a patient with a relatively uncomplicated case of bird flu. As mentioned earlier, there is not a huge spread in the temperatures.
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/BirdFlu-DotPlotAnswer.png">
+![](../Images/BirdFlu-DotPlotAnswer.png)
 
 On your sketch of the number line, we draw a vertical line at 38.8 degrees, the sample mean.  Now, draw horizontal lines from the mean to each of your $\times$'s.  These horizontal line segments represent the spread of the data about the mean.  Your plot should look something like this:
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/BirdFlu-DotPlotAnswer-Lines.png">
+![](../Images/BirdFlu-DotPlotAnswer-Lines.png)
 
 The length of each of the line segments represents how far each observation is from the mean.  If the data are close together, these lines will be fairly short.  If the distribution has a large spread, the line segments will be longer. The standard deviation is a measure of how long these lines are, as a whole.
 
@@ -299,7 +299,7 @@ The standard deviation is a complicated sort of average of the deviations. Makin
 <center>
 "Piled Higher and Deeper" by Jorge Cham
 <br>
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Phd062307s.png">
+![](../Images/Phd062307s.png)
 </center>
 
 
@@ -726,7 +726,7 @@ For the next two questions, consider the histograms below comparing weight (in k
 
 <div style="padding-left:35px;">
 Weight of Men Compared to Weight of Seals<br>
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/DiveSealsVsMenWeights-Hist.png" width=80%>
+<img src/Images/DiveSealsVsMenWeights-Hist.png" width=80%>
 </div>
 
 17. Based on the histograms, who has a greater sample mean weight, men or elephant seals?
@@ -858,13 +858,13 @@ Recall the five steps of the Statistical Process (and the mnemonic "Daniel Can D
 </tbody>
 </table>
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/StepsAll.png">
+<img src/Images/StepsAll.png">
 </center>
 
 **Step 3** of this process is "**Describe the data**." You have already learned about the mean, median, mode, standard deviation, variance and histograms. These can be good ways to describe the data. The following information on percentiles, quartiles, 5-number summaries, and boxplots will help you learn other common ways to describe data, especially if the data are skewed or contain outliers.
 
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png">
+![](../Images/Step3.png)
 
 For symmetric, bell-shaped data, the mean and standard deviation provide a good description of the center and shape of the distribution.  The mean and standard deviation are not sufficient to describe a distribution that is skewed or has outliers. An **outlier** is any observation that is very far from the others.  The mean is pulled in the direction of the outlier.  Also, the standard deviation is inflated by points that are very far from the mean.
 
@@ -1117,36 +1117,36 @@ Follow the steps below to learn how a boxplot relates to the five-number summary
 
 **Step 01:** To draw a boxplot, start with a number line.
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson_2_Activity_6_BoxPlot_1.jpg">
+![](../Images/Lesson_2_Activity_6_BoxPlot_1.jpg)
 
 
 **Step 02:** Draw a vertical line segment above each of the quartiles.
 
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson_2_Activity_6_BoxPlot_2.jpg">
+![](../Images/Lesson_2_Activity_6_BoxPlot_2.jpg)
 
 
 **Step 03:** Connect the tops and bottoms of the line segments, making a box.
 
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson_2_Activity_6_BoxPlot_3.jpg">
+![](../Images/Lesson_2_Activity_6_BoxPlot_3.jpg)
 
 
 **Step 04:** Make a smaller mark above the values corresponding to the minimum and the maximum.
 
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson_2_Activity_6_BoxPlot_4.jpg">
+![](../Images/Lesson_2_Activity_6_BoxPlot_4.jpg)
 
 
 **Step 05:** Draw a line from the left side of the box to the minimum, and draw another line from the right side of the box the maximum.
 
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson_2_Activity_6_BoxPlot_5.jpg">
+![](../Images/Lesson_2_Activity_6_BoxPlot_5.jpg)
 
 **Step 06:** These last two lines look like whiskers, so this is sometimes called a box-and-whisker plot.
 
 
-<img srchttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson_2_Activity_6_BoxPlot_6.jpg">
+![](../Images/Lesson_2_Activity_6_BoxPlot_6.jpg)
 
 <br>
 

@@ -747,6 +747,15 @@ Perform the appropriate statistical test:</p>
 <section id="absenteeism-in-portugal" class="level2">
 <h2 class="anchored" data-anchor-id="absenteeism-in-portugal">Absenteeism in Portugal</h2>
 <p>In 2021, Portugal <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Secondary_education_statistics#Out-of-school_rates">reported</a> having 0% absenteeism for 15-year-olds. We suspect that the actual absenteeism is higher than the reported value (zero).</p>
+<p>Create a dataset that includes only students who are 15 years old.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fifteen <span class="ot">&lt;-</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:2:0: unexpected end of input
+1: fifteen &lt;- 
+   ^</code></pre>
+</div>
+</div>
 <section id="hypothesis-test-2" class="level3">
 <h3 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h3>
 <p>Create a <code>qqPlot()</code> for absences.</p>
@@ -779,8 +788,8 @@ Perform the appropriate statistical test:</p>
 <strong>Answer</strong>:</p>
 <p>Create a new dataset, <code>clean_medu</code>, that does not include mother’s education level 0.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>clean_medu <span class="ot">&lt;-</span> clean <span class="sc">%&gt;%</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>clean_medu <span class="ot">&lt;-</span> clean <span class="sc">%&gt;%</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: &lt;text&gt;:4:0: unexpected end of input
 2: clean_medu &lt;- clean %&gt;% 

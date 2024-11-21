@@ -81,7 +81,7 @@ Create histograms summary statistics for the pre and post weight measurements:
 
 ```{r}
 
-View(weight_loss)
+glimpse(weight_loss)
 
 # Pre-weight histogram
 histogram(weight_loss$pre)

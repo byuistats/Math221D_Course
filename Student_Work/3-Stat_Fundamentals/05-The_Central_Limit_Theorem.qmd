@@ -23,7 +23,7 @@ By the end of this lesson, you should be able to:
 
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/StepsAll.png)
+![](../Images/StepsAll.png)
 <br>
 
 ## Introduction
@@ -39,9 +39,9 @@ In practice, a single sample of data is obtained from a population of interest i
 ## Case Study: DDT's Negative Impact on Pregnant Women
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Cropduster_spraying_pesticides.jpg)
+![](../Images/Cropduster_spraying_pesticides.jpg)
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png) 
+![](../Images/Step1.png) 
 
 **Step 1: Design the Study**
 
@@ -54,21 +54,21 @@ Scientists have shown that DDT and its metabolites cause reproductive problems i
 A study of 45 pregnant women who have been exposed to DDT / DDE was conducted using a convenience sample (Bornman, MS. 2005).   Global Solutions Unlimited (GSU) will analyze the data from this study.  These data will be used to assess the prevalence of DDT in drinking water.
  
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step2.png) 
+![](../Images/Step2.png) 
 
 **Step 2: Collect Data**
 
 After selecting specific women to be sampled, researchers measured the level of DDE contamination for each of these randomly selected women.
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png) 
+![](../Images/Step3.png) 
 
 **Step 3: Describe the Data**
 
 The researchers computed the mean and standard deviation of the observed levels of exposure for the 45 women.  They found the mean observed contamination level was 24.75 mg/kg, and the highest level of contamination was 419.91 mg/kg! (Bornman, MS. 2005)
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step4.png) 
+![](../Images/Step4.png) 
 
 **Step 4: Make Inferences**
 
@@ -79,7 +79,7 @@ If the researchers had selected a different random sample of pregnant women, the
 This is how research is often conducted...repeated samples are not typically drawn, so we do not get to know what might have happened had we gathered data from a different sample. The good news is that statistical theory provides us with the tools we need to be able to use our single sample in a meaningful way to make inference about the full population.
  
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step5.png) 
+![](../Images/Step5.png) 
 
 **Step 5: Take Action**
 
@@ -104,7 +104,7 @@ Now, with those reminders in place, you will need to **work through the followin
 ### A Tutorial on Sampling Distributions
 
 - **Step 1**:  Open [this applet](http://onlinestatbook.com/stat_sim/sampling_dist/index.html) and click on "Begin"    
-<a href="http://onlinestatbook.com/stat_sim/sampling_dist/index.html">![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/samplingDistTutorial_Step1.png)</a>
+<a href="http://onlinestatbook.com/stat_sim/sampling_dist/index.html">![](../Images/samplingDistTutorial_Step1.png)</a>
 
 
 - **Step 2**: Ensure your internet browser window is wide enough to show all of the applet controls.    
@@ -120,35 +120,35 @@ Now, with those reminders in place, you will need to **work through the followin
   </tr>
   <tr>
     <td>
-      ![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/samplingDistTutorial_Step2a.png)
+      ![](../Images/samplingDistTutorial_Step2a.png)
     </td>
     <td>
-      ![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/samplingDistTutorial_Step2b.png)
+      ![](../Images/samplingDistTutorial_Step2b.png)
     </td>
   </tr>
 </table>
 
 - **Step 3:** Press the "Animated" button on the right of the applet. It will drop down a single random sample of N=5 data points (i.e., black boxes) from the parent population. (Because the sample is random, your sample will possibly land in a different place than what is shown here.)
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/samplingDistTutorial_Step3.png)
+![](../Images/samplingDistTutorial_Step3.png)
 
 - **Step 4:** Notice that a little blue box dropped down from your "Sample Data" of N=5 black boxes (data points). This little blue box represents the mean, $\bar{x}$, of your single sample of N=5 boxes.
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/samplingDistTutorial_Step4.png)    
+![](../Images/samplingDistTutorial_Step4.png)    
 
 Now is where things get interesting. In real life, all we would use is the single sample of N=5 values and the sample mean, $\bar{x}$, to make inference (make our guess) about the mean, $\mu$, of the full population. (The full population in this applet is shown in the top black graph.) However, the purpose of this applet is to allow us to explore how our answer would change if we used a different sample of N=5 data points. A different sample will result in a different sample mean $\bar{x}$. So the question is, what values are possible for the sample mean? Are some values of the sample mean more likely than others? 
 
 
 - **Step 5:** **Click the Animated** button several more times. Each time, watch how a new random sample of N=5 data points is generated for the "Sample Data" graph, and then the mean of that sample is plotted in the bottom "Distribution of Means, N=5" graph. The following image shows the results after clicking the "Animated" button 10 times.
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/samplingDistTutorial_Step5.png)
+![](../Images/samplingDistTutorial_Step5.png)
 
 - **Step 6:** Now, let's get the number of sample means (blue boxes) up to a million! To save time, there are buttons below the "Animated" button labeled "5", "10,000", and "100,000". Clicking the "100,000" button 10 times will quickly get us up to one million sample means. Keep in mind that by doing this, you are essentially clicking the "Animated" button 1,000,000 times! (To actually click the "Animated" button one million times it would take you roughly 26 days of constantly clicking the "Animated" button over and over again!)    
 
 Now study the arrows in the image below. As you do, you should notice that to the left of the "Distribution of Means, N=5" graph, the mean of the distribution of sample means (which is equal to 16) and standard deviation of the distribution of sample means (which is equal to 2.24) are given. Compare these values to the mean and standard deviation shown for the Parent Population graph.    
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/samplingDistTutorial_Step6.png)    
+![](../Images/samplingDistTutorial_Step6.png)    
 
 Hopefully you noticed that the "mean of the distribution of means" is equal to the "mean of the population." The mean of the means is the mean! Let's say that again. The *mean of all possible sample means is equal to the mean of the population.* In short, the mean of the means is the mean. As for the standard deviation though, notice that the "standard deviation of the sample means" is smaller than the "standard deviation of the population." It turns out that these two results hold true for any parent population and any sample size. There are two mathematical formulas that summarize these truths.
 
@@ -174,21 +174,21 @@ Notice that the shape of the sampling distribution of the sample mean is normal 
 
 - **Step 7:** Press the [Clear Lower 3] button.  This will erase your data and reset the applet. Then, use the drop-down menu below the [Clear Lower 3] button to **change** the distribution from a **normal distribution** to a **skewed distribution**. The applet should now show a right-skewed distribution for the "Parent Population" data graph.
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/samplingDistTutorial_Step7.png)
+![](../Images/samplingDistTutorial_Step7.png)
 
 - **Step 8:** Change the sample size to a very small sample size by selecting "N=2". Then press the "Animated" button a few times to get a feel for what a sample of N=2 data points looks like from this right-skewed population. 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/samplingDistTutorial_Step8.png)
+![](../Images/samplingDistTutorial_Step8.png)
 
 - **Step 9:** Then, get a million such samples by clicking the "100,000" button ten times. You should get something similar to what is shown below. (Notice that the mean of the "Distribution of Means" is still equal to the mean of the "Parent population." Also note that the standard deviation of the "Distribution of Means" is equal to $6.22/\sqrt(2) = 4.40$, which is $\sigma/\sqrt(n)$, as shown by our formula stated previously for the "Standard deviation of the Sample Means.")    
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/samplingDistTutorial_Step9.png)    
+![](../Images/samplingDistTutorial_Step9.png)    
 
 However, when it comes to the shape of the distribution of means, you should notice that the blue graph showing the "Distribution of Means, N=2" is not normally distributed. Like the distribution of the "Parent population" it is also right-skewed. This is problematic when it comes to trying to perform statistical analysis on a small sample (like N=2) from a population of skewed data because we can't use the normal probability applet for things that are skewed. But there is a beautiful promise in statistical theory called the **Central Limit Theorem** that solves this problem. All we need is a larger sample size and the skewed distribution of means will magically "go away." We will state this result formally in a moment. For now, see it happen yourself by doing the following.
 
 - **Step 10:** Change the sample size from "N=2" (a small sample) to "N=25" (a much larger sample). Then, click the "Animated" button a few times to get a feel for what is happening. Finally, click the "100,000" button ten times to get a million sample means from a million different samples of "N=25" data points in each sample. Look at how beautifully normal the distribution of sample means (the blue graph) is becoming! The "Parent population" data is still skewed. Even the "Sample Data" is still skewed. But the "Distribution of Means" is becoming normal! This is the **Central Limit Theorem** in action.
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/samplingDistTutorial_Step10.png)
+![](../Images/samplingDistTutorial_Step10.png)
 
 
 
@@ -227,6 +227,9 @@ How many observations are required so that the Central Limit Theorem will assure
   + If the parent population is heavily skewed, then it will require a larger sample size to be assured that $\bar x$ will be normally distributed. For most moderately skewed distributions, a sample size of around 30 is traditionally thought to be sufficiently large to assure that $\bar x$ will be approximately normally distributed.  This is not a definitive number but is a rule of thumb.
   + For tremendously skewed distributions (e.g., the distribution of lottery payouts), a much larger sample will be required before the distribution of sample means is approximately normal. This may require billions of observations. Simulation can be used to determine if a particular sample size is sufficient. For this course, if the sample size is at least 30, we will conclude that the sampling distribution of $\bar x$ will be approximately normal.
 
+<br>
+
+
 <div class="QuestionsHeading">Answer the following question:</div>
 <div class="Questions">
 1. There are two ways that $\bar x$ can be (approximately) normally distributed.  What are they?  
@@ -235,8 +238,11 @@ How many observations are required so that the Central Limit Theorem will assure
 <summary>Show/Hide Solution</summary>
 - $\bar x$ will be normally distributed if the data were drawn from a normal population.
 - $\bar x$ will be approximately normally distributed if the sample size is sufficiently large.
-</details>
 
+</details>
+</div>
+
+<br>
 
 ## Mean and Standard Deviation of the Distribution of Sample Means
 
@@ -249,8 +255,10 @@ Remember, these facts are always true.  They do not depend on normality or the s
 
 Think about the simulations you have observed.  The mean of the sample means was always aligned with $\mu$.  Also, if you took samples larger than $n = 1$, the standard deviation of sample means was always smaller than $\sigma$.
 
+
 <div class="QuestionsHeading">Answer the following questions:</div>
 <div class="Questions">
+
 2. The amount of time passengers spend waiting for a bus on a particular urban route follows a distribution that has a mean of 8.7 minutes with a standard deviation of 2.2 minutes.  Transportation officials observed the waiting times for a random sample of $n=121$ individual passengers and recorded the sample mean, $\bar x$.  We can think of this sample mean as one value observed out of all the possible sample means that could have been observed.  What is the mean of the distribution of all possible sample means?  
 
 <details>

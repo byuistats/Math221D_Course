@@ -281,7 +281,7 @@ Explain the confidence interval in context of the research question:
 
 #  Miscellany
 
-__Question__:  A financial economist is studying married couples in which both spouses work. He wants to compare the mean income earned by husbands with the mean income earned by their wives. Should he use independent sampling or dependent sampling, and why?
+__Question__:  A financial economist is studying married couples in which both spouses work. He wants to compare the mean income earned by husbands with the mean income earned by their wives. Should he use independent sampling or dependent sampling, and why?  
 __Answer__:  
 
 

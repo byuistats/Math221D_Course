@@ -226,13 +226,17 @@ Perform the $\chi^2$ test of independence.
 __Question__:  Are the requirements for a $\chi^2$ test satisfied?  
 __Answer__:  
 
-__Question__:  What are the null and alternative hypotheses?
+__Question__:  What are the null and alternative hypotheses?  
+__Answer__:  
 
-__Question__:  What is the test statistic, $\chi^2$?
+__Question__:  What is the test statistic, $\chi^2$?  
+__Answer__:  
 
-__Question__:  How many degrees of freedom does this test have?
+__Question__:  How many degrees of freedom does this test have?  
+__Answer__:  
 
-__Question__:  What is the P-value?
+__Question__:  What is the P-value?  
+__Answer__:  
 
 
 

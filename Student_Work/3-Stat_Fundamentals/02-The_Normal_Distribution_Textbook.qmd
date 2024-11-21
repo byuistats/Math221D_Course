@@ -24,19 +24,20 @@ By the end of this lesson, you should be able to:
 
 ### Baseball Batting Averages
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Baseball.jpg)
+![](../Images/Baseball.jpg)
+
 
 In baseball, a player called the "pitcher" throws a ball to a player called the "batter." The batter swings a wooden or metal bat and tries to hit the ball. A "hit" is made when the batter successfully hits the ball and runs to a point in the field called first base. A player's batting average is calculated as the ratio of the number of hits a player makes divided by the number of times the player has attempted to hit the ball or in other words, been "at bat." Sean Lahman reported the batting averages of several professional baseball players in the United States. (Lahman, 2010) The file [BattingAverages.xlsx](../Data/BattingAverages.xlsx) contains his data.
 
 The following histogram summarizes the batting averages for these professional baseball players:
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Lesson_03_Activity_06_Reading_1.jpg)
+![](../Images/Lesson_03_Activity_06_Reading_1.jpg)
 
 Notice the bell-shaped distribution of the data.
 
 Suppose we want to estimate the probability that a randomly selected player will have a batting average that is greater than 0.280. One way to do this would be to find the proportion of players in the data set who have a batting average above 0.280. We can do this by finding the number of players who fall into each of the red-colored bins below and dividing this number by the total number of players.
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/L03_A06_R02.jpg)
+![](../Images/L03_A06_R02.jpg)
 
 In other words, we could find the proportion of the total area of the bars that is shaded red out of the combined area of all the bars. This gives us the proportion of players whose batting averages are greater than 0.280.
 
@@ -63,7 +64,7 @@ All density curves, including normal density curves, have two basic properties:
 
 Because of these two properties, the area under the curve can be treated as a probability. If we want to find the probability that a randomly selected baseball player will have a batting average between some range of values, we only need to find the area under the curve in that range. This is illustrated by the region shaded in blue in the figure below.
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/L03_A06_R03.jpg)
+![](../Images/L03_A06_R03.jpg)
 
 A normal density curve is uniquely determined by its mean, $\mu$, and its standard deviation, $\sigma$. So, if random variables follow a normal distribution with a known mean and standard deviation, then we can calculate any probabilities related to that variable by finding the area under the curve.
 
@@ -123,7 +124,7 @@ This is called the 68-95-99.7% Rule for Bell-shaped Distributions. Some statisti
 </div>
 <br>
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/L03_A06_R04.jpg)
+![](../Images/L03_A06_R04.jpg)
 
 Approximately 68% of the observations from a bell-shaped distribution will be between the values of $\mu -~\sigma~$and $\mu +~\sigma$. Consider the heights of young adult women in Ghana. We expect that about 68% of Ghanaian women have a height between the values of
 $$\mu -~\sigma = 159.0 - 4.9 = 154.1~\text{cm}$$
@@ -173,7 +174,7 @@ We define an **unusual observation** to be something that happens less than 5% o
 <center>"Piled Higher and Deeper" by Jorge Cham</center> 
 <br>
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Phd1030.png)
+![](../Images/Phd1030.png)
 
 ## Normal Probability Computations
 
@@ -264,7 +265,7 @@ pnorm(z)
 
 Using the Applet, type the $z$-score of $0.559$ in one of the boxes below the horizontal axis in the applet. Click on the areas under the curve until only the region on the right is highlighted in blue.
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Batting_average_z-score.PNG)
+![](../Images/Batting_average_z-score.PNG)
 
 The area under the curve to the right of $z = 0.559$ is $0.288$. This is the probability that a randomly selected player will have a batting average that is greater than 0.280. (Note: It is a coincidence that the area, 0.288, is close to the batting average of 0.280. There is no significance in this.)
 
@@ -332,7 +333,7 @@ The 90<sup>th</sup> percentile of the heights averages is 165.2796. That means t
 
 Consider the data on the batting averages of Major League Baseball players. The histogram of the batting averages showed a distinct bell-shaped curve.
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Picture6.jpg)
+![](../Images/Picture6.jpg)
 
 Later in the course, we will learn a better way to assess normality.  For now, we use histograms as a rough way to look for symmetry.  
 

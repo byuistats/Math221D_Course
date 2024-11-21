@@ -34,7 +34,7 @@ library(car)
 # Car Prices and Mileage
 
 <p align="center">
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Accura_MDX.png)
+![](../Images/Accura_MDX.png)
 </p>
 
 
@@ -137,7 +137,7 @@ Lastly, the car you're interested in buying has around 100,000 miles and costs $
 
 # Manatee Deaths and Motorboat Registrations in Florida
 <p align="center">
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/manatees1.png)
+![](../Images/manatees1.png)
 </p>
 
 Florida is a fabulous place for experiencing wildlife and recreation.  Unfortunately, sometimes those two activities conflict.
@@ -226,7 +226,7 @@ Check for constant variance (Residual by Predicted plot):
 
 # MCAT Score and GPA
 <p align="center">
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/MCAT_official_logo.png)
+![](../Images/MCAT_official_logo.png)
 </p>
 
 

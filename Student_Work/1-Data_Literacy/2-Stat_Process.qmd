@@ -34,7 +34,7 @@ Statistics are used in every aspect of society. Every statistical analysis follo
 ### The Statistical Process and Daniel's Experiment
 
 <div style="float:right;width:40%;padding-left:15px;padding-top:15px;padding-bottom:15px;padding-right:15px">
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Daniel-flickr-1763911528.png)
+![](../Images/Daniel-flickr-1763911528.png)
 
 <div style="font-size:.7em;">Stained-glass depiction of Daniel's deliverance from the lions' den. Found in the old Dominican priory church at Hawkesyard in Staffordshire, England.
 (Photo credit: Fr Lawrence Lew, O.P. Used by permission.)</div>
@@ -51,18 +51,18 @@ The following icons can help you remember these steps. Notice that each icon has
 <br/>
 
 <center>
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/StepsAll.png)
+![](/Images/StepsAll.png)
 </center>
 
 <div style="padding-left:20px;">
 
 | The Statistical Process | |
 |:---------|:--------------------------------|
-| ![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png) | **D**esign the Study |
-| ![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step2.png)  | **C**ollect the Data |
-| ![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png)  | **D**escribe the Data|
-| ![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step4.png)  | **M**ake Inference |
-| ![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step5.png)  | **T**ake Action |
+| ![](../Images/Step1.png) | **D**esign the Study |
+| ![](../Images/Step2.png)  | **C**ollect the Data |
+| ![](../Images/Step3.png)  | **D**escribe the Data|
+| ![](../Images/Step4.png)  | **M**ake Inference |
+| ![](../Images/Step5.png)  | **T**ake Action |
 
 </div>
 <br>
@@ -70,7 +70,7 @@ The following icons can help you remember these steps. Notice that each icon has
 
 ### Step 1: Design the Study
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png)
+![](../Images/Step1.png)
 
 An important step in scientific inquiry or problem solving can be to state a research question such as:
 
@@ -115,7 +115,7 @@ Daniel's hypothesis is that the Israelite children who eat pulse and drink water
 
 ### Step 2: Collect Data
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step2.png)
+![](../Images/Step2.png)
 
 When designing a study, much attention is given to the process by which data are observed. When examining data, it is also important to understand the data collection procedures. A **sample** is a subset (a portion) of a population. How is this sample obtained?  How are the observations made?
 
@@ -125,7 +125,7 @@ Daniel's study design required that data be collected at the end of 10 days. Mel
 
 ### Step 3: Describe the Data
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png)
+![](../Images/Step3.png)
 
 When we describe data, we use any tools appropriate to the situation. This can include creating graphs or calculating summary statistics to help understand or visualize the data.
 
@@ -135,7 +135,7 @@ For Daniel's experiment, the data are described in [Daniel 1:15](https://www.chu
 
 ### Step 4: Make Inferences
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step4.png)
+![](../Images/Step4.png)
 
 Inference is the process of using the information contained in a sample from a population to make a general statement (i.e. to infer something) about the entire population. Later in the course we will learn techniques that make this type of analysis possible.
 
@@ -145,7 +145,7 @@ Melzar made an inference. Based on the results of the sample, he determined that
 
 ### Step 5: Take Action
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step5.png)
+![](../Images/Step5.png)
 
 The goal of a statistical analysis is to determine which action to take in a particular situation. Actions can include many things: launching an internet ad campaign (or not), expressing gratitude (or not), getting vaccinated (or not), etc.
 
@@ -165,7 +165,7 @@ Daniel's experience can also help you learn the Statistical Process. Look at the
 <center>
 **The Statistical Process**
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/StepsAll.png)
+![](../Images/StepsAll.png)
 
 | &nbsp;  | Pneumonic    | Actual Process Step    |
 |---------|--------------|------------------------|
@@ -226,7 +226,7 @@ As explained in the video, in the first Salk trial almost 1.1 million children p
 Undaunted, Dr. Salk fixed the problems with the design and enrolled hundreds of thousands of additional children for the second phase of his study. In all, over 1.8 million infants and children participated in this experiment, making it the largest drug trial to date.
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png)
+![](../Images/Step1.png)
 
 **Step 1: Design the study.**
 
@@ -275,7 +275,7 @@ Because the children were assigned to the groups randomly, the two groups should
 </div>
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step2.png)
+![](../Images/Step2.png)
 
 **Step 2: Collect data.**
 
@@ -310,7 +310,7 @@ The researchers followed up with each child to determine if they contracted poli
 
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png)
+![](../Images/Step3.png)
 
 **Step 3: Describe the data.**
 
@@ -340,7 +340,7 @@ $$ \displaystyle{\frac{142}{201229} = 0.000~705~7} $$
 </div>
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step4.png)
+![](../Images/Step4.png)
 
 **Step 4: Make inferences**
 
@@ -349,7 +349,7 @@ Careful statistical analysis of the records suggested that this difference was s
 <br>
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step5.png)
+![](../Images/Step5.png)
 
 **Step 5: Take action**
 
@@ -364,13 +364,13 @@ In an **observational study** researchers observe the responses of the individua
 Observational studies commonly occur in business settings. One example is a financial audit. The purpose of a financial audit is to assess the accuracy of a company's financial business practices. ImmunAvance Ltd., a non-government health care organization, hired the Accounting Office at Global Optimization Unlimited to perform an independent audit of their financial practices. ImmunAvance provides inoculation and other preventative health care services in rural African communities.
 
 <center>
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/StepsAll.png)
+![](../Images/StepsAll.png)
 </center
 
 Imagine you are assigned to serve as a member of the team that will perform this audit. The audit illustrates the five steps of the Research Process.
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png)
+![](../Images/Step1.png)
 
 **Step 1: Design the study**
 
@@ -379,7 +379,7 @@ The volume of financial transactions conducted by ImmunAvance makes it impossibl
 Auditors typically cannot consider every item in a population, because there are too many. When it is not possible to conduct a census, auditors face **sampling risk**. Sampling risk is the risk affiliated with not auditing every item in the population. It is the risk that the sample may not adequately reflect the population. The only way to eliminate sampling risk is to conduct a census, which is usually not practical. Auditors can reduce sampling risk by obtaining a sample randomly. This is called **random selection**. Another way to reduce sampling risk is to increase the **sample size**, the number of items sampled.
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step2.png)
+![](../Images/Step2.png)
 
 <br>
 
@@ -464,14 +464,14 @@ c. Invoice amount
 </div>
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png)
+![](../Images/Step3.png)
 
 **Step 3: Describe the data**
 
 After auditors collect a sample and compile the data, they review the evidence. Auditors may use graphs or compute numbers (such as the average) to summarize the evidence they found.
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step4.png)
+![](../Images/Step4.png)
 
 <br>
 
@@ -486,7 +486,7 @@ When conducting an audit, the implicit assumption is that transactions have been
 <center>
 "Piled Higher and Deeper" by Jorge Cham
 <br>
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Phd121911s.png)
+![](../Images/Phd121911s.png)
 </center>
 
 There is a formal procedure for determining when *enough* evidence has been found to make accusations of fraud. Later this semester, after we establish some foundational principles of statistics, we will study these statistical methods in depth. Of course, these methods can be used for much more than just determining if a company has reported their financial statements fraudulently. So we will look at many different ways these statistical procedures can be applied to research and industry.
@@ -494,7 +494,7 @@ There is a formal procedure for determining when *enough* evidence has been foun
 For ImmunAvance's audit, based on the samples of financial statements that had been selected, while there were a few errors in the documents, there was not evidence dramatic enough to claim that the company had been fraudulent. So the company passed their audit.
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Step5.png)
+![](../Images/Step5.png)
 
 **Step 5: Take Action**
 

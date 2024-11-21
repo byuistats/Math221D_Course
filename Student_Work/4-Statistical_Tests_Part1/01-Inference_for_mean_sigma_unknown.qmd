@@ -93,7 +93,7 @@ $$ t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}}$$
 
 The T-distribution is very similar to the standard normal.  It is symmetrical around zero. However, the shape depends on how much data you have.  The more data you have, the closer the $t$ is to the standard normal.  This is illustrated in the graph below:
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/T_dist.png)
+![](../Images/T_dist.png)
 
 Because $t$ is not normally distributed, we can't use `pnorm()` to calculate probabilities.  However, R is fully capable of calculating probabilities for many probability distributions including the t-distribution.  We have to tell R the t-value *and* the degrees of freedom.
 

@@ -28,7 +28,8 @@ If our sample size is < 30, we can assess the normality of our *sample* to decid
 
 All of the examples below are histograms of random samples from actual standard normal distributions:
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/small_sample_normal.png)
+![](../Images/small_sample_normal.png)
+
 
 ### A New Way to Assess Normality
 
@@ -41,17 +42,17 @@ __Key Point__:  If most of the data points line up in the shaded region, we can 
 
 Below are examples of QQPlots for a normal distribution and a right skewed distribution.
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/QQPlot_Normal.png)
+![](../Images/QQPlot_Normal.png)
 
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/QQPlot_Right_Skewed.png)
+![](../Images/QQPlot_Right_Skewed.png)
 
 
 These work much better for small sample sizes.  Below are several examples of QQPlots for small sample sizes:
 
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/QQPlots_Normal.png)
+![](../Images/QQPlots_Normal.png)
 
 
 While not perfect, these are a vastly better tool to assess normality than a histogram.  

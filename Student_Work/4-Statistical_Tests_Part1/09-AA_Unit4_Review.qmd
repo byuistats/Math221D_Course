@@ -51,7 +51,6 @@ All these activities are important, but we may spend more or less time on any on
 ```{r, echo=FALSE, include=FALSE}
 
 ## Don't worry about this line of code. It is included for purposes of rendering the document
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 
 library(rio)
 library(tidyverse)
@@ -304,6 +303,13 @@ __Explanation__:
 ## Absenteeism in Portugal
 
 In 2021, Portugal [reported](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Secondary_education_statistics#Out-of-school_rates) having 0% absenteeism for 15-year-olds.  We suspect that the actual absenteeism is higher than the reported value (zero).
+
+Create a dataset that includes only students who are 15 years old.
+
+```{r}
+fifteen <- 
+```
+
 
 ### Hypothesis Test
 

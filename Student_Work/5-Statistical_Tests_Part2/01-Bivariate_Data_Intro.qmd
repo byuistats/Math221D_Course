@@ -55,7 +55,7 @@ The Correlation Coefficient is called $r$.  It is a number between -1 and 1, wit
 See the images below for scenarios for different correlation coefficients:
 
 <p align="center">
-![](https://github.com/byuistats/Math221D_Course/raw/mainhttps://github.com/byuistats/Math221D_Course/raw/main/Images/Correlation_Coefficients.png)
+![](../Images/Correlation_Coefficients.png)
 </p>
 
 Notice the panel in the bottom right corner.  There is clearly a perfect relationship between $x$ and $y$, yet $r=0$.  This is because $r$ measures the strength and direction of a *linear* relationship.  If the relationship is not linear, then $r$ can still be zero.  

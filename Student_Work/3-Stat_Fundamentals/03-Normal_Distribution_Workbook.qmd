@@ -22,7 +22,7 @@ We can first calculate a __Z-score__, which is the number of standard deviations
 
 I always recommend drawing a picture first.  Without doing any math, you can usually make a pretty good guess about what the Z-score will be.
 
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Stanford_Zscore.png)
+![](/Images/Stanford_Zscore.png)
 
 Before doing any math, what is the minimum z-score required to get into Stanford?
 
