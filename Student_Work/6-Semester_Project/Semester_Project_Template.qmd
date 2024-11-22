@@ -1,7 +1,6 @@
 ---
 title: Semester Project
 author: your name
-warning: no
 format:
   html:
     self-contained: true

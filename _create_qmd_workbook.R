@@ -43,46 +43,14 @@ add_yaml_features_and_remove_button <- function(file_path, new_features) {
   return(new_content)
 }
 
-# Function to zip a folder
-zip_folder <- function(folder_path, output_zip_name) {
-  if (!dir.exists(folder_path)) {
-    stop("The specified folder does not exist.")
-  }
-  
-  output_zip_path <- file.path(dirname(folder_path), output_zip_name)
-  base_dir <- basename(folder_path)
-  files_to_zip <- list.files(base_dir, recursive = TRUE, full.names = TRUE, all.files = TRUE)
-  relative_paths <- sub(paste0("^", base_dir, "/"), "", files_to_zip)
-  
-  cat("Files to zip:\n")
-  print(relative_paths)
-  
-  non_existent_files <- files_to_zip[!file.exists(files_to_zip)]
-  if (length(non_existent_files) > 0) {
-    cat("\nWarning: The following files do not exist:\n")
-    print(non_existent_files)
-    files_to_zip <- files_to_zip[file.exists(files_to_zip)]
-    relative_paths <- relative_paths[file.exists(files_to_zip)]
-  }
-  
-  files_for_zip <- setNames(files_to_zip, relative_paths)
-  
-  tryCatch({
-    zip(zipfile = output_zip_name, files = files_for_zip)
-    cat("\nFolder successfully zipped to:", output_zip_path, "\n")
-  }, error = function(e) {
-    cat("\nError during zipping:", e$message, "\n")
-  })
-}
 
-# Main script
 source_dirs <- c("./1-Data_Literacy", "./2-Tidy_Data", "./3-Stat_Fundamentals", "./4-Statistical_Tests_Part1", "5-Statistical_Tests_Part2", "./6-Semester_Project")
 
 yaml_to_add <- list(
   format = list(
     html = list(
-      self_contained = TRUE,
-      embed_resources = TRUE
+      `self-contained` = TRUE,
+      `embed-resources` = TRUE
     )
   )
 )
@@ -104,14 +72,7 @@ for(i in 1:length(source_dirs)){
   cat("All files have been copied, modified, and had download buttons removed.\n")
 }
 
-# Zip the Student_Work folder
-folder_to_zip <- "./Student_Work"
-zip_file_name <- "Student_Work_zip.zip"
-tryCatch({
-  zip_folder(folder_to_zip, zip_file_name)
-}, error = function(e) {
-  cat("Error:", e$message, "\n")
-})
+
 
 
 #####################
@@ -143,8 +104,10 @@ replace_strings_in_file <- function(file_path, old_strings, new_strings) {
 }
 
 # Specify the strings to replace
-old_strings <- c("self_contained: yes", "embed_resources: yes")  # Replace these with the strings you want to replace
-new_strings <- c("self-contained: true", "embed-resources: true")  # Replace these with the new strings
+#old_strings <- c("self_contained: yes", "embed_resources: yes")  # Replace these with the strings you want to replace
+#new_strings <- c("self-contained: true", "embed-resources: true")  # Replace these with the new strings
+old_strings <- c("contained: yes", "resources: yes")  # Replace these with the strings you want to replace
+new_strings <- c("contained: true", "resources: true")  # Replace these with the new strings
 
 # Get list of all .qmd files in the directory and its subdirectories
 qmd_files <- fs::dir_ls(path = dir_path, recurse = TRUE, glob = "*.qmd")
@@ -156,3 +119,42 @@ for (file in qmd_files) {
 
 cat("String replacements completed for all .qmd files in", dir_path, "and its subdirectories.\n")
 cat("Total files processed:", length(qmd_files), "\n")
+
+
+############# Zip the folder
+
+zip_directory <- function(dir_path, zip_name = NULL) {
+  # Normalize directory path
+  dir_path <- path_norm(dir_path)
+  
+  # Check if directory exists
+  if (!dir.exists(dir_path)) {
+    stop("Directory does not exist:", dir_path)
+  }
+  
+  # If no zip name provided, use directory name
+  if (is.null(zip_name)) {
+    zip_name <- paste0(path_file(dir_path), ".zip")
+  }
+  
+  # Create zip file path in parent directory
+  zip_path <- path_norm(file.path(path_dir(dir_path), zip_name))
+  
+  # Change working directory to parent directory
+  old_wd <- getwd()
+  on.exit(setwd(old_wd))  # Ensure we return to original directory
+  setwd(path_dir(dir_path))
+  
+  # Create zip file using relative path
+  zip(
+    zipfile = zip_name,
+    files = path_file(dir_path),
+    mode = "mirror",
+    recurse = TRUE
+  )
+  
+  cat("Created zip file:", zip_path, "\n")
+}
+
+zip_directory("Student_Work")
+

@@ -1,6 +1,5 @@
 ---
 title: "2-Sample Independent T-Test Practice"
-warning: false
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
