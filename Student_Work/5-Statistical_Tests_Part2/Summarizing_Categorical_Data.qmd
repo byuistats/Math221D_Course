@@ -11,11 +11,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Summarizing Categorical Data
 
-In this section we will show how to summarize data numerically and visually.  
+In this section we will show how to summarize data numerically and visually.  We will be using survey responses about Star Wars.  The  [survey](https://fivethirtyeight.com/features/americas-favorite-star-wars-movies-and-least-favorite-characters/) was carried out by FiveThirtyEight about the first 6 Star Wars films.  The survey contains demographic information as well as movie rankings and character favorability rankings.  
 
-We typically summarize categorical variables with counts and proportions.  Visually, an ordered bar chart is the optimal way to express categorical data.  Pie charts, while very common, are problematic because of weaknesses in basic human perception. 
-
-Let's look at [survey](https://fivethirtyeight.com/features/americas-favorite-star-wars-movies-and-least-favorite-characters/) carried out by FiveThirtyEight about the first 6 Star Wars films.  
+## Load the Data and Libraries
 
 ```{r}
 library(tidyverse)
@@ -25,13 +23,13 @@ library(ggplot2)
 
 sw <- read_csv('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/StarWarsData_clean.csv')
 
-
 ```
 
 ## Numerical Summaries
 
-Use the `table()` function to tabulate counts for a categorical variable.  For example, if we want to tabulate the favorability of Han Solo
+### One Variable
 
+We typically summarize categorical variables with counts or proportions.  When we want to summarize a single categorical variable by itself, we can use the `table()` function to get counts.  For example, if we want to tabulate the favorability of Han Solo:  
 
 ```{r}
 
@@ -39,21 +37,30 @@ table(sw$`Favorability_Han Solo`)
 
 ```
 
-You can also get proportions by inputting a table into the `prop.table()` function:
+This shows us the counts of respondents in each response category.  
+
+We can also use the `prop.table()` function to get the proportion of respondents, rather than the counts, by inputing a table.  
+
 
 ```{r}
-prop.table(table(sw$`Favorability_Han Solo`))
+
+prop.table(table(sw$`Favorability_Han Solo`)) 
 
 ```
+
+__NOTE__:  The `prop.table()` function needs a table as an input, not a data column.  
+
 
 __Question__:  What percent of respondents are "Very favorable" towards Han Solo?  
 __Answer__:  
 
+__Question__:  What percent of respondents are "Very unfavorable" towards Han Solo?  
+__Answer__:  
 
 
-### Multiple Groups
+### Two Variables
 
-The `table()` function can make a "cross table" of 2 categorical variables.  The resulting table will have rows and columns which correspond to the order of input `table(row, column)`.
+We can use __Contingency Tables__ to examine associations between 2 categorical variables.  A __contingency table__ displays the counts of combinations of 2 categorical variables each being represented as a row or a column.  It is easy to create a contingency table in `R` by inputting 2 data columns into the `table()` function.  The resulting table will have rows and columns which correspond to the order of input `table(row, column)`.
 
 Let's contrast gender with whether or not a respondent is a fan of Star Wars (`Are You a Fan of SW`):  
 
@@ -74,7 +81,9 @@ addmargins(table(sw$Gender, sw$`Are You a Fan of SW?`))
 This can be used to get row or column percentages.  Alternatively we can use the `prop.table()` function to get proportions.  
 
 ```{r}
+
 prop.table(table(sw$Gender, sw$`Are You a Fan of SW?`))
+
 ```
 
 The default for `prop.table()` is to give the overall percentages (counts / table total).  So the proportions add to 1 across the whole table.    
@@ -84,7 +93,9 @@ We can specify row or column percentages by specifying a "margin."  In R, `margi
 Compare the difference:  
 
 ```{r}
+
 prop.table(table(sw$Gender, sw$`Are You a Fan of SW?`), margin = 1)
+
 ```
 
 This table sums to 1 across the rows, meaning that about 60% of Females are fans of Star Wars and about 72% of Males are fans.
@@ -92,7 +103,9 @@ This table sums to 1 across the rows, meaning that about 60% of Females are fans
 Now look at `margin = 2`
 
 ```{r}
+
 prop.table(table(sw$Gender, sw$`Are You a Fan of SW?`), margin = 2)
+
 ```
 
 __Question__:  What does this table show?  
@@ -104,11 +117,14 @@ __NOTE__:  Which margin we choose to evaluate depends on the order we input colu
 
 ## Visual Summaries
 
+Visually, bar charts are the optimal way to express categorical data.  Pie charts, while very common, are problematic because of weaknesses in basic human perception. 
+
 We can use `ggplot()` with categorical variables to get summaries of counts using the `geom_bar()` geometry.  
 
 ```{r}
 
-ggplot(sw, aes(x = `Are You a Fan of SW?`)) + geom_bar()
+ggplot(sw, aes(x = `Are You a Fan of SW?`)) + 
+  geom_bar()
 
 ```
 
@@ -116,15 +132,18 @@ We can add another variable to the mix to look at things by gender using the `fi
 
 ```{r}
 
-ggplot(sw, aes(x = who_shot_first, fill = Gender)) + geom_bar()
+ggplot(sw, aes(x = who_shot_first, fill = Gender)) + 
+  geom_bar()
 
 ```
+
 
 The default for `geom_bar()` is to stack bars.  If we want side-by-side bars we can add a "position = 'dodge'" to the geom_bar() function:
 
 ```{r}
 
-ggplot(sw, aes(x = who_shot_first, fill = Gender)) + geom_bar(position = "dodge")
+ggplot(sw, aes(x = who_shot_first, fill = Gender)) + 
+  geom_bar(position = "dodge")
 
 ```
 
@@ -134,20 +153,59 @@ ggplot(sw, aes(x = who_shot_first, fill = Gender)) + geom_bar(position = "dodge"
 
 The graphs above include missing values as its own category.  The easiest way to deal with missing values is to create a subset of the data that is prepared for the graph we are interested in creating. 
 
-We first select only the columns that we will use in the visualization, then drop out all the missing values using `drop_na()` in the tidy fashion.  
-
-__NOTE__: The `drop_na()` function drops all rows with *ANY* missing values.  If we use this function on the dataset with all the columns, we may end up losing information on the analysis of interest.  This is why we do a `select()` first.  that way we only delete rows missing relevant information.    
+You can filter out the missing values using `filter()` or use the combination of `select()` with `drop_na()` in the following way:
 
 ```{r}
 
-shot_first <- sw %>%
-  select(who_shot_first, Gender) %>%
+shot_first_data <- sw %>%
+  filter(who_shot_first != "",
+         Gender != "")
+
+# Or using drop_na()
+
+shot_first_data <- sw %>%
+  select(Gender, who_shot_first) %>%
   drop_na()
 
-ggplot(shot_first, aes(x = who_shot_first, fill = Gender)) + 
-  geom_bar(position = "dodge")
+
 
 ```
+
+__NOTE__: The `drop_na()` function drops all rows with *ANY* missing values.  If we use this function on the dataset with all the columns, we may end up losing information on the analysis of interest.  This is why we do a `select()` first.  that way we only delete rows missing relevant information.    
+
+Now look at the graph without missing values.
+
+```{r}
+
+ggplot(shot_first_data, aes(x = who_shot_first, fill = Gender)) + 
+  geom_bar(position = "dodge")
+
+
+```
+
+Alternative to a side-by-side bar chart, we can "facet" the graph which splits up the panels on one of the variables.
+
+#### Separating on Gender
+
+```{r}
+
+ggplot(shot_first_data, aes(x = who_shot_first, fill = Gender)) + 
+  geom_bar() +
+  facet_wrap(~Gender)
+
+```
+
+#### Separating on 'Who Shot First'
+
+```{r}
+
+ggplot(shot_first_data, aes(x = Gender, fill = Gender)) + 
+  geom_bar(position = "dodge") +
+  facet_wrap(~who_shot_first)
+
+```
+
+How you split the graph depends on which comparison is the most important.  The first graph emphasizes the differences in how the question was answered.  The second makes it easy to compare female and male responses.  
 
 ### Cleaning up the Graph
 
@@ -156,7 +214,7 @@ The default visualization elements in ggplot() can always be improved.  Here are
 
 ```{r}
 
-ggplot(shot_first, aes(x = who_shot_first, fill = Gender)) + 
+ggplot(shot_first_data, aes(x = who_shot_first, fill = Gender)) + 
   geom_bar(position = "dodge") +
   theme_bw() +
   labs(
@@ -173,7 +231,7 @@ With categorical variables, we can group differently depending on which comparis
 
 ```{r}
 
-ggplot(shot_first, aes(x = Gender, fill = who_shot_first)) + 
+ggplot(shot_first_data, aes(x = Gender, fill = who_shot_first)) + 
   geom_bar(position = "dodge") +
   theme_bw() +
   labs(
@@ -185,6 +243,22 @@ ggplot(shot_first, aes(x = Gender, fill = who_shot_first)) +
 ```
 
 This different point of view makes it easier to see the breakdown of responses for each gender separately.  We can see more clearly that the frequency of Females who do not understand the question is much more pronounced than on the Male side.  Males, it seems largely agree that Han shot first.
+
+Alternatively, 
+
+```{r}
+
+ggplot(shot_first_data, aes(x = who_shot_first, fill = Gender)) + 
+  geom_bar(position = "dodge") +
+  theme_bw() +
+  labs(
+    x = "",
+    y = "Count",
+    title = "Comparing response to the Question 'Who Shot First' by Gender" 
+  )
+
+```
+
 
 # Your Turn
 
