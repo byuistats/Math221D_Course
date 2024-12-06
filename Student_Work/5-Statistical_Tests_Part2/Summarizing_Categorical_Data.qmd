@@ -183,29 +183,6 @@ ggplot(shot_first_data, aes(x = who_shot_first, fill = Gender)) +
 
 ```
 
-Alternative to a side-by-side bar chart, we can "facet" the graph which splits up the panels on one of the variables.
-
-#### Separating on Gender
-
-```{r}
-
-ggplot(shot_first_data, aes(x = who_shot_first, fill = Gender)) + 
-  geom_bar() +
-  facet_wrap(~Gender)
-
-```
-
-#### Separating on 'Who Shot First'
-
-```{r}
-
-ggplot(shot_first_data, aes(x = Gender, fill = Gender)) + 
-  geom_bar(position = "dodge") +
-  facet_wrap(~who_shot_first)
-
-```
-
-How you split the graph depends on which comparison is the most important.  The first graph emphasizes the differences in how the question was answered.  The second makes it easy to compare female and male responses.  
 
 ### Cleaning up the Graph
 
@@ -258,6 +235,31 @@ ggplot(shot_first_data, aes(x = who_shot_first, fill = Gender)) +
   )
 
 ```
+
+Alternative to a side-by-side bar chart, we can "facet" the graph which splits up the panels on one of the variables.  This can be useful when we want to emphasize specific comparisons.  
+
+#### Separating on Gender
+
+```{r}
+
+ggplot(shot_first_data, aes(x = who_shot_first, fill = Gender)) + 
+  geom_bar() +
+  facet_wrap(~Gender)
+
+```
+
+#### Separating on 'Who Shot First'
+
+```{r}
+
+ggplot(shot_first_data, aes(x = Gender, fill = Gender)) + 
+  geom_bar(position = "dodge") +
+  facet_wrap(~who_shot_first)
+
+```
+
+How you split the graph depends on which comparison is the most important.  The first graph emphasizes the differences in how the question was answered.  The second makes it easy to compare female and male responses.  
+
 
 
 # Your Turn
