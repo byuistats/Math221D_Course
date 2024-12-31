@@ -23,7 +23,7 @@ To download the folder containing all of the exercises, notes and application ac
   2. Click on the link below to download the `.zip` file containing all contents of the course website:
 
 <center>
-<a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work_zip.zip" class="button-download" download>
+<a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work.zip" class="button-download" download>
   Download Course Files
 </a>
 </center>
