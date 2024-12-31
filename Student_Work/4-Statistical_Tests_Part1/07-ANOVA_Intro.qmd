@@ -2,8 +2,8 @@
 title: Analysis of Variance (ANOVA)
 format:
   html:
-    self-contained: true
-    embed-resources: true
+    self-contained: yes
+    embed-resources: yes
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)

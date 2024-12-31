@@ -2,8 +2,8 @@
 title: Probability Calculations for Means (Reading)
 format:
   html:
-    self-contained: true
-    embed-resources: true
+    self-contained: yes
+    embed-resources: yes
 ---
 
 ## Review of Sampling Distributions

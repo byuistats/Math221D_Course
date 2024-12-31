@@ -2,8 +2,8 @@
 title: The Statistical Process
 format:
   html:
-    self-contained: true
-    embed-resources: true
+    self-contained: yes
+    embed-resources: yes
 ---
 
 ## Lesson Outcomes

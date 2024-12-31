@@ -2,8 +2,8 @@
 title: Probability Calculations for Means (Class)
 format:
   html:
-    self-contained: true
-    embed-resources: true
+    self-contained: yes
+    embed-resources: yes
 ---
 ```{r setup, include=FALSE}
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
