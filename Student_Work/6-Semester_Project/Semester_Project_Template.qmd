@@ -3,8 +3,8 @@ title: Semester Project
 author: your name
 format:
   html:
-    self-contained: yes
-    embed-resources: yes
+    self-contained: true
+    embed-resources: true
 ---
 
 

@@ -2,8 +2,8 @@
 title: Course Introduction
 format:
   html:
-    self-contained: yes
-    embed-resources: yes
+    self-contained: true
+    embed-resources: true
 ---
 
 ```{r setup, include=FALSE}

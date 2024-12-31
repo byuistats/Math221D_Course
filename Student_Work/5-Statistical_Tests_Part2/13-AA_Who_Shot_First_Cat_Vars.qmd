@@ -3,8 +3,8 @@ title: Who Shot First?
 subtitle: Categorical Data Application Activity
 format:
   html:
-    self-contained: yes
-    embed-resources: yes
+    self-contained: true
+    embed-resources: true
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)

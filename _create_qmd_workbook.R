@@ -16,7 +16,7 @@ add_yaml_features_and_remove_button <- function(file_path, new_features) {
   
   existing_yaml <- yaml.load(paste(content[(yaml_start + 1):(yaml_end - 1)], collapse = "\n"))
   updated_yaml <- modifyList(existing_yaml, new_features, keep.null = TRUE)
-  updated_yaml_str <- as.yaml(updated_yaml)
+  updated_yaml_str <- as.yaml(updated_yaml, handlers = list(logical=verbatim_logical))
   
   if (yaml_end < length(content)) {
     content_without_button <- content[(yaml_end + 1):length(content)]
@@ -71,54 +71,6 @@ for(i in 1:length(source_dirs)){
   
   cat("All files have been copied, modified, and had download buttons removed.\n")
 }
-
-
-
-
-#####################
-## Replace self_contained: yes with self-contained: true
-#####################
-
-dir_path <- "C:/Users/paulccannon/OneDrive - BYU-Idaho/Math221D/Math221D_Course/Student_Work"
-
-# Check if the directory exists
-if (!dir.exists(dir_path)) {
-  stop("The specified directory does not exist. Please check the path.")
-}
-
-# Function to replace multiple strings in a file
-replace_strings_in_file <- function(file_path, old_strings, new_strings) {
-  # Read the file content
-  content <- readLines(file_path)
-  
-  # Replace strings in the entire content
-  for (i in seq_along(old_strings)) {
-    content <- stringr::str_replace_all(content, stringr::fixed(old_strings[i]), new_strings[i])
-  }
-  
-  # Write the modified content back to the file
-  writeLines(content, file_path)
-  
-  # Print a message
-  cat("Processed file:", file_path, "\n")
-}
-
-# Specify the strings to replace
-#old_strings <- c("self_contained: yes", "embed_resources: yes")  # Replace these with the strings you want to replace
-#new_strings <- c("self-contained: true", "embed-resources: true")  # Replace these with the new strings
-old_strings <- c("contained: yes", "resources: yes")  # Replace these with the strings you want to replace
-new_strings <- c("contained: true", "resources: true")  # Replace these with the new strings
-
-# Get list of all .qmd files in the directory and its subdirectories
-qmd_files <- fs::dir_ls(path = dir_path, recurse = TRUE, glob = "*.qmd")
-
-# Loop through each file and replace the strings
-for (file in qmd_files) {
-  replace_strings_in_file(file, old_strings, new_strings)
-}
-
-cat("String replacements completed for all .qmd files in", dir_path, "and its subdirectories.\n")
-cat("Total files processed:", length(qmd_files), "\n")
 
 
 ############# Zip the folder

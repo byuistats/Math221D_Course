@@ -1,6 +1,9 @@
 ---
 title: "Probability Calculations for Means (Reading)"
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
 
 ## Review of Sampling Distributions
 

@@ -1,7 +1,9 @@
 ---
 title: "The Normal Distribution (Reading)"
-warning: false
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
 
 ## Lesson Outcomes
 

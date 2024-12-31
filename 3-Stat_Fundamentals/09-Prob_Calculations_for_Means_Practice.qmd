@@ -1,7 +1,6 @@
 ---
 title: "Probability Calculations for Means (Practice)"
 subtitle: "Applying the CLT"
-warning: false
 ---
 ```{r setup, include=FALSE}
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.

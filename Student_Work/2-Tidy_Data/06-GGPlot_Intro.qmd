@@ -3,8 +3,8 @@ title: Introducing GGPlot!
 subtitle: A Better Way to Visualize Data
 format:
   html:
-    self-contained: yes
-    embed-resources: yes
+    self-contained: true
+    embed-resources: true
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)

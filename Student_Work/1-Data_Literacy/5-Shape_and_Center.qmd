@@ -2,8 +2,8 @@
 title: Describing Quantitative Data (Shape & Center)
 format:
   html:
-    self-contained: yes
-    embed-resources: yes
+    self-contained: true
+    embed-resources: true
 ---
 
 ## Lesson Outcomes
@@ -248,9 +248,9 @@ A distribution is right-skewed if a histogram of the distribution shows a long r
   <td>
     <img src= "/Images/Lesson03_shape_wageshist.png" width=130%>
   </td><td>
-    <img src="/Images/Lesson03_shape_maleheightshist.png" width=130%>
+    <img srchttps://github.com/byuistats/Math221D_Cannon/raw/master/Images/Lesson03_shape_maleheightshist.png" width=130%>
   <td>
-    <img src="/Images/Lesson03_shape_gpahist.png" width=130%>
+    <img srchttps://github.com/byuistats/Math221D_Cannon/raw/master/Images/Lesson03_shape_gpahist.png" width=130%>
   </td>
 </tr><tr>
   <td>
@@ -540,13 +540,13 @@ Even though measures of center are important, we need to consider the shape, cen
   </th>
 </tr><tr>
     <td>
-      <img src="/Images/Lesson03_shape_wageshist.png" width="130%" alt="Right-skewed distribution">
+      <img srchttps://github.com/byuistats/Math221D_Cannon/raw/master/Images/Lesson03_shape_wageshist.png" width="130%" alt="Right-skewed distribution">
     </td>
     <td>
-      <img src="/Images/Lesson03_shape_maleheightshist.png" width="130%" alt="Symmetric bell-shaped distribution">
+      <img srchttps://github.com/byuistats/Math221D_Cannon/raw/master/Images/Lesson03_shape_maleheightshist.png" width="130%" alt="Symmetric bell-shaped distribution">
     </td>
     <td>
-      <img src="/Images/Lesson03_shape_gpahist.png" width="130%" alt="Left-skewed distribution">
+      <img srchttps://github.com/byuistats/Math221D_Cannon/raw/master/Images/Lesson03_shape_gpahist.png" width="130%" alt="Left-skewed distribution">
     </td>
 </tr><tr>
   <td>

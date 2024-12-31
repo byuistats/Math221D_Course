@@ -3,8 +3,8 @@ title: Inference for a Mean
 subtitle: Hypothesis Testing and Confidence Intervals
 format:
   html:
-    self-contained: yes
-    embed-resources: yes
+    self-contained: true
+    embed-resources: true
 ---
 ```{r setup, include=FALSE}
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.

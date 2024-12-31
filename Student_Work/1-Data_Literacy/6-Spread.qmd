@@ -2,8 +2,8 @@
 title: Describing Quantitative Data (Spread)
 format:
   html:
-    self-contained: yes
-    embed-resources: yes
+    self-contained: true
+    embed-resources: true
 ---
 
 ```{r, echo=FALSE}
