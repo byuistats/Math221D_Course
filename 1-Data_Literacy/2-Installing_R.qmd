@@ -55,7 +55,17 @@ Throughout this course, you will download many files. The collection of files wi
   4. At the top of the R-Studio Window, there may be a prompt to Install some libraries.  Click install.
   5. After the libraries have finished installing, click the "Render" button at the top of the document window.  
 
-This should open up a browser window with some text and a chart. If it runs, you're technology is set up for success in this class. If not, ask the TA or Brother Cannon for help.
+
+If everything worked, R should open up a browser window with some text and a chart. If it runs, you're technology is set up for success in this class. 
+
+Once you have "Rendered" the document, R will also create a `.html` file in the same file location as where you saved your Student_Work folder.  If you have followed the above instructions, this will look like "Student_Work/1-Data_Literacy/TestingTesting.html".
+
+Upload the "TestingTesting.html" file into Canvas to demonstrate that it works.  
+
+## Keep Calm
+
+If you have tried going through these instructions and it isn't working, come to class and we can help troubleshoot.  
+
 
 # Troubleshooting 
 
