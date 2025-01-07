@@ -50,7 +50,7 @@ Once the installation finishes you can use your computer’s search bar to searc
 Throughout this course, you will download many files. The collection of files will be a valuable resource if you go on to use R in the future.
 
   1. Create a folder somewhere that is easy to find. Consider naming it "M221D" or another descriptive name
-  2. Download the [course material](https://raw.github.com/byuistats/Math221D_Course/main/Student_Work_zip.zip) and move the Student_Work folder to your course folder created in step 1.
+  2. Download the [course material](https://raw.github.com/byuistats/Math221D_Course/main/Student_Work.zip) and move the Student_Work folder to your course folder created in step 1.
   3. Open the TestingTesting.qmd file in R-Studio from the 1-Data_Literacy folder. 
   4. At the top of the R-Studio Window, there may be a prompt to Install some libraries.  Click install.
   5. After the libraries have finished installing, click the "Render" button at the top of the document window.  
