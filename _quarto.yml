@@ -16,23 +16,19 @@ website:
     - text: "Unit 1"
       menu:
         - text: "Data Literacy"
-        - href: ./1-Data_Literacy/1-Course_Introduction.qmd
-        - href: ./1-Data_Literacy/4-Installing_R.qmd
-        - href: ./1-Data_Literacy/2-Stat_Process.qmd
-        - text: "The Statistical Process - Practice"
-          href: ./1-Data_Literacy/3-Statistical_Process_Practice.qmd
+        - href: ./1-Data_Literacy/1-Course_Intro.qmd
+        - href: ./1-Data_Literacy/2-Installing_R.qmd
         - text: "Describing Data - Shape and Center"
-          href: ./1-Data_Literacy/5-Shape_and_Center.qmd
+          href: ./1-Data_Literacy/3-Shape_and_Center.qmd
         - text: "Describing Data - Spread"
-          href: ./1-Data_Literacy/6-Spread.qmd
-        - text: "Introducing R - Class Notes"
-          href: ./1-Data_Literacy/6b-Introducing_R_Class_Notes.qmd
+          href: ./1-Data_Literacy/4-Measures_of_Spread.qmd
+        - text: "Introducing R"
+          href: ./1-Data_Literacy/5-Introducing_R_Class_Notes.qmd
         - text: "Summarizing Data - One Group"
-          href: ./1-Data_Literacy/7-Introducing_R_Practice.qmd
+          href: ./1-Data_Literacy/6-Summarizing_Data_One_Group_Practice.qmd
         - text: "Summarzing Data - Multiple Groups"
-          href: ./1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.qmd
-        - href: ./1-Data_Literacy/9-Summarizing_Data_Practice.qmd
-        - href: ./1-Data_Literacy/10-AA_Data_Summaries.qmd
+          href: ./1-Data_Literacy/7-Summarizing_Data_Multiple_Groups.qmd
+        - href: ./1-Data_Literacy/8-AA_Data_Summaries.qmd
         
     - text:  "Unit 2"
       menu:
@@ -116,7 +112,7 @@ website:
           href: https://r4ds.had.co.nz/transform.html
         - text: "Statistics Notebook - R Commands"
           href: https://byuistats.github.io/Statistics-Notebook/RCommands.html
-        - href: ./1-Data_Literacy/4-Installing_R.qmd
+        - href: ./1-Data_Literacy/2-Installing_R.qmd
         - href: ./2-Tidy_Data/06-GGPlot_Intro.qmd
         - href: ./2-Tidy_Data/01-Wrangling_Basics.qmd
         - href: ./2-Tidy_Data/02-Filter.qmd

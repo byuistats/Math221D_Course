@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Summarizing Data – Math221 Notebook</title>
+<title>Application Activity: Summarizing Data – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -131,48 +131,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-1">    
         <li class="dropdown-header">Data Literacy</li>
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Introduction.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Intro.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/2-Stat_Process.html">
- <span class="dropdown-text">The Statistical Process</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/3-Statistical_Process_Practice.html">
- <span class="dropdown-text">The Statistical Process - Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/5-Shape_and_Center.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/3-Shape_and_Center.html">
  <span class="dropdown-text">Describing Data - Shape and Center</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/6-Spread.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Measures_of_Spread.html">
  <span class="dropdown-text">Describing Data - Spread</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/6b-Introducing_R_Class_Notes.html">
- <span class="dropdown-text">Introducing R - Class Notes</span></a>
+    <a class="dropdown-item" href="../1-Data_Literacy/5-Introducing_R_Class_Notes.html">
+ <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/7-Introducing_R_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/6-Summarizing_Data_One_Group_Practice.html">
  <span class="dropdown-text">Summarizing Data - One Group</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/7-Summarizing_Data_Multiple_Groups.html">
  <span class="dropdown-text">Summarzing Data - Multiple Groups</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/9-Summarizing_Data_Practice.html">
- <span class="dropdown-text">Summarizing Data Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/10-AA_Data_Summaries.html">
- <span class="dropdown-text">Summarizing Data Activity</span></a>
+    <a class="dropdown-item" href="../1-Data_Literacy/8-AA_Data_Summaries.html">
+ <span class="dropdown-text">Application Activity: Summarizing Data</span></a>
   </li>  
     </ul>
   </li>
@@ -414,7 +402,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Statistics Notebook - R Commands</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
@@ -464,17 +452,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
+  <li><a href="#summarizing-data" id="toc-summarizing-data" class="nav-link" data-scroll-target="#summarizing-data">Summarizing Data</a>
   <ul class="collapse">
-  <li><a href="#load-the-data-and-libraries" id="toc-load-the-data-and-libraries" class="nav-link" data-scroll-target="#load-the-data-and-libraries">Load the data and libraries</a></li>
+  <li><a href="#univariate-analysis" id="toc-univariate-analysis" class="nav-link" data-scroll-target="#univariate-analysis">Univariate Analysis</a></li>
   </ul></li>
-  <li><a href="#summarizing-a-quantitative-variable-for-multiple-categories" id="toc-summarizing-a-quantitative-variable-for-multiple-categories" class="nav-link" data-scroll-target="#summarizing-a-quantitative-variable-for-multiple-categories">Summarizing a Quantitative Variable for Multiple Categories</a>
+  <li><a href="#what-factors-impact-uptake" id="toc-what-factors-impact-uptake" class="nav-link" data-scroll-target="#what-factors-impact-uptake">What Factors Impact Uptake?</a>
   <ul class="collapse">
-  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
-  <li><a href="#visual-summaries-by-group" id="toc-visual-summaries-by-group" class="nav-link" data-scroll-target="#visual-summaries-by-group">Visual Summaries by Group</a></li>
-  <li><a href="#improving-graphs" id="toc-improving-graphs" class="nav-link" data-scroll-target="#improving-graphs">Improving Graphs</a></li>
+  <li><a href="#impact-of-plant-type-on-uptake" id="toc-impact-of-plant-type-on-uptake" class="nav-link" data-scroll-target="#impact-of-plant-type-on-uptake">Impact of Plant Type on Uptake</a></li>
+  <li><a href="#impact-of-treatment-on-uptake" id="toc-impact-of-treatment-on-uptake" class="nav-link" data-scroll-target="#impact-of-treatment-on-uptake">Impact of Treatment on Uptake</a></li>
+  <li><a href="#impact-of-ambient-co2-concentration-on-uptake" id="toc-impact-of-ambient-co2-concentration-on-uptake" class="nav-link" data-scroll-target="#impact-of-ambient-co2-concentration-on-uptake">Impact of Ambient CO2 Concentration on Uptake</a></li>
   </ul></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#what-makes-this-an-experiment" id="toc-what-makes-this-an-experiment" class="nav-link" data-scroll-target="#what-makes-this-an-experiment">What makes this an experiment?</a></li>
+  <li><a href="#what-is-the-population-of-this-study" id="toc-what-is-the-population-of-this-study" class="nav-link" data-scroll-target="#what-is-the-population-of-this-study">What is the Population of this study?</a></li>
+  <li><a href="#what-are-your-recommendations" id="toc-what-are-your-recommendations" class="nav-link" data-scroll-target="#what-are-your-recommendations">What are your recommendations?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -483,8 +477,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Summarizing Data</h1>
-<p class="subtitle lead">Multiple Groups</p>
+<h1 class="title">Application Activity: Summarizing Data</h1>
+<p class="subtitle lead">CO2 Uptake Experiment</p>
 </div>
 
 
@@ -501,123 +495,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>In this document, we will demonstrate how to summarize quantitative data for multiple groups in a dataset.</p>
-<section id="load-the-data-and-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="load-the-data-and-libraries">Load the data and libraries</h2>
+<section id="background" class="level1">
+<h1>Background</h1>
+<p>This example is taken from an experiment listed in the R help files under <code>?CO2</code>.</p>
+<p>“An experiment on the cold tolerance of the grass species Echinochloa crus-galli was conducted. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted.” Plants were considered tolerant to the cold if they were still able to achieve high CO2 uptake values after being chilled.</p>
+<p>Ignoring the Plant ID for a moment, there are three factors that possibly effect the <code>uptake</code> of a plant. These include <code>Type</code>, <code>Treatment</code>, and <code>conc</code>. The factor <code>Type</code> has two levels, <strong>Quebec</strong> and <strong>Mississippi</strong>. The factor <code>Treatment</code> has two levels <strong>chilled</strong> and <strong>nonchilled</strong> and the factor <code>conc</code> has seven levels 95, 175, 250, 350, 500, 675, and 1000.</p>
+<p>Conc is related to the ambient concentration of CO2.</p>
+</section>
+<section id="summarizing-data" class="level1">
+<h1>Summarizing Data</h1>
+<p>Our main interest is CO2 uptake and how the other factors impact it. We will first do a univariate analysis of uptake.</p>
+<section id="univariate-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="univariate-analysis">Univariate Analysis</h2>
+<p>Create a table with the overall summary statistics for uptake:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>big5 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is NEW!  if you tell R to knit the favstats output using the "kable" function, it will look a lot nicer when the document is rendered.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">favstats</span>(CO2<span class="sc">$</span>uptake))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">Q1</th>
+<th style="text-align: right;">median</th>
+<th style="text-align: right;">Q3</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">7.7</td>
+<td style="text-align: right;">17.9</td>
+<td style="text-align: right;">28.3</td>
+<td style="text-align: right;">37.125</td>
+<td style="text-align: right;">45.5</td>
+<td style="text-align: right;">27.2131</td>
+<td style="text-align: right;">10.81441</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+<p>Create a histogram of the CO2 uptake across all groups:</p>
 </section>
 </section>
-<section id="summarizing-a-quantitative-variable-for-multiple-categories" class="level1">
-<h1>Summarizing a Quantitative Variable for Multiple Categories</h1>
-<p>Sometimes we would like to compare summary statistics between groups. Much of this class will be about how to make formal, rigorous comparisons between groups. But for now, let’s look at how to get different summaries of quantitative variables for multiple categories.</p>
-<section id="summary-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="summary-statistics">Summary Statistics</h2>
-<p>We can easily extend <code>favstats()</code> to output our favorite statistics for multiple groups. We first must identify the quantitative factor we want to compare. For example, we could compare agreeableness between the sexes.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This gives us the summary statistics for Agreeableness across all groups</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(big5<span class="sc">$</span>Agreeableness)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> min Q1 median Q3 max     mean       sd   n missing
-  21 67     75 81 100 73.43457 13.24909 405       0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding the '~' tells R to break the data into groups (determined by the right side of the '~') and calculate the means of the variable on the left</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  big5$`Sex(M/F)` min Q1 median Q3 max     mean       sd   n missing
-1               F  21 69     77 85 100 75.92035 12.94640 226       0
-2               M  25 63     73 79  94 70.29609 12.99218 179       0</code></pre>
-</div>
-</div>
+<section id="what-factors-impact-uptake" class="level1">
+<h1>What Factors Impact Uptake?</h1>
+<p>We will now look at how other factors might impact CO2 uptake.</p>
+<section id="impact-of-plant-type-on-uptake" class="level2">
+<h2 class="anchored" data-anchor-id="impact-of-plant-type-on-uptake">Impact of Plant Type on Uptake</h2>
+<p>Create a table of summary statistics of uptake for each <code>Type</code> of plants used in the experiment.</p>
+<p>Create a side-by-side boxplot of uptake for each <code>Type</code> of plants used in the experiment.</p>
 </section>
-<section id="visual-summaries-by-group" class="level2">
-<h2 class="anchored" data-anchor-id="visual-summaries-by-group">Visual Summaries by Group</h2>
-<p>We can use the exact same format as we used for <code>favstats()</code> for <code>boxplot()</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="impact-of-treatment-on-uptake" class="level2">
+<h2 class="anchored" data-anchor-id="impact-of-treatment-on-uptake">Impact of Treatment on Uptake</h2>
+<p>Create a table of summary statistics of uptake for each <code>Treatment</code> used in the experiment.</p>
+<p>Create a side-by-side boxplot of uptake for each <code>Treatment</code> used in the experiment.</p>
 </section>
-<section id="improving-graphs" class="level2">
-<h2 class="anchored" data-anchor-id="improving-graphs">Improving Graphs</h2>
-<p>Throughout this course, we will ease into making better visualizations. For now, here are some basic techniques that will usually apply to all graphing functions in R:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Changing color by sepecifying the `col = c()`</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R also assigns a numerical value to `col = `.  Try different numbers</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding better axis labels using `xlab = ` and `ylab = `:</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>, <span class="at">xlab =</span> <span class="st">"Biosex"</span>, <span class="at">ylab =</span> <span class="st">"Trait Agreeableness"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-4.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a title:</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>, <span class="at">main =</span> <span class="st">"Comparing Agreeableness by Biosex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-5.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Putting it all together:</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>,<span class="at">main =</span> <span class="st">"Comparing Agreeableness by Biosex"</span>, <span class="at">xlab =</span> <span class="st">"Biosex"</span>, <span class="at">ylab =</span> <span class="st">"Trait Agreeableness"</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-6.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="impact-of-ambient-co2-concentration-on-uptake" class="level2">
+<h2 class="anchored" data-anchor-id="impact-of-ambient-co2-concentration-on-uptake">Impact of Ambient CO2 Concentration on Uptake</h2>
+<p>Create a table of summary statistics of uptake for each level of ambient CO2, <code>conc</code>, found in the experiment.</p>
+<p>Create a side-by-side boxplot of uptake for each level of ambient CO2, <code>conc</code>, found used in the experiment.</p>
 </section>
 </section>
-<section id="your-turn" class="level1">
-<h1>Your Turn</h1>
-<p>Create summary statistics for Conscientiousness based on course section:</p>
-<p>Create side-by-side boxplot for Conscientiousness based on course section:</p>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<section id="what-makes-this-an-experiment" class="level2">
+<h2 class="anchored" data-anchor-id="what-makes-this-an-experiment">What makes this an experiment?</h2>
+<p>The background suggests this study was an experiment. In your own words, describe the difference between an experiment and an observational study.</p>
+<p>What might this study have looked like if it had been an observational study?</p>
+</section>
+<section id="what-is-the-population-of-this-study" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-population-of-this-study">What is the Population of this study?</h2>
+<p>Describe in your own words what the population of this study could be. How broad can we make our conclusions?</p>
+</section>
+<section id="what-are-your-recommendations" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-your-recommendations">What are your recommendations?</h2>
+<p>If you were to recommend a planting scenario to maximize CO2 uptake, what would you recommend based on the summaries provided?</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

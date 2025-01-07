@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Summarizing Data – Math221 Notebook</title>
+<title>The Statistical Process-Practice – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -131,48 +97,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-1">    
         <li class="dropdown-header">Data Literacy</li>
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Introduction.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Intro.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/2-Stat_Process.html">
- <span class="dropdown-text">The Statistical Process</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/3-Statistical_Process_Practice.html">
- <span class="dropdown-text">The Statistical Process - Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/5-Shape_and_Center.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/3-Shape_and_Center.html">
  <span class="dropdown-text">Describing Data - Shape and Center</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/6-Spread.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Measures_of_Spread.html">
  <span class="dropdown-text">Describing Data - Spread</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/6b-Introducing_R_Class_Notes.html">
- <span class="dropdown-text">Introducing R - Class Notes</span></a>
+    <a class="dropdown-item" href="../1-Data_Literacy/5-Introducing_R_Class_Notes.html">
+ <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/7-Introducing_R_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/6-Summarizing_Data_One_Group_Practice.html">
  <span class="dropdown-text">Summarizing Data - One Group</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/7-Summarizing_Data_Multiple_Groups.html">
  <span class="dropdown-text">Summarzing Data - Multiple Groups</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/9-Summarizing_Data_Practice.html">
- <span class="dropdown-text">Summarizing Data Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/10-AA_Data_Summaries.html">
- <span class="dropdown-text">Summarizing Data Activity</span></a>
+    <a class="dropdown-item" href="../1-Data_Literacy/8-AA_Data_Summaries.html">
+ <span class="dropdown-text">Application Activity: Summarizing Data</span></a>
   </li>  
     </ul>
   </li>
@@ -414,7 +368,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Statistics Notebook - R Commands</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
@@ -464,17 +418,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#a-sleep-and-a-forgetting" id="toc-a-sleep-and-a-forgetting" class="nav-link active" data-scroll-target="#a-sleep-and-a-forgetting">1 - “A sleep and a forgetting”</a>
   <ul class="collapse">
-  <li><a href="#load-the-data-and-libraries" id="toc-load-the-data-and-libraries" class="nav-link" data-scroll-target="#load-the-data-and-libraries">Load the data and libraries</a></li>
+  <li><a href="#the-sitch" id="toc-the-sitch" class="nav-link" data-scroll-target="#the-sitch">The sitch:</a></li>
   </ul></li>
-  <li><a href="#summarizing-a-quantitative-variable-for-multiple-categories" id="toc-summarizing-a-quantitative-variable-for-multiple-categories" class="nav-link" data-scroll-target="#summarizing-a-quantitative-variable-for-multiple-categories">Summarizing a Quantitative Variable for Multiple Categories</a>
-  <ul class="collapse">
-  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
-  <li><a href="#visual-summaries-by-group" id="toc-visual-summaries-by-group" class="nav-link" data-scroll-target="#visual-summaries-by-group">Visual Summaries by Group</a></li>
-  <li><a href="#improving-graphs" id="toc-improving-graphs" class="nav-link" data-scroll-target="#improving-graphs">Improving Graphs</a></li>
-  </ul></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a></li>
+  <li><a href="#you-see-but-you-do-not-observe" id="toc-you-see-but-you-do-not-observe" class="nav-link" data-scroll-target="#you-see-but-you-do-not-observe">2 - “You see, but you do not observe”</a></li>
+  <li><a href="#will-the-real-jonas-salk-please-stand-up" id="toc-will-the-real-jonas-salk-please-stand-up" class="nav-link" data-scroll-target="#will-the-real-jonas-salk-please-stand-up">3 - Will the real Jonas Salk please stand up</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">4 - Data Types</a></li>
+  <li><a href="#election-year-madness" id="toc-election-year-madness" class="nav-link" data-scroll-target="#election-year-madness">Election year madness</a></li>
+  <li><a href="#how-random" id="toc-how-random" class="nav-link" data-scroll-target="#how-random">How Random!</a></li>
   </ul>
 </nav>
     </div>
@@ -483,8 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Summarizing Data</h1>
-<p class="subtitle lead">Multiple Groups</p>
+<h1 class="title">The Statistical Process-Practice</h1>
 </div>
 
 
@@ -501,121 +452,94 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>In this document, we will demonstrate how to summarize quantitative data for multiple groups in a dataset.</p>
-<section id="load-the-data-and-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="load-the-data-and-libraries">Load the data and libraries</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>big5 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="a-sleep-and-a-forgetting" class="level1">
+<h1>1 - “A sleep and a forgetting”</h1>
+<section id="the-sitch" class="level2">
+<h2 class="anchored" data-anchor-id="the-sitch">The sitch:</h2>
+<p>The <a href="https://youtu.be/UpAq9EZpL5A?si=Y_wNRFDpaM1WsZKW">Forgetting Curve</a> relates to how quickly we forget new information and suggests strategies for maximize retention. Studies have shown that retention of classroom materials can drop as low as 58% within 15 minutes of class and within 44% after the first hour after class if there is no review of the material. This forgetting curve continues, so that within six days only 25% is remembered.</p>
+<p>Suppose your teacher wanted to test strategies for retention and invited you to participate in a study. You would be randomly assigned to one of two groups.</p>
+<p>Group 1 would be asked to review for ten minutes at three specific times: fifteen minutes after class, one hour after class, and two days after class.</p>
+<p>Group 2 would not be asked to review the material at all. Use the above information for all parts.</p>
+<p><strong>Question</strong>: Which treatment group would be considered the control and why?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Before participating, your teacher gives you a short quiz and records your score out of 10. What type of data (quantitative or categorical) is being recorded?<br>
+<strong>Answer</strong>:</p>
 </section>
 </section>
-<section id="summarizing-a-quantitative-variable-for-multiple-categories" class="level1">
-<h1>Summarizing a Quantitative Variable for Multiple Categories</h1>
-<p>Sometimes we would like to compare summary statistics between groups. Much of this class will be about how to make formal, rigorous comparisons between groups. But for now, let’s look at how to get different summaries of quantitative variables for multiple categories.</p>
-<section id="summary-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="summary-statistics">Summary Statistics</h2>
-<p>We can easily extend <code>favstats()</code> to output our favorite statistics for multiple groups. We first must identify the quantitative factor we want to compare. For example, we could compare agreeableness between the sexes.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This gives us the summary statistics for Agreeableness across all groups</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(big5<span class="sc">$</span>Agreeableness)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> min Q1 median Q3 max     mean       sd   n missing
-  21 67     75 81 100 73.43457 13.24909 405       0</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding the '~' tells R to break the data into groups (determined by the right side of the '~') and calculate the means of the variable on the left</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  big5$`Sex(M/F)` min Q1 median Q3 max     mean       sd   n missing
-1               F  21 69     77 85 100 75.92035 12.94640 226       0
-2               M  25 63     73 79  94 70.29609 12.99218 179       0</code></pre>
-</div>
-</div>
+<section id="you-see-but-you-do-not-observe" class="level1">
+<h1>2 - “You see, but you do not observe”</h1>
+<p>For each of the following scenarios, explain which are observational studies and which are experiments and why:</p>
+<ol type="1">
+<li>A Telephone Poll asking people about whether or not they vaccinate their children</li>
+</ol>
+<p><strong>Study Type</strong>:</p>
+<ol start="2" type="1">
+<li>Administering the tuberculosis vaccination to one group and giving a placebo to another</li>
+</ol>
+<p><strong>Study Type</strong>:</p>
+<ol start="3" type="1">
+<li>A mailed survey asking people whether or not they received the tuberculosis vaccine</li>
+</ol>
+<p><strong>Study Type</strong>:</p>
+<ol start="4" type="1">
+<li>Randomly assigning 2 versions of an exam to a classroom</li>
+</ol>
+<p><strong>Study Type</strong>:</p>
+<ol start="5" type="1">
+<li>A sample of 504 patients in early stages of Alzheimer’s disease is divided into two groups. One group receives an experimental drug and the other a placebo. The advance of the disease is tracked at one-month intervals over the next year.</li>
+</ol>
+<p><strong>Study Type</strong>:</p>
 </section>
-<section id="visual-summaries-by-group" class="level2">
-<h2 class="anchored" data-anchor-id="visual-summaries-by-group">Visual Summaries by Group</h2>
-<p>We can use the exact same format as we used for <code>favstats()</code> for <code>boxplot()</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="will-the-real-jonas-salk-please-stand-up" class="level1">
+<h1>3 - Will the real Jonas Salk please stand up</h1>
+<p>You want to become the next Jonas Salk and produce a vaccine that will help cure children of Respiratory Syncytial Virus (RSV). You test the vaccine and compare it to a placebo and randomly choose one group of children to take the vaccine and one group to take the placebo.</p>
+<p><strong>Question</strong>: What (or who) are the experimental units or subjects?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What are the treatments?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the population of this study?<br>
+<strong>Answer</strong>:</p>
 </section>
-<section id="improving-graphs" class="level2">
-<h2 class="anchored" data-anchor-id="improving-graphs">Improving Graphs</h2>
-<p>Throughout this course, we will ease into making better visualizations. For now, here are some basic techniques that will usually apply to all graphing functions in R:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Changing color by sepecifying the `col = c()`</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R also assigns a numerical value to `col = `.  Try different numbers</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding better axis labels using `xlab = ` and `ylab = `:</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>, <span class="at">xlab =</span> <span class="st">"Biosex"</span>, <span class="at">ylab =</span> <span class="st">"Trait Agreeableness"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-4.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a title:</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>, <span class="at">main =</span> <span class="st">"Comparing Agreeableness by Biosex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-5.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Putting it all together:</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Agreeableness <span class="sc">~</span> big5<span class="sc">$</span><span class="st">`</span><span class="at">Sex(M/F)</span><span class="st">`</span>,<span class="at">main =</span> <span class="st">"Comparing Agreeableness by Biosex"</span>, <span class="at">xlab =</span> <span class="st">"Biosex"</span>, <span class="at">ylab =</span> <span class="st">"Trait Agreeableness"</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Summarizing_Data_Multiple_Groups_files/figure-html/unnamed-chunk-4-6.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="data-types" class="level1">
+<h1>4 - Data Types</h1>
+<p>For each of the following examples, state whether or not the collected data are quantitative or categorical:</p>
+<ol type="1">
+<li>The number of people in a randomly selected classroom on campus</li>
+</ol>
+<p><strong>Data Type</strong>:</p>
+<ol start="2" type="1">
+<li>The 3 most common brands of car found in the US</li>
+</ol>
+<p><strong>Data Type</strong>:</p>
+<ol start="3" type="1">
+<li>The telephone number of a randomly selected business in town</li>
+</ol>
+<p><strong>Data Type</strong>:</p>
+<ol start="4" type="1">
+<li>The time spent on hold calling customer service</li>
+</ol>
+<p><strong>Data Type</strong>:</p>
 </section>
+<section id="election-year-madness" class="level1">
+<h1>Election year madness</h1>
+<p>In a recent election, one marketing research firm was asked by a special interest group to help estimate the proportion of Americans who supported a particular candidate. From a list of all registered voters, 8000 names were randomly selected. An automated phone-call was made to each of the 8000 individuals selected asking them to answer a few questions indicating their voting preferences. The marketing firm received 2969 responses.</p>
+<p><strong>Question</strong>: What is the population of the study?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the sample of the study?<br>
+<strong>Answer</strong>:</p>
 </section>
-<section id="your-turn" class="level1">
-<h1>Your Turn</h1>
-<p>Create summary statistics for Conscientiousness based on course section:</p>
-<p>Create side-by-side boxplot for Conscientiousness based on course section:</p>
+<section id="how-random" class="level1">
+<h1>How Random!</h1>
+<p>For each scenario, state which type of sampling scheme was used and explain why:</p>
+<p><strong>Scenario 1</strong>: A study conducted by researchers from the Department of Education wanted to know the average debt of college students in the United States. In order to obtain a sample representative of all students, the researchers divided college students into the four classes (freshman, sophomore, junior, and senior) and then took a random sample of students from each class.</p>
+<p><strong>Sampling Scheme</strong>:<br>
+<strong>Explanation</strong>:</p>
+<p><strong>Scenario 2</strong>: Students in an Introductory Statistics class at BYU-Idaho were studying prices of cold cereal at grocery stores in Rexburg. To get a sample of cold cereal prices, they went to Albertson’s and rolled a die to decide which box from the left of the top shelf they would start on. They then recorded every 6th cereal after the first, moving from left to right down the shelves, recording the name, size, and price of each cereal in their sample.</p>
+<p><strong>Sampling Scheme</strong>:<br>
+<strong>Explanation</strong>:</p>
+<p><strong>Scenario 3</strong>: A study is being planned in order to estimate the parts per million of a particular pollutant in a lake’s water.</p>
+<p><strong>Question</strong>: How would you sample from the lake to get a representative sample?<br>
+<strong>Answer</strong>:</p>
 
 
 </section>

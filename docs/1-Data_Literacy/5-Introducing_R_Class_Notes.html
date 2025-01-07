@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The Statistical Process-Practice – Math221 Notebook</title>
+<title>Introducing R - Class Notes – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -97,48 +131,36 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-1">    
         <li class="dropdown-header">Data Literacy</li>
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Introduction.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Intro.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/2-Stat_Process.html">
- <span class="dropdown-text">The Statistical Process</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/3-Statistical_Process_Practice.html">
- <span class="dropdown-text">The Statistical Process - Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/5-Shape_and_Center.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/3-Shape_and_Center.html">
  <span class="dropdown-text">Describing Data - Shape and Center</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/6-Spread.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Measures_of_Spread.html">
  <span class="dropdown-text">Describing Data - Spread</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/6b-Introducing_R_Class_Notes.html">
- <span class="dropdown-text">Introducing R - Class Notes</span></a>
+    <a class="dropdown-item" href="../1-Data_Literacy/5-Introducing_R_Class_Notes.html">
+ <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/7-Introducing_R_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/6-Summarizing_Data_One_Group_Practice.html">
  <span class="dropdown-text">Summarizing Data - One Group</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/7-Summarizing_Data_Multiple_Groups.html">
  <span class="dropdown-text">Summarzing Data - Multiple Groups</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/9-Summarizing_Data_Practice.html">
- <span class="dropdown-text">Summarizing Data Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/10-AA_Data_Summaries.html">
- <span class="dropdown-text">Summarizing Data Activity</span></a>
+    <a class="dropdown-item" href="../1-Data_Literacy/8-AA_Data_Summaries.html">
+ <span class="dropdown-text">Application Activity: Summarizing Data</span></a>
   </li>  
     </ul>
   </li>
@@ -380,7 +402,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Statistics Notebook - R Commands</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
@@ -430,15 +452,39 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a-sleep-and-a-forgetting" id="toc-a-sleep-and-a-forgetting" class="nav-link active" data-scroll-target="#a-sleep-and-a-forgetting">1 - “A sleep and a forgetting”</a>
+  <li><a href="#introducing-markdown" id="toc-introducing-markdown" class="nav-link active" data-scroll-target="#introducing-markdown">Introducing Markdown</a>
   <ul class="collapse">
-  <li><a href="#the-sitch" id="toc-the-sitch" class="nav-link" data-scroll-target="#the-sitch">The sitch:</a></li>
+  <li><a href="#the-yaml" id="toc-the-yaml" class="nav-link" data-scroll-target="#the-yaml">The YAML</a></li>
+  <li><a href="#rendering-the-document" id="toc-rendering-the-document" class="nav-link" data-scroll-target="#rendering-the-document">Rendering the Document</a></li>
   </ul></li>
-  <li><a href="#you-see-but-you-do-not-observe" id="toc-you-see-but-you-do-not-observe" class="nav-link" data-scroll-target="#you-see-but-you-do-not-observe">2 - “You see, but you do not observe”</a></li>
-  <li><a href="#will-the-real-jonas-salk-please-stand-up" id="toc-will-the-real-jonas-salk-please-stand-up" class="nav-link" data-scroll-target="#will-the-real-jonas-salk-please-stand-up">3 - Will the real Jonas Salk please stand up</a></li>
-  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">4 - Data Types</a></li>
-  <li><a href="#election-year-madness" id="toc-election-year-madness" class="nav-link" data-scroll-target="#election-year-madness">Election year madness</a></li>
-  <li><a href="#how-random" id="toc-how-random" class="nav-link" data-scroll-target="#how-random">How Random!</a></li>
+  <li><a href="#this-is-a-section-header" id="toc-this-is-a-section-header" class="nav-link" data-scroll-target="#this-is-a-section-header">This is a Section Header</a>
+  <ul class="collapse">
+  <li><a href="#this-is-a-section-subheader" id="toc-this-is-a-section-subheader" class="nav-link" data-scroll-target="#this-is-a-section-subheader">This is a section subheader</a>
+  <ul class="collapse">
+  <li><a href="#sub-subheader" id="toc-sub-subheader" class="nav-link" data-scroll-target="#sub-subheader">sub-subheader</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#making-r-work-for-us" id="toc-making-r-work-for-us" class="nav-link" data-scroll-target="#making-r-work-for-us">Making R Work for Us</a></li>
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the data</a>
+  <ul class="collapse">
+  <li><a href="#the-assignment-operator" id="toc-the-assignment-operator" class="nav-link" data-scroll-target="#the-assignment-operator">The assignment operator</a></li>
+  <li><a href="#the-import-function" id="toc-the-import-function" class="nav-link" data-scroll-target="#the-import-function">The Import function</a></li>
+  <li><a href="#extracting-columns-from-a-dataset" id="toc-extracting-columns-from-a-dataset" class="nav-link" data-scroll-target="#extracting-columns-from-a-dataset">Extracting Columns from a dataset</a></li>
+  </ul></li>
+  <li><a href="#summarizing-quantitative-data" id="toc-summarizing-quantitative-data" class="nav-link" data-scroll-target="#summarizing-quantitative-data">Summarizing Quantitative Data</a>
+  <ul class="collapse">
+  <li><a href="#numerical-summaries" id="toc-numerical-summaries" class="nav-link" data-scroll-target="#numerical-summaries">Numerical Summaries</a>
+  <ul class="collapse">
+  <li><a href="#measures-of-center" id="toc-measures-of-center" class="nav-link" data-scroll-target="#measures-of-center">Measures of Center</a></li>
+  <li><a href="#measures-of-spread" id="toc-measures-of-spread" class="nav-link" data-scroll-target="#measures-of-spread">Measures of Spread</a></li>
+  </ul></li>
+  <li><a href="#graphical-summaries" id="toc-graphical-summaries" class="nav-link" data-scroll-target="#graphical-summaries">Graphical Summaries</a>
+  <ul class="collapse">
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms">Histograms</a></li>
+  <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots">Boxplots</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a></li>
   </ul>
 </nav>
     </div>
@@ -447,7 +493,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Statistical Process-Practice</h1>
+<h1 class="title">Introducing R - Class Notes</h1>
 </div>
 
 
@@ -464,94 +510,225 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="a-sleep-and-a-forgetting" class="level1">
-<h1>1 - “A sleep and a forgetting”</h1>
-<section id="the-sitch" class="level2">
-<h2 class="anchored" data-anchor-id="the-sitch">The sitch:</h2>
-<p>The <a href="https://youtu.be/UpAq9EZpL5A?si=Y_wNRFDpaM1WsZKW">Forgetting Curve</a> relates to how quickly we forget new information and suggests strategies for maximize retention. Studies have shown that retention of classroom materials can drop as low as 58% within 15 minutes of class and within 44% after the first hour after class if there is no review of the material. This forgetting curve continues, so that within six days only 25% is remembered.</p>
-<p>Suppose your teacher wanted to test strategies for retention and invited you to participate in a study. You would be randomly assigned to one of two groups.</p>
-<p>Group 1 would be asked to review for ten minutes at three specific times: fifteen minutes after class, one hour after class, and two days after class.</p>
-<p>Group 2 would not be asked to review the material at all. Use the above information for all parts.</p>
-<p><strong>Question</strong>: Which treatment group would be considered the control and why?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: Before participating, your teacher gives you a short quiz and records your score out of 10. What type of data (quantitative or categorical) is being recorded?<br>
-<strong>Answer</strong>:</p>
+<section id="introducing-markdown" class="level1">
+<h1>Introducing Markdown</h1>
+<p>This file is created using the Markdown language. Think of Markdown like Microsoft Word on steroids. The difference is, instead of clicking through drop-down menus to change font, line spacing, etc. you need to type in the instructions inside the document.</p>
+<p>This file has the extension <code>.qmd</code> which stands for Quarto Markdown. All assignments and class notes will be given as <code>.qmd</code> files.</p>
+<p>The upside is that you can easily write nice looking reports <em>and</em> directly incorporate code output including summary tables and graphs.</p>
+<section id="the-yaml" class="level2">
+<h2 class="anchored" data-anchor-id="the-yaml">The YAML</h2>
+<p>The very top of the document (between the <code>---</code>) gives instructions to the computer about what kind of document to make. It is called the <code>YAML</code>. What <code>YAML</code> stands for is up for debate. But the instructions are necessary for building the document.</p>
+<p>The one above is very basic. We may expand on it a little as the semester progresses. But for now, this document can be made into an HTML file by “Knitting” it.</p>
+</section>
+<section id="rendering-the-document" class="level2">
+<h2 class="anchored" data-anchor-id="rendering-the-document">Rendering the Document</h2>
+<p>Above, you should see a “Render” button. Click on it and see what happens.</p>
+<p>We can make section headers, type text, include code chunks and stitch it all together into a decent-looking report with only a few lines of text.</p>
 </section>
 </section>
-<section id="you-see-but-you-do-not-observe" class="level1">
-<h1>2 - “You see, but you do not observe”</h1>
-<p>For each of the following scenarios, explain which are observational studies and which are experiments and why:</p>
+<section id="this-is-a-section-header" class="level1">
+<h1>This is a Section Header</h1>
+<section id="this-is-a-section-subheader" class="level2">
+<h2 class="anchored" data-anchor-id="this-is-a-section-subheader">This is a section subheader</h2>
+<section id="sub-subheader" class="level3">
+<h3 class="anchored" data-anchor-id="sub-subheader">sub-subheader</h3>
+<p>You get the point.</p>
+</section>
+</section>
+</section>
+<section id="making-r-work-for-us" class="level1">
+<h1>Making R Work for Us</h1>
+<p>The best thing about Markdown language is that you can include code and use output directly within the document.</p>
+<p>We’ll first need to install libraries that we’ll be using in class. Because this is code we will not need to run more than once, I suggest copying and pasting the following into the Console:</p>
+<p>install.packages(“rio”) install.packages(“mosaic”) install.packages(“tidyverse”) install.packages(“car”)</p>
+<p>Next we’ll see how to program in R within a text document! Hooray!</p>
+<p>It can be done by inserting a “code chunk” using the tick mark symbol (not an apostrophe) and curly brackets. The shortkey command is:</p>
 <ol type="1">
-<li>A Telephone Poll asking people about whether or not they vaccinate their children</li>
+<li>ctrl+alt+i on a PC</li>
+<li>cmd+alt+i on a Mac</li>
 </ol>
-<p><strong>Study Type</strong>:</p>
-<ol start="2" type="1">
-<li>Administering the tuberculosis vaccination to one group and giving a placebo to another</li>
-</ol>
-<p><strong>Study Type</strong>:</p>
-<ol start="3" type="1">
-<li>A mailed survey asking people whether or not they received the tuberculosis vaccine</li>
-</ol>
-<p><strong>Study Type</strong>:</p>
-<ol start="4" type="1">
-<li>Randomly assigning 2 versions of an exam to a classroom</li>
-</ol>
-<p><strong>Study Type</strong>:</p>
-<ol start="5" type="1">
-<li>A sample of 504 patients in early stages of Alzheimer’s disease is divided into two groups. One group receives an experimental drug and the other a placebo. The advance of the disease is tracked at one-month intervals over the next year.</li>
-</ol>
-<p><strong>Study Type</strong>:</p>
+<p>To run a single line of code, you can press ctrl+Enter. This will run the line of code where your cursor is located.</p>
+<p>To run the whole code chunk, you can click on the green arrow in the top right of the code chunk, or press ctrl+shift+Enter.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="will-the-real-jonas-salk-please-stand-up" class="level1">
-<h1>3 - Will the real Jonas Salk please stand up</h1>
-<p>You want to become the next Jonas Salk and produce a vaccine that will help cure children of Respiratory Syncytial Virus (RSV). You test the vaccine and compare it to a placebo and randomly choose one group of children to take the vaccine and one group to take the placebo.</p>
-<p><strong>Question</strong>: What (or who) are the experimental units or subjects?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What are the treatments?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the population of this study?<br>
-<strong>Answer</strong>:</p>
+<section id="load-the-data" class="level1">
+<h1>Load the data</h1>
+<p>In this section we introduce the “assignment operator” which is a fancy way of saying we’re going to name the things that we create. We will also show you how to read in a dataset from a web address.</p>
+<section id="the-assignment-operator" class="level2">
+<h2 class="anchored" data-anchor-id="the-assignment-operator">The assignment operator</h2>
+<p>In R, you can make lots of different types of things called “objects” in programming speak. There are lots of different types of objects that we’ll make including data sets and graphs. When we make an object, we like to give it a name. While we can call it pretty much anything, it’s good practice to name it something with a meaningful connection to the type of object we’re making.</p>
+<p>When we assign an object to a name, we use these characters <code>&lt;-</code> together. For example, if we wanted to name a list of numbers list_of_numbers, we would type, in a code chunk, “list_of_numbers &lt;- c(1,2,3,4,5)”, which would create an object named “list_of_numbers” that was an object containing the numbers 1-5. This is easier than it sounds, so let’s look at some examples:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bob <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># if we run "bob", R will print out the list of numbers:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>bob</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5</code></pre>
+</div>
+</div>
 </section>
-<section id="data-types" class="level1">
-<h1>4 - Data Types</h1>
-<p>For each of the following examples, state whether or not the collected data are quantitative or categorical:</p>
+<section id="the-import-function" class="level2">
+<h2 class="anchored" data-anchor-id="the-import-function">The Import function</h2>
+<p>For this class, we will be using the “import” function in the “rio” library that you installed and loaded above. You can read in data from websites or from a file location on your hard drive. The process is the same.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the "import" function from the 'rio' library reads in the data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>big5 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>All this code did was create an dataset object called big5. There are several ways to look at the object. The next code chunk will introduce you to 3. The first is to run the name by itself. This prints out the first hundred or so lines of the dataset in the Console.</p>
+<p>Second, we can use the View() function, which opens up an Excel-like window showing the whole dataset.</p>
+<p>Thirdly, the glimpse() function from the “tidyverse” library shows you a list of all the columns with some examples of the dataset.</p>
+<p>Let’s try:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#big5</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#View(big5)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(big5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 405
+Columns: 13
+$ Year                                        &lt;chr&gt; "Spring 2022", "Spring 202…
+$ Semester                                    &lt;chr&gt; "SPR", "SPR", "SPR", "SPR"…
+$ YearTaken                                   &lt;int&gt; 2022, 2022, 2022, 2022, 20…
+$ `Course Section`                            &lt;chr&gt; "B", "B", "B", "B", "B", "…
+$ BirthMonth                                  &lt;chr&gt; "March", "February", "Augu…
+$ `Sex(M/F)`                                  &lt;chr&gt; "M", "M", "M", "F", "M", "…
+$ `Height in Inches`                          &lt;dbl&gt; 76, 70, 71, 70, 72, 67, 67…
+$ `In how Many Languages are you proficient?` &lt;dbl&gt; 1, 2, 1, 1, 2, 1, 2, 2, 1,…
+$ Extroversion                                &lt;dbl&gt; 88, 81, 27, 92, 46, 79, 67…
+$ Agreeableness                               &lt;dbl&gt; 63, 83, 63, 67, 79, 75, 81…
+$ Openness                                    &lt;dbl&gt; 54, 77, 81, 73, 90, 52, 69…
+$ Conscientiousness                           &lt;dbl&gt; 81, 81, 65, 83, 23, 71, 56…
+$ Neuroticism                                 &lt;dbl&gt; 19, 25, 67, 27, 56, 31, 40…</code></pre>
+</div>
+</div>
+</section>
+<section id="extracting-columns-from-a-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-columns-from-a-dataset">Extracting Columns from a dataset</h2>
+<p>Datasets usually have many columns. When we want to select one column from a dataset to summarize, we can use the <code>$</code> operator. For example, if we want to look at only the scores for Extroversion, we can run the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tying a hashtag before a line tells the computer to ignore it.  This is how we make comments within a code chunk.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#big5$Extroversion</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice that if you start typing <code>big5$</code> in a code chunk, a drop-down list of column names appears. Selecting a column name from the list is helpful for avoiding typos.</p>
+</section>
+</section>
+<section id="summarizing-quantitative-data" class="level1">
+<h1>Summarizing Quantitative Data</h1>
+<p>Raw data are not particularly useful without some organization. Imagine a dataset with a million rows. It would be impossible to extract any meaningful patterns from browsing row by row. Some level of summarization is necessary for us to make sense of the raw data.</p>
+<p>We can summarize data numerically and visually using graphics. In this section we will learn some basic R commands to summarize data.</p>
+<section id="numerical-summaries" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-summaries">Numerical Summaries</h2>
+<section id="measures-of-center" class="level3">
+<h3 class="anchored" data-anchor-id="measures-of-center">Measures of Center</h3>
+<p>Central Tendency is the attempt to describe a “typical” value. What is the typical height of college students? What is the typical price of a home? What is the typical GPA for BYU-I students?</p>
+<p>The most common measures of central tendency are the Mean, Median and the Mode. The mean and the median are vastly more commonly used, and R makes it very easy to calculate them for quantitative data. We will talk about the Mode later when discussing discrete and count data.</p>
+<p>The <em>mean</em> is the arithmetic average of the data that you are familiar with. Add all the numbers up and divide by the number of observations.</p>
+<p>The <em>median</em> is the value in the dataset where 50% of the observations are above and 50% of the observations are below it.</p>
+<p>Both of these measures are easily calculated in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(big5<span class="sc">$</span>Extroversion, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 56.98267</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(big5<span class="sc">$</span>Extroversion, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 58</code></pre>
+</div>
+</div>
+<p>Notice the <code>na.rm=TRUE</code> argument in the <code>mean()</code> function. When a column of data has missing values (NA’s), then the default is for a function to return <code>NA</code>. If we want to override the default we specify <code>na.rm=TRUE</code> which ReMoves the NAs.</p>
+</section>
+<section id="measures-of-spread" class="level3">
+<h3 class="anchored" data-anchor-id="measures-of-spread">Measures of Spread</h3>
+<p>Understanding the “typical” value of a certain variable is only part of the story. It can be very misleading by itself. We need to understand the variation in the data.</p>
+<p>Measures of spread describe how close the observations are to the “typical” value. These measures answer questions like: how far spread out are heights of college students? Are they all very close to the “typical” value, or is there a wide range of heights?</p>
+<p>The most common measures of variation are the Variance, Standard Deviation and Percentiles/Quartiles. The standard deviation is the square root of the variance. While the variance is mathematically useful, the standard deviation is much more commonly used because it preserves the original units of the data. The <em>standard deviation</em> can be thought of as <strong>the average distance values are away from the mean</strong>.</p>
+<p>A percentile is a value which is <em>above</em> a specified percentage of observations. New parents are often eager to share their infant’s percentiles in weight and height. A baby in the 95th percentile for height is taller than 95% of babies in the population.</p>
+<p>If you score in the 89th percentile on the ACT it means you scored above 89% of test takers (NOT that you scored an 89%).</p>
+<p>Again, R makes these calculations easy:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(big5<span class="sc">$</span>Extroversion, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 445.0406</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(big5<span class="sc">$</span>Extroversion, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21.09599</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The quantile function takes as inputs the data you want to find a percentile for and the percentile you want to calculate</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(big5<span class="sc">$</span>Extroversion, .<span class="dv">89</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>89% 
+ 83 </code></pre>
+</div>
+</div>
+<p>A very useful function from the “mosaic” library that we installed above is the <code>favstats()</code> function. With one line of code we can get all our favorite statistics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(big5<span class="sc">$</span>Extroversion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> min Q1 median Q3 max     mean       sd   n missing
+   1 42     58 73 100 56.98267 21.09599 404       1</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="graphical-summaries" class="level2">
+<h2 class="anchored" data-anchor-id="graphical-summaries">Graphical Summaries</h2>
+<p>Good visualizations are an incredibly efficient way of condensing a vast amount of information and making it easily comprehensible. In this section we’ll learn about ways to visualize a single variable.</p>
+<section id="histograms" class="level3">
+<h3 class="anchored" data-anchor-id="histograms">Histograms</h3>
+<p>Histograms take a quantitative variable and divides it into equal intervals, counting up the number of data points in the data that fall in each interval.</p>
+<p>There are 2 main functions for creating a histogram. Run both and compare.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(big5<span class="sc">$</span>Extroversion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5-Introducing_R_Class_Notes_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(big5<span class="sc">$</span>Extroversion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5-Introducing_R_Class_Notes_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="boxplots" class="level3">
+<h3 class="anchored" data-anchor-id="boxplots">Boxplots</h3>
+<p>A boxplot is a graphical representation of the 5 number summary (minimum, 1st quartile, median/2nd quartile, 3rd quartile and the maximum). Typically, software does not include the absolute max or min, but labels some values as “outliers”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(big5<span class="sc">$</span>Extroversion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="5-Introducing_R_Class_Notes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A single boxplot by itself is pretty much one of the most boring, useless charts. But these become <em>very</em> useful when comparing groups.</p>
+</section>
+</section>
+</section>
+<section id="your-turn" class="level1">
+<h1>Your Turn</h1>
+<p>Using the “Conscientiousness” column from the <code>big5</code> dataset:</p>
 <ol type="1">
-<li>The number of people in a randomly selected classroom on campus</li>
+<li>Calculate the mean, standard deviation, and 5 number summary.</li>
+<li>Create a histogram</li>
+<li>Create a boxplot</li>
 </ol>
-<p><strong>Data Type</strong>:</p>
-<ol start="2" type="1">
-<li>The 3 most common brands of car found in the US</li>
-</ol>
-<p><strong>Data Type</strong>:</p>
-<ol start="3" type="1">
-<li>The telephone number of a randomly selected business in town</li>
-</ol>
-<p><strong>Data Type</strong>:</p>
-<ol start="4" type="1">
-<li>The time spent on hold calling customer service</li>
-</ol>
-<p><strong>Data Type</strong>:</p>
-</section>
-<section id="election-year-madness" class="level1">
-<h1>Election year madness</h1>
-<p>In a recent election, one marketing research firm was asked by a special interest group to help estimate the proportion of Americans who supported a particular candidate. From a list of all registered voters, 8000 names were randomly selected. An automated phone-call was made to each of the 8000 individuals selected asking them to answer a few questions indicating their voting preferences. The marketing firm received 2969 responses.</p>
-<p><strong>Question</strong>: What is the population of the study?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the sample of the study?<br>
-<strong>Answer</strong>:</p>
-</section>
-<section id="how-random" class="level1">
-<h1>How Random!</h1>
-<p>For each scenario, state which type of sampling scheme was used and explain why:</p>
-<p><strong>Scenario 1</strong>: A study conducted by researchers from the Department of Education wanted to know the average debt of college students in the United States. In order to obtain a sample representative of all students, the researchers divided college students into the four classes (freshman, sophomore, junior, and senior) and then took a random sample of students from each class.</p>
-<p><strong>Sampling Scheme</strong>:<br>
-<strong>Explanation</strong>:</p>
-<p><strong>Scenario 2</strong>: Students in an Introductory Statistics class at BYU-Idaho were studying prices of cold cereal at grocery stores in Rexburg. To get a sample of cold cereal prices, they went to Albertson’s and rolled a die to decide which box from the left of the top shelf they would start on. They then recorded every 6th cereal after the first, moving from left to right down the shelves, recording the name, size, and price of each cereal in their sample.</p>
-<p><strong>Sampling Scheme</strong>:<br>
-<strong>Explanation</strong>:</p>
-<p><strong>Scenario 3</strong>: A study is being planned in order to estimate the parts per million of a particular pollutant in a lake’s water.</p>
-<p><strong>Question</strong>: How would you sample from the lake to get a representative sample?<br>
-<strong>Answer</strong>:</p>
 
 
 </section>

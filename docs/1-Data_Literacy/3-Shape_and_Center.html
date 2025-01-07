@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Summarizing Data Practice – Math221 Notebook</title>
+<title>Describing Quantitative Data (Shape &amp; Center) – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -131,48 +160,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-1">    
         <li class="dropdown-header">Data Literacy</li>
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Introduction.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/1-Course_Intro.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/2-Stat_Process.html">
- <span class="dropdown-text">The Statistical Process</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/3-Statistical_Process_Practice.html">
- <span class="dropdown-text">The Statistical Process - Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/5-Shape_and_Center.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/3-Shape_and_Center.html">
  <span class="dropdown-text">Describing Data - Shape and Center</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/6-Spread.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/4-Measures_of_Spread.html">
  <span class="dropdown-text">Describing Data - Spread</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/6b-Introducing_R_Class_Notes.html">
- <span class="dropdown-text">Introducing R - Class Notes</span></a>
+    <a class="dropdown-item" href="../1-Data_Literacy/5-Introducing_R_Class_Notes.html">
+ <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/7-Introducing_R_Practice.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/6-Summarizing_Data_One_Group_Practice.html">
  <span class="dropdown-text">Summarizing Data - One Group</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/7-Summarizing_Data_Multiple_Groups.html">
  <span class="dropdown-text">Summarzing Data - Multiple Groups</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/9-Summarizing_Data_Practice.html">
- <span class="dropdown-text">Summarizing Data Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/10-AA_Data_Summaries.html">
- <span class="dropdown-text">Summarizing Data Activity</span></a>
+    <a class="dropdown-item" href="../1-Data_Literacy/8-AA_Data_Summaries.html">
+ <span class="dropdown-text">Application Activity: Summarizing Data</span></a>
   </li>  
     </ul>
   </li>
@@ -414,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Statistics Notebook - R Commands</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../1-Data_Literacy/4-Installing_R.html">
+    <a class="dropdown-item" href="../1-Data_Literacy/2-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
@@ -464,10 +481,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#whoopsies" id="toc-whoopsies" class="nav-link" data-scroll-target="#whoopsies">1 - Whoopsies!</a></li>
-  <li><a href="#a-la-mode" id="toc-a-la-mode" class="nav-link" data-scroll-target="#a-la-mode">2 - A la Mode</a></li>
-  <li><a href="#worldle-you-like-to-know" id="toc-worldle-you-like-to-know" class="nav-link" data-scroll-target="#worldle-you-like-to-know">Worldle you like to know!</a></li>
+  <li><a href="#lesson-outcomes" id="toc-lesson-outcomes" class="nav-link active" data-scroll-target="#lesson-outcomes">Lesson Outcomes</a></li>
+  <li><a href="#review-of-the-five-steps-of-the-statistical-process" id="toc-review-of-the-five-steps-of-the-statistical-process" class="nav-link" data-scroll-target="#review-of-the-five-steps-of-the-statistical-process">Review of the Five Steps of the Statistical Process</a></li>
+  <li><a href="#shape-of-a-distribution" id="toc-shape-of-a-distribution" class="nav-link" data-scroll-target="#shape-of-a-distribution">Shape of a Distribution</a>
+  <ul class="collapse">
+  <li><a href="#visualizing-quantitative-data-histograms" id="toc-visualizing-quantitative-data-histograms" class="nav-link" data-scroll-target="#visualizing-quantitative-data-histograms">Visualizing Quantitative Data: Histograms</a></li>
+  <li><a href="#making-inference-about-the-population" id="toc-making-inference-about-the-population" class="nav-link" data-scroll-target="#making-inference-about-the-population">Making Inference About the Population</a></li>
+  </ul></li>
+  <li><a href="#center-of-a-distribution" id="toc-center-of-a-distribution" class="nav-link" data-scroll-target="#center-of-a-distribution">Center of a Distribution</a>
+  <ul class="collapse">
+  <li><a href="#measuring-the-center-of-a-distribution" id="toc-measuring-the-center-of-a-distribution" class="nav-link" data-scroll-target="#measuring-the-center-of-a-distribution">Measuring the Center of a Distribution</a></li>
+  <li><a href="#parameters-and-statistics" id="toc-parameters-and-statistics" class="nav-link" data-scroll-target="#parameters-and-statistics">Parameters and Statistics</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -476,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Summarizing Data Practice</h1>
+<h1 class="title">Describing Quantitative Data (Shape &amp; Center)</h1>
 </div>
 
 
@@ -493,58 +519,649 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>In this assignment, you will use several datasets to summarize data numerically and visually.</p>
+<section id="lesson-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="lesson-outcomes">Lesson Outcomes</h2>
+<p>By the end of this lesson, you should be able to:</p>
+<ol type="1">
+<li>Create a histogram from data</li>
+<li>Interpret data presented in a histogram</li>
+<li>Identify left-skewed, right-skewed, and symmetric distributions from histograms</li>
+<li>Calculate the mean, median, and mode for quantitative data using software</li>
+<li>Compare the centers of distributions using graphical and numerical summaries</li>
+<li>Describe the effects that skewness or outliers have on the relationship between the mean and median</li>
+<li>Distinguish between a parameter and a statistic</li>
+</ol>
+<p><br></p>
+</section>
+<section id="review-of-the-five-steps-of-the-statistical-process" class="level2">
+<h2 class="anchored" data-anchor-id="review-of-the-five-steps-of-the-statistical-process">Review of the Five Steps of the Statistical Process</h2>
+<p>We will use the five steps in the Statistical Process throughout the course. Recall the five steps (and the mnemonic “Daniel Can Discern More Truth) before you begin this lesson.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>
+<p>
+Step 1:
+</p>
+</th>
+<th>
+<p>
+<strong>D</strong>aniel
+</p>
+</th>
+<th>
+<p>
+<strong>D</strong>esign the study
+</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+<p>
+Step 2:
+</p>
+</td>
+<td>
+<p>
+<strong>C</strong>an
+</p>
+</td>
+<td>
+<p>
+<strong>C</strong>ollect data
+</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+Step 3:
+</p>
+</td>
+<td>
+<p>
+<strong>D</strong>iscern
+</p>
+</td>
+<td>
+<p>
+<strong>D</strong>escribe the data
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>
+Step 4:
+</p>
+</td>
+<td>
+<p>
+<strong>M</strong>ore
+</p>
+</td>
+<td>
+<p>
+<strong>M</strong>ake inferences
+</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+Step 5:
+</p>
+</td>
+<td>
+<p>
+<strong>T</strong>ruth
+</p>
+</td>
+<td>
+<p>
+<strong>T</strong>ake action
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="../Images/StepsAll.png" class="img-fluid"></p>
+<p><br></p>
+</section>
+<section id="shape-of-a-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="shape-of-a-distribution">Shape of a Distribution</h2>
+<p><strong>Cost to Treat Tuberculosis in India</strong></p>
+<p><img src="../Images/Market_rural-India_-Tamilword22.jpg" class="img-fluid"></p>
+<p><img src="../Images/Step1.png" class="img-fluid"> <br> <strong>Step 1: Design the study.</strong></p>
+<p>Tuberculosis (TB) is the deadliest bacterial disease in the world. In 2009, nine million new cases of tuberculosis were diagnosed, leading to almost 2 million deaths worldwide. Currently, the principal vaccine used to prevent tuberculosis is Bacille Calmette Guerin (BCG). Unfortunately, BCG is only moderately effective at preventing tuberculosis. Historically, India has had a high number of tuberculosis cases. The Indian Government wants to reduce the prevalence of this disease.</p>
+<p>In this activity, you will compare the average costs of treating a person who contracts tuberculosis to the costs of preventing a case of tuberculosis in India.</p>
+<p><img src="../Images/Step2.png" class="img-fluid"> <br> <strong>Step 2: Collect data.</strong></p>
+<p>Health Care records of tuberculosis patients in India were surveyed to estimate the cost to treat patients with tuberculosis. The following data are representative of the total costs (in US dollars) incurred by society in the treatment of 10 randomly selected tuberculosis patients in India.</p>
+<center>
+15,100 &nbsp; &nbsp; 19,000 &nbsp; &nbsp; 4,800 &nbsp; &nbsp; 6,500 &nbsp; &nbsp; 14,900 &nbsp; &nbsp; 600 &nbsp; &nbsp; 23,500 &nbsp; &nbsp; 11,500 &nbsp; &nbsp; 12,900 &nbsp; &nbsp; 32,200
+</center>
+<p>These costs include health care treatment, time missed from work, and in some cases utility lost due to death.</p>
+<p><img src="../Images/Step3.png" class="img-fluid"> <br> <strong>Step 3: Describe the data.</strong></p>
+<section id="visualizing-quantitative-data-histograms" class="level3 tabset tabset-fade">
+<h3 class="tabset tabset-fade anchored" data-anchor-id="visualizing-quantitative-data-histograms">Visualizing Quantitative Data: Histograms</h3>
+<p>The following data are representative of the total costs (in US dollars) incurred by society in the treatment of 10 randomly selected tuberculosis patients in India.</p>
+<center>
+15,100 &nbsp; &nbsp; 19,000 &nbsp; &nbsp; 4,800 &nbsp; &nbsp; 6,500 &nbsp; &nbsp; 14,900 &nbsp; &nbsp; 600 &nbsp; &nbsp; 23,500 &nbsp; &nbsp; 11,500 &nbsp; &nbsp; 12,900 &nbsp; &nbsp; 32,200
+</center>
+<p>To help us visualize these data, we will create a graph called a histogram. To make a histogram, we will divide the number line from 0 to 35,000 in seven equal parts. We will then count the number of data points in each of these intervals:</p>
+<center>
+<table class="table">
+<thead>
+<tr class="header">
+<th>
+<p>
+Interval
+</p>
+</th>
+<th>
+<p>
+Number of Observations
+</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+<p>
+At least 0 and less than 5,000
+</p>
+</td>
+<td>
+<p>
+2
+</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+At least 5,000 and less than 10,000
+</p>
+</td>
+<td>
+<p>
+1
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>
+At least 10,000 and less than 15,000
+</p>
+</td>
+<td>
+<p>
+3
+</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+At least 15,000 and less than 20,000
+</p>
+</td>
+<td>
+<p>
+2
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>
+At least 20,000 and less than 25,000
+</p>
+</td>
+<td>
+<p>
+1
+</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+At least 25,000 and less than 30,000
+</p>
+</td>
+<td>
+<p>
+0
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>
+At least 30,000 and less than 35,000
+</p>
+</td>
+<td>
+<p>
+1
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>For each of these intervals, called <em>bins</em>, we draw a bar on the histogram. The width of the bars is determined by the width of the bin (5000 in this example). The height of the bars is equal to the number of observations that fall in each bin. As we look at the histogram shown below, we see bars ranging from $0 to $35,000. We also see higher bars in the middle between $10,000 to $20,000 show that these values are more commonly occurring than the other values. If we computed the average of the values contained in our histogram, we would compute the number <span class="math display">\[
+  \frac{15,100 + 19,000 + 4,800 + 6,500 + 14,900 + 600 + 23,500 + 11,500 + 12,900 + 32,200}{10} = 14,100
+\]</span> showing that the <em>center</em> of the histogram (or average) is at $14,100.</p>
+<center>
+<strong>This is a histogram created in R:</strong> <br>
+</center>
+<!--
+<div class="stats B C">
+<center>
+{| style="width:50%"
+|- align="center" 
+! This is a histogram created using statistical software:
+|- align="center" 
+| <img src/Images/IndianTBcosts.png">
+|}
+</center>
+</div>
+-->
+<!-- To access this content, scroll to the bottom of the editing page and click on the link "Software:(Excel or SPSS)-(PageName)" 
+{{Software_Filter | PageName=Histogram }}
+-->
+<p>To create this histogram in R, you can copy and paste the following code into R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the libraries and the datasets</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>wrong_patient <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx'</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>wordle <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/Wordle.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataset with the costs from 10 randomly selected patients:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15100</span>, <span class="dv">19000</span>, <span class="dv">4800</span>, <span class="dv">6500</span>, <span class="dv">14900</span>, <span class="dv">600</span>, <span class="dv">23500</span>, <span class="dv">11500</span>,<span class="dv">12900</span>, <span class="dv">32200</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram. We add x-axis labels using `xlab = ""` and a title `main = ""`</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data, <span class="at">xlab=</span><span class="st">"Treatment Costs"</span>, <span class="at">main =</span> <span class="st">"Tuberculosis Costs in India"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="3-Shape_and_Center_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="whoopsies" class="level1">
-<h1>1 - Whoopsies!</h1>
-<p>On rare occasions, a medical procedure is performed on the wrong body part of a patient’s body or on the wrong patient. These are called wrong-site and wrong-patient mistakes. Such errors occur hundreds of times each year across the United States. The medical community is trying to eliminate these errors but have had difficulty reducing their frequency. In a small percentage of these cases, the patient files a lawsuit against the hospital. Philip Stahel et al.&nbsp;conducted a study on these mistakes and the lawsuits that follow.</p>
-<p>The data in the file <code>WrongSiteWrongPatient.xlsx</code> represent the amount (in US dollars) hospitals have been required to pay in wrong-site and wrong-patient lawsuits sourced from JAMA Surgery. Some of the values equal zero, indicating that the hospital won the legal battle.</p>
-<p><strong>Question</strong>: Find the mean and median amount hospitals had to pay in <em>Wrong-Site</em> lawsuits. Round your answer to the nearest whole dollar.</p>
-<p><strong>Mean Wrong-Site</strong>:</p>
-<p><strong>Median Wrong-Site</strong>:</p>
-<p>Create a histogram of the <em>Wrong-Site</em> data and describe its shape:</p>
-<p><strong>Shape of Wrong-Site</strong>:</p>
-<p><strong>Question</strong>: Find the mean and median amount hospitals had to pay in <em>Wrong-Patient</em> lawsuits. Round your answer to the nearest whole dollar.</p>
-<p><strong>Mean Wrong-Patient</strong>:</p>
-<p><strong>Median Wrong-Patient</strong>:</p>
-<p>Create a histogram of the <em>Wrong-Patient</em> data and describe its shape:</p>
-<p><strong>Shape of Wrong-Patient</strong>:</p>
-<p><strong>Question</strong>: Which error is the most costly for the medical community?</p>
-</section>
-<section id="a-la-mode" class="level1">
-<h1>2 - A la Mode</h1>
-<p>The mode is mostly used for low frequency count data or for tallying the most frequently occurring category in categorical data analysis.</p>
-<p><strong>Question</strong>: Give 3 examples of situations where the mode might be useful:</p>
+<section id="making-inference-about-the-population" class="level3">
+<h3 class="anchored" data-anchor-id="making-inference-about-the-population">Making Inference About the Population</h3>
+<p>After summarizing the data from our sample of the populations both numerically and graphically, we can use this information to make inference about the full population. <br></p>
+<p><img src="../Images/Step4.png" class="img-fluid"> <br> <strong>Step 4: Make inferences.</strong></p>
+<p>In the past, the total average cost to society to treat a case of tuberculosis in India was known to be $13,800. As shown in our Step 3 calculations, the 10 randomly selected patients showed an average cost that was higher than the historic value at $14,100. This might make us believe that the <em>actual</em> total average cost to society is also $14,100. However, in depth statistical calculations (that you will be taught how to do later this semestr) show that there is a 46% chance that our sample had an average of $14,100 just by random chance. This isn’t too hard to believe since we only had a sample size of 10 people, and $14,100 is only $300 above $13,800, so it turns out to be fairly likely (46% chance) that because of random chance our sample had an average that was a little higher than the actual value from the population. So we will conclude that the total average cost to society is still essentially the same as it has been in the past.</p>
+<p><br></p>
+<p><img src="../Images/Step5.png" class="img-fluid"></p>
+<p><br> <strong>Step 5: Take action.</strong></p>
+<p>After making inferences, you take action. The motivation for conducting a study like this is usually to see if there is inflation in the costs.</p>
+<div class="QuestionsHeading">
+Answer the following question:
+</div>
+<div class="Questions">
 <ol type="1">
-<li></li>
-<li></li>
-<li></li>
+<li>Given our conclusion in Step 4 (that the results of our random sample being at an average $14,100 had a 46% probability of just being caused by random chance) do you think the Government of India needs to take any special action to stop the increase in the cost to treat tuberculosis?</li>
 </ol>
+<details>
+<summary>
+Show/Hide Solution
+</summary>
+<ul>
+<li>Answers may vary. – However, we could not say that the true mean cost has really changed from $13,800. So, there is not enough evidence of inflation. There is no need for the Government of India to take action.</li>
+</ul>
+</details>
+</div>
+<p><br></p>
+<p>One benefit of using a histogram is that it allows you to visualize the distribution of the data. A histogram illustrates the overall shape of the distribution of the data. The height of the bars show how many observations fall in that range.</p>
+<div class="QuestionsHeading">
+Answer the following question:
+</div>
+<div class="Questions">
+<ol start="2" type="1">
+<li>Which bin of the histogram of tuberculosis costs contained the most data points?</li>
+</ol>
+<details>
+<summary>
+Show/Hide Solution
+</summary>
+<ul>
+<li>The bin going from $10,000 to $15,000 contained 3 observations ($11,500, $12,900, and $14,900), which was the most of any of the bins in the histogram. This can be seen visually in the histogram by looking at the height of each bar and the starting and stopping points of the bar along the x-axis of the graph.</li>
+</ul>
+</details>
+</div>
+<p><br></p>
+<p>We will describe the shape of the distribution of a data set using the following basic categories: symmetric, bell-shaped, skewed right, and skewed left. Additionally, we can label the shape of a distribution as uniform, unimodal, bimodal, or multimodal.</p>
+<p>A distribution is symmetric if both the left and right side of the distribution appear to be roughly a mirror image of each other. A special symmetric distribution is a bell-shaped distribution. When data follow a bell-shaped distribution, the histogram looks like a bell. Bell-shaped distributions play an important role in Statistics and will play a role in most of the future lessons.</p>
+<p>A distribution is right-skewed if a histogram of the distribution shows a long right tail. This can occur if there are some very large outliers on the right-hand side of the distribution. A distribution is left-skewed if a histogram shows that it has a long tail to the left.</p>
+<table id="fancytable">
+<tbody><tr>
+<th>
+Right-skewed
+</th>
+<th>
+Symmetric &amp; Bell-shaped
+</th>
+<th>
+Left-skewed
+</th>
+</tr>
+<tr>
+<td>
+<img src="../Images/Lesson03_shape_wageshist.png" width="130%">
+</td>
+<td>
+&lt;img srchttps://github.com/byuistats/Math221D_Cannon/raw/master/Images/Lesson03_shape_maleheightshist.png” width=130%&gt;
+</td><td>
+&lt;img srchttps://github.com/byuistats/Math221D_Cannon/raw/master/Images/Lesson03_shape_gpahist.png” width=130%&gt;
+</td>
+</tr>
+<tr>
+<td>
+<p>Mean: $10.45</p>
+<p>Median: $9.04</p>
+Mean is to the right of the median.
+</td>
+<td>
+<p>Mean: 71.1 inches</p>
+<p>Median: 71 inches</p>
+Mean and median are roughly equal.
+</td>
+<td>
+<p>Mean: 3.42</p>
+<p>Median: 3.45</p>
+Mean is to the left of the median.
+</td>
+</tr>
+</tbody></table>
+<p><br></p>
+<p>If a distribution has only one peak, it is said to be <strong>unimodal</strong>. The three distributions illustrated above are all unimodal distributions. Some people might argue that there are several peaks in the GPA data, so it should not be considered unimodal. Even though there are jagged bumps in the histogram, it is important to visualize the overall shape in the data. When interpreting a histogram, it can be helpful to blur your eyes and imagine the overall shape after smoothing out the bumps. If the overall trend indicates that there is more than one bump, then we do not consider the distribution to be unimodal. We will usually only work with unimodal data sets in this course.</p>
+<p>Some distributions have no distinct peak, others have more than one peak. When there is no distinct peak, and the histogram shows a relatively flat shape, we might say the data follow a <strong>uniform</strong> distribution. If there are two distinct peaks, a distribution is called bimodal. If there are more than two peaks, we refer to the distribution as <strong>multimodal</strong>.</p>
+<p><img src="../Images/Modal_distributions.jpg" class="img-fluid"> <br> <br></p>
 </section>
-<section id="worldle-you-like-to-know" class="level1">
-<h1>Worldle you like to know!</h1>
-<p>Brother Cannon’s family plays the New York Times Wordle every day. Brother Cannon and his son, Ben, are the most competitive. The dataset <code>wordle.csv</code> contains the number of guesses for the last few months of Wordles for Brother Cannon and his son.</p>
-<p>Using <code>favstats()</code> function, create a table of summary statistics for each player:</p>
-<p><strong>Question</strong>: Which player has the lowest standard deviation?<br>
-<strong>Answer</strong>:</p>
-<p>Using the <code>table()</code> function, create a table of frequencies for each player and score:</p>
-<p><strong>Question</strong>: What is the mode for each player?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: Who is the better player, and why?<br>
-<strong>Answer</strong>:</p>
+</section>
+<section id="center-of-a-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="center-of-a-distribution">Center of a Distribution</h2>
+<p><img src="../Images/Step3.png" class="img-fluid"></p>
+<p><strong>Step 3: Describe the data.</strong></p>
+<p>Sometimes people talk about the “typical” BYU-Idaho student or the average waiting time for a bus. But what does it mean for something or someone to be “average?” How can we quantify what it means to be typical or average? In the example below, we will explore one way to define what “average” means.</p>
+<p>When we talk about the “typical” or “average” value, we are essentially describing the center of a population. If we want to estimate the “average” costs to treat a tuberculosis patient, there are several ways we can do it.</p>
+<p><br></p>
+<section id="measuring-the-center-of-a-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="measuring-the-center-of-a-distribution">Measuring the Center of a Distribution</h3>
+<section id="mean" class="level4">
+<h4 class="anchored" data-anchor-id="mean">Mean</h4>
+<p>The sample mean or sample arithmetic mean is the most common tool to estimate the center of a distribution. It is referred to simply as the mean. It is computed by adding up the observed data and dividing by the number of observations in the data set.</p>
+<p>In Statistics, important ideas are given a name. Very important ideas are given a symbol. The sample mean has both a name (mean) and a symbol (<span class="math inline">\(\bar x\)</span>, called “x-bar”).</p>
+<p><span class="math display">\[
+  \bar{x} \text{ is used to denote the sample mean}
+\]</span></p>
+<p>You may have heard people refer to the sample mean as the average. Technically, the word average refers to any number that is used to estimate the center of a distribution. The mean, median and mode are all examples of “averages.” To avoid confusion, it is best to use the words mean, median, and mode instead of the word average, so that it is clear which “average” your are referencing.</p>
+<div class="QuestionsHeading">
+Answer the following question:
+</div>
+<div class="Questions">
+<ol start="3" type="1">
+<li>Practice finding the mean, <span class="math inline">\(\bar x\)</span>, for the tuberculosis treatment costs of the 10 patients in India by simplifying the following: <span class="math display">\[\bar x=\frac{15100 + 19000 + 4800 + 6500 + 14900 + 600 + 23500 + 11500 + 12900 + 32200}{10}=\]</span></li>
+</ol>
+<details>
+<summary>
+Show/Hide Solution
+</summary>
+<ul>
+<li>The mean cost to treat the 10 TB patients in India is: <span class="math inline">\(\bar x = \$14,100\)</span>. To see how to calculate the mean in R, see the “R Instructions” below.</li>
+</ul>
+</details>
+</div>
+<p><br></p>
+</section>
+<section id="median" class="level4">
+<h4 class="anchored" data-anchor-id="median">Median</h4>
+<p>The median is the middle value in a sorted data set. Half of the observations in the data set are below the median and half are above the median. To find the median, you:</p>
+<ul>
+<li>Sort the values from smallest to largest
+<ul>
+<li>Do one of the following:
+<ul>
+<li>If there are an odd number of values, the median is the middle value in the sorted list.</li>
+<li>If there are an even number of values, the median is the mean of the two middle values in the sorted list.</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="QuestionsHeading">
+Answer the following questions:
+</div>
+<div class="Questions">
+<ol start="4" type="1">
+<li>Practice finding the median of the tuberculosis treatment costs for the 10 patients in India. First, sort the data from smallest to largest.</li>
+</ol>
+<details>
+<summary>
+Show/Hide Solution
+</summary>
+<ul>
+<li>600</li>
+<li>4800</li>
+<li>6500</li>
+<li>11500</li>
+<li>12900</li>
+<li>14900</li>
+<li>15100</li>
+<li>19000</li>
+<li>23500</li>
+<li>32200</li>
+</ul>
+</details>
+<p><br></p>
+<ol start="5" type="1">
+<li>Since there are an even number of observations (n=10), the median is computed as the mean of the middle two values. Use your answer to the previous question to find the median of the data. What is the median?</li>
+</ol>
+<details>
+<summary>
+Show/Hide Solution
+</summary>
+<ul>
+<li>600</li>
+<li>4800</li>
+<li>6500</li>
+<li>11500</li>
+<li><strong>12900</strong></li>
+<li><strong>14900</strong></li>
+<li>15100</li>
+<li>19000</li>
+<li>23500</li>
+<li>32200</li>
+</ul>
+<p>The middle two numbers are 12900 and 14900. The mean of these two numbers is:</p>
+<center>
+<span class="math inline">\(\text{Median } = \frac{12900 + 14900}{2} = 13900\)</span>
+</center>
+The median cost to treat the ten TB patients in India is $13,900.
+</details>
+</div>
+<p><br></p>
+</section>
+<section id="mode" class="level4">
+<h4 class="anchored" data-anchor-id="mode">Mode</h4>
+<p>The most frequently occurring value is called the mode. Sometimes there is more than one mode. For example, in the data set</p>
+<p><span class="math display">\[{1,~~2, ~~2, ~~2, ~~3, ~~4, ~~4, ~~5, ~~5, ~~5, ~~6}\]</span></p>
+<p>the modes are 2 and 5. Both of these values occur three times, which is more times than any other value.</p>
+<p>If no number occurs more than once in the data set, we say that there is no mode. For the data set representing the costs to treat tuberculosis in India, none of the values is repeated. So, there is no mode for these data.</p>
+<div class="QuestionsHeading">
+Answer the following question:
+</div>
+<div class="Questions">
+<ol start="6" type="1">
+<li>For a particular data set, which of the following can occur?</li>
+</ol>
+<ol type="a">
+<li><p>There may be no mode.</p></li>
+<li><p>There may be exactly one mode.</p></li>
+<li><p>There may be several modes.</p></li>
+<li><p>Only A and B can occur.</p></li>
+<li><p>A, B, and C can all occur.</p></li>
+</ol>
+<details>
+<summary>
+Show/Hide Solution
+</summary>
+<ol start="5" type="a">
+<li>A, B, and C can all occur.</li>
+</ol>
+</details>
+</div>
+<p><br></p>
+</section>
+<section id="r-instructions-for-mean-median-and-mode" class="level4">
+<h4 class="anchored" data-anchor-id="r-instructions-for-mean-median-and-mode">R Instructions for Mean, Median, and Mode</h4>
+<div class="SoftwareHeading">
+R Instructions
+</div>
+<div class="Software" style="padding:10px;">
+<p><strong>To calculate most numerical summaries</strong> (such as the mean, median, and mode) in Excel, follow these general steps:</p>
+<ol type="1">
+<li>Open R.</li>
+<li>Enter the data using the “assignment operator”, <code>&lt;-</code>, and <code>c()</code> which establishes a “collection” of things, in this case numbers.<br>
+</li>
+<li>Calculate summary statisti</li>
+<li>Then, highlight the data (by clicking on it) to which you want to apply the function. The cell reference range will automatically be added to your formula. Then type a closed parenthesis, “)” and hit enter.</li>
+</ol>
+<p><strong>Caculate a Mean</strong></p>
+<p>For example, to calculate the mean of the sample of tuberculosis patient costs in India:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dataset called `data` with the costs from 10 randomly selected patients:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15100</span>, <span class="dv">19000</span>, <span class="dv">4800</span>, <span class="dv">6500</span>, <span class="dv">14900</span>, <span class="dv">600</span>, <span class="dv">23500</span>, <span class="dv">11500</span>,<span class="dv">12900</span>, <span class="dv">32200</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14100</code></pre>
+</div>
+</div>
+<p><br></p>
+<p><strong>Calculate a Median</strong></p>
+<p>Simply replace the word “mean” in the formula with the word “median”. Try it with the tuberculosis patient data, you should get the same value that was calculated by hand above.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13900</code></pre>
+</div>
+</div>
+<p><br></p>
+<p><strong>Calculate a Mode</strong></p>
+<p>R makes it difficult to use the mode because there are fewer situations when it is useful for quantitative data where few values repeat. In the rare occasion we are not interested in a mean or median, we can tabulate the frequency of specific values using the <code>table()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new dataset called data2:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The `table()` function counts up all the times specific values show up.  This works for numbers or categories:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>data2
+1 2 3 4 5 6 7 8 9 
+3 8 4 3 3 2 1 1 2 </code></pre>
+</div>
+</div>
+<p>The first row of the <code>table()</code> output is the <em>value</em> being counted. The second row is the frequency of occurrence.</p>
+<p>Which value is most frequently occurring?</p>
+<p>If there are lots of occurring values, we can use R to <code>sort()</code> the table output to make it easier to see which is the mode:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(data2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>data2
+7 8 6 9 1 4 5 3 2 
+1 1 2 2 3 3 3 4 8 </code></pre>
+</div>
+</div>
+<p>The rows are the same as before but are sorted in ascending order. We can now easily see that 2 occurred 8 times making 2 the mode.</p>
+</div>
+</section>
+</section>
+<section id="parameters-and-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="parameters-and-statistics">Parameters and Statistics</h3>
+<p>We only have data on the cost to treat ten randomly selected tuberculosis patients. This represents a random sample from the population. The sample obtained by the researchers depends on random chance. If the study was repeated and a new sample of ten patients was randomly drawn from all cases of tuberculosis in India, would we observe the same data values? Certainly not!</p>
+<p>However, if we took a second random sample from the population, we would expect the mean of the new sample to be somewhat similar to the mean for our original sample. And if we took a third sample of data, we should expect the mean of this sample to be different than the means of the other two samples. In fact, every sample will give us a different sample mean, but all of these sample means will be fairly similar in value.</p>
+<p>One of the primary purposes of collecting and analyzing data is to estimate the true mean of a population. Since collecting data on the entire population is usually not feasible, we usually never know what the true mean is. So we estimate the true population mean with the sample mean from a single sample of data from the population.</p>
+<p>The sample mean is an example of a statistic. A statistic is a number that describes a sample. The true (usually unknown) population mean is an example of a parameter. A parameter is any number that describes a population.</p>
+<p>An easy way to distinguish between a parameter and a statistic is to note the repetition in the first letters:</p>
+<ul>
+<li><strong>P</strong>opulation <strong>P</strong>arameter True (usually unknown) value describing a population</li>
+<li><strong>S</strong>ample <strong>S</strong>tatistic Estimate of the population parameter obtained from a sample</li>
+</ul>
+<p>In the example above, the sample mean <span class="math inline">\(\bar x\)</span> = $14,100 is a statistic. Over the last few years, the total mean cost to treat tuberculosis in India has been $13,800. This $13,800 is considered a parameter because it is the “known” value for the full population.</p>
+<p>Different symbols are used to distinguish between the sample mean (a statistic) and the population mean (a parameter). The symbol for the sample mean is <span class="math inline">\(\bar x\)</span>. The symbol for the population mean is <span class="math inline">\(\mu\)</span>.</p>
+<p><strong>Perspective</strong></p>
+<p>The mean cost to treat the ten tuberculosis patients in the sample was <span class="math inline">\(\bar x\)</span> = $14,100. This number gives us some useful information. However, if this was all we were given, we would not be able to distinguish the data above from a situation where the cost for each of the ten patients was exactly $14,100. Notice that if the cost for each patient was $14,100, the mean would be:</p>
+<p><span class="math display">\[\bar x=\frac{14100 + 14100 + 14100 + 14100 + 14100 + 14100 + 14100 + 14100 + 14100 + 14100}{10} =14,100\]</span></p>
+<p>Even though measures of center are important, we need to consider the shape, center and spread of a distribution of data. When evaluating data, it is sometimes tempting to compute a mean but to avoid creating a histogram. This can lead to errant decisions based on a misunderstanding or incorrect transcription of data. If there is a transcription error in the data, it is sometimes easiest to detect it as an outlier in a histogram.</p>
+<p><br> <br></p>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<div class="SummaryHeading">
+Remember…
+</div>
+<div class="Summary">
+<ol type="1">
+<li><p>Histograms are created by dividing the number line into several equal parts, starting at or below the minimum value occurring in the data and ending at or above the maximum value in the data. The number of data points occurring in each interval (called a bin) are counted. A bar is then drawn for each bin so that the height of the bar shows the number of data points contained in that bin.</p></li>
+<li><p>A <strong>histogram</strong> allows us to visually interpret data to quickly recognize which values are most common and which values are least common in the data.</p></li>
+<li><p>Histograms can be <strong>left-skewed</strong> (the majority of the data is on the right of the histogram, less common values stretch to the left side), <strong>right-skewed</strong> (majority of the data is on the left side with less common values stretching to the right), or <strong>symmetrical and bell-shaped</strong> (most data is in the middle with less common values stretching out to either side).</p></li>
+<li><p>The <strong>mean</strong>, <strong>median</strong>, and <strong>mode</strong> are measures of the center of a distribution. The mean is the most common measure of center and is computed by adding up the observed data and dividing by the number of observations in the data set. The median represents the 50th percentile in the data. The mean can be calculated in R using <code>mean(...)</code>, the median by using <code>median(...)</code>, and the mode by <code>table(...)</code> where the <code>...</code> in each case consists of the data.</p></li>
+<li><p>When comparing the centers of distributions using graphical and numerical summaries, the direction of the skew showing in the histogram will generally correspond with the mean being pulled in that direction.</p></li>
+</ol>
+<table id="fancytable">
+<tbody><tr>
+<th>
+Right-skewed
+</th>
+<th>
+Symmetric &amp; Bell-shaped
+</th>
+<th>
+Left-skewed
+</th>
+</tr>
+<tr>
+<td>
+&lt;img srchttps://github.com/byuistats/Math221D_Cannon/raw/master/Images/Lesson03_shape_wageshist.png” width=“130%” alt=“Right-skewed distribution”&gt;
+</td>
+<td>
+&lt;img srchttps://github.com/byuistats/Math221D_Cannon/raw/master/Images/Lesson03_shape_maleheightshist.png” width=“130%” alt=“Symmetric bell-shaped distribution”&gt;
+</td>
+<td>
+&lt;img srchttps://github.com/byuistats/Math221D_Cannon/raw/master/Images/Lesson03_shape_gpahist.png” width=“130%” alt=“Left-skewed distribution”&gt;
+</td>
+</tr>
+<tr>
+<td>
+<p>Mean: $10.45</p>
+<p>Median: $9.04</p>
+Mean is to the right of the median.
+</td>
+<td>
+<p>Mean: 71.1 inches</p>
+<p>Median: 71 inches</p>
+Mean and median are roughly equal.
+</td>
+<td>
+<p>Mean: 3.42</p>
+<p>Median: 3.45</p>
+Mean is to the left of the median.
+</td>
+</tr>
+</tbody></table>
+<p><br></p>
+<ol start="6" type="1">
+<li><p>In a symmetrical and bell-shaped distribution of data, the mean, median, and mode are all roughly the same in value. However, in a skewed distribution, the mean is strongly influenced by outliers and tends to be pulled in the direction of the skew. In a left-skewed distribution, the mean will tend to be to the left of the median. In a right-skewed distribution, the mean will tend to be to the right of the median.</p></li>
+<li><p>A <strong>parameter</strong> is a true (but usually unknown) number that describes a population. A <strong>statistic</strong> is an estimate of a parameter obtained from a sample of the population.</p></li>
+</ol>
+</div>
+<p><br></p>
 
 
 </section>

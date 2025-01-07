@@ -1,5 +1,5 @@
 ---
-title: Summarizing Data Activity
+title: 'Application Activity:  Summarizing Data'
 subtitle: CO2 Uptake Experiment
 format:
   html:
