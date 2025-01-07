@@ -100,6 +100,8 @@ For this class, we will be using the "import" function in the "rio" library that
 
 big5 <- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')
 
+creativity <- import('https://github.com/byuistats/Math221D_Course/raw/main/Data/creativity_scores.csv')
+
 ```
 
 All this code did was create an dataset object called big5.  There are several ways to look at the object.  The next code chunk will introduce you to 3.  The first is to run the name by itself.  This prints out the first hundred or so lines of the dataset in the Console.
