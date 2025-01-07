@@ -1194,8 +1194,7 @@ From the histogram we clearly see most values bunched near the left and graduall
 <br>
 
 </div>
-&nbsp;
-</div>
+
 <br>
 
 Histograms are preferred to boxplots when visualizing one set of data.  But side-by-side boxplots are a powerful way to compare data from different samples visually. For example, we may be interested in comparing the results of wrong-site lawsuits and wrong-patient lawsuits.
