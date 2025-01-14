@@ -1,11 +1,12 @@
 ---
 title: Testing...Testing...1...2...3
-author: '[your name]'
+author: 'Paul Cannon'
 format:
   html:
     self-contained: true
     embed-resources: true
 ---
+
 
 # Introduction
 
