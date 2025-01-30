@@ -49,6 +49,8 @@ website:
     - text: "Unit 3"
       menu:
          - text: "Fundamentals of Statistics"
+         - href: ./1-Data_Literacy/Stat_Process.qmd
+         - href: ./1-Data_Literacy/Statistical_Process_Practice.qmd
          - href: ./3-Stat_Fundamentals/01-Intro_to_Probability.qmd
          - href: ./3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.qmd
          - href: ./3-Stat_Fundamentals/03-Normal_Distribution_Workbook.qmd
