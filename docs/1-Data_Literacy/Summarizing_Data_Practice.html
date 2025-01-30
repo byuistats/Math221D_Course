@@ -216,6 +216,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-3">    
         <li class="dropdown-header">Fundamentals of Statistics</li>
         <li>
+    <a class="dropdown-item" href="../1-Data_Literacy/Stat_Process.html">
+ <span class="dropdown-text">The Statistical Process</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../1-Data_Literacy/Statistical_Process_Practice.html">
+ <span class="dropdown-text">The Statistical Process-Practice</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/01-Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability (Reading)</span></a>
   </li>  
@@ -491,9 +499,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>wrong_patient <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx'</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>wordle <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/Wordle.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>wrong_patient <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx'</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in utils::unzip(zip_path, list = TRUE): zip file 'C:\Users\paulccannon\AppData\Local\Temp\RtmpMbTzcN\file7e101ae4634b.xlsx' cannot be opened</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>wordle <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/Wordle.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="whoopsies" class="level1">

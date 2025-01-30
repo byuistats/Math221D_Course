@@ -245,6 +245,14 @@ window.Quarto = {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-3">    
         <li class="dropdown-header">Fundamentals of Statistics</li>
         <li>
+    <a class="dropdown-item" href="../1-Data_Literacy/Stat_Process.html">
+ <span class="dropdown-text">The Statistical Process</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../1-Data_Literacy/Statistical_Process_Practice.html">
+ <span class="dropdown-text">The Statistical Process-Practice</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/01-Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability (Reading)</span></a>
   </li>  
@@ -2060,59 +2068,17 @@ R Instructions
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>wrong_site <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in utils::unzip(zip_path, list = TRUE): zip file 'C:\Users\paulccannon\AppData\Local\Temp\Rtmpq2JmfA\file7560631b617.xlsx' cannot be opened</code></pre>
+</div>
 </div>
 <p>&nbsp;&nbsp;<strong>To calculate percentiles and quartiles in R, do the following</strong></p>
 <ul>
 <li>Datasets loaded into R may have many columns of information. To specify which column in the dataset should be used for analysis we use the <code>$</code>. For example, if we wanted only to look at the Wrong_Patient clumn in the wrong_site dataset:</li>
 </ul>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  [1]  250000  106900   62307  192800   20769    2680    4300   30819   23214
- [10]   26099       0   50000   66600  175000   10384   42900   52928       0
- [19]    8200    2500    6900  126300     900    7700  140000   76000   50000
- [28]  354530    5359    4300   12000   16749   35600    9045   21900    2010
- [37]   22444   50000   85000   40370   39863       0   36100   49000   48908
- [46]   19800   32200    3400       0   75000   21774    2600   30000    7300
- [55]  176940   55000    9500   55272    4690   75000   34168   83700    1005
- [64]   17419   34800   14739       0       0    1000     325   41538  108200
- [73]   63224   15000       0    3900   65657   50000  109205    3900   10000
- [82]    9900   87096   12090       0    1000       0   74701    3900   18000
- [91]       0   33499    1250       0   29813   11724  141363    3685   35508
-[100]    2500   12060    5695   50582   82071   55400       0  104400     500
-[109]       0   25000   10000   85000   25000       0   24100    3900 1250000
-[118]   15074     550    7195  101800   11600    1000    4020   19764   25794
-[127]     900   10000   35200   94100       0   16909  128400   60967   50000
-[136]   50000   84751   46800  130308   43800   49242   22800   15500   11054
-[145]     400   10000  104790   13064    6400  100000   17084   16300   11000
-[154]   12500       0    1200       0  200000    3900    3015  172200   25000
-[163]   27468  250000   21104   12500   30000   59000   46227     500  131000
-[172]    2345    6000       0     670    9714      NA      NA      NA      NA
-[181]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[190]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[199]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[208]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[217]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[226]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[235]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[244]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[253]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[262]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[271]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[280]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[289]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[298]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[307]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[316]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[325]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[334]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[343]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[352]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[361]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[370]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[379]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[388]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[397]      NA      NA      NA      NA      NA      NA      NA      NA      NA
-[406]      NA      NA      NA      NA      NA      NA</code></pre>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
 </div>
 <ul>
@@ -2120,12 +2086,11 @@ R Instructions
 <li><p>To calculate the 25th percentile for the costs of surgery done on the Wrong Site:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Site, .<span class="dv">25</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  25% 
-29496 </code></pre>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Site, .<span class="dv">25</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: the na.rm=TRUE removes the missing values from the dataset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: the na.rm=TRUE removes the missing values from the dataset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 </div>
@@ -2188,10 +2153,9 @@ Solution
 <li>$6343.40</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Site, .<span class="dv">13</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   13% 
-6343.4 </code></pre>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Site, .<span class="dv">13</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
 </div>
 </details>
@@ -2232,10 +2196,9 @@ Solution
 <li>$149,963.00</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Site, .<span class="dv">9</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   90% 
-149963 </code></pre>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Site, .<span class="dv">9</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
 </div>
 </details>
@@ -2263,10 +2226,9 @@ Solution
 <li>$124,280.00</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Site, .<span class="dv">75</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   75% 
-124280 </code></pre>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Site, .<span class="dv">75</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
 </div>
 </details>
@@ -2282,15 +2244,14 @@ Solution
 <li>$68,552.00</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Site, .<span class="dv">5</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  50% 
-68552 </code></pre>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(wrong_site<span class="sc">$</span>Wrong_Site, .<span class="dv">5</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Or</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(wrong_site<span class="sc">$</span>Wrong_Site)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 68552</code></pre>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Or</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(wrong_site<span class="sc">$</span>Wrong_Site)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
 </div>
 </details>
@@ -2327,16 +2288,15 @@ R Instructions
 <li>Load the Library:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Input the data into the <code>favstats()</code> function:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(wrong_site<span class="sc">$</span>Wrong_Site)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> min    Q1 median     Q3    max     mean       sd   n missing
-   0 29496  68552 124280 780575 80041.24 71403.83 411       0</code></pre>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(wrong_site<span class="sc">$</span>Wrong_Site)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
 </div>
 <p><br></p>
@@ -2392,29 +2352,24 @@ R Instructions
 <li>Load the data file. For this example, open the file <a href="./Data/WrongSiteWrongPatient.xlsx">WrongSiteWrongPatient.xlsx</a>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>wrong_site <span class="ot">&lt;-</span>  <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>wrong_site <span class="ot">&lt;-</span>  <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in utils::unzip(zip_path, list = TRUE): zip file 'C:\Users\paulccannon\AppData\Local\Temp\Rtmpq2JmfA\file7560c5c6565.xlsx' cannot be opened</code></pre>
+</div>
 </div>
 <ul>
 <li>Use the <code>boxplot()</code> function to get a boxplot:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wrong_site<span class="sc">$</span>Wrong_Site)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="4-Measures_of_Spread_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wrong_site<span class="sc">$</span>Wrong_Site)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
-</div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can make it a little nicer by adding labels to the x and y axes and adding a title as follows:</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wrong_site<span class="sc">$</span>Wrong_Site, <span class="at">xlab=</span><span class="st">"Wrong Site"</span>, <span class="at">ylab=</span><span class="st">"Cost in $"</span>, <span class="at">main=</span><span class="st">"Boxplot of Costs of Operating on the Wrong Site"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="4-Measures_of_Spread_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can make it a little nicer by adding labels to the x and y axes and adding a title as follows:</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wrong_site<span class="sc">$</span>Wrong_Site, <span class="at">xlab=</span><span class="st">"Wrong Site"</span>, <span class="at">ylab=</span><span class="st">"Cost in $"</span>, <span class="at">main=</span><span class="st">"Boxplot of Costs of Operating on the Wrong Site"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
 </div>
 <p><br></p>
@@ -2440,13 +2395,9 @@ Solution
 </summary>
 <p>To create the histogram, use the <code>histogram()</code> function on the data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(wrong_site<span class="sc">$</span>Wrong_Patient)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="4-Measures_of_Spread_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(wrong_site<span class="sc">$</span>Wrong_Patient)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
 </div>
 <p>From the histogram we clearly see most values bunched near the left and gradually fewer values as we move to the right along the number line, so the correct answer is ‘c.&nbsp;Skewed right’.</p>
@@ -2465,13 +2416,9 @@ R Instructions
 <li>Using the previously loaded data, <code>wrong_site</code>, use the <code>boxplot()</code> function with the column names separated by a comma, and add labels:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wrong_site<span class="sc">$</span>Wrong_Patient, wrong_site<span class="sc">$</span>Wrong_Site, <span class="at">names=</span><span class="fu">c</span>(<span class="st">"Wrong Patient"</span>, <span class="st">"Wrong Site"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="4-Measures_of_Spread_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wrong_site<span class="sc">$</span>Wrong_Patient, wrong_site<span class="sc">$</span>Wrong_Site, <span class="at">names=</span><span class="fu">c</span>(<span class="st">"Wrong Patient"</span>, <span class="st">"Wrong Site"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'wrong_site' not found</code></pre>
 </div>
 </div>
 <p>We will cover how to improve your charts even more a little later.</p>

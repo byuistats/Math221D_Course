@@ -245,6 +245,14 @@ window.Quarto = {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-unit-3">    
         <li class="dropdown-header">Fundamentals of Statistics</li>
         <li>
+    <a class="dropdown-item" href="../1-Data_Literacy/Stat_Process.html">
+ <span class="dropdown-text">The Statistical Process</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../1-Data_Literacy/Statistical_Process_Practice.html">
+ <span class="dropdown-text">The Statistical Process-Practice</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/01-Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability (Reading)</span></a>
   </li>  
@@ -871,14 +879,13 @@ Show/Hide Solution
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>body_temp <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/BodyTemp.xlsx"</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(body_temp<span class="sc">$</span>BodyTemp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-The_Normal_Distribution_Textbook_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>body_temp <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/BodyTemp.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in utils::unzip(zip_path, list = TRUE): zip file 'C:\Users\paulccannon\AppData\Local\Temp\RtmpasP3Lt\file70f839a35d34.xlsx' cannot be opened</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(body_temp<span class="sc">$</span>BodyTemp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'body_temp' not found</code></pre>
 </div>
 </div>
 </details>
@@ -901,10 +908,9 @@ Show/Hide Solution
 Show/Hide Solution
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(body_temp<span class="sc">$</span>BodyTemp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  min   Q1 median   Q3   max     mean        sd   n missing
- 96.2 97.8   98.3 98.7 100.8 98.23446 0.7375924 148       0</code></pre>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(body_temp<span class="sc">$</span>BodyTemp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'body_temp' not found</code></pre>
 </div>
 </div>
 <p>The sample mean is 98.23, sample standard deviation is 0.738, and sample size is n = 148.</p>
