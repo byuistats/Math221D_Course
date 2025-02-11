@@ -1,0 +1,245 @@
+---
+title: "Distribution of Sample Means"
+subtitle: "Class Exercise"
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+
+
+
+
+
+```{r}
+
+props <- rbinom(1000, 50, .1)
+hist(props)
+sigma <- sd(props)
+mu <- mean(props)
+
+
+stats <- NULL
+
+for(i in 1:500){
+  samp <- sample(props, 500)
+  
+  stats <- rbind(stats, favstats(samp))
+}
+
+
+hist(stats$sd)
+abline(v=sigma, col="red")
+
+```
+
+
+
+
+
+# Music and Mental Health
+
+```{r}
+library(rio)
+library(mosaic)
+library(tidyverse)
+library(car)
+
+music <- read_csv("https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/music_and_mental_health_survey_results.csv")
+```
+
+
+```{r}
+
+music_sample <- music %>% sample(30, replace=TRUE)
+
+favstats(music_sample$`Hours per day`)
+
+favstats(music_sample$`Hours per day` ~ music_sample$`Primary streaming service`)
+
+barchart(sort(table(music_sample$`Primary streaming service`)))
+
+```
+
+
+```{r}
+mns <- NULL
+
+for(i in 1:1000){
+  samp_dat <- music %>% 
+    sample(100,replace=TRUE) %>% 
+    pluck("Hours per day" )
+  mns <- rbind(mns, favstats(samp_dat))
+}
+
+
+hist(mns$sd)
+
+
+```
+
+
+```{r}
+
+favstats(music$`Hours per day` ~ music$`Primary streaming service`)
+
+table(music$`Primary streaming service`)
+
+ggplot(music, aes(x = `Hours per day`)) + geom_histogram()
+
+ggplot(music, aes(x=`Primary streaming service`)) + geom_bar()
+
+ggplot(music, aes(x=`Frequency [EDM]`)) + geom_bar()
+
+ggplot(music, aes(x=`Frequency [Rock]`)) + geom_bar()
+
+
+```
+
+![Background](https://www.kaggle.com/datasets/catherinerasgaitis/mxmh-survey-results?resource=download)
+
+```{r}
+
+ggplot(music, aes(x = reorder(`Fav genre`, -Depression), y = Depression)) +
+  geom_boxplot()
+
+ggplot(music, aes(x = reorder(`Fav genre`, -Anxiety), y = Anxiety)) +
+  geom_boxplot()
+
+ggplot(music, aes(x = reorder(`Fav genre`, -Insomnia), y = Insomnia)) +
+  geom_boxplot()
+
+ggplot(music, aes(x = reorder(`Fav genre`, -OCD), y = OCD)) +
+  geom_boxplot()
+
+
+
+```
+
+
+
+```{r}
+
+
+ggplot(music, aes(x = reorder(`Frequency [Metal]`  , -Depression), y = Depression)) +
+  geom_boxplot()
+
+ggplot(music, aes(x = reorder(`Frequency [Metal]`  , -Anxiety), y = Anxiety)) +
+  geom_boxplot()
+
+
+
+ggplot(music, aes(x = reorder(`Frequency [Pop]`  , -Depression), y = Depression)) +
+  geom_boxplot()
+
+ggplot(music, aes(x = reorder(`Frequency [Pop]`  , -Anxiety), y = Anxiety)) +
+  geom_boxplot()
+
+
+
+
+```
+
+
+
+```{r}
+
+ggplot(music, aes(x = reorder(`Foreign languages`  , -Depression), y = Depression)) +
+  geom_boxplot()
+
+
+ggplot(music %>% filter(BPM < 150), aes(x = reorder(`Fav genre`, -BPM), y = BPM)) +
+  geom_boxplot()
+
+
+
+ggplot(music %>% filter(BPM < 150), aes(x = reorder(`Fav genre`, -BPM), y = BPM)) +
+  geom_boxplot()
+
+```
+
+
+```{r}
+
+ggplot(music %>% filter(BPM < 150), aes(x = Anxiety, y = Depression)) +
+  geom_point() +
+  geom_jitter() +
+  geom_smooth()
+
+```
+
+
+
+
+# Penguins
+
+
+```{r}
+
+penguins <- read_csv('https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/penguins.csv')
+
+
+favstats(bill_length_mm  ~ species, data = penguins)
+boxplot(bill_length_mm  ~ species, data = penguins)
+
+boxplot(bill_length_mm  ~ island, data = penguins)
+
+ggplot(penguins, aes(x = island, y = bill_length_mm, fill = species)) +
+  geom_boxplot() +
+  facet_grid(~species)
+
+
+
+```
+
+
+```{r}
+
+penguins_samp <- penguins %>% sample(30, replace=TRUE)
+ggplot(penguins, aes(x = island, y = body_mass_g, fill = species)) +
+  geom_boxplot() +
+  facet_grid(~species)
+
+favstats(penguins_samp$bill_depth_mm ~ penguins_samp$species)
+
+boxplot(penguins_samp$bill_depth_mm ~ penguins_samp$species)
+
+barchart(penguins_samp$sex)
+
+```
+
+# Illustrate biosex differences in samples
+
+Run the following code multiple times and see how the distribution changes.
+
+```{r}
+
+penguins_species <- penguins %>% sample(30, replace=TRUE) %>% select(species, sex, bill_length_mm) %>% drop_na()
+
+ggplot(penguins_samp, aes(x = sex, fill = species)) +
+  geom_bar() +
+  facet_grid(~species)
+
+
+favstats(penguins_species$bill_length_mm)
+
+ggplot(penguins %>% drop_na(), aes(x = sex, y = body_mass_g)) +
+  geom_boxplot()
+
+```
+
+# Capture the means
+
+```{r}
+
+mns <- c(mean(penguins$bill_length_mm, na.rm=TRUE), 43.3, 44.0, 44.2)
+mns
+
+```
+

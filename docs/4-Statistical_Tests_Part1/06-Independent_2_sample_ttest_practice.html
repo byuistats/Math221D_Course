@@ -269,8 +269,8 @@ window.Quarto = {
  <span class="dropdown-text">Normal Probability Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
- <span class="dropdown-text">The Distribution of Sample Means (Reading)</span></a>
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/Sampling_Distributions_CLT_LLN_Reading.html">
+ <span class="dropdown-text">Distribution of Sample Means</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
@@ -566,9 +566,6 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="load-the-data">Load the Data</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dating <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/dating_attractive_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in open.connection(structure(4L, class = c("curl", "connection"), conn_id = &lt;pointer: 0x000001b2abdcd360&gt;), : cannot open the connection</code></pre>
-</div>
 </div>
 </section>
 <section id="explore-the-data" class="level2">
@@ -590,9 +587,13 @@ window.Quarto = {
 <p><strong>NOTE</strong>: The default for R is to set group order alphabetically. This means Group 1 = Female.</p>
 <p>Check that the samples for both groups are normally distributed</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(dating<span class="sc">$</span>Importance<span class="sc">~</span>dating<span class="sc">$</span>Biosex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(predvars, data, env): object 'dating' not found</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(dating<span class="sc">$</span>Importance<span class="sc">~</span>dating<span class="sc">$</span>Biosex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="06-Independent_2_sample_ttest_practice_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Do the data for each group appear normally distributed?</p>
@@ -618,7 +619,7 @@ window.Quarto = {
 <p>We suspect that dental costs are higher in Rexburg because of less competition.</p>
 <p>Use the data imported below to answer the following questions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dentist <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/DentistOfficeBills_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dentist <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/DentistOfficeBills_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="review-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="review-the-data">Review The Data</h2>
@@ -655,7 +656,7 @@ window.Quarto = {
 <p>Let <span class="math inline">\(\mu_A\)</span> be the <em>population</em> average of babies born to African-born mothers and <span class="math inline">\(\mu_{IL}\)</span> be the <em>population</em> mean weight of babies born to mothers in Illinois.</p>
 <p>Use the data imported below to answer the following questions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>birth_weights <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/IllinoisBirthWeightsTwoVar_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>birth_weights <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/IllinoisBirthWeightsTwoVar_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="review-the-data-1" class="level2">
 <h2 class="anchored" data-anchor-id="review-the-data-1">Review The Data</h2>

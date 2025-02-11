@@ -240,8 +240,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Normal Probability Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Stat_Fundamentals/05-The_Central_Limit_Theorem.html">
- <span class="dropdown-text">The Distribution of Sample Means (Reading)</span></a>
+    <a class="dropdown-item" href="../3-Stat_Fundamentals/Sampling_Distributions_CLT_LLN_Reading.html">
+ <span class="dropdown-text">Distribution of Sample Means</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.html">
@@ -552,25 +552,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(survey<span class="sc">$</span>Height_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> min Q1 median Q3 max mean sd n missing
-  NA NA     NA NA  NA  NaN NA 0       0</code></pre>
+<pre><code>  min  Q1 median      Q3 max     mean       sd   n missing
+ 1.68 161    170 178.125 999 169.2412 53.54382 312       0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(survey<span class="sc">$</span>Height_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in hist.default(survey$Height_cm): 'x' must be numeric</code></pre>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-Tidyverse_Fundamentals_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The maximum is 999 cm, which is around 33 Feet! We know this is not a possible value.</p>
 <p>It is very unlikely that a high school student is taller than 7 feet. We can use a logical operator to see which students are taller than 7 feet (213.36 cm):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>survey<span class="sc">$</span>Height_cm <span class="sc">&gt;</span> <span class="fl">213.36</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>survey<span class="sc">$</span>Height_cm <span class="sc">&gt;</span> <span class="fl">213.36</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>logical(0)</code></pre>
+<pre><code>  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+ [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[193] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[205] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[217] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[229] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[253] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[265] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[277] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[289] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[301] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To illustrate, the below code puts the Survey column, Height_cm, along with the TRUE/FALSE logical</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">Height_cm =</span>survey<span class="sc">$</span>Height_cm, <span class="at">logical =</span> survey<span class="sc">$</span>Height_cm <span class="sc">&gt;</span> <span class="fl">213.36</span>)[<span class="dv">73</span><span class="sc">:</span><span class="dv">84</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To illustrate, the below code puts the Survey column, Height_cm, along with the TRUE/FALSE logical</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">Height_cm =</span>survey<span class="sc">$</span>Height_cm, <span class="at">logical =</span> survey<span class="sc">$</span>Height_cm <span class="sc">&gt;</span> <span class="fl">213.36</span>)[<span class="dv">73</span><span class="sc">:</span><span class="dv">84</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] NA NA NA NA NA NA NA NA NA NA NA NA</code></pre>
+<pre><code>   Height_cm logical
+73     162.0   FALSE
+74     172.0   FALSE
+75     160.0   FALSE
+76     175.0   FALSE
+77     182.8   FALSE
+78     153.0   FALSE
+79     184.0   FALSE
+80     170.0   FALSE
+81     150.0   FALSE
+82     177.8   FALSE
+83     999.0    TRUE
+84     172.7   FALSE</code></pre>
 </div>
 </div>
 <p>What does the above code return?</p>
@@ -580,22 +621,333 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h3>
 <p>We can also use logical operators for categorical data. For example, if we wanted to see how many people are ambidextrous, we can run the following:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What are unique values in of the respondents?</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What are unique values in of the respondents?</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>NULL</code></pre>
+<pre><code>[1] "Left-Handed"  "Right-Handed" "Ambidextrous"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a logical operator to get TRUE and FALSE for students who responded "Ambidextrous" on the survey question about handedness</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(survey<span class="sc">$</span>Handed <span class="sc">==</span> <span class="st">"Ambidextrous"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a logical operator to get TRUE and FALSE for students who responded "Ambidextrous" on the survey question about handedness</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(survey<span class="sc">$</span>Handed <span class="sc">==</span> <span class="st">"Ambidextrous"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
+<pre><code>[1] 9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">Handed =</span> survey<span class="sc">$</span>Handed, <span class="at">logical =</span> survey<span class="sc">$</span>Handed <span class="sc">==</span> <span class="st">'Ambidextrous'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">Handed =</span> survey<span class="sc">$</span>Handed, <span class="at">logical =</span> survey<span class="sc">$</span>Handed <span class="sc">==</span> <span class="st">'Ambidextrous'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] logical
-&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+<pre><code>          Handed logical
+1    Left-Handed   FALSE
+2   Right-Handed   FALSE
+3   Right-Handed   FALSE
+4   Right-Handed   FALSE
+5    Left-Handed   FALSE
+6   Right-Handed   FALSE
+7   Ambidextrous    TRUE
+8   Right-Handed   FALSE
+9   Right-Handed   FALSE
+10  Right-Handed   FALSE
+11  Right-Handed   FALSE
+12   Left-Handed   FALSE
+13  Right-Handed   FALSE
+14  Right-Handed   FALSE
+15  Right-Handed   FALSE
+16  Right-Handed   FALSE
+17  Right-Handed   FALSE
+18  Right-Handed   FALSE
+19  Right-Handed   FALSE
+20   Left-Handed   FALSE
+21  Right-Handed   FALSE
+22   Left-Handed   FALSE
+23  Right-Handed   FALSE
+24  Right-Handed   FALSE
+25  Right-Handed   FALSE
+26  Right-Handed   FALSE
+27  Right-Handed   FALSE
+28  Ambidextrous    TRUE
+29  Right-Handed   FALSE
+30  Right-Handed   FALSE
+31  Right-Handed   FALSE
+32  Right-Handed   FALSE
+33  Right-Handed   FALSE
+34  Right-Handed   FALSE
+35   Left-Handed   FALSE
+36  Right-Handed   FALSE
+37  Right-Handed   FALSE
+38   Left-Handed   FALSE
+39  Right-Handed   FALSE
+40  Right-Handed   FALSE
+41  Right-Handed   FALSE
+42  Right-Handed   FALSE
+43  Right-Handed   FALSE
+44  Right-Handed   FALSE
+45  Right-Handed   FALSE
+46  Right-Handed   FALSE
+47  Right-Handed   FALSE
+48  Ambidextrous    TRUE
+49  Right-Handed   FALSE
+50  Right-Handed   FALSE
+51  Right-Handed   FALSE
+52  Right-Handed   FALSE
+53  Right-Handed   FALSE
+54  Right-Handed   FALSE
+55  Right-Handed   FALSE
+56   Left-Handed   FALSE
+57  Right-Handed   FALSE
+58  Right-Handed   FALSE
+59  Right-Handed   FALSE
+60  Right-Handed   FALSE
+61  Right-Handed   FALSE
+62  Right-Handed   FALSE
+63  Right-Handed   FALSE
+64  Right-Handed   FALSE
+65  Right-Handed   FALSE
+66  Right-Handed   FALSE
+67  Right-Handed   FALSE
+68  Right-Handed   FALSE
+69  Right-Handed   FALSE
+70  Right-Handed   FALSE
+71  Right-Handed   FALSE
+72  Right-Handed   FALSE
+73  Right-Handed   FALSE
+74   Left-Handed   FALSE
+75   Left-Handed   FALSE
+76  Right-Handed   FALSE
+77  Right-Handed   FALSE
+78  Right-Handed   FALSE
+79  Right-Handed   FALSE
+80   Left-Handed   FALSE
+81  Right-Handed   FALSE
+82   Left-Handed   FALSE
+83  Ambidextrous    TRUE
+84  Right-Handed   FALSE
+85  Right-Handed   FALSE
+86   Left-Handed   FALSE
+87  Right-Handed   FALSE
+88  Right-Handed   FALSE
+89   Left-Handed   FALSE
+90  Right-Handed   FALSE
+91   Left-Handed   FALSE
+92  Right-Handed   FALSE
+93  Right-Handed   FALSE
+94  Right-Handed   FALSE
+95  Right-Handed   FALSE
+96  Right-Handed   FALSE
+97  Right-Handed   FALSE
+98  Right-Handed   FALSE
+99  Right-Handed   FALSE
+100 Right-Handed   FALSE
+101 Right-Handed   FALSE
+102 Right-Handed   FALSE
+103 Right-Handed   FALSE
+104 Right-Handed   FALSE
+105 Right-Handed   FALSE
+106 Right-Handed   FALSE
+107 Right-Handed   FALSE
+108 Right-Handed   FALSE
+109 Right-Handed   FALSE
+110 Right-Handed   FALSE
+111 Right-Handed   FALSE
+112 Right-Handed   FALSE
+113 Right-Handed   FALSE
+114 Right-Handed   FALSE
+115 Right-Handed   FALSE
+116 Right-Handed   FALSE
+117 Right-Handed   FALSE
+118 Right-Handed   FALSE
+119 Right-Handed   FALSE
+120 Right-Handed   FALSE
+121 Right-Handed   FALSE
+122 Right-Handed   FALSE
+123 Right-Handed   FALSE
+124 Right-Handed   FALSE
+125 Right-Handed   FALSE
+126 Right-Handed   FALSE
+127 Right-Handed   FALSE
+128 Right-Handed   FALSE
+129 Right-Handed   FALSE
+130 Right-Handed   FALSE
+131  Left-Handed   FALSE
+132 Right-Handed   FALSE
+133 Right-Handed   FALSE
+134 Right-Handed   FALSE
+135 Right-Handed   FALSE
+136 Right-Handed   FALSE
+137 Right-Handed   FALSE
+138 Right-Handed   FALSE
+139 Right-Handed   FALSE
+140 Right-Handed   FALSE
+141 Right-Handed   FALSE
+142 Right-Handed   FALSE
+143 Ambidextrous    TRUE
+144 Right-Handed   FALSE
+145 Right-Handed   FALSE
+146 Right-Handed   FALSE
+147 Right-Handed   FALSE
+148 Right-Handed   FALSE
+149  Left-Handed   FALSE
+150 Right-Handed   FALSE
+151 Right-Handed   FALSE
+152 Right-Handed   FALSE
+153 Right-Handed   FALSE
+154 Right-Handed   FALSE
+155 Right-Handed   FALSE
+156 Right-Handed   FALSE
+157 Right-Handed   FALSE
+158 Right-Handed   FALSE
+159 Right-Handed   FALSE
+160 Right-Handed   FALSE
+161 Right-Handed   FALSE
+162 Right-Handed   FALSE
+163  Left-Handed   FALSE
+164 Right-Handed   FALSE
+165 Right-Handed   FALSE
+166 Right-Handed   FALSE
+167  Left-Handed   FALSE
+168 Right-Handed   FALSE
+169  Left-Handed   FALSE
+170  Left-Handed   FALSE
+171 Right-Handed   FALSE
+172 Right-Handed   FALSE
+173 Right-Handed   FALSE
+174 Right-Handed   FALSE
+175 Right-Handed   FALSE
+176 Right-Handed   FALSE
+177 Right-Handed   FALSE
+178 Right-Handed   FALSE
+179 Right-Handed   FALSE
+180 Right-Handed   FALSE
+181 Right-Handed   FALSE
+182 Right-Handed   FALSE
+183 Right-Handed   FALSE
+184 Right-Handed   FALSE
+185 Ambidextrous    TRUE
+186 Right-Handed   FALSE
+187 Right-Handed   FALSE
+188 Right-Handed   FALSE
+189 Right-Handed   FALSE
+190 Right-Handed   FALSE
+191 Right-Handed   FALSE
+192 Right-Handed   FALSE
+193 Right-Handed   FALSE
+194 Right-Handed   FALSE
+195 Right-Handed   FALSE
+196 Right-Handed   FALSE
+197 Right-Handed   FALSE
+198 Right-Handed   FALSE
+199 Right-Handed   FALSE
+200 Right-Handed   FALSE
+201 Right-Handed   FALSE
+202 Right-Handed   FALSE
+203 Right-Handed   FALSE
+204 Right-Handed   FALSE
+205 Right-Handed   FALSE
+206  Left-Handed   FALSE
+207 Ambidextrous    TRUE
+208 Right-Handed   FALSE
+209 Ambidextrous    TRUE
+210 Right-Handed   FALSE
+211 Right-Handed   FALSE
+212 Right-Handed   FALSE
+213 Right-Handed   FALSE
+214 Right-Handed   FALSE
+215 Right-Handed   FALSE
+216 Right-Handed   FALSE
+217 Right-Handed   FALSE
+218 Right-Handed   FALSE
+219 Right-Handed   FALSE
+220 Right-Handed   FALSE
+221 Right-Handed   FALSE
+222 Right-Handed   FALSE
+223 Right-Handed   FALSE
+224  Left-Handed   FALSE
+225  Left-Handed   FALSE
+226 Right-Handed   FALSE
+227 Right-Handed   FALSE
+228 Right-Handed   FALSE
+229 Right-Handed   FALSE
+230 Right-Handed   FALSE
+231 Right-Handed   FALSE
+232 Right-Handed   FALSE
+233 Right-Handed   FALSE
+234 Right-Handed   FALSE
+235 Right-Handed   FALSE
+236  Left-Handed   FALSE
+237 Right-Handed   FALSE
+238  Left-Handed   FALSE
+239 Right-Handed   FALSE
+240  Left-Handed   FALSE
+241 Right-Handed   FALSE
+242 Right-Handed   FALSE
+243 Right-Handed   FALSE
+244  Left-Handed   FALSE
+245 Right-Handed   FALSE
+246 Right-Handed   FALSE
+247 Right-Handed   FALSE
+248 Right-Handed   FALSE
+249 Right-Handed   FALSE
+250 Right-Handed   FALSE
+251  Left-Handed   FALSE
+252 Right-Handed   FALSE
+253 Right-Handed   FALSE
+254 Right-Handed   FALSE
+255 Right-Handed   FALSE
+256 Right-Handed   FALSE
+257 Right-Handed   FALSE
+258 Right-Handed   FALSE
+259 Right-Handed   FALSE
+260 Right-Handed   FALSE
+261 Right-Handed   FALSE
+262 Right-Handed   FALSE
+263 Right-Handed   FALSE
+264 Right-Handed   FALSE
+265 Right-Handed   FALSE
+266 Right-Handed   FALSE
+267 Right-Handed   FALSE
+268 Right-Handed   FALSE
+269 Right-Handed   FALSE
+270 Right-Handed   FALSE
+271 Right-Handed   FALSE
+272 Right-Handed   FALSE
+273 Right-Handed   FALSE
+274 Right-Handed   FALSE
+275 Right-Handed   FALSE
+276  Left-Handed   FALSE
+277 Right-Handed   FALSE
+278 Right-Handed   FALSE
+279 Right-Handed   FALSE
+280  Left-Handed   FALSE
+281 Right-Handed   FALSE
+282 Right-Handed   FALSE
+283 Right-Handed   FALSE
+284 Right-Handed   FALSE
+285  Left-Handed   FALSE
+286 Right-Handed   FALSE
+287 Right-Handed   FALSE
+288 Ambidextrous    TRUE
+289  Left-Handed   FALSE
+290 Right-Handed   FALSE
+291  Left-Handed   FALSE
+292 Right-Handed   FALSE
+293 Right-Handed   FALSE
+294 Right-Handed   FALSE
+295 Right-Handed   FALSE
+296 Right-Handed   FALSE
+297 Right-Handed   FALSE
+298 Right-Handed   FALSE
+299  Left-Handed   FALSE
+300 Right-Handed   FALSE
+301 Right-Handed   FALSE
+302 Right-Handed   FALSE
+303 Right-Handed   FALSE
+304 Right-Handed   FALSE
+305 Right-Handed   FALSE
+306 Right-Handed   FALSE
+307  Left-Handed   FALSE
+308 Right-Handed   FALSE
+309 Right-Handed   FALSE
+310 Right-Handed   FALSE
+311 Right-Handed   FALSE
+312 Right-Handed   FALSE</code></pre>
 </div>
 </div>
 <p>We will show you why this is useful when we introduce tidyverse functions.</p>
@@ -630,13 +982,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We typically begin with the raw dataset, then “pipe” that dataset into a sequence of functions using the “pipe” operator, <code>%&gt;%</code>.</p>
 <p>Let’s begin by filtering out rows we think have legitimate heights:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-ℹ In argument: `Height_cm &lt; 214`.
-Caused by error:
-! object 'Height_cm' not found</code></pre>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 310 × 60
+   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
+   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+ 1 USA     FL         2022         12 Male         18 Left-Handed        182
+ 2 USA     IN         2022         12 Male         17 Right-Handed       190
+ 3 USA     GA         2022         12 Female       17 Right-Handed       172
+ 4 USA     NC         2022         11 Female       15 Right-Handed       163
+ 5 USA     CO         2022         12 Female       17 Left-Handed         51
+ 6 USA     MO         2022         11 Male         17 Right-Handed       181
+ 7 USA     NC         2022         11 Male         17 Ambidextrous       175
+ 8 USA     SC         2022         11 Female       18 Right-Handed       160
+ 9 USA     WA         2022         11 Female       16 Right-Handed       156
+10 USA     WA         2022         12 Female       17 Right-Handed       169
+# ℹ 300 more rows
+# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,
+#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,
+#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,
+#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,
+#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,
+#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …</code></pre>
 </div>
 </div>
 <p>The above code will return a new dataset without the outliers.</p>
@@ -644,34 +1012,91 @@ Caused by error:
 <p>How many rows does the filtered dataset have?</p>
 <p>Suppose for some reason, we only want to include right- or left-handed people (excluding ambidextrous). We can add multiple conditions in the <code>filter()</code> function separated by a comma:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>NULL</code></pre>
+<pre><code>[1] "Left-Handed"  "Right-Handed" "Ambidextrous"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-ℹ In argument: `Height_cm &lt; 214`.
-Caused by error:
-! object 'Height_cm' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalently we can use %in% instead of the !=</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Left-Handed"</span>, <span class="st">"Right-Handed"</span>),</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>         Region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MO"</span>, <span class="st">"FL"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-ℹ In argument: `Height_cm &lt; 214`.
-Caused by error:
-! object 'Height_cm' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>survey<span class="sc">$</span>Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Left-Handed"</span>, <span class="st">"Right-Handed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>logical(0)</code></pre>
+<pre><code># A tibble: 302 × 60
+   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
+   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+ 1 USA     FL         2022         12 Male         18 Left-Handed        182
+ 2 USA     IN         2022         12 Male         17 Right-Handed       190
+ 3 USA     GA         2022         12 Female       17 Right-Handed       172
+ 4 USA     NC         2022         11 Female       15 Right-Handed       163
+ 5 USA     CO         2022         12 Female       17 Left-Handed         51
+ 6 USA     MO         2022         11 Male         17 Right-Handed       181
+ 7 USA     SC         2022         11 Female       18 Right-Handed       160
+ 8 USA     WA         2022         11 Female       16 Right-Handed       156
+ 9 USA     WA         2022         12 Female       17 Right-Handed       169
+10 USA     WA         2022         11 Male         18 Right-Handed       160
+# ℹ 292 more rows
+# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,
+#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,
+#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,
+#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,
+#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,
+#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalently we can use %in% instead of the !=</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Left-Handed"</span>, <span class="st">"Right-Handed"</span>),</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>         Region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MO"</span>, <span class="st">"FL"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 27 × 60
+   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
+   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+ 1 USA     FL         2022         12 Male         18 Left-Handed       182 
+ 2 USA     MO         2022         11 Male         17 Right-Handed      181 
+ 3 USA     MO         2022         11 Female       17 Right-Handed      151 
+ 4 USA     FL         2022         12 Female       18 Right-Handed      170 
+ 5 USA     FL         2022         12 Male         18 Right-Handed      180 
+ 6 USA     FL         2022         12 Female       18 Right-Handed      173.
+ 7 USA     FL         2022         12 Male         18 Right-Handed      175 
+ 8 USA     FL         2022         12 Male         17 Right-Handed      180 
+ 9 USA     MO         2022         11 Male         17 Right-Handed      164 
+10 USA     FL         2022         12 Female       17 Right-Handed      166 
+# ℹ 17 more rows
+# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,
+#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,
+#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,
+#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,
+#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,
+#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>survey<span class="sc">$</span>Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Left-Handed"</span>, <span class="st">"Right-Handed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [25]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [37]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+ [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [73]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
+ [85]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [97]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[121]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[133]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
+[145]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[157]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[169]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[181]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[193]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[205]  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[217]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[229]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[241]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[253]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[265]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[277]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+[289]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[301]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
 </div>
 </div>
 <p>How many rows does our latest dataset have?</p>
@@ -682,22 +1107,14 @@ Caused by error:
 <p>To create a new column, “pipe” the previous steps into the <code>mutate()</code> statement. Inside the parentheses, give the new column a name and set it equal to what you want that column to be.</p>
 <p>EXAMPLE: Create a column of the ratio of Height to armspan called, ht_to_span, by using a <code>mutate()</code> statement:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm,</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">ht_in =</span> Height_cm <span class="sc">/</span> <span class="fl">2.54</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, ht_to_span, ht_in)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-ℹ In argument: `Height_cm &lt; 214`.
-Caused by error:
-! object 'Height_cm' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'clean' not found</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">ht_in =</span> Height_cm <span class="sc">/</span> <span class="fl">2.54</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, ht_to_span, ht_in)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Notice we no longer have to use <code>$</code> to access specific columns! The tidyverse lives up to its name!</p>
 </section>
@@ -705,52 +1122,53 @@ Caused by error:
 <h2 class="anchored" data-anchor-id="selecting-columns---select">Selecting Columns - <code>select()</code></h2>
 <p>There are now over 60 columns in this dataset. Suppose we are only interested in reaction times and height-to-armspan ratio as they related to handedness. To tidy up the data even further, select only the columns we are interested in (Handed, Reaction_time, and ht_to_span):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-ℹ In argument: `Height_cm &lt; 214`.
-Caused by error:
-! object 'Height_cm' not found</code></pre>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 302 × 3
+   Handed       Reaction_time ht_to_span
+   &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;
+ 1 Left-Handed          0.349      1.28 
+ 2 Right-Handed         0.358      0.990
+ 3 Right-Handed         0.447      1.03 
+ 4 Right-Handed         0.438      1.02 
+ 5 Left-Handed          0.542      0.981
+ 6 Right-Handed         0.428      0.968
+ 7 Right-Handed         0.427      1.01 
+ 8 Right-Handed         0.412      1.10 
+ 9 Right-Handed         0.346      1.04 
+10 Right-Handed         0.391      1    
+# ℹ 292 more rows</code></pre>
 </div>
 </div>
 <p>See how much we can do in just a few short, sequential lines of code? Let’s name out clean dataset, <code>clean</code>, and create a boxplot of reaction times comparing left and right handed students:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-ℹ In argument: `Height_cm &lt; 214`.
-Caused by error:
-! object 'Height_cm' not found</code></pre>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-Tidyverse_Fundamentals_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(predvars, data, env): object 'clean' not found</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the code to remove outliers in Reaction_time and remake the boxplot</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-ℹ In argument: `Height_cm &lt; 214`.
-Caused by error:
-! object 'Height_cm' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(predvars, data, env): object 'clean' not found</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify the code to remove outliers in Reaction_time and remake the boxplot</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="summarising-data---group_by-summarise" class="level2">
@@ -759,7 +1177,7 @@ Caused by error:
 <p>The <code>summarise()</code> (or equivalently, <code>summarize()</code>) function is like the mutate statement. We create a name for the new column and set it equal to what we want.</p>
 <p>Let’s name the new dataset, <code>clean</code>, and see how to make summaries using tidyverse.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(survey<span class="sc">$</span>Reaction_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(survey<span class="sc">$</span>Reaction_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -767,129 +1185,181 @@ Caused by error:
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in plot.window(xlim = xlim, ylim = ylim, log = log, yaxs = pars$yaxs): need finite 'ylim' values</code></pre>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>, </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>, </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>         Armspan_cm <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>         ClassGrade <span class="sc">==</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-Tidyverse_Fundamentals_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>, </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>, </span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>         Armspan_cm <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>         ClassGrade <span class="sc">==</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-ℹ In argument: `Height_cm &lt; 214`.
-Caused by error:
-! object 'Height_cm' not found</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(predvars, data, env): object 'clean' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'clean' not found</code></pre>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  mn_react_time med_react_time mn_ratio
+          &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;
+1         0.397          0.366     1.27</code></pre>
 </div>
 </div>
 <p>Notice that the mn_ratio is <code>Inf</code>.</p>
 <p>Why might that be the case?</p>
 <p>Modify the code chunk to exclude rows where arm span is 0:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>,</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-ℹ In argument: `Height_cm &lt; 214`.
-Caused by error:
-! object 'Height_cm' not found</code></pre>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Mean Reaction Time</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_react_time =</span> <span class="fu">min</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Mean Reaction Time</th>
+<th style="text-align: right;">med_react_time</th>
+<th style="text-align: right;">mn_ratio</th>
+<th style="text-align: right;">min_react_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.4205068</td>
+<td style="text-align: right;">0.388</td>
+<td style="text-align: right;">Inf</td>
+<td style="text-align: right;">0.067</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Mean Reaction Time</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_react_time =</span> <span class="fu">min</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'clean' not found</code></pre>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  clean$Handed   min      Q1 median      Q3   max      mean        sd   n
+1  Left-Handed 0.274 0.34825 0.4415 0.53850 0.895 0.4741471 0.1691585  34
+2 Right-Handed 0.067 0.33825 0.3845 0.44775 0.995 0.4134380 0.1302318 258
+  missing
+1       0
+2       0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(x, data, env): object 'clean' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(clean<span class="sc">$</span>ht_to_span)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'clean' not found</code></pre>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(clean<span class="sc">$</span>ht_to_span)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    min        Q1   median       Q3 max mean  sd   n missing
+ 0.0168 0.9841579 1.006519 1.052681 Inf  Inf NaN 292       0</code></pre>
 </div>
 </div>
 <p>If we want to get means for separate groups, we can add a <code>group_by()</code> statement to tell which variable(s) we want to group by:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>,</span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>         Armspan_cm <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-ℹ In argument: `Height_cm &lt; 214`.
-Caused by error:
-! object 'Height_cm' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Handed) <span class="sc">%&gt;%</span></span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_react =</span> <span class="fu">max</span>(Reaction_time),</span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>()</span>
-<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'clean' not found</code></pre>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>         Armspan_cm <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Handed) <span class="sc">%&gt;%</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_react =</span> <span class="fu">max</span>(Reaction_time),</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>()</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 22%">
+<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Handed</th>
+<th style="text-align: right;">mn_react_time</th>
+<th style="text-align: right;">med_react_time</th>
+<th style="text-align: right;">mn_ratio</th>
+<th style="text-align: right;">max_react</th>
+<th style="text-align: right;">count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Left-Handed</td>
+<td style="text-align: right;">0.4741471</td>
+<td style="text-align: right;">0.4415</td>
+<td style="text-align: right;">1.266468</td>
+<td style="text-align: right;">0.895</td>
+<td style="text-align: right;">34</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Right-Handed</td>
+<td style="text-align: right;">0.4133891</td>
+<td style="text-align: right;">0.3840</td>
+<td style="text-align: right;">1.260190</td>
+<td style="text-align: right;">0.995</td>
+<td style="text-align: right;">257</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>The <code>n()</code> is very useful for counting up the number of observations in each group.</p>
 <p>If we were only interested in the summary statistics table, we can do everything in one series of steps:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>summary_stats_table <span class="ot">&lt;-</span>  survey <span class="sc">%&gt;%</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>,</span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
-<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    Armspan_cm <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span) <span class="sc">%&gt;%</span></span>
-<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Handed) <span class="sc">%&gt;%</span></span>
-<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_react =</span> <span class="fu">max</span>(Reaction_time),</span>
-<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>()</span>
-<span id="cb60-16"><a href="#cb60-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `filter()`:
-ℹ In argument: `Height_cm &lt; 214`.
-Caused by error:
-! object 'Height_cm' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>summary_stats_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'summary_stats_table' not found</code></pre>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>summary_stats_table <span class="ot">&lt;-</span>  survey <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    Armspan_cm <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ht_to_span =</span> Height_cm <span class="sc">/</span> Armspan_cm) <span class="sc">%&gt;%</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time, ht_to_span) <span class="sc">%&gt;%</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Handed) <span class="sc">%&gt;%</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_react_time =</span> <span class="fu">median</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_ratio =</span> <span class="fu">mean</span>(ht_to_span, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_react =</span> <span class="fu">max</span>(Reaction_time),</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>()</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>summary_stats_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 6
+  Handed       mn_react_time med_react_time mn_ratio max_react count
+  &lt;chr&gt;                &lt;dbl&gt;          &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;
+1 Left-Handed          0.474          0.442     1.27     0.895    34
+2 Right-Handed         0.413          0.384     1.26     0.995   257</code></pre>
 </div>
 </div>
 </section>
@@ -898,26 +1368,43 @@ Caused by error:
 <h1>Practice Together</h1>
 <p>Suppose we want to see who gets more sleep on non-school nights, males or females whose chosen superpower is telepathy.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>telepaths <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span> </span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Gender, Sleep_Hours_Non_Schoolnight, Superpower) <span class="sc">%&gt;%</span></span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Superpower<span class="sc">==</span><span class="st">"Telepathy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `select()`:
-! Can't select columns that don't exist.
-✖ Column `Gender` doesn't exist.</code></pre>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>telepaths <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Gender, Sleep_Hours_Non_Schoolnight, Superpower) <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Superpower<span class="sc">==</span><span class="st">"Telepathy"</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(telepaths<span class="sc">$</span>Sleep_Hours_Non_Schoolnight <span class="sc">~</span> telepaths<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-Tidyverse_Fundamentals_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(telepaths<span class="sc">$</span>Sleep_Hours_Non_Schoolnight <span class="sc">~</span> telepaths<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(predvars, data, env): object 'telepaths' not found</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>telepaths <span class="sc">%&gt;%</span> </span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_sleep_hours =</span> <span class="fu">mean</span>(Sleep_Hours_Non_Schoolnight)</span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'telepaths' not found</code></pre>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>telepaths <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_sleep_hours =</span> <span class="fu">mean</span>(Sleep_Hours_Non_Schoolnight)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gender</th>
+<th style="text-align: right;">mn_sleep_hours</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Female</td>
+<td style="text-align: right;">8.733333</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Male</td>
+<td style="text-align: right;">8.190476</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Also, create a column that is the ratio of sleep hours on non-school nights to 8. This calculates the percent of recommended sleep on non-school nights.</p>
@@ -929,32 +1416,33 @@ Caused by error:
 b. Use `group_by()` to get the mean, median, standard deviation, and sample size of the percent of recommended sleep</code></pre>
 <p><strong>HINT</strong>: Use the <code>unique()</code> function to see what the options are for a given categorical variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>telepaths2 <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sleep_ratio =</span> Sleep_Hours_Non_Schoolnight <span class="sc">/</span> <span class="dv">8</span></span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Gender, Superpower, Sleep_Hours_Non_Schoolnight, sleep_ratio) <span class="sc">%&gt;%</span></span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Superpower <span class="sc">==</span> <span class="st">"Telepathy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `mutate()`:
-ℹ In argument: `sleep_ratio = Sleep_Hours_Non_Schoolnight/8`.
-Caused by error:
-! object 'Sleep_Hours_Non_Schoolnight' not found</code></pre>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>telepaths2 <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sleep_ratio =</span> Sleep_Hours_Non_Schoolnight <span class="sc">/</span> <span class="dv">8</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Gender, Superpower, Sleep_Hours_Non_Schoolnight, sleep_ratio) <span class="sc">%&gt;%</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Superpower <span class="sc">==</span> <span class="st">"Telepathy"</span>)</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>telepaths2 <span class="sc">%&gt;%</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Ratio =</span> <span class="fu">mean</span>(sleep_ratio),</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Median_Ratio =</span> <span class="fu">median</span>(sleep_ratio),</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Ratio =</span> <span class="fu">sd</span>(sleep_ratio),</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count =</span> <span class="fu">n</span>()</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  Gender Mean_Ratio Median_Ratio SD_Ratio Count
+  &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;
+1 Female       1.09         1.12    0.235    60
+2 Male         1.02         1.12    0.295    21</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>telepaths2 <span class="sc">%&gt;%</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_Ratio =</span> <span class="fu">mean</span>(sleep_ratio),</span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Median_Ratio =</span> <span class="fu">median</span>(sleep_ratio),</span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_Ratio =</span> <span class="fu">sd</span>(sleep_ratio),</span>
-<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count =</span> <span class="fu">n</span>()</span>
-<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'telepaths2' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(telepaths2<span class="sc">$</span>Sleep_Hours_Non_Schoolnight <span class="sc">~</span> telepaths2<span class="sc">$</span>Gender)[<span class="fu">c</span>(<span class="st">"mean"</span>, <span class="st">"median"</span>, <span class="st">'sd'</span>, <span class="st">'n'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(x, data, env): object 'telepaths2' not found</code></pre>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(telepaths2<span class="sc">$</span>Sleep_Hours_Non_Schoolnight <span class="sc">~</span> telepaths2<span class="sc">$</span>Gender)[<span class="fu">c</span>(<span class="st">"mean"</span>, <span class="st">"median"</span>, <span class="st">'sd'</span>, <span class="st">'n'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      mean median       sd  n
+1 8.733333      9 1.876407 60
+2 8.190476      9 2.358369 21</code></pre>
 </div>
 </div>
 </section>
@@ -970,9 +1458,9 @@ Caused by error:
 </ol>
 <p>Be sure to filter out any major outliers in heights first.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Vegetarian)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Vegetarian)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>NULL</code></pre>
+<pre><code>[1] "No"  "Yes"</code></pre>
 </div>
 </div>
 <ol start="3" type="1">

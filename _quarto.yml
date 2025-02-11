@@ -55,7 +55,7 @@ website:
          - href: ./3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.qmd
          - href: ./3-Stat_Fundamentals/03-Normal_Distribution_Workbook.qmd
          - href: ./3-Stat_Fundamentals/04-Normal_Probability_Practice.qmd
-         - href: ./3-Stat_Fundamentals/05-The_Central_Limit_Theorem.qmd
+         - href: ./3-Stat_Fundamentals/Sampling_Distributions_CLT_LLN_Reading.qmd
          - text: "Central Limit Theorem Practice"
            href: ./3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.qmd
          - href: ./3-Stat_Fundamentals/07-Prob_Calculations_for_Means.qmd
