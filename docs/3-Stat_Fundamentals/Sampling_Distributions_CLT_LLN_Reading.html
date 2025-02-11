@@ -567,15 +567,53 @@ window.Quarto = {
 <p>Imagine you and 10 friends want to know about the what percent of BYU-I students whose favorite soda is Dr.&nbsp;Pepper. Each of you could go and survey 50 people each and ask about their favorite soda. All 11 of you calculate the proportion of students who prefer Dr.&nbsp;Pepper.</p>
 <p>You’ll all get different results because you’ll be asking different sets of people. Now, instead of looking at your percents separately, summarize the collection of samples from all 11 of you using <code>favstats()</code> and a histogram:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>proportions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.14</span>, <span class="fl">0.08</span>, <span class="fl">0.02</span>, <span class="fl">0.06</span>, <span class="fl">0.06</span>, <span class="fl">0.02</span>, <span class="fl">0.00</span>, <span class="fl">0.14</span>, <span class="fl">0.00</span>, <span class="fl">0.08</span>, <span class="fl">0.18</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(proportions) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in favstats(proportions) %&gt;% knitr::kable(): could not find function "%&gt;%"</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>proportions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.14</span>, <span class="fl">0.08</span>, <span class="fl">0.02</span>, <span class="fl">0.06</span>, <span class="fl">0.06</span>, <span class="fl">0.02</span>, <span class="fl">0.00</span>, <span class="fl">0.14</span>, <span class="fl">0.00</span>, <span class="fl">0.08</span>, <span class="fl">0.18</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(proportions) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">Q1</th>
+<th style="text-align: right;">median</th>
+<th style="text-align: right;">Q3</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.0709091</td>
+<td style="text-align: right;">0.0609023</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(proportions, <span class="at">main =</span> <span class="st">"Distribution of the % of Students who Prefer Dr. Pepper out of 50"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in histogram(proportions, main = "Distribution of the % of Students who Prefer Dr. Pepper out of 50"): could not find function "histogram"</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(proportions, <span class="at">main =</span> <span class="st">"Distribution of the % of Students who Prefer Dr. Pepper out of 50"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Sampling_Distributions_CLT_LLN_Reading_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><strong>NOTE</strong>: The data above is based on a simulation for proportions from 11 independent samples of size 50. Because it’s a simulation, I know what the true proportion is.</p>

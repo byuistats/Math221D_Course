@@ -55,6 +55,10 @@ Imagine you and 10 friends want to know about the what percent of BYU-I students
 You'll all get different results because you'll be asking different sets of people.  Now, instead of looking at your percents separately, summarize the collection of samples from all 11 of you using `favstats()` and a histogram:  
 
 ```{r}
+library(mosaic)
+library(tidyverse)
+library(car) 
+library(rio)
 
 proportions <- c(0.14, 0.08, 0.02, 0.06, 0.06, 0.02, 0.00, 0.14, 0.00, 0.08, 0.18)
 
