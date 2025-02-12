@@ -243,3 +243,33 @@ mns
 
 ```
 
+
+
+
+
+
+```{r}
+
+pop <- c(rnorm(10000, 50,5), rnorm(10000, 75, 10) )
+hist(pop)
+
+mu <- mean(pop)
+sigma <- sqrt(sum((pop-mu)^2 ) / (length(pop)))
+
+
+sds <- NULL
+n <- 1000
+  
+for(i in 1:10000){
+  sds <- c(sds, sd(sample(pop, n)))
+}
+
+hist(sds)
+qqPlot(sds)
+mean(sds)
+
+```
+
+
+
+

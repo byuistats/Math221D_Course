@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Introduction
 
-This lesson explores the idea of a **sampling distribution** which is the distribution of a sample statistic.  We discuss the theoretical concepts that allow us to quantify our uncertainty and allow us to make confident conclusions about an entire population based on a single sample.  
+This lesson explores the idea of a **sampling distribution** which is the theoretical distribution of a sample statistic.  We discuss the theoretical concepts that allow us to make confident conclusions about an entire population based on a single sample.  
 
 
 ### Lesson Outcomes
@@ -18,7 +18,7 @@ By the end of this lesson, you should be able to:
 
 1. Describe the concept of a sampling distribution of the sample mean
 2. State the Central Limit Theorem 
-3. Determine the mean of the sampling distribution of the sample mean for a given parent population
+3. Determine the mean of the sampling distribution for a given parent population
 4. Determine the standard deviation of the sampling distribution of the sample mean for a given parent population
 5. Determine the shape of the sampling distribution of the sample mean for a given parent population
 6. State the Law of Large Numbers
@@ -52,7 +52,8 @@ The good news is that we can rely on the theory of sampling distributions to qua
 
 Imagine you and 10 friends want to know about the what percent of BYU-I students whose favorite soda is Dr. Pepper.  Each of you could go and survey 50 people each and ask about their favorite soda.  All 11 of you calculate the proportion of students who prefer Dr. Pepper.  
 
-You'll all get different results because you'll be asking different sets of people.  Now, instead of looking at your percents separately, summarize the collection of samples from all 11 of you using `favstats()` and a histogram:  
+You'll all get different results because you'll be asking different sets of people.  Now, instead of looking at your percents individually, summarize the collection of samples from all 11 of you using `favstats()` and a histogram:  
+
 
 ```{r}
 library(mosaic)
@@ -68,24 +69,35 @@ histogram(proportions, main = "Distribution of the % of Students who Prefer Dr. 
 
 ```
 
-__NOTE__:  The data above is based on a simulation for proportions from 11 independent samples of size 50.  Because it's a simulation, I know what the true proportion is.  
-
 
 The above histogram represents 11 different samples of nearly infinite possible samples of 50 BYU-I students.  
 
-The __Sampling Distribution__ is the distribution of a sample statistic for *all possible samples* from a population.  It's a theoretical construct, completely imaginary.  But there are some mathematically provable attributes of this theoretical distribution that make it possible to make inference about an unknown population parameter.  
+The __Sampling Distribution__ is the distribution of a sample statistic for *all possible samples* from a population.  It's completely theoretical, but there are some mathematically provable attributes of this theoretical distribution that make it possible to make inference about an unknown population parameter based on a *single sample*.  
 
-We will discuss these theoretical properties in greater detail below.  But one of the most important properties of sampling distributions is that the Mean of the sampling distribution will, under certain conditions, be very close to the true population parameter.  
+We will discuss these theoretical properties in greater detail below.  Before we do, use your intuition to answer the following question.  
 
+
+
+<div class="QuestionsHeading">Answer the following question:</div>
+<div class="Questions">
 
 __QUESTION__:  Given the 11 independent samples of 50 students, what would be your best guess of the **True population proportion** of students who prefer Dr. Pepper?  
 
-If you guessed the mean (0.0709) you'd be VERY close to the truth!  Isn't it fascinating that none of the researchers got 7% yet this is the true proportion?  (It's actually impossible to get 7% exactly when only asking 50 students.)  
+__NOTE__:  Because these results are based on a simulation, the true proportion is known.  
 
-It turns out that the _mean of the sampling distribution is equal to the population parameter!_  This is true for any sample statistics.  
+<details>
+<summary>Show/Hide Solution</summary>
 
-We not only know about the *mean* of a sampling distribution.  We can know the whole distribution! 
+If you guessed the mean of the 11 samples (0.0709) you'd be VERY close to the truth, which is 7%.  Even though none of the individual researchers got 7%, their **average** was close to the truth!  (It's actually impossible to get exactly 7% when only asking 50 students.)  
 
+</details>
+</div>
+
+<br>
+
+It turns out that the _mean of the sampling distribution of a sample statistic is equal to the population parameter!_  
+
+The Central Limit Theorem allows us to know not only know about the *mean*, but the entire shape of the sampling distribution for a mean.  
 
 
 # The Central Limit Theorem

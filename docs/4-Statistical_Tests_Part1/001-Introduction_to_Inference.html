@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -456,10 +490,10 @@ window.Quarto = {
    
   <ul>
   <li><a href="#lesson-outcomes" id="toc-lesson-outcomes" class="nav-link active" data-scroll-target="#lesson-outcomes">Lesson Outcomes</a></li>
-  <li><a href="#the-ethan-allen" id="toc-the-ethan-allen" class="nav-link" data-scroll-target="#the-ethan-allen">The Ethan Allen</a></li>
   <li><a href="#body-temperatures-of-healthy-adults" id="toc-body-temperatures-of-healthy-adults" class="nav-link" data-scroll-target="#body-temperatures-of-healthy-adults">Body Temperatures of Healthy Adults</a>
   <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
   <li><a href="#data-on-body-temperatures" id="toc-data-on-body-temperatures" class="nav-link" data-scroll-target="#data-on-body-temperatures">Data on Body Temperatures</a></li>
   </ul></li>
   <li><a href="#hypothesis-test-for-the-true-mean-body-temperature" id="toc-hypothesis-test-for-the-true-mean-body-temperature" class="nav-link" data-scroll-target="#hypothesis-test-for-the-true-mean-body-temperature">Hypothesis Test for the True Mean Body Temperature</a>
@@ -481,14 +515,8 @@ window.Quarto = {
   <li><a href="#mean-gpa-of-early-risers" id="toc-mean-gpa-of-early-risers" class="nav-link" data-scroll-target="#mean-gpa-of-early-risers">Mean GPA of early risers</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
-  <li><a href="#connections" id="toc-connections" class="nav-link" data-scroll-target="#connections">Connections</a>
-  <ul class="collapse">
-  <li><a href="#u.s.-criminal-justice-system" id="toc-u.s.-criminal-justice-system" class="nav-link" data-scroll-target="#u.s.-criminal-justice-system">U.S. Criminal Justice System</a></li>
-  <li><a href="#why-dont-we-accept-the-null-hypothesis" id="toc-why-dont-we-accept-the-null-hypothesis" class="nav-link" data-scroll-target="#why-dont-we-accept-the-null-hypothesis">Why Don’t we Accept the Null Hypothesis?</a></li>
-  <li><a href="#testimonies-and-hypothesis-tests" id="toc-testimonies-and-hypothesis-tests" class="nav-link" data-scroll-target="#testimonies-and-hypothesis-tests">Testimonies and Hypothesis Tests</a></li>
-  </ul></li>
-  <li><a href="#summary-1" id="toc-summary-1" class="nav-link" data-scroll-target="#summary-1">Summary</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -535,186 +563,10 @@ window.Quarto = {
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/StepsAll.png" class="img-fluid"></p>
 <p><br></p>
 </section>
-<section id="the-ethan-allen" class="level2">
-<h2 class="anchored" data-anchor-id="the-ethan-allen">The Ethan Allen</h2>
-<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/The_Judge_Ben_Wiles_(TJG).jpg" class="img-fluid"> <!--|From [http://commons.wikimedia.org/wiki/File:The_Judge_Ben_Wiles_(TJG).jpg commons.wikimedia.org]--></p>
-<p>A tragic accident on Lake George in New York, USA, called into question the safety regulations for commercial tour boats. On October 5, 2005, a full boat of 47 passengers and 1 crew member began a routine one-hour tour of Lake George. As the operator initiated a turn, the tour boat “Ethan Allen” listed (tipped) enough to take water aboard. The force caused by dipping beneath the surface caused the vessel to list, shifting the passengers to one side of the boat. After this shift in the weight distribution, the boat capsized killing 20 passengers and injuring 9 others.</p>
-<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Step1.png" class="img-fluid"></p>
-<p>We assume that at the time of the accident, the stability requirements were based on the Coast Guard criteria of a mean of 140 pounds per person. So, the Ethan Allen was supposed to be able to safely transport passengers and crew with a mean weight of 140 pounds. We want to investigate if 140 pounds is a reasonable value for the mean weight of tour boat passengers. This leads to the research question: “Is the mean weight of tour boat passengers greater than 140 pounds?”</p>
-<p>We can rewrite the research question in a declarative sentence to obtain a hypothesis, or a testable statement about a population.</p>
-<p>The first hypothesis we will write is that the Coast Guard criteria is appropriate: “The mean weight of tour boat passengers is 140 pounds.” We call this the null hypothesis. The <strong>null hypothesis</strong> is a statement of the “status quo”, or the value typically considered to be appropriate. Notice that the null hypothesis is expressed with a statement involving equality (<span class="math inline">\(=\)</span>).</p>
-<p><span class="math inline">\(H_0:~~\mu = 140\)</span> pounds</p>
-<p>In contrast to the null hypothesis, we write the alternative hypothesis. This is typically the statement that a researcher suspects is the actual truth. In our case, we suspect that “The mean weight of tour boat passengers is greater than 140 pounds.”</p>
-<p><span class="math inline">\(H_a:~~\mu &gt; 140\)</span> pounds</p>
-<p>We label the null hypothesis <span class="math inline">\(H_0\)</span> and the alternative hypothesis <span class="math inline">\(H_a\)</span>. In every hypothesis test in this class, the null hypothesis will be a statement involving equality. The alternative hypothesis can include greater than (<span class="math inline">\(&gt;\)</span>), less than (<span class="math inline">\(&lt;\)</span>), or not equal (<span class="math inline">\(\ne\)</span>).</p>
-<p>When we test hypotheses, we assume the null hypothesis is true. Because of this requirement, whenever we need to use μ in a calculation, we can use the value specified in the null hypothesis. When we conduct a hypothesis test, we gather evidence against the requirement that the null hypothesis is true. If we get enough evidence against the null hypothesis, we reject it. If we do not have sufficient evidence against the null hypothesis, we do not reject it.</p>
-<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Step2.png" class="img-fluid"></p>
-<p>How do we gather evidence against a null hypothesis? We collect data.</p>
-<p>The marine accident report gives the weight (in pounds) of each of the passengers and the crew member. These values are reproduced below. <!-- [Cite: "Capsizing of New York State-Certificated Vessel Ethan Allen, Lake George, New York October 2, 2005"] --></p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">189</td>
-<td style="text-align: center;">110</td>
-<td style="text-align: center;">144</td>
-<td style="text-align: center;">141</td>
-<td style="text-align: center;">185</td>
-<td style="text-align: center;">194</td>
-<td style="text-align: center;">180</td>
-<td style="text-align: center;">211</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">128</td>
-<td style="text-align: center;">135</td>
-<td style="text-align: center;">141</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">200</td>
-<td style="text-align: center;">164</td>
-<td style="text-align: center;">150</td>
-<td style="text-align: center;">170</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">194</td>
-<td style="text-align: center;">260</td>
-<td style="text-align: center;">165</td>
-<td style="text-align: center;">137</td>
-<td style="text-align: center;">198</td>
-<td style="text-align: center;">195</td>
-<td style="text-align: center;">158</td>
-<td style="text-align: center;">204</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">170</td>
-<td style="text-align: center;">190</td>
-<td style="text-align: center;">129</td>
-<td style="text-align: center;">146</td>
-<td style="text-align: center;">135</td>
-<td style="text-align: center;">176</td>
-<td style="text-align: center;">204</td>
-<td style="text-align: center;">170</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">142</td>
-<td style="text-align: center;">210</td>
-<td style="text-align: center;">180</td>
-<td style="text-align: center;">155</td>
-<td style="text-align: center;">217</td>
-<td style="text-align: center;">198</td>
-<td style="text-align: center;">126</td>
-<td style="text-align: center;">247</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">173</td>
-<td style="text-align: center;">155</td>
-<td style="text-align: center;">165</td>
-<td style="text-align: center;">175</td>
-<td style="text-align: center;">235</td>
-<td style="text-align: center;">230</td>
-<td style="text-align: center;">268</td>
-<td style="text-align: center;">170</td>
-</tr>
-</tbody>
-</table>
-<!--
-<center>
-{| style="text-align: center; width: 35%"
-| 189
-| 110
-| 144
-| 141
-| 185
-| 194
-| 180
-| 211
-|-
-| 128       
-| 135       
-| 141       
-| 205       
-| 200       
-| 164       
-| 150       
-| 170
-|-
-| 194       
-| 260       
-| 165       
-| 137       
-| 198       
-| 195       
-| 158       
-| 204
-|-
-| 170       
-| 190       
-| 129       
-| 146       
-| 135       
-| 176       
-| 204       
-| 170
-|-
-| 142       
-| 210       
-| 180       
-| 155       
-| 217       
-| 198       
-| 126       
-| 247
-|-
-| 173       
-| 155       
-| 165       
-| 175       
-| 235       
-| 230       
-| 268       
-| 170
-|-
-|}
-</center>
--->
-<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Step3.png" class="img-fluid"></p>
-<p>To help us understand the data, we first create a graph summarizing the values.</p>
-<center>
-<strong>Weights of Passengers and Crew on the Ethan Allen</strong><br> <img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/EthanAllen-PassengerWeights-Histogram.png" class="img-fluid">
-</center>
-<p>Next, we compute summary statistics. The sample size is <span class="math inline">\(n=48\)</span>, and the sample mean is <span class="math inline">\(\bar{x}=177.6\)</span> pounds. According to the CDC, the standard deviation of the weights of individuals in the United States is <span class="math inline">\(\sigma=26.7\)</span> pounds. <!-- CITE: http://www.cdc.gov/growthcharts/2000growthchart-us.pdf, page 154-155.--></p>
-<p>Considering the data as a random sample of all possible tour boat passengers, it appears that the true mean weight of tour boat passengers might be greater than 140 pounds. However, we need to check this with a formal test of our hypotheses.</p>
-<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Step4.png" class="img-fluid"></p>
-<p>It is not sufficient to gain an intuitive sense for the data. We will test if there is sufficient evidence to reject the null hypothesis that the true mean weight of tour boat passengers is 140 pounds.</p>
-<p>Assuming the null hypothesis is true, what is the probability that we would observe a sample mean as extreme or more extreme than the values we observed? This probability is called the <span class="math inline">\(P\)</span>-value.</p>
-<p>To find the <span class="math inline">\(P\)</span>-value, we first calculate the number of standard deviations that <span class="math inline">\(\bar{x}\)</span> is away from the assumed value of true mean <span class="math inline">\(\mu=140\)</span> pounds. This is our <span class="math inline">\(z\)</span>-score. Then we use the applet to determine the probability of observing a value of <span class="math inline">\(z\)</span> that is as large or larger than the value we observed.</p>
-<p><span class="math display">\[\displaystyle{ z= \frac{ \bar{x} − \mu}{\sigma/\sqrt{n}} = \frac{177.6−140}{26.7/\sqrt{48}}=9.757 }\]</span></p>
-<p>We use the applet to determine the probability of observing a value of <span class="math inline">\(z\)</span> that is as large or larger than <span class="math inline">\(9.757\)</span>. This is the same as the probability of observing a value of <span class="math inline">\(\bar{x} =177.6\)</span> or more pounds, given that the true mean really is <span class="math inline">\(\mu = 140\)</span> pounds.</p>
-<p>The area to the right of <span class="math inline">\(z=9.757\)</span> is so small, the normal probability applet gives the area as “8.6086e-23.” This is how a computer represents scientific notation. This number is actually <span class="math inline">\(8.6086ex10^{-23}\)</span> or in other words, 0.000 000 000 000 000 000 000 086 086. This is the probability that a mean of <span class="math inline">\(\bar x=177.6\)</span> pounds or greater was observed just by chance assuming the true mean is <span class="math inline">\(\mu = 140\)</span> lbs. This is very, very unlikely. A more plausible explanation is that the true mean weight <span class="math inline">\(\mu\)</span> of individuals in the population is greater than 140 pounds.</p>
-<p>Based on this analysis and the hypothesis test, the evidence against <span class="math inline">\(H_0\)</span> is strong enough to conclude that if every seat on the Ethan Allen was occupied, that the boat would be carrying a greater load than it was certified to handle.</p>
-<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Step5.png" class="img-fluid"></p>
-<p>As a result of this accident, the United States government took several actions. The Coast Guard stability regulations were changed, and the assumed average weight per person was increased to 185 pounds. <!-- [[CITE: http://www.uscg.mil/hq/cg5/cg5212/docs/secg12142010.pdf]]--> As a result, the safety of public vessels has been improved. <!--
-
-[[FOLLOW-UP QUESTION:   FIND THE TRUE MEAN WEIGHT OF ADULTS IN THE US.  FIND THE PROBABILITY THAT A RANDOM SAMPLE OF n=48 WILL HAVE A MEAN GREATER THAN 185 POUNDS.]]
-
-[[(AGES 20--74 YEARS) MU = 175.9 LBS, SIGMA = 64.9 LBS AS OF 2002. SOURCE: ADVANCE DATA FROM VITAL HEALTH STATISTICS, NUMBER 347, 27 OCTOBER 2994 (PUBLISHED BY THE CDC) http://www.cdc.gov/nchs/data/ad/ad347.pdf, ACCESSED ON 14 OCTOBER 2013]]
-
---></p>
-<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/StepsAll.png" class="img-fluid"></p>
-<p><br></p>
-</section>
-<section id="body-temperatures-of-healthy-adults" class="level2">
-<h2 class="anchored" data-anchor-id="body-temperatures-of-healthy-adults">Body Temperatures of Healthy Adults</h2>
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<section id="body-temperatures-of-healthy-adults" class="level1">
+<h1>Body Temperatures of Healthy Adults</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Have you ever wondered how it was determined that the true mean body temperature of healthy adults is 98.6° ?</p>
 <p>It is not exactly clear who first reported this value, but this temperature has been used since the 1800’s. <!-- \cite{Mackowiak92,Horvath50} --> One of the most influential researchers in this area is Carl Reinhold August Wunderlich. He reported measuring over 1,000,000 body temperatures on over 20,000 patients.<!-- \cite{Mackowiak92,Wunderlich68} --> When the temperature is measured in the arm pit, it is called an axillary temperature measurement. Based on his research, Wunderlich stated, “The axillary temperature of 98.6° F = 37° C<span class="math inline">\(\ldots\)</span>is considered the central thermic point of health”. <!-- \cite{Wunderlich71}--> In other words, the mean body temperature of healthy adults is 98.6° F (or 37° C.)</p>
 <div class="QuestionsHeading">
@@ -735,7 +587,6 @@ Show/Hide Solution
 </details>
 </div>
 <p><br></p>
-</section>
 <section id="data-on-body-temperatures" class="level3">
 <h3 class="anchored" data-anchor-id="data-on-body-temperatures">Data on Body Temperatures</h3>
 <p>A group of researchers led by Philip A. Mackowiak, MD, conducted a study to assess the true mean body temperatures of healthy adults.<!-- \cite{Mackowiak92}--> They selected <span class="math inline">\(n=148\)</span> subjects between the ages of 18 and 40 years old, representative of the general population. Each volunteer was given a physical to assure that they were not ill at the time of the data collection. Their axillary body temperature was measured and reported in a paper published in the “Journal of the American Medical Association”. <!-- \cite{Mackowiak92}--> These data were extracted and are presented in the file <a href="./Data/BodyTemp.xlsx">BodyTemp</a>. The body temperatures in the file are given in degrees Fahrenheit. Based on historical data, the standard deviation of body temperatures is assumed to be <span class="math inline">\(\sigma = 0.675\)</span>° F.</p>
@@ -774,7 +625,22 @@ Show/Hide Solution
 <summary>
 Show/Hide Solution
 </summary>
-<img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/BodyTemp-Hist-Excel_v2.png" class="img-fluid">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>temps <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/BodyTemp.xlsx'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(temps<span class="sc">$</span>BodyTemp, <span class="at">main =</span> <span class="st">"Body Temperatures (F)"</span>, <span class="at">xlab=</span><span class="st">"Body Temperature"</span>, <span class="at">ylab=</span><span class="st">"Count"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">98.6</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="001-Introduction_to_Inference_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </details>
 <p><br></p>
 <ol start="5" type="1">
@@ -1774,153 +1640,9 @@ H_a:&amp;~~\mu &gt; 3.15
 </section></details>
 <p><br></p>
 </section>
-
-<section id="connections" class="level2">
-<h2 class="anchored" data-anchor-id="connections">Connections</h2>
-<section id="u.s.-criminal-justice-system" class="level3">
-<h3 class="anchored" data-anchor-id="u.s.-criminal-justice-system">U.S. Criminal Justice System</h3>
-<p>In the United States criminal justice system, when a person is accused of a crime, they are assumed innocent until proven guilty. This is analogous to the requirement that the null hypothesis is true until we gather enough evidence to reject it.</p>
-<p>A judge or a jury must plant in their mind the requirement of innocence. At the end of the trial, they must determine if there is enough evidence to determine “beyond a reasonable doubt” that the person is guilty. If this standard is met, the judge/jury rejects the requirement of innocence and declares the defendant “guilty.” However, if there is not enough evidence to conclude beyond a reasonable doubt that the defendant is guilty, the judge/jury fails to reject the requirement of innocence and returns a verdict of “not guilty.”</p>
-<p>The judge/jury originally assumed the defendant was innocent, so they cannot conclude that the person is “innocent” at the end of the trial. It is not possible to start with the requirement of innocence and logically used that requirement in the proof of itself.</p>
-</section>
-<section id="why-dont-we-accept-the-null-hypothesis" class="level3">
-<h3 class="anchored" data-anchor-id="why-dont-we-accept-the-null-hypothesis">Why Don’t we Accept the Null Hypothesis?</h3>
-<p>It may be hard, but imagine for a moment that <span class="math inline">\(1=2\)</span>. Even though it goes against everything you thought was true in Mathematics, relax your mind and assume that <span class="math inline">\(1=2\)</span>.</p>
-<p>If <span class="math inline">\(1=2\)</span>, then we can apply valid algebraic operations to both sides of this equation:</p>
-<p><span class="math display">\[
-\begin{array}{rcll}
-1 &amp;=&amp; 2     &amp; \leftarrow \textrm{Assumed true} \\
-1(2) &amp;=&amp; 2(2)  &amp; \leftarrow \textrm{Multiply both sides by 2} \\
-2 &amp;=&amp; 4     &amp; \leftarrow \textrm{Simplify} \\
-2-3 &amp;=&amp; 4-3   &amp; \leftarrow \textrm{Subtract 3 from both sides} \\
--1 &amp;=&amp; 1     &amp; \leftarrow \textrm{Simplify} \\
-(-1)^2 &amp;=&amp; (1)^2 &amp; \leftarrow \textrm{Square both sides} \\
-1 &amp;=&amp; 1     &amp; \leftarrow \textrm{Simplify}
-\end{array}
-\]</span></p>
-<p>We started with a requirement that <span class="math inline">\(1=2\)</span> is a true statement. We applied valid algebraic operations at each step. In the end, we found that <span class="math inline">\(1=1\)</span>, which is certainly no contradiction. Logically, have we shown that <span class="math inline">\(1=2\)</span>?</p>
-<div class="QuestionsHeading">
-Answer the following question:
-</div>
-<div class="Questions">
-<ol start="32" type="1">
-<li>What is wrong with the logic in this “proof?”</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>The problem here is that we assumed that <span class="math inline">\(1=2\)</span>, and then we attempted to use that requirement to prove itself. We cannot use a requirement as evidence of itself.</li>
-<li>However, if we start with a requirement and then find a contradiction, then we know that our original requirement is not true. Since this did not happen, we say that we did not get enough evidence against the requirement that <span class="math inline">\(1=2\)</span>.</li>
-</ul>
-</details>
-</div>
-&nbsp;
-</section></section></main></div>
-<p><br></p>
-<p>In science, we make a hypothesis (or a statement or claim) and then we gather evidence “against” that requirement. If we cannot reject the hypothesis, in the mathematical example above, we started with a requirement and did not find sufficient evidence against that requirement. In the end, we arrived at no contradiction at all: <span class="math inline">\(1=1\)</span>. This did not mean that our original claim that <span class="math inline">\(1=2\)</span> was true; it only meant that we had not yet disproved it. We could not reject the original claim.</p>
-<p>We have to be careful when conducting hypothesis tests. When we conduct a test, we assume the null hypothesis is true. This provides a distribution for the test statistic, and allows us to calculate the <span class="math inline">\(P\)</span>-value. If we find that the <span class="math inline">\(P\)</span>-value is large, that means that we did not find a contradiction in our requirement that the null hypothesis is true. That does not mean that the null hypothesis is true, it only means that we cannot reject it. For this reason, we never say we “accept the null hypothesis.” When the <span class="math inline">\(P\)</span>-value is large, we say that we “fail to reject the null hypothesis.”</p>
-
-<section id="testimonies-and-hypothesis-tests" class="level3">
-<h3 data-anchor-id="testimonies-and-hypothesis-tests">Testimonies and Hypothesis Tests</h3>
-<p>The scientific method demands that we make a hypothesis (a claim or an educated guess). We then “do research” (e.g., collect data) to gather evidence against that hypothesis. If we can gather enough evidence to discredit our initial hypothesis, we conclude that it was false, and begin the process again.</p>
-<p>If we are unable to reject the original hypothesis, we do not conclude that it is correct. For example, just because apples have always been observed to fall downward out of apple trees, we do not conclude that the Law of Gravity is correct. However, it has not been disproved either.</p>
-<p>This philosophy is very different from the way one gains a testimony. A testimony is a Gift of the Spirit, and it is given only by revelation.</p>
-<blockquote class="blockquote">
-<p>“Wherefore, beware lest ye are deceived; and that ye may not be deceived seek ye earnestly the best gifts, always remembering for what they are given;</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>For verily I say unto you, they are given for the benefit of those who love me and keep all my commandments, and him that seeketh so to do; that all may be benefited that seek or that ask of me, that ask and not for a sign that they may consume it upon their lusts. And again, verily I say unto you, I would that ye should always remember, and always retain in your minds what those gifts are, that are given unto the church. For all have not every gift given unto them; for there are many gifts, and to every man is given a gift by the Spirit of God. To some is given one, and to some is given another, that all may be profited thereby. To some it is given by the Holy Ghost to know that Jesus Christ is the Son of God, and that he was crucified for the sins of the world. To others it is given to believe on their words, that they also might have eternal life if they continue faithful.”</p>
-</blockquote>
-<!--
-<center>
-{| width=80%
-|-
-|Wherefore, beware lest ye are deceived; and that ye may not be deceived seek ye earnestly the best gifts, always remembering for what they are given;
-For verily I say unto you, they are given for the benefit of those who love me and keep all my commandments, and him that seeketh so to do; that all may be benefited that seek or that ask of me, that ask and not for a sign that they may consume it upon their lusts.
-And again, verily I say unto you, I would that ye should always remember, and always retain in your minds what those gifts are, that are given unto the church.
-For all have not every gift given unto them; for there are many gifts, and to every man is given a gift by the Spirit of God.
-To some is given one, and to some is given another, that all may be profited thereby.
-To some it is given by the Holy Ghost to know that Jesus Christ is the Son of God, and that he was crucified for the sins of the world.
-To others it is given to believe on their words, that they also might have eternal life if they continue faithful.
-<br>
-(Doctrine and Covenants 46:8-14)
-|}
-</center>
--->
-<p>We cannot demand or try to force a gift of the Spirit, or we make ourselves susceptible to deception. We can only obey, ask, exercise faith, and wait upon the Lord.</p>
-<p>When the gift of a true testimony is given, it does not provide evidence against a hypothesis, rather it establishes the truth in the heart of the recipient. A testimony does not follow the scientific method. A testimony does not provide evidence against some claim, rather it is the (final) establishment of the truth.</p>
-<p>Testimonies need to be nourished, and if neglected, they will perish. They can be fragile.</p>
-<p>When a testimony is given, the truth is planted in the heart. The testimony from the Holy Ghost makes additional “scientific” inquiry unnecessary. No additional information can be gained by “testing” a testimony using the scientific method.</p>
-</section>
-
-<section id="summary-1" class="level2">
-<h2 data-anchor-id="summary-1">Summary</h2>
-<div class="SummaryHeading">
-Remember…
-</div>
-<div class="Summary">
-<ol type="1">
-<li><p>A one mean (sigma known) hypothesis test is appropriate for testing a hypothesized value of the mean of a population for quantitative data where <span class="math inline">\(\sigma\)</span>, the population standard deviation, can reasonably be assumed to be known exactly.</p></li>
-<li><p>A <span class="math inline">\(P\)</span>-value gives the probability of observing a test statistic at least as extreme as the one observed, assuming the null hypothesis is true.</p></li>
-<li><p>The steps to perform a hypothesis test for one mean when sigma is known are:</p>
-<ol type="a">
-<li><p>First, state the hypotheses. The <strong>null hypothesis (<span class="math inline">\(H_0\)</span>)</strong> is the foundational assumption about a population and represents the status quo that we assume to be true. It is a statement of equality (<span class="math inline">\(=\)</span>). The <strong>alternative hypothesis (<span class="math inline">\(H_a\)</span>)</strong> is a different assumption about a population and is a statement of inequality (<span class="math inline">\(&lt;\)</span>, <span class="math inline">\(&gt;\)</span>, or <span class="math inline">\(\ne\)</span>). The alternative hypothesis is believed to be true only in the case that sufficient evidence is presented.</p></li>
-<li><p>The test statistic for the one mean (sigma known) hypothesis test is given by the equation <span class="math display">\[
-  z = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}
-\]</span></p></li>
-<li><p>The <span class="math inline">\(P\)</span>-value is calculated by finding the area under the normal distribution curve that is more extreme (farther away from the mean) than the z-score. The alternative hypothesis tells us whether we look at both tails or only one. The possible scenarios are depicted below.</p>
-<div style="padding-right:3%;">
-<table id="fancytable">
-<tbody><tr>
-<th>
-Left-tailed <br> <span class="math inline">\(H_a: \mu &lt; 0\)</span>
-</th>
-<th>
-Two-tailed <br> <span class="math inline">\(H_a: \mu \neq 0\)</span>
-</th>
-<th>
-Right-tailed<br> <span class="math inline">\(H_a: \mu &gt; 0\)</span>
-</th>
-</tr>
-<tr>
-<td>
-<img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/pvalue_left_tail.png" class="img-fluid">
-</td>
-<td>
-<img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/pvalue_two_tail.png" class="img-fluid"><br>
-
-</td>
-<td>
-<img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/pvalue_right_tail.png" class="img-fluid"><br>
-
-</td>
-</tr>
-<tr>
-<td>
-<img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/pvalue_left_tail_posz.png" class="img-fluid">
-</td>
-<td>
-</td>
-<td>
-<img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/pvalue_right_tail_negz.png" class="img-fluid"><br>
-
-</td>
-</tr>
-</tbody></table>
-</div></li>
-<li><p>The <strong>level of significance (<span class="math inline">\(\alpha\)</span>)</strong> controls the probability of committing a Type I Error. It is the standard for determining whether or not the null hypothesis should be rejected. Typical values for <span class="math inline">\(\alpha\)</span> are <span class="math inline">\(0.05\)</span>, <span class="math inline">\(0.10\)</span>, and <span class="math inline">\(0.01\)</span>. If the <span class="math inline">\(P\)</span>-value is less than <span class="math inline">\(\alpha\)</span> we reject the null. If the <span class="math inline">\(P\)</span>-value is not less than <span class="math inline">\(\alpha\)</span> we fail to reject the null.</p></li>
-<li><p>The results of a one mean (sigma known) test are meaningful when (1) the sample of data can be considered to be representative of the population and (2) the sampling distribution of the sample mean can be considered to be normal. Recall from <a href="Lesson06.html">Lesson 6</a> that the sampling distribution of the sample mean can be considered normal whenever the population data is normal or when the sample size is sufficiently large, i.e., <span class="math inline">\(n\ge 30\)</span>.</p></li>
-</ol></li>
-<li><p>A <strong>Type I error</strong> is committed when we reject a null hypothesis that is, in reality, true. A <strong>Type II error</strong> is committed when we fail to reject a null hypothesis that is, in reality, false.</p></li>
-<li><p>The level of significance, <span class="math inline">\(\alpha\)</span>, gives the probability of committing a Type I error. The probability of a Type II Error is called <span class="math inline">\(\beta\)</span>, but <span class="math inline">\(\beta\)</span> is not discussed in this course. However, the probabilities of a Type I Error (<span class="math inline">\(\alpha\)</span>) and a Type II Error (<span class="math inline">\(\beta\)</span>) are inversely related, in other words, as one increases the other is decreased.</p></li>
-</ol>
-</div>
-<p><br></p>
 </section>
 <section id="references" class="level2">
-<h2 data-anchor-id="references">References</h2>
+<h2 class="anchored" data-anchor-id="references">References</h2>
 <p>[1] R. A. Fisher. Statistical tests. Nature, 136, 1935.</p>
 <p>[2] H. Kieler, O. Axelsson, Nilsson S., and U. Waldenstr. The length of human pregnancy as calculated by ultrasonographic measurement of the fetal biparietal diameter. Ultrasound in Obstetrics and Gynecology, 6(5):353–357, 1995.</p>
 <p>[3] Timothy Harper. All the news that’s fit to BYTE. Delta Sky Magazine, 106:92–96, May 2007.</p>
@@ -1930,7 +1652,8 @@ Right-tailed<br> <span class="math inline">\(H_a: \mu &gt; 0\)</span>
 
 </section>
 
- <!-- /main -->
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -2495,7 +2218,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
- <!-- /content -->
+</div> <!-- /content -->
 
 
 

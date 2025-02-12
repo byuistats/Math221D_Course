@@ -533,14 +533,14 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>This lesson explores the idea of a <strong>sampling distribution</strong> which is the distribution of a sample statistic. We discuss the theoretical concepts that allow us to quantify our uncertainty and allow us to make confident conclusions about an entire population based on a single sample.</p>
+<p>This lesson explores the idea of a <strong>sampling distribution</strong> which is the theoretical distribution of a sample statistic. We discuss the theoretical concepts that allow us to make confident conclusions about an entire population based on a single sample.</p>
 <section id="lesson-outcomes" class="level3">
 <h3 class="anchored" data-anchor-id="lesson-outcomes">Lesson Outcomes</h3>
 <p>By the end of this lesson, you should be able to:</p>
 <ol type="1">
 <li>Describe the concept of a sampling distribution of the sample mean</li>
 <li>State the Central Limit Theorem</li>
-<li>Determine the mean of the sampling distribution of the sample mean for a given parent population</li>
+<li>Determine the mean of the sampling distribution for a given parent population</li>
 <li>Determine the standard deviation of the sampling distribution of the sample mean for a given parent population</li>
 <li>Determine the shape of the sampling distribution of the sample mean for a given parent population</li>
 <li>State the Law of Large Numbers</li>
@@ -565,7 +565,7 @@ window.Quarto = {
 <section id="sampling-distributions" class="level1">
 <h1>Sampling Distributions</h1>
 <p>Imagine you and 10 friends want to know about the what percent of BYU-I students whose favorite soda is Dr.&nbsp;Pepper. Each of you could go and survey 50 people each and ask about their favorite soda. All 11 of you calculate the proportion of students who prefer Dr.&nbsp;Pepper.</p>
-<p>You’ll all get different results because you’ll be asking different sets of people. Now, instead of looking at your percents separately, summarize the collection of samples from all 11 of you using <code>favstats()</code> and a histogram:</p>
+<p>You’ll all get different results because you’ll be asking different sets of people. Now, instead of looking at your percents individually, summarize the collection of samples from all 11 of you using <code>favstats()</code> and a histogram:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -616,14 +616,25 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><strong>NOTE</strong>: The data above is based on a simulation for proportions from 11 independent samples of size 50. Because it’s a simulation, I know what the true proportion is.</p>
 <p>The above histogram represents 11 different samples of nearly infinite possible samples of 50 BYU-I students.</p>
-<p>The <strong>Sampling Distribution</strong> is the distribution of a sample statistic for <em>all possible samples</em> from a population. It’s a theoretical construct, completely imaginary. But there are some mathematically provable attributes of this theoretical distribution that make it possible to make inference about an unknown population parameter.</p>
-<p>We will discuss these theoretical properties in greater detail below. But one of the most important properties of sampling distributions is that the Mean of the sampling distribution will, under certain conditions, be very close to the true population parameter.</p>
+<p>The <strong>Sampling Distribution</strong> is the distribution of a sample statistic for <em>all possible samples</em> from a population. It’s completely theoretical, but there are some mathematically provable attributes of this theoretical distribution that make it possible to make inference about an unknown population parameter based on a <em>single sample</em>.</p>
+<p>We will discuss these theoretical properties in greater detail below. Before we do, use your intuition to answer the following question.</p>
+<div class="QuestionsHeading">
+Answer the following question:
+</div>
+<div class="Questions">
 <p><strong>QUESTION</strong>: Given the 11 independent samples of 50 students, what would be your best guess of the <strong>True population proportion</strong> of students who prefer Dr.&nbsp;Pepper?</p>
-<p>If you guessed the mean (0.0709) you’d be VERY close to the truth! Isn’t it fascinating that none of the researchers got 7% yet this is the true proportion? (It’s actually impossible to get 7% exactly when only asking 50 students.)</p>
-<p>It turns out that the <em>mean of the sampling distribution is equal to the population parameter!</em> This is true for any sample statistics.</p>
-<p>We not only know about the <em>mean</em> of a sampling distribution. We can know the whole distribution!</p>
+<p><strong>NOTE</strong>: Because these results are based on a simulation, the true proportion is known.</p>
+<details>
+<summary>
+Show/Hide Solution
+</summary>
+<p>If you guessed the mean of the 11 samples (0.0709) you’d be VERY close to the truth, which is 7%. Even though none of the individual researchers got 7%, their <strong>average</strong> was close to the truth! (It’s actually impossible to get exactly 7% when only asking 50 students.)</p>
+</details>
+</div>
+<p><br></p>
+<p>It turns out that the <em>mean of the sampling distribution of a sample statistic is equal to the population parameter!</em></p>
+<p>The Central Limit Theorem allows us to know not only know about the <em>mean</em>, but the entire shape of the sampling distribution for a mean.</p>
 </section>
 <section id="the-central-limit-theorem" class="level1">
 <h1>The Central Limit Theorem</h1>
