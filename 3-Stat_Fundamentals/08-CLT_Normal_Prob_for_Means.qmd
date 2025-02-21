@@ -115,6 +115,7 @@ qnorm(.25, mu, sigma_xbar)
 
 
 
+
 ## GPA's
 
 Suppose the mean GPA of BYU-Idaho students is 3.5 and the standard deviation is 0.7. It is well known that this distribution is left-skewed. A random sample of n = 45 students will be drawn.
@@ -135,6 +136,37 @@ __Answer__:
 
 
 ## GRE Scores
+
+```{r}
+
+xbar <- 160
+
+# Sample size
+n <- 18
+  
+#population mean, mu
+mu <- 150.8
+  
+# Pop. SD
+sigma <- 8.8
+  
+# Standard Deviation of XBAR:
+sigma_xbar <- sigma / sqrt(n)
+sigma_xbar
+  
+z <- (xbar - mu) / sigma_xbar
+z
+
+# LEFT tail probability (probability of getting a sample mean LESS than xbar)
+pnorm(z)
+
+# RIGHT tail; prob value GREATER than xbar
+1-pnorm(z)
+
+
+
+```
+
 
 Scores on the quantitative portion of the GRE are approximately normally distributed with mean, $\mu=150.8$,
  and standard deviation $\sigma = 8.8$.

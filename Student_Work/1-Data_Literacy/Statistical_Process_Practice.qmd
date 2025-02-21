@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 ## The sitch:
 
-The [Forgetting Curve](https://youtu.be/UpAq9EZpL5A?si=Y_wNRFDpaM1WsZKW) relates to how quickly we forget new information and suggests strategies for maximize retention.  Studies have shown that retention of classroom materials can drop as low as 58% within 15 minutes of class and within 44% after the first hour after class if there is no review of the material. This forgetting curve continues, so that within six days only 25% is remembered. 
+The [Forgetting Curve](https://youtu.be/UpAq9EZpL5A?si=Y_wNRFDpaM1WsZKW) relates to how quickly we forget new information and suggests strategies to maximize retention.  Studies have shown that retention of classroom materials can drop as low as 58% within 15 minutes of class and within 44% after the first hour after class if there is no review of the material. This forgetting curve continues, so that within six days only 25% is remembered. 
 
 Suppose your teacher wanted to test strategies for retention and invited you to participate in a study.  You would be randomly assigned to one of two groups.
 

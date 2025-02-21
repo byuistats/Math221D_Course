@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Distribution of Sample Means – Math221 Notebook</title>
+<title>Confidence Intervals for a Mean – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -491,20 +491,11 @@ window.Quarto = {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#lesson-outcomes" id="toc-lesson-outcomes" class="nav-link" data-scroll-target="#lesson-outcomes">Lesson Outcomes</a></li>
+  <li><a href="#review-distribution-of-sample-means" id="toc-review-distribution-of-sample-means" class="nav-link" data-scroll-target="#review-distribution-of-sample-means">Review: distribution of sample means</a></li>
   </ul></li>
-  <li><a href="#review" id="toc-review" class="nav-link" data-scroll-target="#review">Review</a></li>
-  <li><a href="#the-consequences-of-randomization" id="toc-the-consequences-of-randomization" class="nav-link" data-scroll-target="#the-consequences-of-randomization">The Consequences of Randomization</a></li>
-  <li><a href="#sampling-distributions" id="toc-sampling-distributions" class="nav-link" data-scroll-target="#sampling-distributions">Sampling Distributions</a></li>
-  <li><a href="#the-central-limit-theorem" id="toc-the-central-limit-theorem" class="nav-link" data-scroll-target="#the-central-limit-theorem">The Central Limit Theorem</a>
+  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a>
   <ul class="collapse">
-  <li><a href="#when-is-bar-x-normal" id="toc-when-is-bar-x-normal" class="nav-link" data-scroll-target="#when-is-bar-x-normal">When is <span class="math inline">\(\bar x\)</span> Normal?</a></li>
-  <li><a href="#mean-and-standard-deviation-of-the-distribution-of-sample-means" id="toc-mean-and-standard-deviation-of-the-distribution-of-sample-means" class="nav-link" data-scroll-target="#mean-and-standard-deviation-of-the-distribution-of-sample-means">Mean and Standard Deviation of the Distribution of Sample Means</a></li>
-  </ul></li>
-  <li><a href="#the-law-of-large-numbers" id="toc-the-law-of-large-numbers" class="nav-link" data-scroll-target="#the-law-of-large-numbers">The Law of Large Numbers</a>
-  <ul class="collapse">
-  <li><a href="#review-of-key-concepts" id="toc-review-of-key-concepts" class="nav-link" data-scroll-target="#review-of-key-concepts">Review of Key Concepts</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -514,7 +505,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Distribution of Sample Means</h1>
+<h1 class="title">Confidence Intervals for a Mean</h1>
 </div>
 
 
@@ -533,254 +524,67 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>This lesson explores the idea of a <strong>sampling distribution</strong> which is the theoretical distribution of a sample statistic. We discuss the theoretical concepts that allow us to make confident conclusions about an entire population based on a single sample.</p>
-<section id="lesson-outcomes" class="level3">
-<h3 class="anchored" data-anchor-id="lesson-outcomes">Lesson Outcomes</h3>
-<p>By the end of this lesson, you should be able to:</p>
+<p><strong>Statistical Inference</strong> is the practice of using data sampled from a population to make conclusions about <em>population parameters</em>.</p>
+<p>The two primary methods of statistical inference are:</p>
 <ol type="1">
-<li>Describe the concept of a sampling distribution of the sample mean</li>
-<li>State the Central Limit Theorem</li>
-<li>Determine the mean of the sampling distribution for a given parent population</li>
-<li>Determine the standard deviation of the sampling distribution of the sample mean for a given parent population</li>
-<li>Determine the shape of the sampling distribution of the sample mean for a given parent population</li>
-<li>State the Law of Large Numbers</li>
+<li>Hypothesis Testing</li>
+<li>Confidence Intervals</li>
 </ol>
-<p><br></p>
+<p>Hypothesis testing is the practice of gathering evidence in an attempt to disprove a hypothesis. We either <strong>reject</strong> the conventional wisdom or <strong>fail to reject</strong>. Proper scientific questions are falsifiable, meaning they can be disproven.</p>
+<p>Confidence intervals are a way to use data to estimate the unknown population parameter, often the population mean, <span class="math inline">\(\mu\)</span>.</p>
+<p>This chapter lays the foundation for Hypothesis Testing.</p>
+<section id="review-distribution-of-sample-means" class="level2">
+<h2 class="anchored" data-anchor-id="review-distribution-of-sample-means">Review: distribution of sample means</h2>
+<p>Both methods of inference rely on the validity of the assumption that the distribution of the sample mean is normally distributed.</p>
+<p>Recall that the distribution of sample means is normal when:</p>
+<ol type="1">
+<li>The underlying population is normally distributed</li>
+<li>The sample size, n, is sufficiently large (<span class="math inline">\(n&lt;30\)</span> for this class) for the Central Limit Theorem to apply</li>
+</ol>
 </section>
 </section>
-<section id="review" class="level1">
-<h1>Review</h1>
-<p>A <strong>Population Parameter</strong> is a numerical summary (mean, median, standard deviation, proportion, etc.) based on the <em>entire population</em>.</p>
-<p>A <strong>Sample Statistic</strong> is any numerical summary (mean, median, standard deviation, proportion, etc.) based on a sample from a population.</p>
-<p>A <strong>Sample</strong> is a subset of the entire population.</p>
-<p><strong>Sample Size</strong> is the number of individuals in the sample.</p>
-<p><strong>Randomization</strong> is used in the collection of a sample to minimize bias and make sure our sample is representative of the population.</p>
-</section>
-<section id="the-consequences-of-randomization" class="level1">
-<h1>The Consequences of Randomization</h1>
-<p>Randomization guarantees that if someone else tries to recreate our study, they will get a different sample. Consequently, their <strong>sample statistics</strong> will not be the same as ours!</p>
-<p>While this should not be surprising, it does create a problem. Given sample-to-sample differences, how can we know when our conclusions are valid? We typically only have one sample to go on.</p>
-<p>The good news is that we can rely on the theory of sampling distributions to quantify the uncertainty about our sample.</p>
-</section>
-<section id="sampling-distributions" class="level1">
-<h1>Sampling Distributions</h1>
-<p>Imagine you and 10 friends want to know about the what percent of BYU-I students whose favorite soda is Dr.&nbsp;Pepper. Each of you could go and survey 50 people each and ask about their favorite soda. All 11 of you calculate the proportion of students who prefer Dr.&nbsp;Pepper.</p>
-<p>You’ll all get different results because you’ll be asking different sets of people. Now, instead of looking at your percents individually, summarize the collection of samples from all 11 of you using <code>favstats()</code> and a histogram:</p>
+<section id="confidence-intervals" class="level1">
+<h1>Confidence Intervals</h1>
+<p>Confidence intervals are a way to estimate a population parameter without assuming a Null Hypothesis.</p>
+<section id="confidence-interval" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
+<p>We can also calculate a confidence interval for the above example.</p>
+<p>Recall the formula for a confidence interval is, for a given <span class="math inline">\(z^*\)</span> associated with a desired level of confidence:</p>
+<p><span class="math display">\[ CI = \bar{x} \pm z^*\frac{\sigma}{\sqrt{n}}\]</span></p>
+<p>Recall the <span class="math inline">\(z^*\)</span> for common confidence levels:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>proportions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.14</span>, <span class="fl">0.08</span>, <span class="fl">0.02</span>, <span class="fl">0.06</span>, <span class="fl">0.06</span>, <span class="fl">0.02</span>, <span class="fl">0.00</span>, <span class="fl">0.14</span>, <span class="fl">0.00</span>, <span class="fl">0.08</span>, <span class="fl">0.18</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(proportions) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="st">`</span><span class="at">Conf. Level</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.99</span>, <span class="fl">0.95</span>, <span class="fl">0.90</span>), <span class="st">`</span><span class="at">Z*</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">2.576</span>, <span class="fl">1.96</span>, <span class="fl">1.645</span>)) <span class="sc">%&gt;%</span> <span class="fu">pander</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 11%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">min</th>
-<th style="text-align: right;">Q1</th>
-<th style="text-align: right;">median</th>
-<th style="text-align: right;">Q3</th>
-<th style="text-align: right;">max</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">sd</th>
-<th style="text-align: right;">n</th>
-<th style="text-align: right;">missing</th>
+<th style="text-align: center;">Conf. Level</th>
+<th style="text-align: center;">Z*</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: right;">0.06</td>
-<td style="text-align: right;">0.11</td>
-<td style="text-align: right;">0.18</td>
-<td style="text-align: right;">0.0709091</td>
-<td style="text-align: right;">0.0609023</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: center;">0.99</td>
+<td style="text-align: center;">2.576</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.95</td>
+<td style="text-align: center;">1.96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.9</td>
+<td style="text-align: center;">1.645</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(proportions, <span class="at">main =</span> <span class="st">"Distribution of the % of Students who Prefer Dr. Pepper out of 50"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Sampling_Distributions_CLT_LLN_Reading_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
 </div>
-</div>
-</div>
-<p>The above histogram represents 11 different samples of nearly infinite possible samples of 50 BYU-I students.</p>
-<p>The <strong>Sampling Distribution</strong> is the distribution of a sample statistic for <em>all possible samples</em> from a population. It’s completely theoretical, but there are some mathematically provable attributes of this theoretical distribution that make it possible to make inference about an unknown population parameter based on a <em>single sample</em>.</p>
-<p>We will discuss these theoretical properties in greater detail below. Before we do, use your intuition to answer the following question.</p>
-<div class="QuestionsHeading">
-Answer the following question:
-</div>
-<div class="Questions">
-<p><strong>QUESTION</strong>: Given the 11 independent samples of 50 students, what would be your best guess of the <strong>True population proportion</strong> of students who prefer Dr.&nbsp;Pepper?</p>
-<p><strong>NOTE</strong>: Because these results are based on a simulation, the true proportion is known.</p>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<p>If you guessed the mean of the 11 samples (0.0709) you’d be VERY close to the truth, which is 7%. Even though none of the individual researchers got 7%, their <strong>average</strong> was close to the truth! (It’s actually impossible to get exactly 7% when only asking 50 students.)</p>
-</details>
-</div>
-<p><br></p>
-<p>It turns out that the <em>mean of the sampling distribution of a sample statistic is equal to the population parameter!</em></p>
-<p>The Central Limit Theorem allows us to know not only know about the <em>mean</em>, but the entire shape of the sampling distribution for a mean.</p>
-</section>
-<section id="the-central-limit-theorem" class="level1">
-<h1>The Central Limit Theorem</h1>
-<p>For any population with a mean, <span class="math inline">\(\mu\)</span>, and a standard deviation, <span class="math inline">\(\sigma\)</span>:</p>
-<p><strong>The Central Limit Theorem</strong> states that with a sufficiently large sample size, the sampling distribution of the sample mean will be <em>approximately normal</em> with a mean equal to the population mean, <span class="math inline">\(\mu\)</span>, and a standard deviation equal to the population standard deviation, <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span> where <span class="math inline">\(n\)</span> is the number of individuals in the sample.</p>
-<section id="when-is-bar-x-normal" class="level2">
-<h2 class="anchored" data-anchor-id="when-is-bar-x-normal">When is <span class="math inline">\(\bar x\)</span> Normal?</h2>
-<p>How many observations are required so that the Central Limit Theorem will assure that the distribution of sample means will be approximately normal? The answer is, “it depends.”</p>
-<ul>
-<li>If the parent population is normal, then the sampling distribution of <span class="math inline">\(\bar x\)</span> will always be normally distributed, no matter how many observations are selected.</li>
-<li>If the parent population is not normal, then the sampling distribution <span class="math inline">\(\bar x\)</span> will be approximately normally distributed, if the sample size is large enough.
-<ul>
-<li>If the parent population is almost normal (e.g.&nbsp;mound-shaped and nearly symmetrical), then a sample of size n = 5 will probably be sufficient to assure that <span class="math inline">\(\bar x\)</span> will be approximately normally distributed.</li>
-<li>If the parent population is heavily skewed, then it will require a larger sample size to be assured that <span class="math inline">\(\bar x\)</span> will be normally distributed. For most moderately skewed distributions, a sample size of around 30 is traditionally thought to be sufficiently large to assure that <span class="math inline">\(\bar x\)</span> will be approximately normally distributed. This is not a definitive number but is a rule of thumb.</li>
-<li>For tremendously skewed distributions (e.g., the distribution of lottery payouts), a much larger sample will be required before the distribution of sample means is approximately normal. This may require billions of observations. Simulation can be used to determine if a particular sample size is sufficient.</li>
-</ul></li>
-</ul>
-<p>For this course, if the sample size is at least 30, we will conclude that the sampling distribution of <span class="math inline">\(\bar x\)</span> will be approximately normal.</p>
-<p><br></p>
-<div class="QuestionsHeading">
-Answer the following question:
-</div>
-<div class="Questions">
-<ol type="1">
-<li>There are two ways that <span class="math inline">\(\bar x\)</span> can be (approximately) normally distributed. What are they?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li><span class="math inline">\(\bar x\)</span> will be normally distributed if the data were drawn from a normal population.</li>
-<li><span class="math inline">\(\bar x\)</span> will be approximately normally distributed if the sample size is sufficiently large.</li>
-</ul>
-</details>
-</div>
-<p><br></p>
-</section>
-<section id="mean-and-standard-deviation-of-the-distribution-of-sample-means" class="level2">
-<h2 class="anchored" data-anchor-id="mean-and-standard-deviation-of-the-distribution-of-sample-means">Mean and Standard Deviation of the Distribution of Sample Means</h2>
-<p>The following facts are always true. They do not depend on the Central Limit Theorem. They do not depend on the sample size. These facts hold for the sample mean <span class="math inline">\(\bar x\)</span> of any simple random sample of size <span class="math inline">\(n\)</span> drawn from a population with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>.</p>
-<ul>
-<li>The mean of the sample means is <span class="math inline">\(\mu\)</span></li>
-<li>The standard deviation of the sample means is <span class="math inline">\(\sigma / \sqrt{n}\)</span></li>
-</ul>
-<p>Remember, these facts are always true. They do not depend on normality or the sample size. So, even though these facts are often used in conjunction with the Central Limit Theorem, they do not depend on it.</p>
-<p>Think about the simulations you have observed. The mean of the sample means was always aligned with <span class="math inline">\(\mu\)</span>. Also, if you took samples larger than <span class="math inline">\(n = 1\)</span>, the standard deviation of sample means was always smaller than <span class="math inline">\(\sigma\)</span>.</p>
-<div class="QuestionsHeading">
-Answer the following questions:
-</div>
-<div class="Questions">
-<ol start="2" type="1">
-<li>The amount of time passengers spend waiting for a bus on a particular urban route follows a distribution that has a mean of 8.7 minutes with a standard deviation of 2.2 minutes. Transportation officials observed the waiting times for a random sample of <span class="math inline">\(n=121\)</span> individual passengers and recorded the sample mean, <span class="math inline">\(\bar x\)</span>. We can think of this sample mean as one value observed out of all the possible sample means that could have been observed. What is the mean of the distribution of all possible sample means?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<p><span class="math display">\[
-\mu = 8.7~\text{minutes}
-\]</span></p>
-</details>
-<ol start="3" type="1">
-<li>Use the information in the previous problem to answer this question: What is the standard deviation of the distribution of all possible sample means?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<span class="math display">\[
-\frac{\sigma}{\sqrt{n}} = \frac{2.2}{\sqrt{121}} = 0.2~\text{minutes}
-\]</span>
-</details>
-</div>
-</section>
-</section>
-<section id="the-law-of-large-numbers" class="level1">
-<h1>The Law of Large Numbers</h1>
-<p>Suppose researchers treated 6 patients with a new cancer treatment. Their estimated 5-year survival rate was estimated to be 50% higher than standard treatment. How confident would you be in my results?</p>
-<p>While it is possible that the new treatment is wildly more effective than standard treatments, six patients is not a lot. It is possible to get six patients that might be more resilient than average, just by chance. Six people can hardly be a robust, representative of the whole population.</p>
-<p>My sample mean survival rate is not likely to be very close to the true population survival rate.</p>
-<div class="myemphasis">
-<p><strong>The Law of Large Numbers</strong> states that the sample mean, <span class="math inline">\(\bar{x}\)</span>, will become closer to <span class="math inline">\(\mu\)</span> as the sample size <span class="math inline">\(n\)</span> becomes larger.</p>
-</div>
-<div class="QuestionsHeading">
-Answer the following questions:
-</div>
-<div class="Questions">
-<ol start="4" type="1">
-<li>We just learned that the standard deviation of sample means is <span class="math inline">\(\displaystyle{ \sigma \over \sqrt{n} }\)</span>. What happens to the standard deviation of sample means when the sample size is increased?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>If the sample size, <span class="math inline">\(n\)</span>, is increased, then the standard deviation of the sample mean will decrease. The fraction will get smaller.</li>
-</ul>
-</details>
-<ol start="5" type="1">
-<li>If the standard deviation of the sample mean gets smaller, what happens to the values of <span class="math inline">\(\bar x\)</span>?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>The values that will be observed will be very close to each other and therefore close to <span class="math inline">\(\mu\)</span>, if the sample size is large.</li>
-</ul>
-</details>
-</div>
-<p><br></p>
-<p>The result you have discovered in the previous two questions is called the Law of Large Numbers. The Law of Large Numbers states that if the sample size is large, then the sample mean will typically be close to the population mean, <span class="math inline">\(\mu\)</span>. This happens because the standard deviation <span class="math inline">\(\sigma / \sqrt{n}\)</span> will get smaller as the sample size <span class="math inline">\(n\)</span> increases.</p>
-<p><strong>NOTE</strong>: This is very different from the Central Limit Theorem. The Central Limit Theorem is a statement about the <strong>DISTRIBUTION</strong> of all possible sample means, that if the sample size is large that <span class="math inline">\(\bar x\)</span> will be approximately normal. The Law of Large numbers states that <strong>the sample mean</strong> <span class="math inline">\(\bar x\)</span> will be close to <span class="math inline">\(\mu\)</span>.</p>
-<p>Take a moment to study the difference between the Central Limit Theorem and the Law of Large Numbers. They are very different, but it is easy to mix them up when you are first learning about them.</p>
-<p><br></p>
-<section id="review-of-key-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="review-of-key-concepts">Review of Key Concepts</h2>
-<p>In order to “do statistics” we need to compute probabilities. This requires we know the distribution of the population of interest. The most important distribution in this course is the normal distribution. In this lesson, we are interested in another very important distribution: the distribution of all the sample means, <span class="math inline">\(\bar{x}\)</span>. In order to do statistics with <span class="math inline">\(\bar{x}\)</span> we need the sampling distribution of <span class="math inline">\(\bar{x}\)</span> to be normal. There are two situations when the distribution of <span class="math inline">\(\bar{x}\)</span> is guaranteed to be normal (or at least very close to normal). They are:</p>
-<ul>
-<li>If the parent population is normal, the distribution of the sample means <span class="math inline">\(\bar{x}\)</span> will be normal, for every sample size <span class="math inline">\(n\)</span>.</li>
-<li>Even if the parent population is not normal, the Central Limit Theorem guarantees that the distribution of the sample mean <span class="math inline">\(\bar{x}\)</span> will be approximately normal if the sample size <span class="math inline">\(n\)</span> is large enough. <strong>For this course, if</strong> <span class="math inline">\(n \geq 30\)</span>, <strong>we will say the distribution of the sample means will be approximately normal</strong> (even if the parent population is not normal).</li>
-</ul>
-<p>The mean and standard deviation of <span class="math inline">\(\bar{x}\)</span> are:</p>
-<ul>
-<li>The mean <span class="math inline">\(\mu_{\bar{x}}\)</span> of the sample means is the population mean <span class="math inline">\(\mu\)</span>.</li>
-<li>The standard deviation <span class="math inline">\(\sigma_{\bar{x}}\)</span> of the sample means is the population standard deviation <span class="math inline">\(\sigma\)</span> divided by the square root of <span class="math inline">\(n\)</span>, <span class="math inline">\(\sigma / \sqrt{n}\)</span></li>
-</ul>
-<p><br></p>
-</section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<div class="SummaryHeading">
-Remember…
-</div>
-<div class="Summary">
-<ol type="1">
-<li><p>The <strong>distribution of sample means</strong> is a distribution of all possible sample means (<span class="math inline">\(\bar x\)</span>) for a particular sample size.</p></li>
-<li><p>The <strong>Central Limit Theorem</strong> states that the sampling distribution of the sample mean will be approximately normal if the sample size <span class="math inline">\(n\)</span> of a sample is sufficiently large. In this class, <span class="math inline">\(n\ge 30\)</span> is considered to be sufficiently large.</p></li>
-<li><p>The <strong>mean</strong> of the distribution of sample means is the mean <span class="math inline">\(\mu\)</span> of the population: <span class="math inline">\(\mu_{\bar{x}} = \mu\)</span>.</p></li>
-<li><p>The <strong>standard deviation</strong> of the distribution of sample means is the standard deviation <span class="math inline">\(\sigma\)</span> of the population divided by the square root of <span class="math inline">\(n\)</span>: <span class="math inline">\(\sigma_{\bar{x}} = \sigma/\sqrt{n}\)</span>.</p></li>
-<li><p>The distribution of sample means is <strong>normal</strong> in either of two situations: (1) when the data is normally distributed <strong>or</strong> (2) when, thanks to the <strong>Central Limit Theorem (CLT)</strong>, our sample size (<span class="math inline">\(n\)</span>) is large.</p></li>
-<li><p>The <strong>Law of Large Numbers</strong> states that as the sample size (<span class="math inline">\(n\)</span>) gets larger, the sample mean (<span class="math inline">\(\bar x\)</span>) will get closer to the population mean (<span class="math inline">\(\mu\)</span>). This can be seen in the equation for <span class="math inline">\(\sigma_{\bar{x}} = \sigma/\sqrt{n}\)</span>. Notice as <span class="math inline">\(n\)</span> increases, then <span class="math inline">\(\sigma_\bar{x}\)</span> will get smaller.</p></li>
-</ol>
-</div>
-<p><br></p>
 
 
 </section>

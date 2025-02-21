@@ -53,7 +53,7 @@ Once the installation finishes you can use your computer’s search bar to searc
 
 Throughout this course, you will download many files. The collection of files will be a valuable resource if you go on to use R in the future.
 
-  1. Create a folder somewhere on your computer or OneDrive that is easy to find. Consider naming it "M221D" or another descriptive name.
+  1. Create a folder somewhere that is easy to find. Consider naming it "M221D" or another descriptive name
   2. Download the [course material](https://raw.github.com/byuistats/Math221D_Course/main/Student_Work.zip) and move the Student_Work folder to your course folder created in step 1.
   3. Open the TestingTesting.qmd file in R-Studio from the 1-Data_Literacy folder. 
   4. At the top of the R-Studio Window, there may be a prompt to Install some libraries.  Click install.
@@ -62,10 +62,9 @@ Throughout this course, you will download many files. The collection of files wi
 
 If everything worked, R should open up a browser window with some text and a chart. If it runs, you're technology is set up for success in this class. 
 
-Once you have "Rendered" the document, R will also create a `.html` file in the same file location where you saved your Student_Work folder.  If you have followed the above instructions, the file path will look like "/Student_Work/1-Data_Literacy/TestingTesting.html". 
+Once you have "Rendered" the document, R will also create a `.html` file in the same file location as where you saved your Student_Work folder.  If you have followed the above instructions, this will look like "Student_Work/1-Data_Literacy/TestingTesting.html".
 
-__Upload the "TestingTesting.html"__ file into Canvas to show that it works.  
-
+Upload the "TestingTesting.html" file into Canvas to demonstrate that it works.  
 
 ## Keep Calm
 

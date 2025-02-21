@@ -95,37 +95,6 @@ __Question__:  What is the probability that the *average* GRE score of 5 randoml
 __Answer__:
 
 
-## Coast Guard
-
-The United States Coast Guard assumes the mean weight of passengers in commercial boats is 185 pounds. The previous value was lower, but was raised after a tragic boating accident. The standard deviation of passenger weights is 26.7 pounds. The weights of a random sample of 48 commercial boat passengers were recorded. The sample mean was determined to be 177.6 pounds. 
-
-Use the following R code to answer the questions below:
-
-```{r}
-xbar <- 
-mu <- 
-sigma <- 
-n <- 
-sigma_xbar <- 
-sigma_xbar
-
-z <- 
-z
-
-# Area to the left:
-  
-# Area to the right:
-
-
-```
-
-
-__Question__: Find the probability that a random sample of passengers will have a mean weight that is as extreme or more extreme (either above or below the mean) than was observed in this sample.  
-__Answer__:  
-
-
-__HINT__:  To get a value "as extreme" means it could be higher or lower.  Because the normal distribution is symmetric, if the $z<0$, we can take the area to the *left* of $z$ and multiply by 2.  Conversely, if $z>0$ we can take the area to the right and multiply by 2.  
-
 
 ## Tankers
 

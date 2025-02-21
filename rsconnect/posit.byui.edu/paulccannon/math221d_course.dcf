@@ -1,0 +1,12 @@
+name: math221d_course
+title: Math221D_Course
+username: paulccannon
+account: paulccannon
+server: posit.byui.edu
+hostUrl: https://posit.byui.edu/__api__
+appId: 433
+bundleId: 773
+url: https://posit.byui.edu/content/42319101-7eb5-4cd2-a015-9e2bf6fe6222/
+version: 1
+asMultiple: FALSE
+asStatic: TRUE

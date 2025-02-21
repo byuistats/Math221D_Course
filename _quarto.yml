@@ -66,7 +66,7 @@ website:
     - text: "Unit 4"
       menu:
         - text: "Statistical Tests - Part 1"
-        - href: ./4-Statistical_Tests_Part1/001-Introduction_to_Inference.qmd
+        - href: ./4-Statistical_Tests_Part1/002-Introduction_to_Inference.qmd
         - href: ./4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.qmd
         - href: ./4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.qmd
         - text: "Paired T-test"

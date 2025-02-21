@@ -88,7 +88,7 @@ What's the probability of a false start? (meaning a reaction time LESS than 0.1)
 
 # Law School Admissions Test (LSAT)
 
-The scores on the LSAT are approximately normal with mean of 150.7 and standard deviation of 10.2. (Source: www.lsat.org.) Queen's School of Business in Kingston, Ontario requires a minimum LSAT score of 157 for admission.
+The scores on the LSAT are approximately normal with mean of 150.7 and standard deviation of 10.2. (Source: www.lsat.org.) Queen's School of Business in Kingston, Ontario requires a minimum LSAT score of 157 for admission.  
 
 ```{r}
 

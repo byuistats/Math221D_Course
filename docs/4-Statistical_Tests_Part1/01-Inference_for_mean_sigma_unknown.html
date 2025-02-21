@@ -489,9 +489,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#review" id="toc-review" class="nav-link active" data-scroll-target="#review">Review</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#review" id="toc-review" class="nav-link" data-scroll-target="#review">Review</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a>
   <ul class="collapse">
-  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a></li>
+  <li><a href="#testing-for-the-true-mean-body-temperature" id="toc-testing-for-the-true-mean-body-temperature" class="nav-link" data-scroll-target="#testing-for-the-true-mean-body-temperature">Testing for the True Mean Body Temperature</a>
+  <ul class="collapse">
+  <li><a href="#null-and-alternative-hypotheses" id="toc-null-and-alternative-hypotheses" class="nav-link" data-scroll-target="#null-and-alternative-hypotheses">Null and Alternative Hypotheses</a></li>
+  <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic">Test Statistic</a></li>
+  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="math inline">\(P\)</span>-value</a></li>
+  </ul></li>
   <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
   </ul></li>
   <li><a href="#students-t-distribution-sigma-unkown" id="toc-students-t-distribution-sigma-unkown" class="nav-link" data-scroll-target="#students-t-distribution-sigma-unkown">Student’s T-Distribution (sigma unkown)</a>
@@ -545,26 +552,90 @@ window.Quarto = {
 </header>
 
 
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p><strong>Statistical Inference</strong> is the practice of using data sampled from a population to make conclusions about <em>population parameters</em>.</p>
+<p>The two primary methods of statistical inference are:</p>
+<ol type="1">
+<li>Hypothesis Testing</li>
+<li>Confidence Intervals</li>
+</ol>
+<p>Hypothesis testing is the practice of gathering evidence in an attempt to disprove a hypothesis. We either <strong>reject</strong> the conventional wisdom or <strong>fail to reject</strong>. Proper scientific questions are falsifiable, meaning they can be disproven.</p>
+<p>Confidence intervals are a way to use data to estimate the unknown population parameter, often the population mean, <span class="math inline">\(\mu\)</span>.</p>
+<p>Both of these methods rely on the validity of the assuming that the distribution of the sample mean is normally distributed.</p>
+<p>Recall that, according to the Central Limit Theorem, the distribution of sample means is normal when:</p>
+<ol type="1">
+<li>The underlying population is normally distributed</li>
+<li>The sample size, n, is sufficiently large (<span class="math inline">\(n&lt;30\)</span> for this class)</li>
+</ol>
+<p>This chapter will introduce the concept of hypothesis testing and confidence intervals.</p>
+</section>
 <section id="review" class="level1">
 <h1>Review</h1>
 <p>When we know what the population standard deviation, <span class="math inline">\(\sigma\)</span>, for individuals, we can calculate Z-scores and use the Standard Normal Distribution to calculate probabilities. Z has a standard normal distribution, meaning it has a mean of 0 and a standard deviation of 1.</p>
 <p><span class="math display">\[ z= \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}\]</span></p>
 <p>Though rare, there are situations where we might know the population standard deviation from published research or census data. For example, Standardized test organizations publish population-level summaries which would allow us to test how our sample compares to the general population using the Z formula.</p>
-<section id="hypothesis-testing" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-testing">Hypothesis Testing</h2>
+</section>
+<section id="hypothesis-testing" class="level1">
+<h1>Hypothesis Testing</h1>
+<section id="testing-for-the-true-mean-body-temperature" class="level2">
+<h2 class="anchored" data-anchor-id="testing-for-the-true-mean-body-temperature">Testing for the True Mean Body Temperature</h2>
+<section id="null-and-alternative-hypotheses" class="level3">
+<h3 class="anchored" data-anchor-id="null-and-alternative-hypotheses">Null and Alternative Hypotheses</h3>
+<p>It is commonly believed that the true mean body temperature is 98.6° F (37° C). In science, a statement or claim such as this is called a <strong>hypothesis</strong>. We can use data to test a hypothesis. If there is enough evidence against a hypothesis, we reject it in favor of something else.</p>
+<p>The claim representing the “status quo” or the commonly held belief or the usual value is called the <strong>null hypothesis</strong>. In the case of body temperatures, our null hypothesis is defined by the belief that the true mean body temperature of healthy adults is 98.6° F.</p>
+<p>We present the null hypothesis in the following way:</p>
+<p><span class="math display">\[H_0: \mu = 98.6\]</span></p>
+<p>If we gather enough evidence against the null hypothesis and determine that it should be rejected, we need another hypothesis to propose in its place. This is called the <strong>alternative hypothesis</strong>. If 98.6° F is not the correct body temperature, then it is logical to propose the following alternative hypothesis:</p>
+<p><span class="math display">\[H_a: \mu \ne 98.6\]</span></p>
+<p>To be brief in writing, we label the null hypothesis <span class="math inline">\(H_0\)</span>. The zero in the subscript represents “null,” “baseline,” “default,” “no effect,” etc. Similarly, we label the alternative hypothesis <span class="math inline">\(H_a\)</span>.</p>
+<p>Our alternative hypothesis could have been written as:</p>
+<ul>
+<li><span class="math inline">\(H_a: \mu \ne 98.6\)</span> (two-sided hypothesis; two-tailed)</li>
+<li><span class="math inline">\(H_a: \mu &lt; 98.6\)</span> (one-sided hypothesis; left-tailed)</li>
+<li><span class="math inline">\(H_a: \mu &gt; 98.6\)</span> (one-sided hypothesis; right-tailed)</li>
+</ul>
+<p>Notice that each of these is a viable alternative to the requirement that the mean is 98.6 degrees. We would only use <span class="math inline">\(&lt;\)</span> or <span class="math inline">\(&gt;\)</span> if we had a belief in advance that the mean was less than or greater than 98.6. If we do not have a strong reason to believe the mean is either smaller or larger than the stated value–before we collect our data–then, we use <span class="math inline">\(\ne\)</span> in our alternative hypothesis.</p>
+<p>It is important that the null and alternative hypotheses be determined prior to collecting the data. It is not appropriate to use the data from your study to choose the alternative hypothesis that will be used to test the same data! This is an example of using data twice, once to choose the test and again to conduct the test. It is okay to use data from a previous study to determine your null and alternative hypotheses, but it is an improper use of the statistical procedures to use the data to define <em>and</em> conduct a hypothesis test.</p>
+<p>Notice that the null and alternative hypotheses are statements about a population parameter (e.g.&nbsp;<span class="math inline">\(\mu\)</span>.) They will never involve a sample statistic (e.g.&nbsp;<span class="math inline">\(\bar{x}\)</span>.) Population parameters are unknown, and we are trying to make a judgement about whether or not they are equal to a particular value. Sample statistics are calculated from our data, so there is no reason to do any test to assess what their value is.</p>
+<p>The null hypothesis will always be a statement involving equality. This gives us a starting point in our analysis. In the reading for <a href="Lesson05.html" target="_blank">Normal Distributions</a>, we assumed that the true mean body temperature was 98.6° F. This becomes the assumed value of the mean of the distribution of the random variable <span class="math inline">\(\bar{x}\)</span>.</p>
+<p>The scientific method demands that we make a hypothesis (a claim or an educated guess). We assume that the null hypothesis is true and gather evidence against it. In other words, we “do research” (e.g., collect data) to gather evidence against that hypothesis. If we can gather enough evidence to discredit our initial hypothesis, we conclude that it was false, and begin the process again. If we are unable to reject the original hypothesis, we do not conclude that it is correct. For example, we do not know that Einstein’s Theory of Relativity is correct. We have simply not been able to disprove it<span class="math inline">\(\ldots\)</span>yet.</p>
+<p>In the same way, we never can prove a null hypothesis is true. We can only gather evidence against it. If we get enough evidence, we reject the null hypothesis.</p>
+</section>
+<section id="test-statistic" class="level3">
+<h3 class="anchored" data-anchor-id="test-statistic">Test Statistic</h3>
+<p>Assuming the null hypothesis is true, we assume that the true mean body temperature of healthy adults actually is <span class="math inline">\(\mu = 98.6^{\circ}\)</span> F. Wanting to test this claim, researchers collected data on the mean body temperatures of <span class="math inline">\(n=148\)</span> healthy adults. The mean of the observed values was <span class="math inline">\(\bar{x} = 98.23^{\circ}\)</span> F.</p>
+<p>A histogram of the body temperature data shows a nice bell-shaped distribution. Also, the sample mean, <span class="math inline">\(\bar{x}=98.23^\circ\)</span> F, appears to be reasonably close to the assumed population mean, <span class="math inline">\(\mu=98.6^\circ\)</span> F. However, it is important to remember that the standard deviation of <span class="math inline">\(\bar{x}\)</span> is <span class="math inline">\(\frac{\sigma}{\sqrt{n}} = \frac{0.675}{\sqrt{148}}=0.055\)</span>. We need to determine how far <span class="math inline">\(\bar{x}\)</span> is from <span class="math inline">\(\mu\)</span>. Since we know <span class="math inline">\(\sigma\)</span> in this case, we can use the <span class="math inline">\(z\)</span>-score to determine if <span class="math inline">\(\bar{x}\)</span> is far from the assumed value. This is called the <strong>test statistic</strong>:</p>
+<p><span class="math display">\[
+z = \frac{\bar{x} - \mu}{\sigma / \sqrt{n}} = \frac{98.23 - 98.6}{0.675 / \sqrt{148}} = -6.6685
+\]</span></p>
+<p>Where <span class="math inline">\(z\)</span> is the test statistic, <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(\mu\)</span> is the population mean, <span class="math inline">\(\sigma\)</span> is the standard deviation and <span class="math inline">\(n\)</span> is the sample size. Based on the results from the formula above, <span class="math inline">\(\bar{x}\)</span> is over 6 standard deviations below the mean!</p>
+</section>
+<section id="p-value" class="level3">
+<h3 class="anchored" data-anchor-id="p-value"><span class="math inline">\(P\)</span>-value</h3>
+<section id="definition" class="level4">
+<h4 class="anchored" data-anchor-id="definition">Definition</h4>
+<p>The <strong><span class="math inline">\(P\)</span>-value</strong> is the probability of obtaining a test statistic (such as <span class="math inline">\(z\)</span>) at least as extreme as the one you calculated, assuming the null hypothesis is true. In other words, our <span class="math inline">\(P\)</span>-value is the probability that we would get a <span class="math inline">\(z\)</span>-score that is as extreme or more extreme than <span class="math inline">\(z=-6.6685\)</span>, assuming the true mean is 98.6° F.</p>
+<p>In advance of collecting the data, we may have had no idea whether the true mean would be greater than 98.6 or less than 98.6, if 98.6° F was not the right value. This is why we used a two-sided alternative hypothesis (<span class="math inline">\(H_a: \mu \ne 98.6\)</span>.) When computing the <span class="math inline">\(P\)</span>-value, we need to continue this logic. So, we would have considered a value of <span class="math inline">\(z=-6.6685\)</span> to be equally as extreme as <span class="math inline">\(z=6.6685\)</span>.</p>
+<p>In the case of a two-sided test for one mean with <span class="math inline">\(\sigma\)</span> known, the <span class="math inline">\(P\)</span>-value is the area in the tails beyond <span class="math inline">\(\pm z\)</span>, in both the left and right tails of the standard normal distribution.</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Applet2584E-11-twosided-LoR.png" class="img-fluid"></p>
 <p>When testing a null hypothesis, the <span class="math inline">\(\mu\)</span> in the z-score formula becomes the <strong>hypothesized population mean</strong>. The <span class="math inline">\(z\)</span>-score is then interpreted as the number of standard deviations away from the hypothesized mean. If we know the population standard deviation, <span class="math inline">\(\sigma\)</span>, then we can calculate the probability of getting a sample mean more extreme than the one we observed <em>if the null hypothesis is true</em>.</p>
 <p><strong>KEY DEFINITION</strong>: A <strong>P-value</strong> is the probability of observing a test statistic as extreme, or more extreme than the one we observed in our sample, <em>if the null hypothesis is true</em>.</p>
 <p>We use “as or more extreme” because the direction (greater than or less than) depends on our alternative hypothesis. In the above example, if I believe that my students scored higher than the general population average, I can say, there is only a 0.0011 chance of getting a test statistic higher than the one I observed if the null hypothesis is true. Because that probability is very low, I am willing to reject the null hypothesis in favor of the alternative that my students scored higher, on average, than the general population.</p>
-<p><strong>EXAMPLE</strong>: A factory claims its light bulbs last, on average, <span class="math inline">\(\mu = 800\)</span> hours with a standard deviation, <span class="math inline">\(\sigma = 40\)</span>. We randomly select 40 light bulbs to test to see if the life expectancy is actually less than that.</p>
+<p><strong>EXAMPLE</strong>: A factory claims its light bulbs last, on average, <span class="math inline">\(\mu = 800\)</span> hours with a standard deviation, <span class="math inline">\(\sigma = 40\)</span>.</p>
+<p>We randomly select 40 light bulbs and get an sample mean of 786. Test to see if the life expectancy is actually less than that.</p>
 <p>State the Null and alternative Hypotheses:</p>
-<p><span class="math display">\[ H_0: \mu \]</span></p>
-<p><span class="math display">\[ H_a: \mu \]</span></p>
+<p><span class="math display">\[ H_0: \mu = 800 \]</span></p>
+<p><span class="math display">\[ H_a: \mu &lt; 800 \]</span></p>
 <p>Calculate the Z-score and find the P-value for the test:</p>
-<p>State your conclusion:</p>
+<p><strong>Conclusion</strong>:</p>
+</section>
+</section>
 </section>
 <section id="confidence-interval" class="level2">
 <h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
-<p>We can also calculate a confidence interval for the above example. Recall the formula for a confidence interval is, for a given <span class="math inline">\(z^*\)</span> associated with a desired level of confidence:</p>
+<p>We can also calculate a confidence interval for the above example.</p>
+<p>Recall the formula for a confidence interval is, for a given <span class="math inline">\(z^*\)</span> associated with a desired level of confidence:</p>
 <p><span class="math display">\[ CI = \bar{x} \pm z^*\frac{\sigma}{\sqrt{n}}\]</span></p>
 <p>Recall the <span class="math inline">\(z^*\)</span> for common confidence levels:</p>
 <div class="cell">

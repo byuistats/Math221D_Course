@@ -53,7 +53,7 @@ Next we'll see how to program in R within a text document!  Hooray!
 It can be done by inserting a "code chunk" using the tick mark symbol (not an apostrophe) and curly brackets.  The shortkey command is:
 
 1. ctrl+alt+i on a PC
-1. cmd+option+i on a Mac
+1. cmd+alt+i on a Mac
 
 To run a single line of code, you can press ctrl+Enter.  This will run the line of code where your cursor is located.
 
@@ -242,3 +242,4 @@ Using the "Conscientiousness" column from the `big5` dataset:
 
 
 ```
+

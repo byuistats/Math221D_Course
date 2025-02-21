@@ -21,31 +21,32 @@ Suppose the mean GPA of BYU-Idaho students is 3.5 and the standard deviation is 
 Use the following R code to answer the questions below:
 
 ```{r}
-xbar <- 
-mu <- 
-sigma <- 
-n <- 
-sigma_xbar <- 
+xbar <- 3.3
+mu <- 3.5
+sigma <- 0.7
+n <- 81
+sigma_xbar <- sigma / sqrt(n)
 sigma_xbar
 
-z <- 
+z <- (xbar-mu) / sigma_xbar
 z
 
 # Area to the left:
-  
-# Area to the right:
+pnorm(z)  
 
+# Area to the right:
+1-pnorm(z)
   
 ```
 
 __Question__: What is the mean of the distribution of the sample means ($\mu_{\bar{x}}$) for all possible samples of size 81 that could be drawn from the parent population of GPAs?  
-__Answer__:  
+__Answer__:  3.5
 
 __Question__: What is the standard deviation  of the distribution of the sample means ($\sigma_{\bar{x}}$) for all possible samples of size 81 that could be drawn from the parent population of GPAs?  
-__Answer__:  
+__Answer__:  0.07777778
 
 __Question__: What is the shape of the distribution of the sample means for all possible samples of size 81 that could be drawn from the parent population of GPAs?  
-__Answer__:  
+__Answer__:  Normal because CLT (n > 30)
 
 
 __Question__: What is the probability that the mean GPA for 81 randomly selected BYU-Idaho students will be less than 3.3?  
@@ -99,10 +100,10 @@ Tanker trucks are designed to carry huge quantities of gasoline from refineries 
 Use the following R code to answer the questions below:
 
 ```{r}
-xbar <- 
-mu <- 
-sigma <- 
-n <- 
+xbar <- 8550
+mu <- 8544
+sigma <- 12
+n <- 1
 sigma_xbar <- sigma / sqrt(n)
 sigma_xbar
 
@@ -125,7 +126,7 @@ pnorm(B, mu, sigma_xbar) - pnorm(A, mu, sigma_xbar)
 
 
 __Question__: Find the **z-score** corresponding to a single tank ($n=1$) with a capacity of 8550 gallons. Round your answer to one decimal place.  
-__Answer__:  
+__Answer__:  0.5
 
 __Question__: What is the probability that a randomly selected tank will have a capacity of **less** than 8550 gallons?  
 __Answer__:  

@@ -1,0 +1,59 @@
+---
+title: "Confidence Intervals for a Mean"
+---
+```{r setup, include=FALSE}
+# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Introduction
+
+__Statistical Inference__ is the practice of using data sampled from a population to make conclusions about *population parameters*.  
+
+The two primary methods of statistical inference are:  
+
+  1. Hypothesis Testing
+  2. Confidence Intervals
+  
+Hypothesis testing is the practice of gathering evidence in an attempt to disprove a hypothesis.  We either **reject** the conventional wisdom or **fail to reject**.  Proper scientific questions are falsifiable, meaning they can be disproven.  
+
+Confidence intervals are a way to use data to estimate the unknown population parameter, often the population mean, $\mu$.  
+
+
+This chapter lays the foundation for Hypothesis Testing.  
+
+
+## Review:  distribution of sample means
+
+Both methods of inference rely on the validity of the assumption that the distribution of the sample mean is normally distributed.  
+
+Recall that the distribution of sample means is normal when:  
+
+  1. The underlying population is normally distributed
+  2. The sample size, n, is sufficiently large ($n<30$ for this class) for the Central Limit Theorem to apply
+
+
+
+
+# Confidence Intervals
+
+Confidence intervals are a way to estimate a population parameter without assuming a Null Hypothesis.  
+
+## Confidence Interval
+
+We can also calculate a confidence interval for the above example.  
+
+
+Recall the formula for a confidence interval is, for a given $z^*$ associated with a desired level of confidence:
+
+$$ CI = \bar{x} \pm z^*\frac{\sigma}{\sqrt{n}}$$
+
+Recall the $z^*$ for common confidence levels:
+
+```{r, fig.width = 9}
+library(tidyverse)
+library(pander)
+tibble(`Conf. Level` = c(0.99, 0.95, 0.90), `Z*` = c(2.576, 1.96, 1.645)) %>% pander()
+```
+
+
