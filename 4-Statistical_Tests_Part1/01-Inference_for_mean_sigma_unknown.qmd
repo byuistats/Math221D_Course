@@ -7,158 +7,34 @@ subtitle: "Hypothesis Testing and Confidence Intervals"
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
 
+# Lesson Objectives
 
-# Introduction
+By the end of this lesson, you should be able to:
 
-__Statistical Inference__ is the practice of using data sampled from a population to make conclusions about *population parameters*.  
-
-The two primary methods of statistical inference are:  
-
-  1. Hypothesis Testing
-  2. Confidence Intervals
-  
-Hypothesis testing is the practice of gathering evidence in an attempt to disprove a hypothesis.  We either **reject** the conventional wisdom or **fail to reject**.  Proper scientific questions are falsifiable, meaning they can be disproven.  
-
-Confidence intervals are a way to use data to estimate the unknown population parameter, often the population mean, $\mu$.  
-
-Both of these methods rely on the validity of the assuming that the distribution of the sample mean is normally distributed.  
-
-Recall that, according to the Central Limit Theorem, the distribution of sample means is normal when:  
-
-  1. The underlying population is normally distributed
-  2. The sample size, n, is sufficiently large ($n<30$ for this class)
-
-This chapter will introduce the concept of hypothesis testing and confidence intervals.  
+  1. Recognize when a one mean (sigma unknown) inferential procedure is appropriate  
+  2. Perform a hypothesis test for one mean (sigma unknown) using the following steps:  
+      a. State the null and alternative hypotheses  
+      b. Calculate the test-statistic, degrees of freedom and P-value using  R  
+      c. Assess statistical significance in order to state the conclusion for the hypothesis test in context of the research question  
+      d. Check the requirements for the hypothesis test  
+  3.  Create a confidence interval for one mean (sigma unknown) using the following steps:  
+      a. Calculate a confidence interval for a given level of confidence using R  
+      b. Interpret the confidence interval  
+      c. Check the requirements of the confidence interval  
+  4. State the properties of the Student’s t-distribution
 
 # Review
 
-When we know what the population standard deviation, $\sigma$, for individuals, we can calculate Z-scores and use the Standard Normal Distribution to calculate probabilities. Z has a standard normal distribution, meaning it has a mean of 0 and a standard deviation of 1.  
+When we know what the population standard deviation, $\sigma$, for individuals, and are confident that the distribution of sample means is approximately normal, we can use a Z-score and the Standard Normal Distribution to calculate probabilities.  
 
 $$ z= \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}$$
 
-Though rare, there are situations where we might know the population standard deviation from published research or census data. For example,  Standardized test organizations publish population-level summaries which would allow us to test how our sample compares to the general population using the Z formula.
-
-
-
-# Hypothesis Testing
-
-## Testing for the True Mean Body Temperature
-
-### Null and Alternative Hypotheses
-
-It is commonly believed that the true mean body temperature is 98.6&deg; F (37&deg; C).  In science, a statement or claim such as this is called a **hypothesis**.  We can use data to test a hypothesis.  If there is enough evidence against a hypothesis, we reject it in favor of something else.
-
-The claim representing the "status quo" or the commonly held belief or the usual value is called the **null hypothesis**.  In the case of body temperatures, our null hypothesis is defined by the belief that the true mean body temperature of healthy adults is 98.6&deg; F.
-
-We present the null hypothesis in the following way:
-
-$$H_0: \mu = 98.6$$
-
-If we gather enough evidence against the null hypothesis and determine that it should be rejected, we need another hypothesis to propose in its place.  This is called the **alternative hypothesis**.  If 98.6&deg; F is not the correct body temperature, then it is logical to propose the following alternative hypothesis:
-
-$$H_a: \mu \ne 98.6$$
-
-To be brief in writing, we label the null hypothesis $H_0$. The zero in the subscript represents "null," "baseline," "default," "no effect," etc.  Similarly, we label the alternative hypothesis $H_a$.
-
-Our alternative hypothesis could have been written as:
-
-- $H_a: \mu \ne 98.6$  (two-sided hypothesis; two-tailed)
-- $H_a: \mu < 98.6$    (one-sided hypothesis; left-tailed)
-- $H_a: \mu > 98.6$    (one-sided hypothesis; right-tailed)
-
-Notice that each of these is a viable alternative to the requirement that the mean is 98.6 degrees.  We would only use $<$ or $>$ if we had a belief in advance that the mean was less than or greater than 98.6.  If we do not have a strong reason to believe the mean is either smaller or larger than the stated value--before we collect our data--then, we use $\ne$ in our alternative hypothesis.
-
-It is important that the null and alternative hypotheses be determined prior to collecting the data.  It is not appropriate to use the data from your study to choose the alternative hypothesis that will be used to test the same data!  This is an example of using data twice, once to choose the test and again to conduct the test.  It is okay to use data from a previous study to determine your null and alternative hypotheses, but it is an improper use of the statistical procedures to use the data to define *and* conduct a hypothesis test.
-
-Notice that the null and alternative hypotheses are statements about a population parameter (e.g. $\mu$.)  They will never involve a sample statistic (e.g. $\bar{x}$.) Population parameters are unknown, and we are trying to make a judgement about whether or not they are equal to a particular value.  Sample statistics are calculated from our data, so there is no reason to do any test to assess what their value is.
-
-
-The null hypothesis will always be a statement involving equality.  This gives us a starting point in our analysis.  In the reading for [Normal Distributions](Lesson05.html){target="_blank"}, we assumed that the true mean body temperature was 98.6&deg; F.  This becomes the assumed value of the mean of the distribution of the random variable $\bar{x}$.
-
-The scientific method demands that we make a hypothesis (a claim or an educated guess).  We assume that the null hypothesis is true and gather evidence against it.  In other words, we "do research" (e.g., collect data) to gather evidence against that hypothesis.  If we can gather enough evidence to discredit our initial hypothesis, we conclude that it was false, and begin the process again.
-If we are unable to reject the original hypothesis, we do not conclude that it is correct.  For example, we do not know that Einstein's Theory of Relativity is correct.  We have simply not been able to disprove it$\ldots$yet.
-
-In the same way, we never can prove a null hypothesis is true.  We can only gather evidence against it.  If we get enough evidence, we reject the null hypothesis.
-
-### Test Statistic
-
-Assuming the null hypothesis is true, we assume that the true mean body temperature of healthy adults actually is $\mu = 98.6^{\circ}$ F.  Wanting to test this claim, researchers collected data on the mean body temperatures of $n=148$ healthy adults.  The mean of the observed values was $\bar{x} = 98.23^{\circ}$ F.
-
-A histogram of the body temperature data shows a nice bell-shaped distribution.  Also, the sample mean, $\bar{x}=98.23^\circ$ F, appears to be reasonably close to the assumed population mean, $\mu=98.6^\circ$ F.
-However, it is important to remember that the standard deviation of $\bar{x}$ is $\frac{\sigma}{\sqrt{n}} = \frac{0.675}{\sqrt{148}}=0.055$.  We need to determine how far $\bar{x}$ is from $\mu$.  Since we know $\sigma$ in this case, we can use the $z$-score to determine if $\bar{x}$ is far from the assumed value.  This is called the **test statistic**:
-
-$$
-z = \frac{\bar{x} - \mu}{\sigma / \sqrt{n}} = \frac{98.23 - 98.6}{0.675 / \sqrt{148}} = -6.6685
-$$
-
-Where $z$ is the test statistic, $\bar{x}$ is the sample mean, $\mu$ is the population mean, $\sigma$ is the standard deviation and $n$ is the sample size.
-Based on the results from the formula above, $\bar{x}$ is over 6 standard deviations below the mean!
-
-### $P$-value
-
-#### Definition
-
-The **$P$-value** is the probability of obtaining a test statistic (such as $z$) at least as extreme as the one you calculated, assuming the null hypothesis is true. In other words, our $P$-value is the probability that we would get a $z$-score that is as extreme or more extreme than $z=-6.6685$, assuming the true mean is 98.6&deg; F.
-
-In advance of collecting the data, we may have had no idea whether the true mean would be greater than 98.6 or less than 98.6, if 98.6&deg; F was not the right value.  This is why we used a two-sided alternative hypothesis ($H_a: \mu \ne 98.6$.) When computing the $P$-value, we need to continue this logic.  So, we would have considered a value of $z=-6.6685$ to be equally as extreme as $z=6.6685$.
-
-In the case of a two-sided test for one mean with $\sigma$ known, the $P$-value is the area in the tails beyond $\pm z$, in both the left and right tails of the standard normal distribution.
-
-![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Applet2584E-11-twosided-LoR.png)
-
-
-When testing a null hypothesis, the $\mu$ in the z-score formula becomes the **hypothesized population mean**.  The $z$-score is then interpreted as the number of standard deviations away from the hypothesized mean.  If we know the population standard deviation, $\sigma$, then we can calculate the probability of getting a sample mean more extreme than the one we observed _if the null hypothesis is true_.  
-
-__KEY DEFINITION__:  A __P-value__ is the probability of observing a test statistic as extreme, or more extreme than the one we observed in our sample, _if the null hypothesis is true_.  
-
-We use "as or more extreme" because the direction (greater than or less than) depends on our alternative hypothesis.  In the above example, if I believe that my students scored higher than the general population average, I can say, there is only a 0.0011 chance of getting a test statistic higher than the one I observed if the null hypothesis is true.  Because that probability is very low, I am willing to reject the null hypothesis in favor of the alternative that my students scored higher, on average, than the general population.  
-
-
-__EXAMPLE__:  A factory claims its light bulbs last, on average, $\mu = 800$ hours with a standard deviation, $\sigma = 40$.  
-
-We randomly select 40 light bulbs and get an sample mean of 786.  Test to see if the life expectancy is actually less than that.  
-
-State the Null and alternative Hypotheses:
-
-$$ H_0: \mu = 800 $$
-
-$$ H_a: \mu < 800 $$
-
-Calculate the Z-score and find the P-value for the test:
-
-
-```{r, eval=FALSE, echo=FALSE}
-
-#hypothesized mean and population SD
-mu_0 <- 800
-sigma <- 40
-
-# Sample: size, mean, z-score
-xbar <- 786 
-n <-  40
-sigma_xbar <- sigma / sqrt(n)
-
-z <- (xbar - mu_0) / sigma_xbar
-z
-# Prob sample average is lower than our xbar:
-# More generally, the probability of getting a TEST STATISTIC less than the one we observed
-pnorm(z)
-
-# Prob that a sample average is greater than our xbar:
-# More generally, the probability of getting a TEST STATISTIC greater than the one we observed
-1-pnorm(z)
-
-
-
-```
-
-__Conclusion__:
+Though rare, there are situations where we might know the population standard deviation from published research or census data. For example, standardized test organizations publish population-level summaries which would allow us to test how our sample compares to the general population using the Z formula.
 
 
 ## Confidence Interval
 
 We can also calculate a confidence interval for the above example.  
-
 
 Recall the formula for a confidence interval is, for a given $z^*$ associated with a desired level of confidence:
 
@@ -177,22 +53,30 @@ tibble(`Conf. Level` = c(0.99, 0.95, 0.90), `Z*` = c(2.576, 1.96, 1.645)) %>% pa
 
 # Student's T-Distribution (sigma unkown)
 
-In most cases, we perform statistical analyses on samples from a population where we don't know the population standard deviation, $\sigma$.  In this situation, we can no longer use the Standard Normal Distribution.  We use a distribution that is similar to the Normal distribution but whose shape depends on how much data we have. The Student's t-distribution requires a t-value (like a z-score) and something called degrees of freedom.  Degrees of Freedom for a t-distribution are defined:
+In most cases, we perform statistical analyses on samples from a population where we don't know the population standard deviation, $\sigma$.  
+
+A simple solution is to use the *sample* standard deviation, $s$, instead of $\sigma$. 
+We calculate test statistics very similarly to a Z-score.   
+
+$$ t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}}$$
+
+Unfortunately, the above test statistic is not a standard normal distribution.  W can no longer use `pnorm()` to calculate probabilities because the distribution of $t$ is not normal.  
+
+We use a distribution that is similar to the Normal distribution but whose shape depends on how much data we have. The Student's t-distribution requires a t-value (like a z-score) and something called degrees of freedom.  
+
+__Degrees of Freedom__ for a t-distribution are defined:
 
 $$df  = n-1 $$
 
-We calculate test statistics very similarly, but we replace the population standard deviation with the sample standard deviation.  
-
-$$ t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}}$$
 
 The T-distribution is very similar to the standard normal.  It is symmetrical around zero. However, the shape depends on how much data you have.  The more data you have, the closer the $t$ is to the standard normal.  This is illustrated in the graph below:
 
 ![](../Images/T_dist.png)
 
-Because $t$ is not normally distributed, we can't use `pnorm()` to calculate probabilities.  However, R is fully capable of calculating probabilities for many probability distributions including the t-distribution.  We have to tell R the t-value *and* the degrees of freedom.
+Even though $t$ is not normally distributed, R is fully capable of calculating probabilities for many probability distributions including the t-distribution.  We can use the `pt()` function which requires a t-value *and* degrees of freedom.
 
 
-## Calculating P-values by hand with the T Distribution (One out of ten. Would NOT RECOMMENDED)
+## Calculating P-values by hand with the T-distribution (One out of ten. Would NOT RECOMMENDED)
 
 Suppose we have 25 test scores defined as "data" in the code chunk below.  We can calculate the $t$-statistic just like we did with the $z$-score.  
 
@@ -225,18 +109,17 @@ t <- (xbar - mu_0) / s_xbar
 
 ```
 
-This means that if the true population mean was 50, then there is only a 0.00152 probability of observing a test statistic, t, as high as the one we got (__P-value__).  
+This means that if the true population mean was 50, then there is only a 0.00152 probability of observing a test statistic, t, as high as the one we got (__P-value__). 
+# The Easy Way
 
 The good news is that the more complicated the math becomes, the less of it we have to do! Instead of using R like a calculator to calculate $z$ or $t$-scores and calculating probabilities "by hand" (using `pnorm()` or `pt()`), we can use R functions with the data directly and get much more useful output.  
 
-# The New Hotness
-
 For situations where we want to make inference about a population from our sample data, we will be following these basic steps:
 
-1. Read in the data
-2. Review the data
-3. Visualize the data
-4. Perform the appropriate analysis
+  1. Read in the data
+  2. Review the data
+  3. Visualize the data
+  4. Perform the appropriate analysis
 
 This will be true regardless of the type of data and analysis.  Let's begin by looking at a familiar dataset.  In the following example, we will focus on the Extroversion scores from Brother Cannon's Math 221 classes.  
 
@@ -286,12 +169,16 @@ Create a histogram of Extroversion.  Describe some features of the data.  Is it 
 
 ```{r}
 
-# Basic Graph
-histogram(big5$Extroversion)
-
-# Improved graph
 histogram(big5$Extroversion, main = "Extroversion Scores", xlab = "Extroversion")
 
+ggplot(big5, aes(x = Extroversion)) +
+  geom_histogram(bins = 15, fill="lightblue") +
+  labs(
+    x = "Extroversion",
+    y = "",
+    title = "Extroversion Scores"
+  ) +
+  theme_bw()
 
 ```
 
@@ -327,15 +214,16 @@ t.test(big5$Extroversion, mu = 50, alternative = "greater")
 
 
 __Question__:  What is the P-value?  
-__Answer__:  
+__Answer__:  p-value = 4.697e-11
 
 
-__Question__:  How do we explain our conclusion in context of our research question?  
-__Answer__:  
+__QUESTION__:  What is your conclusion based on $\alpha=0.05$?  
+__ANSWER__:  Because P-value < 0.05 we reject the null hypothesis in favor of the alternative.  
 
-__Technical Conclusion__: 
+__Question__:  State your conclusion in context of our research question?  
+__Answer__:  We have sufficient evidence to conclude that Brother Cannon's students are more extroverted than the general population, on average.  
 
-__Contextual Conclusion__: 
+
 
 ### Confidence Intervals
 
@@ -366,7 +254,7 @@ t.test(big5$Extroversion, conf.level = .99)$conf.int
 ```
 
 __Question__:  Describe in words the interpretation of the confidence interval in context of Extroversion.  
-__Answer__:  
+__Answer__:  I am 95% confident that the true population mean of extroversion scores for Brother Cannon's students is between 54.266 and 59.699.  
 
 
 # Your Turn
@@ -388,7 +276,7 @@ body_temp <- import("https://byuistats.github.io/M221R/Data/body_temp.xlsx")
 
 ### Review the Data
 
-Create a table of summary statistics:  
+Create a table of summary statistics for temperature:  
 
 ```{r}
 
@@ -423,7 +311,9 @@ Use a significance level of $\alpha = 0.01$ to test whether the mean body temper
 __Question__:  What is the P-value?  
 __Answer__:  
 
-Explain our conclusion.  
+__QUESTION__:  What is your conclusion?  
+__ANSWER__:  
+
 
 #### Confidence Interval
 
@@ -432,4 +322,5 @@ Create a 99% confidence interval for the true population average temperature of 
 ```{r}
 
 ```
+
 
