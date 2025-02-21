@@ -1,6 +1,6 @@
 ---
-title: "Inference for a Mean"
-subtitle: "Hypothesis Testing and Confidence Intervals"
+title: "Inference for a Mean - Sigma Unknown"
+subtitle: "One-Sample T-test and Confidence Intervals"
 ---
 ```{r setup, include=FALSE}
 # Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
