@@ -504,6 +504,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
   <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a></li>
+  <li><a href="#checking-requirements" id="toc-checking-requirements" class="nav-link" data-scroll-target="#checking-requirements">Checking Requirements</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a>
@@ -795,6 +796,31 @@ attr(,"conf.level")
 <p><strong>Question</strong>: Describe in words the interpretation of the confidence interval in context of Extroversion.<br>
 <strong>Answer</strong>: I am 95% confident that the true population mean of extroversion scores for Brother Cannon’s students is between 54.266 and 59.699.</p>
 </section>
+<section id="checking-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="checking-requirements">Checking Requirements</h3>
+<p>We still rely on the assumption that the distribution of sample means is normally distributed.</p>
+<p>Recall that the mean is normally distributed if:</p>
+<ol type="1">
+<li>The underlying population is normally distributed<br>
+</li>
+<li>We have a sufficiently large sample size (<span class="math inline">\(n&gt;30\)</span>)</li>
+</ol>
+<p>For the above Extroversion data, we have <span class="math inline">\(n=404\)</span> which is much larger than 40.</p>
+<p>If my sample size was small, I could check the <code>qqPlot()</code>, which I demonstrate here:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(big5<span class="sc">$</span>Extroversion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="01-Inference_for_mean_sigma_unknown_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 143 163</code></pre>
+</div>
+</div>
+</section>
 </section>
 </section>
 <section id="your-turn" class="level1">
@@ -805,9 +831,9 @@ attr(,"conf.level")
 <section id="load-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="load-the-data">Load the data:</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These lines load the data into the data frame body_temp:</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>body_temp <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/body_temp.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These lines load the data into the data frame body_temp:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>body_temp <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/body_temp.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="review-the-data" class="level3">
@@ -832,6 +858,9 @@ attr(,"conf.level")
 <section id="confidence-interval-1" class="level4">
 <h4 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h4>
 <p>Create a 99% confidence interval for the true population average temperature of healthy adults.</p>
+<p>Check the requirements for the t-test (<span class="math inline">\(n&gt;30\)</span> or <code>qqPlot()</code>):</p>
+<p><strong>QUESTION</strong>: Are the requirements for the t-test satisfied?<br>
+<strong>ANSWER</strong>:</p>
 
 
 </section>

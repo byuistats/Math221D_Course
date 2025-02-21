@@ -256,6 +256,25 @@ t.test(big5$Extroversion, conf.level = .99)$conf.int
 __Question__:  Describe in words the interpretation of the confidence interval in context of Extroversion.  
 __Answer__:  I am 95% confident that the true population mean of extroversion scores for Brother Cannon's students is between 54.266 and 59.699.  
 
+### Checking Requirements
+
+We still rely on the assumption that the distribution of sample means is normally distributed.  
+
+Recall that the mean is normally distributed if:  
+
+  1. The underlying population is normally distributed  
+  2. We have a sufficiently large sample size ($n>30$)
+  
+For the above Extroversion data, we have $n=404$ which is much larger than 40.  
+
+If my sample size was small, I could check the `qqPlot()`, which I demonstrate here:
+
+```{r}
+
+qqPlot(big5$Extroversion)
+
+```
+
 
 # Your Turn
 
@@ -324,3 +343,8 @@ Create a 99% confidence interval for the true population average temperature of 
 ```
 
 
+Check the requirements for the t-test ($n>30$ or `qqPlot()`):
+
+
+__QUESTION__:  Are the requirements for the t-test satisfied?  
+__ANSWER__:  
