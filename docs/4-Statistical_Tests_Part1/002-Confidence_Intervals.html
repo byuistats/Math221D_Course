@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -305,8 +271,12 @@ window.Quarto = {
  <span class="dropdown-text">Inference for a Mean</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../4-Statistical_Tests_Part1/002-Confidence_Intervals.html">
+ <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
- <span class="dropdown-text">Inference for a Mean</span></a>
+ <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
@@ -491,12 +461,23 @@ window.Quarto = {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#review-distribution-of-sample-means" id="toc-review-distribution-of-sample-means" class="nav-link" data-scroll-target="#review-distribution-of-sample-means">Review: distribution of sample means</a></li>
+  <li><a href="#lesson-outcomes" id="toc-lesson-outcomes" class="nav-link" data-scroll-target="#lesson-outcomes">Lesson Outcomes</a></li>
+  </ul></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#point-estimators" id="toc-point-estimators" class="nav-link" data-scroll-target="#point-estimators">Point Estimators</a></li>
+  <li><a href="#review-distribution-of-sample-means" id="toc-review-distribution-of-sample-means" class="nav-link" data-scroll-target="#review-distribution-of-sample-means">Review: Distribution of Sample Means</a></li>
+  <li><a href="#an-approximate-95-confidence-interval" id="toc-an-approximate-95-confidence-interval" class="nav-link" data-scroll-target="#an-approximate-95-confidence-interval">An Approximate 95% Confidence Interval</a></li>
   </ul></li>
   <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a>
   <ul class="collapse">
-  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a>
+  <ul class="collapse">
+  <li><a href="#average-gre-scores-of-byu-i-students" id="toc-average-gre-scores-of-byu-i-students" class="nav-link" data-scroll-target="#average-gre-scores-of-byu-i-students">Average GRE Scores of BYU-I Students</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#relationship-to-hypothesis-testing" id="toc-relationship-to-hypothesis-testing" class="nav-link" data-scroll-target="#relationship-to-hypothesis-testing">Relationship to Hypothesis Testing</a></li>
+  <li><a href="#margin-of-error" id="toc-margin-of-error" class="nav-link" data-scroll-target="#margin-of-error">Margin of Error</a></li>
   </ul>
 </nav>
     </div>
@@ -524,38 +505,171 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
+<section id="lesson-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="lesson-outcomes">Lesson Outcomes</h2>
+<p>By the end of this lesson, you should be able to:</p>
+<ol type="1">
+<li>Recognize when a one mean (sigma known) confidence interval is appropriate</li>
+<li>Explain the meaning of a level of confidence</li>
+<li>Create a confidence interval for a single mean with <span class="math inline">\(\sigma\)</span> known using the following steps:
+<ol type="a">
+<li>Find the point estimate (<span class="math inline">\(\bar{x}\)</span>)</li>
+<li>Calculate the margin of error for the given level of confidence</li>
+<li>Calculate a confidence interval from the point estimate and the margin of error</li>
+<li>Interpret the confidence interval</li>
+<li>Check the requirements for the confidence interval</li>
+</ol></li>
+<li>Explain how the margin of error is affected by the sample size and level of confidence</li>
+</ol>
 <p><strong>Statistical Inference</strong> is the practice of using data sampled from a population to make conclusions about <em>population parameters</em>.</p>
 <p>The two primary methods of statistical inference are:</p>
 <ol type="1">
 <li>Hypothesis Testing</li>
 <li>Confidence Intervals</li>
 </ol>
-<p>Hypothesis testing is the practice of gathering evidence in an attempt to disprove a hypothesis. We either <strong>reject</strong> the conventional wisdom or <strong>fail to reject</strong>. Proper scientific questions are falsifiable, meaning they can be disproven.</p>
-<p>Confidence intervals are a way to use data to estimate the unknown population parameter, often the population mean, <span class="math inline">\(\mu\)</span>.</p>
-<p>This chapter lays the foundation for Hypothesis Testing.</p>
+</section>
+</section>
+<section id="background" class="level1">
+<h1>Background</h1>
+<section id="point-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="point-estimators">Point Estimators</h2>
+<p>We have learned about several statistics. Remember, a statistic is any number computed based on data. The sample statistics we have discussed are used to estimate population parameters.</p>
+<center>
+<table class="table">
+<thead>
+<tr class="header">
+<th>
+</th>
+<th>
+<p>
+Sample Statistic
+</p>
+</th>
+<th>
+<p>
+Population Parameter
+</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+<p>
+Mean
+</p>
+</td>
+<td>
+<p>
+<span class="math inline">\(\bar x\)</span>
+</p>
+</td>
+<td>
+<p>
+<span class="math inline">\(\mu\)</span>
+</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+Standard Deviation
+</p>
+</td>
+<td>
+<p>
+<span class="math inline">\(s\)</span>
+</p>
+</td>
+<td>
+<p>
+<span class="math inline">\(\sigma\)</span>
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td>
+<p>
+Variance
+</p>
+</td>
+<td>
+<p>
+<span class="math inline">\(s^2\)</span>
+</p>
+</td>
+<td>
+<p>
+<span class="math inline">\(\sigma^2\)</span>
+</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+<span class="math inline">\(\vdots\)</span>
+</p>
+</td>
+<td>
+<p>
+<span class="math inline">\(\vdots\)</span>
+</p>
+</td>
+<td>
+<p>
+<span class="math inline">\(\vdots\)</span>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>The statistics above are called <strong>point estimators</strong> because they are just one number (one point on a number line) that is used to estimate a parameter. Parameters are generally unknown values. Think about the mean. If <span class="math inline">\(\mu\)</span> is unknown, how do we know if <span class="math inline">\(\bar{x}\)</span> is close to it?</p>
+<p>The short answer is that we will never know <em>for sure</em> if <span class="math inline">\(\bar{x}\)</span> is close to <span class="math inline">\(\mu\)</span>. This does not mean that we are helpless. The normal distribution provides a way for us to create a range of plausible values for a parameter (e.g.&nbsp;<span class="math inline">\(\mu\)</span>) based on a statistic (e.g.&nbsp;<span class="math inline">\(\bar{x}\)</span>).</p>
+</section>
 <section id="review-distribution-of-sample-means" class="level2">
-<h2 class="anchored" data-anchor-id="review-distribution-of-sample-means">Review: distribution of sample means</h2>
-<p>Both methods of inference rely on the validity of the assumption that the distribution of the sample mean is normally distributed.</p>
+<h2 class="anchored" data-anchor-id="review-distribution-of-sample-means">Review: Distribution of Sample Means</h2>
+<p>Confidence intervals rely on the validity of the assumption that the distribution of the sample mean is normally distributed.</p>
 <p>Recall that the distribution of sample means is normal when:</p>
 <ol type="1">
 <li>The underlying population is normally distributed</li>
 <li>The sample size, n, is sufficiently large (<span class="math inline">\(n&lt;30\)</span> for this class) for the Central Limit Theorem to apply</li>
 </ol>
+<p><strong>Thought Question</strong>: If we have a good sample from the population and can trust that the sampling distribution of the mean is approximately normal, how frequently would a sample mean be within 2 standard deviations from the mean?</p>
+<p>Remember, the standard deviation of <span class="math inline">\(\bar x\)</span> is <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>. For the variable <span class="math inline">\(\bar x\)</span>, two standard deviations would be equal to <span class="math inline">\(2 \frac{\sigma}{\sqrt{n}}\)</span>.</p>
+<p><strong>ANSWER</strong>: If we collect a random sample from a population and <span class="math inline">\(\bar x\)</span> is normally distributed, then about 95% of the time the sample mean <span class="math inline">\(\bar x\)</span> will be less than <span class="math inline">\(2 \frac{\sigma}{\sqrt{n}}\)</span> units away from the population mean <span class="math inline">\(\mu\)</span>. Notice that this is true, whether or not we know <span class="math inline">\(\mu\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="002-Confidence_Intervals_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This means the 95% of the time, we will get a sample mean within 2 Standard Deviations of the true population mean.</p>
+<p>Flipping this around, if we take our sample mean and make an interval 2 standard deviations above the mean and 2 below, the interval will overlap with the <em>true population mean</em> about 95% of the time.</p>
+</section>
+<section id="an-approximate-95-confidence-interval" class="level2">
+<h2 class="anchored" data-anchor-id="an-approximate-95-confidence-interval">An Approximate 95% Confidence Interval</h2>
+<p>The equation of an approximate 95% confidence interval would be:</p>
+<p><span class="math display">\[ CI = \bar{x} \pm 2 \frac{\sigma}{\sqrt{n}}\]</span></p>
+<p>The part that we are adding and subtracting from our point estimate is called the <strong>Margin of Error</strong>. We use the letter <span class="math inline">\(m\)</span> to denote the margin of error:</p>
+<p><span class="math display">\[m = 2 \frac{\sigma}{\sqrt{n}}\]</span></p>
+<p>Using this definition for <span class="math inline">\(m\)</span>, our confidence interval can be written as</p>
+<p><span class="math display">\[( \bar x - m, ~ \bar x + m )\]</span></p>
 </section>
 </section>
 <section id="confidence-intervals" class="level1">
 <h1>Confidence Intervals</h1>
 <p>Confidence intervals are a way to estimate a population parameter without assuming a Null Hypothesis.</p>
-<section id="confidence-interval" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
-<p>We can also calculate a confidence interval for the above example.</p>
-<p>Recall the formula for a confidence interval is, for a given <span class="math inline">\(z^*\)</span> associated with a desired level of confidence:</p>
+<p>Recall that it is only <em>approximately</em> 95% of the area under the curve within 2 standard deviations of the mean. It turns out that</p>
+<p>We want to be more precise in our confidence intervals and may want to choose a level of confidence different from 95%.</p>
+<p>The generalized formula for a confidence interval is</p>
 <p><span class="math display">\[ CI = \bar{x} \pm z^*\frac{\sigma}{\sqrt{n}}\]</span></p>
-<p>Recall the <span class="math inline">\(z^*\)</span> for common confidence levels:</p>
+<p>Where <span class="math inline">\(z^*\)</span> is a z-score value related to a specified level of confidence.</p>
+<p>Common <span class="math inline">\(z^*\)</span> values for specified confidence levels are:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="st">`</span><span class="at">Conf. Level</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.99</span>, <span class="fl">0.95</span>, <span class="fl">0.90</span>), <span class="st">`</span><span class="at">Z*</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">2.576</span>, <span class="fl">1.96</span>, <span class="fl">1.645</span>)) <span class="sc">%&gt;%</span> <span class="fu">pander</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
@@ -585,9 +699,35 @@ window.Quarto = {
 </table>
 </div>
 </div>
-
-
+<p><strong>Confidence Level</strong> is related to the probability of a Type I error, <span class="math inline">\(\alpha\)</span>, in hypothesis testing. In fact, <strong>Confidence Level = 1-<span class="math inline">\(\alpha\)</span></strong>.</p>
+<p>A 95% confidence interval will miss the true population mean 5% of the time.</p>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<p>Confidence intervals are typically reported using the notation: (lower limit, upper limit) and are interpreted: We are <span class="math inline">\(100*(1-\alpha)\%\)</span> confident that the true population mean is between [lower limit] and [upper limit].</p>
+<section id="average-gre-scores-of-byu-i-students" class="level3">
+<h3 class="anchored" data-anchor-id="average-gre-scores-of-byu-i-students">Average GRE Scores of BYU-I Students</h3>
+<p>The published, population standard deviation of the quantitative portion of the Graduate Record Examination (GRE) scores is <span class="math inline">\(\sigma=8.3\)</span>.</p>
+<p>Suppose we take a random sample of <span class="math inline">\(n=100\)</span> BYU-I students who have taken the GRE and find that their average score was <span class="math inline">\(\bar{x}=162.1\)</span></p>
+<p>We can calculate the 99% confidence interval:</p>
+<p><span class="math display">\[ 162.1 \pm 2.576\frac{8.3}{\sqrt{100}} = (159.96, 164.24)\]</span></p>
+<p>The interpretation of the above confidence interval would be:</p>
+<p>I am 99% confident that the true population mean GRE score for BYU-I students is between 159.96 and 164.24.</p>
 </section>
+</section>
+</section>
+<section id="relationship-to-hypothesis-testing" class="level1">
+<h1>Relationship to Hypothesis Testing</h1>
+<p>Consider that the published population mean for GRE test-takers if 158.</p>
+<p><strong>QUESTION</strong>: Does the true population mean of all test-takers fall inside our confidence interval?</p>
+<p>Because 158 falls below our confidence interval, we might conclude that BYU-I students score higher, on average, than the general population.</p>
+</section>
+<section id="margin-of-error" class="level1">
+<h1>Margin of Error</h1>
+<p><strong>QUESTION</strong>: What happens to the margin of error, <span class="math inline">\(z^*\frac{\sigma}{\sqrt{n}}\)</span>, as the sample size increases?</p>
+<p><strong>QUESTION</strong>: What happens to the margin of error, <span class="math inline">\(z^*\frac{\sigma}{\sqrt{n}}\)</span>, as our confidence level increases? (see table above about Z* and confidence level)</p>
+<p>Consider that if I make a wide enough interval, I can be 100% confident. But to get there, my interval is useless. For example, I can be 100% confident that the true population averge height of BYU-I students is between 2 feet and 100 feet.</p>
+
+
 </section>
 
 </main> <!-- /main -->

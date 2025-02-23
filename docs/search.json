@@ -858,14 +858,14 @@
     "href": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html",
     "title": "Confidence Intervals for a Mean",
     "section": "",
-    "text": "Statistical Inference is the practice of using data sampled from a population to make conclusions about population parameters.\nThe two primary methods of statistical inference are:\n\nHypothesis Testing\nConfidence Intervals\n\nHypothesis testing is the practice of gathering evidence in an attempt to disprove a hypothesis. We either reject the conventional wisdom or fail to reject. Proper scientific questions are falsifiable, meaning they can be disproven.\nConfidence intervals are a way to use data to estimate the unknown population parameter, often the population mean, \\(\\mu\\).\nThis chapter lays the foundation for Hypothesis Testing.\n\n\nBoth methods of inference rely on the validity of the assumption that the distribution of the sample mean is normally distributed.\nRecall that the distribution of sample means is normal when:\n\nThe underlying population is normally distributed\nThe sample size, n, is sufficiently large (\\(n&lt;30\\) for this class) for the Central Limit Theorem to apply"
+    "text": "By the end of this lesson, you should be able to:\n\nRecognize when a one mean (sigma known) confidence interval is appropriate\nExplain the meaning of a level of confidence\nCreate a confidence interval for a single mean with \\(\\sigma\\) known using the following steps:\n\nFind the point estimate (\\(\\bar{x}\\))\nCalculate the margin of error for the given level of confidence\nCalculate a confidence interval from the point estimate and the margin of error\nInterpret the confidence interval\nCheck the requirements for the confidence interval\n\nExplain how the margin of error is affected by the sample size and level of confidence\n\nStatistical Inference is the practice of using data sampled from a population to make conclusions about population parameters.\nThe two primary methods of statistical inference are:\n\nHypothesis Testing\nConfidence Intervals"
   },
   {
     "objectID": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html#review-distribution-of-sample-means",
     "href": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html#review-distribution-of-sample-means",
     "title": "Confidence Intervals for a Mean",
-    "section": "",
-    "text": "Both methods of inference rely on the validity of the assumption that the distribution of the sample mean is normally distributed.\nRecall that the distribution of sample means is normal when:\n\nThe underlying population is normally distributed\nThe sample size, n, is sufficiently large (\\(n&lt;30\\) for this class) for the Central Limit Theorem to apply"
+    "section": "Review: Distribution of Sample Means",
+    "text": "Review: Distribution of Sample Means\nConfidence intervals rely on the validity of the assumption that the distribution of the sample mean is normally distributed.\nRecall that the distribution of sample means is normal when:\n\nThe underlying population is normally distributed\nThe sample size, n, is sufficiently large (\\(n&lt;30\\) for this class) for the Central Limit Theorem to apply\n\nThought Question: If we have a good sample from the population and can trust that the sampling distribution of the mean is approximately normal, how frequently would a sample mean be within 2 standard deviations from the mean?\nRemember, the standard deviation of \\(\\bar x\\) is \\(\\frac{\\sigma}{\\sqrt{n}}\\). For the variable \\(\\bar x\\), two standard deviations would be equal to \\(2 \\frac{\\sigma}{\\sqrt{n}}\\).\nANSWER: If we collect a random sample from a population and \\(\\bar x\\) is normally distributed, then about 95% of the time the sample mean \\(\\bar x\\) will be less than \\(2 \\frac{\\sigma}{\\sqrt{n}}\\) units away from the population mean \\(\\mu\\). Notice that this is true, whether or not we know \\(\\mu\\).\n\n\n\n\n\n\n\n\n\nThis means the 95% of the time, we will get a sample mean within 2 Standard Deviations of the true population mean.\nFlipping this around, if we take our sample mean and make an interval 2 standard deviations above the mean and 2 below, the interval will overlap with the true population mean about 95% of the time."
   },
   {
     "objectID": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html#confidence-interval",
@@ -2182,5 +2182,33 @@
     "title": "Inference for a Mean",
     "section": "",
     "text": "When we know what the population standard deviation, \\(\\sigma\\), for individuals, we can calculate Z-scores and use the Standard Normal Distribution to calculate probabilities. Z has a standard normal distribution, meaning it has a mean of 0 and a standard deviation of 1.\n\\[ z= \\frac{\\bar{x} - \\mu}{\\frac{\\sigma}{\\sqrt{n}}}\\]\nThough rare, there are situations where we might know the population standard deviation from published research or census data. For example, standardized test organizations publish population-level summaries which would allow us to test how our sample compares to the general population using the Z formula."
+  },
+  {
+    "objectID": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html#lesson-outcomes",
+    "href": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html#lesson-outcomes",
+    "title": "Confidence Intervals for a Mean",
+    "section": "",
+    "text": "By the end of this lesson, you should be able to:\n\nRecognize when a one mean (sigma known) confidence interval is appropriate\nExplain the meaning of a level of confidence\nCreate a confidence interval for a single mean with \\(\\sigma\\) known using the following steps:\n\nFind the point estimate (\\(\\bar{x}\\))\nCalculate the margin of error for the given level of confidence\nCalculate a confidence interval from the point estimate and the margin of error\nInterpret the confidence interval\nCheck the requirements for the confidence interval\n\nExplain how the margin of error is affected by the sample size and level of confidence\n\nStatistical Inference is the practice of using data sampled from a population to make conclusions about population parameters.\nThe two primary methods of statistical inference are:\n\nHypothesis Testing\nConfidence Intervals"
+  },
+  {
+    "objectID": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html#point-estimators",
+    "href": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html#point-estimators",
+    "title": "Confidence Intervals for a Mean",
+    "section": "Point Estimators",
+    "text": "Point Estimators\nWe have learned about several statistics. Remember, a statistic is any number computed based on data. The sample statistics we have discussed are used to estimate population parameters.\n\n\n\n\n\n\n\n\nSample Statistic\n\n\n\n\nPopulation Parameter\n\n\n\n\n\n\n\n\nMean\n\n\n\n\n\\(\\bar x\\)\n\n\n\n\n\\(\\mu\\)\n\n\n\n\n\n\nStandard Deviation\n\n\n\n\n\\(s\\)\n\n\n\n\n\\(\\sigma\\)\n\n\n\n\n\n\nVariance\n\n\n\n\n\\(s^2\\)\n\n\n\n\n\\(\\sigma^2\\)\n\n\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\n\nThe statistics above are called point estimators because they are just one number (one point on a number line) that is used to estimate a parameter. Parameters are generally unknown values. Think about the mean. If \\(\\mu\\) is unknown, how do we know if \\(\\bar{x}\\) is close to it?\nThe short answer is that we will never know for sure if \\(\\bar{x}\\) is close to \\(\\mu\\). This does not mean that we are helpless. The normal distribution provides a way for us to create a range of plausible values for a parameter (e.g. \\(\\mu\\)) based on a statistic (e.g. \\(\\bar{x}\\))."
+  },
+  {
+    "objectID": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html#an-approximate-95-confidence-interval",
+    "href": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html#an-approximate-95-confidence-interval",
+    "title": "Confidence Intervals for a Mean",
+    "section": "An Approximate 95% Confidence Interval",
+    "text": "An Approximate 95% Confidence Interval\nThe equation of an approximate 95% confidence interval would be:\n\\[ CI = \\bar{x} \\pm 2 \\frac{\\sigma}{\\sqrt{n}}\\]\nThe part that we are adding and subtracting from our point estimate is called the Margin of Error. We use the letter \\(m\\) to denote the margin of error:\n\\[m = 2 \\frac{\\sigma}{\\sqrt{n}}\\]\nUsing this definition for \\(m\\), our confidence interval can be written as\n\\[( \\bar x - m, ~ \\bar x + m )\\]"
+  },
+  {
+    "objectID": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html#interpretation",
+    "href": "4-Statistical_Tests_Part1/002-Confidence_Intervals.html#interpretation",
+    "title": "Confidence Intervals for a Mean",
+    "section": "Interpretation",
+    "text": "Interpretation\nConfidence intervals are typically reported using the notation: (lower limit, upper limit) and are interpreted: We are \\(100*(1-\\alpha)\\%\\) confident that the true population mean is between [lower limit] and [upper limit].\n\nAverage GRE Scores of BYU-I Students\nThe published, population standard deviation of the quantitative portion of the Graduate Record Examination (GRE) scores is \\(\\sigma=8.3\\).\nSuppose we take a random sample of \\(n=100\\) BYU-I students who have taken the GRE and find that their average score was \\(\\bar{x}=162.1\\)\nWe can calculate the 99% confidence interval:\n\\[ 162.1 \\pm 2.576\\frac{8.3}{\\sqrt{100}} = (159.96, 164.24)\\]\nThe interpretation of the above confidence interval would be:\nI am 99% confident that the true population mean GRE score for BYU-I students is between 159.96 and 164.24."
   }
 ]
