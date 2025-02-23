@@ -302,11 +302,11 @@ window.Quarto = {
         <li class="dropdown-header">Statistical Tests - Part 1</li>
         <li>
     <a class="dropdown-item" href="../4-Statistical_Tests_Part1/002-Introduction_to_Inference.html">
- <span class="dropdown-text">Inference for a Mean</span></a>
+ <span class="dropdown-text">Introduction to Hypothesis Testing</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../4-Statistical_Tests_Part1/002-Confidence_Intervals.html">
- <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
+ <span class="dropdown-text">Introduction to Confidence Intervals</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
@@ -501,6 +501,9 @@ window.Quarto = {
   <li><a href="#students-t-distribution-sigma-unkown" id="toc-students-t-distribution-sigma-unkown" class="nav-link" data-scroll-target="#students-t-distribution-sigma-unkown">Student’s T-Distribution (sigma unkown)</a>
   <ul class="collapse">
   <li><a href="#calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended" id="toc-calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended" class="nav-link" data-scroll-target="#calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended">Calculating P-values by hand with the T-distribution (One out of ten. Would NOT RECOMMENDED)</a></li>
+  </ul></li>
+  <li><a href="#the-easy-way" id="toc-the-easy-way" class="nav-link" data-scroll-target="#the-easy-way">The Easy Way</a>
+  <ul class="collapse">
   <li><a href="#step-1-read-in-the-data" id="toc-step-1-read-in-the-data" class="nav-link" data-scroll-target="#step-1-read-in-the-data">Step 1: Read in the data</a></li>
   <li><a href="#step-2-review-the-data" id="toc-step-2-review-the-data" class="nav-link" data-scroll-target="#step-2-review-the-data">Step 2: Review the Data</a></li>
   <li><a href="#step-3-visulize-the-data" id="toc-step-3-visulize-the-data" class="nav-link" data-scroll-target="#step-3-visulize-the-data">Step 3: Visulize the data</a></li>
@@ -663,7 +666,11 @@ window.Quarto = {
 <pre><code>[1] 0.00151866</code></pre>
 </div>
 </div>
-<p>This means that if the true population mean was 50, then there is only a 0.00152 probability of observing a test statistic, t, as high as the one we got (<strong>P-value</strong>). # The Easy Way</p>
+<p>This means that if the true population mean was 50, then there is only a 0.00152 probability of observing a test statistic, t, as high as the one we got (<strong>P-value</strong>).</p>
+</section>
+</section>
+<section id="the-easy-way" class="level1">
+<h1>The Easy Way</h1>
 <p>The good news is that the more complicated the math becomes, the less of it we have to do! Instead of using R like a calculator to calculate <span class="math inline">\(z\)</span> or <span class="math inline">\(t\)</span>-scores and calculating probabilities “by hand” (using <code>pnorm()</code> or <code>pt()</code>), we can use R functions with the data directly and get much more useful output.</p>
 <p>For situations where we want to make inference about a population from our sample data, we will be following these basic steps:</p>
 <ol type="1">
@@ -673,7 +680,6 @@ window.Quarto = {
 <li>Perform the appropriate analysis</li>
 </ol>
 <p>This will be true regardless of the type of data and analysis. Let’s begin by looking at a familiar dataset. In the following example, we will focus on the Extroversion scores from Brother Cannon’s Math 221 classes.</p>
-</section>
 <section id="step-1-read-in-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-read-in-the-data">Step 1: Read in the data</h2>
 <div class="cell">

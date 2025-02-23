@@ -109,7 +109,9 @@ t <- (xbar - mu_0) / s_xbar
 
 ```
 
-This means that if the true population mean was 50, then there is only a 0.00152 probability of observing a test statistic, t, as high as the one we got (__P-value__). 
+This means that if the true population mean was 50, then there is only a 0.00152 probability of observing a test statistic, t, as high as the one we got (__P-value__).  
+
+
 # The Easy Way
 
 The good news is that the more complicated the math becomes, the less of it we have to do! Instead of using R like a calculator to calculate $z$ or $t$-scores and calculating probabilities "by hand" (using `pnorm()` or `pt()`), we can use R functions with the data directly and get much more useful output.  
