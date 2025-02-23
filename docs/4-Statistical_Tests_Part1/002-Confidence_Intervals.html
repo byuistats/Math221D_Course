@@ -527,6 +527,7 @@ window.Quarto = {
 <li>Hypothesis Testing</li>
 <li>Confidence Intervals</li>
 </ol>
+<p>This chapter lays the foundation for confidence intervals.</p>
 </section>
 </section>
 <section id="background" class="level1">
@@ -635,7 +636,7 @@ Variance
 <li>The underlying population is normally distributed</li>
 <li>The sample size, n, is sufficiently large (<span class="math inline">\(n&lt;30\)</span> for this class) for the Central Limit Theorem to apply</li>
 </ol>
-<p><strong>Thought Question</strong>: If we have a good sample from the population and can trust that the sampling distribution of the mean is approximately normal, how frequently would a sample mean be within 2 standard deviations from the mean?</p>
+<p><strong>Thought Question</strong>: If we have a good sample from a population and can trust that the sampling distribution of the mean is approximately normal, how frequently would a sample mean be within 2 standard deviations from the true population mean?</p>
 <p>Remember, the standard deviation of <span class="math inline">\(\bar x\)</span> is <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>. For the variable <span class="math inline">\(\bar x\)</span>, two standard deviations would be equal to <span class="math inline">\(2 \frac{\sigma}{\sqrt{n}}\)</span>.</p>
 <p><strong>ANSWER</strong>: If we collect a random sample from a population and <span class="math inline">\(\bar x\)</span> is normally distributed, then about 95% of the time the sample mean <span class="math inline">\(\bar x\)</span> will be less than <span class="math inline">\(2 \frac{\sigma}{\sqrt{n}}\)</span> units away from the population mean <span class="math inline">\(\mu\)</span>. Notice that this is true, whether or not we know <span class="math inline">\(\mu\)</span>.</p>
 <div class="cell">
@@ -662,8 +663,7 @@ Variance
 </section>
 <section id="confidence-intervals" class="level1">
 <h1>Confidence Intervals</h1>
-<p>Confidence intervals are a way to estimate a population parameter without assuming a Null Hypothesis.</p>
-<p>Recall that it is only <em>approximately</em> 95% of the area under the curve within 2 standard deviations of the mean. It turns out that</p>
+<p>Recall that it is only <em>approximately</em> 95% of the area under the curve within 2 standard deviations of the mean.</p>
 <p>We want to be more precise in our confidence intervals and may want to choose a level of confidence different from 95%.</p>
 <p>The generalized formula for a confidence interval is</p>
 <p><span class="math display">\[ CI = \bar{x} \pm z^*\frac{\sigma}{\sqrt{n}}\]</span></p>
@@ -700,13 +700,13 @@ Variance
 </div>
 </div>
 <p><strong>Confidence Level</strong> is related to the probability of a Type I error, <span class="math inline">\(\alpha\)</span>, in hypothesis testing. In fact, <strong>Confidence Level = 1-<span class="math inline">\(\alpha\)</span></strong>.</p>
-<p>A 95% confidence interval will miss the true population mean 5% of the time.</p>
+<p>A 95% confidence interval will miss the true population mean 5% of the time because 5% of the time you will get a mean in the one tail or the other of the sampling distribution <em>just by chance.</em></p>
 <section id="interpretation" class="level2">
 <h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
-<p>Confidence intervals are typically reported using the notation: (lower limit, upper limit) and are interpreted: We are <span class="math inline">\(100*(1-\alpha)\%\)</span> confident that the true population mean is between [lower limit] and [upper limit].</p>
+<p>Confidence intervals are typically reported using parentheses like: (lower limit, upper limit). We say that we are <span class="math inline">\(100*(1-\alpha)\%\)</span> confident that the true population mean is between [lower limit] and [upper limit].</p>
 <section id="average-gre-scores-of-byu-i-students" class="level3">
 <h3 class="anchored" data-anchor-id="average-gre-scores-of-byu-i-students">Average GRE Scores of BYU-I Students</h3>
-<p>The published, population standard deviation of the quantitative portion of the Graduate Record Examination (GRE) scores is <span class="math inline">\(\sigma=8.3\)</span>.</p>
+<p>The published population standard deviation of the quantitative portion of the Graduate Record Examination (GRE) scores is <span class="math inline">\(\sigma=8.3\)</span>.</p>
 <p>Suppose we take a random sample of <span class="math inline">\(n=100\)</span> BYU-I students who have taken the GRE and find that their average score was <span class="math inline">\(\bar{x}=162.1\)</span></p>
 <p>We can calculate the 99% confidence interval:</p>
 <p><span class="math display">\[ 162.1 \pm 2.576\frac{8.3}{\sqrt{100}} = (159.96, 164.24)\]</span></p>
@@ -719,13 +719,13 @@ Variance
 <h1>Relationship to Hypothesis Testing</h1>
 <p>Consider that the published population mean for GRE test-takers if 158.</p>
 <p><strong>QUESTION</strong>: Does the true population mean of all test-takers fall inside our confidence interval?</p>
-<p>Because 158 falls below our confidence interval, we might conclude that BYU-I students score higher, on average, than the general population.</p>
+<p>Because 158 falls below our confidence interval, we conclude that BYU-I students score higher, on average, than the general population with 99% confidence.</p>
 </section>
 <section id="margin-of-error" class="level1">
 <h1>Margin of Error</h1>
 <p><strong>QUESTION</strong>: What happens to the margin of error, <span class="math inline">\(z^*\frac{\sigma}{\sqrt{n}}\)</span>, as the sample size increases?</p>
 <p><strong>QUESTION</strong>: What happens to the margin of error, <span class="math inline">\(z^*\frac{\sigma}{\sqrt{n}}\)</span>, as our confidence level increases? (see table above about Z* and confidence level)</p>
-<p>Consider that if I make a wide enough interval, I can be 100% confident. But to get there, my interval is useless. For example, I can be 100% confident that the true population averge height of BYU-I students is between 2 feet and 100 feet.</p>
+<p>Consider that if I make a wide enough interval, I can be 100% confident. But to get 100% confidence, my interval will be useless. For example, I can be 100% confident that the true population averge height of BYU-I students is between 2 feet and 100 feet. More confidence means we need a wider interval.</p>
 
 
 </section>
