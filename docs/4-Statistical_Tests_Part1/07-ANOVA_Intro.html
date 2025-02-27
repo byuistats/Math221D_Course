@@ -493,10 +493,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a>
   <ul class="collapse">
+  <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic">Test Statistic</a></li>
   <li><a href="#the-f-distribution" id="toc-the-f-distribution" class="nav-link" data-scroll-target="#the-f-distribution">The F-Distribution</a></li>
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
   <li><a href="#test-requirements" id="toc-test-requirements" class="nav-link" data-scroll-target="#test-requirements">Test Requirements</a>
   <ul class="collapse">
   <li><a href="#test-equal-variances" id="toc-test-equal-variances" class="nav-link" data-scroll-target="#test-equal-variances">Test Equal Variances</a></li>
@@ -542,16 +543,27 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>When we want to compare 3 or more groups, the math get’s more complicated. Analysis of Variance (ANOVA) compares how spread out the means are relative to the average <em>within</em> group variation. The formula for the new test statistic, <span class="math inline">\(F\)</span>, is messy, but we can get a sense for what it’s doing visually.</p>
+<p>When we want to compare 3 or more groups, the math get’s more complicated. Analysis of Variance (ANOVA) compares how spread out the means are relative to the <em>within</em> group variation.</p>
+</section>
+<section id="hypothesis-test" class="level1">
+<h1>Hypothesis Test</h1>
+<p>The null and alternative hypotheses are always the same for an ANOVA:</p>
+<p><span class="math display">\[H_o: \mu_1 = \mu_2 = ...\mu_k\]</span> where k is the number of groups in the data.</p>
+<p><span class="math display">\[H_a: \text{at least one } \mu_k \text{ is different}\]</span> <strong>Note</strong>: The <span class="math inline">\(F\)</span>-test does not tell us <em>which</em> group is different or how many are different from each other. The <span class="math inline">\(F\)</span>-test only tells us that something is different.</p>
+<section id="test-statistic" class="level2">
+<h2 class="anchored" data-anchor-id="test-statistic">Test Statistic</h2>
+<p>The Test Statistic for comparing more than 2 groups is called <span class="math inline">\(F\)</span>. Just like the <span class="math inline">\(z\)</span> and the <span class="math inline">\(t\)</span> statistics, <span class="math inline">\(F\)</span> has a probability distribution.</p>
+<p>The formula for the new test statistic, <span class="math inline">\(F\)</span>, is messy, but we can get a sense for what it’s doing visually.</p>
 <p><img src="../Images/one-way-anova-basics.png" class="img-fluid"></p>
-<p>The test statistic is the ratio of the variation between groups and the average variation within groups. The further spread out the sample means are relative to the noise within the groups, the more significant the result.</p>
+<p>The test statistic is the ratio of the variation <strong>between</strong> groups and the average variation <strong>within</strong> groups. The further spread out the sample means are relative to the noise within the groups, the more significant the result.</p>
+</section>
 <section id="the-f-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="the-f-distribution">The F-Distribution</h2>
 <p>Recall that the shape of the <span class="math inline">\(t\)</span>-distribution depended on how much data was in the sample. The t-distribution was fatter tailed than the standard normal distribution when n was small. The F-statistic also changes shape. Its shape depends on how many data points are in the sample <em>and</em> how many groups we are comparing. This means the F-distribution has 2 sets of degrees of freedom.</p>
 <p>The numerator, or <strong>between groups degrees of freedom</strong> is <span class="math inline">\(df_{between}=k-1\)</span>, where k is the number of groups you are comparing.</p>
 <p>The denominator, or <strong>within groups degrees of freedom</strong> is <span class="math inline">\(df_{within}=n-k\)</span> where n is the total number of data points and k is the number of groups.</p>
-<p>We can get these degrees of freedom directly from the R output.</p>
-<p>Unlike the <span class="math inline">\(t\)</span>-distribution, the <span class="math inline">\(F\)</span>-distribution is not centered around zero and can never be negative. <span class="math inline">\(F\)</span> is the ratio of 2 positive numbers and is, therefore, always positive.</p>
+<p>We will get the values of both degrees of freedom directly from the R output.</p>
+<p>Unlike the <span class="math inline">\(t\)</span>-distribution, the <span class="math inline">\(F\)</span>-distribution is not centered around zero and can <strong>never be negative</strong> because <span class="math inline">\(F\)</span> is the ratio of 2 positive numbers and is, therefore, always positive.</p>
 <p>To summarize:</p>
 <ol type="1">
 <li><span class="math inline">\(F\)</span> is always positive because it is the ratio of 2 positive numbers</li>
@@ -562,12 +574,6 @@ window.Quarto = {
 <p>The P-value for an F-statistic is always one-tailed. The probability of observing a test statistic, <span class="math inline">\(F\)</span>, if the null hypothesis is true can be visualized:</p>
 <p><img src="../Images/Fdistr_pvalue.png" class="img-fluid"></p>
 <p>In practice, the computer calculates the test statistic, P-value, and degrees of freedom and we interpret the output as with other statistical tests.</p>
-</section>
-<section id="hypothesis-test" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
-<p>The null and alternative hypotheses are always the same for an ANOVA:</p>
-<p><span class="math display">\[H_o: \mu_1 = \mu_2 = ...\mu_k\]</span> where k is the number of groups in the data.</p>
-<p><span class="math display">\[H_a: \text{at least one } \mu_k \text{ is different}\]</span> <strong>Note</strong>: The <span class="math inline">\(F\)</span>-test does not tell us <em>which</em> group is different or how many are different from each other. The <span class="math inline">\(F\)</span>-test only tells us that something is different.</p>
 </section>
 <section id="test-requirements" class="level2">
 <h2 class="anchored" data-anchor-id="test-requirements">Test Requirements</h2>
@@ -585,15 +591,19 @@ window.Quarto = {
 </section>
 <section id="normality-of-residuals" class="level3">
 <h3 class="anchored" data-anchor-id="normality-of-residuals">Normality of Residuals</h3>
-<p>We will discuss residuals in more depth when we cover regression analysis. For now, think of residuals as the deviations of each observation away from their group mean. If our analysis is to be trusted, these deviations need to be normally distributed.</p>
-<p>If both requirements are met, then we can trust the P-value.</p>
+<p>Residuals are defined as the difference between an observation and it’s “expected” value:</p>
+<p><span class="math display">\[residual = \text{observed}-\text{expected}\]</span></p>
+<p>In the case of ANOVA, that means we get a residual for every observation by taking the observed value and subtracting its group mean. Once again, R will provide this for us.</p>
+<p>For our analysis to be valid, we need to see if the residuals are normally distributed. We can do a <code>qqPlot()</code> of the residuals to assess this requirement.</p>
+<p>If both requirements are met, we can trust the P-value.</p>
 </section>
 </section>
 <section id="analysis-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-in-r">Analysis in R</h2>
 <p>Much of the syntax for ANOVA will look familiar, but we will be using a new function, <code>aov()</code> instead of <code>t.test()</code>.</p>
 <p>The <code>aov()</code> function by itself isn’t as useful as <code>t.test()</code>. However, we can use the <code>summary()</code> function to give us everything we need.</p>
-<p>We typically name our output using the assignment operator <code>&lt;-</code> to make it easier to extract the information we would like. The inside of <code>aov()</code> will look familiar, using the same <code>~</code> notation we’ve used all semester.</p>
+<p>We typically name our output using the assignment operator <code>&lt;-</code> to make it easier to get the information we would like.</p>
+<p>The inside of <code>aov()</code> will look familiar, using the same <code>~</code> notation we’ve used all semester.</p>
 <p>The generic process for performing an ANOVA is:</p>
 <pre><code>
 # Name the ANOVA output:
@@ -604,38 +614,32 @@ summary(output)
 </code></pre>
 <section id="check-anova-requirments" class="level3">
 <h3 class="anchored" data-anchor-id="check-anova-requirments">Check ANOVA Requirments:</h3>
+<p>Just as with the other statistical tests, ANOVA has certain requirements for us to be able to trust the P-value.</p>
 <section id="checking-equal-standard-deviations" class="level4">
 <h4 class="anchored" data-anchor-id="checking-equal-standard-deviations">Checking Equal Standard Deviations:</h4>
 <p>We can use <code>favstats()</code> to extract the standard deviations of each group, then find the ratio of the max/min to see if it is less than 2.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># extract only the standard deviations from favstats using th `$`:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="fu">favstats</span>(data<span class="sc">$</span>response_variable <span class="sc">~</span> data<span class="sc">$</span>categorical_variable)<span class="sc">$</span>sd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in favstats(data$response_variable ~ data$categorical_variable): could not find function "favstats"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare the max/min to 2</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(sds) <span class="sc">/</span> <span class="fu">min</span>(sds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'sds' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if max/min &lt; 2, then we're ok</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<pre><code># extract only the standard deviations from favstats output using th `$`:
+
+sds &lt;- favstats(data$response_variable ~ data$categorical_variable)$sd
+
+# Compare the max/min to 2
+
+max(sds) / min(sds)
+
+# if max/min &lt; 2, then we're ok
+</code></pre>
 </section>
 <section id="assessing-normality-of-the-residuals" class="level4">
 <h4 class="anchored" data-anchor-id="assessing-normality-of-the-residuals">Assessing Normality of the Residuals</h4>
 <p>We can assess normality of the residuals with a <code>qqPlot()</code>. We first need to extract the residuals from our output:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">aov</span>(data<span class="sc">$</span>response_variable <span class="sc">~</span> data<span class="sc">$</span>categorical_variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in data$response_variable: object of type 'closure' is not subsettable</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(output<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in qqPlot(output$residuals): could not find function "qqPlot"</code></pre>
-</div>
-</div>
+<pre><code># Name the output of the aov() function `output`:
+
+output &lt;- aov(data$response_variable ~ data$categorical_variable)
+
+# do a qqPlot of the residuals (observation values - group mean) that R calculates.  We can use th `$` to tell R what part of the output we want to make into a qqPlot():  
+
+qqPlot(output$residuals)
+</code></pre>
 <p>If most of the points fall within the blue zone, we can be confident that the residuals are normally distributed.</p>
 </section>
 </section>
@@ -656,7 +660,7 @@ summary(output)
 <h2 class="anchored" data-anchor-id="step-2-explore-the-data">Step 2: Explore the Data</h2>
 <p>How many species do we have in our dataset?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     setosa versicolor  virginica 
@@ -665,28 +669,28 @@ summary(output)
 </div>
 <p>Create a side-by-side boxplot of species and Sepal Length.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">ylab=</span><span class="st">"Sepal Length"</span>, <span class="at">main =</span> <span class="st">"Sepal Length by Species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">ylab=</span><span class="st">"Sepal Length"</span>, <span class="at">main =</span> <span class="st">"Sepal Length by Species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-ANOVA_Intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-ANOVA_Intro_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Using GGPlot:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Sepal Length"</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Sepal Length by Species"</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Sepal Length"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Sepal Length by Species"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-ANOVA_Intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-ANOVA_Intro_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -695,8 +699,8 @@ summary(output)
 <section id="step-4-perform-the-appropriate-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="step-4-perform-the-appropriate-analysis">Step 4: Perform the appropriate analysis</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>aov_sepal <span class="ot">&lt;-</span> <span class="fu">aov</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov_sepal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>aov_sepal <span class="ot">&lt;-</span> <span class="fu">aov</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov_sepal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
 Species       2  63.21  31.606   119.3 &lt;2e-16 ***
@@ -708,40 +712,40 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Before we make a conclusion, we want to check that we can trust our output. Every statistical test has requirements that must be satisfied if we are to trust our conclusions. For ANOVA, we need to check the normality and that the variation within groups is roughly the same.</p>
 <p>We use a QQ-plot to check for normality and the ratio of the largest to the smallest standard deviation to check “equal” variation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QQ plots show how closely the the residuals are to a normal distribution</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(aov_sepal<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QQ plots show how closely the the residuals are to a normal distribution</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(aov_sepal<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-ANOVA_Intro_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="07-ANOVA_Intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 107 132</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that there is less than a 2X difference between the largest and smallest standard deviations</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We can assign favstats()$sd to a variable to make it easier to use. Recall the "$" can also be used to extract specific output from functions</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="fu">favstats</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)<span class="sc">$</span>sd</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(sds) <span class="sc">/</span> <span class="fu">min</span>(sds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that there is less than a 2X difference between the largest and smallest standard deviations</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We can assign favstats()$sd to a variable to make it easier to use. Recall the "$" can also be used to extract specific output from functions</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="fu">favstats</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)<span class="sc">$</span>sd</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(sds) <span class="sc">/</span> <span class="fu">min</span>(sds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.803967</code></pre>
 </div>
 </div>
 <p><strong>Question</strong>: What is the F-statistics?<br>
-<strong>Answer</strong>:</p>
+<strong>Answer</strong>: 119.3</p>
 <p><strong>Question</strong>: What are the between-groups degrees of freedom?<br>
-<strong>Answer</strong>:</p>
+<strong>Answer</strong>: 2</p>
 <p><strong>Question</strong>: What are the within-groups degrees of freedom?<br>
-<strong>Answer</strong>:</p>
+<strong>Answer</strong>: 147</p>
 <p><strong>Question</strong>: What is the P-value?<br>
-<strong>Answer</strong>:</p>
+<strong>Answer</strong>: &lt;2e-16</p>
 <p><strong>Question</strong>: What is your conclusion?<br>
-<strong>Answer</strong>:</p>
+<strong>Answer</strong>: Because p is less than alpha, we reject the null hypothesis. We conclude that at least one of the means of Sepal Length is different from the other group means.</p>
 </section>
 </section>
 <section id="your-turn" class="level1">
@@ -751,8 +755,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>State your null and alternative hypotheses:</p>
 <p>Perform an ANOVA:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#aov_petal &lt;- aov()</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(aov_petal)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#aov_petal &lt;- aov()</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(aov_petal)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Question</strong>: What is the F-statistics?<br>
 <strong>Answer</strong>:</p>

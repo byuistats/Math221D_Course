@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Introduction
 
-When we want to compare 3 or more groups, the math get's more complicated.  Analysis of Variance (ANOVA) compares how spread out the means are relative to the average _within_ group variation. 
+When we want to compare 3 or more groups, the math get's more complicated.  Analysis of Variance (ANOVA) compares how spread out the means are relative to the _within_ group variation. 
 
 # Hypothesis Test
 
@@ -29,7 +29,7 @@ The formula for the new test statistic, $F$, is messy, but we can get a sense fo
 
 ![](../Images/one-way-anova-basics.png)
 
-The test statistic is the ratio of the variation between groups and the average variation within groups.  The further spread out the sample means are relative to the noise within the groups, the more significant the result.  
+The test statistic is the ratio of the variation **between** groups and the average variation **within** groups.  The further spread out the sample means are relative to the noise within the groups, the more significant the result.  
 
 ## The F-Distribution
 
@@ -39,9 +39,9 @@ The numerator, or __between groups degrees of freedom__ is $df_{between}=k-1$, w
 
 The denominator, or __within groups degrees of freedom__ is $df_{within}=n-k$ where n is the total number of data points and k is the number of groups.  
 
-We can get these degrees of freedom directly from the R output.  
+We will get the values of both degrees of freedom directly from the R output.  
 
-Unlike the $t$-distribution, the $F$-distribution is not centered around zero and can never be negative because $F$ is the ratio of 2 positive numbers and is, therefore, always positive.  
+Unlike the $t$-distribution, the $F$-distribution is not centered around zero and can **never be negative** because $F$ is the ratio of 2 positive numbers and is, therefore, always positive.  
 
 To summarize:
 
@@ -79,10 +79,16 @@ This can be checked using the standard deviations from the `favstats()` output (
 
 ### Normality of Residuals
 
-We will discuss residuals in more depth when we cover regression analysis.  For now, think of residuals as the deviations of each observation away from their group mean.  If our analysis is to be trusted, these deviations need to be normally distributed.
+Residuals are defined as the difference between an observation and it's "expected" value:
+
+$$residual = \text{observed}-\text{expected}$$
+
+In the case of ANOVA, that means we get a residual for every observation by taking the observed value and subtracting its group mean.  Once again, R will provide this for us.  
+
+For our analysis to be valid, we need to see if the residuals are normally distributed.  We can do a `qqPlot()` of the residuals to assess this requirement.  
 
 
-If both requirements are met, then we can trust the P-value.  
+If both requirements are met, we can trust the P-value.  
 
 
 ## Analysis in R
@@ -111,14 +117,12 @@ summary(output)
 
 Just as with the other statistical tests, ANOVA has certain requirements for us to be able to trust the P-value.  
 
-Instead of checking for normality of each of the groups separately,  
-
 #### Checking Equal Standard Deviations:
 
 We can use `favstats()` to extract the standard deviations of each group, then find the ratio of the max/min to see if it is less than 2.  
 
-```{r}
-# extract only the standard deviations from favstats using th `$`:
+```
+# extract only the standard deviations from favstats output using th `$`:
 
 sds <- favstats(data$response_variable ~ data$categorical_variable)$sd
 
@@ -134,8 +138,12 @@ max(sds) / min(sds)
 
 We can assess normality of the residuals with a `qqPlot()`.  We first need to extract the residuals from our output:
 
-```{r}
+```
+# Name the output of the aov() function `output`:
+
 output <- aov(data$response_variable ~ data$categorical_variable)
+
+# do a qqPlot of the residuals (observation values - group mean) that R calculates.  We can use th `$` to tell R what part of the output we want to make into a qqPlot():  
 
 qqPlot(output$residuals)
 
@@ -236,19 +244,19 @@ max(sds) / min(sds)
 
 
 __Question__:  What is the F-statistics?  
-__Answer__:  
+__Answer__:   119.3
 
 __Question__:  What are the between-groups degrees of freedom?  
-__Answer__:  
+__Answer__:  2
 
 __Question__:  What are the within-groups degrees of freedom?  
-__Answer__:  
+__Answer__:  147
 
 __Question__:  What is the P-value?  
-__Answer__:  
+__Answer__:  <2e-16
 
 __Question__:  What is your conclusion?  
-__Answer__:  
+__Answer__:  Because p is less than alpha, we reject the null hypothesis.  We conclude that at least one of the means of Sepal Length is different from the other group means.  
 
 
 # Your turn!
