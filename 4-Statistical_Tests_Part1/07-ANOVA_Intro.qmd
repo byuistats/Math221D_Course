@@ -8,7 +8,23 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Introduction
 
-When we want to compare 3 or more groups, the math get's more complicated.  Analysis of Variance (ANOVA) compares how spread out the means are relative to the average _within_ group variation. The formula for the new test statistic, $F$, is messy, but we can get a sense for what it's doing visually.
+When we want to compare 3 or more groups, the math get's more complicated.  Analysis of Variance (ANOVA) compares how spread out the means are relative to the average _within_ group variation. 
+
+# Hypothesis Test
+
+The null and alternative hypotheses are always the same for an ANOVA:
+
+$$H_o: \mu_1 = \mu_2 = ...\mu_k$$
+where k is the number of groups in the data.
+
+$$H_a: \text{at least one } \mu_k \text{ is different}$$
+__Note__:  The $F$-test does not tell us *which* group is different or how many are different from each other.  The $F$-test only tells us that something is different.  
+
+## Test Statistic
+
+The Test Statistic for comparing more than 2 groups is called $F$.  Just like the $z$ and the $t$ statistics, $F$ has a probability distribution.  
+
+The formula for the new test statistic, $F$, is messy, but we can get a sense for what it's doing visually.
 
 
 ![](../Images/one-way-anova-basics.png)
@@ -25,7 +41,7 @@ The denominator, or __within groups degrees of freedom__ is $df_{within}=n-k$ wh
 
 We can get these degrees of freedom directly from the R output.  
 
-Unlike the $t$-distribution, the $F$-distribution is not centered around zero and can never be negative.  $F$ is the ratio of 2 positive numbers and is, therefore, always positive.  
+Unlike the $t$-distribution, the $F$-distribution is not centered around zero and can never be negative because $F$ is the ratio of 2 positive numbers and is, therefore, always positive.  
 
 To summarize:
 
@@ -42,16 +58,6 @@ The P-value for an F-statistic is always one-tailed.  The probability of observi
 
 
 In practice, the computer calculates the test statistic, P-value, and degrees of freedom and we interpret the output as with other statistical tests. 
-
-## Hypothesis Test
-
-The null and alternative hypotheses are always the same for an ANOVA:
-
-$$H_o: \mu_1 = \mu_2 = ...\mu_k$$
-where k is the number of groups in the data.
-
-$$H_a: \text{at least one } \mu_k \text{ is different}$$
-__Note__:  The $F$-test does not tell us *which* group is different or how many are different from each other.  The $F$-test only tells us that something is different.  
 
 
 ## Test Requirements
@@ -85,7 +91,9 @@ Much of the syntax for ANOVA will look familiar, but we will be using a new func
 
 The `aov()` function by itself isn't as useful as `t.test()`.  However, we can use the `summary()` function to give us everything we need.
 
-We typically name our output using the assignment operator `<-` to make it easier to extract the information we would like. The inside of `aov()` will look familiar, using the same `~` notation we've used all semester.
+We typically name our output using the assignment operator `<-` to make it easier to get the information we would like.  
+
+The inside of `aov()` will look familiar, using the same `~` notation we've used all semester.
 
 The generic process for performing an ANOVA is:
 
@@ -100,6 +108,10 @@ summary(output)
 ```
 
 ### Check ANOVA Requirments:
+
+Just as with the other statistical tests, ANOVA has certain requirements for us to be able to trust the P-value.  
+
+Instead of checking for normality of each of the groups separately,  
 
 #### Checking Equal Standard Deviations:
 

@@ -13,9 +13,7 @@ In many situations we would like to compare averages from different populations.
 
 Alternatively, in many experimental designs, participants are randomly assigned into a treatment and a control group.  The randomization process ensures that there is no association between participants in either group. They are independent.  
 
-When 2 random samples are taken from 2 separate populations, or when a group of people are randomly assigned into treatment groups, the samples are independent. 
-
-This differs from the _dependent_ t-test.  Recall that samples are dependent when knowing who or what is in one group determines who or what is in the second group.  
+When 2 random samples are taken from 2 separate populations, or when a group of people are randomly assigned into treatment groups, the samples are *independent*. 
 
 Some examples include:
 
@@ -35,11 +33,11 @@ $$H_a: \mu_1 (>, <, \ne) \mu_2$$
 
 ## Independent t-test in R
 
-A 2-sample independent t-test in R requires a slight modification to the 1-sample and dependent t-tests already performed. The syntax should look familiar.  
+A 2-sample independent t-test in R requires a slight modification to the 1-sample t-test previously discussed. However, the syntax should look familiar.  
 
 Recall that when we created a `boxplot()` or did `favstats()` for one set of data it looked like:
 
-```{r}
+```
 boxplot(data$response_variable)
 favstats(data$response_variable)
 
@@ -49,26 +47,34 @@ with `data$response_variable` corresponding to our quantitative variable of inte
 
 When we wanted to break the analysis down by a grouping factor we used the `~` notation to add a group variable:
 
-```{r}
+```
 boxplot(data$response_variable ~ data$grouping_variable)
 favstats(data$response_variable ~ data$grouping_variable)
 ```
 
 We use the exact same modification for a t-test with 2 groups:
 
-```{r}
+```
 t.test(data$response_variable ~ data$grouping_variable, alterntive = "greater")
 ```
 
-Recall that the `t-test()` function uses `mu=0` as a default, we do not need to specify it in the function because the null value when comparing 2 groups is 0.  
+The `t.test()` function uses `mu=0` as a default, we do not need to specify it in the function because when comparing 2 groups, the difference is assumed to be 0 in most cases.  
 
-__NOTE__: In R, group 1 and 2 are determined alphabetically according to the labels in the dataset.
+When specifying an alternative hypothesis in R, a reference group must be defined.  This serves as the baseline for comparison.  R will assess how the mean of the second group differs from that of the first. 
+
+By default, R decides which group is the reference group **alphabetically**.  Whichever category label is first alphabetically is the reference group.  
+
+__NOTE__: In R, group 1 and 2 are determined alphabetically according to the labels in the explanatory variable column.
+
+__EXAMPLE__:  If my explanatory variable is `sex`, and they are labeled "Female" and "Male", then "Female" would be the reference group.  If I suspect that Females had smaller feet than males I would use `alternative = "less"`.  
+
+
 
 ## Confidence Intervals
 
 Recall that confidence intervals are necessarily two-sided.  So the code for a 99% confidence interval looks like:
 
-```{r}
+```
 t.test(data$response_variable ~ data$grouping_variable, conf.level = .99)$conf.int
 ```
 
