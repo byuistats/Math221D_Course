@@ -69,6 +69,21 @@ __NOTE__: In R, group 1 and 2 are determined alphabetically according to the lab
 __EXAMPLE__:  If my explanatory variable is `sex`, and they are labeled "Female" and "Male", then "Female" would be the reference group.  If I suspect that Females had smaller feet than males I would use `alternative = "less"`.  
 
 
+## Checking Requirements
+
+When we looked at 1-sample t-tests, we had to check that the sample mean was normally distributed.  Recall that the sample mean is approximately normal if:
+
+  1. The source population is normally distributed
+  2. The sample size, $n \ge 30$
+
+
+For a 2-sample t-test, we must check that this is true for **both** samples.  If both sample sizes are bigger than 30 then we can trust the CLT and the statistics based on it.  
+
+If the sample sizes are small, we can make a `qqPlot()` for both groups:
+
+```
+qqPlot(data$response_variable ~ data$explanatory_variable)
+```
 
 ## Confidence Intervals
 
@@ -135,8 +150,7 @@ Check to see if the means from **both** groups are normally distributed:
   
 ```{r}
 
-qqPlot(fifa_heart_attacks$heart_attacks, groups = fifa_heart_attacks$time_period)
-
+qqPlot(fifa_heart_attacks$heart_attacks ~ fifa_heart_attacks$time_period)
 ```
 
 Can we trust that the central limit theorem applies?

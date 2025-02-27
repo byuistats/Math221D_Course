@@ -497,6 +497,7 @@ window.Quarto = {
   <li><a href="#hypothesis-tests-for-independent-samples" id="toc-hypothesis-tests-for-independent-samples" class="nav-link" data-scroll-target="#hypothesis-tests-for-independent-samples">Hypothesis Tests for Independent Samples</a>
   <ul class="collapse">
   <li><a href="#independent-t-test-in-r" id="toc-independent-t-test-in-r" class="nav-link" data-scroll-target="#independent-t-test-in-r">Independent t-test in R</a></li>
+  <li><a href="#checking-requirements" id="toc-checking-requirements" class="nav-link" data-scroll-target="#checking-requirements">Checking Requirements</a></li>
   <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a></li>
   </ul></li>
   <li><a href="#practice-together" id="toc-practice-together" class="nav-link" data-scroll-target="#practice-together">Practice Together</a>
@@ -591,6 +592,17 @@ favstats(data$response_variable ~ data$grouping_variable)</code></pre>
 <p><strong>NOTE</strong>: In R, group 1 and 2 are determined alphabetically according to the labels in the explanatory variable column.</p>
 <p><strong>EXAMPLE</strong>: If my explanatory variable is <code>sex</code>, and they are labeled “Female” and “Male”, then “Female” would be the reference group. If I suspect that Females had smaller feet than males I would use <code>alternative = "less"</code>.</p>
 </section>
+<section id="checking-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="checking-requirements">Checking Requirements</h2>
+<p>When we looked at 1-sample t-tests, we had to check that the sample mean was normally distributed. Recall that the sample mean is approximately normal if:</p>
+<ol type="1">
+<li>The source population is normally distributed</li>
+<li>The sample size, <span class="math inline">\(n \ge 30\)</span></li>
+</ol>
+<p>For a 2-sample t-test, we must check that this is true for <strong>both</strong> samples. If both sample sizes are bigger than 30 then we can trust the CLT and the statistics based on it.</p>
+<p>If the sample sizes are small, we can make a <code>qqPlot()</code> for both groups:</p>
+<pre><code>qqPlot(data$response_variable ~ data$explanatory_variable)</code></pre>
+</section>
 <section id="confidence-intervals" class="level2">
 <h2 class="anchored" data-anchor-id="confidence-intervals">Confidence Intervals</h2>
 <p>Recall that confidence intervals are necessarily two-sided. So the code for a 99% confidence interval looks like:</p>
@@ -614,17 +626,17 @@ favstats(data$response_variable ~ data$grouping_variable)</code></pre>
 <section id="step-1-read-in-data" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-read-in-data">Step 1: Read in Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Libraries</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Data</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>fifa_heart_attacks <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/fifa_heart_attacks.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Libraries</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Data</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>fifa_heart_attacks <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/fifa_heart_attacks.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-2-review-data" class="level2">
@@ -639,7 +651,7 @@ favstats(data$response_variable ~ data$grouping_variable)</code></pre>
 <li>Create a qqPlot()</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(fifa_heart_attacks<span class="sc">$</span>heart_attacks, <span class="at">groups =</span> fifa_heart_attacks<span class="sc">$</span>time_period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(fifa_heart_attacks<span class="sc">$</span>heart_attacks <span class="sc">~</span> fifa_heart_attacks<span class="sc">$</span>time_period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -664,7 +676,7 @@ favstats(data$response_variable ~ data$grouping_variable)</code></pre>
 <p>Which group is considered group 1 and which is group 2 in R?</p>
 <p>Check the alphabetical order:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(fifa_heart_attacks<span class="sc">$</span>time_period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(fifa_heart_attacks<span class="sc">$</span>time_period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Control"   "World Cup"</code></pre>
 </div>
@@ -693,7 +705,7 @@ favstats(data$response_variable ~ data$grouping_variable)</code></pre>
 <section id="load-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="load-the-data">Load the Data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rugby <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/quiz/R/nz_rugby.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rugby <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/quiz/R/nz_rugby.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="explore-the-data" class="level3">
@@ -711,7 +723,7 @@ favstats(data$response_variable ~ data$grouping_variable)</code></pre>
 <p><strong>NOTE</strong>: The default for R is to set group order alphabetically. This means Group 1 = NewRules</p>
 <p>Compare the the time per play under the new and old rules:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(rugby<span class="sc">$</span>time, <span class="at">groups =</span> rugby<span class="sc">$</span>period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(rugby<span class="sc">$</span>time, <span class="at">groups =</span> rugby<span class="sc">$</span>period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -743,7 +755,7 @@ favstats(data$response_variable ~ data$grouping_variable)</code></pre>
 <section id="step-1-read-in-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-read-in-the-data">Step 1: Read in the data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>copd <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/copd_rehab.xlsx"</span>) <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">"community"</span>, <span class="st">"hospital"</span>), <span class="at">names_to =</span> <span class="st">"Treatment"</span>, <span class="at">values_to =</span> <span class="st">"Steps"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Treatment, Steps) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>copd <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/copd_rehab.xlsx"</span>) <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">"community"</span>, <span class="st">"hospital"</span>), <span class="at">names_to =</span> <span class="st">"Treatment"</span>, <span class="at">values_to =</span> <span class="st">"Steps"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Treatment, Steps) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-2-review-the-data" class="level2">
@@ -766,7 +778,7 @@ favstats(data$response_variable ~ data$grouping_variable)</code></pre>
 <p>Which group is considered group 1 in this data?</p>
 <p>Run the appropriate t-test.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#t.test()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#t.test()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>State your conclusion about the hypothesis test.</p>
 </section>

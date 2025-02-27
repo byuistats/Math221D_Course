@@ -102,7 +102,7 @@
     "href": "4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html#step-2-review-data",
     "title": "Independent Two-sample T-test",
     "section": "Step 2: Review Data",
-    "text": "Step 2: Review Data\nLook at the data.\nCreate summary statistics tables of the number of heart attacks for each group.\nCreate a side-by-side boxplot for the during the World Cup and the Control.\nDo you notice any outliers or data that may need to be omitted for analysis?\nCheck to see if the means from both groups are normally distributed:\n\nIs n &gt; 30 for both groups?\nCreate a qqPlot()\n\n\nqqPlot(fifa_heart_attacks$heart_attacks, groups = fifa_heart_attacks$time_period)\n\n\n\n\n\n\n\n\nCan we trust that the central limit theorem applies?"
+    "text": "Step 2: Review Data\nLook at the data.\nCreate summary statistics tables of the number of heart attacks for each group.\nCreate a side-by-side boxplot for the during the World Cup and the Control.\nDo you notice any outliers or data that may need to be omitted for analysis?\nCheck to see if the means from both groups are normally distributed:\n\nIs n &gt; 30 for both groups?\nCreate a qqPlot()\n\n\nqqPlot(fifa_heart_attacks$heart_attacks ~ fifa_heart_attacks$time_period)\n\n\n\n\n\n\n\n\nCan we trust that the central limit theorem applies?"
   },
   {
     "objectID": "4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html#step-3-prepare-data-for-analysis",
@@ -2189,5 +2189,12 @@
     "title": "Regression Practice",
     "section": "Check Model Requirements",
     "text": "Check Model Requirements\nCheck the normality of the residuals:\nCheck for constant variance (Residual by Predicted plot):"
+  },
+  {
+    "objectID": "4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html#checking-requirements",
+    "href": "4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html#checking-requirements",
+    "title": "Independent Two-sample T-test",
+    "section": "Checking Requirements",
+    "text": "Checking Requirements\nWhen we looked at 1-sample t-tests, we had to check that the sample mean was normally distributed. Recall that the sample mean is approximately normal if:\n\nThe source population is normally distributed\nThe sample size, \\(n \\ge 30\\)\n\nFor a 2-sample t-test, we must check that this is true for both samples. If both sample sizes are bigger than 30 then we can trust the CLT and the statistics based on it.\nIf the sample sizes are small, we can make a qqPlot() for both groups:\nqqPlot(data$response_variable ~ data$explanatory_variable)"
   }
 ]
