@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Normal Probability Practice – Math221 Notebook</title>
+<title>One and Two Sample Proportion Tests – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -473,13 +473,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link active" data-scroll-target="#the-normal-distribution">The Normal Distribution</a></li>
-  <li><a href="#normal-probability-calculator" id="toc-normal-probability-calculator" class="nav-link" data-scroll-target="#normal-probability-calculator">Normal Probability Calculator</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#one-sample-proportions" id="toc-one-sample-proportions" class="nav-link" data-scroll-target="#one-sample-proportions">One-Sample Proportions</a>
   <ul class="collapse">
-  <li><a href="#brisket-competition" id="toc-brisket-competition" class="nav-link" data-scroll-target="#brisket-competition">Brisket Competition</a></li>
-  <li><a href="#prbability-of-a-false-start" id="toc-prbability-of-a-false-start" class="nav-link" data-scroll-target="#prbability-of-a-false-start">Prbability of a “False Start”</a></li>
+  <li><a href="#hypothesis-tests" id="toc-hypothesis-tests" class="nav-link" data-scroll-target="#hypothesis-tests">Hypothesis Tests</a>
+  <ul class="collapse">
+  <li><a href="#left-handedness-among-visual-arts-majors" id="toc-left-handedness-among-visual-arts-majors" class="nav-link" data-scroll-target="#left-handedness-among-visual-arts-majors">Left Handedness Among Visual Arts Majors</a></li>
   </ul></li>
-  <li><a href="#law-school-admissions-test-lsat" id="toc-law-school-admissions-test-lsat" class="nav-link" data-scroll-target="#law-school-admissions-test-lsat">Law School Admissions Test (LSAT)</a></li>
+  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a></li>
+  </ul></li>
+  <li><a href="#sample-proportion-tests" id="toc-sample-proportion-tests" class="nav-link" data-scroll-target="#sample-proportion-tests">2-Sample Proportion Tests</a></li>
   </ul>
 </nav>
     </div>
@@ -488,7 +491,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Normal Probability Practice</h1>
+<h1 class="title">One and Two Sample Proportion Tests</h1>
 </div>
 
 
@@ -505,83 +508,101 @@ window.Quarto = {
 </header>
 
 
-<section id="the-normal-distribution" class="level1">
-<h1>The Normal Distribution</h1>
-<p>Recall that the normal distribution is a probability distribution defined by its center (<span class="math inline">\(\mu\)</span>) and its spread (<span class="math inline">\(\sigma\)</span>).</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In this section, we will learn:</p>
+<ol type="1">
+<li>How to set up and analyze hypothesis tests for 1-sample proportions</li>
+<li>How to create confidence intervals for 1-sample proportions</li>
+<li>How to set up and analyze hypothesis tests for 2-sample proportions</li>
+<li>How to create confidence intervals for the difference between 2-sample proportions</li>
+</ol>
 </section>
-<section id="normal-probability-calculator" class="level1">
-<h1>Normal Probability Calculator</h1>
-<p>The code below can serve as a template for any calculations involving the normal distribution. Feel free to copy and paste this into the subsequent code chunks.</p>
-<p><strong>NOTE</strong>: R saves any objects that are named. This means that if you run <code>mu &lt;- 12</code>, R keeps track of <code>mu</code> until you change it. When doing multiple problems that all use <code>mu</code>, be sure to run the whole code chunk, which will overwrite the names from previous examples.</p>
+<section id="one-sample-proportions" class="level1">
+<h1>One-Sample Proportions</h1>
+<section id="hypothesis-tests" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-tests">Hypothesis Tests</h2>
+<p>By now, the framework of hypothesis testing should start to feel familiar.</p>
+<ol type="1">
+<li>Set up a Null and alternative hypothesis in terms of a <strong>population parameter</strong></li>
+<li>Use data to calculate a test statistic</li>
+<li>Calculate a P-value (the probability of getting a test statistic as extreme or more extreme than the one I observed if the null hypothesis were true)</li>
+<li>Compare P-value to <span class="math inline">\(\alpha\)</span></li>
+<li>State your conclusion in context of the problem</li>
+</ol>
+<p>The process is no different. We want to use data to make a conclusion about the unknown <strong>population proportion</strong>, <span class="math inline">\(p\)</span>.</p>
+<section id="left-handedness-among-visual-arts-majors" class="level3">
+<h3 class="anchored" data-anchor-id="left-handedness-among-visual-arts-majors">Left Handedness Among Visual Arts Majors</h3>
+<p>There is a belief in a link between creativity and left-handedness. Left-handed people make up about 10% of the population. Let’s test to see if BYU-I Visual Arts majors have a higher proportion of left-handed people than the general population.</p>
+<p>Define our null and alternative hypotheses:</p>
+<p><span class="math display">\[H_0:  p = 0.10\]</span> <span class="math display">\[H_a: p &gt; 0.01\]</span> <span class="math display">\[\alpha = 0.05\]</span></p>
+<p><strong>Note</strong>: In stats we typically use Greek letters to designate population parameters. For proportions we us the Latin letter, <span class="math inline">\(p\)</span>, because <span class="math inline">\(\pi\)</span> was already taken.</p>
+<p>We collect a random sample of 77 Visual Arts majors and find that 10 of them are left handed. The <strong>sample</strong> proportion is:</p>
+<p><span class="math display">\[\hat{p} = \frac{X}{N} = \frac{10}{77} = 0.1298701\]</span></p>
+<p>Even though our sample proportion is bigger than 0.10, we understand sampling variability and want to see if it is statistically significantly higher than 0.10.</p>
+<p>The <code>prop.test()</code> function behaves very much like the <code>t.test()</code> function. We have to input <span class="math inline">\(X\)</span>, <span class="math inline">\(N\)</span>, the null hypothesized <span class="math inline">\(p\)</span>, and the alternative hypothesis:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Value</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Population Mean</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Population Standard deviation</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Z-score:  number of standard deviations above the mean</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu) <span class="sc">/</span> sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'x' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'z' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of observing a z-score LESS THAN the one we observed (left tail)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'z' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of observing a z-score GREATER THAN the one we observed (Right Tail)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'z' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For calculating the area between 2 numbers</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(B, mu, sigma) <span class="sc">-</span> <span class="fu">pnorm</span>(A, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'B' not found</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the X_bar associated with a spceific percentile</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">25</span>, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error: object 'mu' not found</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">10</span>, <span class="at">n =</span> <span class="dv">77</span>, <span class="at">p=</span><span class="fl">0.10</span>, <span class="at">alternative=</span><span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    1-sample proportions test with continuity correction
+
+data:  10 out of 77, null probability 0.1
+X-squared = 0.46753, df = 1, p-value = 0.2471
+alternative hypothesis: true p is greater than 0.1
+95 percent confidence interval:
+ 0.07423612 1.00000000
+sample estimates:
+        p 
+0.1298701 </code></pre>
 </div>
 </div>
-<section id="brisket-competition" class="level2">
-<h2 class="anchored" data-anchor-id="brisket-competition">Brisket Competition</h2>
-<p>Competition was tight at a Saint Louis BBQ competition. Brisket scores were normally distributed with an average score of 5.941 with a standard deviation of 0.04.</p>
-<p><strong>Question</strong>: What’s the probability of getting a score GREATER than 6?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What’s the probability of getting a score LESS than 4?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the 99th percentile of this Brisket Competition?<br>
-<strong>Answer</strong>:</p>
-</section>
-<section id="prbability-of-a-false-start" class="level2">
-<h2 class="anchored" data-anchor-id="prbability-of-a-false-start">Prbability of a “False Start”</h2>
-<p>“At high level meets, the time between the gun and first kick against the starting block is measured electronically, via sensors built in the gun and the blocks. A reaction time less than 0.1 s is considered a false start. The 0.2-second interval accounts for the sum of the time it takes for the sound of the starter’s pistol to reach the runners’ ears, and the time they take to react to it.” (https://en.wikipedia.org/wiki/100_metres) Let’s suppose that reaction times are normally distributed with a mean of 0.2 seconds and a standard deviation of 0.03.</p>
-<p>What’s the probability of a false start? (meaning a reaction time LESS than 0.1)</p>
+<p>Conclusion: Because the p-value, 0.2471, is less than <span class="math inline">\(\alpha=0.05\)</span>, we fail to reject the null hypothesis. We have insufficient evidence to suggest that BYU-I Visual Arts majors have a higher proportion of left-handed people than the general population.</p>
+<section id="checking-requirements" class="level4">
+<h4 class="anchored" data-anchor-id="checking-requirements">Checking Requirements</h4>
+<p>Recall that we must check that we have a big enough sample size to trust our p-value. To do this, we check that there are an expected number of success and failures for a given sample size:</p>
+<p><span class="math display">\[np = 77*0.10=7.7\]</span></p>
+<p><span class="math display">\[n(1-p) = 77*0.9 = 69.3\]</span> <strong>QUESTION</strong>: Are both <span class="math inline">\(np\)</span> and <span class="math inline">\(n(1-p)\)</span> greater than 10?<br>
+<strong>ANSWER</strong>:</p>
+<p>It looks like we don’t have enough data to assume that the distribution of <span class="math inline">\(\hat{p}\)</span> is normal. Our p-value may not be appropriate.</p>
 </section>
 </section>
-<section id="law-school-admissions-test-lsat" class="level1">
-<h1>Law School Admissions Test (LSAT)</h1>
-<p>The scores on the LSAT are approximately normal with mean of 150.7 and standard deviation of 10.2. (Source: www.lsat.org.) Queen’s School of Business in Kingston, Ontario requires a minimum LSAT score of 157 for admission.</p>
-<p><strong>Question</strong>: What is the z-score for a score of 157?<br>
+</section>
+<section id="confidence-intervals" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-intervals">Confidence Intervals</h2>
+<p>We can use <code>prop.test()</code> to calculate confidence intervals as well.</p>
+<p><strong>Recall</strong>: Confidence intervals do not depend on null and alternative hypotheses so we omit that information in the <code>prop.test()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x=</span><span class="dv">10</span>, <span class="at">n =</span> <span class="dv">77</span>)<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06738384 0.23042038
+attr(,"conf.level")
+[1] 0.95</code></pre>
+</div>
+</div>
+<p>Explanation: I am 95% confident that the true proportion of left-handed Visual Arts majors is between 0.087 and 0.260.</p>
+<section id="your-turn-trump-support-in-idaho" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn-trump-support-in-idaho">Your Turn: Trump Support in Idaho</h4>
+<p>In the 2024 presidential election, Donald Trump won 67% of the vote in Idaho. After months in office, you would like to see if support for Trump has decreased from his share of the vote. You sample 772 registered voters and get 566 responses. Of the 566 responses, 364 say they approve of President Trump.</p>
+<p>Perform a hypothesis test that tests if the presidential approval is less than his share of the vote:</p>
+<p><span class="math display">\[H_0: p = \]</span></p>
+<p><span class="math display">\[H_a: p \]</span></p>
+<p><span class="math display">\[\alpha = \]</span></p>
+<p><strong>Question</strong>: What is the value of the test statistics for this test?<br>
 <strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the probability that a randomly selected person who took the LSAT would score above 157?<br>
+<p><strong>Question</strong>: What is the P-Value?<br>
 <strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the probability that a randomly selected test taker will have a score between 155 and 170?<br>
+<p><strong>Question</strong>: State your conclusion in context of this problem:<br>
 <strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the 97.4th percentile of LSAT scores?<br>
-<strong>Answer</strong>:</p>
+<p><strong>QUESTION</strong>: Can we trust the P-value? (Check <span class="math inline">\(np\)</span> and <span class="math inline">\(n(1-p)\)</span>)</p>
+<p><strong>ANSWER</strong>:</p>
+<p>Create a <span class="math inline">\((1-\alpha)\)</span> Confidence Interval for Idaho’s Presidential Approval:</p>
+<p>Explanation:</p>
+</section>
+</section>
+</section>
+<section id="sample-proportion-tests" class="level1">
+<h1>2-Sample Proportion Tests</h1>
 
 
 </section>

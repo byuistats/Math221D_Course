@@ -1,0 +1,132 @@
+---
+title: "One and Two Sample Proportion Tests"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introduction
+
+In this section, we will learn: 
+
+  1. How to set up and analyze hypothesis tests for 1-sample proportions
+  2. How to create confidence intervals for 1-sample proportions
+  3. How to set up and analyze hypothesis tests for 2-sample proportions
+  4. How to create confidence intervals for the difference between 2-sample proportions
+
+
+
+# One-Sample Proportions
+
+## Hypothesis Tests
+
+By now, the framework of hypothesis testing should start to feel familiar.  
+
+  1. Set up a Null and alternative hypothesis in terms of a **population parameter**
+  2. Use data to calculate a test statistic
+  3. Calculate a P-value (the probability of getting a test statistic as extreme or more extreme than the one I observed if the null hypothesis were true)
+  4. Compare P-value to $\alpha$
+  5. State your conclusion in context of the problem
+  
+The process is no different.  We want to use data to make a conclusion about the unknown **population proportion**, $p$.  
+
+### Left Handedness Among Visual Arts Majors
+
+There is a belief in a link between creativity and left-handedness.  Left-handed people make up about 10% of the population.  Let's test to see if BYU-I Visual Arts majors have a higher proportion of left-handed people than the general population.  
+
+Define our null and alternative hypotheses:  
+
+$$H_0:  p = 0.10$$
+$$H_a: p > 0.01$$
+$$\alpha = 0.05$$  
+
+__Note__:  In stats we typically use Greek letters to designate population parameters.  For proportions we us the Latin letter, $p$, because $\pi$ was already taken.  
+
+We collect a random sample of 77 Visual Arts majors and find that 10 of them are left handed.  The **sample** proportion is:  
+
+$$\hat{p} = \frac{X}{N} = \frac{10}{77} = 0.1298701$$
+
+Even though our sample proportion is bigger than 0.10, we understand sampling variability and want to see if it is statistically significantly higher than 0.10.  
+
+The `prop.test()` function behaves very much like the `t.test()` function.  We have to input $X$, $N$, the null hypothesized $p$, and the alternative hypothesis:  
+
+```{r}
+prop.test(x = 10, n = 77, p=0.10, alternative="greater")
+```
+
+
+Conclusion:  Because the p-value, 0.2471, is less than $\alpha=0.05$, we fail to reject the null hypothesis.  We have insufficient evidence to suggest that BYU-I Visual Arts majors have a higher proportion of left-handed people than the general population.  
+
+#### Checking Requirements
+
+Recall that we must check that we have a big enough sample size to trust our p-value.  To do this, we check that there are an expected number of success and failures for a given sample size:  
+
+$$np = 77*0.10=7.7$$
+
+$$n(1-p) = 77*0.9 = 69.3$$
+__QUESTION__:  Are both $np$ and $n(1-p)$ greater than 10?  
+__ANSWER__:  
+
+It looks like we don't have enough data to assume that the distribution of $\hat{p}$ is normal.  Our p-value may not be appropriate.  
+
+
+## Confidence Intervals
+
+We can use `prop.test()` to calculate confidence intervals as well.  
+
+__Recall__: Confidence intervals do not depend on null and alternative hypotheses so we omit that information in the `prop.test()` function.
+
+```{r}
+prop.test(x=10, n = 77)$conf.int
+```
+
+Explanation:  I am 95% confident that the true proportion of left-handed Visual Arts majors is between 0.087 and 0.260.  
+
+#### Your Turn:  Trump Support in Idaho
+
+In the 2024 presidential election, Donald Trump won 67% of the vote in Idaho.  After months in office, you would like to see if support for Trump has decreased from his share of the vote.  You sample 772 registered voters and get 566 responses.  Of the 566 responses, 364 say they approve of President Trump.  
+
+Perform a hypothesis test that tests if the presidential approval is less than his share of the vote:  
+
+$$H_0: p = $$  
+
+$$H_a: p $$  
+
+$$\alpha = $$  
+
+```{r}
+
+
+```
+
+
+__Question__:  What is the value of the test statistics for this test?  
+__Answer__:  
+
+__Question__:  What is the P-Value?  
+__Answer__:  
+
+__Question__:  State your conclusion in context of this problem:  
+__Answer__:  
+
+
+__QUESTION__:  Can we trust the P-value?  (Check $np$ and $n(1-p)$)  
+```{r}
+
+```
+
+__ANSWER__:  
+
+Create a $(1-\alpha)$ Confidence Interval for Idaho's Presidential Approval:
+
+```{r}
+
+```
+
+Explanation:  
+
+
+# 2-Sample Proportion Tests
+
+
