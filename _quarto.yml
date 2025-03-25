@@ -91,6 +91,7 @@ website:
         - href: ./5-Statistical_Tests_Part2/03-Regression_Practice.qmd
         - href: ./5-Statistical_Tests_Part2/Introducing_Categorical_Data_Analysis.qmd
         - href: ./5-Statistical_Tests_Part2/One_and_Two_Sample_Proportions.qmd
+        - href: ./5-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.qmd
         - href: ./5-Statistical_Tests_Part2/11-Chi_Square_Intro.qmd
         - href: ./5-Statistical_Tests_Part2/12-Chi_Square_Practice.qmd
         - href: ./5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.qmd

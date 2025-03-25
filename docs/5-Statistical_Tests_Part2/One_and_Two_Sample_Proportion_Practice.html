@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2-Sample Proportion Practice – Math221 Notebook</title>
+<title>One and Two Sample Proportion Practice – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -339,6 +373,10 @@ window.Quarto = {
  <span class="dropdown-text">One and Two Sample Proportion Tests</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.html">
+ <span class="dropdown-text">One and Two Sample Proportion Practice</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../5-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
  <span class="dropdown-text">Chi-square Test of Independence</span></a>
   </li>  
@@ -439,16 +477,30 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#a-penny-saved" id="toc-a-penny-saved" class="nav-link" data-scroll-target="#a-penny-saved">A Penny Saved?</a>
+  <li><a href="#one-sample-test-of-proportions" id="toc-one-sample-test-of-proportions" class="nav-link active" data-scroll-target="#one-sample-test-of-proportions">One-Sample Test of Proportions</a>
   <ul class="collapse">
-  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
+  <li><a href="#teenage-smoking-habits" id="toc-teenage-smoking-habits" class="nav-link" data-scroll-target="#teenage-smoking-habits">Teenage Smoking Habits</a>
+  <ul class="collapse">
   <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
   </ul></li>
-  <li><a href="#couples-retreat" id="toc-couples-retreat" class="nav-link" data-scroll-target="#couples-retreat">Couples Retreat?</a>
+  </ul></li>
+  <li><a href="#sample-proportion-tests" id="toc-sample-proportion-tests" class="nav-link" data-scroll-target="#sample-proportion-tests">2-Sample Proportion Tests</a>
+  <ul class="collapse">
+  <li><a href="#a-penny-saved" id="toc-a-penny-saved" class="nav-link" data-scroll-target="#a-penny-saved">A Penny Saved?</a>
   <ul class="collapse">
   <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
   <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
+  <li><a href="#test-requirements" id="toc-test-requirements" class="nav-link" data-scroll-target="#test-requirements">Test Requirements</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#couples-retreat" id="toc-couples-retreat" class="nav-link" data-scroll-target="#couples-retreat">Couples Retreat?</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-2" id="toc-hypothesis-test-2" class="nav-link" data-scroll-target="#hypothesis-test-2">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-2" id="toc-confidence-interval-2" class="nav-link" data-scroll-target="#confidence-interval-2">Confidence Interval</a>
+  <ul class="collapse">
+  <li><a href="#test-requirements-1" id="toc-test-requirements-1" class="nav-link" data-scroll-target="#test-requirements-1">Test Requirements</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -458,7 +510,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">2-Sample Proportion Practice</h1>
+<h1 class="title">One and Two Sample Proportion Practice</h1>
 </div>
 
 
@@ -475,58 +527,225 @@ window.Quarto = {
 </header>
 
 
-<section id="instructions" class="level1">
-<h1>Instructions</h1>
-<p>Complete the following questions about testing differences between 2 proportions. When completed, Render the <code>qmd</code> file and submit the <code>html</code>.</p>
-</section>
-<section id="a-penny-saved" class="level1">
-<h1>A Penny Saved?</h1>
-<p>A random sample of BYU-Idaho students was surveyed and asked if they were in favor of retaining the penny as a form of currency in the United States. Out of the 116 women surveyed, 80 said that they were in favor of retaining the penny as a form of currency. Of the 137 men surveyed, 91 said that they were in favor of retaining the penny. For these questions, let group 1 represent women and group 2 represent men.</p>
-<p><strong>Question</strong>: Are the requirements satisfied for assuming normality? Explain.<br>
-<strong>Answer</strong>:</p>
-<p>Regardless of whether or not the requirements are satisfied, complete the following:</p>
-<section id="confidence-interval" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
-<p>Create a 95% confidence interval for the difference in the proportion of females to males who prefer to keep the penny:</p>
-<p><strong>Question</strong>: Interpret the confidence interval in context of the question:<br>
-<strong>Answer</strong>:</p>
-</section>
-<section id="hypothesis-test" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
-<p>You also want to see if there is a difference between the proportion of women who want to keep the penny and the proportion of men who want to keep the penny. Use a level of significance of <span class="math inline">\(\alpha = 0.05\)</span>.</p>
-<p>State your null and alternative hypotheses:</p>
-<p><span class="math display">\[H_0: p_{female}???p_{male}\]</span><br>
-<span class="math display">\[H_a: p_{female}???p_{male}\]</span></p>
-<p><strong>Question</strong>: What is the test statistic?<br>
-<strong>Answer</strong>:</p>
+<section id="one-sample-test-of-proportions" class="level1">
+<h1>One-Sample Test of Proportions</h1>
+<section id="teenage-smoking-habits" class="level2">
+<h2 class="anchored" data-anchor-id="teenage-smoking-habits">Teenage Smoking Habits</h2>
+<p>A study was conducted to determine the proportion of American teenagers between 13 and 17 who smoke. A survey from 10 years ago claimed that 15% percent of all teenagers smoke.</p>
+<p>A new Gallup survey interviewed a nationally representative sample of 785 teenagers aged 13 to 17. Seventy-one (71) teenagers in the survey acknowledged having smoked at least once in the past week.</p>
+<p>We want to see if the new study shows a <em>decrease</em> in the percentage of teenagers who smoke from the 15% reported a decade ago.</p>
+<p>Perform the appropriate hypothesis test and create a confidence interval for the true proportion of teenagers who smoke.</p>
+<section id="hypothesis-test" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h3>
+<p>State the null and alternative hypotheses:</p>
+<p><span class="math display">\[H_0: \]</span><br>
+<span class="math display">\[H_a: \]</span> Choose your confidence level:</p>
+<p><span class="math display">\[\alpha = 0.\]</span></p>
+<p>Perform the appropriate analysis:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> , <span class="at">n =</span> , <span class="at">alternative =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in prop.test(x = , n = , alternative = ""): argument "x" is missing, with no default</code></pre>
+</div>
+</div>
 <p><strong>Question</strong>: What is the P-value?<br>
 <strong>Answer</strong>:</p>
-<p><strong>Question</strong>: Based on your decision rule, state your conclusion in context of the problem:<br>
+<p><strong>Question</strong>: Based on your chosen <span class="math inline">\(\alpha\)</span> and P-value, what is your conclusion?<br>
 <strong>Answer</strong>:</p>
+<section id="requirements" class="level4">
+<h4 class="anchored" data-anchor-id="requirements">Requirements</h4>
+<p>Recall that we must check that we have a big enough sample size to trust our p-value. To do this, we check that there are at least 10 expected “success” and “failures” for a given sample size, n:</p>
+<p>Check:</p>
+<p><span class="math display">\[np \ge 10\]</span></p>
+<p><span class="math display">\[n(1-p) \ge 10\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill in n and the hypothesized p</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>n<span class="sc">*</span>p <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>n<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p) <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n' not found</code></pre>
+</div>
+</div>
+<p><strong>QUESTION</strong>: Are the requirements for a hypothesis test satisfied?<br>
+<strong>ANSWER</strong>:</p>
+</section>
+</section>
+<section id="confidence-interval" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
+<p>Create a 99% confidence interval for the true population proportion of teenagers who smoke?</p>
+<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
+<section id="check-requirements" class="level4">
+<h4 class="anchored" data-anchor-id="check-requirements">Check Requirements</h4>
+<p>Recall that Confidence Intervals do not depend on a hypothesized proportion, so the requirements are a little different. For Confidence Intervals we check:</p>
+<p><span class="math display">\[n\hat{p} \ge 10\]</span></p>
+<p><span class="math display">\[n(1-\hat{p}) \ge 10\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill in X and N and check that there are enough "successes" and "failures"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>phat <span class="ot">&lt;-</span> x<span class="sc">/</span>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'x' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>n<span class="sc">*</span>phat <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>n<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat) <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n' not found</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="sample-proportion-tests" class="level1">
+<h1>2-Sample Proportion Tests</h1>
+<section id="a-penny-saved" class="level2">
+<h2 class="anchored" data-anchor-id="a-penny-saved">A Penny Saved?</h2>
+<p>A random sample of BYU-Idaho students was surveyed and asked if they were in favor of retaining the penny as a form of currency in the United States. Out of the 116 women surveyed, 80 said that they were in favor of retaining the penny as a form of currency. Of the 137 men surveyed, 91 said that they were in favor of retaining the penny.</p>
+<p>For these questions, let group 1 represent women and group 2 represent men.</p>
+<section id="hypothesis-test-1" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h3>
+<p>Test to see if there is a <em>difference</em> between the proportion of women who want to keep the penny and the proportion of men who want to keep the penny. Use a level of significance of <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<p>State your null and alternative hypotheses (replace the question marks with the appropriate symbols):</p>
+<p><span class="math display">\[H_0: p_{female} ???  p_{male}\]</span><br>
+<span class="math display">\[H_a: p_{female} ??? p_{male}\]</span></p>
+<p>Perform the appropriate test:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(), <span class="at">n =</span> <span class="fu">c</span>(), <span class="at">alternative =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in complete.cases(x, n): no input has determined the number of cases</code></pre>
+</div>
+</div>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Based on <span class="math inline">\(\alpha = 0.05\)</span>, state your conclusion in context of the research question:<br>
+<strong>Answer</strong>:</p>
+</section>
+<section id="confidence-interval-1" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h3>
+<p>Create a 95% confidence interval for the <em>difference</em> in the proportion of females to males who prefer to keep the penny:</p>
+<p><strong>Question</strong>: Interpret the confidence interval in context of the research question:<br>
+<strong>Answer</strong>:</p>
+</section>
+<section id="test-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="test-requirements">Test Requirements</h3>
+<p>Recall that the requirements for Hypothesis Testing and Confidence Intervals for 2-sample proportions are the same. We must check that there are more than 10 “successes” and “failures” in <em>both</em> samples:</p>
+<p><span class="math display">\[ n_1\hat{p}_1 \ge 10\]</span> <span class="math display">\[n_1(1-\hat{p}_1) \ge 10\]</span> <span class="math display">\[ n_2\hat{p}_2 \ge 10\]</span> <span class="math display">\[n_2(1-\hat{p}_2) \ge 10\]</span></p>
+<p>Use the following calculator to check the above requirements:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All must be true:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>phat1 <span class="ot">&lt;-</span> x1<span class="sc">/</span>n1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'x1' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>n1<span class="sc">*</span>phat1 <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n1' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>n1<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat1) <span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n1' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>phat2 <span class="ot">&lt;-</span> x2 <span class="sc">/</span> n2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'x2' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>n2<span class="sc">*</span>phat2 <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n2' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>n2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat2) <span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n2' not found</code></pre>
+</div>
+</div>
+<p><strong>Question</strong>: Are the requirements satisfied for assuming normality?<br>
+<strong>Answer</strong>:</p>
+</section>
 </section>
 </section>
 <section id="couples-retreat" class="level1">
 <h1>Couples Retreat?</h1>
-<p>A marriage counselor conducted a study of couples, categorizing each of the couples as “communicative” or “non-communicative”. Among other things, the counselor wanted to see whether the percentage of communicative couples whose marriage ended in separation or divorce was the same as the percentage of non-communicative couples whose marriage ended in separation or divorce.</p>
+<p>A marriage counselor conducted a study of couples, categorizing each of the couples as “communicative” or “non-communicative”. Among other things, the counselor wanted to see whether the percentage of communicative couples whose marriage ended in separation or divorce was <em>less than</em> the percentage of non-communicative couples whose marriage ended in separation or divorce.</p>
 <p>Of the 97 couples classified as “communicative”, 17 ended in separation or divorce. Of the 56 couples classified as “non-communicative”, 13 ended in separation or divorce.</p>
-<section id="hypothesis-test-1" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h2>
+<section id="hypothesis-test-2" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h2>
 <p>Construct a null and alternative hypothesis for the study:</p>
 <p><span class="math display">\[H_0: \]</span><br>
 <span class="math display">\[H_a: \]</span></p>
 <p>Perform the appropriate analysis:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in prop.test(): argument "x" is missing, with no default</code></pre>
+</div>
+</div>
 <p><strong>Question</strong>: What is the P-value?<br>
 <strong>Answer</strong>:</p>
-<p><strong>Question</strong>: Based on your decision rule, state your conclusion in context of the problem:<br>
+<p><strong>Question</strong>: Based on your decision rule, state your conclusion in context of the research question:<br>
 <strong>Answer</strong>:</p>
 </section>
-<section id="confidence-interval-1" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h2>
+<section id="confidence-interval-2" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-2">Confidence Interval</h2>
 <p>Create a 95% confidence interval for the difference in the proportion of divorces between communicative and non-communicative couples:</p>
 <p><strong>Question</strong>: Interpret the confidence interval in context of the question:<br>
 <strong>Answer</strong>:</p>
+<section id="test-requirements-1" class="level3">
+<h3 class="anchored" data-anchor-id="test-requirements-1">Test Requirements</h3>
+<p>Use the following calculator to check the requirements for the hypothesis test and confidence interval:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All must be true:</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>phat1 <span class="ot">&lt;-</span> x1<span class="sc">/</span>n1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'x1' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>n1<span class="sc">*</span>phat1 <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n1' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>n1<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat1) <span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n1' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>phat2 <span class="ot">&lt;-</span> x2 <span class="sc">/</span> n2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'x2' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>n2<span class="sc">*</span>phat2 <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n2' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>n2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat2) <span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'n2' not found</code></pre>
+</div>
+</div>
+<p><strong>QUESTION</strong>: Are the requirements for the hypothesis test and confidence interval satisfied?<br>
+<strong>ANSWER</strong>:</p>
 
 
+</section>
 </section>
 </section>
 

@@ -60,7 +60,7 @@ Conclusion:  Because the p-value, 0.2471, is less than $\alpha=0.05$, we fail to
 
 #### Checking Requirements
 
-Recall that we must check that we have a big enough sample size to trust our p-value.  To do this, we check that there are an expected number of success and failures for a given sample size:  
+Recall that we must check that we have a big enough sample size to trust our p-value.  To do this, we check that there are more than 10 expected number of success and failures for a given sample size:  
 
 $$np = 77*0.10=7.7$$
 

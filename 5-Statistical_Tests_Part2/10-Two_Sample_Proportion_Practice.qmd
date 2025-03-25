@@ -56,6 +56,8 @@ __Answer__:
 # Couples Retreat?
 
 A marriage counselor conducted a study of couples, categorizing each of the couples as "communicative" or "non-communicative". Among other things, the counselor wanted to see whether the percentage of communicative couples whose marriage ended in separation or divorce was the same as the percentage of non-communicative couples whose marriage ended in separation or divorce. 
+ 
+Of the 97 couples classified as "communicative", 17 ended in separation or divorce.  Of the 56 couples classified as "non-communicative", 13 ended in separation or divorce.  
 
 ## Hypothesis Test
 
@@ -69,11 +71,6 @@ Perform the appropriate analysis:
 ```{r}
 
 ```
-
-
-__Question__:  What is the test statistic?  
-__Answer__:  
-
 
 __Question__:  What is the P-value?  
 __Answer__:  
