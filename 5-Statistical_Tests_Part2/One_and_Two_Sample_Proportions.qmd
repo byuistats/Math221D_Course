@@ -38,7 +38,7 @@ There is a belief in a link between creativity and left-handedness.  Left-handed
 Define our null and alternative hypotheses:  
 
 $$H_0:  p = 0.10$$
-$$H_a: p > 0.01$$
+$$H_a: p > 0.10$$
 $$\alpha = 0.05$$  
 
 __Note__:  In stats we typically use Greek letters to designate population parameters.  For proportions we us the Latin letter, $p$, because $\pi$ was already taken.  
