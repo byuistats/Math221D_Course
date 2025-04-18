@@ -1,0 +1,234 @@
+---
+title: Bivariate Categorical Data Summaries 
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Summarizing Bivariate Categorical Data
+
+There are situations where you would like to study the relationship between 2 categorical variables.  
+
+In this section, we introduce numerical and graphical summaries of comparing categorical variables and discuss some quirks about dealing with categorical data.  
+
+## Lesson Objectives
+
+  1.  Summarize bivariate data in contingency tables
+  2.  Calculate row and column percents
+  3.  Create side-by-side bar charts grouping
+
+## A More Civilized Age
+
+In this section, we will be using survey responses about Star Wars.  The  [survey](https://fivethirtyeight.com/features/americas-favorite-star-wars-movies-and-least-favorite-characters/) was carried out by FiveThirtyEight about the first 6 Star Wars films.  The survey contains demographic information as well as movie rankings and character favorability rankings.  
+
+## Load the Data and Libraries
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(car)
+
+sw <- read_csv('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/StarWarsData_clean.csv')
+
+```
+
+
+# Summarizing 2 Categorical Variables
+
+__Contingency Tables__ are used to examine associations between 2 categorical variables.  A __contingency table__ displays the counts of combinations of 2 categorical variables represented as a row or a column.  It is easy to create a contingency table in `R` by inputting 2 data columns into the `table()` function.  
+
+The resulting table will have rows and columns which correspond to the order of input `table(row, column)`.
+
+Let's contrast `Gender` with whether or not a respondent is a fan of Star Wars (`Are You a Fan of SW`):  
+
+```{r}
+
+table(sw$Gender, sw$`Are You a Fan of SW?`)
+
+```
+
+We can include row and column totals by inputting the table into the `addmargins()` function as follows:  
+
+```{r}
+
+addmargins(  table(sw$Gender, sw$`Are You a Fan of SW?`)  )
+
+```
+
+This table can be used to calculate column or row percents
+
+__QUESTION__:  Using the table above, what percent of Females are fans of Star Wars?  
+__ANSWER__:  
+
+
+__QUESTION__:  What percent of Star Wars Fans are Female?    
+__ANSWER__:  
+
+
+## Calculating Proportions
+
+When looking at a single categorical variable, we input a table into the `prop.table()` function to get proportions instead of counts.  It's slightly more complicated with 2 variables because there are several proportions that can be calculated.  The denominator depends on what we're interested in studying as illustrated above (percent of females? or percent of Fans?).  
+
+
+__NOTE__:  The denominator corresponds to the "of".  When talking about proportion "of Males", total males should be the denominator.  The proportion "of Fans" means that the denominator should be the total number of fans.  Proportion "of respondents" means the denominator should be the table total.  
+
+
+We can use the `prop.table()` function to get:  
+
+  1.  Table Percents:  Sum to 1 across the entire table  
+  2.  Row Percents:  Sum to 1 across rows  
+  3.  Column Percents:  Sum to 1 across columns  
+
+
+### Table Proportions 
+
+The default for `prop.table()` is to give the overall percentages (counts / table total).  So the proportions add to 1 across the whole table.  
+
+```{r}
+
+prop.table(table(sw$Gender, sw$`Are You a Fan of SW?`))
+
+```
+
+For example, about 37% of respondents are male fans of Star Wars.  About 19% of respondents are females who are not fans.  
+
+This is not typically the most interesting way to look at the data.  We are more often interested in row or column proportions.  
+
+### Row Proportions
+
+We can specify row proportions by including another input into the `prop.table()` function.  We specify which *margin* to use as the denominator.  
+
+Recall that the `table()` function will put the first input as the `row` and the second input as the column.  To get row proportions, we tell R to divide by the row totals:  
+
+
+```{r}
+
+prop.table(table(sw$Gender, sw$`Are You a Fan of SW?`), margin = 1)
+
+```
+
+__QUESTION__:  What percent of males are fans of Star Wars?  
+__ANSWER__:  
+
+__QUESTION__:  What percent of females are fans of Star Wars?  
+__ANSWER__:  
+
+
+
+### Column Proportions
+
+To get column proportions, specify `margin = 2` (the second input in the `table()` function)
+
+
+```{r}
+
+prop.table(table(sw$Gender, sw$`Are You a Fan of SW?`), margin = 2)
+
+```
+
+
+__QUESTION__:  What percent of Star Wars fans are females?  
+__ANSWER__:  
+
+__QUESTION__:  What percent of Star Wars fans are males ?  
+__ANSWER__:  
+
+
+
+## Visual Summaries
+
+The best way to visualize 2 categorical variables is with a side-by-side bar chart.  Soon we will learn a better way to make visualizations in R.  For now, it's a bit clunky to get the right type of graph that makes sense.  But here's the process:  
+
+  1.  Create and name a contingency table.  Your *column* variable will be how the bars are grouped, and the *row* variable will determine the colors of the grouped bars
+  2.  Input the table name into the `barplot()` including the additional inputs:  `beside=TRUE` which puts the bars next to each other, and `legend=rownmes(table_name)` which will add a legend showing the which bars correspond to which
+  3. The default colors are atrocious.  You can specify the colors by adding the additional input `col=c(2,3,4)` or `col=c("lightblue", "lightgreen", "darkred",...)` including as many colors as there are levels in the *row* variable.  
+
+
+Visually, bar charts are the optimal way to express categorical data.  Pie charts, while very common, are problematic because of weaknesses in basic human perception. 
+
+
+```{r}
+
+tbl1 <- table(sw$Gender, sw$`Are You a Fan of SW?`)
+
+barplot(tbl1, beside=TRUE, legend=rownames(tbl1))
+
+# Adding Color
+barplot(tbl1, beside=TRUE, legend=rownames(tbl1), col=c(2, 4))
+
+
+```
+
+
+
+# A Certain Point of View
+
+The biggest challenge with categorical data is that rows and columns are interchangeable.  There is no meaningful way to distinguish response and explanatory variables.  
+
+With categorical variables, we can group differently depending on which comparisons we would like to emphasize.  Above, we grouped by responses to "who shot first" and colored by gender.  If we swap the row variable and the column, we get the same bars, but arranged differently:  
+
+```{r}
+
+tbl2 <- table(sw$`Are You a Fan of SW?`, sw$Gender)
+
+barplot(tbl2, beside=TRUE, legend=rownames(tbl2))
+
+# Adding Color
+barplot(tbl2, beside=TRUE, legend=rownames(tbl2), col=c(3, 5))
+
+```
+
+
+This different point of view makes it easier to compare the difference in fan status for each of the genders.  The difference between Not Fan and Fan is much more pronounced on the Male side.  
+
+
+__NOTE__:  Which graph is best will depend on which comparison is most important.  It's always easier to compare things that are grouped together.  
+
+
+
+# Your Turn
+
+
+## Proportion Table
+
+We would like to compare the relationship between Gender and Household Income.    
+
+Create and name a table that shows the percent of Genders in each of the income levels:
+
+```{r}
+
+tbl3 <- table()
+
+```
+
+__Question__:  What percent of female respondents are in the `150,000+` category?  
+__Answer__:  
+
+__Question__:  What percent of male respondents are in the `150,000+` category? 
+__Answer__:  
+
+Create a bar plot that compares the income distribution for each gender in the study: 
+
+
+```{r}
+
+barplot(tbl3, beside = TRUE, legend=rownames(tbl3))
+
+```
+
+
+Swap the row and column inputs and create the bar chart with the opposite grouping: 
+
+```{r}
+tbl4 <- table()
+
+barplot(tbl4, beside = TRUE, legend=rownames(tbl4))
+
+
+```
+
+
+Which chart is more interesting?  
+

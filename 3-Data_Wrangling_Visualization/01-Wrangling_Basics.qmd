@@ -1,0 +1,62 @@
+---
+title: "Intro to Data Wrangling"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+<!---
+<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/R_Resources/Wrangling_Basics.qmd" download="Wrangling_Basics.qmd" type="text/markdown" download class="button-download">
+    Download QMD
+</a>
+-->
+
+
+# Cleaning Messy Data
+
+In statistics classes, you are typically provided simple, clean datasets to load and analyze with ease.  This is a terrible disservice to anyone who will deal with data outside of the classroom. 
+
+Anyone who works with data will have to do some data wrangling.  Data wrangling is an appropriate description of cleaning, sorting, filtering, summarizing, transforming, and a whole host of other activities to make data usable for a specific purpose.
+
+In this document, we introduce a moderately messy dataset and demonstrate basic programming commands to help us get data ready for analysis or visualization.
+
+
+# Tidy Data
+
+Hadley Wickham designed a [philosophy](https://vita.had.co.nz/papers/tidy-data.pdf) of data structures that helps organize and manipulate data.  He created a whole R library which contains a multitude of functions to make data wrangling approachable.  The library is called 'tidyverse'.
+
+
+# Basic Tidyverse Functions
+
+The most frequently used actions for wrangling data are:
+
+  1. **Filtering rows** - select rows based on certain user-defined criteria.  This is done using the `filter()` operator.
+  2. **Selecting columns** - narrow the dataset to include specific _columns_ required for the analysis or visualization.  This is done using the `select()` operator.
+  3. **Creating new columns** - create new columns based on the provided data. This could be as simple as changing a height from inches to centimeters. We add new columns using the `mutate()` operator. 
+  4. **Summarizing data** - create customized data summaries, often by specific groups.  This is typically some combination of defining which groups we want to summarize by using the `group_by()` operator then using the `summarize()` function to create our customizable data summaries.  
+
+You have already used `favstats()` to do (4) above, but we'll learn how to do so with more flexibility with the tidyverse.
+
+# Tidy Basics
+
+Tidyverse operations typically consist of a sequential series of commands to reshape a raw dataset.  We use what is called a "pipe" to tell the computer what to pass on to the next step.  This "pipe" is typed:  `%>%`.  I will demonstrate the use of the pipe with the `filter()` function, but see [here](../3-Data_Wrangling_Visualization/02-Filter.qmd) for more in-depth explanation of `filter()`.
+
+## The Pipe in Action
+
+Suppose we have a dataset, `marital_status_data`, with 2 columns:  `age` and `marital_status`.  We expect the `marital_status` to be one of 4 options:  "Single", "Married", "Divorced", "Widowed", but some joker input, "It's complicated".  Because we are mainly interested in making inference about the primary statuses, we may want to filter out the rows with "It's complicated" as the status.  
+
+We would begin with the raw data, "pipe" it into the `filter()` function and tell R what I want it to do.  I can either tell R what I want to keep or what I want to exclude (more [here](../3-Data_Wrangling_Visualization/02-Filter.qmd)):
+
+```
+marital_Status_data %>% filter(marital_status != "It's complicated")
+```
+__NOTE__:  The `!=` is read "not equal to", and is a common [logical operator](../3-Data_Wrangling_Visualization/02-Filter.qmd#choosing-rows---filter##logical-operators) used in computer programming.  So the above code returns a subset of the original data omitting the rows.
+
+I can use pipes sequentially to do complicated data wrangling in very few lines of code.  
+
+# Resources
+
+[Tidyverse Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+[R for Data Science](https://r4ds.had.co.nz/transform.html)
+
+

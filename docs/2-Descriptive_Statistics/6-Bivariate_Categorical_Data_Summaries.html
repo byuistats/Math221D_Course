@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BYU-Idaho Math 221: Introduction to Statistics in R – Math221 Notebook</title>
+<title>Bivariate Categorical Data Summaries – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d19aaff0441ffe538fac26ca03b5f350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-e89341beafc15df96e2eb459d0c9c10f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d19aaff0441ffe538fac26ca03b5f350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e89341beafc15df96e2eb459d0c9c10f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -80,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math221 Notebook</span>
     </a>
   </div>
@@ -96,28 +130,28 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-getting-started">    
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/1-Course_Intro.html">
+    <a class="dropdown-item" href="../1-Getting_Started/1-Course_Intro.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/2-Installing_R.html">
+    <a class="dropdown-item" href="../1-Getting_Started/2-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/3-Introducing_R.html">
+    <a class="dropdown-item" href="../1-Getting_Started/3-Introducing_R.html">
  <span class="dropdown-text">Introducing R - Class Notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/4-Installing_Packages.html">
+    <a class="dropdown-item" href="../1-Getting_Started/4-Installing_Packages.html">
  <span class="dropdown-text">Installing Libraries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/5-Stat_Process.html">
+    <a class="dropdown-item" href="../1-Getting_Started/5-Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li class="dropdown-header">Response and Explanatory Variables</li>
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/6-Response_and_Explanatory_Variables.html">
+    <a class="dropdown-item" href="../1-Getting_Started/6-Response_and_Explanatory_Variables.html">
  <span class="dropdown-text">Response and Explanatory Variables</span></a>
   </li>  
     </ul>
@@ -129,31 +163,31 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-descriptive-statistics">    
         <li class="dropdown-header">Descriptive Statistics</li>
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/1-Numerical_Quantitative_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/1-Numerical_Quantitative_Data_Summaries.html">
  <span class="dropdown-text">Numerical Quantitative Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.html">
  <span class="dropdown-text">Graphical Quantitative Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html">
  <span class="dropdown-text">Quantitative Data Summaries - Multiple Groups</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.html">
  <span class="dropdown-text">Summarizing Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.html">
  <span class="dropdown-text">Introducing Categorical Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.html">
  <span class="dropdown-text">Bivariate Categorical Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/7-AA_Descriptive_Statistics.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/7-AA_Descriptive_Statistics.html">
  <span class="dropdown-text">Application Activity: Descriptive Statistics</span></a>
   </li>  
     </ul>
@@ -165,40 +199,40 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling">    
         <li class="dropdown-header">Into the Tidyverse</li>
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/06-GGPlot_Intro.html">
  <span class="dropdown-text">A Better Way to Plot</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/02-Filter.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/03-Select.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.html">
  <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
   </li>  
         <li class="dropdown-header">Bonus Material</li>
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
     </ul>
@@ -210,43 +244,43 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-inference">    
         <li class="dropdown-header">Foundations</li>
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/01-Intro_to_Probability.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/01-Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability (Reading)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/02-The_Normal_Distribution_Textbook.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/02-The_Normal_Distribution_Textbook.html">
  <span class="dropdown-text">The Normal Distribution (Reading)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/03-Normal_Distribution_Workbook.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/03-Normal_Distribution_Workbook.html">
  <span class="dropdown-text">The Normal Distribution (Class)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/04-Normal_Probability_Practice.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/04-Normal_Probability_Practice.html">
  <span class="dropdown-text">Normal Probability Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/Sampling_Distributions_CLT_LLN_Reading.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/Sampling_Distributions_CLT_LLN_Reading.html">
  <span class="dropdown-text">Distribution of Sample Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/06-Central_Limit_Theorem_Practice.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/06-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/07-Prob_Calculations_for_Means.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/07-Prob_Calculations_for_Means.html">
  <span class="dropdown-text">Probability Calculations for Means (Reading)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/08-CLT_Normal_Prob_for_Means.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/08-CLT_Normal_Prob_for_Means.html">
  <span class="dropdown-text">Probability Calculations for Means (Class)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/09-Prob_Calculations_for_Means_Practice.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/09-Prob_Calculations_for_Means_Practice.html">
  <span class="dropdown-text">Probability Calculations for Means (Practice)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/10-Assessing_Normality.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/10-Assessing_Normality.html">
  <span class="dropdown-text">Assessing Normality</span></a>
   </li>  
     </ul>
@@ -257,47 +291,47 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-1">    
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/002-Introduction_to_Inference.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/002-Introduction_to_Inference.html">
  <span class="dropdown-text">Introduction to Hypothesis Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/002-Confidence_Intervals.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/002-Confidence_Intervals.html">
  <span class="dropdown-text">Introduction to Confidence Intervals</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
  <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
  <span class="dropdown-text">Don’t Take it Personally</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/03-Paired_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/03-Paired_ttest.html">
  <span class="dropdown-text">Paired T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/04-Paired_ttest_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/04-Paired_ttest_Practice.html">
  <span class="dropdown-text">Paired T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
  <span class="dropdown-text">2-Sample Independent T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/06-Independent_2_sample_ttest_practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/06-Independent_2_sample_ttest_practice.html">
  <span class="dropdown-text">2-Sample Independent T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/07-ANOVA_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/07-ANOVA_Intro.html">
  <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/08-ANOVA_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/08-ANOVA_Practice.html">
  <span class="dropdown-text">ANOVA Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
  <span class="dropdown-text">Comparing Means Activity</span></a>
   </li>  
     </ul>
@@ -308,39 +342,39 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-2">    
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
  <span class="dropdown-text">Introducing the Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/03-Regression_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/03-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/Introducing_Categorical_Data_Analysis.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/Introducing_Categorical_Data_Analysis.html">
  <span class="dropdown-text">Introducing Categorical Data Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/One_and_Two_Sample_Proportions.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/One_and_Two_Sample_Proportions.html">
  <span class="dropdown-text">One and Two Sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.html">
  <span class="dropdown-text">One and Two Sample Proportion Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
  <span class="dropdown-text">Chi-square Test of Independence</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/12-Chi_Square_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/12-Chi_Square_Practice.html">
  <span class="dropdown-text">Chi-Square Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
  <span class="dropdown-text">Who Shot First?</span></a>
   </li>  
     </ul>
@@ -351,15 +385,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-semester-project">    
         <li>
-    <a class="dropdown-item" href="./7-Semester_Project/Semester_Project_Instructions.html">
+    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Instructions.html">
  <span class="dropdown-text">Semester Project Instructions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./7-Semester_Project/Semester_Project_Template.html">
+    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Template.html">
  <span class="dropdown-text">Semester Project</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./7-Semester_Project/Importing_Data.html">
+    <a class="dropdown-item" href="../7-Semester_Project/Importing_Data.html">
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
     </ul>
@@ -400,10 +434,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#an-interactive-textbook" id="toc-an-interactive-textbook" class="nav-link active" data-scroll-target="#an-interactive-textbook">An Interactive Textbook</a>
+  <li><a href="#summarizing-bivariate-categorical-data" id="toc-summarizing-bivariate-categorical-data" class="nav-link active" data-scroll-target="#summarizing-bivariate-categorical-data">Summarizing Bivariate Categorical Data</a>
   <ul class="collapse">
-  <li><a href="#download-course-material" id="toc-download-course-material" class="nav-link" data-scroll-target="#download-course-material">Download Course Material</a></li>
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#lesson-objectives" id="toc-lesson-objectives" class="nav-link" data-scroll-target="#lesson-objectives">Lesson Objectives</a></li>
+  <li><a href="#a-more-civilized-age" id="toc-a-more-civilized-age" class="nav-link" data-scroll-target="#a-more-civilized-age">A More Civilized Age</a></li>
+  <li><a href="#load-the-data-and-libraries" id="toc-load-the-data-and-libraries" class="nav-link" data-scroll-target="#load-the-data-and-libraries">Load the Data and Libraries</a></li>
+  </ul></li>
+  <li><a href="#summarizing-2-categorical-variables" id="toc-summarizing-2-categorical-variables" class="nav-link" data-scroll-target="#summarizing-2-categorical-variables">Summarizing 2 Categorical Variables</a>
+  <ul class="collapse">
+  <li><a href="#calculating-proportions" id="toc-calculating-proportions" class="nav-link" data-scroll-target="#calculating-proportions">Calculating Proportions</a>
+  <ul class="collapse">
+  <li><a href="#table-proportions" id="toc-table-proportions" class="nav-link" data-scroll-target="#table-proportions">Table Proportions</a></li>
+  <li><a href="#row-proportions" id="toc-row-proportions" class="nav-link" data-scroll-target="#row-proportions">Row Proportions</a></li>
+  <li><a href="#column-proportions" id="toc-column-proportions" class="nav-link" data-scroll-target="#column-proportions">Column Proportions</a></li>
+  </ul></li>
+  <li><a href="#visual-summaries" id="toc-visual-summaries" class="nav-link" data-scroll-target="#visual-summaries">Visual Summaries</a></li>
+  </ul></li>
+  <li><a href="#a-certain-point-of-view" id="toc-a-certain-point-of-view" class="nav-link" data-scroll-target="#a-certain-point-of-view">A Certain Point of View</a></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a>
+  <ul class="collapse">
+  <li><a href="#proportion-table" id="toc-proportion-table" class="nav-link" data-scroll-target="#proportion-table">Proportion Table</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -413,7 +463,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BYU-Idaho Math 221: Introduction to Statistics in R</h1>
+<h1 class="title">Bivariate Categorical Data Summaries</h1>
 </div>
 
 
@@ -430,57 +480,223 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="an-interactive-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="an-interactive-textbook">An Interactive Textbook</h2>
-<p>This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
-<p>Those who diligently work through these materials will be well prepared for their next Statistics or Data Science course.</p>
-<p>This book is designed to be a digital workbook. You can download the notes, practice problems and application activities which can be edited locally on your computer. Completed assignments will be submitted in Canvas as web-page reports.</p>
-<section id="download-course-material" class="level3">
-<h3 class="anchored" data-anchor-id="download-course-material">Download Course Material</h3>
-<p>To download the folder containing all of the exercises, notes and application activities by following these steps:</p>
+<section id="summarizing-bivariate-categorical-data" class="level1">
+<h1>Summarizing Bivariate Categorical Data</h1>
+<p>There are situations where you would like to study the relationship between 2 categorical variables.</p>
+<p>In this section, we introduce numerical and graphical summaries of comparing categorical variables and discuss some quirks about dealing with categorical data.</p>
+<section id="lesson-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="lesson-objectives">Lesson Objectives</h2>
 <ol type="1">
-<li>Create a class folder where you will save all your work throughout this semester. This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.</li>
-<li>Click on the link below to download the <code>.zip</code> file containing all contents of the course website:</li>
+<li>Summarize bivariate data in contingency tables</li>
+<li>Calculate row and column percents</li>
+<li>Create side-by-side bar charts grouping</li>
 </ol>
-<center>
-<a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work.zip" class="button-download" download=""> Download Course Files </a>
-</center>
-<ol start="3" type="1">
-<li>Open the <code>.zip</code> file</li>
-<li>Save the <code>Student_Work</code> folder to your class folder created in step 1. This can typically be done by right clicking the folder then copying and pasting it into the new location.</li>
-</ol>
-<p>These files will be the basis of your coursework.</p>
 </section>
-<section id="how-to-use-this-book" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>Each unit contains:</p>
-<ul>
-<li>Preparation readings</li>
-<li>Practice problems</li>
-<li>Application Activities</li>
-<li>Assessments</li>
-</ul>
-<p><strong>Getting Started</strong> guides you through getting R and R-Studio set up, introduces the tools we will use for the class, and introduces basic statistical concepts to help get you started. We learn how to use R-Studio to make lovely reports that can be viewed in a web-browser. It’s a gentle enough introduction to enable even those who have never coded before to start working with R.</p>
-<p><strong>Descriptive Statistics</strong> introduces tools to help understand data. We review summary statistics and visualizations for quantitative and categorical data types and learn the basic skills to turn data into information.</p>
-<p><strong>Data Wrangling and Visualization</strong> takes a step further into dealing with messy data and creating better visualizations.</p>
-<p><strong>Foundations of Statistical Inference</strong> introduces the key concepts for using sample data to make generalized conclusions about a population. We cover probability, hypothesis testing, confidence intervals and other concepts necessary for making the leap from sample to population.</p>
-<p><strong>Statistical Tests - Part 1 and 2</strong> cover specific inferential statistics for different data types.</p>
-<p>The <strong>Semester Project</strong> is an opportunity for students to demonstrate the skills acquired during the course. You will be able to find and import data into R, clean the data, create top notch visualizations, perform appropriate statistical analysis and create a beautiful report.</p>
-<p>R Help provides additional resources for learning how to use R.</p>
-<section id="course-objectives" class="level4">
-<h4 class="anchored" data-anchor-id="course-objectives">Course Objectives</h4>
-<p>By the end of this semester, students will confidently be able to:</p>
-<ul>
-<li>Import data and apply basic data wrangling to moderately messy data</li>
-<li>Describe data with numerical and graphical summaries</li>
-<li>Make evidence-based decisions regarding situations with inherent randomness</li>
-<li>Investigate questions through the application of probability distributions</li>
-<li>Perform the appropriate statistical analysis based on specific data being analyzed including hypothesis tests and confidence intervals</li>
-<li>Create web-based reports to communicate the results of statistical analyses to relevant audiences</li>
-</ul>
+<section id="a-more-civilized-age" class="level2">
+<h2 class="anchored" data-anchor-id="a-more-civilized-age">A More Civilized Age</h2>
+<p>In this section, we will be using survey responses about Star Wars. The <a href="https://fivethirtyeight.com/features/americas-favorite-star-wars-movies-and-least-favorite-characters/">survey</a> was carried out by FiveThirtyEight about the first 6 Star Wars films. The survey contains demographic information as well as movie rankings and character favorability rankings.</p>
+</section>
+<section id="load-the-data-and-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data-and-libraries">Load the Data and Libraries</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/StarWarsData_clean.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="summarizing-2-categorical-variables" class="level1">
+<h1>Summarizing 2 Categorical Variables</h1>
+<p><strong>Contingency Tables</strong> are used to examine associations between 2 categorical variables. A <strong>contingency table</strong> displays the counts of combinations of 2 categorical variables represented as a row or a column. It is easy to create a contingency table in <code>R</code> by inputting 2 data columns into the <code>table()</code> function.</p>
+<p>The resulting table will have rows and columns which correspond to the order of input <code>table(row, column)</code>.</p>
+<p>Let’s contrast <code>Gender</code> with whether or not a respondent is a fan of Star Wars (<code>Are You a Fan of SW</code>):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        
+          No Yes
+  Female 158 238
+  Male   119 303</code></pre>
+</div>
+</div>
+<p>We can include row and column totals by inputting the table into the <code>addmargins()</code> function as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(  <span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>)  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        
+          No Yes Sum
+  Female 158 238 396
+  Male   119 303 422
+  Sum    277 541 818</code></pre>
+</div>
+</div>
+<p>This table can be used to calculate column or row percents</p>
+<p><strong>QUESTION</strong>: Using the table above, what percent of Females are fans of Star Wars?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What percent of Star Wars Fans are Female?<br>
+<strong>ANSWER</strong>:</p>
+<section id="calculating-proportions" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-proportions">Calculating Proportions</h2>
+<p>When looking at a single categorical variable, we input a table into the <code>prop.table()</code> function to get proportions instead of counts. It’s slightly more complicated with 2 variables because there are several proportions that can be calculated. The denominator depends on what we’re interested in studying as illustrated above (percent of females? or percent of Fans?).</p>
+<p><strong>NOTE</strong>: The denominator corresponds to the “of”. When talking about proportion “of Males”, total males should be the denominator. The proportion “of Fans” means that the denominator should be the total number of fans. Proportion “of respondents” means the denominator should be the table total.</p>
+<p>We can use the <code>prop.table()</code> function to get:</p>
+<ol type="1">
+<li>Table Percents: Sum to 1 across the entire table<br>
+</li>
+<li>Row Percents: Sum to 1 across rows<br>
+</li>
+<li>Column Percents: Sum to 1 across columns</li>
+</ol>
+<section id="table-proportions" class="level3">
+<h3 class="anchored" data-anchor-id="table-proportions">Table Proportions</h3>
+<p>The default for <code>prop.table()</code> is to give the overall percentages (counts / table total). So the proportions add to 1 across the whole table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        
+                No       Yes
+  Female 0.1931540 0.2909535
+  Male   0.1454768 0.3704156</code></pre>
+</div>
+</div>
+<p>For example, about 37% of respondents are male fans of Star Wars. About 19% of respondents are females who are not fans.</p>
+<p>This is not typically the most interesting way to look at the data. We are more often interested in row or column proportions.</p>
+</section>
+<section id="row-proportions" class="level3">
+<h3 class="anchored" data-anchor-id="row-proportions">Row Proportions</h3>
+<p>We can specify row proportions by including another input into the <code>prop.table()</code> function. We specify which <em>margin</em> to use as the denominator.</p>
+<p>Recall that the <code>table()</code> function will put the first input as the <code>row</code> and the second input as the column. To get row proportions, we tell R to divide by the row totals:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>), <span class="at">margin =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        
+                No       Yes
+  Female 0.3989899 0.6010101
+  Male   0.2819905 0.7180095</code></pre>
+</div>
+</div>
+<p><strong>QUESTION</strong>: What percent of males are fans of Star Wars?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What percent of females are fans of Star Wars?<br>
+<strong>ANSWER</strong>:</p>
+</section>
+<section id="column-proportions" class="level3">
+<h3 class="anchored" data-anchor-id="column-proportions">Column Proportions</h3>
+<p>To get column proportions, specify <code>margin = 2</code> (the second input in the <code>table()</code> function)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>), <span class="at">margin =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        
+                No       Yes
+  Female 0.5703971 0.4399261
+  Male   0.4296029 0.5600739</code></pre>
+</div>
+</div>
+<p><strong>QUESTION</strong>: What percent of Star Wars fans are females?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What percent of Star Wars fans are males ?<br>
+<strong>ANSWER</strong>:</p>
+</section>
+</section>
+<section id="visual-summaries" class="level2">
+<h2 class="anchored" data-anchor-id="visual-summaries">Visual Summaries</h2>
+<p>The best way to visualize 2 categorical variables is with a side-by-side bar chart. Soon we will learn a better way to make visualizations in R. For now, it’s a bit clunky to get the right type of graph that makes sense. But here’s the process:</p>
+<ol type="1">
+<li>Create and name a contingency table. Your <em>column</em> variable will be how the bars are grouped, and the <em>row</em> variable will determine the colors of the grouped bars</li>
+<li>Input the table name into the <code>barplot()</code> including the additional inputs: <code>beside=TRUE</code> which puts the bars next to each other, and <code>legend=rownmes(table_name)</code> which will add a legend showing the which bars correspond to which</li>
+<li>The default colors are atrocious. You can specify the colors by adding the additional input <code>col=c(2,3,4)</code> or <code>col=c("lightblue", "lightgreen", "darkred",...)</code> including as many colors as there are levels in the <em>row</em> variable.</li>
+</ol>
+<p>Visually, bar charts are the optimal way to express categorical data. Pie charts, while very common, are problematic because of weaknesses in basic human perception.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tbl1 <span class="ot">&lt;-</span> <span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tbl1, <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">legend=</span><span class="fu">rownames</span>(tbl1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6-Bivariate_Categorical_Data_Summaries_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding Color</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tbl1, <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">legend=</span><span class="fu">rownames</span>(tbl1), <span class="at">col=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6-Bivariate_Categorical_Data_Summaries_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="a-certain-point-of-view" class="level1">
+<h1>A Certain Point of View</h1>
+<p>The biggest challenge with categorical data is that rows and columns are interchangeable. There is no meaningful way to distinguish response and explanatory variables.</p>
+<p>With categorical variables, we can group differently depending on which comparisons we would like to emphasize. Above, we grouped by responses to “who shot first” and colored by gender. If we swap the row variable and the column, we get the same bars, but arranged differently:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tbl2 <span class="ot">&lt;-</span> <span class="fu">table</span>(sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>, sw<span class="sc">$</span>Gender)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tbl2, <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">legend=</span><span class="fu">rownames</span>(tbl2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6-Bivariate_Categorical_Data_Summaries_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding Color</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tbl2, <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">legend=</span><span class="fu">rownames</span>(tbl2), <span class="at">col=</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6-Bivariate_Categorical_Data_Summaries_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This different point of view makes it easier to compare the difference in fan status for each of the genders. The difference between Not Fan and Fan is much more pronounced on the Male side.</p>
+<p><strong>NOTE</strong>: Which graph is best will depend on which comparison is most important. It’s always easier to compare things that are grouped together.</p>
+</section>
+<section id="your-turn" class="level1">
+<h1>Your Turn</h1>
+<section id="proportion-table" class="level2">
+<h2 class="anchored" data-anchor-id="proportion-table">Proportion Table</h2>
+<p>We would like to compare the relationship between Gender and Household Income.</p>
+<p>Create and name a table that shows the percent of Genders in each of the income levels:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tbl3 <span class="ot">&lt;-</span> <span class="fu">table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in table(): nothing to tabulate</code></pre>
+</div>
+</div>
+<p><strong>Question</strong>: What percent of female respondents are in the <code>150,000+</code> category?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What percent of male respondents are in the <code>150,000+</code> category? <strong>Answer</strong>:</p>
+<p>Create a bar plot that compares the income distribution for each gender in the study:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tbl3, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">legend=</span><span class="fu">rownames</span>(tbl3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'tbl3' not found</code></pre>
+</div>
+</div>
+<p>Swap the row and column inputs and create the bar chart with the opposite grouping:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tbl4 <span class="ot">&lt;-</span> <span class="fu">table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in table(): nothing to tabulate</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tbl4, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">legend=</span><span class="fu">rownames</span>(tbl4))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'tbl4' not found</code></pre>
+</div>
+</div>
+<p>Which chart is more interesting?</p>
 
 
-</section>
 </section>
 </section>
 

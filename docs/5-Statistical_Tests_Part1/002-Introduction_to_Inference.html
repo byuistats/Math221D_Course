@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BYU-Idaho Math 221: Introduction to Statistics in R – Math221 Notebook</title>
+<title>Inference for a Mean – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d19aaff0441ffe538fac26ca03b5f350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-e89341beafc15df96e2eb459d0c9c10f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d19aaff0441ffe538fac26ca03b5f350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e89341beafc15df96e2eb459d0c9c10f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,8 +103,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -80,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math221 Notebook</span>
     </a>
   </div>
@@ -96,28 +159,28 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-getting-started">    
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/1-Course_Intro.html">
+    <a class="dropdown-item" href="../1-Getting_Started/1-Course_Intro.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/2-Installing_R.html">
+    <a class="dropdown-item" href="../1-Getting_Started/2-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/3-Introducing_R.html">
+    <a class="dropdown-item" href="../1-Getting_Started/3-Introducing_R.html">
  <span class="dropdown-text">Introducing R - Class Notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/4-Installing_Packages.html">
+    <a class="dropdown-item" href="../1-Getting_Started/4-Installing_Packages.html">
  <span class="dropdown-text">Installing Libraries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/5-Stat_Process.html">
+    <a class="dropdown-item" href="../1-Getting_Started/5-Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li class="dropdown-header">Response and Explanatory Variables</li>
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/6-Response_and_Explanatory_Variables.html">
+    <a class="dropdown-item" href="../1-Getting_Started/6-Response_and_Explanatory_Variables.html">
  <span class="dropdown-text">Response and Explanatory Variables</span></a>
   </li>  
     </ul>
@@ -129,31 +192,31 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-descriptive-statistics">    
         <li class="dropdown-header">Descriptive Statistics</li>
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/1-Numerical_Quantitative_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/1-Numerical_Quantitative_Data_Summaries.html">
  <span class="dropdown-text">Numerical Quantitative Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.html">
  <span class="dropdown-text">Graphical Quantitative Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html">
  <span class="dropdown-text">Quantitative Data Summaries - Multiple Groups</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.html">
  <span class="dropdown-text">Summarizing Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.html">
  <span class="dropdown-text">Introducing Categorical Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.html">
  <span class="dropdown-text">Bivariate Categorical Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/7-AA_Descriptive_Statistics.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/7-AA_Descriptive_Statistics.html">
  <span class="dropdown-text">Application Activity: Descriptive Statistics</span></a>
   </li>  
     </ul>
@@ -165,40 +228,40 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling">    
         <li class="dropdown-header">Into the Tidyverse</li>
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/06-GGPlot_Intro.html">
  <span class="dropdown-text">A Better Way to Plot</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/02-Filter.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/03-Select.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.html">
  <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
   </li>  
         <li class="dropdown-header">Bonus Material</li>
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
     </ul>
@@ -210,43 +273,43 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-inference">    
         <li class="dropdown-header">Foundations</li>
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/01-Intro_to_Probability.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/01-Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability (Reading)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/02-The_Normal_Distribution_Textbook.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/02-The_Normal_Distribution_Textbook.html">
  <span class="dropdown-text">The Normal Distribution (Reading)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/03-Normal_Distribution_Workbook.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/03-Normal_Distribution_Workbook.html">
  <span class="dropdown-text">The Normal Distribution (Class)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/04-Normal_Probability_Practice.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/04-Normal_Probability_Practice.html">
  <span class="dropdown-text">Normal Probability Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/Sampling_Distributions_CLT_LLN_Reading.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/Sampling_Distributions_CLT_LLN_Reading.html">
  <span class="dropdown-text">Distribution of Sample Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/06-Central_Limit_Theorem_Practice.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/06-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/07-Prob_Calculations_for_Means.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/07-Prob_Calculations_for_Means.html">
  <span class="dropdown-text">Probability Calculations for Means (Reading)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/08-CLT_Normal_Prob_for_Means.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/08-CLT_Normal_Prob_for_Means.html">
  <span class="dropdown-text">Probability Calculations for Means (Class)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/09-Prob_Calculations_for_Means_Practice.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/09-Prob_Calculations_for_Means_Practice.html">
  <span class="dropdown-text">Probability Calculations for Means (Practice)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/10-Assessing_Normality.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/10-Assessing_Normality.html">
  <span class="dropdown-text">Assessing Normality</span></a>
   </li>  
     </ul>
@@ -257,47 +320,47 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-1">    
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/002-Introduction_to_Inference.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/002-Introduction_to_Inference.html">
  <span class="dropdown-text">Introduction to Hypothesis Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/002-Confidence_Intervals.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/002-Confidence_Intervals.html">
  <span class="dropdown-text">Introduction to Confidence Intervals</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
  <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
  <span class="dropdown-text">Don’t Take it Personally</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/03-Paired_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/03-Paired_ttest.html">
  <span class="dropdown-text">Paired T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/04-Paired_ttest_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/04-Paired_ttest_Practice.html">
  <span class="dropdown-text">Paired T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
  <span class="dropdown-text">2-Sample Independent T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/06-Independent_2_sample_ttest_practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/06-Independent_2_sample_ttest_practice.html">
  <span class="dropdown-text">2-Sample Independent T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/07-ANOVA_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/07-ANOVA_Intro.html">
  <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/08-ANOVA_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/08-ANOVA_Practice.html">
  <span class="dropdown-text">ANOVA Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
  <span class="dropdown-text">Comparing Means Activity</span></a>
   </li>  
     </ul>
@@ -308,39 +371,39 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-2">    
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
  <span class="dropdown-text">Introducing the Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/03-Regression_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/03-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/Introducing_Categorical_Data_Analysis.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/Introducing_Categorical_Data_Analysis.html">
  <span class="dropdown-text">Introducing Categorical Data Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/One_and_Two_Sample_Proportions.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/One_and_Two_Sample_Proportions.html">
  <span class="dropdown-text">One and Two Sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.html">
  <span class="dropdown-text">One and Two Sample Proportion Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
  <span class="dropdown-text">Chi-square Test of Independence</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/12-Chi_Square_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/12-Chi_Square_Practice.html">
  <span class="dropdown-text">Chi-Square Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
  <span class="dropdown-text">Who Shot First?</span></a>
   </li>  
     </ul>
@@ -351,15 +414,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-semester-project">    
         <li>
-    <a class="dropdown-item" href="./7-Semester_Project/Semester_Project_Instructions.html">
+    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Instructions.html">
  <span class="dropdown-text">Semester Project Instructions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./7-Semester_Project/Semester_Project_Template.html">
+    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Template.html">
  <span class="dropdown-text">Semester Project</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./7-Semester_Project/Importing_Data.html">
+    <a class="dropdown-item" href="../7-Semester_Project/Importing_Data.html">
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
     </ul>
@@ -400,10 +463,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#an-interactive-textbook" id="toc-an-interactive-textbook" class="nav-link active" data-scroll-target="#an-interactive-textbook">An Interactive Textbook</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#download-course-material" id="toc-download-course-material" class="nav-link" data-scroll-target="#download-course-material">Download Course Material</a></li>
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#review-distribution-of-sample-means" id="toc-review-distribution-of-sample-means" class="nav-link" data-scroll-target="#review-distribution-of-sample-means">Review: distribution of sample means</a></li>
+  </ul></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a>
+  <ul class="collapse">
+  <li><a href="#testing-fo-the-true-mean-length-of-a-footlong-sandwich" id="toc-testing-fo-the-true-mean-length-of-a-footlong-sandwich" class="nav-link" data-scroll-target="#testing-fo-the-true-mean-length-of-a-footlong-sandwich">Testing fo the True Mean Length of a Footlong Sandwich</a>
+  <ul class="collapse">
+  <li><a href="#the-null-hypothesis" id="toc-the-null-hypothesis" class="nav-link" data-scroll-target="#the-null-hypothesis">The Null Hypothesis</a></li>
+  <li><a href="#the-alternative-hypothesis" id="toc-the-alternative-hypothesis" class="nav-link" data-scroll-target="#the-alternative-hypothesis">The Alternative Hypothesis</a></li>
+  <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic">Test Statistic</a></li>
+  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="math inline">\(P\)</span>-value</a></li>
+  <li><a href="#level-of-significance-alpha" id="toc-level-of-significance-alpha" class="nav-link" data-scroll-target="#level-of-significance-alpha">Level of Significance, <span class="math inline">\(\alpha\)</span></a></li>
+  <li><a href="#type-i-and-type-ii-errors" id="toc-type-i-and-type-ii-errors" class="nav-link" data-scroll-target="#type-i-and-type-ii-errors">Type I and Type II Errors</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -413,7 +487,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BYU-Idaho Math 221: Introduction to Statistics in R</h1>
+<h1 class="title">Inference for a Mean</h1>
+<p class="subtitle lead">Hypothesis Testing and Confidence Intervals</p>
 </div>
 
 
@@ -430,56 +505,155 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="an-interactive-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="an-interactive-textbook">An Interactive Textbook</h2>
-<p>This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
-<p>Those who diligently work through these materials will be well prepared for their next Statistics or Data Science course.</p>
-<p>This book is designed to be a digital workbook. You can download the notes, practice problems and application activities which can be edited locally on your computer. Completed assignments will be submitted in Canvas as web-page reports.</p>
-<section id="download-course-material" class="level3">
-<h3 class="anchored" data-anchor-id="download-course-material">Download Course Material</h3>
-<p>To download the folder containing all of the exercises, notes and application activities by following these steps:</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p><strong>Statistical Inference</strong> is the practice of using data sampled from a population to make conclusions about <em>population parameters</em>.</p>
+<p>The two primary methods of statistical inference are:</p>
 <ol type="1">
-<li>Create a class folder where you will save all your work throughout this semester. This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.</li>
-<li>Click on the link below to download the <code>.zip</code> file containing all contents of the course website:</li>
+<li>Hypothesis Testing</li>
+<li>Confidence Intervals</li>
 </ol>
-<center>
-<a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work.zip" class="button-download" download=""> Download Course Files </a>
-</center>
-<ol start="3" type="1">
-<li>Open the <code>.zip</code> file</li>
-<li>Save the <code>Student_Work</code> folder to your class folder created in step 1. This can typically be done by right clicking the folder then copying and pasting it into the new location.</li>
+<p>Hypothesis testing is the practice of gathering evidence in an attempt to disprove a hypothesis. We either <strong>reject</strong> the conventional wisdom or <strong>fail to reject</strong> it.</p>
+<p>Confidence intervals are a way to use data to estimate the unknown population parameter, often the population mean, <span class="math inline">\(\mu\)</span>.</p>
+<p>This chapter lays the foundation for Hypothesis Testing.</p>
+<section id="review-distribution-of-sample-means" class="level2">
+<h2 class="anchored" data-anchor-id="review-distribution-of-sample-means">Review: distribution of sample means</h2>
+<p>Hypothesis testing depends on the validity of the assumption that the distribution of the sample mean is normally distributed.</p>
+<p>Recall that the distribution of sample means is normal when:</p>
+<ol type="1">
+<li>The underlying population is normally distributed</li>
+<li>The sample size, n, is sufficiently large (<span class="math inline">\(n&lt;30\)</span> for this class) for the Central Limit Theorem to apply</li>
 </ol>
-<p>These files will be the basis of your coursework.</p>
 </section>
-<section id="how-to-use-this-book" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>Each unit contains:</p>
+</section>
+<section id="hypothesis-testing" class="level1">
+<h1>Hypothesis Testing</h1>
+<p>When we know the population standard deviation, <span class="math inline">\(\sigma\)</span>, for individuals, we calculate Z-scores and used the Standard Normal Distribution to calculate probabilities. Z has what is called a <strong>standard normal distribution</strong>, meaning it has a mean of 0 and a standard deviation of 1.</p>
+<p><span class="math display">\[ z= \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}\]</span></p>
+<p><strong>NOTE</strong>: In practice, we do not typically know the population standard deviation. To help us make the connection between probability calculations for means and hypothesis testing, we assume we know the population standard deviation, <span class="math inline">\(\sigma\)</span>.</p>
+<section id="testing-fo-the-true-mean-length-of-a-footlong-sandwich" class="level2">
+<h2 class="anchored" data-anchor-id="testing-fo-the-true-mean-length-of-a-footlong-sandwich">Testing fo the True Mean Length of a Footlong Sandwich</h2>
+<p>One might expect a foot-long sandwich to be 12 inches long, at least on average. Consumers will naturally allow for some level of variation. But if enough customers are convinced they are getting consistently short-changed, they may loudly complain, or even attempt a <a href="https://www.forbes.com/sites/ericgoldman/2016/02/29/why-the-subway-footlong-lawsuits-fell-short/">lawsuit</a>.</p>
+<section id="the-null-hypothesis" class="level3">
+<h3 class="anchored" data-anchor-id="the-null-hypothesis">The Null Hypothesis</h3>
+<p>Proper scientific inquiry is based on attempts to disprove a claim. The claim representing the “status quo,” the commonly held belief or the usual value is called the <strong>null hypothesis</strong>. In the case of foot-long sandwiches, our null hypothesis is that the true mean length of foot-long sandwiches is 12 inches.</p>
+<p>We present the null hypothesis in the following way:</p>
+<p><span class="math display">\[H_0: \mu = 12\]</span> We label the null hypothesis <span class="math inline">\(H_0\)</span>, often pronounced “H-nought”. The zero in the subscript represents “null,” “baseline,” “default,” “no effect,” etc.</p>
+<p>The null hypothesis is standing trial. We seek evidence against <span class="math inline">\(H_0\)</span> in favor of an alternative.</p>
+</section>
+<section id="the-alternative-hypothesis" class="level3">
+<h3 class="anchored" data-anchor-id="the-alternative-hypothesis">The Alternative Hypothesis</h3>
+<p>The <strong>alternative hypothesis</strong>, <span class="math inline">\(H_a\)</span>, is the proposed challenge to <span class="math inline">\(H_0\)</span>. In the case of foot-long sandwiches, customers will typically only get upset if they are getting less than advertised. We would propose an alternative:</p>
+<p><span class="math display">\[H_a: \mu &lt; 12\]</span></p>
+<p>There are other possible alternatives that will depend on the context of the research question. Sometimes we may want to test if something is higher than a proposed value. Sometimes we are not sure if something is higher or lower at the outset, so we could test if something is not equal to a proposed value.</p>
+<p>Alternative hypothesis could have been written as:</p>
 <ul>
-<li>Preparation readings</li>
-<li>Practice problems</li>
-<li>Application Activities</li>
-<li>Assessments</li>
+<li><span class="math inline">\(H_a: \mu \ne 12\)</span> (two-sided hypothesis; two-tailed)</li>
+<li><span class="math inline">\(H_a: \mu &lt; 12\)</span> (one-sided hypothesis; left-tailed)</li>
+<li><span class="math inline">\(H_a: \mu &gt; 12\)</span> (one-sided hypothesis; right-tailed)</li>
 </ul>
-<p><strong>Getting Started</strong> guides you through getting R and R-Studio set up, introduces the tools we will use for the class, and introduces basic statistical concepts to help get you started. We learn how to use R-Studio to make lovely reports that can be viewed in a web-browser. It’s a gentle enough introduction to enable even those who have never coded before to start working with R.</p>
-<p><strong>Descriptive Statistics</strong> introduces tools to help understand data. We review summary statistics and visualizations for quantitative and categorical data types and learn the basic skills to turn data into information.</p>
-<p><strong>Data Wrangling and Visualization</strong> takes a step further into dealing with messy data and creating better visualizations.</p>
-<p><strong>Foundations of Statistical Inference</strong> introduces the key concepts for using sample data to make generalized conclusions about a population. We cover probability, hypothesis testing, confidence intervals and other concepts necessary for making the leap from sample to population.</p>
-<p><strong>Statistical Tests - Part 1 and 2</strong> cover specific inferential statistics for different data types.</p>
-<p>The <strong>Semester Project</strong> is an opportunity for students to demonstrate the skills acquired during the course. You will be able to find and import data into R, clean the data, create top notch visualizations, perform appropriate statistical analysis and create a beautiful report.</p>
-<p>R Help provides additional resources for learning how to use R.</p>
-<section id="course-objectives" class="level4">
-<h4 class="anchored" data-anchor-id="course-objectives">Course Objectives</h4>
-<p>By the end of this semester, students will confidently be able to:</p>
-<ul>
-<li>Import data and apply basic data wrangling to moderately messy data</li>
-<li>Describe data with numerical and graphical summaries</li>
-<li>Make evidence-based decisions regarding situations with inherent randomness</li>
-<li>Investigate questions through the application of probability distributions</li>
-<li>Perform the appropriate statistical analysis based on specific data being analyzed including hypothesis tests and confidence intervals</li>
-<li>Create web-based reports to communicate the results of statistical analyses to relevant audiences</li>
-</ul>
+<p>It is important that the null and alternative hypotheses be determined prior to collecting the data. It is not appropriate to use the data from your study to choose the alternative hypothesis that will be used to test the same data! This is an example of using data twice, once to choose the test and again to conduct the test. It is okay to use data from a previous study to determine your null and alternative hypotheses, but it is an improper use of the statistical procedures to use the data to define <em>and</em> conduct a hypothesis test.</p>
+<p><strong>KEY POINTS</strong>:</p>
+<ol type="1">
+<li>Hypotheses are statements about <em>population parameters</em></li>
+<li>The null hypothesis will always be a statement of equality</li>
+<li>We never PROVE the null hypothesis is true, we can only fail to disprove it.</li>
+</ol>
+<p>That last point is important. Data collected are only evidence against <span class="math inline">\(H_0\)</span>. This is similar to the situation in a courtroom where a defendant is accused of a crime. The defendant does not have to PROVE their innocence. It is up to the prosecution to prove guilt. If they fail to do so, we find the defendant “not guilty”, which is not the same thing as innocent. It just means there wasn’t enough evidence to convict.</p>
+</section>
+<section id="test-statistic" class="level3">
+<h3 class="anchored" data-anchor-id="test-statistic">Test Statistic</h3>
+<p>We use <strong>Test Statistics</strong> to determine how likely our results are assuming the <em>null hypothesis is true</em>. We will use many different test statistics throughout this course, but the first one will be very familiar: the Z-score.</p>
+<p>When testing a null hypothesis, the <span class="math inline">\(\mu\)</span> in the z-score formula becomes the <strong>hypothesized population mean</strong>. The <span class="math inline">\(z\)</span>-score is then interpreted as the number of standard deviations away from the hypothesized mean. If we know the population standard deviation, <span class="math inline">\(\sigma\)</span>, then we can calculate the probability of getting a sample mean more extreme than the one we observed <em>if the null hypothesis is true</em>.</p>
+<p>Suppose for now that sandwich-to-sandwich lengths vary by about 0.5 inches and that the distribution is normal. If we sampled 21 random sandwiches from shops in a region and got a sample mean length of 11.82 inches, we can calculate a Z-score:</p>
+<p><span class="math display">\[
+z = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} = \frac{11.82 - 12}{0.5 / \sqrt{21}} = -1.649727
+\]</span></p>
+<p>Where <span class="math inline">\(z\)</span> is the test statistic, <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(\mu_0\)</span> is the null hypothesis mean, <span class="math inline">\(\sigma\)</span> is the population standard deviation and <span class="math inline">\(n\)</span> is the sample size.</p>
+<p>Based on the results from the formula above, <span class="math inline">\(\bar{x}\)</span> is about 1.65 standard deviations below the mean.</p>
+<p>We can then use this Z-score to calculate the probability of observing such a result or more extreme, if the null hypothesis is true. This is the evidence we are going to use to make a decision about the null hypothesis.</p>
+</section>
+<section id="p-value" class="level3">
+<h3 class="anchored" data-anchor-id="p-value"><span class="math inline">\(P\)</span>-value</h3>
+<p><strong><span class="math inline">\(P\)</span>-value</strong>: The probability of obtaining a test statistic (such as <span class="math inline">\(z\)</span>) at least as extreme as the one you calculated, assuming the null hypothesis is true.</p>
+<p>In other words, our <span class="math inline">\(P\)</span>-value is the probability that we would get a <span class="math inline">\(z\)</span>-score that is as extreme or more extreme than <span class="math inline">\(z=-1.649727\)</span>, assuming the true mean is 12 inches.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="002-Introduction_to_Inference_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>KEY DEFINITION</strong>: A <strong>P-value</strong> is the probability of observing a test statistic as extreme, or more extreme than the one we observed in our sample, <em>if the null hypothesis is true</em>.</p>
+<p>We use “as or more extreme” because the direction (greater than or less than) depends on our alternative hypothesis.</p>
+<p>In the case against the sandwich shop, we can use <code>pnorm()</code> to get the P-value:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (<span class="fl">11.82</span><span class="dv">-12</span>) <span class="sc">/</span> (<span class="fl">0.5</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">21</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04949937</code></pre>
+</div>
+</div>
+<p><strong>Conclusion</strong>: If the true population mean was 12 inches, there is a 4.95% chance of obtaining a sample mean of 11.82 hours for a sample of size 21.</p>
+<p>At this point we have to make a decision. Is that probability small enough to reject the null hypothesis in favor the alternative? Are foot-long sandwich is LESS than 12 inches on average?</p>
+<p>When the P-value is very small, we have strong evidence to reject the null hypothesis. But how small is small enough?</p>
+</section>
+<section id="level-of-significance-alpha" class="level3">
+<h3 class="anchored" data-anchor-id="level-of-significance-alpha">Level of Significance, <span class="math inline">\(\alpha\)</span></h3>
+<p>We need a number that can be used to determine if the <span class="math inline">\(P\)</span>-value is small enough to reject the null hypothesis that is not dependent on the data. This number is called the <strong>level of significance</strong> and is often denoted by the symbol <strong><span class="math inline">\(\alpha\)</span></strong> (pronounced “alpha”.)</p>
+<p>We will use the same decision rule for all hypothesis tests:</p>
+<ol type="1">
+<li>If the <span class="math inline">\(P\)</span>-value is less than <span class="math inline">\(\alpha\)</span>, we reject the null hypothesis.</li>
+<li>If the <span class="math inline">\(P\)</span>-value is greater than <span class="math inline">\(\alpha\)</span>, we fail to reject the null hypothesis.</li>
+</ol>
+<p><strong>Memory Aid:</strong> Some students find it helpful to remember the decision rule using the couplet:</p>
+<p><strong>If <span class="math inline">\(P\)</span> is low, reject <span class="math inline">\(H_O\)</span></strong></p>
+<p>Where “low” means less than <span class="math inline">\(\alpha\)</span>.</p>
+<p>The level of significance, <span class="math inline">\(\alpha\)</span>, must be chosen prior to collecting the data. If we wanted to reject the null hypothesis, we could compute the <span class="math inline">\(P\)</span>-value and then unscrupulously choose the <span class="math inline">\(\alpha\)</span> level. In every case, we could choose a value of <span class="math inline">\(\alpha\)</span> that is larger than the computed <span class="math inline">\(P\)</span>-value, and therefore always reject the null hypothesis. This practice would defeat the purpose of hypothesis testing.</p>
+</section>
+<section id="type-i-and-type-ii-errors" class="level3">
+<h3 class="anchored" data-anchor-id="type-i-and-type-ii-errors">Type I and Type II Errors</h3>
+<p>This is not an infallible process. We may end up rejecting a null hypothesis that is, in fact, true. Or fail to reject a null hypothesis that is, in fact, false.</p>
+<p>This is because researchers will sometimes get a very high or very low sample mean purely by chance. Perhaps their sampling methods were not as random as they had supposed. We may reject or fail to reject a null hypothesis because of dumb luck.</p>
+<p><strong>Type I Error</strong>: Rejecting a TRUE null hypothesis.</p>
+<p>Assuming the null hypothesis is true, the level of significance (<span class="math inline">\(\alpha\)</span>) is the probability of getting a value of the test statistic that is extreme enough that the null hypothesis will be rejected. In other words, the level of significance (<span class="math inline">\(\alpha\)</span>) is the probability of committing a Type I error.</p>
+<p>Let’s demonstrate <span class="math inline">\(\alpha = 0.01\)</span> and shade it in the graph below:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="002-Introduction_to_Inference_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The red area, <span class="math inline">\(\alpha\)</span>, shows the probability of getting a sample mean in that tail <strong>when the null hypothesis is true</strong>. There’s always a chance we get such an extreme value and end up rejecting the null when it is true.</p>
+<p>The most common choice for <span class="math inline">\(\alpha\)</span> is <span class="math inline">\(\alpha=0.05\)</span>, but other choices include <span class="math inline">\(\alpha = 0.1\)</span> and <span class="math inline">\(\alpha=0.01\)</span>.</p>
+<p>We can set <span class="math inline">\(\alpha\)</span> arbitrarily low to avoid Type I errors, but there’s a cost. The more difficult it is to reject the Null Hypothesis, the more likely we will be to make a Type II Error.</p>
+<p><strong>Type II Error</strong>: Failing to Reject a FALSE null hypothesis.</p>
+<p>If the <span class="math inline">\(\alpha\)</span> value (the probability of committing a Type I error) is very small, the probability of committing a Type II error will be large. Conversely, if <span class="math inline">\(\alpha\)</span> is allowed to be very large, then the probability of committing a Type II error will be very small.</p>
+<p>A level of significance of <span class="math inline">\(\alpha=0.05\)</span> seems to strike a good balance between the probabilities of committing a Type I versus a Type II error. However, there may be instances where it will be important to choose a different value for <span class="math inline">\(\alpha\)</span>. The important thing is to choose <span class="math inline">\(\alpha\)</span> before you collect your data. Typical choices of <span class="math inline">\(\alpha\)</span> are <span class="math inline">\(0.05\)</span> (most common), <span class="math inline">\(0.1\)</span>, and <span class="math inline">\(0.01\)</span>.</p>
+<section id="visualizing-error" class="level4">
+<h4 class="anchored" data-anchor-id="visualizing-error">Visualizing Error</h4>
+<p>The below graph illustrates the relationship between Type I and Type II errors. The red distribution represents the Null Hypothesis, the sampling distribution of sample mean-lengths of foot-long sandwiches, assuming <span class="math inline">\(\mu_0=12\)</span>.</p>
+<p>The blue distribution represents the “TRUE” distribution with a mean, <span class="math inline">\(\mu_{truth}=11.2\)</span>. We never know this in the real world, but to illustrate, here is a situation where the <strong>true population mean</strong> is, in fact, less than 12.</p>
+<p>If we set <span class="math inline">\(\alpha = 0.01\)</span> (red shaded area), we can see that any sample mean to the right of the cutoff would <strong>fail to reject</strong> the null hypothesis. This mistake would be a Type II error.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="002-Introduction_to_Inference_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>While we don’t know what the “TRUE” distribution is, we can see the relationship between moving the cutoff based on <span class="math inline">\(\alpha\)</span> would do to the probability of failing to reject the null hypothesis even when it is FALSE.</p>
 
 
+</section>
 </section>
 </section>
 </section>

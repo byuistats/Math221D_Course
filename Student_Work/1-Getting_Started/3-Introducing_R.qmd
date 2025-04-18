@@ -1,0 +1,191 @@
+---
+title: Introducing R - Class Notes
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introducing Markdown
+
+The file you are now reading is created using the Markdown language.  Think of Markdown like Microsoft Word on steroids.  The difference is, instead of clicking through drop-down menus to change font, line spacing, etc. you need to type in the instructions inside the document.  
+
+This file has the extension `.qmd` which stands for Quarto Markdown.  All assignments and activities will be given as `.qmd` files.  
+
+The upside is that you can easily write nice looking reports _and_ directly incorporate code output including summary tables and graphs.  
+
+## The YAML
+
+At the very top of the document, you will see some blue and green text between two sets of `---`.  This gives instructions to the computer about what kind of document to make.  It is called the `YAML`.  What `YAML` stands for is up for debate.  But the instructions are necessary for building the document and making it look nice.  
+
+The YAML above is very basic.  We may expand on it a little as the semester progresses.  But for now, this document can be made into an HTML file by "Rendering" it.  
+
+
+## Rendering the Document
+
+Above, you should see a  "Render" button.  Click on it and see what happens.
+
+We can make section headers, type text, include code chunks and stitch it all together into a decent-looking report with only a few lines of text.  
+
+# This is a Section Header
+## This is a section subheader
+### sub-subheader
+
+You get the point.
+
+# Making R Work for Us
+
+The best thing about Markdown files is that we can include code and use output directly within the document.  
+
+Next, we'll see how to program in R within a text document!  Hooray!
+
+Coding inside this word document can be done by inserting a "code chunk" using the tick mark symbol (not an apostrophe) and curly brackets.  The shortkey command is:
+
+1. ctrl+alt+i on a PC
+1. cmd+alt+i on a Mac
+
+The above combination of keys will create a new code chunk wherever your cursor is located.  
+
+```{r}
+
+```
+
+
+# Basic R Operators
+
+We introduce a few basic and frequently used R commands.  
+
+At the end of this chapter you should be able to:
+
+1. Understand the combine function, `c()`
+2. Understand the assignment operator, `<-`
+3. The `read.csv()` function
+4. How to view a dataset
+5. Understand the selection operator, `$`
+
+
+
+## The Combine Function, `c()`
+
+Sometimes I want to type in data manually.  The simplest way to accomplish this is to use the combine function, `c()`.  Think of `c()` as a way to combine a list of things __that are alike__.  For example, I can create a new dataset using the combine function: 
+
+
+```{r}
+
+c(21, 22, 18, 19, 19, 20, 22)
+
+```
+
+I can create a list of names as well, but I have to put characters in quotes:  
+
+```{r}
+
+c("Billy", "Joel", "Bobby", "Dylan", "Carly", "Rae", "Jeppson")
+
+```
+
+
+Running the above code isn't very helpful because I won't be able to do anything with those lists.  Computers are so literal.  All the code did was print out a list that I made.  If I want to be able to use those lists, I need to give them a name.  
+
+
+## The Assignment Operator
+
+In R, we like to name things.  You can name pretty much anything including datasets, graphs, output, etc.  When we want to assign a name to something we use `<-`, which is made up of a "less than" sign and a dash.  We put the name on the left side.  
+
+Let's demonstrate by naming our lists for ages and names above.  
+
+```{r}
+ages <- c(21, 22, 18, 19, 19, 20, 22)
+
+students <- c("Billy", "Joel", "Bobby", "Dylan", "Carly", "Rae", "Jeppson")
+
+```
+
+Now if I want to refer to those data, I can just refer to the name:
+
+```{r}
+ages
+
+students
+```
+
+
+__SHORT KEY__:  You can quickly create the assignment operator by hitting "Alt" plus "-" on a PC, or "Option" plus "-" on a Mac.  
+
+## Importing Raw Data
+
+In this course, we will read raw data into R and use it for analysis and visualizations.  Say there is a dataset stored online that we would like to bring into R to anlayze.  We can use the `import()` function from the `rio` library to load the data.  
+
+Running the following code instructs R to import that data...and nothing else.  
+
+```{r, eval=FALSE}
+
+read.csv('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')
+
+```
+
+Again, I can't do anything with it because it hasn't been stored anywhere.  If I want to be able to do anything with the data, I must somehow store it in R.  I do this by assigning a name to the data.  I can make up any name I like as long as it begins with a letter and has no spaces.  Let's call it "steve".  
+
+```{r}
+
+steve <- read.csv('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')
+
+```
+
+Notice how nothing printed out.  This is because computers, being literal, assigned a dataset to something I named "steve".  I haven't told the computer to do anything with it yet.  But now I have an R "object" that I can use.  
+
+## Viewing Raw Data
+
+There are several ways to view raw data in R:
+
+1. Run "steve" by itself
+2. use the `View()` function
+
+Run each line individually by putting the curso on the line you want to run and hitting:  
+
+1. PC:  ctrl+Enter
+2. Mac: CMD+Enter
+
+
+```{r, eval=FALSE}
+steve
+
+View(steve)
+
+```
+
+
+__BEST PRACTICE__:  It is best to name objects in R with descriptive names relating to what the object is.  `big5_data` would be a better name than `steve`, for example, because this is data about the big 5 personality traits.  
+
+## Selecting a Column From a Dataset
+
+Datasets usually have many columns.  When we want to select one column from a dataset to summarize, we can use the `$` operator.  For example, if we want to look at only the scores for Extroversion, we can run the following code:
+
+```{r, eval=FALSE}
+
+steve$Extroversion 
+
+```
+
+This prints out only the values in the Extroversion column.    
+
+__WATCHOUT__:  The column name has to be typed EXACTLY as it is in the dataset.  
+
+R makes it a little easier because after you type the `$` it will bring up a dropdown menu and you can select the column you're interested in.  
+
+__SPACES__:  If there are spaces in a column name you have to wrap the whole column name using backticks `.  On most keyboards, this is on the same key as the ~ next to the 1 key.  __It's always easier to use the dropdown menu for complicated column names__.   
+
+__NOTE__:  The drop down only works when you're typing forward.  If you delete text back to the dollar sign it won't show up.  To get it back, delete the dollar sign and retype it.  
+
+
+We will use the selection `$` all very frequently to specify which columns we want to use for data summaries, visualizations, and analyses.  
+
+For example, I can easily get the mean Openness score by putting `steve$Openness` into the `mean()` function:
+
+```{r}
+mean(steve$Openness)
+```

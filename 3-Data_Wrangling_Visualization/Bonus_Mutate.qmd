@@ -1,0 +1,86 @@
+---
+title: "mutate()"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Adding Columns
+
+If we want to create a new column in our dataset, we use the tidy function, `mutate()`.  Consider again the High School survey data with 60 columns and 312 respondents.
+
+```{r}
+# Load libraries and data
+
+library(rio)
+library(mosaic)
+library(tidyverse)
+library(car)
+
+survey <- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv') %>% tibble()
+```
+
+To create a new column, "pipe" the raw data into the `mutate()` statement. Inside the parentheses, give the new column a name and set it equal to what you want that column to be.  
+
+__EXAMPLE__:  It is widely known that arm span is typically very close to one's height.  Let's create a column of the ratio of Height (`Height_cm`) to armspan (`Armspan_cm`) and call the new column, `ht_to_span`.  If common knowledge is correct, we would expect the ratio to be close to 1 on average.
+
+```{r}
+
+clean <- survey %>%
+  mutate(ht_to_span = Height_cm / Armspan_cm)
+
+mean(clean$ht_to_span)
+```
+
+Notice that the mean is `Inf` which means infinity, or undefined.  This is likely due to R attempting to divide a number by zero, meaning someone answered that their arm span was zero.  This is where [`filter()`](../3-Data_Wrangling_Visualization/02-Filter.qmd) comes in handy.  We can filter out the rows where Armspan_cm is 0:
+
+```{r}
+clean <- survey %>%
+  filter(Armspan_cm > 0) %>%
+  mutate(ht_to_span = Height_cm / Armspan_cm)
+
+histogram(clean$ht_to_span, xlab = "Height / Armspan", main = "Distribution of Height to Armspan Ratio")
+
+```
+
+It's difficult to imagine someone who is 40 times taller than his or her arm span.  But this is sufficient to illustrate the `mutate()` function.
+
+__EXAMPLE__:  Now let's make a new column that converts `Height_cm` into inches:
+
+```{r}
+clean <- survey %>%
+  mutate(ht_to_span = Height_cm / Armspan_cm,
+         Height_in = Height_cm / 2.54)
+
+```
+
+
+
+<div class="QuestionsHeading">Combining Tidy Functions</div>
+<div class="Questions">
+
+1. Click to see how to [filter](../3-Data_Wrangling_Visualization/02-Filter.qmd) outliers of ht_to_wt ratio and [select](../3-Data_Wrangling_Visualization/03-Select.qmd) only the columns of interest.
+
+<details>
+<summary>Click to see</summary>
+
+```{r}
+clean <- survey %>%
+  filter(Armspan_cm > 0) %>%
+  mutate(ht_to_span = Height_cm / Armspan_cm,
+         Height_in = Height_cm / 2.54) %>%
+  select(Height_cm, Armspan_cm, ht_to_span, Height_in) %>% 
+  filter(ht_to_span < 1.5,
+         ht_to_span > .5)
+clean
+
+histogram(clean$ht_to_span, xlab = "Height / Armspan", main = "Distribution of Height to Armspan Ratio")
+
+```
+
+I decided on 1.5 and .5 as the filter values by trial and error.  There are better ways to determine outliers.  But I suspect it is rare indeed for someone to be 50% taller than their armspan or 50% shorter.  
+
+</details>
+
+</div>

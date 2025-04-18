@@ -1,0 +1,258 @@
+---
+title: "Application Activity:  Descriptive Statistics"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+
+# Introduction
+
+In this activity, you will practice everything we've covered up to this point including:
+
+* Reviewing a dataset  
+* Determining response and explanatory variables  
+* Determining data types (quantitative, categorical)  
+* Creating descriptive statistics:  
+  + Quantitative data (one and two variables)
+    + Summary statistics for a single variable (`favstats(data$y)`)
+    + Histogram for one variable (`histogram(data$y)`)  
+    + Summary statistics for multiple groups (`favstats(data$y ~ data$x)`)  
+    + Side-by-side boxplots (`boxplot(data$y ~ data$x)`)  
+    + Scatter plots, continuous $x$ (`plot(data$y ~ data$x)`)  
+    + Correlation between 2 quantitative variables (correlation coefficient, $r$)  
+  + Categorical data (one and two variables)  
+    + Identifying levels of a categorical variable (`unique()`)  
+    + Frequency and proportion tables (`table(data$variable)`, `prop.table(table(data$variable))`)  
+    + Univariate, sorted bar charts (`barplot(sorted_table_name)`)  
+    + Contingency tables (`table(row, column)`)  
+    + Row/Column Percents (`prop.table(tbl_name, margin = )`)  
+    + Bivariate bar charts (`barplot(table_name, beside=TRUE, col=c(2,3,4,...))`)  
+    
+  
+We will be using data collected about students in 2 Portuguese schools including their final grade. The goal is to answer research questions using statistical methods to see what factors significantly impact final grades.  
+
+## Load the Libraries and Data
+
+```{r, echo=FALSE, include=FALSE}
+
+## Don't worry about this line of code. It is included for purposes of rendering the document
+
+library(rio)
+library(tidyverse)
+library(mosaic)
+library(car)
+
+student <- read_csv('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/student_data_kaggle.csv')
+
+```
+
+# Review the data
+
+Take some time to familiarize yourself with the data.  Check the [website](https://www.kaggle.com/datasets/whenamancodes/student-performance) familiarize yourself with the study.  See what the columns are.  
+
+
+## Response Variable:  Univariate Summary Statistics
+
+__QUESTION__:  What is the primary response variable?  (What are we trying to predict?)  
+__ANSWER__:  
+
+__QUESTION__:  Create a table of summary statistics for the primary response variable:  
+
+```{r}
+
+favstats()
+
+```
+
+__QUESTION__:  What is the mean grade?  
+__ANSWER__:  
+
+__QUESTION__:  What is the median grade?  
+__ANSWER__:  
+
+__QUESTION__:  What is the Standard Deviation of grades?  
+__ANSWER__:  
+
+__QUESTION__:  Interpret in words what the standard deviation means?  
+__ANSWER__:  
+
+__QUESTION__:  What is the 75th percentile of grades?  
+__ANSWER__:  
+
+__QUESTION__:  Interpret in words what the 75th percentile means?  
+__ANSWER__:  
+
+
+Create a histogram of the primary response variable:  
+
+```{r}
+
+
+
+```
+
+__QUESTION__:  What is the basic shape of the distribution?  
+__ANSWER__:  
+
+__QUESTION__:  What anomalies, if any, do you notice?  
+__ANSWER__:  
+
+
+
+## Explanatory Variables
+
+List 5 potential explanatory variables and whether or not they are *quantitative* or *categorical*:  
+
+  1.  
+
+  2.  
+ 
+  3.  
+
+  4.  
+
+  5.  
+
+
+### Relationship Between 2 Variables
+
+#### Categorical X
+
+Create a table of summary statistics for final grade for each level of `sex`:  
+
+```{r}
+
+favstats(~)
+
+```
+
+__QUESTION__:  What is the mean grade for females?  
+__ANSWER__:  
+
+
+Create a side-by-side boxplot of final grades for each level of father's job (`Fjob`):
+
+```{r}
+
+
+```
+
+__QUESTION__:  Which level of Fjob tends to have students with the highest final grades?  
+__ANSWER__:  
+
+
+
+Create a side-by-side boxplot of final grades for each level of mother's job (`Mjob`):
+
+```{r}
+
+
+```
+
+__QUESTION__:  Which level of Mjob appears to have students with the highest final grades?  
+__ANSWER__:  
+
+
+
+
+#### Quantitative X
+
+Create a scatter plot looking at the relationship between mid-term grade (G2) and final grade (G3):
+
+```{r}
+
+
+```
+
+__QUESTION__:  Does the relationship appear roughly linear?  
+__ANSWER__:  
+
+__QUESTION__:  What anomalies, if any, do you notice?  
+__ANSWER__:  
+
+__QUESTION__:  Based on the scatter plot, guess the correlation coefficient:    
+__ANSWER__:  
+
+Calculate the correlation coefficient, r: 
+
+```{r}
+
+```
+
+
+
+
+
+## Categorical Descriptive Statistics
+
+
+__QUESTION__:  What are the levels of mother's profession?  
+
+```{r}
+
+unique()
+
+```
+
+
+Create a proportion table table for `sex`
+
+```{r}
+
+
+```
+
+__QUESTION__:  What percent of respondents are female?  
+__ANSWER__:  
+
+
+
+Create a sorted bar chart of the counts of reasons students chose their school (`reason`):  
+
+```{r}
+
+
+
+```
+
+__QUESTION__:  Which reason appears to be the most popular?  
+__ANSWER__:  
+
+
+
+Create and name a contingency table looking at the relationship between gender and whether or not they are in a romantic relationship.  
+
+Then calculate the proportion for each gender in a romantic relationship (should sum to 1 for each gender):  
+
+```{r}
+
+
+```
+
+
+__QUESTION__:  What percent of female respondents are in a romantic relationship?  
+__ANSWER__:  
+
+
+__QUESTION__:  What percent of male respondents are in a romantic relationship?  
+__ANSWER__:  
+
+
+Create a bar chart that groups bars based on `sex` and colors the bars by `romantic`.
+
+```{r}
+
+# Start by naming the table
+tbl_relationship <- table()
+
+
+
+```
+
+
+
+
+
+

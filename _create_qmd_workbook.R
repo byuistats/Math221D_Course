@@ -1,7 +1,4 @@
-library(fs)
-library(yaml)
-library(stringr)
-library(zip)
+pacman::p_load(fs, yaml, stringr, zip)
 
 # Function to add YAML features and remove download button
 add_yaml_features_and_remove_button <- function(file_path, new_features) {
@@ -44,7 +41,7 @@ add_yaml_features_and_remove_button <- function(file_path, new_features) {
 }
 
 
-source_dirs <- c("./1-Data_Literacy", "./2-Tidy_Data", "./3-Stat_Fundamentals", "./4-Statistical_Tests_Part1", "5-Statistical_Tests_Part2", "./6-Semester_Project")
+source_dirs <- c("./1-Getting_Started", "./2-Descriptive_Statistics", "./3-Data_Wrangling_Visualization", "./7-Semester_Project")
 
 yaml_to_add <- list(
   format = list(

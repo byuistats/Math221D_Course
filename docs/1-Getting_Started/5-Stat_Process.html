@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>The Statistical Process – Math221 Notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d19aaff0441ffe538fac26ca03b5f350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e89341beafc15df96e2eb459d0c9c10f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Math221 Notebook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-getting-started" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Getting Started</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-getting-started">    
+        <li>
+    <a class="dropdown-item" href="../1-Getting_Started/1-Course_Intro.html">
+ <span class="dropdown-text">Course Introduction</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../1-Getting_Started/2-Installing_R.html">
+ <span class="dropdown-text">Installing R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../1-Getting_Started/3-Introducing_R.html">
+ <span class="dropdown-text">Introducing R - Class Notes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../1-Getting_Started/4-Installing_Packages.html">
+ <span class="dropdown-text">Installing Libraries</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../1-Getting_Started/5-Stat_Process.html">
+ <span class="dropdown-text">The Statistical Process</span></a>
+  </li>  
+        <li class="dropdown-header">Response and Explanatory Variables</li>
+        <li>
+    <a class="dropdown-item" href="../1-Getting_Started/6-Response_and_Explanatory_Variables.html">
+ <span class="dropdown-text">Response and Explanatory Variables</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-descriptive-statistics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Descriptive Statistics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-descriptive-statistics">    
+        <li class="dropdown-header">Descriptive Statistics</li>
+        <li>
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/1-Numerical_Quantitative_Data_Summaries.html">
+ <span class="dropdown-text">Numerical Quantitative Data Summaries</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.html">
+ <span class="dropdown-text">Graphical Quantitative Data Summaries</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html">
+ <span class="dropdown-text">Quantitative Data Summaries - Multiple Groups</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.html">
+ <span class="dropdown-text">Summarizing Bivariate Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.html">
+ <span class="dropdown-text">Introducing Categorical Data Summaries</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.html">
+ <span class="dropdown-text">Bivariate Categorical Data Summaries</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/7-AA_Descriptive_Statistics.html">
+ <span class="dropdown-text">Application Activity: Descriptive Statistics</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-wrangling" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Wrangling</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling">    
+        <li class="dropdown-header">Into the Tidyverse</li>
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/06-GGPlot_Intro.html">
+ <span class="dropdown-text">A Better Way to Plot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/01-Wrangling_Basics.html">
+ <span class="dropdown-text">Intro to Data Wrangling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/02-Filter.html">
+ <span class="dropdown-text">filter()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/03-Select.html">
+ <span class="dropdown-text">select()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.html">
+ <span class="dropdown-text">Into The Tidyverse</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.html">
+ <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
+  </li>  
+        <li class="dropdown-header">Bonus Material</li>
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
+ <span class="dropdown-text">Level up your Tidy-ness</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">
+ <span class="dropdown-text">mutate()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
+ <span class="dropdown-text">group_by() + summarise()</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-statistical-inference" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Statistical Inference</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-inference">    
+        <li class="dropdown-header">Foundations</li>
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/01-Intro_to_Probability.html">
+ <span class="dropdown-text">Intro to Probability (Reading)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/02-The_Normal_Distribution_Textbook.html">
+ <span class="dropdown-text">The Normal Distribution (Reading)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/03-Normal_Distribution_Workbook.html">
+ <span class="dropdown-text">The Normal Distribution (Class)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/04-Normal_Probability_Practice.html">
+ <span class="dropdown-text">Normal Probability Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/Sampling_Distributions_CLT_LLN_Reading.html">
+ <span class="dropdown-text">Distribution of Sample Means</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/06-Central_Limit_Theorem_Practice.html">
+ <span class="dropdown-text">Central Limit Theorem Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/07-Prob_Calculations_for_Means.html">
+ <span class="dropdown-text">Probability Calculations for Means (Reading)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/08-CLT_Normal_Prob_for_Means.html">
+ <span class="dropdown-text">Probability Calculations for Means (Class)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/09-Prob_Calculations_for_Means_Practice.html">
+ <span class="dropdown-text">Probability Calculations for Means (Practice)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/10-Assessing_Normality.html">
+ <span class="dropdown-text">Assessing Normality</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-statistical-tests---part-1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Statistical Tests - Part 1</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-1">    
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/002-Introduction_to_Inference.html">
+ <span class="dropdown-text">Introduction to Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/002-Confidence_Intervals.html">
+ <span class="dropdown-text">Introduction to Confidence Intervals</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
+ <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
+ <span class="dropdown-text">Don’t Take it Personally</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/03-Paired_ttest.html">
+ <span class="dropdown-text">Paired T-test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/04-Paired_ttest_Practice.html">
+ <span class="dropdown-text">Paired T-Test Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
+ <span class="dropdown-text">2-Sample Independent T-test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/06-Independent_2_sample_ttest_practice.html">
+ <span class="dropdown-text">2-Sample Independent T-Test Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/07-ANOVA_Intro.html">
+ <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/08-ANOVA_Practice.html">
+ <span class="dropdown-text">ANOVA Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
+ <span class="dropdown-text">Comparing Means Activity</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-statistical-tests---part-2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Statistical Tests - Part 2</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-2">    
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
+ <span class="dropdown-text">Introducing the Bivariate Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
+ <span class="dropdown-text">Simple Linear Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/03-Regression_Practice.html">
+ <span class="dropdown-text">Regression Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/Introducing_Categorical_Data_Analysis.html">
+ <span class="dropdown-text">Introducing Categorical Data Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/One_and_Two_Sample_Proportions.html">
+ <span class="dropdown-text">One and Two Sample Proportion Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.html">
+ <span class="dropdown-text">One and Two Sample Proportion Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
+ <span class="dropdown-text">Chi-square Test of Independence</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/12-Chi_Square_Practice.html">
+ <span class="dropdown-text">Chi-Square Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
+ <span class="dropdown-text">Who Shot First?</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-semester-project" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Semester Project</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-semester-project">    
+        <li>
+    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Instructions.html">
+ <span class="dropdown-text">Semester Project Instructions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Template.html">
+ <span class="dropdown-text">Semester Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../7-Semester_Project/Importing_Data.html">
+ <span class="dropdown-text">Downloading Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-help" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">R Help</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-r-help">    
+        <li>
+    <a class="dropdown-item" href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">
+ <span class="dropdown-text">Tidyverse Cheat Sheet</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://r4ds.had.co.nz/transform.html">
+ <span class="dropdown-text">R for Data Science</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://byuistats.github.io/Statistics-Notebook/RCommands.html">
+ <span class="dropdown-text">Statistics Notebook - R Commands</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lesson-outcomes" id="toc-lesson-outcomes" class="nav-link active" data-scroll-target="#lesson-outcomes">Lesson Outcomes</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#the-statistical-process-and-daniels-experiment" id="toc-the-statistical-process-and-daniels-experiment" class="nav-link" data-scroll-target="#the-statistical-process-and-daniels-experiment">The Statistical Process and Daniel’s Experiment</a></li>
+  <li><a href="#step-1-design-the-study" id="toc-step-1-design-the-study" class="nav-link" data-scroll-target="#step-1-design-the-study">Step 1: Design the Study</a></li>
+  <li><a href="#step-2-collect-data" id="toc-step-2-collect-data" class="nav-link" data-scroll-target="#step-2-collect-data">Step 2: Collect Data</a></li>
+  <li><a href="#step-3-describe-the-data" id="toc-step-3-describe-the-data" class="nav-link" data-scroll-target="#step-3-describe-the-data">Step 3: Describe the Data</a></li>
+  <li><a href="#step-4-make-inferences" id="toc-step-4-make-inferences" class="nav-link" data-scroll-target="#step-4-make-inferences">Step 4: Make Inferences</a></li>
+  <li><a href="#step-5-take-action" id="toc-step-5-take-action" class="nav-link" data-scroll-target="#step-5-take-action">Step 5: Take Action</a></li>
+  <li><a href="#summary-of-the-statistical-process" id="toc-summary-of-the-statistical-process" class="nav-link" data-scroll-target="#summary-of-the-statistical-process">Summary of the Statistical Process</a></li>
+  </ul></li>
+  <li><a href="#design-of-studies" id="toc-design-of-studies" class="nav-link" data-scroll-target="#design-of-studies">Design of Studies</a>
+  <ul class="collapse">
+  <li><a href="#designed-experiments" id="toc-designed-experiments" class="nav-link" data-scroll-target="#designed-experiments">Designed Experiments</a></li>
+  <li><a href="#observational-studies" id="toc-observational-studies" class="nav-link" data-scroll-target="#observational-studies">Observational Studies</a></li>
+  <li><a href="#sampling-methods" id="toc-sampling-methods" class="nav-link" data-scroll-target="#sampling-methods">Sampling Methods</a></li>
+  <li><a href="#types-of-data" id="toc-types-of-data" class="nav-link" data-scroll-target="#types-of-data">Types of Data</a></li>
+  </ul></li>
+  <li><a href="#making-inferences-hypothesis-testing" id="toc-making-inferences-hypothesis-testing" class="nav-link" data-scroll-target="#making-inferences-hypothesis-testing">Making Inferences: Hypothesis Testing</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Statistical Process</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="lesson-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="lesson-outcomes">Lesson Outcomes</h2>
+<p>By the end of this lesson, you should be able to:</p>
+<ol type="1">
+<li>Describe the five steps of the Statistical Process</li>
+<li>Distinguish between an observational study and an experiment</li>
+<li>Differentiate between a population and a sample</li>
+<li>Describe each of the following sampling schemes:
+<ol type="a">
+<li>Simple random sampling</li>
+<li>Stratified sampling</li>
+<li>Systematic sampling</li>
+<li>Cluster sampling</li>
+<li>Convenience sampling</li>
+</ol></li>
+<li>Explain the importance of using random sampling</li>
+<li>Distinguish between a quantitative and a categorical variable</li>
+</ol>
+<p><br></p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Statistics are used in every aspect of society. Every statistical analysis follows a pattern we will call the Statistical Process. This process will be introduced in this lesson and will be used throughout the course.</p>
+<p><br></p>
+<section id="the-statistical-process-and-daniels-experiment" class="level3">
+<h3 class="anchored" data-anchor-id="the-statistical-process-and-daniels-experiment">The Statistical Process and Daniel’s Experiment</h3>
+<div style="float:right;width:40%;padding-left:15px;padding-top:15px;padding-bottom:15px;padding-right:15px">
+<p><img src="../Images/Daniel-flickr-1763911528.png" class="img-fluid"></p>
+<div style="font-size:.7em;">
+Stained-glass depiction of Daniel’s deliverance from the lions’ den. Found in the old Dominican priory church at Hawkesyard in Staffordshire, England. (Photo credit: Fr Lawrence Lew, O.P. Used by permission.)
+</div>
+<!-- Used with written permission email 4/24/12 -->
+</div>
+<p>The Old Testament prophet Daniel planned one of the earliest recorded scientific research studies. We will use his example to illustrate the following five steps of The Statistical Process.</p>
+<p>The following icons can help you remember these steps. Notice that each icon has a letter and an image to help you remember the five steps of the Statistical Process.</p>
+<div style="clear:both">
+
+</div>
+<p><br></p>
+<center>
+<img src="..\Images/StepsAll.png" class="img-fluid">
+</center>
+<div style="padding-left:20px;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">The Statistical Process</th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><img src="../Images/Step1.png" class="img-fluid"></td>
+<td style="text-align: left;"><strong>D</strong>esign the Study</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><img src="../Images/Step2.png" class="img-fluid"></td>
+<td style="text-align: left;"><strong>C</strong>ollect the Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><img src="../Images/Step3.png" class="img-fluid"></td>
+<td style="text-align: left;"><strong>D</strong>escribe the Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><img src="../Images/Step4.png" class="img-fluid"></td>
+<td style="text-align: left;"><strong>M</strong>ake Inference</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><img src="../Images/Step5.png" class="img-fluid"></td>
+<td style="text-align: left;"><strong>T</strong>ake Action</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+</section>
+<section id="step-1-design-the-study" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-design-the-study">Step 1: Design the Study</h3>
+<p><img src="../Images/Step1.png" class="img-fluid"></p>
+<p>An important step in scientific inquiry or problem solving can be to state a research question such as:</p>
+<ul>
+<li>Will internet advertising increase a company’s revenue?</li>
+<li>Does expressing gratitude increase a person’s satisfaction with life in general?</li>
+<li>Does a newly developed vaccine prevent the spread of disease?</li>
+</ul>
+<p>Researchers also investigate the background of the situation. What have other people discovered about this situation? How can we find the answer to the research question? What do we need to do? What is the <strong>population</strong> (or total collection of all individuals) under consideration? What kind of data need to be collected?</p>
+<p>Before collecting data, researchers make a hypothesis, or an educated guess about the outcome of their research. A hypothesis is a statement such as the following:</p>
+<ul>
+<li>Using internet advertising will increase the company’s sales revenue.</li>
+<li>People who express gratitude will be more satisfied with life than those who do not.</li>
+<li>A newly-developed vaccine is effective at preventing tuberculosis.</li>
+</ul>
+<p><br></p>
+<section id="daniels-experiment" class="level4">
+<h4 class="anchored" data-anchor-id="daniels-experiment">Daniel’s Experiment</h4>
+<p>After taking Israel captive, Babylon’s King Nebuchadnezzar asked his chief officer to bring Israelite children who were well favoured, and skillful in all wisdom, and cunning in knowledge, and understanding science to stand in the king’s palaces <a href="https://www.churchofjesuschrist.org/scriptures/ot/dan/1.4?lang=eng#3" target="_blank">(Daniel 1:4)</a>. To aid their preparation, Nebuchadnezzar planned to feed them his meat and wine for three years <a href="https://www.churchofjesuschrist.org/scriptures/ot/dan/1.5?lang=eng#4" target="_blank">(Daniel 1:5)</a>.</p>
+<p>Daniel did not want to defile himself by partaking of the king’s meat and wine. He asked permission to eat pulse[^1] and drink water instead. His supervisor, Melzar, was afraid to displease the king. He thought that after eating pulse and water, the selected Israelites would look worse than their peers, and he would be punished <a href="https://www.churchofjesuschrist.org/scriptures/ot/dan/1.8-10?lang=eng#3" target="_blank">(Daniel 1:8-10)</a>.</p>
+<p>With an understanding of the background of the situation, Daniel proposed an experiment. He said, Prove thy servants, I beseech thee, ten days; and let them give us pulse to eat, and water to drink. Then let our countenances be looked upon before thee, and the countenance of the children that eat of the portion of the king’s meat: and as thou seest, deal with thy servants <a href="https://www.churchofjesuschrist.org/scriptures/ot/dan/1.12-13?lang=eng#3" target="_blank">(Daniel 1:12-13.)</a>. In short, Daniel’s implied research question can be stated as: Will those who eat pulse and drink water appear healthier than those who eat the king’s meat and drink his wine? Melzar agreed to the experiment.</p>
+<div class="QuestionsHeading">
+Answer the following question:
+</div>
+<div class="Questions">
+<ol type="1">
+<li>What is Daniel’s hypothesis?</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+Daniel’s hypothesis is that the Israelite children who eat pulse and drink water will appear healthier in just ten days, compared to those who eat the king’s meat and drink his wine.
+</details>
+</div>
+<p><br></p>
+</section>
+</section>
+<section id="step-2-collect-data" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-collect-data">Step 2: Collect Data</h3>
+<p><img src="../Images/Step2.png" class="img-fluid"></p>
+<p>When designing a study, much attention is given to the process by which data are observed. When examining data, it is also important to understand the data collection procedures. A <strong>sample</strong> is a subset (a portion) of a population. How is this sample obtained? How are the observations made?</p>
+<p>Daniel’s study design required that data be collected at the end of 10 days. Melzar would compare the appearances of two groups of people: (1) Israelites who ate pulse and drank water versus (2) Israelites who ate the king’s meat and drank his wine.</p>
+<p><br></p>
+</section>
+<section id="step-3-describe-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-describe-the-data">Step 3: Describe the Data</h3>
+<p><img src="../Images/Step3.png" class="img-fluid"></p>
+<p>When we describe data, we use any tools appropriate to the situation. This can include creating graphs or calculating summary statistics to help understand or visualize the data.</p>
+<p>For Daniel’s experiment, the data are described in <a href="https://www.churchofjesuschrist.org/scriptures/ot/dan/1.15?lang=eng#3" target="_blank">Daniel 1:15</a>: And at the end of ten days [the] countenances [of those who ate pulse] appeared fairer and fatter in flesh than all the children which did eat the portion of the king’s meat.</p>
+<p><br></p>
+</section>
+<section id="step-4-make-inferences" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-make-inferences">Step 4: Make Inferences</h3>
+<p><img src="../Images/Step4.png" class="img-fluid"></p>
+<p>Inference is the process of using the information contained in a sample from a population to make a general statement (i.e.&nbsp;to infer something) about the entire population. Later in the course we will learn techniques that make this type of analysis possible.</p>
+<p>Melzar made an inference. Based on the results of the sample, he determined that (in general) those who eat pulse and drink water will be healthier than those who eat the king’s meat and drink his wine <a href="https://www.churchofjesuschrist.org/scriptures/ot/dan/1.15-16?lang=eng#3" target="_blank">Daniel 1:15-16</a>.</p>
+<p><br></p>
+</section>
+<section id="step-5-take-action" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-take-action">Step 5: Take Action</h3>
+<p><img src="../Images/Step5.png" class="img-fluid"></p>
+<p>The goal of a statistical analysis is to determine which action to take in a particular situation. Actions can include many things: launching an internet ad campaign (or not), expressing gratitude (or not), getting vaccinated (or not), etc.</p>
+<p>Melzar took action as described in <a href="https://www.churchofjesuschrist.org/scriptures/ot/dan/1.16?lang=eng#3" target="_blank">Daniel 1:16</a>: Thus Melzar took away the portion of their meat, and the wine that they should drink; and gave [all the Israelite children] pulse.</p>
+<p>Was the experiment a success?</p>
+<p>“Now at the end of the days that the king had said he should bring them in… the king communed with them; and among them all was found none like Daniel, Hananiah, Mishael, and Azariah And in all matters of wisdom and understanding, that the king enquired of them, he found them ten times better than all the magicians and astrologers that were in all his realm” <a href="https://www.churchofjesuschrist.org/scriptures/ot/dan/1.18-20?lang=eng#3" target="_blank">Daniel 1:18-20</a>.</p>
+<p><br></p>
+</section>
+<section id="summary-of-the-statistical-process" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-the-statistical-process">Summary of the Statistical Process</h3>
+<div class="myemphasis">
+<p>Daniel’s experience can also help you learn the Statistical Process. Look at the first letter of each of the steps in the Statistical Process. You can use the phrase “Daniel Can Discern More Truth” to help you to help you remember the five steps in the Statistical Process.</p>
+<center>
+<p><strong>The Statistical Process</strong></p>
+<p><img src="../Images/StepsAll.png" class="img-fluid"></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>&nbsp;</th>
+<th>Pneumonic</th>
+<th>Actual Process Step</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Step 1:</td>
+<td><strong>D</strong>aniel</td>
+<td><strong>D</strong>esign the study</td>
+</tr>
+<tr class="even">
+<td>Step 2:</td>
+<td><strong>C</strong>an</td>
+<td><strong>C</strong>ollect data</td>
+</tr>
+<tr class="odd">
+<td>Step 3:</td>
+<td><strong>D</strong>iscern</td>
+<td><strong>D</strong>escribe the data</td>
+</tr>
+<tr class="even">
+<td>Step 4:</td>
+<td><strong>M</strong>ore</td>
+<td><strong>M</strong>ake inferences</td>
+</tr>
+<tr class="odd">
+<td>Step 5:</td>
+<td><strong>T</strong>ruth</td>
+<td><strong>T</strong>ake action</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>The Statistical Process will be used throughout the course. Take time to memorize the five steps.</p>
+</div>
+<p><br></p>
+<p>The study designed by the Old Testament prophet Daniel provides an ancient example of a designed experiment. Daniel’s experiment included two groups of people: those who had the experimental treatment eating pulse and drinking water (called the <strong>treatment</strong> group) and those who ate the standard food the king’s meat (called the <strong>control</strong> group.) The treatment group receives the experimental procedure. The control group is used for comparison.</p>
+<div class="QuestionsHeading">
+Answer the following question:
+</div>
+<div class="Questions">
+<ol start="2" type="1">
+<li>Why was it important that Daniel’s experiment included a control group?</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+If there was no control group, then there would be no way to compare the effect of the diets (the treatments). Having a control group allows a researcher to see the effect of not taking any action. For Daniel, the control group (who ate the king’s meat and drank his wine) provided a basis for comparing the effect of the new treatment (i.e.&nbsp;eating pulse and drinking water.)
+</details>
+<p>&nbsp;</p>
+</div>
+<p><br></p>
+</section>
+</section>
+<section id="design-of-studies" class="level2">
+<h2 class="anchored" data-anchor-id="design-of-studies">Design of Studies</h2>
+<p>Most research projects can be classified into one of two basic categories: observational studies or designed experiments. In an <strong>experiment</strong>, researchers control (to some extent) the conditions under which measurements are made. In an <strong>observational study</strong>, researchers simply observe what happens, without controlling the conditions under which measurements are made. Both types of study follow the five steps of the Statistical Process.</p>
+<p><br></p>
+<section id="designed-experiments" class="level3">
+<h3 class="anchored" data-anchor-id="designed-experiments">Designed Experiments</h3>
+<p>In a <strong>designed experiment</strong>, researchers manipulate the conditions that the participants experience. They often do this by randomly assigning subjects to one of two groups, a “treatment” group (sometimes called the <em>experimental group</em>) and a “control” group (though this could be second treatment group instead of a control group). The experiment is typically conducted by applying some kind of treatment to the subjects in the treatment group and observing the effect of the treatment. Those in the control group do not receive the treatment and are also observed. In this way researchers can determine the effects of the treatment by comparing the treatment group results to the control group results. The following example illustrates the use of these two groups.</p>
+<p><strong>Jonas Salk’s First Polio Vaccine Trial</strong></p>
+<p>Beginning around 1916 and through the 1950s, a mysterious plague attacked infants and children. Symptoms included excruciating muscle pain and a stiff neck. This illness, which became known as poliomyelitis or simply “polio,” left children disfigured, paralyzed, and sometimes even dead.</p>
+<p>While working as a researcher at the University of Pittsburgh School of Medicine, Dr.&nbsp;Jonas E. Salk developed a vaccine that might help prevent the spread of this disease. He conducted what has become one of the most famous designed experiments in history.</p>
+<p>This short video below provides a compelling summary of the famous Jonas Salk vaccine experiment. As you watch, notice each of the 5 steps of a statistical study in this study. <br> <iframe id="kaltura_player_1579210457" src="https://cdnapisec.kaltura.com/p/1157612/sp/115761200/embedIframeJs/uiconf_id/9828732/partner_id/1157612?iframeembed=true&amp;playerId=kaltura_player_1579210457&amp;entry_id=0_49lsphky" width="400" height="285" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe></p>
+<p>As explained in the video, in the first Salk trial almost 1.1 million children participated in the study. Even though the sample size was large, flaws in the study design rendered the results useless.</p>
+<p>Undaunted, Dr.&nbsp;Salk fixed the problems with the design and enrolled hundreds of thousands of additional children for the second phase of his study. In all, over 1.8 million infants and children participated in this experiment, making it the largest drug trial to date.</p>
+<p><img src="../Images/Step1.png" class="img-fluid"></p>
+<p><strong>Step 1: Design the study.</strong></p>
+<p>The participants in a study are commonly called subjects. Sometimes subjects are called experimental units or simply units. In the Salk trials, the children who participated were the subjects.</p>
+<p>Subjects (the children) were randomly assigned to one of two groups. The first group was given the experimental vaccine, the treatment. The treatment is the new or experimental condition that is imposed on the subjects. The subjects who receive the treatment make up the treatment group.</p>
+<p>The second group was given a control or placebo. In this study, the control was an injection that looked just like the vaccine, but contained a harmless saline solution. The control group or placebo group is made up of the subjects assigned to receive the control.</p>
+<p>This study was double blind. Neither the children’s parents nor their doctors knew whether a particular child received the treatment or the control. Both parties were blinded to this information.</p>
+<p>Because the children were assigned to the groups randomly, the two groups should be similar. If the vaccine is not effective, the number of future cases of polio should be about the same in each group. However, if Salk’s vaccine helped to prevent the spread of polio, then fewer cases should occur in the vaccinated group.</p>
+<div class="QuestionsHeading">
+Answer the following questions:
+</div>
+<div class="Questions">
+<ol start="3" type="1">
+<li>Some children can be identified as having a higher risk of developing polio. Would it have been better if they were assigned to the treatment group so they could get the vaccine?</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<ul>
+<li><p>No.&nbsp;The two groups need to be as similar as possible. Specifically, the people in the treatment group need to have the same potential (on average) of contracting polio as the people in the control group. If we put the people who are at a higher risk of developing polio in the treatment group, we run the risk of having more people in the treatment group getting polio simply because they are more likely to get it, <em>whether they are vaccinated or not.</em> Likewise, we might have fewer people in the control group getting polio just because they are less likely to get it, <em>whether they are vaccinated or not.</em></p></li>
+<li><p>These two effects would create a bias against the vaccine, by making the vaccine look like it doesn’t work, or doesn’t work as well as it does. It might also make it appear that people who aren’t vaccinated stay healthy and the vaccine is not needed. There is even a chance that people will conclude that the vaccine actually gives people polio.</p></li>
+<li><p>Randomly assigning subjects to the two groups tends to yield groups with similar characteristics—in this example, similar potential for contracting polio. Randomly assigning subjects to groups therefore defends us against problems like those mentioned in the previous paragraph.</p></li>
+</ul>
+</details>
+<ol start="4" type="1">
+<li>Why is it important for the subject and those who assess the health of the subject to be unaware of whether or not that child received the vaccine?</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<ul>
+<li><p><strong>Subjects:</strong> Suppose a subject in the study thinks they’re being treated. It has been documented that subjects with such knowledge tend to show improvement whether they are receiving the treatment or not. To see why, consider how you might feel and act if you were told you had been vaccinated. You might have a more hopeful outlook, leading to healthier living habits such as better hygiene and nutrition. Such changes would tend to reduce your chance of contracting polio <em>whether you’ve received the vaccine or not.</em> This might make the vaccine look like it works better than it does. It also might make the vaccine look like it works, even if it doesn’t.</p></li>
+<li><p>Now suppose subjects in the control group know they are not being treated. This can also change the way they feel and act, in ways that can make them more likely to contract polio than they would be if they weren’t in the study. This could make it look like the incidence of polio among unvaccinated persons is higher than it is, again making the vaccine look like it works better than it does.</p></li>
+<li><p>To reduce bias caused by such errors, subjects should not know to which group they are assigned.</p></li>
+<li><p><strong>Researchers:</strong> Suppose a researcher assessing the health of a subject is told that the subject is in the control group. It has been documented that in such a case, the researcher is more likely to record that the subject has symptoms <em>even if the subject is not actually in the control group.</em> This makes it look like unvaccinated persons are more likely to get polio than they really are, which makes it look like the vaccine works better than it does.</p></li>
+<li><p>There are other effects of knowing to which group the subject belongs, such as doctors treating or advising the patient differently than they would without such knowledge. Such differences can make it harder to tell whether the vaccine works, and how well.</p></li>
+<li><p>To reduce bias caused by such effects, those assessing the health of the subjects should not be told to which group the subject belongs.</p></li>
+</ul>
+</details>
+</div>
+<p><img src="../Images/Step2.png" class="img-fluid"></p>
+<p><strong>Step 2: Collect data.</strong></p>
+<p>The researchers followed up with each child to determine if they contracted polio. They recorded the number of children in each group that developed polio during the study period. Not all of Salk’s experiments were double-blind. Here is a summary of the results from the regions where a double-blind study was conducted (Francis et al., 1955; Brownlee, 1955):</p>
+<table class="table">
+<caption>
+<strong>Children Who Developed Polio</strong>
+</caption>
+<thead>
+<tr class="header">
+<th>
+</th>
+<th>
+<p>
+Yes
+</p>
+</th>
+<th>
+<p>
+No
+</p>
+</th>
+<th>
+<p>
+Total
+</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>
+<p>
+Treatment Group
+</p>
+</td>
+<td>
+<p>
+57
+</p>
+</td>
+<td>
+<p>
+200,688
+</p>
+</td>
+<td>
+<p>
+200,745
+</p>
+</td>
+</tr>
+<tr class="even">
+<td>
+<p>
+Placebo Group
+</p>
+</td>
+<td>
+<p>
+142
+</p>
+</td>
+<td>
+<p>
+201,087
+</p>
+</td>
+<td>
+<p>
+201,229
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="../Images/Step3.png" class="img-fluid"></p>
+<p><strong>Step 3: Describe the data.</strong></p>
+<p>One way to summarize the data is to compute the proportion of children in each group that developed polio. The proportion of children in the treatment group that developed polio during the study period is:</p>
+<p><span class="math display">\[ \frac{57}{200745} = 0.000~283~9 \]</span></p>
+<div class="QuestionsHeading">
+Answer the following questions:
+</div>
+<div class="Questions">
+<ol start="5" type="1">
+<li>Calculate the proportion of children in the placebo group that developed polio during the study period.</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<center>
+<span class="math display">\[ \displaystyle{\frac{142}{201229} = 0.000~705~7} \]</span>
+</center>
+</details>
+<ol start="6" type="1">
+<li>Compare the two proportions. What do you observe?</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<ul>
+<li>The proportion of children in the placebo group that develop polio during the study period was more than double the proportion of children in the treatment group that developed polio during the study period. That suggests that the treatment is effective in reducing the proportion of children that will develop polio.</li>
+</ul>
+</details>
+</div>
+<p><img src="../Images/Step4.png" class="img-fluid"></p>
+<p><strong>Step 4: Make inferences</strong></p>
+<p>Careful statistical analysis of the records suggested that this difference was so great that it was attributable to the vaccine and not to chance. Assuming that the vaccine had no effect, the probability that the difference in the proportions between the two groups would be at least as extreme as the difference Dr.&nbsp;Salk observed was very low: 0.00000000093. Because this probability is so small, it is highly unlikely that these results are due to chance.</p>
+<p><br></p>
+<p><img src="../Images/Step5.png" class="img-fluid"></p>
+<p><strong>Step 5: Take action</strong></p>
+<p>Once it was clear that the vaccine was effective, children who were unvaccinated or had received the placebo were given Salk’s vaccine. Since 1954, there has been a marked decrease in the number of polio cases worldwide (Offit, 2005). Public health researchers are striving to eradicate this disease entirely.</p>
+<p><br></p>
+</section>
+<section id="observational-studies" class="level3">
+<h3 class="anchored" data-anchor-id="observational-studies">Observational Studies</h3>
+<p>In an <strong>observational study</strong> researchers observe the responses of the individuals, without controlling the conditions experienced by the individuals. Therefore, they do not assign the participants to treatment or control groups.</p>
+<p>Observational studies commonly occur in business settings. One example is a financial audit. The purpose of a financial audit is to assess the accuracy of a company’s financial business practices. ImmunAvance Ltd., a non-government health care organization, hired the Accounting Office at Global Optimization Unlimited to perform an independent audit of their financial practices. ImmunAvance provides inoculation and other preventative health care services in rural African communities.</p>
+<center>
+<img src="../Images/StepsAll.png" class="img-fluid">
+</center>
+</section>
+<section id="sampling-methods" class="level3">
+<h3 class="anchored" data-anchor-id="sampling-methods">Sampling Methods</h3>
+<p><strong>Step 2: Collect data</strong></p>
+<p>There are several procedures that can be used to select a random sample from a population, including: <strong>simple random</strong> sampling (SRS), <strong>stratified</strong> sampling, <strong>systematic</strong> sampling, <strong>cluster</strong> sampling, , and <strong>convenience</strong> sampling (or, haphazard sampling). These are examples of <strong>sampling methods</strong>.</p>
+<section id="random-sampling-methods" class="level4">
+<h4 class="anchored" data-anchor-id="random-sampling-methods">Random Sampling Methods</h4>
+<p>A <strong>simple random sample (SRS)</strong> is the best method for obtaining a sample from a population. This method allows each possible sample of a certain size an equal chance at being selected as the chosen sample. A difficulty of this method is that a list of all of the items in the population must be accessible before the sample is taken. Often, we obtain a SRS by allowing a computer to randomly select a certain number of items from the full list of the population. It is akin to the idea of putting all of the names into a hat, shaking them up, and randomly drawing out a few.</p>
+<div style="padding-left:30px;">
+<p>For example, suppose there are 18,000 students in the population of a certain university. School officials can use a computer to randomly choose values between 1 and 18,000 to identify which students are to be selected to complete a survey. In Excel, the command to obtain a random number between 1 and 18,000 is <em>sample(1:18000, 1)</em>. A simple random sample can be obtained any time there is a complete list of the items to be sampled and they are all accessible. All the statistical procedures in this course assume that simple random sampling has been used. But in practice, the SRS is often difficult (or impossible) to implement.</p>
+</div>
+<p>A <strong>stratified sample</strong> is when the items to be sampled are organized in groups of homogeneous (similar) items called strata, then a simple random sample is drawn from each of these strata. Stratified sampling works well when the items are similar within each stratum and tend to differ from one stratum to another. We often use stratified sampling in order to obtain a sample in such a way that we can make comparisons between each of the groups (or strata).</p>
+<div style="padding-left:30px;">
+<p>For example, in obtaining a sample of students from a university, school officials could define the strata as: (1) freshman, (2) sophomores, (3) juniors, and (4) seniors. A simple random sample could then be obtained from each of these strata. This would ensure that each class rank of students was represented in the sample. It would also allow the school officials to see how freshman, sophomore, junior, and senior level students compared in their answers to a survey.</p>
+</div>
+<p>A <strong>systematic sample</strong> is where every <span class="math inline">\(k^{\text{th}}\)</span> item in the population is selected to be part of the sample, beginning at a random starting point. Systematic sampling works well when the items are in a random, but sequential ordering. If the items are not arranged randomly, a systematic sample can miss important parts of the population.</p>
+<div style="padding-left:30px;">
+<p>For example, consider a fast food company where every 10th customer is given the opportunity to compete a satisfaction survey in exchange for a small discount coupon towards their next purchase. An airport security line also often implements a procedure where every 100th (or so) person is selected for a more “in depth” security examination. Similarly, factories that use assembly lines will pull say every 500th item from the assembly line to perform a quality control check on the item.</p>
+</div>
+<p>A <strong>cluster sample</strong> (sometimes called a <em>block sample</em>) consists of taking all items in one or more randomly selected clusters, or blocks. When the variation from one block to another is relatively low, compared to the variation within the block, cluster sampling is a reasonable way to get a sample.</p>
+<div style="padding-left:30px;">
+<p>For example, ecologists could draw grids on a map of a forest to create small sampling regions, or sampling clusters. Then, by randomly selecting one or two of these clusters from the map, the ecologists could go to the areas marked on the map and document information on the health of every tree they find in those clusters. This is a practical way to get a sample in this case because the ecologists only have to go to a few areas of the forest, but are still able to obtain a random sample of all of the trees in the forest. It is also worth noting that the ecologists would not be interesting in comparing the health of the trees from the selected clusters to each other like they would in a stratified sample. Instead, they are just looking for a feasible way to obtain a single random sample of all of the trees in the forest, but want to keep their traveling time to a minimum while collecting their sample. In contrast, to obtain a simple random sample of trees from the same forest, the ecologists would first have to go out and number every tree in the entire forest. Then they would need to use a computer to randomly pick which trees to collect data on. Finally, they would then have to go back to the forest and collect data on the selected trees from across the entire forest. Such an approach just isn’t feasible in practice, so we are willing to settle instead for the cluster sample.</p>
+</div>
+<p>A <strong>convenience sample</strong> involves selecting items that are relatively easy to obtain and does not use random selection to choose the sample. This method of sampling can be assumed to always bring bias into the sample.</p>
+<div style="padding-left:30px;">
+<p>As an example of a convenience sample, an auditor could haphazardly select items from a filing cabinet. This is frequently done when a quick and simple sample is needed, but may not yield a sample that represents the population well. When possible, convenience samples <strong>should be avoided.</strong></p>
+</div>
+<p><br></p>
+</section>
+</section>
+<section id="types-of-data" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-data">Types of Data</h3>
+<p>Whenever we collect data, we record information about the things we are studying. There are two basic types of data that can be recorded: quantitative measurements and categorical labels. We will call these types of data simply “quantitative” or “categorical” variables. We use the word “variable” to denote the idea that the quantitative measurements or categorical labels can vary from person to person, or item to item, in our study.</p>
+<p><strong>Quantitative variables</strong> provide measurement information on each individual (or item) in our study. They represent things that are numeric in nature; things that are measured. They often include units of measurement along with the quantitative value of the measurement. For example, the heights of children measured in inches (or centimeters), or their weight measured in pounds (or kilograms). For a quantitative variable, it makes sense to apply arithmetic operations to the data (such as adding values together, computing the average of the values, or comparing two values). If one child weighs 30 pounds (13.61 kg) and a second child weights 60 pounds (27.22) then the second child is twice as heavy as the first.</p>
+<p><strong>Categorical variables</strong> allow us to place each individual (or item) into to a specific category. Categorical variables are labels, and it does not make sense to do arithmetic with them. For example the gender of a newborn child, the ethnicity of an individual, a person’s job title, the brand of phone they own, or the area code of a telephone number, etc are all categorical variables. Notice that although a telephone number consists of numbers, it is not a quantitative measurement. It does not make sense to double someone’s phone number, to average phone numbers together, or to say one phone number is half the size of another. But the area code of the phone number gives information about the region where the phone number was first initiated, which is categorical information.</p>
+<p><strong>NOTE</strong>: We often refer to the list of distinct category names in a categorical variable as “levels”.</p>
+<p>Returning to the sample accounts receivable record, we find this data to have information on both types of variables.</p>
+<div class="QuestionsHeading">
+Answer the following question:
+</div>
+<div class="Questions">
+<ol start="7" type="1">
+<li>For each of the following variables taken from this accounts receivable record, indicate whether the variable is quantitative or categorical.</li>
+</ol>
+<ol type="a">
+<li>Terms</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<ul>
+<li>The variable “Terms” is categorical. It classifies the invoice by the terms of payment for that invoice.</li>
+</ul>
+</details>
+<ol start="2" type="a">
+<li>Account number</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<ul>
+<li>The variable “Account number” is categorical. Even though the account number is given a number, it is actually functioning as a label. It is not something that is counted or measured. It does not make sense to do arithmetic operations (like adding 1 or multiplying by 2) to the account number.</li>
+</ul>
+</details>
+<ol start="3" type="a">
+<li>Invoice amount</li>
+</ol>
+<details>
+<summary>
+Solution
+</summary>
+<ul>
+<li>The variable “Invoice amount” is quantitative. It makes sense to do arithmetic operations to this value. For example, the amount of Invoice 5745 (which is $990.00) is somewhat more than twice as much as that of Invoice 2378 (which is $478.00).</li>
+</ul>
+</details>
+<p>&nbsp;</p>
+</div>
+<p><img src="../Images/Step3.png" class="img-fluid"></p>
+<p><strong>Step 3: Describe the data</strong></p>
+<p>After auditors collect a sample and compile the data, they review the evidence. Auditors may use graphs or compute numbers (such as the average) to summarize the evidence they found.</p>
+<p><img src="../Images/Step4.png" class="img-fluid"></p>
+<p><br></p>
+</section>
+</section>
+<section id="making-inferences-hypothesis-testing" class="level2">
+<h2 class="anchored" data-anchor-id="making-inferences-hypothesis-testing">Making Inferences: Hypothesis Testing</h2>
+<p><strong>Step 4: Make inferences</strong></p>
+<p>Auditors use the information drawn from the sample to form an opinion about the population. Whenever sample data is used to infer a characteristic of a population, it is called making an inference. <strong>Inferential statistics</strong> represents a collection of methods that can be used to make inference about a population. Based on the documents reviewed, the auditors assess if the company is conducting its business in a proper manner.</p>
+<p>When conducting an audit, the implicit assumption is that transactions have been posted properly. As auditors sample the company’s records, they are looking to see if everything is consistent with the original assumption that all transactions have been posted properly. It would only be in the case of discovering suspicious activity or evidence of fraudulent reporting that the auditors would change their belief about the company and accuse the company ImmunAvance of falsely reporting on their financial statements.</p>
+<center>
+“Piled Higher and Deeper” by Jorge Cham <br> <img src="../Images/Phd121911s.png" class="img-fluid">
+</center>
+<p>There is a formal procedure for determining when <em>enough</em> evidence has been found to make accusations of fraud. Later this semester, after we establish some foundational principles of statistics, we will study these statistical methods in depth. Of course, these methods can be used for much more than just determining if a company has reported their financial statements fraudulently. So we will look at many different ways these statistical procedures can be applied to research and industry.</p>
+<p>For ImmunAvance’s audit, based on the samples of financial statements that had been selected, while there were a few errors in the documents, there was not evidence dramatic enough to claim that the company had been fraudulent. So the company passed their audit.</p>
+<p><img src="../Images/Step5.png" class="img-fluid"></p>
+<p><strong>Step 5: Take Action</strong></p>
+<p>The auditors prepare a report in which they give their opinion on the status of the company’s current operations.</p>
+<p>Since there was not enough evidence to suggest that ImmunAvance’s financial statements were fraudulent, the auditor’s conclusion is that no adjustment is necessary. The few observed discrepancies were apparently just the result of random chance errors, not the deliberate falsefying of information.</p>
+<p><br></p>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<div class="SummaryHeading">
+Remember…
+</div>
+<div class="Summary">
+<ol type="1">
+<li><p>The <strong>Statistical Process</strong> has five steps: <strong>D</strong>esign the study, <strong>C</strong>ollect the data, <strong>D</strong>escribe the data, <strong>M</strong>ake inference, <strong>T</strong>ake action. These can be remembered by the pneumonic “<strong>D</strong>aniel <strong>C</strong>an <strong>D</strong>iscern <strong>M</strong>ore <strong>T</strong>ruth.”</p></li>
+<li><p>In a <strong>designed experiment</strong>, researchers control the conditions of the study, typically with a treatment group and a control group, and then observe how the treatments impact the subjects. In a purely <strong>observational study</strong>, researchers don’t control the conditions but only observe what happens.</p></li>
+<li><p>The <strong>population</strong> is the entire group of all possible subjects that could be included in the study. The <strong>sample</strong> is the subset of the population that is actually selected to participate in the study. Statistics use information from the sample to make claims about what is true about the entire population.</p></li>
+<li><p>There are many sampling methods used to obtain a <strong>sample</strong> from a <strong>population</strong>. The best methods use some sort of randomness (like pulling names out of a hat, rolling dice, flipping coins, or using a computer generated list of random numbers) to avoid bias.</p></li>
+</ol>
+<ol type="a">
+<li>A <strong>simple random sample (SRS)</strong> is a random sample taken from the full list of the population. This is the least biased (best) sampling method, but can only be implemented when a full list of the population is accessible.</li>
+<li>A <strong>stratified sample</strong> divides the population into similar groups and then takes an <strong>SRS</strong> from each group. The main reason to use this sampling method is when a study wants to compare and contrast certain groups within the population, say to compare freshman, sophomores, juniors, and seniors at a university.</li>
+<li>A <strong>systematic sample</strong> samples every <strong><em>k</em></strong><sup>th</sup> item in the population, beginning at a random starting point. This is best applied when subjects are lined up in some way, like at a fast food restaurant, an airport security line, or an assembly line in a factory.</li>
+<li>A <strong>cluster sample</strong> consists of taking all items in one or more randomly selected clusters, or blocks. For example, ecologists could draw grids on a map of a forest to create small sampling regions and then sample all trees they find in a few randomly selected regions. Note that this differs from a stratified sample in that only a few sub-groups (clusters) are selected and that all subjects within the selected clusters are included in the study.</li>
+<li>A <strong>convenience sample</strong> involves selecting items that are relatively easy to obtain and <em>does not use random selection</em> to choose the sample. This method of sampling can be assumed to <em>always bring bias</em> into the sample.</li>
+</ol>
+<ol start="5" type="1">
+<li><p>The best way to avoid bias when trying to make conclusions about a population from a single sample of that population is to use a random sampling method to obtain the sample.</p></li>
+<li><p><strong>Quantitative variables</strong> represent things that are numeric in nature, such as the value of a car or the number of students in a classroom. <strong>Categorical variables</strong> represent non-numerical data that can only be considered as labels, such as colors or brands of shoes.</p></li>
+</ol>
+</div>
+<p><br></p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Bible Dictionary, “Pulse” at <a href="http://churchofjesuschrist.org/scriptures/bd/pulse" target="_blank">http://churchofjesuschrist.org/scriptures/bd/pulse</a>.</p>
+<p>Brownlee, K. A. (1955). Statistics of the 1954 polio vaccine trials. Journal of the American Statistical Association, 50(272), pp.&nbsp;1005-1013.</p>
+<p>Francis, T., et. al.&nbsp;(1955). An evaluation of the 1954 poliomyletis vaccine trials. American Journal of Public Health and the Nation’s Health, 45(5)</p>
+<p>Offit, P. A. (2005). Why are pharmaceutical companies gradually abandoning vaccines? Health Affairs, 24(3), 622-630. <a href="https://www.healthaffairs.org/doi/full/10.1377/hlthaff.24.3.622">doi:10.1377/hlthaff.24.3.622</a></p>
+<p><br></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,40 @@
+---
+title: Testing...Testing...1...2...3
+author: '[your name]'
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+
+# Introduction
+
+This type of file is called a "markdown" file.  Markdown is like Microsoft Word but much more powerful.  This file is made specifically for creating fancy reports and has a file type `.qmd` meaning "Quarto Markdown".  
+
+You will become very familiar with these files throughout the semester.  For now, it's only necessary to download this file, save it in a sensible folder on your computer or OneDrive, and "run" it. 
+
+Clicking on the "Render" button above will create an `.html` document that should open up in your default browser.  This `.html` document will be created and saved in the same location as this `TestingTesting.qmd` document.  
+
+__NOTE__:  If this document is in your `Downloads` folder, that is also where the `html` file will appear.  
+
+As you see, we can make section headers and type regular text.  But the power of `.qmd` files is that we can code inside these documents and present our output directly within the document.
+
+Click "Render" to test to see if your software is set up.  
+
+When coding, we have to tell the computer when we're writing text and when we expect it to compile code.  Below is an example of a "code chunk" that creates a made up graph.
+
+You do __not__ have to understand this right now.  We're only testing that R and RStudio are set up correctly.  
+
+# Installing Libraries
+
+Even though we have R and RStudio installed, we can load additional toolboxes that have more tools than R provides by itself.  
+
+
+```{r}
+x <- seq(0,10, length = 100)
+y <- 2+exp(x)
+
+plot(x,y, type = "l", lwd=2, col="darkblue", main = "Exponential Function")
+
+```
+

@@ -1,0 +1,145 @@
+---
+title: "Course Introduction"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Lesson Outcomes
+
+By the end of this lesson, you should be able to:
+
+1.  Explain the course policies
+2.  Access course resources (course outline, lesson schedule, preparation activities, reading quizzes, homework assignments, assessments, etc.)
+3.  Communicate with the instructor and group members
+4.  Access statistical analysis software tools for class quizzes, assignments, and exams
+5.  Apply principles of the gospel of Jesus Christ in this class
+6.  Apply the three rules of probability for different probability scenarios
+
+<br>
+
+## Welcome to the Course!
+
+In this course, you will explore important connections between the academic discipline of Statistics and the world around us. By pondering these ideas, your understanding of statistics will increase, as will your knowledge and testimony of the restored Gospel of Jesus Christ. 
+
+This course has been designed to help you slowly build up a knowledge base of ideas and skills. Not all of these ideas and skills will come easily. It takes a lot of work and practice before some things will even start to make sense, so you should not be surprised to find that it may take you a little time to comprehend these ideas. Just __be patient__. Once you're far enough into the course, the ideas will start to come together, and you will see how much progress you have really made. You will understand what this course is all about, and you will be glad you persisted in your efforts to learn.
+
+<br>
+
+## Course Description
+
+This course covers the following topics as they are applied to Statistics: graphical representations of data, measures of center and spread; elementary probability; sampling distributions; correlation and regression; statistical inference involving means, proportions, and contingency tables.
+
+<br>
+
+### Course Learning Outcomes
+
+In this course, we will:
+
+1.  Summarize data numerically and graphically using R programming language
+2.  Make decisions regarding situations with inherent randomness
+3.  Apply probability distributions to investigate questions
+4.  Employ confidence intervals in various situations
+5.  Implement tests of diverse hypotheses
+6.  Communicate the results of statistical analyses to relevant audiences
+
+<br>
+
+### How the Outcomes will Be Assessed
+
+While you may not be tested on everything you learn in this course, the instructor will be assessing your mastery of the **Course Learning Outcomes**. You may also be asked to create reports with quality visualizations and analyze new datasets. At times, the instructor may assess your performance of a skill, or the instructor may assess products you create using particular skills. In addition, the instructor may engage in personal communication with you to determine how well you understand the course content.
+
+<br>
+
+### Keys to Success
+
+#### Five Principles of the Learning Model
+
+You will experience much deeper learning if you follow the Five Principles of the [BYU-Idaho Learning Model](http://www.byui.edu/LearningModel){target="_blank"}
+
+-   **Exercise Faith**: Exercise faith in the Lord Jesus Christ as a principle of action and power.
+-   **Learn by the Holy Ghost**: Understand that true teaching is done by and with the Holy Ghost.
+-   **Lay Hold on the Word of God**: Lay hold of the word of God.
+-   **Act for Themselves**: Act for yourself and accept responsibility for learning and teaching.
+-   **Love, Serve, and Teach One Another**: Love, serve, and teach other students in your classes.
+
+#### Three Process Steps of the Learning Model
+
+You will learn more in less time if you follow the Three Process Steps of the [BYU-Idaho Learning Model](http://www.byui.edu/LearningModel){target="_blank"}
+
+-   **Prepare**: This involves (a) spiritual preparation, (b) individual preparation, and (c) group preparation.
+-   **Teach One Another**: You should (a) be on time, (b) pray together, and (c) actively engage with other students.
+-   **Ponder/Prove**: You should (a) ponder what you have learned, (b) record your learning, and (c) pursue unanswered questions and discuss what you learn with others.
+
+If you feel confused or have questions about anything in the lesson, take immediate action (Exercise Faith; Act for Themselves) and talk with your classmates, the teaching assistant, or the instructor (Love, Serve, and Teach One Another).
+
+**Teach One Another**
+
+At BYU-Idaho, an "A" student will demonstrate "diligent application of Learning Model principles, including initiative in serving other students" (BYU-Idaho Catalog). In this class, you will have the opportunity to work with other students.
+
+Doctrine and Covenants 84:106 states, "And if any man among you be strong in the Spirit, let him take with him him that is weak, that he may be edified in all meekness, that he may become strong also." In the spirit of this revelation, you will have the opportunity to help others in the class when you have developed an understanding of a principle. Likewise, you will be able to receive help from others (peers, tutors, TA, and your instructor) when you are still working to understand concepts.
+
+In a spirit of love and service, please reach out to others. You are not graded on a curve. If someone else does well, it does not adversely affect you. Research has shown that students who help other students to understand the material gain a much deeper grasp on the concepts of the course. Please take opportunities to help your peers succeed.
+
+<br>
+
+## Course Structure
+
+This course consists of lessons presented in a topical order in which concepts and skills learned in the earlier lessons provide the requisite knowledge to succeed in later lessons. If the general order of the lessons doesn’t make sense at first, don’t worry. It will all come together in the end, and you’ll see the reasoning behind why the lessons have been presented in this particular order.
+
+Your main goal as a student will be to complete all of the learning activities within each lesson by their due dates every week. These activities follow a consistent weekly schedule, and it will be up to you to make sure that you keep on pace with all your assignments. These weekly activities may include the following:
+
+-   Reading assigned texts or viewing presentations before class
+-   Completing the practice problems
+-   Participating in group discussions and assignments with other class members
+-   Writing papers and/or developing presentations
+-   Participating in meetings with the instructor, teaching assistants, and other students
+
+A typical lesson will include a preparation reading, in-class and practice application activites.  Because not all material is equally challenging, some lessons will span multiple days.  But expect to cover 2-3 lessons a week.  
+
+While a general flow of reading, classwork and practice will be the typical lesson flow, there may be adjustments to the schedule from time to time.  Changes are typically due to adjusting the pace of the material to support student learning. Please be flexible as we adapt the pace to suit the needs of the class.  
+
+You should create a study schedule that will keep you on pace throughout the semester. This is a rigorous course with a lot of subject matter to cover, and it can be extremely difficult to recover if you fall too far behind in your work. So, please make every effort to study on a regular basis and get your work turned in on time.
+
+## Course Materials
+
+This course has been designed with the student in mind. Every effort has been made to provide a high quality experience at the lowest possible cost.
+
+**Textbook**
+
+To keep costs as low as possible for students and their families, no physical textbook is required for this class. The readings for this course are provided on this website and will continue to be available to you after the course is completed. Please report any problems with the textbook (links not working, loading slowly, inability to view images, etc.) to your instructor. 
+
+You may also download all coursework at the main page.  This includes all class notes, practice problems and application activities.  
+
+**Computer Equipment**
+
+You will need a laptop with the ability to install software locally.  
+
+__NOTE__: It is *possible* to complete this course with a Chromebook or other cloud-based device, but it adds significant complications and stress. For those who are new to programming and statistics, this can be the difference between success and failure in the class. 
+
+## Course Resources
+
+**Peer Support**
+
+Your experience in this course will be enhanced as you work with other students to learn and grow together.
+
+**Help Desk**
+
+The BYU-Idaho Help Desk has been established to help students with technological problems related to approved course software. You can access the Help Desk at any time in three ways: - Walk-in: The Help Desk is located in room 322 of the McKay Library - Call in: 208-496-1411 (toll free) - Email: helpdesk\@byui.edu Additional information is available at the Help Desk web page: http://www.byui.edu/helpdesk/
+
+When you have technical problems with I-Learn, you should first try contacting the Help Desk before you contact your instructor. They are connected with the IT support staff who can resolve problems with I-Learn. Please take a moment now to look at the [Help Desk web page](http://www.byui.edu/helpdesk/). That way, if a problem does arise later on in the course, you will know where to go for help.
+
+**Tutoring Center**
+
+The BYU-Idaho Study Skills/Tutoring Center is a powerful resource for students who would like a little extra help with a course. The Tutoring Center is located in the McKay Library in room 272. This is in the east wing of the second floor.
+
+The Tutoring Center provides many services to help students succeed: - Individual tutors - Walk-in tutoring in the Math Study Center (McKay 266 & 270) - Virtual tutoring
+
+Please take 5 minutes to explore the [Study Skills/Tutoring Center web site](https://www.byui.edu/academic-support-centers/math/math-help-for-on-campus-students).
+
+**Faculty Support**
+
+Your instructor is committed to your success. If you have any needs or concerns, please contact your instructor for help. If you feel yourself getting behind or struggling, __talk to your teacher right away__. If caught in time, a small problem can be addressed quickly before it grows.
+
+<br>

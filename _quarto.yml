@@ -13,94 +13,94 @@ website:
     background: primary
     search: true
     left:
-    - text: "Unit 1"
+    - text: "Getting Started"
       menu:
-        - text: "Data Literacy"
-        - href: ./1-Data_Literacy/1-Course_Intro.qmd
-        - href: ./1-Data_Literacy/2-Installing_R.qmd
-        - text: "Describing Data - Shape and Center"
-          href: ./1-Data_Literacy/3-Shape_and_Center.qmd
-        - text: "Describing Data - Spread"
-          href: ./1-Data_Literacy/4-Measures_of_Spread.qmd
-        - text: "Introducing R"
-          href: ./1-Data_Literacy/5-Introducing_R_Class_Notes.qmd
-        - text: "Summarizing Data - One Group"
-          href: ./1-Data_Literacy/6-Summarizing_Data_One_Group_Practice.qmd
-        - text: "Summarzing Data - Multiple Groups"
-          href: ./1-Data_Literacy/7-Summarizing_Data_Multiple_Groups.qmd
-        - href: ./1-Data_Literacy/8-AA_Data_Summaries.qmd
-        
-    - text:  "Unit 2"
+        - href: ./1-Getting_Started/1-Course_Intro.qmd
+        - href: ./1-Getting_Started/2-Installing_R.qmd
+        - href: ./1-Getting_Started/3-Introducing_R.qmd
+        - href: ./1-Getting_Started/4-Installing_Packages.qmd
+        - href: ./1-Getting_Started/5-Stat_Process.qmd
+        - text: "Response and Explanatory Variables"
+        - href: ./1-Getting_Started/6-Response_and_Explanatory_Variables.qmd
+
+    - text: "Descriptive Statistics"
+      menu:
+         - text: "Descriptive Statistics"
+         - href: ./2-Descriptive_Statistics/1-Numerical_Quantitative_Data_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.qmd
+         - href: ./2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/7-AA_Descriptive_Statistics.qmd
+
+
+    - text:  "Data Wrangling"
       menu:
         - text: "Into the Tidyverse"
-        - href: ./2-Tidy_Data/01-Wrangling_Basics.qmd
-        - href: ./2-Tidy_Data/02-Filter.qmd
-        - href: ./2-Tidy_Data/03-Select.qmd
-        #- href: ./2-Tidy_Data/04-Tidyverse_Fundamentals.qmd
-        - href: ./2-Tidy_Data/05-Exploring_New_Data_with_Tidyverse.qmd
-        - href: ./2-Tidy_Data/06-GGPlot_Intro.qmd
-        - href: ./2-Tidy_Data/07-Unit1_Unit2_AA.qmd
+        - text: "A Better Way to Plot"
+          href: ./3-Data_Wrangling_Visualization/06-GGPlot_Intro.qmd
+        - href: ./3-Data_Wrangling_Visualization/01-Wrangling_Basics.qmd
+        - href: ./3-Data_Wrangling_Visualization/02-Filter.qmd
+        - href: ./3-Data_Wrangling_Visualization/03-Select.qmd
+        - href: ./3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.qmd
+        - href: ./3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.qmd
         - text: "Bonus Material"
-        - href: ./2-Tidy_Data/Bonus_More_Tidy_Practice.qmd
-        - href: ./2-Tidy_Data/Bonus_Mutate.qmd
-        - href: ./2-Tidy_Data/Bonus_GroupBy_Summarise.qmd
+        - href: ./3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.qmd
+        - href: ./3-Data_Wrangling_Visualization/Bonus_Mutate.qmd
+        - href: ./3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.qmd
 
-        
-    - text: "Unit 3"
+    - text: "Statistical Inference"
       menu:
-         - text: "Fundamentals of Statistics"
-         - href: ./1-Data_Literacy/Stat_Process.qmd
-         - href: ./1-Data_Literacy/Statistical_Process_Practice.qmd
-         - href: ./3-Stat_Fundamentals/01-Intro_to_Probability.qmd
-         - href: ./3-Stat_Fundamentals/02-The_Normal_Distribution_Textbook.qmd
-         - href: ./3-Stat_Fundamentals/03-Normal_Distribution_Workbook.qmd
-         - href: ./3-Stat_Fundamentals/04-Normal_Probability_Practice.qmd
-         - href: ./3-Stat_Fundamentals/Sampling_Distributions_CLT_LLN_Reading.qmd
+         - text: "Foundations"
+         - href: ./4-Foundations_Statistical_Inference/01-Intro_to_Probability.qmd
+         - href: ./4-Foundations_Statistical_Inference/02-The_Normal_Distribution_Textbook.qmd
+         - href: ./4-Foundations_Statistical_Inference/03-Normal_Distribution_Workbook.qmd
+         - href: ./4-Foundations_Statistical_Inference/04-Normal_Probability_Practice.qmd
+         - href: ./4-Foundations_Statistical_Inference/Sampling_Distributions_CLT_LLN_Reading.qmd
          - text: "Central Limit Theorem Practice"
-           href: ./3-Stat_Fundamentals/06-Central_Limit_Theorem_Practice.qmd
-         - href: ./3-Stat_Fundamentals/07-Prob_Calculations_for_Means.qmd
-         - href: ./3-Stat_Fundamentals/08-CLT_Normal_Prob_for_Means.qmd
-         - href: ./3-Stat_Fundamentals/09-Prob_Calculations_for_Means_Practice.qmd
-         - href: ./3-Stat_Fundamentals/10-Assessing_Normality.qmd
+           href: ./4-Foundations_Statistical_Inference/06-Central_Limit_Theorem_Practice.qmd
+         - href: ./4-Foundations_Statistical_Inference/07-Prob_Calculations_for_Means.qmd
+         - href: ./4-Foundations_Statistical_Inference/08-CLT_Normal_Prob_for_Means.qmd
+         - href: ./4-Foundations_Statistical_Inference/09-Prob_Calculations_for_Means_Practice.qmd
+         - href: ./4-Foundations_Statistical_Inference/10-Assessing_Normality.qmd        
   
-    - text: "Unit 4"
+    - text: "Statistical Tests - Part 1"
       menu:
-        - text: "Statistical Tests - Part 1"
         - text: "Introduction to Hypothesis Testing"
-          href: ./4-Statistical_Tests_Part1/002-Introduction_to_Inference.qmd
+          href: ./5-Statistical_Tests_Part1/002-Introduction_to_Inference.qmd
         - text: "Introduction to Confidence Intervals"
-          href: ./4-Statistical_Tests_Part1/002-Confidence_Intervals.qmd
-        - href: ./4-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.qmd
-        - href: ./4-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.qmd
+          href: ./5-Statistical_Tests_Part1/002-Confidence_Intervals.qmd
+        - href: ./5-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.qmd
+        - href: ./5-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.qmd
         - text: "Paired T-test"
-          href: ./4-Statistical_Tests_Part1/03-Paired_ttest.qmd
-        - href: ./4-Statistical_Tests_Part1/04-Paired_ttest_Practice.qmd
+          href: ./5-Statistical_Tests_Part1/03-Paired_ttest.qmd
+        - href: ./5-Statistical_Tests_Part1/04-Paired_ttest_Practice.qmd
         - text: "2-Sample Independent T-test"
-          href: ./4-Statistical_Tests_Part1/05-Independent_2_sample_ttest.qmd
-        - href: ./4-Statistical_Tests_Part1/06-Independent_2_sample_ttest_practice.qmd
-        - href: ./4-Statistical_Tests_Part1/07-ANOVA_Intro.qmd
-        - href: ./4-Statistical_Tests_Part1/08-ANOVA_Practice.qmd
+          href: ./5-Statistical_Tests_Part1/05-Independent_2_sample_ttest.qmd
+        - href: ./5-Statistical_Tests_Part1/06-Independent_2_sample_ttest_practice.qmd
+        - href: ./5-Statistical_Tests_Part1/07-ANOVA_Intro.qmd
+        - href: ./5-Statistical_Tests_Part1/08-ANOVA_Practice.qmd
         - text: "Comparing Means Activity"
-          href: ./4-Statistical_Tests_Part1/09-AA_Unit4_Review.qmd
+          href: ./5-Statistical_Tests_Part1/09-AA_Unit4_Review.qmd
 
-    - text: "Unit 5"
+    - text: "Statistical Tests - Part 2"
       menu:
-        - text: "Statistical Tests - Part 2"
-        - href: ./5-Statistical_Tests_Part2/01-Bivariate_Data_Intro.qmd
-        - href: ./5-Statistical_Tests_Part2/02-Linear_Regression_Intro.qmd
-        - href: ./5-Statistical_Tests_Part2/03-Regression_Practice.qmd
-        - href: ./5-Statistical_Tests_Part2/Introducing_Categorical_Data_Analysis.qmd
-        - href: ./5-Statistical_Tests_Part2/One_and_Two_Sample_Proportions.qmd
-        - href: ./5-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.qmd
-        - href: ./5-Statistical_Tests_Part2/11-Chi_Square_Intro.qmd
-        - href: ./5-Statistical_Tests_Part2/12-Chi_Square_Practice.qmd
-        - href: ./5-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.qmd
+        - href: ./6-Statistical_Tests_Part2/01-Bivariate_Data_Intro.qmd
+        - href: ./6-Statistical_Tests_Part2/02-Linear_Regression_Intro.qmd
+        - href: ./6-Statistical_Tests_Part2/03-Regression_Practice.qmd
+        - href: ./6-Statistical_Tests_Part2/Introducing_Categorical_Data_Analysis.qmd
+        - href: ./6-Statistical_Tests_Part2/One_and_Two_Sample_Proportions.qmd
+        - href: ./6-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.qmd
+        - href: ./6-Statistical_Tests_Part2/11-Chi_Square_Intro.qmd
+        - href: ./6-Statistical_Tests_Part2/12-Chi_Square_Practice.qmd
+        - href: ./6-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.qmd
 
     - text: "Semester Project"
       menu:
-        - href: ./6-Semester_Project/Semester_Project_Instructions.qmd
-        - href: ./6-Semester_Project/Semester_Project_Template.qmd
-        - href: ./6-Semester_Project/Importing_Data.qmd
+        - href: ./7-Semester_Project/Semester_Project_Instructions.qmd
+        - href: ./7-Semester_Project/Semester_Project_Template.qmd
+        - href: ./7-Semester_Project/Importing_Data.qmd
 
     - text: "R Help"
       menu:
@@ -110,14 +110,6 @@ website:
           href: https://r4ds.had.co.nz/transform.html
         - text: "Statistics Notebook - R Commands"
           href: https://byuistats.github.io/Statistics-Notebook/RCommands.html
-        - href: ./1-Data_Literacy/2-Installing_R.qmd
-        - href: ./2-Tidy_Data/06-GGPlot_Intro.qmd
-        - href: ./2-Tidy_Data/01-Wrangling_Basics.qmd
-        - href: ./2-Tidy_Data/02-Filter.qmd
-        - href: ./2-Tidy_Data/03-Select.qmd
-        - href: ./2-Tidy_Data/Bonus_Mutate.qmd
-        - href: ./2-Tidy_Data/Bonus_GroupBy_Summarise.qmd
-        - href: ./6-Semester_Project/Importing_Data.qmd
 
 format:  
   html:

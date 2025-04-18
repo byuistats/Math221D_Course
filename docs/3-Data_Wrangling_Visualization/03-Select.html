@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BYU-Idaho Math 221: Introduction to Statistics in R – Math221 Notebook</title>
+<title>select() – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d19aaff0441ffe538fac26ca03b5f350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-e89341beafc15df96e2eb459d0c9c10f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d19aaff0441ffe538fac26ca03b5f350.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e89341beafc15df96e2eb459d0c9c10f.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -80,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Math221 Notebook</span>
     </a>
   </div>
@@ -96,28 +130,28 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-getting-started">    
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/1-Course_Intro.html">
+    <a class="dropdown-item" href="../1-Getting_Started/1-Course_Intro.html">
  <span class="dropdown-text">Course Introduction</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/2-Installing_R.html">
+    <a class="dropdown-item" href="../1-Getting_Started/2-Installing_R.html">
  <span class="dropdown-text">Installing R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/3-Introducing_R.html">
+    <a class="dropdown-item" href="../1-Getting_Started/3-Introducing_R.html">
  <span class="dropdown-text">Introducing R - Class Notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/4-Installing_Packages.html">
+    <a class="dropdown-item" href="../1-Getting_Started/4-Installing_Packages.html">
  <span class="dropdown-text">Installing Libraries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/5-Stat_Process.html">
+    <a class="dropdown-item" href="../1-Getting_Started/5-Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
         <li class="dropdown-header">Response and Explanatory Variables</li>
         <li>
-    <a class="dropdown-item" href="./1-Getting_Started/6-Response_and_Explanatory_Variables.html">
+    <a class="dropdown-item" href="../1-Getting_Started/6-Response_and_Explanatory_Variables.html">
  <span class="dropdown-text">Response and Explanatory Variables</span></a>
   </li>  
     </ul>
@@ -129,31 +163,31 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-descriptive-statistics">    
         <li class="dropdown-header">Descriptive Statistics</li>
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/1-Numerical_Quantitative_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/1-Numerical_Quantitative_Data_Summaries.html">
  <span class="dropdown-text">Numerical Quantitative Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.html">
  <span class="dropdown-text">Graphical Quantitative Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html">
  <span class="dropdown-text">Quantitative Data Summaries - Multiple Groups</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.html">
  <span class="dropdown-text">Summarizing Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.html">
  <span class="dropdown-text">Introducing Categorical Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.html">
  <span class="dropdown-text">Bivariate Categorical Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./2-Descriptive_Statistics/7-AA_Descriptive_Statistics.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/7-AA_Descriptive_Statistics.html">
  <span class="dropdown-text">Application Activity: Descriptive Statistics</span></a>
   </li>  
     </ul>
@@ -165,40 +199,40 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling">    
         <li class="dropdown-header">Into the Tidyverse</li>
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/06-GGPlot_Intro.html">
  <span class="dropdown-text">A Better Way to Plot</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/01-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/02-Filter.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/02-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/03-Select.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/03-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.html">
  <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
   </li>  
         <li class="dropdown-header">Bonus Material</li>
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/Bonus_Mutate.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">
  <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
  <span class="dropdown-text">group_by() + summarise()</span></a>
   </li>  
     </ul>
@@ -210,43 +244,43 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-inference">    
         <li class="dropdown-header">Foundations</li>
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/01-Intro_to_Probability.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/01-Intro_to_Probability.html">
  <span class="dropdown-text">Intro to Probability (Reading)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/02-The_Normal_Distribution_Textbook.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/02-The_Normal_Distribution_Textbook.html">
  <span class="dropdown-text">The Normal Distribution (Reading)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/03-Normal_Distribution_Workbook.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/03-Normal_Distribution_Workbook.html">
  <span class="dropdown-text">The Normal Distribution (Class)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/04-Normal_Probability_Practice.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/04-Normal_Probability_Practice.html">
  <span class="dropdown-text">Normal Probability Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/Sampling_Distributions_CLT_LLN_Reading.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/Sampling_Distributions_CLT_LLN_Reading.html">
  <span class="dropdown-text">Distribution of Sample Means</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/06-Central_Limit_Theorem_Practice.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/06-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/07-Prob_Calculations_for_Means.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/07-Prob_Calculations_for_Means.html">
  <span class="dropdown-text">Probability Calculations for Means (Reading)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/08-CLT_Normal_Prob_for_Means.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/08-CLT_Normal_Prob_for_Means.html">
  <span class="dropdown-text">Probability Calculations for Means (Class)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/09-Prob_Calculations_for_Means_Practice.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/09-Prob_Calculations_for_Means_Practice.html">
  <span class="dropdown-text">Probability Calculations for Means (Practice)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./4-Foundations_Statistical_Inference/10-Assessing_Normality.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/10-Assessing_Normality.html">
  <span class="dropdown-text">Assessing Normality</span></a>
   </li>  
     </ul>
@@ -257,47 +291,47 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-1">    
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/002-Introduction_to_Inference.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/002-Introduction_to_Inference.html">
  <span class="dropdown-text">Introduction to Hypothesis Testing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/002-Confidence_Intervals.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/002-Confidence_Intervals.html">
  <span class="dropdown-text">Introduction to Confidence Intervals</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.html">
  <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.html">
  <span class="dropdown-text">Don’t Take it Personally</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/03-Paired_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/03-Paired_ttest.html">
  <span class="dropdown-text">Paired T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/04-Paired_ttest_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/04-Paired_ttest_Practice.html">
  <span class="dropdown-text">Paired T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/05-Independent_2_sample_ttest.html">
  <span class="dropdown-text">2-Sample Independent T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/06-Independent_2_sample_ttest_practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/06-Independent_2_sample_ttest_practice.html">
  <span class="dropdown-text">2-Sample Independent T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/07-ANOVA_Intro.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/07-ANOVA_Intro.html">
  <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/08-ANOVA_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/08-ANOVA_Practice.html">
  <span class="dropdown-text">ANOVA Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./5-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/09-AA_Unit4_Review.html">
  <span class="dropdown-text">Comparing Means Activity</span></a>
   </li>  
     </ul>
@@ -308,39 +342,39 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests---part-2">    
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/01-Bivariate_Data_Intro.html">
  <span class="dropdown-text">Introducing the Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/02-Linear_Regression_Intro.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/03-Regression_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/03-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/Introducing_Categorical_Data_Analysis.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/Introducing_Categorical_Data_Analysis.html">
  <span class="dropdown-text">Introducing Categorical Data Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/One_and_Two_Sample_Proportions.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/One_and_Two_Sample_Proportions.html">
  <span class="dropdown-text">One and Two Sample Proportion Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.html">
  <span class="dropdown-text">One and Two Sample Proportion Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/11-Chi_Square_Intro.html">
  <span class="dropdown-text">Chi-square Test of Independence</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/12-Chi_Square_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/12-Chi_Square_Practice.html">
  <span class="dropdown-text">Chi-Square Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./6-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.html">
  <span class="dropdown-text">Who Shot First?</span></a>
   </li>  
     </ul>
@@ -351,15 +385,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-semester-project">    
         <li>
-    <a class="dropdown-item" href="./7-Semester_Project/Semester_Project_Instructions.html">
+    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Instructions.html">
  <span class="dropdown-text">Semester Project Instructions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./7-Semester_Project/Semester_Project_Template.html">
+    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Template.html">
  <span class="dropdown-text">Semester Project</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./7-Semester_Project/Importing_Data.html">
+    <a class="dropdown-item" href="../7-Semester_Project/Importing_Data.html">
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
     </ul>
@@ -400,11 +434,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#an-interactive-textbook" id="toc-an-interactive-textbook" class="nav-link active" data-scroll-target="#an-interactive-textbook">An Interactive Textbook</a>
-  <ul class="collapse">
-  <li><a href="#download-course-material" id="toc-download-course-material" class="nav-link" data-scroll-target="#download-course-material">Download Course Material</a></li>
-  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
-  </ul></li>
+  <li><a href="#selecting-columns" id="toc-selecting-columns" class="nav-link active" data-scroll-target="#selecting-columns">Selecting Columns</a></li>
   </ul>
 </nav>
     </div>
@@ -413,7 +443,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BYU-Idaho Math 221: Introduction to Statistics in R</h1>
+<h1 class="title">select()</h1>
 </div>
 
 
@@ -430,58 +460,72 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="an-interactive-textbook" class="level2">
-<h2 class="anchored" data-anchor-id="an-interactive-textbook">An Interactive Textbook</h2>
-<p>This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.</p>
-<p>Those who diligently work through these materials will be well prepared for their next Statistics or Data Science course.</p>
-<p>This book is designed to be a digital workbook. You can download the notes, practice problems and application activities which can be edited locally on your computer. Completed assignments will be submitted in Canvas as web-page reports.</p>
-<section id="download-course-material" class="level3">
-<h3 class="anchored" data-anchor-id="download-course-material">Download Course Material</h3>
-<p>To download the folder containing all of the exercises, notes and application activities by following these steps:</p>
+<section id="selecting-columns" class="level1">
+<h1>Selecting Columns</h1>
+<p>Consider the High School survey data with 60 columns and 312 respondents.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv'</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is likely that we are not interested in analyzing every column in this dataset. Many may even be useless. We can use the tidyverse function, <code>select()</code> to create a subset of the columns that we are primarily interested in.</p>
+<p>Recall that we can “pipe” the raw data into tidy functions using <code>%&gt;%</code>. Suppose we want to see if there are differences in reaction times (<code>Reaction_time</code>) for left-handed and right-handed students. We could create a more manageable dataset with only the columns of interest:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 312 × 2
+   Handed       Reaction_time
+   &lt;chr&gt;                &lt;dbl&gt;
+ 1 Left-Handed          0.349
+ 2 Right-Handed         0.358
+ 3 Right-Handed         0.447
+ 4 Right-Handed         0.438
+ 5 Left-Handed          0.542
+ 6 Right-Handed         0.428
+ 7 Ambidextrous         0.258
+ 8 Right-Handed         0.427
+ 9 Right-Handed         0.412
+10 Right-Handed         0.346
+# ℹ 302 more rows</code></pre>
+</div>
+</div>
+<div class="QuestionsHeading">
+Combining Tidy Functions
+</div>
+<div class="Questions">
 <ol type="1">
-<li>Create a class folder where you will save all your work throughout this semester. This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.</li>
-<li>Click on the link below to download the <code>.zip</code> file containing all contents of the course website:</li>
+<li>Click to see how to <a href="../3-Data_Wrangling_Visualization/02-Filter.html">filter</a> out Ambitextrous participants and reaction time outliers (reaction times less than 1 seconds):</li>
 </ol>
-<center>
-<a href="https://raw.github.com/byuistats/Math221D_Course/main/Student_Work.zip" class="button-download" download=""> Download Course Files </a>
-</center>
-<ol start="3" type="1">
-<li>Open the <code>.zip</code> file</li>
-<li>Save the <code>Student_Work</code> folder to your class folder created in step 1. This can typically be done by right clicking the folder then copying and pasting it into the new location.</li>
-</ol>
-<p>These files will be the basis of your coursework.</p>
-</section>
-<section id="how-to-use-this-book" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
-<p>Each unit contains:</p>
-<ul>
-<li>Preparation readings</li>
-<li>Practice problems</li>
-<li>Application Activities</li>
-<li>Assessments</li>
-</ul>
-<p><strong>Getting Started</strong> guides you through getting R and R-Studio set up, introduces the tools we will use for the class, and introduces basic statistical concepts to help get you started. We learn how to use R-Studio to make lovely reports that can be viewed in a web-browser. It’s a gentle enough introduction to enable even those who have never coded before to start working with R.</p>
-<p><strong>Descriptive Statistics</strong> introduces tools to help understand data. We review summary statistics and visualizations for quantitative and categorical data types and learn the basic skills to turn data into information.</p>
-<p><strong>Data Wrangling and Visualization</strong> takes a step further into dealing with messy data and creating better visualizations.</p>
-<p><strong>Foundations of Statistical Inference</strong> introduces the key concepts for using sample data to make generalized conclusions about a population. We cover probability, hypothesis testing, confidence intervals and other concepts necessary for making the leap from sample to population.</p>
-<p><strong>Statistical Tests - Part 1 and 2</strong> cover specific inferential statistics for different data types.</p>
-<p>The <strong>Semester Project</strong> is an opportunity for students to demonstrate the skills acquired during the course. You will be able to find and import data into R, clean the data, create top notch visualizations, perform appropriate statistical analysis and create a beautiful report.</p>
-<p>R Help provides additional resources for learning how to use R.</p>
-<section id="course-objectives" class="level4">
-<h4 class="anchored" data-anchor-id="course-objectives">Course Objectives</h4>
-<p>By the end of this semester, students will confidently be able to:</p>
-<ul>
-<li>Import data and apply basic data wrangling to moderately messy data</li>
-<li>Describe data with numerical and graphical summaries</li>
-<li>Make evidence-based decisions regarding situations with inherent randomness</li>
-<li>Investigate questions through the application of probability distributions</li>
-<li>Perform the appropriate statistical analysis based on specific data being analyzed including hypothesis tests and confidence intervals</li>
-<li>Create web-based reports to communicate the results of statistical analyses to relevant audiences</li>
-</ul>
+<details>
+<summary>
+Click to see
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Handed, Reaction_time)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(clean<span class="sc">$</span>Reaction_time <span class="sc">~</span> clean<span class="sc">$</span>Handed, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">ylab =</span> <span class="st">"Reaction Times"</span>, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">main =</span> <span class="st">"Distribution of Reaction times for </span><span class="sc">\n</span><span class="st"> Left and Right-hand Dominance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-Select_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Which hand dominance appears to have quicker reaction times?</p>
+</details>
+</div>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

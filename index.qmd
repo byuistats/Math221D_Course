@@ -33,27 +33,29 @@ To download the folder containing all of the exercises, notes and application ac
 
 These files will be the basis of your coursework.  
 
+There may be additional files to download throughout the semester.  You can save those to your 
+
 
 ### How to Use This Book
 
 Each unit contains:
 
-  * Background readings
-  * Class notes including example code
+  * Preparation readings
   * Practice problems
   * Application Activities
+  * Assessments
   
-Unit 1 introduces R and summarizing data.  It's a gentle enough introduction to enable even those who have never coded before to start working with R and begin creating lovely web-based reports.  
+**Getting Started** guides you through getting R and R-Studio set up, introduces the tools we will use for the class, and introduces basic statistical concepts to help get you started.  We learn how to use R-Studio to make lovely reports that can be viewed in a web-browser.  It's a gentle enough introduction to enable even those who have never coded before to start working with R.  
 
-Unit 2 expands on the R basics of Unit 1 and introduces the Tidyverse.  This is a powerful way to wrangle data and create even more beautiful data visualizations.    
+**Descriptive Statistics** introduces tools to help understand data.  We review summary statistics and visualizations for quantitative and categorical data types and learn the basic skills to turn data into information.  
 
-Unit 3 covers the fundamentals of statistics including elementary probability, the Normal Distribution, sampling distributions and the Central Limit Theorem.  
+**Data Wrangling and Visualization** takes a step further into dealing with messy data and creating better visualizations.  
 
-Unit 4 introduces hypothesis testing, confidence intervals and statistical inference for means.
+**Foundations of Statistical Inference** introduces the key concepts for using sample data to make generalized conclusions about a population. We cover probability, hypothesis testing, confidence intervals and other concepts necessary for making the leap from sample to population.  
 
-Unit 5 introduces hypothesis tests for regression and categorical data.
+**Statistical Tests - Part 1 and 2** cover specific inferential statistics for different data types.  
 
-The Semester Project is an opportunity for students to demonstrate the skills acquired during the course.  You will be able to find and import data into R, clean the data, create top notch visualizations, perform appropriate statistical analysis and create a beautiful report.
+The **Semester Project** is an opportunity for students to demonstrate the skills acquired during the course.  You will be able to find and import data into R, clean the data, create top notch visualizations, perform appropriate statistical analysis and create a beautiful report.
 
 R Help provides additional resources for learning how to use R.
 

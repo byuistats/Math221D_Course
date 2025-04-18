@@ -1,0 +1,77 @@
+---
+title: "Installing Libraries"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Introduction
+
+R has many built-in toolboxes.  R also has access to a vast array of toolboxes that we must install if we want to use them.  This is like going to the Home Depot to buy a specialized toolbox and then storing it in your garage.  We only have to "buy" it once. 
+
+We will be using 4 main libraries throughout the semester.  This code will walk you through how to install, load and use each of the libraries.    
+
+
+# Installing the Libraries
+
+To install a library, we use the `install.packages("")` command, where we specify the library we want in the quotes inside the parentheses.  
+
+This is something we only have to do once for each library.  The 4 main libraries we will use in the class are the `tidyverse`, `mosaic`, `rio`, and `car` libraries. 
+
+Run the code below by clicking the green arrow at the top right of the code chunk.
+
+You can also run individual lines inside of a code chunk by pressing:
+
+  * PC:  ctrl + Enter
+  * Mac: CMD + Enter
+
+```{r, eval=FALSE}
+
+install.packages("rio")
+install.packages("mosaic")
+install.packages("tidyverse")
+install.packages("car")
+
+```
+
+Again, the above code only needs to be executed once. It is like going to the Home Depot to purchas a tool box for specific purposes.  
+
+# Loading Libraries
+
+Once the toolboxes are "purchased" we still need to get them out of the tool shet when we need to use them.  This is something we have to do each time we open and use R Studio for a project.  
+
+We use the `library()` function in a code chunk and insert which library we want to use inside the parentheses:  
+
+```{r}
+library(rio)
+library(mosaic)
+library(tidyverse)
+library(car)
+```
+
+The above code chunk is something that will become very familiar as we will load these libraries in every activity.  
+
+Each of the above libraries has special tools for doing managing data, creating graphs, data summarization, etc. that we will learn as we go.  While we won't use all of them in each assignment, it is easier to get in the habit of loading them all for each activity.  
+
+  * `rio` is useful for loading in data of different types using a single function, `import()`
+  * `mosaic` has many data summarization tools
+  * `tidyverse` has a vast range of tools that make it easy to wrangle and visualize data
+  * `car` is a little more specific and is used in this class to do one specific type of chart later in the semester.  
+
+
+__NOTE__:  While you only have to install libraries once, you have to load them every time you want to use one.  It's like going to the garage to get the toolbox you need for the job.  
+
+# Testing, Testing
+
+After running the code chunks above, run the code below to verify that you can read in a dataset and make data summaries:  
+
+Use the `import()` function to load the dataset by running the following code chunk:  
+
+```{r}
+wrong_site <- import("https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx") %>% tibble()
+
+wrong_site
+```
+
+You should see a printout of the first few rows of a dataset.  The output will either show up below the code chunk or in the "Console" window.  Either way works.  I can show you how to adjust the settings in class depending on your preference.  
+
