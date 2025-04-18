@@ -42,7 +42,7 @@ names(math)
 
 # Scatter Plots
 
-To look at the relationship between 2 quantitative variables, we use scatterplots.  This plots a point on an (x,y) axis, where y is the response and x is the explanatory variable.  
+To look at the relationship between 2 quantitative variables, we use scatter plots.  This plots a point on an (x,y) axis, where y is the response and x is the explanatory variable.  
 
 To create a simple scatter plot, we use the `plot()` function and the same formula we've used for `boxplot()` and `favstats()`:  `data$response ~ data$explanatory`.  Only this time, the explanatory variable must be quantitative. 
 Create a scatter plot for the math confidence data.  
@@ -78,10 +78,10 @@ Notice the panel in the bottom right corner.  There is clearly a perfect relatio
 
 We check for linearity by observation of the scatter plots.  
 
-__Question__:  What does the correlation coefficient, $r$, quantify?
+__Question__:  What does the correlation coefficient, $r$, quantify?  
 __Answer__:  
 
-__Question__:  What does it mean if the correlation coefficient, $r$, is negative?
+__Question__:  What does it mean if the correlation coefficient, $r$, is negative?  
 __Answer__:  
 
 

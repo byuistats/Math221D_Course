@@ -1,5 +1,5 @@
 ---
-title: "Introducing R - Class Notes"
+title: "Introducing R"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)

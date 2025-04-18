@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introducing Categorical Data Summaries – Math221 Notebook</title>
+<title>Categorical Data Summaries - One Variable – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../1-Getting_Started/3-Introducing_R.html">
- <span class="dropdown-text">Introducing R - Class Notes</span></a>
+ <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../1-Getting_Started/4-Installing_Packages.html">
@@ -149,7 +149,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../1-Getting_Started/5-Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
-        <li class="dropdown-header">Response and Explanatory Variables</li>
         <li>
     <a class="dropdown-item" href="../1-Getting_Started/6-Response_and_Explanatory_Variables.html">
  <span class="dropdown-text">Response and Explanatory Variables</span></a>
@@ -180,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.html">
- <span class="dropdown-text">Introducing Categorical Data Summaries</span></a>
+ <span class="dropdown-text">Categorical Data Summaries - One Variable</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.html">
@@ -449,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introducing Categorical Data Summaries</h1>
+<h1 class="title">Categorical Data Summaries - One Variable</h1>
 </div>
 
 
@@ -470,8 +469,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Introduction</h1>
 <p>In this section, you will learn:</p>
 <ol type="1">
-<li>How to create a table in R with counts</li>
-<li>How to create a table in R with percentages</li>
+<li>How to create a table in R with counts<br>
+</li>
+<li>How to create a table in R with proportions<br>
+</li>
 <li>How to create bar charts for counts</li>
 </ol>
 <p>We will use the creativity data collected in class.</p>
@@ -489,7 +490,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="summarizing-categorical-data" class="level1">
 <h1>Summarizing Categorical Data</h1>
-<p>So far, we have focused on summarizing quantitative data. For categorical data, we do our analysis and visualizations based on the frequencies of each of the levels. There is typically an intermediate step where we make a table of counts or percentages, then create a visualization and perform the analysis.</p>
+<p>So far, we have focused on summarizing quantitative data. For categorical data, we do our analysis and visualizations based on the <strong>counts</strong> of each of the levels. We must first make a table of counts or percentages, then create a visualization and perform the analysis.</p>
 <p>We summarize categorical data numerically using counts or percentages, and visually using bar charts.</p>
 <p><strong>NOTE</strong>: Later we will learn a much better way to create bar charts using raw data, but for now, we have to create the summary tables first.</p>
 <section id="creating-a-table" class="level2">

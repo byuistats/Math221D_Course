@@ -225,8 +225,6 @@ From the histogram we clearly see most values bunched near the left and graduall
 <br>
 
 </div>
-&nbsp;
-</div>
 <br>
 
 Histograms are preferred to boxplots when visualizing one set of data.  But side-by-side boxplots are a powerful way to compare data from different samples visually. For example, we may be interested in comparing the results of wrong-site lawsuits and wrong-patient lawsuits.
@@ -236,7 +234,7 @@ In the plot we can quickly see that a wrong-patient lawsuit resulted in the larg
 <div class="SoftwareHeading">R Instructions</div>
 <div class="Software" style="padding:10px;">
 
-**To create side-by-side boxplots in Excel, do the following**
+**To create side-by-side boxplots in R, do the following**
 
 - Using the previously loaded data, `wrong_patient`, use the `boxplot()` function with the column names separated by a comma, and add labels:
 

@@ -1,5 +1,5 @@
 ---
-title: Introducing Categorical Data Summaries
+title: Categorical Data Summaries - One Variable
 format:
   html:
     self-contained: true
@@ -13,9 +13,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 In this section, you will learn:
 
-  1. How to create a table in R with counts
-  2. How to create a table in R with percentages
-  3. How to create bar charts for counts
+  1. How to create a table in R with counts  
+  2. How to create a table in R with proportions  
+  3. How to create bar charts for counts  
   
 We will use the creativity data collected in class.
 
@@ -38,7 +38,7 @@ creativity <- import('https://github.com/byuistats/Math221D_Course/raw/main/Data
 
 # Summarizing Categorical Data
 
-So far, we have focused on summarizing quantitative data.  For categorical data, we do our analysis and visualizations based on the frequencies of each of the levels.  There is typically an intermediate step where we make a table of counts or percentages, then create a visualization and perform the analysis.  
+So far, we have focused on summarizing quantitative data.  For categorical data, we do our analysis and visualizations based on the **counts** of each of the levels.  We must first make a table of counts or percentages, then create a visualization and perform the analysis.  
 
 We summarize categorical data numerically using counts or percentages, and visually using bar charts.  
 

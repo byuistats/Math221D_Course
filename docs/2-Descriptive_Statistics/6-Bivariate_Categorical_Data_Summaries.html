@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bivariate Categorical Data Summaries – Math221 Notebook</title>
+<title>Categorical Data Summaries - 2 Variables – Math221 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../1-Getting_Started/3-Introducing_R.html">
- <span class="dropdown-text">Introducing R - Class Notes</span></a>
+ <span class="dropdown-text">Introducing R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../1-Getting_Started/4-Installing_Packages.html">
@@ -149,7 +149,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../1-Getting_Started/5-Stat_Process.html">
  <span class="dropdown-text">The Statistical Process</span></a>
   </li>  
-        <li class="dropdown-header">Response and Explanatory Variables</li>
         <li>
     <a class="dropdown-item" href="../1-Getting_Started/6-Response_and_Explanatory_Variables.html">
  <span class="dropdown-text">Response and Explanatory Variables</span></a>
@@ -180,11 +179,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.html">
- <span class="dropdown-text">Introducing Categorical Data Summaries</span></a>
+ <span class="dropdown-text">Categorical Data Summaries - One Variable</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.html">
- <span class="dropdown-text">Bivariate Categorical Data Summaries</span></a>
+ <span class="dropdown-text">Categorical Data Summaries - 2 Variables</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../2-Descriptive_Statistics/7-AA_Descriptive_Statistics.html">
@@ -463,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Bivariate Categorical Data Summaries</h1>
+<h1 class="title">Categorical Data Summaries - 2 Variables</h1>
 </div>
 
 
@@ -489,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Summarize bivariate data in contingency tables</li>
 <li>Calculate row and column percents</li>
-<li>Create side-by-side bar charts grouping</li>
+<li>Create side-by-side, grouped bar charts</li>
 </ol>
 </section>
 <section id="a-more-civilized-age" class="level2">
@@ -538,10 +537,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <strong>ANSWER</strong>:</p>
 <p><strong>QUESTION</strong>: What percent of Star Wars Fans are Female?<br>
 <strong>ANSWER</strong>:</p>
+<p><strong>NOTE</strong>: The denominator of a proportion corresponds to the “of”. When talking about proportion “of Males”, total males should be the denominator. The proportion “of Fans” means that the denominator should be the total number of fans. Proportion “of respondents” means the denominator should be the table total.</p>
 <section id="calculating-proportions" class="level2">
 <h2 class="anchored" data-anchor-id="calculating-proportions">Calculating Proportions</h2>
 <p>When looking at a single categorical variable, we input a table into the <code>prop.table()</code> function to get proportions instead of counts. It’s slightly more complicated with 2 variables because there are several proportions that can be calculated. The denominator depends on what we’re interested in studying as illustrated above (percent of females? or percent of Fans?).</p>
-<p><strong>NOTE</strong>: The denominator corresponds to the “of”. When talking about proportion “of Males”, total males should be the denominator. The proportion “of Fans” means that the denominator should be the total number of fans. Proportion “of respondents” means the denominator should be the table total.</p>
 <p>We can use the <code>prop.table()</code> function to get:</p>
 <ol type="1">
 <li>Table Percents: Sum to 1 across the entire table<br>
@@ -603,10 +602,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="visual-summaries" class="level2">
 <h2 class="anchored" data-anchor-id="visual-summaries">Visual Summaries</h2>
-<p>The best way to visualize 2 categorical variables is with a side-by-side bar chart. Soon we will learn a better way to make visualizations in R. For now, it’s a bit clunky to get the right type of graph that makes sense. But here’s the process:</p>
+<p>The best way to visualize 2 categorical variables is with a grouped, side-by-side bar chart. Soon we will learn a better way to make visualizations in R. For now, it’s a bit clunky to get the right type of graph that makes sense. But here’s the process:</p>
 <ol type="1">
 <li>Create and name a contingency table. Your <em>column</em> variable will be how the bars are grouped, and the <em>row</em> variable will determine the colors of the grouped bars</li>
-<li>Input the table name into the <code>barplot()</code> including the additional inputs: <code>beside=TRUE</code> which puts the bars next to each other, and <code>legend=rownmes(table_name)</code> which will add a legend showing the which bars correspond to which</li>
+<li>Input the table name into the <code>barplot()</code> including the additional inputs: <code>beside=TRUE</code> which puts the bars next to each other, and <code>legend=rownmes(table_name)</code> which will add a legend showing which bars correspond to which colors</li>
 <li>The default colors are atrocious. You can specify the colors by adding the additional input <code>col=c(2,3,4)</code> or <code>col=c("lightblue", "lightgreen", "darkred",...)</code> including as many colors as there are levels in the <em>row</em> variable.</li>
 </ol>
 <p>Visually, bar charts are the optimal way to express categorical data. Pie charts, while very common, are problematic because of weaknesses in basic human perception.</p>
@@ -636,7 +635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-certain-point-of-view" class="level1">
 <h1>A Certain Point of View</h1>
 <p>The biggest challenge with categorical data is that rows and columns are interchangeable. There is no meaningful way to distinguish response and explanatory variables.</p>
-<p>With categorical variables, we can group differently depending on which comparisons we would like to emphasize. Above, we grouped by responses to “who shot first” and colored by gender. If we swap the row variable and the column, we get the same bars, but arranged differently:</p>
+<p>With categorical variables, we can group differently depending on which comparisons we would like to emphasize. Above, we grouped by whether or not respondents were fans and colored the bars by gender. If we swap the row variable and the column, we get the same output but arranged differently:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tbl2 <span class="ot">&lt;-</span> <span class="fu">table</span>(sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>, sw<span class="sc">$</span>Gender)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -675,7 +674,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Question</strong>: What percent of female respondents are in the <code>150,000+</code> category?<br>
 <strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What percent of male respondents are in the <code>150,000+</code> category? <strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What percent of male respondents are in the <code>150,000+</code> category?<br>
+<strong>Answer</strong>:</p>
 <p>Create a bar plot that compares the income distribution for each gender in the study:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tbl3, <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="at">legend=</span><span class="fu">rownames</span>(tbl3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

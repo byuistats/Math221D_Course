@@ -41,7 +41,7 @@ This works great if you want to do one response/dependent variable at a time.  B
 
 We can use a combination of tidyverse functions, `group_by()` and `summarise()` to create custom summary tables.
 
-The `group_by()` signals to R that whatever follows should be done for each level of the column(s) identified inside the parentheses.  We can then "pipe" the grouped dataset into a summarize function and define what summary statistics we would like.  `summarise()` works very much like the [mutate()](../2-Tidy_Data/Bonus_Mutate.qmd) function in that we create a name for our summary and tell R how to make it.  
+The `group_by()` signals to R that whatever follows should be done for each level of the column(s) identified inside the parentheses.  We can then "pipe" the grouped dataset into a summarize function and define what summary statistics we would like.  `summarise()` works very much like the [mutate()](../3-Data_Wrangling_Visualization/Bonus_Mutate.qmd) function in that we create a name for our summary and tell R how to make it.  
 
 __EXAMPLE__:  Let's calculate the means for Height_cm, Reaction_time, and Social_Websites_Hours for Males and Females:
 
@@ -83,7 +83,7 @@ clean
 <div class="QuestionsHeading">Combining Tidy Functions</div>
 <div class="Questions">
 
-1. Click to see how to [filter](../2-Tidy_Data/02-Filter.qmd) outliers for reaction times (reaction times greater than 1 second), and height outliers (taller than 7 feet tall), and social media hours (more than 100 hours).  
+1. Click to see how to [filter](../3-Data_Wrangling_Visualization/02-Filter.qmd) outliers for reaction times (reaction times greater than 1 second), and height outliers (taller than 7 feet tall), and social media hours (more than 100 hours).  
 
 <details>
 <summary>Click to see</summary>

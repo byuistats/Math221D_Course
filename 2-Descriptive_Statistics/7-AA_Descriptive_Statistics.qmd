@@ -31,7 +31,7 @@ In this activity, you will practice everything we've covered up to this point in
     + Bivariate bar charts (`barplot(table_name, beside=TRUE, col=c(2,3,4,...))`)  
     
   
-We will be using data collected about students in 2 Portuguese schools including their final grade. The goal is to answer research questions using statistical methods to see what factors significantly impact final grades.  
+We will be using data collected about students in 2 Portuguese schools including their final grade. The goal of the research was to see what variables impact final grades.  
 
 ## Load the Libraries and Data
 
@@ -224,7 +224,7 @@ __ANSWER__:
 
 Create and name a contingency table looking at the relationship between gender and whether or not they are in a romantic relationship.  
 
-Then calculate the proportion for each gender in a romantic relationship (should sum to 1 for each gender):  
+Then calculate the proportion of each gender in a romantic relationship (should sum to 1 for each gender):  
 
 ```{r}
 
@@ -247,7 +247,7 @@ Create a bar chart that groups bars based on `sex` and colors the bars by `roman
 # Start by naming the table
 tbl_relationship <- table()
 
-
+# Then create the chart:  
 
 ```
 
