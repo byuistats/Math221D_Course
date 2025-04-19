@@ -1064,16 +1064,16 @@
     "text": "The Pipe in Action\nSuppose we have a dataset, marital_status_data, with 2 columns: age and marital_status. We expect the marital_status to be one of 4 options: “Single”, “Married”, “Divorced”, “Widowed”, but some joker input, “It’s complicated”. Because we are mainly interested in making inference about the primary statuses, we may want to filter out the rows with “It’s complicated” as the status.\nWe would begin with the raw data, “pipe” it into the filter() function and tell R what I want it to do. I can either tell R what I want to keep or what I want to exclude (more here):\nmarital_Status_data %&gt;% filter(marital_status != \"It's complicated\")\nNOTE: The != is read “not equal to”, and is a common logical operator used in computer programming. So the above code returns a subset of the original data omitting the rows.\nI can use pipes sequentially to do complicated data wrangling in very few lines of code."
   },
   {
-    "objectID": "2-Descriptive_Statistics/6-Practice_Categorical_Summaries.html",
-    "href": "2-Descriptive_Statistics/6-Practice_Categorical_Summaries.html",
-    "title": "Summarizing Categorical Data - Practice",
+    "objectID": "2-Descriptive_Statistics/6b-Practice_Categorical_Summaries.html",
+    "href": "2-Descriptive_Statistics/6b-Practice_Categorical_Summaries.html",
+    "title": "Practice: Summarizing Categorical Data",
     "section": "",
     "text": "Reasons why patients visit a chiropractor vary and may depend on where you live.\nUse the chiropractic dataset to practice summarizing categorical data.\n\n\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\nchiropractic &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/chiropractic_data.csv')"
   },
   {
-    "objectID": "2-Descriptive_Statistics/6-Practice_Categorical_Summaries.html#load-the-libraries-and-data",
-    "href": "2-Descriptive_Statistics/6-Practice_Categorical_Summaries.html#load-the-libraries-and-data",
-    "title": "Summarizing Categorical Data - Practice",
+    "objectID": "2-Descriptive_Statistics/6b-Practice_Categorical_Summaries.html#load-the-libraries-and-data",
+    "href": "2-Descriptive_Statistics/6b-Practice_Categorical_Summaries.html#load-the-libraries-and-data",
+    "title": "Practice: Summarizing Categorical Data",
     "section": "",
     "text": "library(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\nchiropractic &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/chiropractic_data.csv')"
   },
@@ -1113,25 +1113,46 @@
     "text": "Scatter plot\nMake a scatter plot showing the relationship between wait time and the duration of the next eruption.\nDeciding which is the response variable in this data is a bit tricky. To remain consistent, assume that the wait time between eruptions explains how long the subsequent eruption will last.\nCreate a scatterplot of the relationship between wait time and duration. Remember to use the formula y ~ x\nQuestion: Before calculating the Correlation Coefficient, r, describe in words the direction and strength of the relationship.\nAnswer:\nQuestion: What’s your best guess at, \\(r\\) based on the scatter plot?\nAnswer:\nQuestion: Does it look linear?\nAnswer:\nCalculate the Correlation Coefficient, \\(r\\):\nQuestion: How far off was your guess?\nAnswer:"
   },
   {
-    "objectID": "2-Descriptive_Statistics/3-Practice_Quantitative_Summaries_Multiple_Groups.html",
-    "href": "2-Descriptive_Statistics/3-Practice_Quantitative_Summaries_Multiple_Groups.html",
-    "title": "Summarizing Quantitative Data for Multiple Groups - Practice",
+    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html",
+    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html",
+    "title": "Quantitative Data Summaries - Multiple Groups",
     "section": "",
-    "text": "This example is taken from an experiment listed in the R help files under ?CO2.\n“An experiment on the cold tolerance of the grass species Echinochloa crus-galli was conducted. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted.” Plants were considered tolerant to the cold if they were still able to achieve high CO2 uptake values after being chilled.\nNOTE: Recall that the formula for separating a response variable by a category is to use the formula (data$y ~ data$x) which works for favstats() and boxplot()\nQUESTION: What is the response variable?\nANSWER:\nQUESTION: What are the levels of Type?\n\nunique()\n\nError in unique.default(): argument \"x\" is missing, with no default\n\n\n\n\nCreate a table of summary statistics of uptake for each Type:\n\nfavstats(~)\n\nError in parse(text = input): &lt;text&gt;:2:11: unexpected ')'\n1: \n2: favstats(~)\n             ^\n\n\nQUESTION: What is the mean uptake for the Quebec type?\nANSWER:\nQUESTION: What is the median of the Mississippi type?\nANSWER:\nQUESTION: Which type has the highest standard deviation?\nANsWER:\nCreate a side-by-side boxplot of uptake comparingType:\n\nboxplot(~)\n\nError in parse(text = input): &lt;text&gt;:2:10: unexpected ')'\n1: \n2: boxplot(~)\n            ^\n\n\n\n\n\nCreate a table of summary statistics of uptake for each Treatment used in the experiment.\nQUESTION: What is the mean uptake for the non-chilled treatment?\nANSWER:\nQUESTION: What is the mean of the chilled treatment?\nANSWER:\nCreate a side-by-side boxplot of uptake for each Treatment used in the experiment.\nQUESTION: Based on the above summaries, which combination of variables would you suggest to maximize CO2 uptake?\nANSWER:"
+    "text": "In this section, we will demonstrate how to numerically and visually summarize a quantitative response variable for each level of a categorical explanatory variable.\n\n\n\nCreate a table of summary statistics (favstats()) for multiple groups\n\nCreate side-by-side boxplots comparing multiple groups\n\nInterpret side-by-side boxplots for group comparisons\n\n\n\n\nWe will use the Big 5 Personality data of a random sample of Brother Cannon’s students.\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nbig5 &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')"
   },
   {
-    "objectID": "2-Descriptive_Statistics/3-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-plant-type-on-uptake",
-    "href": "2-Descriptive_Statistics/3-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-plant-type-on-uptake",
-    "title": "Summarizing Quantitative Data for Multiple Groups - Practice",
+    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#lesson-outcomes",
+    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#lesson-outcomes",
+    "title": "Quantitative Data Summaries - Multiple Groups",
     "section": "",
-    "text": "Create a table of summary statistics of uptake for each Type:\n\nfavstats(~)\n\nError in parse(text = input): &lt;text&gt;:2:11: unexpected ')'\n1: \n2: favstats(~)\n             ^\n\n\nQUESTION: What is the mean uptake for the Quebec type?\nANSWER:\nQUESTION: What is the median of the Mississippi type?\nANSWER:\nQUESTION: Which type has the highest standard deviation?\nANsWER:\nCreate a side-by-side boxplot of uptake comparingType:\n\nboxplot(~)\n\nError in parse(text = input): &lt;text&gt;:2:10: unexpected ')'\n1: \n2: boxplot(~)\n            ^"
+    "text": "Create a table of summary statistics (favstats()) for multiple groups\n\nCreate side-by-side boxplots comparing multiple groups\n\nInterpret side-by-side boxplots for group comparisons"
   },
   {
-    "objectID": "2-Descriptive_Statistics/3-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-treatment-on-uptake",
-    "href": "2-Descriptive_Statistics/3-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-treatment-on-uptake",
-    "title": "Summarizing Quantitative Data for Multiple Groups - Practice",
+    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#load-the-data-and-libraries",
+    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#load-the-data-and-libraries",
+    "title": "Quantitative Data Summaries - Multiple Groups",
     "section": "",
-    "text": "Create a table of summary statistics of uptake for each Treatment used in the experiment.\nQUESTION: What is the mean uptake for the non-chilled treatment?\nANSWER:\nQUESTION: What is the mean of the chilled treatment?\nANSWER:\nCreate a side-by-side boxplot of uptake for each Treatment used in the experiment.\nQUESTION: Based on the above summaries, which combination of variables would you suggest to maximize CO2 uptake?\nANSWER:"
+    "text": "We will use the Big 5 Personality data of a random sample of Brother Cannon’s students.\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nbig5 &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')"
+  },
+  {
+    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#summary-statistics",
+    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#summary-statistics",
+    "title": "Quantitative Data Summaries - Multiple Groups",
+    "section": "Summary Statistics",
+    "text": "Summary Statistics\nWe can easily extend favstats() to output our favorite statistics for multiple groups.\nWe first must identify the quantitative response variable we want to compare, then tell R which categorical explanatory variable we would like to compare.\nFor example, we could compare agreeableness between the sexes. In this case, Agreeableness is the quantitative response variable and Sex(M/F) is the categorical explanatory variable.\n\n# This gives us the summary statistics for Agreeableness across all groups\nfavstats(big5$Agreeableness)\n\n min Q1 median Q3 max     mean       sd   n missing\n  21 67     75 81 100 73.43457 13.24909 405       0\n\n# Adding the '~' tells R to break the data into groups (determined by the right side of the '~') and calculate the means of the variable on the left\nfavstats(big5$Agreeableness ~ big5$`Sex(M/F)`)\n\n  big5$`Sex(M/F)` min Q1 median Q3 max     mean       sd   n missing\n1               F  21 69     77 85 100 75.92035 12.94640 226       0\n2               M  25 63     73 79  94 70.29609 12.99218 179       0"
+  },
+  {
+    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#visual-summaries-by-group",
+    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#visual-summaries-by-group",
+    "title": "Quantitative Data Summaries - Multiple Groups",
+    "section": "Visual Summaries by Group",
+    "text": "Visual Summaries by Group\nWe can use the exact same formula used for boxplot() as we used for favstats():\n\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`)\n\n\n\n\n\n\n\n\nNOTE: We will use the formula data$response ~ data$explanatory for LOTS of functions this semester. They will always take the form y ~ x."
+  },
+  {
+    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#improving-graphs",
+    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#improving-graphs",
+    "title": "Quantitative Data Summaries - Multiple Groups",
+    "section": "Improving Graphs",
+    "text": "Improving Graphs\nThroughout this course, we will ease into making better visualizations. For now, here are some basic techniques that will usually apply to all graphing functions in R:\n\n# Changing color by sepecifying the `col = c()`\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, col = c(\"red\", \"blue\"))\n\n\n\n\n\n\n\n# R also assigns a numerical value to `col = `.  Try different numbers\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, col = c(2,3))\n\n\n\n\n\n\n\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, col = c(4,6))\n\n\n\n\n\n\n\n# Adding better axis labels using `xlab = ` and `ylab = `:\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, xlab = \"Biosex\", ylab = \"Trait Agreeableness\")\n\n\n\n\n\n\n\n# Adding a title:\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, main = \"Comparing Agreeableness by Biosex\")\n\n\n\n\n\n\n\n# Putting it all together:\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`,main = \"Comparing Agreeableness by Biosex\", xlab = \"Biosex\", ylab = \"Trait Agreeableness\", col = c(3, 4))"
   },
   {
     "objectID": "2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.html",
@@ -1477,114 +1498,93 @@
     "text": "Introduction\nThis type of file is called a “markdown” file. Markdown is like Microsoft Word but much more powerful. This file is made specifically for creating fancy reports and has a file type .qmd meaning “Quarto Markdown”.\nYou will become very familiar with these files throughout the semester. For now, it’s only necessary to download this file, save it in a sensible folder on your computer or OneDrive, and “run” it.\nClicking on the “Render” button above will create an .html document that should open up in your default browser. This .html document will be created and saved in the same location as this TestingTesting.qmd document.\nNOTE: If this document is in your Downloads folder, that is also where the html file will appear.\nAs you see, we can make section headers and type regular text. But the power of .qmd files is that we can code inside these documents and present our output directly within the document.\nClick “Render” to test to see if your software is set up.\nWhen coding, we have to tell the computer when we’re writing text and when we expect it to compile code. Below is an example of a “code chunk” that creates a made up graph.\nYou do not have to understand this right now. We’re only testing that R and RStudio are set up correctly.\n\n\nInstalling Libraries\nEven though we have R and RStudio installed, we can load additional toolboxes that have more tools than R provides by itself.\n\nx &lt;- seq(0,10, length = 100)\ny &lt;- 2+exp(x)\n\nplot(x,y, type = \"l\", lwd=2, col=\"darkblue\", main = \"Exponential Function\")"
   },
   {
-    "objectID": "2-Descriptive_Statistics/1-Practice_Numerical_Summaries.html",
-    "href": "2-Descriptive_Statistics/1-Practice_Numerical_Summaries.html",
-    "title": "Quantitative Data Summaries - Practice",
+    "objectID": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html",
+    "href": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html",
+    "title": "Practice: Numerical Summaries (Quant.)",
     "section": "",
     "text": "This is an opportunity for you to practice creating numerical summaries of quantitative data.\nWe will explore 2 datasets. The first contains information about the duration and the time between geyser eruptions at Old Faithful in Yellowstone National park.\nThe second is data collected about expressions of gratitude and their impact on subjective well-being.\nFor each dataset, you will create numerical summaries of the data."
   },
   {
-    "objectID": "2-Descriptive_Statistics/1-Practice_Numerical_Summaries.html#calculate-the-summary-statistics-for-duration",
-    "href": "2-Descriptive_Statistics/1-Practice_Numerical_Summaries.html#calculate-the-summary-statistics-for-duration",
-    "title": "Quantitative Data Summaries - Practice",
+    "objectID": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html#calculate-the-summary-statistics-for-duration",
+    "href": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html#calculate-the-summary-statistics-for-duration",
+    "title": "Practice: Numerical Summaries (Quant.)",
     "section": "Calculate the Summary Statistics for Duration",
     "text": "Calculate the Summary Statistics for Duration\n\nfavstats()\n\nError in favstats(): argument \"x\" is missing, with no default\n\n\nQUESTION: What is the mean duration time of Old Faithful eruptions?\nANSWER:\nQUESTION: What is the standard deviation of duration?\nANSWER:"
   },
   {
-    "objectID": "2-Descriptive_Statistics/1-Practice_Numerical_Summaries.html#calculate-summary-statistics-for-wait-time",
-    "href": "2-Descriptive_Statistics/1-Practice_Numerical_Summaries.html#calculate-summary-statistics-for-wait-time",
-    "title": "Quantitative Data Summaries - Practice",
+    "objectID": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html#calculate-summary-statistics-for-wait-time",
+    "href": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html#calculate-summary-statistics-for-wait-time",
+    "title": "Practice: Numerical Summaries (Quant.)",
     "section": "Calculate Summary Statistics for Wait time",
     "text": "Calculate Summary Statistics for Wait time\nQuestion: What is the mean wait time between eruptions?\nAnswer:\nQuestion: What is the maximum wait time between eruptions?\nAnswer:\nQuestion: The middle 50% of wait times will be between what 2 numbers?\nAnswer:"
   },
   {
-    "objectID": "2-Descriptive_Statistics/2-Practice_Graphical_Summaries.html",
-    "href": "2-Descriptive_Statistics/2-Practice_Graphical_Summaries.html",
-    "title": "Quantitative Data Visualizations - Practice",
+    "objectID": "2-Descriptive_Statistics/2b-Practice_Graphical_Summaries.html",
+    "href": "2-Descriptive_Statistics/2b-Practice_Graphical_Summaries.html",
+    "title": "Practice: Graphical Summaries (Quant.)",
     "section": "",
     "text": "This is an opportunity for you to practice creating graphical summaries of quantitative data.\nWe will explore 2 datasets. The first contains information about the duration and the time between geyser eruptions at Old Faithful in Yellowstone National park.\nThe second is data collected about expressions of gratitude and their impact on subjective well-being.\nFor each dataset, you will create numerical summaries of the data."
   },
   {
-    "objectID": "2-Descriptive_Statistics/2-Practice_Graphical_Summaries.html#histogram",
-    "href": "2-Descriptive_Statistics/2-Practice_Graphical_Summaries.html#histogram",
-    "title": "Quantitative Data Visualizations - Practice",
+    "objectID": "2-Descriptive_Statistics/2b-Practice_Graphical_Summaries.html#histogram",
+    "href": "2-Descriptive_Statistics/2b-Practice_Graphical_Summaries.html#histogram",
+    "title": "Practice: Graphical Summaries (Quant.)",
     "section": "Histogram",
     "text": "Histogram\nCreate a histogram and boxplot for happiness scores:\nQuestion: What is the general shape of the distribution?\nAnswer:"
   },
   {
-    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html",
-    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html",
-    "title": "Quantitative Data Summaries - Multiple Groups",
+    "objectID": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html",
+    "href": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html",
+    "title": "Practice: Summarizing Multiple Groups",
     "section": "",
-    "text": "In this section, we will demonstrate how to numerically and visually summarize a quantitative response variable for each level of a categorical explanatory variable.\n\n\n\nCreate a table of summary statistics (favstats()) for multiple groups\n\nCreate side-by-side boxplots comparing multiple groups\n\nInterpret side-by-side boxplots for group comparisons\n\n\n\n\nWe will use the Big 5 Personality data of a random sample of Brother Cannon’s students.\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nbig5 &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')"
+    "text": "This example is taken from an experiment listed in the R help files under ?CO2.\n“An experiment on the cold tolerance of the grass species Echinochloa crus-galli was conducted. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted.” Plants were considered tolerant to the cold if they were still able to achieve high CO2 uptake values after being chilled.\nNOTE: Recall that the formula for separating a response variable by a category is to use the formula (data$y ~ data$x) which works for favstats() and boxplot()\nQUESTION: What is the response variable?\nANSWER:\nQUESTION: What are the levels of Type?\n\nunique()\n\nError in unique.default(): argument \"x\" is missing, with no default\n\n\n\n\nCreate a table of summary statistics of uptake for each Type:\n\nfavstats(~)\n\nError in parse(text = input): &lt;text&gt;:2:11: unexpected ')'\n1: \n2: favstats(~)\n             ^\n\n\nQUESTION: What is the mean uptake for the Quebec type?\nANSWER:\nQUESTION: What is the median of the Mississippi type?\nANSWER:\nQUESTION: Which type has the highest standard deviation?\nANsWER:\nCreate a side-by-side boxplot of uptake comparingType:\n\nboxplot(~)\n\nError in parse(text = input): &lt;text&gt;:2:10: unexpected ')'\n1: \n2: boxplot(~)\n            ^\n\n\n\n\n\nCreate a table of summary statistics of uptake for each Treatment used in the experiment.\nQUESTION: What is the mean uptake for the non-chilled treatment?\nANSWER:\nQUESTION: What is the mean of the chilled treatment?\nANSWER:\nCreate a side-by-side boxplot of uptake for each Treatment used in the experiment.\nQUESTION: Based on the above summaries, which combination of variables would you suggest to maximize CO2 uptake?\nANSWER:"
   },
   {
-    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#lesson-outcomes",
-    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#lesson-outcomes",
-    "title": "Quantitative Data Summaries - Multiple Groups",
+    "objectID": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-plant-type-on-uptake",
+    "href": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-plant-type-on-uptake",
+    "title": "Practice: Summarizing Multiple Groups",
     "section": "",
-    "text": "Create a table of summary statistics (favstats()) for multiple groups\n\nCreate side-by-side boxplots comparing multiple groups\n\nInterpret side-by-side boxplots for group comparisons"
+    "text": "Create a table of summary statistics of uptake for each Type:\n\nfavstats(~)\n\nError in parse(text = input): &lt;text&gt;:2:11: unexpected ')'\n1: \n2: favstats(~)\n             ^\n\n\nQUESTION: What is the mean uptake for the Quebec type?\nANSWER:\nQUESTION: What is the median of the Mississippi type?\nANSWER:\nQUESTION: Which type has the highest standard deviation?\nANsWER:\nCreate a side-by-side boxplot of uptake comparingType:\n\nboxplot(~)\n\nError in parse(text = input): &lt;text&gt;:2:10: unexpected ')'\n1: \n2: boxplot(~)\n            ^"
   },
   {
-    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#load-the-data-and-libraries",
-    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#load-the-data-and-libraries",
-    "title": "Quantitative Data Summaries - Multiple Groups",
+    "objectID": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-treatment-on-uptake",
+    "href": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-treatment-on-uptake",
+    "title": "Practice: Summarizing Multiple Groups",
     "section": "",
-    "text": "We will use the Big 5 Personality data of a random sample of Brother Cannon’s students.\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)\n\nbig5 &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')"
+    "text": "Create a table of summary statistics of uptake for each Treatment used in the experiment.\nQUESTION: What is the mean uptake for the non-chilled treatment?\nANSWER:\nQUESTION: What is the mean of the chilled treatment?\nANSWER:\nCreate a side-by-side boxplot of uptake for each Treatment used in the experiment.\nQUESTION: Based on the above summaries, which combination of variables would you suggest to maximize CO2 uptake?\nANSWER:"
   },
   {
-    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#summary-statistics",
-    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#summary-statistics",
-    "title": "Quantitative Data Summaries - Multiple Groups",
-    "section": "Summary Statistics",
-    "text": "Summary Statistics\nWe can easily extend favstats() to output our favorite statistics for multiple groups.\nWe first must identify the quantitative response variable we want to compare, then tell R which categorical explanatory variable we would like to compare.\nFor example, we could compare agreeableness between the sexes. In this case, Agreeableness is the quantitative response variable and Sex(M/F) is the categorical explanatory variable.\n\n# This gives us the summary statistics for Agreeableness across all groups\nfavstats(big5$Agreeableness)\n\n min Q1 median Q3 max     mean       sd   n missing\n  21 67     75 81 100 73.43457 13.24909 405       0\n\n# Adding the '~' tells R to break the data into groups (determined by the right side of the '~') and calculate the means of the variable on the left\nfavstats(big5$Agreeableness ~ big5$`Sex(M/F)`)\n\n  big5$`Sex(M/F)` min Q1 median Q3 max     mean       sd   n missing\n1               F  21 69     77 85 100 75.92035 12.94640 226       0\n2               M  25 63     73 79  94 70.29609 12.99218 179       0"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#visual-summaries-by-group",
-    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#visual-summaries-by-group",
-    "title": "Quantitative Data Summaries - Multiple Groups",
-    "section": "Visual Summaries by Group",
-    "text": "Visual Summaries by Group\nWe can use the exact same formula used for boxplot() as we used for favstats():\n\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`)\n\n\n\n\n\n\n\n\nNOTE: We will use the formula data$response ~ data$explanatory for LOTS of functions this semester. They will always take the form y ~ x."
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#improving-graphs",
-    "href": "2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.html#improving-graphs",
-    "title": "Quantitative Data Summaries - Multiple Groups",
-    "section": "Improving Graphs",
-    "text": "Improving Graphs\nThroughout this course, we will ease into making better visualizations. For now, here are some basic techniques that will usually apply to all graphing functions in R:\n\n# Changing color by sepecifying the `col = c()`\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, col = c(\"red\", \"blue\"))\n\n\n\n\n\n\n\n# R also assigns a numerical value to `col = `.  Try different numbers\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, col = c(2,3))\n\n\n\n\n\n\n\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, col = c(4,6))\n\n\n\n\n\n\n\n# Adding better axis labels using `xlab = ` and `ylab = `:\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, xlab = \"Biosex\", ylab = \"Trait Agreeableness\")\n\n\n\n\n\n\n\n# Adding a title:\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`, main = \"Comparing Agreeableness by Biosex\")\n\n\n\n\n\n\n\n# Putting it all together:\nboxplot(big5$Agreeableness ~ big5$`Sex(M/F)`,main = \"Comparing Agreeableness by Biosex\", xlab = \"Biosex\", ylab = \"Trait Agreeableness\", col = c(3, 4))"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/4-Practice_Bivariate_Data.html",
-    "href": "2-Descriptive_Statistics/4-Practice_Bivariate_Data.html",
-    "title": "Bivariate Data - Practice",
+    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html",
+    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html",
+    "title": "Practice: Bivariate Data",
     "section": "",
     "text": "In this assignment, you will practice regression analysis including:\n\nPlotting bivariate data\nCalculating and interpreting the correlation coefficient, r\n\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)"
   },
   {
-    "objectID": "2-Descriptive_Statistics/4-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r",
-    "href": "2-Descriptive_Statistics/4-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r",
-    "title": "Bivariate Data - Practice",
+    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r",
+    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r",
+    "title": "Practice: Bivariate Data",
     "section": "Plot the Data and calculate r",
     "text": "Plot the Data and calculate r\n\nplot()\n\nError in plot.default(): argument \"x\" is missing, with no default\n\ncor()\n\nError in cor(): argument \"x\" is missing, with no default\n\n\nQUESTION: Does the relationship look linear?\nANSWER:\nQUESTION: What does this r measure?\nANSWER:"
   },
   {
-    "objectID": "2-Descriptive_Statistics/4-Practice_Bivariate_Data.html#load-the-data",
-    "href": "2-Descriptive_Statistics/4-Practice_Bivariate_Data.html#load-the-data",
-    "title": "Bivariate Data - Practice",
+    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#load-the-data",
+    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#load-the-data",
+    "title": "Practice: Bivariate Data",
     "section": "Load the data:",
     "text": "Load the data:\n\nmanatees &lt;- read_csv('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/manatees.csv')\n\nglimpse(manatees)\n\nRows: 35\nColumns: 4\n$ `Fiscal Year`             &lt;dbl&gt; 1977, 1978, 1979, 1980, 1981, 1982, 1983, 19…\n$ `Power Boats (in 1000's)` &lt;dbl&gt; 436, 449, 470, 487, 502, 501, 515, 548, 575,…\n$ Manatees                  &lt;dbl&gt; 14, 21, 18, 19, 24, 18, 20, 27, 30, 34, 31, …\n$ Comments                  &lt;chr&gt; \"Source for the Powerboat Data:\", \"Data for …\n\n\nQUESTION: What is the response/dependent variable?\nANSWER:\nQUESTION: What is the explanatory variable?\nANSWER:\nQUESTION: What do you think is the nature of the relationship between the two?\nANSWER:\nQUESTION: What is your best guess at the correlation coefficient, \\(r\\)?\nANSWER:"
   },
   {
-    "objectID": "2-Descriptive_Statistics/4-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-1",
-    "href": "2-Descriptive_Statistics/4-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-1",
-    "title": "Bivariate Data - Practice",
+    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-1",
+    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-1",
+    "title": "Practice: Bivariate Data",
     "section": "Plot the Data and calculate r",
     "text": "Plot the Data and calculate r\nQUESTION: Does the relationship look linear?\nANSWER:"
   },
   {
-    "objectID": "2-Descriptive_Statistics/4-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-2",
-    "href": "2-Descriptive_Statistics/4-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-2",
-    "title": "Bivariate Data - Practice",
+    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-2",
+    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-2",
+    "title": "Practice: Bivariate Data",
     "section": "Plot the Data and calculate r",
     "text": "Plot the Data and calculate r\nQUESTION: Does the relationship look linear?\nANSWER:"
   },
@@ -2497,110 +2497,5 @@
     "title": "Semester Project",
     "section": "",
     "text": "Introduction\n\n\nDesign the Study\n\n\nCollect the Data\n\n\nDescribe/Summarize the Data\n\nlibrary(tidyverse)\n\nWarning: package 'tidyverse' was built under R version 4.4.3\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(mosaic)\n\nWarning: package 'mosaic' was built under R version 4.4.3\n\n\nRegistered S3 method overwritten by 'mosaic':\n  method                           from   \n  fortify.SpatialPolygonsDataFrame ggplot2\n\nThe 'mosaic' package masks several functions from core packages in order to add \nadditional features.  The original behavior of these functions should not be affected by this.\n\nAttaching package: 'mosaic'\n\nThe following object is masked from 'package:Matrix':\n\n    mean\n\nThe following objects are masked from 'package:dplyr':\n\n    count, do, tally\n\nThe following object is masked from 'package:purrr':\n\n    cross\n\nThe following object is masked from 'package:ggplot2':\n\n    stat\n\nThe following objects are masked from 'package:stats':\n\n    binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,\n    quantile, sd, t.test, var\n\nThe following objects are masked from 'package:base':\n\n    max, mean, min, prod, range, sample, sum\n\nlibrary(rio)\n\nWarning: package 'rio' was built under R version 4.4.3\n\n\n\nAttaching package: 'rio'\n\nThe following object is masked from 'package:mosaic':\n\n    factorize\n\nlibrary(ggplot2)\n\n# Be sure to make this using ggplot()\n\n\n\nMake Inference\n\n# Perform the appropriate test for the data selected\n\n\n\nConclusion (Take Action)"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html",
-    "href": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html",
-    "title": "Practice: Numerical Summaries (Quant.)",
-    "section": "",
-    "text": "This is an opportunity for you to practice creating numerical summaries of quantitative data.\nWe will explore 2 datasets. The first contains information about the duration and the time between geyser eruptions at Old Faithful in Yellowstone National park.\nThe second is data collected about expressions of gratitude and their impact on subjective well-being.\nFor each dataset, you will create numerical summaries of the data."
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html#calculate-the-summary-statistics-for-duration",
-    "href": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html#calculate-the-summary-statistics-for-duration",
-    "title": "Practice: Numerical Summaries (Quant.)",
-    "section": "Calculate the Summary Statistics for Duration",
-    "text": "Calculate the Summary Statistics for Duration\n\nfavstats()\n\nError in favstats(): argument \"x\" is missing, with no default\n\n\nQUESTION: What is the mean duration time of Old Faithful eruptions?\nANSWER:\nQUESTION: What is the standard deviation of duration?\nANSWER:"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html#calculate-summary-statistics-for-wait-time",
-    "href": "2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.html#calculate-summary-statistics-for-wait-time",
-    "title": "Practice: Numerical Summaries (Quant.)",
-    "section": "Calculate Summary Statistics for Wait time",
-    "text": "Calculate Summary Statistics for Wait time\nQuestion: What is the mean wait time between eruptions?\nAnswer:\nQuestion: What is the maximum wait time between eruptions?\nAnswer:\nQuestion: The middle 50% of wait times will be between what 2 numbers?\nAnswer:"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/6b-Practice_Categorical_Summaries.html",
-    "href": "2-Descriptive_Statistics/6b-Practice_Categorical_Summaries.html",
-    "title": "Practice: Summarizing Categorical Data",
-    "section": "",
-    "text": "Reasons why patients visit a chiropractor vary and may depend on where you live.\nUse the chiropractic dataset to practice summarizing categorical data.\n\n\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\nchiropractic &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/chiropractic_data.csv')"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/6b-Practice_Categorical_Summaries.html#load-the-libraries-and-data",
-    "href": "2-Descriptive_Statistics/6b-Practice_Categorical_Summaries.html#load-the-libraries-and-data",
-    "title": "Practice: Summarizing Categorical Data",
-    "section": "",
-    "text": "library(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\nchiropractic &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/chiropractic_data.csv')"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html",
-    "href": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html",
-    "title": "Practice: Summarizing Multiple Groups",
-    "section": "",
-    "text": "This example is taken from an experiment listed in the R help files under ?CO2.\n“An experiment on the cold tolerance of the grass species Echinochloa crus-galli was conducted. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted.” Plants were considered tolerant to the cold if they were still able to achieve high CO2 uptake values after being chilled.\nNOTE: Recall that the formula for separating a response variable by a category is to use the formula (data$y ~ data$x) which works for favstats() and boxplot()\nQUESTION: What is the response variable?\nANSWER:\nQUESTION: What are the levels of Type?\n\nunique()\n\nError in unique.default(): argument \"x\" is missing, with no default\n\n\n\n\nCreate a table of summary statistics of uptake for each Type:\n\nfavstats(~)\n\nError in parse(text = input): &lt;text&gt;:2:11: unexpected ')'\n1: \n2: favstats(~)\n             ^\n\n\nQUESTION: What is the mean uptake for the Quebec type?\nANSWER:\nQUESTION: What is the median of the Mississippi type?\nANSWER:\nQUESTION: Which type has the highest standard deviation?\nANsWER:\nCreate a side-by-side boxplot of uptake comparingType:\n\nboxplot(~)\n\nError in parse(text = input): &lt;text&gt;:2:10: unexpected ')'\n1: \n2: boxplot(~)\n            ^\n\n\n\n\n\nCreate a table of summary statistics of uptake for each Treatment used in the experiment.\nQUESTION: What is the mean uptake for the non-chilled treatment?\nANSWER:\nQUESTION: What is the mean of the chilled treatment?\nANSWER:\nCreate a side-by-side boxplot of uptake for each Treatment used in the experiment.\nQUESTION: Based on the above summaries, which combination of variables would you suggest to maximize CO2 uptake?\nANSWER:"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-plant-type-on-uptake",
-    "href": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-plant-type-on-uptake",
-    "title": "Practice: Summarizing Multiple Groups",
-    "section": "",
-    "text": "Create a table of summary statistics of uptake for each Type:\n\nfavstats(~)\n\nError in parse(text = input): &lt;text&gt;:2:11: unexpected ')'\n1: \n2: favstats(~)\n             ^\n\n\nQUESTION: What is the mean uptake for the Quebec type?\nANSWER:\nQUESTION: What is the median of the Mississippi type?\nANSWER:\nQUESTION: Which type has the highest standard deviation?\nANsWER:\nCreate a side-by-side boxplot of uptake comparingType:\n\nboxplot(~)\n\nError in parse(text = input): &lt;text&gt;:2:10: unexpected ')'\n1: \n2: boxplot(~)\n            ^"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-treatment-on-uptake",
-    "href": "2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.html#impact-of-treatment-on-uptake",
-    "title": "Practice: Summarizing Multiple Groups",
-    "section": "",
-    "text": "Create a table of summary statistics of uptake for each Treatment used in the experiment.\nQUESTION: What is the mean uptake for the non-chilled treatment?\nANSWER:\nQUESTION: What is the mean of the chilled treatment?\nANSWER:\nCreate a side-by-side boxplot of uptake for each Treatment used in the experiment.\nQUESTION: Based on the above summaries, which combination of variables would you suggest to maximize CO2 uptake?\nANSWER:"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/2b-Practice_Graphical_Summaries.html",
-    "href": "2-Descriptive_Statistics/2b-Practice_Graphical_Summaries.html",
-    "title": "Practice: Graphical Summaries (Quant.)",
-    "section": "",
-    "text": "This is an opportunity for you to practice creating graphical summaries of quantitative data.\nWe will explore 2 datasets. The first contains information about the duration and the time between geyser eruptions at Old Faithful in Yellowstone National park.\nThe second is data collected about expressions of gratitude and their impact on subjective well-being.\nFor each dataset, you will create numerical summaries of the data."
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/2b-Practice_Graphical_Summaries.html#histogram",
-    "href": "2-Descriptive_Statistics/2b-Practice_Graphical_Summaries.html#histogram",
-    "title": "Practice: Graphical Summaries (Quant.)",
-    "section": "Histogram",
-    "text": "Histogram\nCreate a histogram and boxplot for happiness scores:\nQuestion: What is the general shape of the distribution?\nAnswer:"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html",
-    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html",
-    "title": "Practice: Bivariate Data",
-    "section": "",
-    "text": "In this assignment, you will practice regression analysis including:\n\nPlotting bivariate data\nCalculating and interpreting the correlation coefficient, r\n\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r",
-    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r",
-    "title": "Practice: Bivariate Data",
-    "section": "Plot the Data and calculate r",
-    "text": "Plot the Data and calculate r\n\nplot()\n\nError in plot.default(): argument \"x\" is missing, with no default\n\ncor()\n\nError in cor(): argument \"x\" is missing, with no default\n\n\nQUESTION: Does the relationship look linear?\nANSWER:\nQUESTION: What does this r measure?\nANSWER:"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#load-the-data",
-    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#load-the-data",
-    "title": "Practice: Bivariate Data",
-    "section": "Load the data:",
-    "text": "Load the data:\n\nmanatees &lt;- read_csv('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/manatees.csv')\n\nglimpse(manatees)\n\nRows: 35\nColumns: 4\n$ `Fiscal Year`             &lt;dbl&gt; 1977, 1978, 1979, 1980, 1981, 1982, 1983, 19…\n$ `Power Boats (in 1000's)` &lt;dbl&gt; 436, 449, 470, 487, 502, 501, 515, 548, 575,…\n$ Manatees                  &lt;dbl&gt; 14, 21, 18, 19, 24, 18, 20, 27, 30, 34, 31, …\n$ Comments                  &lt;chr&gt; \"Source for the Powerboat Data:\", \"Data for …\n\n\nQUESTION: What is the response/dependent variable?\nANSWER:\nQUESTION: What is the explanatory variable?\nANSWER:\nQUESTION: What do you think is the nature of the relationship between the two?\nANSWER:\nQUESTION: What is your best guess at the correlation coefficient, \\(r\\)?\nANSWER:"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-1",
-    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-1",
-    "title": "Practice: Bivariate Data",
-    "section": "Plot the Data and calculate r",
-    "text": "Plot the Data and calculate r\nQUESTION: Does the relationship look linear?\nANSWER:"
-  },
-  {
-    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-2",
-    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-2",
-    "title": "Practice: Bivariate Data",
-    "section": "Plot the Data and calculate r",
-    "text": "Plot the Data and calculate r\nQUESTION: Does the relationship look linear?\nANSWER:"
   }
 ]
