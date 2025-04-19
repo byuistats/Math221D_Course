@@ -79,7 +79,7 @@ clean
 <div class="QuestionsHeading">Combining Tidy Functions</div>
 <div class="Questions">
 
-1. Click to see how to [filter](../3-Data_Wrangling_Visualization/02-Filter.qmd) outliers for reaction times (reaction times greater than 1 second), and height outliers (taller than 7 feet tall), and social media hours (more than 100 hours).  
+1. Click to see how to [filter](../3-Data_Wrangling_Visualization/3-Filter.qmd) outliers for reaction times (reaction times greater than 1 second), and height outliers (taller than 7 feet tall), and social media hours (more than 100 hours).  
 
 <details>
 <summary>Click to see</summary>

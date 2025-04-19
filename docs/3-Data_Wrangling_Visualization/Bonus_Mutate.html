@@ -218,27 +218,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling">    
         <li class="dropdown-header">Into the Tidyverse</li>
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/1-GGPlot_Intro.html">
  <span class="dropdown-text">A Better Way to Plot</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/2-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/02-Filter.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/3-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/03-Select.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/4-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-Unit1_Unit2_AA.html">
  <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
   </li>  
         <li class="dropdown-header">Bonus Material</li>
@@ -484,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] Inf</code></pre>
 </div>
 </div>
-<p>Notice that the mean is <code>Inf</code> which means infinity, or undefined. This is likely due to R attempting to divide a number by zero, meaning someone answered that their arm span was zero. This is where <a href="../3-Data_Wrangling_Visualization/02-Filter.html"><code>filter()</code></a> comes in handy. We can filter out the rows where Armspan_cm is 0:</p>
+<p>Notice that the mean is <code>Inf</code> which means infinity, or undefined. This is likely due to R attempting to divide a number by zero, meaning someone answered that their arm span was zero. This is where <a href="../3-Data_Wrangling_Visualization/3-Filter.html"><code>filter()</code></a> comes in handy. We can filter out the rows where Armspan_cm is 0:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Armspan_cm <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
@@ -511,7 +511,7 @@ Combining Tidy Functions
 </div>
 <div class="Questions">
 <ol type="1">
-<li>Click to see how to <a href="../3-Data_Wrangling_Visualization/02-Filter.html">filter</a> outliers of ht_to_wt ratio and <a href="../3-Data_Wrangling_Visualization/03-Select.html">select</a> only the columns of interest.</li>
+<li>Click to see how to <a href="../3-Data_Wrangling_Visualization/3-Filter.html">filter</a> outliers of ht_to_wt ratio and <a href="../3-Data_Wrangling_Visualization/03-Select.qmd">select</a> only the columns of interest.</li>
 </ol>
 <details>
 <summary>

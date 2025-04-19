@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro to Data Wrangling – Math221D Notebook</title>
+<title>Data Wrangling - Application Activity – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -184,27 +218,27 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling">    
         <li class="dropdown-header">Into the Tidyverse</li>
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/1-GGPlot_Intro.html">
  <span class="dropdown-text">A Better Way to Plot</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/2-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/02-Filter.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/3-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/03-Select.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/4-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-Unit1_Unit2_AA.html">
  <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
   </li>  
         <li class="dropdown-header">Bonus Material</li>
@@ -400,14 +434,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#cleaning-messy-data" id="toc-cleaning-messy-data" class="nav-link active" data-scroll-target="#cleaning-messy-data">Cleaning Messy Data</a></li>
-  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy Data</a></li>
-  <li><a href="#basic-tidyverse-functions" id="toc-basic-tidyverse-functions" class="nav-link" data-scroll-target="#basic-tidyverse-functions">Basic Tidyverse Functions</a></li>
-  <li><a href="#tidy-basics" id="toc-tidy-basics" class="nav-link" data-scroll-target="#tidy-basics">Tidy Basics</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#load-the-data-and-libraries" id="toc-load-the-data-and-libraries" class="nav-link" data-scroll-target="#load-the-data-and-libraries">1 - Load the Data and Libraries</a></li>
+  <li><a href="#explore-the-data-and-generate-hypotheses" id="toc-explore-the-data-and-generate-hypotheses" class="nav-link" data-scroll-target="#explore-the-data-and-generate-hypotheses">2 - Explore the data and generate hypotheses</a></li>
+  <li><a href="#prepare-data-for-analysis-and-create-visualization" id="toc-prepare-data-for-analysis-and-create-visualization" class="nav-link" data-scroll-target="#prepare-data-for-analysis-and-create-visualization">3 &amp; 4 - Prepare data for analysis and Create Visualization</a>
   <ul class="collapse">
-  <li><a href="#the-pipe-in-action" id="toc-the-pipe-in-action" class="nav-link" data-scroll-target="#the-pipe-in-action">The Pipe in Action</a></li>
+  <li><a href="#extroversion" id="toc-extroversion" class="nav-link" data-scroll-target="#extroversion">Extroversion</a></li>
+  <li><a href="#neuroticism" id="toc-neuroticism" class="nav-link" data-scroll-target="#neuroticism">Neuroticism</a></li>
   </ul></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul>
 </nav>
     </div>
@@ -416,7 +450,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro to Data Wrangling</h1>
+<h1 class="title">Data Wrangling - Application Activity</h1>
+<p class="subtitle lead">Personality Revisited</p>
 </div>
 
 
@@ -433,50 +468,126 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!---
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/R_Resources/Wrangling_Basics.qmd" download="Wrangling_Basics.qmd" type="text/markdown" download class="button-download">
-    Download QMD
-</a>
--->
-<section id="cleaning-messy-data" class="level1">
-<h1>Cleaning Messy Data</h1>
-<p>In statistics classes, you are typically provided simple, clean datasets to load and analyze with ease. This is a terrible disservice to anyone who will deal with data outside of the classroom.</p>
-<p>Anyone who works with data will have to do some data wrangling. Data wrangling is an appropriate description of cleaning, sorting, filtering, summarizing, transforming, and a whole host of other activities to make data usable for a specific purpose.</p>
-<p>In this document, we introduce a moderately messy dataset and demonstrate basic programming commands to help us get data ready for analysis or visualization.</p>
-</section>
-<section id="tidy-data" class="level1">
-<h1>Tidy Data</h1>
-<p>Hadley Wickham designed a <a href="https://vita.had.co.nz/papers/tidy-data.pdf">philosophy</a> of data structures that helps organize and manipulate data. He created a whole R library which contains a multitude of functions to make data wrangling approachable. The library is called ‘tidyverse’.</p>
-</section>
-<section id="basic-tidyverse-functions" class="level1">
-<h1>Basic Tidyverse Functions</h1>
-<p>The most frequently used actions for wrangling data are:</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The Big 5 personality test is the most widely accepted tool for modelling personality in academic psychology. It is based on decades of statistical analysis of personality descriptions across languages and cultures. The <a href="https://en.wikipedia.org/wiki/Big_Five_personality_traits">big 5 traits</a> are:</p>
 <ol type="1">
-<li><strong>Filtering rows</strong> - select rows based on certain user-defined criteria. This is done using the <code>filter()</code> operator.</li>
-<li><strong>Selecting columns</strong> - narrow the dataset to include specific <em>columns</em> required for the analysis or visualization. This is done using the <code>select()</code> operator.</li>
-<li><strong>Creating new columns</strong> - create new columns based on the provided data. This could be as simple as changing a height from inches to centimeters. We add new columns using the <code>mutate()</code> operator.</li>
-<li><strong>Summarizing data</strong> - create customized data summaries, often by specific groups. This is typically some combination of defining which groups we want to summarize by using the <code>group_by()</code> operator then using the <code>summarize()</code> function to create our customizable data summaries.</li>
+<li>Openness</li>
+<li>Conscientiousness</li>
+<li>Extroversion</li>
+<li>Agreeableness</li>
+<li>Neuroticism</li>
 </ol>
-<p>You have already used <code>favstats()</code> to do (4) above, but we’ll learn how to do so with more flexibility with the tidyverse.</p>
+<p>Brother Cannon collected personality data on students for the past several semesters, including a few metrics that may be associated with personality traits.</p>
+<p><strong>NOTE</strong>: Scores for personality traits are given in <em>percentiles</em> relative to the general population.</p>
+<p>In this activity, you will practice the process for approaching a dataset outlined in <a href="https://byuistats.github.io/Math221D_Course/2-Tidy_Data/05-Exploring_New_Data_with_Tidyverse.html">class</a>:</p>
+<ol type="1">
+<li>Load the data and libraries</li>
+<li>Explore the data and generate hypotheses</li>
+<li>Prepare the data for analysis</li>
+<li>Perform the appropriate analysis</li>
+</ol>
+<p>Data preparation will include using the <code>filter()</code> function. For now, analysis means creating good visualizations that tell a story using <code>ggplot()</code> and base R.</p>
 </section>
-<section id="tidy-basics" class="level1">
-<h1>Tidy Basics</h1>
-<p>Tidyverse operations typically consist of a sequential series of commands to reshape a raw dataset. We use what is called a “pipe” to tell the computer what to pass on to the next step. This “pipe” is typed: <code>%&gt;%</code>. I will demonstrate the use of the pipe with the <code>filter()</code> function, but see <a href="../3-Data_Wrangling_Visualization/02-Filter.html">here</a> for more in-depth explanation of <code>filter()</code>.</p>
-<section id="the-pipe-in-action" class="level2">
-<h2 class="anchored" data-anchor-id="the-pipe-in-action">The Pipe in Action</h2>
-<p>Suppose we have a dataset, <code>marital_status_data</code>, with 2 columns: <code>age</code> and <code>marital_status</code>. We expect the <code>marital_status</code> to be one of 4 options: “Single”, “Married”, “Divorced”, “Widowed”, but some joker input, “It’s complicated”. Because we are mainly interested in making inference about the primary statuses, we may want to filter out the rows with “It’s complicated” as the status.</p>
-<p>We would begin with the raw data, “pipe” it into the <code>filter()</code> function and tell R what I want it to do. I can either tell R what I want to keep or what I want to exclude (more <a href="../3-Data_Wrangling_Visualization/02-Filter.html">here</a>):</p>
-<pre><code>marital_Status_data %&gt;% filter(marital_status != "It's complicated")</code></pre>
-<p><strong>NOTE</strong>: The <code>!=</code> is read “not equal to”, and is a common <a href="../3-Data_Wrangling_Visualization/02-Filter.html#choosing-rows---filter##logical-operators">logical operator</a> used in computer programming. So the above code returns a subset of the original data omitting the rows.</p>
-<p>I can use pipes sequentially to do complicated data wrangling in very few lines of code.</p>
+<section id="load-the-data-and-libraries" class="level1">
+<h1>1 - Load the Data and Libraries</h1>
+<p>Run the following code to load the necessary R libraries and import the big 5 personality data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>big5 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/All_class_combined_personality_data.csv"</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
+<section id="explore-the-data-and-generate-hypotheses" class="level1">
+<h1>2 - Explore the data and generate hypotheses</h1>
+<p>In this section, you will explore the dataset including drilling down into individual columns.</p>
+<p>Recall a few useful functions for data exploration:</p>
+<ol type="1">
+<li><code>dim()</code> to get the number of rows and columns in a dataset</li>
+<li><code>table()</code> for getting counts of categorical data</li>
+<li><code>unique()</code> for getting a list of each of the distinct values of categorical data</li>
+<li><code>favstats()</code> to get summary statistics for quantitative data</li>
+<li><code>histogram()</code> to visualize the distribution of a single quantitative variable</li>
+<li><code>boxplot()</code> and/or <code>ggplot()</code> to compare the distributions of a quantitative variable for different groups</li>
+</ol>
+<p><strong>NOTE</strong>: Unless specified, you may use base R functions OR GGPlot.</p>
+<p><strong>QUESTION</strong>: How many students have responded to this survey? (i.e.&nbsp;how many rows)<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the maximum number of languages spoken among respondents?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Create a histogram of Extroversion. Be sure to label your graph with a title and improved x and y axis labels.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Put your histogram code here:  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: What is the highest score for Extroversion?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What problems, if any, do you notice?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Make a table of birth months:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: What problems, if any, do you notice?<br>
+<strong>ANSWER</strong>:</p>
 </section>
-<section id="resources" class="level1">
-<h1>Resources</h1>
-<p><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Tidyverse Cheat Sheet</a></p>
-<p><a href="https://r4ds.had.co.nz/transform.html">R for Data Science</a></p>
+<section id="prepare-data-for-analysis-and-create-visualization" class="level1">
+<h1>3 &amp; 4 - Prepare data for analysis and Create Visualization</h1>
+<p>In this section, you will be asked to create a clean dataset for each visualization.</p>
+<p>Recall a few useful functions for data wrangling:</p>
+<ol type="1">
+<li><code>filter()</code> to include or exclude specific rows</li>
+<li><code>select()</code> to include specific columns</li>
+</ol>
+<section id="extroversion" class="level2">
+<h2 class="anchored" data-anchor-id="extroversion">Extroversion</h2>
+<p><strong>QUESTION</strong>: Create a new dataset called <code>extro</code> that includes only columns for birth month and extroversion scores. Make sure it only has values that are real.</p>
+<p>HINT: Extroversion is measured in percentiles, and you should already know what the months of the year are.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>extro <span class="ot">&lt;-</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:4:0: unexpected end of input
+2: extro &lt;- 
+3: 
+  ^</code></pre>
+</div>
+</div>
+<p><strong>QUESTION</strong>: <strong>USE GGPLOT</strong> to create a side-by-side boxplot of Extroversion scores for all birth months.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6-Unit1_Unit2_AA_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>QUESTION</strong>: Based on the boxplot, which month appears to be the least extroverted? Explain your reasoning.<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Based on the boxplot, which month appears to be the most extroverted? Explain your reasoning.<br>
+<strong>ANSWER</strong>:</p>
+</section>
+<section id="neuroticism" class="level2">
+<h2 class="anchored" data-anchor-id="neuroticism">Neuroticism</h2>
+<p><strong>QUESTION</strong>: Create a dataset called <code>neuro</code> that includes only the Section and Neuroticism columns:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>neuro <span class="ot">&lt;-</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:4:0: unexpected end of input
+2: neuro &lt;- 
+3:   
+  ^</code></pre>
+</div>
+</div>
+<p><strong>QUESTION</strong>: <strong>USE GGPLOT</strong> to create a side-by-side boxplot comparing Neuroticism for all the different sections:</p>
+<p><strong>QUESTION</strong>: Based on the boxplot, which section appears to be the lowest in trait neuroticism? Explain your reasoning.<br>
+<strong>ANSWER</strong>:</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

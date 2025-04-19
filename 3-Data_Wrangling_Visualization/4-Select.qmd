@@ -40,7 +40,7 @@ survey %>%
 <div class="QuestionsHeading">Combining Tidy Functions</div>
 <div class="Questions">
 
-1. Click to see how to [filter](../3-Data_Wrangling_Visualization/02-Filter.qmd) out Ambitextrous participants and reaction time outliers (reaction times less than 1 seconds):
+1. Click to see how to [filter](../3-Data_Wrangling_Visualization/3-Filter.qmd) out Ambidextrous participants and reaction time outliers (reaction times less than 1 seconds):
 
 <details>
 <summary>Click to see</summary>

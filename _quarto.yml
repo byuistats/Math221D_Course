@@ -43,12 +43,12 @@ website:
       menu:
         - text: "Into the Tidyverse"
         - text: "A Better Way to Plot"
-          href: ./3-Data_Wrangling_Visualization/06-GGPlot_Intro.qmd
-        - href: ./3-Data_Wrangling_Visualization/01-Wrangling_Basics.qmd
-        - href: ./3-Data_Wrangling_Visualization/02-Filter.qmd
-        - href: ./3-Data_Wrangling_Visualization/03-Select.qmd
-        - href: ./3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.qmd
-        - href: ./3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.qmd
+          href: ./3-Data_Wrangling_Visualization/1-GGPlot_Intro.qmd
+        - href: ./3-Data_Wrangling_Visualization/2-Wrangling_Basics.qmd
+        - href: ./3-Data_Wrangling_Visualization/3-Filter.qmd
+        - href: ./3-Data_Wrangling_Visualization/4-Select.qmd
+        - href: ./3-Data_Wrangling_Visualization/5-Exploring_New_Data_with_Tidyverse.qmd
+        - href: ./3-Data_Wrangling_Visualization/6-Unit1_Unit2_AA.qmd
         - text: "Bonus Material"
         - href: ./3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.qmd
         - href: ./3-Data_Wrangling_Visualization/Bonus_Mutate.qmd

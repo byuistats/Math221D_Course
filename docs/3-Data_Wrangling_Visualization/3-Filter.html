@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Wrangling - Application Activity – Math221D Notebook</title>
+<title>filter() – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -218,27 +218,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-wrangling">    
         <li class="dropdown-header">Into the Tidyverse</li>
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/06-GGPlot_Intro.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/1-GGPlot_Intro.html">
  <span class="dropdown-text">A Better Way to Plot</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/01-Wrangling_Basics.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/2-Wrangling_Basics.html">
  <span class="dropdown-text">Intro to Data Wrangling</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/02-Filter.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/3-Filter.html">
  <span class="dropdown-text">filter()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/03-Select.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/4-Select.html">
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/05-Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/07-Unit1_Unit2_AA.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-Unit1_Unit2_AA.html">
  <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
   </li>  
         <li class="dropdown-header">Bonus Material</li>
@@ -434,14 +434,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#load-the-data-and-libraries" id="toc-load-the-data-and-libraries" class="nav-link" data-scroll-target="#load-the-data-and-libraries">1 - Load the Data and Libraries</a></li>
-  <li><a href="#explore-the-data-and-generate-hypotheses" id="toc-explore-the-data-and-generate-hypotheses" class="nav-link" data-scroll-target="#explore-the-data-and-generate-hypotheses">2 - Explore the data and generate hypotheses</a></li>
-  <li><a href="#prepare-data-for-analysis-and-create-visualization" id="toc-prepare-data-for-analysis-and-create-visualization" class="nav-link" data-scroll-target="#prepare-data-for-analysis-and-create-visualization">3 &amp; 4 - Prepare data for analysis and Create Visualization</a>
+  <li><a href="#choosing-rows" id="toc-choosing-rows" class="nav-link active" data-scroll-target="#choosing-rows">Choosing Rows</a>
   <ul class="collapse">
-  <li><a href="#extroversion" id="toc-extroversion" class="nav-link" data-scroll-target="#extroversion">Extroversion</a></li>
-  <li><a href="#neuroticism" id="toc-neuroticism" class="nav-link" data-scroll-target="#neuroticism">Neuroticism</a></li>
+  <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators">Logical Operators</a></li>
   </ul></li>
+  <li><a href="#removing-outliers" id="toc-removing-outliers" class="nav-link" data-scroll-target="#removing-outliers">Removing Outliers</a>
+  <ul class="collapse">
+  <li><a href="#filtering-on-categorical-data" id="toc-filtering-on-categorical-data" class="nav-link" data-scroll-target="#filtering-on-categorical-data">Filtering on Categorical Data</a></li>
+  </ul></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your turn</a></li>
   </ul>
 </nav>
     </div>
@@ -450,8 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Wrangling - Application Activity</h1>
-<p class="subtitle lead">Personality Revisited</p>
+<h1 class="title">filter()</h1>
 </div>
 
 
@@ -468,126 +468,150 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>The Big 5 personality test is the most widely accepted tool for modelling personality in academic psychology. It is based on decades of statistical analysis of personality descriptions across languages and cultures. The <a href="https://en.wikipedia.org/wiki/Big_Five_personality_traits">big 5 traits</a> are:</p>
-<ol type="1">
-<li>Openness</li>
-<li>Conscientiousness</li>
-<li>Extroversion</li>
-<li>Agreeableness</li>
-<li>Neuroticism</li>
-</ol>
-<p>Brother Cannon collected personality data on students for the past several semesters, including a few metrics that may be associated with personality traits.</p>
-<p><strong>NOTE</strong>: Scores for personality traits are given in <em>percentiles</em> relative to the general population.</p>
-<p>In this activity, you will practice the process for approaching a dataset outlined in <a href="https://byuistats.github.io/Math221D_Course/2-Tidy_Data/05-Exploring_New_Data_with_Tidyverse.html">class</a>:</p>
-<ol type="1">
-<li>Load the data and libraries</li>
-<li>Explore the data and generate hypotheses</li>
-<li>Prepare the data for analysis</li>
-<li>Perform the appropriate analysis</li>
-</ol>
-<p>Data preparation will include using the <code>filter()</code> function. For now, analysis means creating good visualizations that tell a story using <code>ggplot()</code> and base R.</p>
+<section id="choosing-rows" class="level1">
+<h1>Choosing Rows</h1>
+<p>Good scientists <strong>NEVER</strong> delete data from original records. The tidyverse allows us to create a new, clean dataset with a transparent set of steps from which we can create graphs, visualizations and analyses without losing any of the original data.</p>
+<p>We here demonstrate how to define criteria for choosing which rows to include from the data. Consider the High School survey data which consists of responses to 60 questions from 312 high school students.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv'</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="logical-operators" class="level2">
+<h2 class="anchored" data-anchor-id="logical-operators">Logical Operators</h2>
+<p>Logical operators are used extensively in computer programming to evaluate if a specified condition is met. They return a “True” or a “False” but are often treated as 1’s and 0’s respectively.</p>
+<p>The most common logical operators used to filter rows are:</p>
+<ul>
+<li><code>&lt;</code> and <code>&lt;=</code> means “less than” and “less than or equal to” respectively</li>
+<li><code>&gt;</code> and <code>&gt;=</code> means “greater than” and “greater than or equal to” respectively</li>
+<li><code>==</code> means “equal to” (NOTE: we use double equals because in most computer languages, a single <code>=</code> is an assignment operator. This avoids ambiguity)</li>
+<li><code>!=</code> means “not equal to”; this one is useful if you want to eliminate one level of a variable</li>
+<li><code>%in%</code> selects specified levels you want to include</li>
+</ul>
 </section>
-<section id="load-the-data-and-libraries" class="level1">
-<h1>1 - Load the Data and Libraries</h1>
-<p>Run the following code to load the necessary R libraries and import the big 5 personality data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>big5 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/All_class_combined_personality_data.csv"</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="explore-the-data-and-generate-hypotheses" class="level1">
-<h1>2 - Explore the data and generate hypotheses</h1>
-<p>In this section, you will explore the dataset including drilling down into individual columns.</p>
-<p>Recall a few useful functions for data exploration:</p>
-<ol type="1">
-<li><code>dim()</code> to get the number of rows and columns in a dataset</li>
-<li><code>table()</code> for getting counts of categorical data</li>
-<li><code>unique()</code> for getting a list of each of the distinct values of categorical data</li>
-<li><code>favstats()</code> to get summary statistics for quantitative data</li>
-<li><code>histogram()</code> to visualize the distribution of a single quantitative variable</li>
-<li><code>boxplot()</code> and/or <code>ggplot()</code> to compare the distributions of a quantitative variable for different groups</li>
-</ol>
-<p><strong>NOTE</strong>: Unless specified, you may use base R functions OR GGPlot.</p>
-<p><strong>QUESTION</strong>: How many students have responded to this survey? (i.e.&nbsp;how many rows)<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the maximum number of languages spoken among respondents?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Create a histogram of Extroversion. Be sure to label your graph with a title and improved x and y axis labels.</p>
+<section id="removing-outliers" class="level1">
+<h1>Removing Outliers</h1>
+<p>One common use of<code>filter()</code> is to remove outliers. Favstats of Height_cm shows that the tallest person is 999 cm. This means there is at least one impossible value we may not want to include in a visualization or analysis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Put your histogram code here:  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(survey<span class="sc">$</span>Height_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  min  Q1 median      Q3 max     mean       sd   n missing
+ 1.68 161    170 178.125 999 169.2412 53.54382 312       0</code></pre>
 </div>
-<p><strong>QUESTION</strong>: What is the highest score for Extroversion?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What problems, if any, do you notice?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Make a table of birth months:</p>
+</div>
+<p>We can create a new dataset, <code>clean</code>, that excludes responses of people who are taller than 250cm (about 8 feet):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the dim() function shows us how many rows and columns in a dataset</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 312  60</code></pre>
 </div>
-<p><strong>QUESTION</strong>: What problems, if any, do you notice?<br>
-<strong>ANSWER</strong>:</p>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 310  60</code></pre>
+</div>
+</div>
+<p>The above code will return a new dataset without the outliers.</p>
+<p><strong>How many rows does the original dataset have?</strong></p>
+<p><strong>How many rows does the filtered dataset have?</strong></p>
+<section id="filtering-on-categorical-data" class="level2">
+<h2 class="anchored" data-anchor-id="filtering-on-categorical-data">Filtering on Categorical Data</h2>
+<p>Suppose for some reason, we only want to include right- or left-handed people (excluding ambidextrous). We can add multiple conditions in the <code>filter()</code> function separated by a comma:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See what the distinct values are in the Handed column</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Handed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Left-Handed"  "Right-Handed" "Ambidextrous"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">!=</span> <span class="st">"Ambidextrous"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 302 × 60
+   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
+   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+ 1 USA     FL         2022         12 Male         18 Left-Handed        182
+ 2 USA     IN         2022         12 Male         17 Right-Handed       190
+ 3 USA     GA         2022         12 Female       17 Right-Handed       172
+ 4 USA     NC         2022         11 Female       15 Right-Handed       163
+ 5 USA     CO         2022         12 Female       17 Left-Handed         51
+ 6 USA     MO         2022         11 Male         17 Right-Handed       181
+ 7 USA     SC         2022         11 Female       18 Right-Handed       160
+ 8 USA     WA         2022         11 Female       16 Right-Handed       156
+ 9 USA     WA         2022         12 Female       17 Right-Handed       169
+10 USA     WA         2022         11 Male         18 Right-Handed       160
+# ℹ 292 more rows
+# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,
+#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,
+#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,
+#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,
+#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,
+#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We could also try using %in% instead of  "!="</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Left-Handed"</span>, <span class="st">"Right-Handed"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 302 × 60
+   Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
+   &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
+ 1 USA     FL         2022         12 Male         18 Left-Handed        182
+ 2 USA     IN         2022         12 Male         17 Right-Handed       190
+ 3 USA     GA         2022         12 Female       17 Right-Handed       172
+ 4 USA     NC         2022         11 Female       15 Right-Handed       163
+ 5 USA     CO         2022         12 Female       17 Left-Handed         51
+ 6 USA     MO         2022         11 Male         17 Right-Handed       181
+ 7 USA     SC         2022         11 Female       18 Right-Handed       160
+ 8 USA     WA         2022         11 Female       16 Right-Handed       156
+ 9 USA     WA         2022         12 Female       17 Right-Handed       169
+10 USA     WA         2022         11 Male         18 Right-Handed       160
+# ℹ 292 more rows
+# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,
+#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,
+#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,
+#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,
+#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,
+#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;, …</code></pre>
+</div>
+</div>
+<p><strong>NOTE</strong>: The <code>%in%</code> and the <code>!=</code> will not always give you the same results. If there are misspellings or other options, using <code>%in%</code> will limit the data to only those with the exact spelling in the list provided. For example, someone responding “left handed” (all lower case), would not be included in the clean data. Misspellings would, however, be included if I use <code>!= "Ambitextrous"</code> because that only removes rows written exactly that way. Things like, <code>ambidextrious</code> or <code>RightHanded</code> would still be included.</p>
+<p>I could further limit my data to students from Florida and Missouri:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">250</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>         Handed <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Left-Handed"</span>, <span class="st">"Right-Handed"</span>),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>         Region <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MO"</span>, <span class="st">"FL"</span>))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(new_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27 60</code></pre>
+</div>
+</div>
+<p><strong>How many rows does our latest dataset have?</strong></p>
 </section>
-<section id="prepare-data-for-analysis-and-create-visualization" class="level1">
-<h1>3 &amp; 4 - Prepare data for analysis and Create Visualization</h1>
-<p>In this section, you will be asked to create a clean dataset for each visualization.</p>
-<p>Recall a few useful functions for data wrangling:</p>
-<ol type="1">
-<li><code>filter()</code> to include or exclude specific rows</li>
-<li><code>select()</code> to include specific columns</li>
-</ol>
-<section id="extroversion" class="level2">
-<h2 class="anchored" data-anchor-id="extroversion">Extroversion</h2>
-<p><strong>QUESTION</strong>: Create a new dataset called <code>extro</code> that includes only columns for birth month and extroversion scores. Make sure it only has values that are real.</p>
-<p>HINT: Extroversion is measured in percentiles, and you should already know what the months of the year are.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>extro <span class="ot">&lt;-</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in parse(text = input): &lt;text&gt;:4:0: unexpected end of input
-2: extro &lt;- 
-3: 
-  ^</code></pre>
-</div>
-</div>
-<p><strong>QUESTION</strong>: <strong>USE GGPLOT</strong> to create a side-by-side boxplot of Extroversion scores for all birth months.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="07-Unit1_Unit2_AA_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>QUESTION</strong>: Based on the boxplot, which month appears to be the least extroverted? Explain your reasoning.<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Based on the boxplot, which month appears to be the most extroverted? Explain your reasoning.<br>
-<strong>ANSWER</strong>:</p>
 </section>
-<section id="neuroticism" class="level2">
-<h2 class="anchored" data-anchor-id="neuroticism">Neuroticism</h2>
-<p><strong>QUESTION</strong>: Create a dataset called <code>neuro</code> that includes only the Section and Neuroticism columns:</p>
+<section id="your-turn" class="level1">
+<h1>Your turn</h1>
+<p>How many vegetarians in the survey say that meat is their favorite food?</p>
+<p>The <code>Vegetarian</code> column has “Yes” and “No” as possible options.</p>
+<p>The <code>Favorite_Food</code> column has “Meat”, “Pizza/Pasta”, “Breads/Sandwiches”, “Rice/Noodle dishes”, “Poultry”, “Seafood”, “Vegetables”, “Desserts”, “Fruit”, “Salads”, “No favorite”, “Other” and “Soups” as options.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>neuro <span class="ot">&lt;-</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in parse(text = input): &lt;text&gt;:4:0: unexpected end of input
-2: neuro &lt;- 
-3:   
-  ^</code></pre>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>vegetarians <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p><strong>QUESTION</strong>: <strong>USE GGPLOT</strong> to create a side-by-side boxplot comparing Neuroticism for all the different sections:</p>
-<p><strong>QUESTION</strong>: Based on the boxplot, which section appears to be the lowest in trait neuroticism? Explain your reasoning.<br>
-<strong>ANSWER</strong>:</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

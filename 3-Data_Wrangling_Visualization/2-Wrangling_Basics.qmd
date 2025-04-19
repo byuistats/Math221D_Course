@@ -4,11 +4,6 @@ title: "Intro to Data Wrangling"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
 ```
-<!---
-<a href="https://raw.githubusercontent.com/byuistats/Math221D_Course/main/Student_Work/R_Resources/Wrangling_Basics.qmd" download="Wrangling_Basics.qmd" type="text/markdown" download class="button-download">
-    Download QMD
-</a>
--->
 
 
 # Cleaning Messy Data
@@ -38,18 +33,18 @@ You have already used `favstats()` to do (4) above, but we'll learn how to do so
 
 # Tidy Basics
 
-Tidyverse operations typically consist of a sequential series of commands to reshape a raw dataset.  We use what is called a "pipe" to tell the computer what to pass on to the next step.  This "pipe" is typed:  `%>%`.  I will demonstrate the use of the pipe with the `filter()` function, but see [here](../3-Data_Wrangling_Visualization/02-Filter.qmd) for more in-depth explanation of `filter()`.
+Tidyverse operations typically consist of a sequential series of commands to reshape a raw dataset.  We use what is called a "pipe" to tell the computer what to pass on to the next step.  This "pipe" is typed:  `%>%`.  I will demonstrate the use of the pipe with the `filter()` function, but see [here](../3-Data_Wrangling_Visualization/3-Filter.qmd) for more in-depth explanation of `filter()`.
 
 ## The Pipe in Action
 
 Suppose we have a dataset, `marital_status_data`, with 2 columns:  `age` and `marital_status`.  We expect the `marital_status` to be one of 4 options:  "Single", "Married", "Divorced", "Widowed", but some joker input, "It's complicated".  Because we are mainly interested in making inference about the primary statuses, we may want to filter out the rows with "It's complicated" as the status.  
 
-We would begin with the raw data, "pipe" it into the `filter()` function and tell R what I want it to do.  I can either tell R what I want to keep or what I want to exclude (more [here](../3-Data_Wrangling_Visualization/02-Filter.qmd)):
+We would begin with the raw data, "pipe" it into the `filter()` function and tell R what I want it to do.  I can either tell R what I want to keep or what I want to exclude (more [here](../3-Data_Wrangling_Visualization/3-Filter.qmd)):
 
 ```
 marital_Status_data %>% filter(marital_status != "It's complicated")
 ```
-__NOTE__:  The `!=` is read "not equal to", and is a common [logical operator](../3-Data_Wrangling_Visualization/02-Filter.qmd#choosing-rows---filter##logical-operators) used in computer programming.  So the above code returns a subset of the original data omitting the rows.
+__NOTE__:  The `!=` is read "not equal to", and is a common [logical operator](../3-Data_Wrangling_Visualization/3-Filter.qmd#choosing-rows---filter##logical-operators) used in computer programming.  So the above code returns a subset of the original data omitting the rows.
 
 I can use pipes sequentially to do complicated data wrangling in very few lines of code.  
 

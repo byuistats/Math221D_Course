@@ -33,7 +33,7 @@ clean <- survey %>%
 mean(clean$ht_to_span)
 ```
 
-Notice that the mean is `Inf` which means infinity, or undefined.  This is likely due to R attempting to divide a number by zero, meaning someone answered that their arm span was zero.  This is where [`filter()`](../3-Data_Wrangling_Visualization/02-Filter.qmd) comes in handy.  We can filter out the rows where Armspan_cm is 0:
+Notice that the mean is `Inf` which means infinity, or undefined.  This is likely due to R attempting to divide a number by zero, meaning someone answered that their arm span was zero.  This is where [`filter()`](../3-Data_Wrangling_Visualization/3-Filter.qmd) comes in handy.  We can filter out the rows where Armspan_cm is 0:
 
 ```{r}
 clean <- survey %>%
@@ -60,7 +60,7 @@ clean <- survey %>%
 <div class="QuestionsHeading">Combining Tidy Functions</div>
 <div class="Questions">
 
-1. Click to see how to [filter](../3-Data_Wrangling_Visualization/02-Filter.qmd) outliers of ht_to_wt ratio and [select](../3-Data_Wrangling_Visualization/03-Select.qmd) only the columns of interest.
+1. Click to see how to [filter](../3-Data_Wrangling_Visualization/3-Filter.qmd) outliers of ht_to_wt ratio and [select](../3-Data_Wrangling_Visualization/03-Select.qmd) only the columns of interest.
 
 <details>
 <summary>Click to see</summary>
