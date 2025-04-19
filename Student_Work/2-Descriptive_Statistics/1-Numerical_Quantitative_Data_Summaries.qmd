@@ -1,0 +1,296 @@
+---
+title: Numerical Quantitative Data Summaries
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+
+# Introduction
+
+In this section we discuss data summaries for quantitative data.  After this lesson, you should be able to:  
+
+  1.  Understand common measures of center (mean, median, mode)  
+  2.  Understand common measures of spread (standard deviation, variance, percentiles), why they are important, and how to interpret them  
+  3.  Use R to calculate measures of center and spread  
+
+Throughout this section, we will use the "wrong patient" dataset which contains information about malpractice lawsuits of operations performed on the wrong patient or the wrong site on the patient.  
+
+## Reading Data into R
+
+We will use R to calculate measures of center and spread using data collected about costs incurred by hospitals due to certain lawsuits. The lawsuits in question were about surgeries performed on the wrong patient, or on the right patient but the wrong part of the patient's body (the wrong site).
+
+Load the libraries and the data into R:  
+
+```{r}
+library(rio)
+library(mosaic)
+library(tidyverse)
+library(car)
+
+wrong_patient <- import("https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx")
+
+```
+
+
+# Measure of Center
+
+Measures of "central tendency" are useful for understanding what happens "on average."  For example, we may be interested in average payout for a medical lawsuit. 
+
+The most common measures of central tendency are the Mean, Median and Mode.  
+
+## Mean
+
+The sample mean or sample arithmetic mean is the most common tool to estimate the center of a distribution. It is referred to simply as the mean. It is computed by adding up the observed data and dividing by the number of observations in the data set.
+
+In Statistics, important ideas are given a name. Very important ideas are given a symbol. The sample mean has both a name (mean) and a symbol ($\bar x$, called "x-bar").
+
+$$
+  \bar{x} \text{ is used to denote the sample mean}
+$$
+
+You may have heard people refer to the sample mean as the average. Technically, the word average refers to any number that is used to estimate the center of a distribution. The mean, median and mode are all examples of "averages." To avoid confusion, it is best to use the words mean, median, and mode instead of the word average, so that it is clear which "average" your are referencing.
+
+Calculate the mean payout for operations done on the wrong patient:
+
+```{r}
+
+mean(wrong_patient$Wrong_Patient)
+
+```
+
+When there are missing values in the dataset, the `mean()` function will return `NA`.  We can make R give us a mean by telling the function to remove the NA values:  
+
+```{r}
+
+mean(wrong_patient$Wrong_Patient, na.rm=TRUE)
+
+```
+
+__NOTE__:  The mean is a good measure of center when there are few outliers and the data are fairly symmetric.  
+
+
+## Median
+
+The median is the middle value in a sorted data set. Half of the observations in the data set are below the median and half are above the median. To find the median, you:
+
+* Sort the values from smallest to largest
+  + Do one of the following:
+    + If there are an odd number of values, the median is the middle value in the sorted list.
+    + If there are an even number of values, the median is the mean of the two middle values in the sorted list.
+
+Calculate the Median payout for operations done on the wrong patient using the `median()` function:
+
+```{r}
+median(wrong_patient$Wrong_Patient, na.rm=TRUE)
+```
+
+__QUESTION__:  What does this mean?  
+__ANSWER__:  
+
+
+__QUESTION__:  Notice how much bigger the Mean is from the Median. Why is that the case?  
+__ANSWER__:  
+
+
+__QUESTION__:  Which do you think is most appropriate to use, the Mean or the Median?  Why?  
+__ANSWER__:  
+
+
+
+__NOTE__:  The Median is a good measure of center when the data are skewed or there are large outliers.  
+
+
+## Mode
+
+The most frequently occurring value is called the mode. This only works well when you have a few possible outcomes or are counting the frequency of categories.  If you have truly quantitative data, such as dollar amounts of payouts, it is unlikely to have the exact same value paid out many times.  
+
+If no number occurs more than once in the data set, we say that there is no mode.
+
+Because there is no meaningful mode in the wrong patient data, let's look at another example to calculate the mode:  
+
+**Calculate a Mode**
+
+We can tabulate the frequency of specific values using the `table()` function:
+
+```{r}
+
+# Create a new dataset called data2:
+data2 <- c(3,4,9,5,2,3,5,4,2,3,1,5,3,1,2,6,2,4,6,2,2,2,9,1,2,7,8,100)
+
+# The `table()` function counts up all the times specific values show up.  This works for numbers or categories:
+table(data2)
+
+```
+
+The first row of the `table()` output is the *value* being counted.  The second row is the *frequency* of occurrence.
+
+__QUESTION__:  Which value is most frequently occurring?  
+__ANSWER__:  
+
+__QUESTION__:  How many times did that value occur?  
+__ANSWER__:  
+
+
+
+
+# Spread
+
+Understanding the "typical" value of a certain variable is only part of the story.  It can be very misleading by itself.  We need to understand the variation in the data.  
+
+Measures of spread describe how close the observations are to the "typical" value.  These measures answer questions like:  how far spread out are heights of college students? Are they all very close to the "typical" value, or is there a wide range of heights?  
+
+The most common measures of variation are: 
+
+  1. Variance
+  2. Standard Deviation
+  3. Percentiles/Quartiles.  
+
+We will discuss each below.  
+
+## Why do we care?
+  
+Imagine you are growing feed corn on 100 acres.  There are 2 products you could purchase, both claim an average yield of 205 bushels/acre.  Product A costs less than Product B.  Which one would you plant?  
+
+If you were basing your decision exclusively on the average yield, you would obviously go with the cheaper option.  But what if I told you that with Product A you could get anything from 85 bushels/acre to 250 bushels/acre.  Product B ranges from 198 to 212 bushels/acre.  Would that change your decision?  
+
+Product A looks much more risky now.  Considering both the average AND the variability helps us make much more informed decisions.  
+
+The average is only half the story!  
+
+<br>
+
+
+## Standard Deviation
+
+The **standard deviation** is a measure of the *spread* in the distribution. If the data tend to be close together, then the standard deviation is relatively small. If the data tend to be more spread out, then the standard deviation is relatively large.  
+
+__KEY POINT__:  Think of the standard deviation as the "average distance" of each data point away from the mean.  
+
+We can easily calculate the standard deviation in R using the `sd()` function:  
+
+```{r}
+sd(wrong_patient$Wrong_Patient, na.rm=TRUE)
+```
+
+
+The standard deviation of the payouts is \$105,986.70. This number contains information from all the lawsuits. If the payouts had been more diverse, the standard deviation would be larger. If the payouts were more uniform (i.e. closer together), then the standard deviation would have been smaller.  If all the payouts somehow had the same amount, then the standard deviation would be zero.
+
+
+#### Summary
+
+<div class="Emphasis">
+&nbsp;&nbsp;**Standard Deviation**
+
+&nbsp;&nbsp;The **standard deviation** is one number that describes the spread in a set of data.  If the data points are close together the standard deviation will be smaller than if they are spread out.
+
+&nbsp;&nbsp;At this point, it may be difficult to understand the meaning and usefulness of the standard deviation.  For now, it is enough for you to recognize the following points:
+
+  +  The standard deviation is a measure of how spread out the data are.
+  +  If the standard deviation is large, then the data are very spread out.
+  +  If the standard deviation is zero, then all the values are the identical--there is no spread in the data.
+  +  The standard deviation cannot be negative.
+<br>
+</div>
+
+
+## Variance
+
+The variance is the square of the standard deviation.  The sample variance is denoted by the symbol $s^2$.  You found the sample standard deviation for payouts for operating on the wrong patient above is \$105,986.70.  So, the sample variance for this data set is $s^2 = 105,986.70^2 = 11,233,176,611$.
+
+You can also calculate the variance directly from data using the `var()` function.  
+
+
+```{r}
+var(wrong_patient$Wrong_Patient, na.rm=TRUE)
+```
+
+The standard deviation and the variance each have their own pros and cons.
+
+Standard Deviation is in the original units as the data which makes it easy to interpret. 
+
+The variance is more difficult to interpret but has many important mathematical attributes that make it more appropriate in certain situations not covered in this introductory course. 
+
+
+## Percentiles and Quartiles
+
+A **percentile** is a number such that a specified percentage of the data are at or below this number.  For example, the 99<sup>th</sup> percentile is a number such that 99% of the data are at or below this value.  As another example, half (50%) of the data lie at or below the 50<sup>th</sup> percentile.  The word percent means $\div 100$.  This can help you remember that the percentiles divide the data into 100 equal groups.
+
+**Quartiles** are special percentiles. The word quartile is from the Latin *quartus*, which means "fourth." The quartiles divide the data into four equal groups. The quartiles correspond to specific percentiles.  The first quartile, Q<sub>1</sub>, is the 25<sup>th</sup> percentile. The second quartile, Q<sub>2</sub>, is the same as the 50<sup>th</sup> percentile or the median.  The third quartile, Q<sub>3</sub>, is equivalent to the 75<sup>th</sup> percentile.
+
+
+__NOTE__:  Percentiles can be used to describe the center and spread of any distribution and are particularly useful when the distribution is skewed or has outliers.  
+
+Use R's `quantile()` function to calculate percentiles.  This functions requires two inputs separated by a comma: the data and the desired percentile input as a decimal.  
+
+- To calculate the 25th percentile for the costs of surgery done on the Wrong Site:
+
+```{r}
+quantile(wrong_patient$Wrong_Site, .25, na.rm=TRUE)
+```
+
+__QUESTION__:  What does this number mean?  
+__ANSWER__:  
+
+
+The first quartile ($Q_1$) or 25<sup>th</sup> percentile (calculated in R) of the wrong-site data is: \$29,496. (This result is illustrated in the figure below.)  This means that 25 percent of the time hospitals lost a wrong-site lawsuit, they had to pay \$29,496 or less. The 25<sup>th</sup> percentile can be written symbolically as: P<sub>25</sub> = \$29,496.  Other percentiles can be written the same way.  The 99<sup>th</sup> percentile can be written as P<sub>99</sub>.
+
+
+__QUESTION__:  What is the 13<sup>th</sup> percentile of the wrong patient data?  
+
+```{r}
+quantile()
+```
+
+__QUESTION__:  Interpret this value:  
+__ANSWER__:  
+
+
+__QUESTION__:  Find P<sub>90</sub>.  
+
+```{r}
+quantile()
+```
+
+
+__QUESTION__:  Half of the wrong-site lawsuits judgments were less than or equal to what value?
+```{r}
+quantile()
+## OR....
+
+```
+
+
+### The Five-Number Summary
+
+Another way to summarize data is with the five-number summary.  **The five-number summary** is comprised of the minimum, the first quartile, the second quartile (or median), the third quartile, and the maximum.  
+
+There is a very easy way to get the Five-Number Summary along with the mean and standard deviation.  The `favstats()` function in the `mosaic` library gives us all of our **fav**orite **stat**istic**s**. 
+
+As before, we will have to install the `mosaic` library once, then load it when we want to use it.  
+
+
+**To find the values for a five-number summary in R, do the following**
+
+- Input the data into the `favstats()` function:
+
+```{r}
+favstats(wrong_patient$Wrong_Patient)
+```
+
+
+## Your Turn
+
+Create a summary statistics table for the cost of operating on the *wrong site*:
+
+```{r}
+
+```
+
+
+

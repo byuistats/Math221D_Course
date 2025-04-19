@@ -1,0 +1,74 @@
+---
+title: Semester Project Instructions
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+<!--- 
+--->
+
+# Introduction
+
+For this project, you will create an html report that is an original analysis based on data that you find.  
+
+Start with a research question that interests you.  It can be about any topic (finance, music, video games, hunting, weather, mental health, AI...seriously anything!)  
+
+For this project, a good research question will be interesting to you AND *feasible* to find available data.  You can certainly think of exciting research questions for which the data are impossible to find or collect.  Expect to refine your research question as you begin the data search.  
+
+Once you have a research question in mind, start looking for data relating to it.  Below are some links that might be helpful for finding datasets.  
+
+
+## Helpful Links
+
+Google actually has a search engine specifically for [datasets](https://datasetsearch.research.google.com/)
+
+[Statista](https://www.statista.com/) has a datasets for a wide range of topics but is particularly well suited for government policy-related data such as health, crime, social science.  
+
+[Kaggle](https://www.kaggle.com/datasets) runs competitions for companies who outsource data challenges.  It has also compiled a large library of datasets on a range of topics.  Because businesses run competitions through here, there are a lot of datasets related to specific challenges that businesses face.  
+
+# Report
+
+Your report can follow the steps of the Statistical Process, including at least one paragraph for each step.
+
+## 1. Define the Problem
+
+Include an introduction that describes why you were interested in the topic and what you envisioned for an analysis.  Some questions to address:
+
+1. What is the population of your research?
+2. What do you think is the nature of the relationship you hope to discover?
+3. What type of data are you looking for (quantitative? categorical?)  
+4. What type of analysis are you expecting to do (t-test, regression? ANOVA? Chi-square test for independence? etc.)
+
+## 2. Collect the Data
+
+Talk about the process of how you found the data and whether you had to make adjustments to your research question.
+
+## 3. Describe the Data
+
+Include summary statistics (favstats, proportions, contingency tables, etc.)
+
+Include GGPlot visualizations (boxplots, histograms/density plots, bar charts, etc.).  Make the charts as understandable as possible without having to read the text description.  That means make sure:
+
+1. Axes are labeled appropriately
+2. It has a descriptive title
+3. Label lines or points that are highlighted in the graph
+
+## 4. Analyze the Data
+
+Perform the appropriate analysis for the data collected (t-test, F-test, regression, Chi-square, etc.)
+
+## 5. Take Action
+
+Based on your statistical inference, what recommendations or actions would you take?  
+
+# What to Turn In
+
+Knit your QMD file to produce a nice looking html report.  Submit the .html file into Canvas.  Be sure to check the following:
+
+  - Give your report a proper title in the YAML.  It should not be titled "Semester Project"
+  - Include your name as the author
+  - While this is not a writing class, the report should look professional

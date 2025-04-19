@@ -55,8 +55,9 @@ Recall a few useful functions for data exploration:
 2. `table()` for getting counts of categorical data
 3. `unique()` for getting a list of each of the distinct values of categorical data
 4. `favstats()` to get summary statistics for quantitative data
-5. `histogram()` to visualize the distribution of a single quantitative variable
-6. `boxplot()` and/or `ggplot()` to compare the distributions of a quantitative variable for different groups
+5. `ggplot() + geom_histogram()` to visualize the distribution of a single quantitative variable
+6. `ggplot() + geom_boxplot()`   to compare the distributions of a quantitative variable for different groups
+7. `ggpot() + geom_bar()` to look at bar charts for categorical data
 
 __NOTE__:  Unless specified, you may use base R functions OR GGPlot.  
 
@@ -90,9 +91,21 @@ __QUESTION__:  Make a table of birth months:
 
 ```
 
+
+__QUESTION__:  Make a bar plot of birth months:
+```{r}
+
+# Answer
+
+```
+
+
 __QUESTION__:  What problems, if any, do you notice?  
 __ANSWER__:  
 
+
+__QUESTION__:  Which month has the most births for this sample of students?  
+__ANSWER__:  
 
 
 # 3 & 4 - Prepare data for analysis and Create Visualization
@@ -113,7 +126,7 @@ HINT: Extroversion is measured in percentiles, and you should already know what 
 ```{r}
 
 extro <- 
-
+  
 ```
 
 __QUESTION__:  **USE GGPLOT** to create a side-by-side boxplot of Extroversion scores for all birth months.
@@ -150,4 +163,5 @@ __QUESTION__:  **USE GGPLOT** to create a side-by-side boxplot comparing Neuroti
 
 __QUESTION__:    Based on the boxplot, which section appears to be the lowest in trait neuroticism?  Explain your reasoning.  
 __ANSWER__:  
+
 
