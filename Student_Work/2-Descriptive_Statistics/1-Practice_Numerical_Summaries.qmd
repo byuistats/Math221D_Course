@@ -1,5 +1,5 @@
 ---
-title: Quantitative Data Summaries - Practice
+title: "Practice: Numerical Summaries"
 format:
   html:
     self-contained: true

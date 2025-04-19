@@ -1,5 +1,5 @@
 ---
-title: "Quantitative Data Summaries - Practice"
+title: "Practice: Graphical Summaries (Quant.)"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
@@ -7,7 +7,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Introduction
 
-This is an opportunity for you to practice creating numerical summaries of quantitative data.  
+This is an opportunity for you to practice creating graphical summaries of quantitative data.  
 
 We  will explore 2 datasets.  The first contains information about the duration and the time between geyser eruptions at Old Faithful in Yellowstone National park.  
 
@@ -31,62 +31,35 @@ gratitude <- rio::import("https://byuistats.github.io/M221R/Data/gratitude.xlsx"
 
 ```
 
-
 # Old Faithful
 
-## Calculate the Summary Statistics for Duration
-
-```{r}
-
-favstats()
-
-```
-
-__QUESTION__:  What is the mean duration time of Old Faithful eruptions?  
-__ANSWER__:  
-
-__QUESTION__:  What is the standard deviation of duration?  
-__ANSWER__:  
-
-
-
-## Calculate Summary Statistics for Wait time
+Create a histogram and a boxplot for Duration of Old Faithful eruptions:  
 
 ```{r}
 
 
-
 ```
 
-__Question__: What is the mean wait time between eruptions?  
-__Answer__: 
+__QUESTION__:  Describe the shape of the distribution of duration.  
+__ANSWER__:  
 
-__Question__: What is the maximum wait time between eruptions?  
-__Answer__:  
-
-__Question__: The middle 50% of wait times will be between what 2 numbers?  
-__Answer__:  
 
 
 # Gratitude
 
 In this dataset, there is a column called `treatment` which has the group designation, and a single column called `happiness` which is the self-reported happiness score for the participants in the sample.  
 
+## Histogram
 
-Create a summary statistics table and answer the questions below:
+Create a histogram and boxplot for happiness scores:  
 
 ```{r}
 
+
 ```
 
-
-__Question__: What is the maximum self-reported happiness score?  
+__Question__: What is the general shape of the distribution?  
 __Answer__:  
 
 
-__Question__: What is the standard deviation of happiness scores?  
-__Answer__:  
-
-__Question__: Explain what the standard deviation means in context of this problem.  
-__Answer__:  
 

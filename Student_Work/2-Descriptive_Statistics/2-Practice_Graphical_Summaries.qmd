@@ -1,5 +1,5 @@
 ---
-title: Quantitative Data Visualizations - Practice
+title: "Practice: Graphical Summaries"
 format:
   html:
     self-contained: true

@@ -1,5 +1,5 @@
 ---
-title: "Summarizing Categorical Data - Practice"
+title: "Practice: Summarizing Categorical Data"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
@@ -75,9 +75,9 @@ Swap the row and column table and recreate the graph above with the opposite gro
 
 ```{r}
 
-chiro_tbl2 <- table(chiropractic$motivation, chiropractic$location)
+chiro_tbl2 <- table()
 
-barplot(chiro_tbl2, beside=T, legend=rownames(chiro_tbl2))
+barplot()
 
 ```
 

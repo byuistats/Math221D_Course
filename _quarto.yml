@@ -26,16 +26,16 @@ website:
       menu:
          - text: "Descriptive Statistics"
          - href: ./2-Descriptive_Statistics/1-Numerical_Quantitative_Data_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/1-Practice_Numerical_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.qmd
          - href: ./2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/2-Practice_Graphical_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/2b-Practice_Graphical_Summaries.qmd
          - href: ./2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.qmd
-         - href: ./2-Descriptive_Statistics/3-Practice_Quantitative_Summaries_Multiple_Groups.qmd
+         - href: ./2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.qmd
          - href: ./2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/4-Practice_Bivariate_Data.qmd
+         - href: ./2-Descriptive_Statistics/4b-Practice_Bivariate_Data.qmd
          - href: ./2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.qmd
          - href: ./2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/6-Practice_Categorical_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/6b-Practice_Categorical_Summaries.qmd
          - href: ./2-Descriptive_Statistics/7-AA_Descriptive_Statistics.qmd
 
 

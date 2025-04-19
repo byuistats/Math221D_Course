@@ -1,5 +1,5 @@
 ---
-title: "Summarizing Quantitative Data for Multiple Groups - Practice"
+title: "Practice: Summarizing Multiple Groups"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)

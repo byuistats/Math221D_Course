@@ -1,5 +1,5 @@
 ---
-title: Summarizing Quantitative Data for Multiple Groups - Practice
+title: "Practice: Summarizing Multiple Groups"
 format:
   html:
     self-contained: true
@@ -14,6 +14,8 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 # Introduction
 
 This example is taken from an experiment listed in the R help files under `?CO2`.
+
+In this dataset, we find a **quantitative response** variable and *categorical explanatory* variables.  We will summarize the response variable for each level of explanatory variables of interest.  
 
 "An experiment on the cold tolerance of the grass species Echinochloa crus-galli was conducted. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted." Plants were considered tolerant to the cold if they were still able to achieve high CO2 uptake values after being chilled.
 

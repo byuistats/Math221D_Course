@@ -1,5 +1,5 @@
 ---
-title: "Bivariate Data - Practice"
+title: "Practice:  Bivariate Data"
 subtitle: "Quantitative Response and Quantitative Explanatory Variables"
 ---
 ```{r setup, include=FALSE}
