@@ -1,5 +1,5 @@
 ---
-title: "Practice: Numerical Summaries"
+title: 'Practice: Numerical Summaries (Quant.)'
 format:
   html:
     self-contained: true

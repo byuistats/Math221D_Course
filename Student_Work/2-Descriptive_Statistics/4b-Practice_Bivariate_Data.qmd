@@ -1,5 +1,5 @@
 ---
-title: "Practice:  Bivariate Data"
+title: 'Practice:  Bivariate Data'
 subtitle: Quantitative Response and Quantitative Explanatory Variables
 format:
   html:
