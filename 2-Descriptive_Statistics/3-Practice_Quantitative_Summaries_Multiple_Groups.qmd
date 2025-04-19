@@ -1,0 +1,97 @@
+---
+title: "Summarizing Quantitative Data for Multiple Groups - Practice"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+
+# Introduction
+
+This example is taken from an experiment listed in the R help files under `?CO2`.
+
+"An experiment on the cold tolerance of the grass species Echinochloa crus-galli was conducted. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted." Plants were considered tolerant to the cold if they were still able to achieve high CO2 uptake values after being chilled.
+
+__NOTE__:  Recall that the formula for separating a response variable by a category is to use the formula `(data$y ~ data$x)` which works for `favstats()` and `boxplot()`
+
+```{r, include=FALSE}
+
+library(mosaic)
+library(rio)
+library(tidyverse)
+library(car)
+
+glimpse(CO2)
+
+```
+
+__QUESTION__:  What is the response variable?  
+__ANSWER__:  
+
+__QUESTION__:  What are the levels of `Type`?
+
+```{r}
+
+unique()
+
+```
+
+
+
+## Impact of Plant Type on Uptake
+
+Create a table of summary statistics of `uptake` for each `Type`:
+
+```{r}
+
+favstats(~)
+
+```
+
+__QUESTION__:  What is the mean uptake for the Quebec type?  
+__ANSWER__:  
+
+__QUESTION__:  What is the median of the Mississippi type?  
+__ANSWER__:  
+
+__QUESTION__:  Which type has the highest standard deviation?  
+__ANsWER__:  
+
+Create a side-by-side boxplot of uptake comparing`Type`:  
+
+```{r}
+
+boxplot(~)
+
+```
+
+
+## Impact of Treatment on Uptake
+
+Create a table of summary statistics of uptake for each `Treatment` used in the experiment.
+
+```{r}
+
+
+```
+
+__QUESTION__:  What is the mean uptake for the non-chilled treatment?  
+__ANSWER__:  
+
+__QUESTION__:  What is the mean of the chilled treatment?  
+__ANSWER__:  
+
+
+
+Create a side-by-side boxplot of uptake for each `Treatment` used in the experiment.
+
+```{r}
+
+
+```
+
+
+__QUESTION__:  Based on the above summaries, which combination of variables would you suggest to *maximize* CO2 uptake?  
+__ANSWER__:  
+

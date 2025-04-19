@@ -1,0 +1,86 @@
+---
+title: "Summarizing Categorical Data - Practice"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Introduction
+
+Reasons why patients visit a chiropractor vary and may depend on where you live.  
+
+Use the chiropractic dataset to practice summarizing categorical data.  
+
+## Load the Libraries and Data
+
+```{r}
+
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(car)
+
+chiropractic <- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/chiropractic_data.csv')
+
+```
+
+
+# Why Visit?  
+
+__QUESTION__:  List all the levels for `motivation` in the data:  
+```{r}
+unique()
+```
+
+
+Create a sorted bar chart for reasons why people see a chiropractor:  
+
+```{r}
+
+
+```
+
+__QUESTION__:  What is the most common motivation for visiting a chiropractor?  
+__ANSWER__:  
+
+
+# Regional Differences? 
+
+Create and name a contingency table that counts the motivation by region.  
+```{r}
+chiro_tbl <- table()
+
+prop.table()
+
+```
+
+__HINT__:  Proportions should sum to 1 for each region. Which margin you use will depend on how you defined your table above.  
+
+__QUESTION__:  What percent of Australians visit a chiropractor for Wellness?  
+__ANSWER__:  
+
+__QUESTION__:  What percent of Europeans visit a chiropractor for Wellness?  
+__ANSWER__:  
+
+# Visualize
+
+Use the `chiro_tbl` created above to create a grouped bar chart:  
+
+```{r}
+
+```
+
+
+Swap the row and column table and recreate the graph above with the opposite grouping:  
+
+```{r}
+
+chiro_tbl2 <- table(chiropractic$motivation, chiropractic$location)
+
+barplot(chiro_tbl2, beside=T, legend=rownames(chiro_tbl2))
+
+```
+
+__QUESTION__:  In your opinion, which visualization tells a more compelling story?  Why?  
+__ANSWER__:  
+

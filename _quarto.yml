@@ -8,7 +8,7 @@ project:
     - "Images/**"
     
 website:
-  title: "Math221 Notebook"
+  title: "Math221D Notebook"
   navbar:
     background: primary
     search: true
@@ -22,15 +22,20 @@ website:
         - href: ./1-Getting_Started/5-Stat_Process.qmd
         - href: ./1-Getting_Started/6-Response_and_Explanatory_Variables.qmd
 
-    - text: "Descriptive Statistics"
+    - text: "Descriptive Stats"
       menu:
          - text: "Descriptive Statistics"
          - href: ./2-Descriptive_Statistics/1-Numerical_Quantitative_Data_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/1-Practice_Numerical_Summaries.qmd
          - href: ./2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/2-Practice_Graphical_Summaries.qmd
          - href: ./2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.qmd
+         - href: ./2-Descriptive_Statistics/3-Practice_Quantitative_Summaries_Multiple_Groups.qmd
          - href: ./2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/4-Practice_Bivariate_Data.qmd
          - href: ./2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.qmd
          - href: ./2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/6-Practice_Categorical_Summaries.qmd
          - href: ./2-Descriptive_Statistics/7-AA_Descriptive_Statistics.qmd
 
 
@@ -49,7 +54,7 @@ website:
         - href: ./3-Data_Wrangling_Visualization/Bonus_Mutate.qmd
         - href: ./3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.qmd
 
-    - text: "Statistical Inference"
+    - text: "Inferential Stats"
       menu:
          - text: "Foundations"
          - href: ./4-Foundations_Statistical_Inference/01-Intro_to_Probability.qmd
@@ -64,7 +69,7 @@ website:
          - href: ./4-Foundations_Statistical_Inference/09-Prob_Calculations_for_Means_Practice.qmd
          - href: ./4-Foundations_Statistical_Inference/10-Assessing_Normality.qmd        
   
-    - text: "Statistical Tests - Part 1"
+    - text: "Statistical Tests I"
       menu:
         - text: "Introduction to Hypothesis Testing"
           href: ./5-Statistical_Tests_Part1/002-Introduction_to_Inference.qmd
@@ -83,7 +88,7 @@ website:
         - text: "Comparing Means Activity"
           href: ./5-Statistical_Tests_Part1/09-AA_Unit4_Review.qmd
 
-    - text: "Statistical Tests - Part 2"
+    - text: "Statistical Tests II"
       menu:
         - href: ./6-Statistical_Tests_Part2/01-Bivariate_Data_Intro.qmd
         - href: ./6-Statistical_Tests_Part2/02-Linear_Regression_Intro.qmd
@@ -94,12 +99,6 @@ website:
         - href: ./6-Statistical_Tests_Part2/11-Chi_Square_Intro.qmd
         - href: ./6-Statistical_Tests_Part2/12-Chi_Square_Practice.qmd
         - href: ./6-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.qmd
-
-    - text: "Semester Project"
-      menu:
-        - href: ./7-Semester_Project/Semester_Project_Instructions.qmd
-        - href: ./7-Semester_Project/Semester_Project_Template.qmd
-        - href: ./7-Semester_Project/Importing_Data.qmd
 
     - text: "R Help"
       menu:

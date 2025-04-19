@@ -1,0 +1,69 @@
+---
+title: Quantitative Data Visualizations - Practice
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Introduction
+
+This is an opportunity for you to practice creating graphical summaries of quantitative data.  
+
+We  will explore 2 datasets.  The first contains information about the duration and the time between geyser eruptions at Old Faithful in Yellowstone National park.  
+
+The second is data collected about expressions of gratitude and their impact on subjective well-being.  
+
+For each dataset, you will create numerical summaries of the data.  
+
+
+# Load libraries and Data
+```{r}
+
+library(rio)
+library(mosaic)
+library(tidyverse)
+library(car)
+
+
+old_faithful <- rio::import("https://byuistats.github.io/M221R/Data/old_faithful.xlsx")
+
+gratitude <- rio::import("https://byuistats.github.io/M221R/Data/gratitude.xlsx")
+
+```
+
+# Old Faithful
+
+Create a histogram and a boxplot for Duration of Old Faithful eruptions:  
+
+```{r}
+
+
+```
+
+__QUESTION__:  Describe the shape of the distribution of duration.  
+__ANSWER__:  
+
+
+
+# Gratitude
+
+In this dataset, there is a column called `treatment` which has the group designation, and a single column called `happiness` which is the self-reported happiness score for the participants in the sample.  
+
+## Histogram
+
+Create a histogram and boxplot for happiness scores:  
+
+```{r}
+
+
+```
+
+__Question__: What is the general shape of the distribution?  
+__Answer__:  
+
+
+

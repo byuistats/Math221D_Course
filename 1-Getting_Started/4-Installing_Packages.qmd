@@ -1,5 +1,5 @@
 ---
-title: "Installing Libraries"
+title: "Installing  R Libraries"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
@@ -12,7 +12,7 @@ R has many built-in toolboxes.  R also has access to a vast array of toolboxes t
 We will be using 4 main libraries throughout the semester.  This code will walk you through how to install, load and use each of the libraries.    
 
 
-# Installing the Libraries
+# Installing Libraries
 
 To install a library, we use the `install.packages("")` command, where we specify the library we want in the quotes inside the parentheses.  
 
@@ -34,19 +34,23 @@ install.packages("car")
 
 ```
 
-Again, the above code only needs to be executed once. It is like going to the Home Depot to purchas a tool box for specific purposes.  
+It may take a few minutes to install everything once you run the above code.  Be patient.  
+
+Again, the above code only needs to be executed once. It is like going to the Home Depot to purchase a tool box for specific purposes and storing them in a tool shed.  
 
 # Loading Libraries
 
-Once the toolboxes are "purchased" we still need to get them out of the tool shet when we need to use them.  This is something we have to do each time we open and use R Studio for a project.  
+Once the toolboxes are "purchased" we still need to get them out of the tool shed when we need to use them.  This is something we have to do each time we open and use R Studio for a project.  
 
 We use the `library()` function in a code chunk and insert which library we want to use inside the parentheses:  
 
 ```{r}
+
 library(rio)
 library(mosaic)
 library(tidyverse)
 library(car)
+
 ```
 
 The above code chunk is something that will become very familiar as we will load these libraries in every activity.  

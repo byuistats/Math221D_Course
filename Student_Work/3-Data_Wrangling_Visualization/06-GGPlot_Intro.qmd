@@ -38,9 +38,11 @@ This sounds more complicated than it is in practice.  So let's look at a familia
 library(tidyverse)
 library(mosaic)
 library(rio)
-library(ggplot2)
+library(car)
 
 big5 <- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')
+
+sw <- read_csv('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/StarWarsData_clean.csv')
 
 
 ```
@@ -96,9 +98,54 @@ __NOTE__:  There are countless types of geometries to play with in R.  They all 
 
 To illustrate how to use the same framework for a completely different graph, let's look at a graph you may not have created in class yet.  
 
-# Your First Scatterplot
+# Bar Plots
 
-Scatterplots are a great way to visualize the relationship between 2 quantitative variables.  
+Recall the survey detailing attitudes about the first 6 Star Wars films.  Let's use `ggplot()` to re-create the bar charts from that section.  
+
+When we have raw data, we can use `geom_bar()` with `ggplot()` to calculate the counts for each group.  
+
+Let's look at the bar chart for favorability of Leia Organna.  Because we are interested in only one variable, we only include `x` in the aesthetic layer.  
+
+We do *not* have to do the intermediate step of creating a table!  R will do it for us:  
+
+```{r}
+
+ggplot(data = sw, mapping = aes(x = `Favorability_Princess Leia Organa`)) +
+  geom_bar()
+
+```
+
+
+If we want to look at 2 variables, we can add a `fill = variable` to the aesthetic.  This will fill the bars based on the chosen variable.  Let's look at the relationship between Gender and whether or not one is a fan of Star Wars.  
+
+```{r}
+
+tbl1 <- table(sw$Gender, sw$`Are You a Fan of SW?`)
+
+ggplot(data = sw, mapping = aes(x = `Are You a Fan of SW?`, fill = Gender)) +
+  geom_bar()
+
+```
+
+The default is to stack the bars (as with the `barplot()` function).  We have to specify that we want the bars next to each other by using the `position = "dodge"` argument in `geom_bar()`
+
+```{r}
+ggplot(data = sw, mapping = aes(x = `Are You a Fan of SW?`, fill = Gender)) +
+  geom_bar(position = "dodge")
+
+```
+
+Notice that the variable we define as x is the grouping variable.  If we want to change the grouping variable, we can swap the `x` and `fill` definitions.  
+
+```{r}
+ggplot(data = sw, mapping = aes(fill = `Are You a Fan of SW?`, x = Gender)) +
+  geom_bar(position = "dodge")
+
+```
+
+# Scatter plots
+
+Scatter plots are a great way to visualize the relationship between 2 quantitative variables.  
 
 The `iris` dataset is included in base R and contains information on various flower measurements for different species of irises.  
 
@@ -112,6 +159,19 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
 
 ```
 
+__QUESTION__:  Based on this scatter plot, what would you guess the correlation coefficient is?  
+__ANSWER__:  
+
+Calculate the $r$:  
+
+```{r}
+
+cor(iris$Sepal.Width ~ iris$Sepal.Length)
+
+```
+
+__QUESTION__:  Describe in words what this means:  
+__ANSWER__:  
 
 ## Adding Color
 
@@ -254,13 +314,13 @@ ggplot() +
 GGplot provides many options for easily making complex visualizations.  While there is far too much to cover in one lesson, the basic framework is fairly intuitive once you get the hang of it.  
 
 
-# More Examples
+# Additional Examples
 
 Let's look at a few more examples.
 
 ## Histograms and Density Plots
 
-When we want to look at the distribution of a single variable, we typically use histograms.  Because this is a single variable, we only define an x without a y.
+Histograms are typically used When we want to look at the distribution of a single variable.  Because this is a single variable, we only define an x without a y.
 
 ```{r}
 

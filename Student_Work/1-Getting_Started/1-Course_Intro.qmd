@@ -142,6 +142,13 @@ The Tutoring Center provides many services to help students succeed: - Individua
 
 Please take 5 minutes to explore the [Study Skills/Tutoring Center web site](https://www.byui.edu/academic-support-centers/math/math-help-for-on-campus-students).
 
+**Data Science Lab**
+
+There is a Data Science Lab open for walk-ins.  They are able to help with any R-related questions and programming, but you are also likely to find someone who has taken stats classes and can help you with the statistics as well.  
+
+Location and hours can be found at the [link](https://byuidatascience.github.io/lab/).  It is usually in the STC 353, on most days but Wednesday.  
+
+
 **Faculty Support**
 
 Your instructor is committed to your success. If you have any needs or concerns, please contact your instructor for help. If you feel yourself getting behind or struggling, __talk to your teacher right away__. If caught in time, a small problem can be addressed quickly before it grows.
