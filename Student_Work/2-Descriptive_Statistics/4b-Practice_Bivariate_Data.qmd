@@ -129,6 +129,15 @@ The MCAT is an entrance exam for medical schools.  It seems likely that there is
 
 GPA and MCAT score data were collected on 55 prospective medical students.  
 
+## Load the data:
+
+```{r}
+
+mcat <- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/mcat_gpa.csv')
+
+glimpse(mcat)
+```
+
 __QUESTION__:  What is the response/dependent variable?  
 __ANSWER__:  
 
