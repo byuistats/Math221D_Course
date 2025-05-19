@@ -1,0 +1,136 @@
+---
+title: "Probability"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Introduction to Probability and Distributions
+
+Probability plays a fundamental role in Statistics.  In this section, we introduce the basic rules of probability for discrete events and introduce the idea of a probability distribution for continuous events.  We provide a few examples of continuous probability distributions that will be used for making **inference** about a population.  
+
+
+# The Concept of Probability
+
+Probability measures the likelihood of an event occurring.  It is a quantifiable measure between 0 (impossible) to 1 (certain).  
+
+We can calculate probabilities for discrete and continuous events and will discuss each below.  
+
+
+# Discrete Events
+
+A **discrete event** refers to an event that has a distinct, countable outcome.  For example:  
+
+  * Flipping a coin has 2 possible outcomes:  Heads or Tails
+  * Rolling a die has 6 possible outcomes: 1-6
+  * The number of red-headed students in a classroom
+
+The key characteristic is that we can count up the number of times a given event occurs.  For example, you can roll a dice 100 times and count how many 1's, 2's, 3's, etc. you get.  
+
+We call each possible outcome an "event" and write the probability of an event:  $P(E)$.  We can estimate the probability of an event by trying experiments over time, such as rolling a die over and over, counting up the number of occurrences of events and dividing by the number of rolls.  
+
+### Fundamental Rules for Discrete Events
+
+- **Rule 1: The Probability of an Event**
+  
+  $$
+  0 \leq P(E) \leq 1
+  $$
+  - **Certain Event**
+  
+  $$
+  P(\text{certain}) = 1
+  $$
+  
+  - **Impossible Event**
+  
+  $$
+  P(\text{impossible}) = 0
+  $$
+  
+- **Rule 2: Complement Rule**
+  
+  $$
+  P(\text{not } E) = 1 - P(E)
+  $$
+- **Rule 3: Total Probability**
+  
+$$
+\sum_{i=1}^n P(E_i) = 1
+$$
+
+## Practice
+
+__QUESTION__:  In a political poll, 40% of respondents favor candidate A, 35% favor candidate B, and the rest are undecided. If one respondent is selected at random, what is the probability that they either favor candidate A or are undecided?  
+__ANSWER__:  
+
+__QUESTION__:  In a survey of 288 BYU-I students, 144 said they prefer Redneck mixers from Great Scott's for their soda, 58 said they prefer Swig and 68 preferred Fixxology.  The rest are heathens with questionable orthodoxy who have a distaste for non-alcoholic sparkling drinks.  What is the probability of randomly selecting a student that hates delicious beverages?  
+__ANSWER__:  
+
+
+---
+
+# Continuous Probability Distributions
+
+In many situations, we can't count the number of events.  This typically occurs when we are measuring *quantitative* information such as heights.  In practice, we do not have an infinite resolution for measuring heights.  We might measure to the quarter inch, or the centimeter.  while rounding makes things a little more like a discrete event, we understand that height is a continuous measurement and may model it with a continuous distribution.  
+
+Continuous distributions describe how probabilities are spread over all possible outcomes.  In these situations, we can't simply add up all times an event occurs.  
+
+Calculus is required to find these probabilities.  Fortunately, you do *NOT* need to know any calculus for this class because computers will perform all the calculations for us.  However, it is important to understand a few basic principles for continuous probability distributions.  
+
+The principles are roughly the same as for discrete events.  In continuous cases, however, it doesn't make sense to calculate the probability of exactly an event, $E$.  
+
+It makes more sense to think of probabilities in relation to specified values.  Below are a few examples.  
+
+### 1. Total Probability
+
+The Total **area under the curve** is equal to 1.  
+
+### 2. P(x<a)
+
+The probability that an event is **less** than some value, $a$, is the area under the curve to the *left* of $a$.
+
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Prob_Less_Than_Example.png)
+
+### 3. P(x>b)
+
+The probability that an event is **greater** than some value, $b$, is the area under the curve to the *right* of $b$.
+
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Prob_Greater_Than_Example.png)
+
+### 4. P(a < x < b)
+
+The probability of being between 2 numbers is the area under the curve between the 2 numbers:
+
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Normal_Probability_Example.png)
+
+### 4. The Complement Rule
+- The probability that a continuous random variable **does not** fall within an interval \([a, b]\) is:
+  
+  $$
+  P(\text{not in } [a, b]) = 1 - P(a \leq X \leq b)
+  $$
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Prob_Outside_Range.png)
+---
+
+# Key Probability Distributions
+
+Below are several examples of probability distributions that will be used for making inference about populations in different situations.  
+
+Most of the distributions below change shape depending on certain attributes of our sample.  However, they all share 2 important characteristics:  
+
+  1. The total area under the curve is 1 (total probability)
+  2. We can use R to calculate the probabilities of certain events for all of these distributions.
+  
+__NOTE__:  Right now, it's only important to be aware that there are different probability distributions.  
+
+
+| Distribution     | Examples                                     | Shape Characteristics              | Key Parameters               |
+|------------------|----------------------------------------------|-------------------------------------|------------------------------|
+| Z: Standard Normal           | ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Standard_Normal_Distribution_Example.png)     | Bell-shaped, symmetric            | (mean=0, std. dev. = 1)               |
+| Student's t      | ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Students_T_Examples.png)          | Bell-shaped, heavier tails        | \(df\)                      |
+| F-Distribution   | ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/F_Dist_Example.png)                   | Skewed to right                   | \(df_1, df_2\)              |
+| Chi-Squared      | ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Chi_Square_Dist_Examples.png)          | Right-skewed                      | \(df\)                      |
+
+---
+

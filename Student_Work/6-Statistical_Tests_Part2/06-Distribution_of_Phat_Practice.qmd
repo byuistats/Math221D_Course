@@ -1,0 +1,63 @@
+---
+title: Distribution of P-hat Practice
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Instructions
+
+Complete the following questions about the sampling distribution of $\hat{p}$.  When completed, Render the `qmd` file and submit the `html`.
+
+# Questions
+
+__Question__: When can we use the normal distribution to approximate the sampling distribution of $\hat{p}$?  
+__Answer__:  
+
+__Question__:  What is the mean of the sampling distribution of $\hat{p}$?  
+__Answer__:  
+
+__Question__:  What is the standard deviation of the sampling distribution of $\hat{p}$?  
+__Answer__:  
+
+
+Suppose the true *population* proportion, $p$, of people who support a candidate for office is 52\%.  We would like to learn something about a *sample* proportion, $\hat{p}$, with a sample size $n=1000$ suggesting that the candidate will lose the election ($\hat{p}<0.50$).
+
+Use the following R code to answer the questions below:  
+
+
+```{r}
+phat <- 
+p <-
+n <- 
+
+sigma_phat <- sqrt(p*(1-p)/n)  
+
+z <- (phat-p) / sigma_phat
+
+# Left Tail:
+pnorm()
+
+# Right tail
+1-pnorm()
+
+```
+
+__Question__:  What is the $z$-score associated with $\hat{p}<0.5$?  
+__Answer__:
+
+
+__Question__:  What is the standard deviation of $\hat{p}$?  
+__Answer__:  
+
+
+__Question__:  What is the probability of a sample of size $n=1000$ suggesting that the candidate will lose even if the true population support, $p=0.52$?  
+__Answer__:  
+
+
+

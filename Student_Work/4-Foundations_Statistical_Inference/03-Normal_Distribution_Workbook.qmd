@@ -1,0 +1,158 @@
+---
+title: The Normal Distribution (Class)
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# The Normal Distribution
+
+In your [reading](../docs/3-Stat_Fundamentals/02-The_Normal_Distribution.html), you learned about the normal distribution which is a probability model that can calculate probabilities for certain types of events that follow a normal distribution.  
+
+# Stanford Admissions
+
+For example, scores on the ACT exam are normally distributed with a mean of 21 and a standard deviation of 4.  Suppose you really want to get into Stanford which requires a 33 or higher on the ACT.  We can calculate the probability of a random test taker getting into Stanford (if we're basing it on test score alone.)
+
+We can first calculate a __Z-score__, which is the number of standard deviations an ACT score is away from the mean. 
+
+I always recommend drawing a picture first.  Without doing any math, you can usually make a pretty good guess about what the Z-score will be.
+
+![](/Images/Stanford_Zscore.png)
+
+Before doing any math, what is the minimum z-score required to get into Stanford?
+
+__Answer__: 
+
+That is significantly above average!  
+
+The probability of getting a score higher than 33 is the area under the curve to the *right* of the red line.  That's a small area!
+
+## The Math
+
+We can calculate a Z-score using the formula 
+
+$$Z = \frac{x - \mu}{\sigma} $$
+
+where $\mu$ is the mean of the normal distribution and $\sigma$ is the standard deviation.  
+
+__NOTE__: Z-scores follow what is called a __standard normal distribution__ which means it is centered at $\mu = 0$ with a standard deviation $\sigma=1$.
+
+Recall that to get an area under the curve, we need the calculus.  Fortunately, we have computers to do the heavy lifting for us. 
+
+## pnorm()
+
+We will use the function `pnorm()` to calculate the areas under the curve for specified values. The `p` in `pnorm()` stands for probability and `norm` obviously stands for the normal distribution.  
+
+The `pnorm(x, mu, sigma)` function takes the value, `x`, we wish to evaluate, the mean, $\mu$, and standard deviation, $\sigma$.  We can use `pnorm()` in the original units of the data and put in $\mu$ and $\sigma$.  Sticking with our example of Stanford admissions, we can calculate the probability of getting a value greater than 33.  
+
+By default, `pnorm()` gives the area to the *LEFT* of the given value.  If we want the area to the right, we can use the `lower.tail = FALSE` or equivalently `1-pnorm(33,21,4)`.
+
+```{r}
+1-pnorm(33,21,4)
+
+# Equivalently:
+pnorm(33, 21,4, lower.tail = FALSE)
+```
+
+Equivalently, we can put the z-score into `pnorm()`
+
+It's easy to create a calculator in R that will calculate Z for us and probabilities automatically.  
+
+__NOTE__:  `Z` is what we call the Standard Normal Distribution. It has a mean of 0 and a SD of 1.  If X is normally distributed, subtracting the mean and dividing by the standard deviation gives the standard normal distribution with a mean of 0 and an SD = 1.  
+
+```{r}
+
+# To calculate a z-score, you can use R like a calculator:
+
+x <- 33
+mu <- 21
+stdev <- 4
+z <- (x-mu) / stdev
+
+z
+
+# By default, pnorm() gives us the area to the LEFT of our observation
+
+pnorm(x, mean = mu, sd = stdev)
+1 - pnorm(x, mean = mu, sd = stdev)
+
+# Equivalently:  
+
+pnorm(z) ## Left Tail
+1-pnorm(z) ## Right Tail
+
+```
+
+
+
+# Practice
+
+## IQ Scores
+
+If IQ is normally distributed with a mean of 100 and a Standard Deviation of 11, what's the probability of a randomly selected person having an IQ GREATER than 127?
+
+What about the probability of a randomly selected person having an IQ LESS than 85?
+
+
+```{r}
+
+x <- 
+mu <- 
+stdev <- 
+
+z <- (x-mu) / stdev
+  
+pnorm(z)  # LESS THAN
+1-pnorm(z) # GREATER THAN
+
+```
+
+
+
+# Area BETWEEN 2 Points
+
+If IQ scores have a mean of 100 and standard deviation of 11, we can find the area between two numbers be subtracting the left tail area of the lower number from the left tail area of the higher number, leaving the area between.  
+
+What is the probability that a randomly selected individual will have an IQ between 84 and 109?
+
+```{r}
+
+mu <- 
+stdev <- 
+
+LowerPoint <- 
+UpperPoint <- 
+
+# Area Between:
+pnorm(UpperPoint, mu, stdev) - pnorm(LowerPoint, mu, stdev) 
+
+```
+
+
+# Percentiles
+
+Finding percentiles of a normal distribution is easy in R!  Remember that a percentile is the value *below* which a given percentage of observations fall.  So someone who scores in the 92nd-percentile scores above 92% of the population. 
+
+__NOTE__:  We calculated the percentile __from a set of data__ using the function `quantile()`.  This can be used on data regardless of the distribution of the data.  
+
+To get percentiles **for a normal distribution** with mean, $\mu$, and standard deviation, $\sigma$, we use the `qnorm()` function.  
+
+The `q` in `qnorm()` stands for quantile (which is a synonym for percentile and for whatever reason is what R uses for percentiles).
+
+```{r}
+
+# for a normal distribution with mean, mu, and standard deviation, stdev, we can find a percentile using the following code:
+
+mu <- 
+stdev <- 
+percentile <- 
+
+qnorm(percentile, mu, stdev)
+
+```
+

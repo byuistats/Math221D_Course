@@ -1,0 +1,113 @@
+---
+title: Who Shot First?
+subtitle: Categorical Data Application Activity
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introduction
+
+Use the Star Wars dataset to answer the following questions:  
+
+1. Do less than 20% of respondents feel Very Favorably towards Emperor Palpatine?  (1-sample Z test for proportion)
+2. What is the difference in proportions of females and males who are Very Favorable towards Jar-Jar Binks? (2-sample Proportion)
+3. Come up with one other 2-sample proportion test using anything from the Star Wars dataset.
+4. Test to see if income and response to "Which Character Shot First?" are Independent (Chi-square)
+
+
+For the proportion tests:
+
+1. Define the null and alternative hypotheses
+2. Include an explanation and conclusion for hypothesis tests
+3. Include Confidence intervals and a sentence explaining each
+4. Check the requirements for the hypothesis test and the confidence intervals
+
+
+For the Chi-square test:  
+
+1. Define the null and alternative hypotheses
+2. Include an explanation of the conclusion for 
+3. Be sure to check the hypothesis requirements for a test of independence
+
+
+# Report
+
+Turn in the HTML file created when you knit/render the rmd file.  
+
+
+# Data and Analysis
+
+Load the data
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(ggplot2)
+
+sw <- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/StarWarsData_clean.csv')
+
+```
+
+
+## Explore the data
+
+```{r}
+
+names(sw)
+
+table(sw$`Favorability_Han Solo`)
+
+addmargins(table(sw$`Favorability_Han Solo`, sw$Gender))
+
+addmargins(table(sw$`Favorability_Emperor Palpatine`))
+
+```
+
+
+
+## One-sample Proportion Test
+
+What proportion of respondents are very favorable towards Emperor Palpatine?
+
+```{r}
+
+
+```
+
+Is this significantly less than 20%?
+
+## Two-sample Proportion Test
+
+What percent of female respondents are favorable towards Jar-Jar Binks?
+
+What percent of male respondents are favorable towards Jar-Jar Binks?
+
+```{r}
+
+```
+
+Are they significantly different?
+
+## Choose your own adventure
+
+Compare 2 proportions of your choosing and perform a `prop.test()`.
+
+
+## Chi-square Test for Independence
+
+Test to see if how you responded to the question "Who Shot First" is independent of income category.
+
+```{r}
+
+```
+
+State your conclusion:
+
+

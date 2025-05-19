@@ -1,0 +1,239 @@
+---
+title: Paired T-test Class Notes
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+
+# Introduction to Matched Pairs
+
+A matched pairs design is used in statistics to compare 2 treatments or conditions measured on subjects that are logically connected in a meaningful way.  In the simplest case, measurements are collected on the same subject as in a before-and-after evaluation.
+
+Matched pairs designs are often called "dependent samples" because knowing who or what is in the first treatment group determines who will be in the second.  In the case of a before-and-after situation, if you are selected to be in the "pre" group, then you will also be in the "post" group.  But pairs are not always the same subjects.
+
+
+## Examples
+
+  1. You want to study the difference in salaries between husbands and wives.  If one spouse is selected for the study it automatically determines that the other spouse will be in the other group. 
+  2. An ACT preparation course gives you a test before you take the course and after to see if the course improved test score
+  3. A weight loss program takes your weight at the beginning and after the 12 weeks in the program to see if the program reduced weight.
+  4. Comparing prices of a specific set of items between Walmart and Broulims.  Because we are comparing the same items, we can take the difference between prices for each item.  
+
+
+## Requirements for a Matched Pairs Analysis
+
+As with the one-sample t-test, we have to make sure that the either the pairs are normally distributed or we have a large enough sample size.  
+
+With smaller sample sizes, create a `qqPlot()` using the `car` library to check for normality.  
+
+## Watchouts
+
+When we perform a matched pairs analysis, we will be doing a 1-sample t-test on the *differences* between the connected observations.  One challenge is that we can define the difference either way: before - after or after - before.
+
+A good practice is to define differences so that a negative number means "loss" and a positive number means "gain".
+
+For example, if we believe our weight loss program reduces weight, then defining `post_weight - pre_weight` should give a negative number, meaning weight lost during the program.
+
+If you believe Walmart is cheaper than Broulims, defining the difference `Broulims - Walmart` gives a positive number, meaning how much you can save, on average, for shopping at Walmart.
+
+Mathematically, it doesn't matter which way we define the difference as long as we keep track of what a negative number and a positive number mean.  __This will define which alternative hypothesis we use.__
+
+
+# Weight Loss Example
+
+
+Weight data (in kg) were collected on 27 subjects before and after participation in a weight loss study.  
+
+Use the data to create a hypothesis test and confidence interval for the true mean weight loss on the program.
+
+A "matched pairs" analysis takes advantage of the fact that there are 2 measurements on the same subjects.
+
+## Step 1:  Read in Data
+
+```{r}
+
+# Load Libraries
+
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(car)
+
+
+# Load Data
+weight_loss <- import("https://byuistats.github.io/M221R/Data/weight_loss.xlsx")
+
+
+```
+
+## Step 2:  Explore the Data and Generate Hypotheses
+
+Create histograms summary statistics for the pre and post weight measurements:
+
+
+
+```{r}
+
+glimpse(weight_loss)
+
+# Pre-weight histogram
+histogram(weight_loss$pre)
+favstats(weight_loss$pre)
+
+# Post-weight histogram
+histogram(weight_loss$post)
+favstats(weight_loss$post)
+
+```
+
+
+## Step 3:  Prepare the data for analysis
+
+Decide how you're going to define the difference ($post - pre$ or $pre - post$).
+
+__Question__: What does a negative number mean based on your definition?  
+__Answer__:  
+
+
+```{r}
+
+# Decide which column to subtract from the other
+diff <- weight_loss$post - weight_loss$pre
+
+```
+
+Create a histogram and a qqPlot of the differences to determine if you will be able to trust the statsitical analyses:
+
+```{r}
+
+# histogram of the differences
+histogram(diff)
+favstats(diff)
+
+# Check if the differences are normally distributed:
+qqPlot(diff)
+
+```
+
+
+## Step 4:  Perform the appropriate analysis
+
+### Hypothesis Test
+
+State your null and alternative hypotheses.  
+
+$$ H_0: \mu_{differences} = 0$$
+
+$$H_a:  \mu_{differences} < 0$$
+
+$$ \alpha = 0.01$$
+
+Questions to consider:  
+
+  1. How did you define your difference?
+  2. Based on your decision for the difference, what does a negative number mean? a positive number?
+  3. Are you expecting the difference to be greater than, less than, or not equal to 0?  
+
+__NOTE__:  One way to verify that you have used the correct alternative is to look at the difference as defined (`weight_loss$post - weight_loss$pre`) and decide which one you think is supposed to be bigger.  Swap out the subtraction sign for the inequality that makes sense (`weight_loss$post < weight_loss$pre`).  Therefore, your alternative should be "less" because $<$ corresponds to "less than".
+
+Perform a t-test of the differences:  
+
+```{r}
+# Hypothesis t.test()
+t.test(diff, mu = 0, alternative = "less")
+```
+
+State your conclusion in context of the research question:
+
+Because P-value < 0.01 we reject the null hypothesis.  We have SUFFICIENT evidence to suggest that participation in the weight loss program led to weight loss.    
+
+### Confidence Interval
+
+```{r}
+
+# Confidence interval using t.test()
+t.test(diff, conf.level = .99)$conf.int
+
+```
+
+I am 99% confident that the true average weight loss during the program was between -8.5 and -5.11 kilograms.  
+
+
+# Your Turn
+
+A study was conducted at a major northeastern American medical center regarding blood cholesterol levels and heart-attack incidents. A total of 28 heart-attack patients had their cholesterol levels measured two days after the heart attack and again four days after the heart attack.  Researchers want to see if cholesterol levels reduced significantly four days after the attack versus two days after the attack.  Use the level of significance of 0.05.
+
+## Step 1:  Read in Data
+
+```{r}
+
+cholesterol <- import("https://byuistats.github.io/M221R/Data/quiz/R/cholesterol.csv")
+
+```
+
+
+## Step 2:  Check Data
+
+Review the data to see if the variables look correct.  Calculate summary statistics and histograms for chol_day2 and chol_day4.
+
+
+```{r}
+
+
+```
+
+## Step 3:  Prepare Data for Analysis
+
+Decide how to define your difference.  What does a negative number indicate? a positive number?
+
+Create a histogram and summary statistics of the differences:
+
+```{r}
+
+```
+
+Because we $n < 30$ we need to check the `qqPlot()` to assess the normality of the differences.  
+
+```{r}
+
+```
+
+
+## Step 4:  Perform the appropriate analysis
+
+
+### Hypothesis Test 
+
+State your null and alternative hypotheses.
+
+What is your confidence level, ($1-\alpha = $)?
+
+Perform a matched pairs t-test for the difference in cholesterol at day 2 and day 4:
+
+```{r}
+
+```
+
+
+State your conclusion:
+
+### Confidence Interval
+
+Calculate a confidence interval for the average difference.
+
+```{r}
+
+```
+
+
+State your conclusions and interpret the confidence interval in context of the research question.  
+
+
+

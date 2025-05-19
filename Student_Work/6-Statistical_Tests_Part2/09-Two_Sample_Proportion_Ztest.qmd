@@ -1,0 +1,121 @@
+---
+title: Two-sample Proportion Tests
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introduction
+
+In statistics, two sample proportion tests are used to compare proportions or percentages between two independent groups.  We here discuss these tests and provide examples of their application in R.
+
+The hypothesis test should not be surprising:
+
+$$H_0: p_1 = p_2$$
+$$H_a: p_1\; (<,>,\neq) \: p_2$$
+where $p_1$ represents the unknown population proportion for group 1 and $p_2$ represents the unknown population proportion for group 2.  
+
+# Two Sample Proportion Test
+
+The R code modifies slightly the `prop.test()` code for the one-sample proportion test.  We simply add 2 values for X and 2 values for N.  Generically, this looks like:
+
+``` prop.test(x=c(x1, x2), n=c(n1, n2), alternative = "")  ```
+
+where you must specify whether or not you thing group 1 is "less", "greater", or "two.sided" for not equal to.  
+
+## Example 1:  Voting Behaviour by Gender
+
+Suppose we want to test if women are more likely to identify as Democrat than men.  We sample 250 men and 250 women and measure their political affiliation.  We find that 80 men identify as Democrat and 102 females identify as Democrat.  
+
+Just as with the two-sample t-test for means, we must define a reference group.  In this example, we will use females as the reference group so that our alternative will be relative to that group.
+
+$$H_0: p_{femaleDem} = p_{maleDem}$$
+$$H_a: p_{femaleDem} > p_{maleDem}$$
+We will use $\alpha = 0.05$
+
+```{r}
+
+prop.test(x = c(102, 80), n = c(250, 250), alternative = "greater")
+
+```
+
+We can also create a confidence interval for the difference:
+
+```{r}
+
+prop.test(x = c(102, 80), n = c(250, 250))$conf.int
+
+```
+
+Confidence intervals for differences can be positive and negative. In this example, a negative number would indicate that Females are less likely to be Democrat and a positive number means they are more likely to be Democrat.  
+
+Our confidence interval is just above zero on the lower end.  We are 95% confident that females are between 0.000% and 17.6% more likely to be Democrat than men.  
+
+### Test Requirments
+
+Just as with 1-sample proportion tests, we must validate that we have a large enough sample size to ensure that $\hat{p}$ is approximately normally distributed. When we have 2 samples, however, we must check both $\hat{p}$'s.  For both hypothesis testing and confidence intervals we check:
+
+__Requirements for Hypothesis Testing and Confidence Intervals__
+
+$$ n_1\hat{p}_1 \ge 10$$
+$$n_1(1-\hat{p}_1) \ge 10$$
+$$ n_2\hat{p}_2 \ge 10$$
+$$n_2(1-\hat{p}_2) \ge 10$$
+
+An easy R calculator to check this is:
+
+```{r}
+
+# All must be true:
+
+x1 <- 102
+n1 <- 250
+phat1 <- x1/n1
+
+n1*phat1 >= 10
+n1*(1-phat1) >=10
+
+x2 <- 80
+n2 <- 250
+phat2 <- x2 / n2
+
+n2*phat2 >= 10
+n2*(1-phat2) >=10
+
+
+
+```
+
+If all conditions are greater than or equal to 10, we can trust our p-values and confidence intervals.  
+
+
+## Example 2:  Favorite Sports
+
+Soccer is becoming much more popular in the United States.  We would like to test if this is being driven by demographic shifts in the population where the younger generation is more likely to favor soccer.  
+
+A researcher samples 524 individuals under 40 and 655 individuals older than 40 and asks what their preferred sport is.  Of the 524 respondents under 40, 44 identified soccer as their favorite sport.  Of the 655 respondents over 40, 27 identified soccer as their favorite sport.
+
+Perform a 2-sample proportion test to determine if significantly more younger people identify soccer as their favorite sport.
+
+```{r}
+
+```
+
+Create and interpret the confidence interval for the difference in the proportions.
+
+```{r}
+
+```
+
+Are the requirements for the hypothesis test and confidence interval satisfied?
+
+```{r}
+
+```
+
+

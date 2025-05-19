@@ -99,6 +99,10 @@ website:
         - href: ./6-Statistical_Tests_Part2/11-Chi_Square_Intro.qmd
         - href: ./6-Statistical_Tests_Part2/12-Chi_Square_Practice.qmd
         - href: ./6-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.qmd
+        
+    - text: "Inquiry-Based Learning"
+      menu:  
+        - href: ./8-Inquiry_Based_Learning/Probability.qmd
 
     - text: "R Help"
       menu:

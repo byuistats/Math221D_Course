@@ -41,7 +41,7 @@ add_yaml_features_and_remove_button <- function(file_path, new_features) {
 }
 
 
-source_dirs <- c("./1-Getting_Started", "./2-Descriptive_Statistics", "./3-Data_Wrangling_Visualization", "./7-Semester_Project")
+source_dirs <- c("./1-Getting_Started", "./2-Descriptive_Statistics", "./3-Data_Wrangling_Visualization", "./7-Semester_Project", "4-Foundations_Statistical_Inference", "5-Statistical_Tests_Part1",  "6-Statistical_Tests_Part2")
 
 yaml_to_add <- list(
   format = list(
@@ -53,7 +53,7 @@ yaml_to_add <- list(
 )
 
 for(i in 1:length(source_dirs)){
-  dest_dir <- paste("./Student_Work", str_remove_all(source_dirs[i], "./"), sep='/')
+  dest_dir <- paste("./Student_Work_Part2", str_remove_all(source_dirs[i], "./"), sep='/')
   dir_create(dest_dir)
   
   qmd_files <- dir_ls(source_dirs[i], glob = "*.qmd")

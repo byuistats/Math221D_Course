@@ -14,6 +14,20 @@
     "text": "This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.\nThose who diligently work through these materials will be well prepared for their next Statistics or Data Science course.\nThis book is designed to be a digital workbook. You can download the notes, practice problems and application activities which can be edited locally on your computer. Completed assignments will be submitted in Canvas as web-page reports.\n\n\nTo download the folder containing all of the exercises, notes and application activities by following these steps:\n\nCreate a class folder where you will save all your work throughout this semester. This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.\nClick on the link below to download the .zip file containing all contents of the course website:\n\n\n Download Course Files \n\n\nOpen the .zip file\nSave the Student_Work folder to your class folder created in step 1. This can typically be done by right clicking the folder then copying and pasting it into the new location.\n\nThese files will be the basis of your coursework.\nThere may be additional files to download throughout the semester. You can save those to your\n\n\n\nEach unit contains:\n\nPreparation readings\nPractice problems\nApplication Activities\nAssessments\n\nGetting Started guides you through getting R and R-Studio set up, introduces the tools we will use for the class, and introduces basic statistical concepts to help get you started. We learn how to use R-Studio to make lovely reports that can be viewed in a web-browser. It’s a gentle enough introduction to enable even those who have never coded before to start working with R.\nDescriptive Statistics introduces tools to help understand data. We review summary statistics and visualizations for quantitative and categorical data types and learn the basic skills to turn data into information.\nData Wrangling and Visualization takes a step further into dealing with messy data and creating better visualizations.\nFoundations of Statistical Inference introduces the key concepts for using sample data to make generalized conclusions about a population. We cover probability, hypothesis testing, confidence intervals and other concepts necessary for making the leap from sample to population.\nStatistical Tests - Part 1 and 2 cover specific inferential statistics for different data types.\nThe Semester Project is an opportunity for students to demonstrate the skills acquired during the course. You will be able to find and import data into R, clean the data, create top notch visualizations, perform appropriate statistical analysis and create a beautiful report.\nR Help provides additional resources for learning how to use R.\n\n\nBy the end of this semester, students will confidently be able to:\n\nImport data and apply basic data wrangling to moderately messy data\nDescribe data with numerical and graphical summaries\nMake evidence-based decisions regarding situations with inherent randomness\nInvestigate questions through the application of probability distributions\nPerform the appropriate statistical analysis based on specific data being analyzed including hypothesis tests and confidence intervals\nCreate web-based reports to communicate the results of statistical analyses to relevant audiences"
   },
   {
+    "objectID": "8-Inquiry_Based_Learning/Probability.html",
+    "href": "8-Inquiry_Based_Learning/Probability.html",
+    "title": "Probability",
+    "section": "",
+    "text": "Probability plays a fundamental role in Statistics. In this section, we introduce the basic rules of probability for discrete events and introduce the idea of a probability distribution for continuous events. We provide a few examples of continuous probability distributions that will be used for making inference about a population."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Probability.html#practice",
+    "href": "8-Inquiry_Based_Learning/Probability.html#practice",
+    "title": "Probability",
+    "section": "Practice",
+    "text": "Practice\nQUESTION: In a political poll, 40% of respondents favor candidate A, 35% favor candidate B, and the rest are undecided. If one respondent is selected at random, what is the probability that they either favor candidate A or are undecided?\nANSWER:\nQUESTION: In a survey of 288 BYU-I students, 144 said they prefer Redneck mixers from Great Scott’s for their soda, 58 said they prefer Swig and 68 preferred Fixxology. The rest are heathens with questionable orthodoxy who have a distaste for non-alcoholic sparkling drinks. What is the probability of randomly selecting a student that hates delicious beverages?\nANSWER:"
+  },
+  {
     "objectID": "7-Semester_Project/Semester_Project_Instructions.html",
     "href": "7-Semester_Project/Semester_Project_Instructions.html",
     "title": "Semester Project Instructions",
@@ -1153,6 +1167,13 @@
     "title": "Practice: Bivariate Data",
     "section": "Plot the Data and calculate r",
     "text": "Plot the Data and calculate r\nQUESTION: Does the relationship look linear?\nANSWER:"
+  },
+  {
+    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#load-the-data-1",
+    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#load-the-data-1",
+    "title": "Practice: Bivariate Data",
+    "section": "Load the data:",
+    "text": "Load the data:\n\nmcat &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/mcat_gpa.csv')\n\nglimpse(mcat)\n\nRows: 55\nColumns: 2\n$ GPA  &lt;dbl&gt; 3.62, 3.84, 3.23, 3.69, 3.38, 3.72, 3.89, 3.34, 3.71, 3.89, 3.97,…\n$ MCAT &lt;int&gt; 38, 45, 33, 40, 35, 36, 40, 39, 35, 34, 39, 31, 35, 32, 32, 38, 3…\n\n\nQUESTION: What is the response/dependent variable?\nANSWER:\nQUESTION: What is the explanatory variable?\nANSWER:\nQUESTION: What do you think is the nature of the relationship between the two?\nANSWER:\nQUESTION: What is your best guess at the correlation coefficient, \\(r\\)?\nANSWER:"
   },
   {
     "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#plot-the-data-and-calculate-r-2",
@@ -2443,10 +2464,10 @@
     "text": "Introduction\n\n\nDesign the Study\n\n\nCollect the Data\n\n\nDescribe/Summarize the Data\n\nlibrary(tidyverse)\n\nWarning: package 'tidyverse' was built under R version 4.4.3\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(mosaic)\n\nWarning: package 'mosaic' was built under R version 4.4.3\n\n\nRegistered S3 method overwritten by 'mosaic':\n  method                           from   \n  fortify.SpatialPolygonsDataFrame ggplot2\n\nThe 'mosaic' package masks several functions from core packages in order to add \nadditional features.  The original behavior of these functions should not be affected by this.\n\nAttaching package: 'mosaic'\n\nThe following object is masked from 'package:Matrix':\n\n    mean\n\nThe following objects are masked from 'package:dplyr':\n\n    count, do, tally\n\nThe following object is masked from 'package:purrr':\n\n    cross\n\nThe following object is masked from 'package:ggplot2':\n\n    stat\n\nThe following objects are masked from 'package:stats':\n\n    binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,\n    quantile, sd, t.test, var\n\nThe following objects are masked from 'package:base':\n\n    max, mean, min, prod, range, sample, sum\n\nlibrary(rio)\n\nWarning: package 'rio' was built under R version 4.4.3\n\n\n\nAttaching package: 'rio'\n\nThe following object is masked from 'package:mosaic':\n\n    factorize\n\nlibrary(ggplot2)\n\n# Be sure to make this using ggplot()\n\n\n\nMake Inference\n\n# Perform the appropriate test for the data selected\n\n\n\nConclusion (Take Action)"
   },
   {
-    "objectID": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#load-the-data-1",
-    "href": "2-Descriptive_Statistics/4b-Practice_Bivariate_Data.html#load-the-data-1",
-    "title": "Practice: Bivariate Data",
-    "section": "Load the data:",
-    "text": "Load the data:\n\nmcat &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/mcat_gpa.csv')\n\nglimpse(mcat)\n\nRows: 55\nColumns: 2\n$ GPA  &lt;dbl&gt; 3.62, 3.84, 3.23, 3.69, 3.38, 3.72, 3.89, 3.34, 3.71, 3.89, 3.97,…\n$ MCAT &lt;int&gt; 38, 45, 33, 40, 35, 36, 40, 39, 35, 34, 39, 31, 35, 32, 32, 38, 3…\n\n\nQUESTION: What is the response/dependent variable?\nANSWER:\nQUESTION: What is the explanatory variable?\nANSWER:\nQUESTION: What do you think is the nature of the relationship between the two?\nANSWER:\nQUESTION: What is your best guess at the correlation coefficient, \\(r\\)?\nANSWER:"
+    "objectID": "8-Inquiry_Based_Learning/Signal_to_Noise_Ratio.html",
+    "href": "8-Inquiry_Based_Learning/Signal_to_Noise_Ratio.html",
+    "title": "Signal to Noise Ratio",
+    "section": "",
+    "text": "Introduction\nIn this chapter, we introduce"
   }
 ]

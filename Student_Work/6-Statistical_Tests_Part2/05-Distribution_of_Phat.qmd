@@ -1,0 +1,94 @@
+---
+title: Sampling Distribution of P_hat
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# The Distribution of Sample Statistics
+
+Categorical data is often summarized as a percent.  If we randomly select 500 students and find 276 have brown hair, we can estimate the *population* proportion using $\hat{p} = \frac{X}{N}$ where $X$ is the number with brown hair and N is the number in our sample.  We often interchange percents and proportions, but strictly speaking, a proportion is a number between 0 and 1.  This can be interpreted as a probability as well.
+
+If another researcher were to collect a different sample of 500 from the same population, they would almost certainly get a different number of people with brown hair than the first study.  We can imagine taking many samples of 500 students and imagine the theoretical distribution of all possible $\hat{p}$.  If we are taking good samples, most of these $\hat{p}$'s should be near the population proportion, $p$. 
+
+In fact, under certain conditions we can know the distribution of $\hat{p}$.  As you probably guessed, the distribution of $\hat{p}$ is approximately normal with:
+
+$$\mu_{\hat{p}} = p$$ 
+$$\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{N}}$$
+
+That is to say, the mean of all sample proportions is the population proportion.  
+
+Just as it was with a sample mean, $\bar{x}$, we have to check certain conditions to assume the distribution is approximately normal.  For $\bar{x}$, we needed the population to be normally distributed or to have a sample size greater than 30.  The principle of having a large enough sample applies, but it's different for a proportion. 
+
+We can assume the distribution is approximately normal if:
+
+$$np \geq 10$$
+$$n(1-p) \geq 10$$
+
+In plain English, this means our sample size has to be big enough to have at least 10 "successes" and 10 "failures".  For example, if we're estimating the proportion of left handed people, we would need a sample size large enough to have at least 10 left handed people and 10 right handed people.  
+
+If the distribution of sample means is approximately normal according to the conditions above, we can calculate a z-score as we did in Unit 1 and 2:
+
+$$z = \frac{\hat{p}-p}{\sqrt{\frac{p(1-p)}{N}}}$$
+
+then use `pnorm()` as before.  
+
+# Calculating Normal Probabilities for Proportion in R
+
+To calculate normal probabilities for a proportion in R, we can utilize the `pnorm()` function, which calculates cumulative probabilities for a given mean and standard deviation. Let's consider an example where we want to find the probability that the sample proportion $\hat{p}$ falls below a certain value.
+
+## Example
+
+Suppose we have a population where the true proportion of success is $p = 0.6$. We take a random sample of size $n = 100$ from this population. We want to find the probability that the sample proportion $\hat{p}$ is less than $0.55$.
+
+```{r}
+# Given data
+x <- 55
+n <- 100
+p_hat <- x/n
+
+# population proportion
+p <- 0.6
+
+# Calculate standard deviation
+sigma_phat <- sqrt(p * (1 - p) / n)
+
+# Calculate z-score
+z <- (p_hat - p) / sigma_phat
+
+# Left Tail (lower than p)
+pnorm(z)
+
+# Right Tail (greater than p)
+1-pnorm(z)
+
+```
+
+
+## Your Turn
+
+The nationwide, fully-vaccinated rate if November 2021 was 58%. Based on survey responses of 150, 81% of all BYU-I students on campus during Fall 2021 semester had received at least one vaccination dose against COVID-19 with 74% being fully vaccinated.
+
+What is the probability that we get a random sample of 150 individuals with a $\hat{p}$ higher than the fully vaccinated rate that we observed?  
+
+```{r}
+
+# given data
+
+# Population Proportion
+
+# Calculate Z
+
+# P-value
+
+```
+
+
+
+
