@@ -1,0 +1,49 @@
+---
+title: "From Sample to Population"
+---
+
+
+General hypothesis:  There is no relationship between X and Y.  Different data types lead to different hypotheses, but the common way is no relationship.
+
+What would no relationship look like for 2 groups?  ANOVA?
+
+What do you do with no explanatory variable?  
+1-sample an exception; is parameter different from a specified value
+
+
+Test statistic:  Probability distributions generally (normal, t, F, chi-square - Null hypothesis driven
+
+
+What is a test statistic?  
+What are their null probability distributions?  
+
+If Ho is true, and there is no relationship, we may see test statistics in the tail by chance, but the further it is into the tail, the less likely it is that the null hypothesis is true.  
+
+
+If there was no relationship between x and y, most of the time you'd get a value close to the null value 
+(must have already talked about sampling distributions)
+
+
+
+
+From Chat:  
+A test statistic is a numerical value that is calculated from sample data during a statistical hypothesis test. It helps us make decisions about the validity of a hypothesis based on the data we have collected. 
+
+In simpler terms, when we want to test a claim or hypothesis about a population, we use sample data to determine whether to reject that claim or not. The test statistic measures how far our sample result is from what we would expect if the null hypothesis (the hypothesis we are testing) were true. 
+
+Depending on the nature of the data and the hypothesis, different types of test statistics may be used, such as z-scores, t-scores, or chi-square values. 
+
+Once the test statistic is calculated, it is compared against a critical value from a statistical distribution (like the normal or t-distribution) to decide whether the observed result is statistically significant, meaning it's not likely to have occurred by random chance.
+
+end of chat
+
+
+Show Null Hypothesis Distributions for Test Statistics; these are quantities calculated typically be seeing how different out sample stats are away from the hypothesized value __relative to the average deviation__
+
+What's the average deviation?  Standard Deviation
+
+F:  How far the means vary relative to how far the individuals vary from their means
+
+Signal/Noise
+
+Start With 1-sample t
