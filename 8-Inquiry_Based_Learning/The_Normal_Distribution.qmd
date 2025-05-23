@@ -1,5 +1,5 @@
 ---
-title: "The Normal Distribution (Reading)"
+title: "The Normal Distribution"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
@@ -176,7 +176,9 @@ We define an **unusual observation** to be something that happens less than 5% o
 
 ## Normal Probability Computations
 
-An important part of the practice of statistics is finding areas under a normal curve. The area under a normal curve, say, to the left of a value, gives the probability of obtaining an observation less than (or equal to) that value. This is an example of converting a value to an area. It is also important to convert an area to a value. For example, if you want to find the 40th percentile for data that follow a normal distribution, you find the value of the observation such that the area (under the curve) to the left of this value is 0.40.
+A $z$ score has what is called a **Standard Normal Distribution**.  This is a special normal distribution with a mean, $\mu$, equal to 0, and a standard deviation, $\sigma$, equal to 1.  
+
+This makes it possible to take any normal distribution and *standardize* it by subtracting out the population mean and dividing by the standard deviation.  Whether we're talking about heights, reaction times, big toe lengths, or nano-meters we can use the standard normal distribuition to calculate probabilities by first calculating a z-score.  
 
 ### Introduction to the Normal Probability Applet
 
@@ -199,9 +201,11 @@ To use this applet, follow these instructions:
 
 ### Converting a $z$-score to a Probability
 
-Using this applet we can calculate proportions and probabilities based on the area under the normal curve. For the following examples, please open the [Normal Probability Applet](https://byuimath.com/apps/normprob.html){target="_blank"} and practice using it to find areas under the curve.
+Using this applet we can calculate probabilities based on the area under the normal curve. For the following examples, please open the [Normal Probability Applet](https://byuimath.com/apps/normprob.html){target="_blank"} and practice using it to find areas under the curve.
 
-The Normal Probability Applet is nice for visualizing areas under the curve.  However, it has significant limitations.  In this class, we will use R to do the heavy lifting.  The pnorm(x, $\mu$, $\sigma$) function calculates areas under the curve the normal distribution with mean, $\mu$, and standard deviation, $\sigma$, for a given x.  The `p` in `pnorm()` stands for probability and `norm` obviously stands for the normal distribution.  
+The Normal Probability Applet is nice for visualizing areas under the curve.  However, it has significant limitations.  In this class, we will use R to do the heavy lifting.  The pnorm(x, $\mu$, $\sigma$) function calculates areas under the curve the normal distribution with mean, $\mu$, and standard deviation, $\sigma$, for a given x.  
+
+The `p` in `pnorm()` stands for probability and `norm` obviously stands for the normal distribution.  
 
 By default, `pnorm()` gives the area of the curve to the *LEFT* of the value, $x$, for a normal distribution with a mean, $\mu$, and standard deviation, $\sigma$.  
 
@@ -267,7 +271,6 @@ Using the Applet, type the $z$-score of $0.559$ in one of the boxes below the ho
 
 The area under the curve to the right of $z = 0.559$ is $0.288$. This is the probability that a randomly selected player will have a batting average that is greater than 0.280. (Note: It is a coincidence that the area, 0.288, is close to the batting average of 0.280. There is no significance in this.)
 
-Notice that the area shaded in blue above 0.288 is very close to the area we found when we looked at the area represented by the bars of the histogram 0.298 that was shaded in red above.
 
 ### Finding the Probability of Being Between Two Values
 
@@ -323,87 +326,6 @@ qnorm(.90, mean = 159, sd = 4.9)
 
 The 90<sup>th</sup> percentile of the heights averages is 165.2796. That means that 90% of the Ghanaian women are shorter than 165.2796 cm tall.  
 
-<br>
-
-## Roughly Assessing Normality Using a Histogram
-
-### Baseball Batting Averages
-
-Consider the data on the batting averages of Major League Baseball players. The histogram of the batting averages showed a distinct bell-shaped curve.
-
-![](../Images/Picture6.jpg)
-
-Later in the course, we will learn a better way to assess normality.  For now, we use histograms as a rough way to look for symmetry.  
-
-<div class="SoftwareHeading">R Instructions</div>
-<div class="Summary">
-**Here is a refresher of how to make a Histogram in R**
-
-For more detailed instructions revisit [Summarizing Data](../docs/1-Data_Literacy/8-Summarizing_Data_Multiple_Groups.html)
-
-1. Read in the data
-
-```{r}
-library(rio)
-library(mosaic)
-bat_avg <- import("https://github.com/byuistats/Math221D_Course/raw/main/Data/BattingAverages.xlsx")
-```
-
-2. Use `histogram(data$column_name)` where `column_name` refers to the column you would like to use to create a histogram.
-```{r}
-histogram(bat_avg$BattingAvg)
-```
-3. Customize your graph to make it presentation worthy by adding labels and modifying colors:
-```{r}
-histogram(bat_avg$BattingAvg, main = "Distribution of Batting Averages", xlab = "Batting Average", ylab = "", col = 2)
-```
-
-<br>
-</div>
-<br>
-
-### Body Temperatures
-
-A group of researchers led by Philip A. Mackowiak, MD, conducted a study to assess the true mean body temperatures of healthy adults. They selected n = 148 subjects between the ages of 18 and 40 years old, representative of the general population.
-
-Each volunteer was given a physical to assure that they were not ill at the time of the data collection. Their axillary (under the arm) body temperature was measured and reported in a paper published in the Journal of the American Medical Association. [1] These data were extracted and are presented in the file [BodyTemp](../Data/BodyTemp.xlsx). The body temperatures are given in degrees Fahrenheit.
-
-<div class="QuestionsHeading">Answer the following questions:</div>
-<div class="Questions">
-1. Make a histogram of the body temperature data. 
-
-<details>
-<summary>Show/Hide Solution</summary>
-```{r}
-library(rio)
-library(mosaic)
-body_temp <- import("https://github.com/byuistats/Math221D_Course/raw/main/Data/BodyTemp.xlsx")
-histogram(body_temp$BodyTemp)
-```
-</details>
-
-
-2. Based on your histogram, what is the shape of the distribution of these data?
-
-<details>
-<summary>Show/Hide Solution</summary>
--  The data appear to be normally distributed. 
-</details>
-
-3. Calculate the following numerical summaries of the data: sample mean, sample standard deviation, and sample size.
-
-<details>
-<summary>Show/Hide Solution</summary>
-```{r}
-favstats(body_temp$BodyTemp)
-```
-
-
-The sample mean is 98.23, sample standard deviation is 0.738, and sample size is n = 148.
-
-</details>
-<br>
-</div>
 <br>
 
 ## Summary

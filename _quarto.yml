@@ -105,6 +105,7 @@ website:
         - href: ./8-Inquiry_Based_Learning/Probability.qmd
         - href: ./8-Inquiry_Based_Learning/The_Normal_Distribution.qmd
         - href: ./8-Inquiry_Based_Learning/Sampling_Distributions_CLT_LLN.qmd
+        - href: ./8-Inquiry_Based_Learning/Assessing_Normality.qmd
         - href: ./8-Inquiry_Based_Learning/Introducing_Hypothesis_Tests.qmd
 
     - text: "R Help"

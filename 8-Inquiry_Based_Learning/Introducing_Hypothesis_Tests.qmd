@@ -1,5 +1,5 @@
 ---
-title: "Introducing Hypothesis Test"
+title: "Introducing Hypothesis Tests"
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
@@ -8,58 +8,52 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Introduction
 
-In this lesson, we will explore the components of statistical hypothesis testing in a general way.  These general principles will apply to all of the specific tests we will learn during the rest of the semester.  
+In this lesson, we explore the components of statistical hypothesis testing in a general way.  These general principles will apply to all of the specific tests we will learn about during the rest of the semester.  
 
 Lesson Objectives:  
 
   1. Understand what the null hypothesis, $H_0$, is and why we use it  
   2. Understand what the alternative hypothesis, $H_a$, is  
-  3. Understand how the concept of a test statistic as a "signal-to-noise" ratio  
-  4. Understand what is meant by "signal"  
-  5. Understand what is meant by "noise"  
-  6. Understand the concept of a p-value
+  3. Understand the concept of a test statistic as a "signal-to-noise" ratio  
+    * Understand what is meant by "signal"  
+    * Understand what is meant by "noise"  
+  4. Understand the concept of a p-value  
   
   
 # Hypothesis Testing
 
-Hypothesis testing is a fundamental concept in statistics that allows us to make inferences about population parameters based on sample data. It's a structured method for using data to decide between two competing claims about a population, typically referred to as hypotheses.  
+Hypothesis testing is a fundamental concept in statistics that allows us to make inferences about population parameters based on sample data. It's a structured method for using data to decide between two competing claims about a population.  
 
 ## The Null Hypothesis, $H_0$
 
-The **null hypothesis** is the initial claim or assumption about a population parameter.  It often represents the status quo or no effect.  
+The **null hypothesis** is the initial claim or assumption about a population parameter.  It often represents the status quo or "no effect".  
 
 For example, we assume that the new medication has *no effect* until we find enough evidence to prove otherwise.  
 
-We write the null hypothesis as, $H_0$, and sometimes refer to it as "H-Naught" or "H-O".  
+We write the null hypothesis as, $H_0$, and refer to it as "H-Naught" or "H-O".  
 
 
-The statistical tests we will cover in the rest of the semester will follow the generic form:  
+Many of the statistical tests we cover in this course follow the generic form:  
 
 $$H_0: \text{There is no relationship between }X \text{ and }Y$$
 ## The Alternative Hypothesis, $H_a$
 
-We tend to engage with a scientific inquiry because we do NOT believe the null hypothesis.  For example, we believe that there IS an effect of a new medication.  But it is the duty of the researcher to demonstrate that the 
+We typically engage in scientific inquiry because we do NOT believe the null hypothesis.  For example, we believe that there IS an effect of a new medication.  
 
-The "burden of proof" is on the researcher to prove this hypothesis wrong.  This means that it is the researcher's responsibility to present enough evidence to contradict the null hypothesis.  
+The "burden of proof" is on the researcher to prove the null hypothesis wrong.  This means that it is the researcher's responsibility to present enough evidence to contradict the null hypothesis.  
 
 The counter-proposal for the null hypothesis is called the **alternative hypothesis**.  
 
-We write the null hypothesis as, $H_a$, and sometimes refer to it as "H-A".  
-
-
-The statistical tests we will cover in the rest of the semester will follow the generic form:  
+We write the null hypothesis as, $H_a$, and refer to it as "H-A".  
+The statistical tests we will cover in the rest of the semester follow the generic form:  
 
 $$H_a: \text{There is a relationship between }X \text{ and }Y$$
 
-
-This is the claim we're testing against the null hypothesis.  It represents a change or effect.
-
-
-# Signal to Noise Ratio  
+## Visualizing the Null Hypothesis  
 
 We always begin a study under the assumption that the null hypothesis is true.  
 
-What would a true null hypothesis look like?  In our explorations using descriptive statistics, we've seen many examples where there is no relationship between x and y.  
+What would a true null hypothesis look like?  As we've explored data using descriptive statistics, we've seen many examples where there is no relationship between x and y.  
 
 For example, if there was no relationship between `Height` and `Extroversion`, we would expect to see something like:
 
@@ -67,7 +61,7 @@ For example, if there was no relationship between `Height` and `Extroversion`, w
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/No_Relationship_Scatterplot.png)
 Because of sample-to-sample variability, the points wouldn't look exactly like this every time, but it would generally look like random scatter.  
 
-If the null hypothesis is true, it would be very unlikely, though possible, to observe a relationship like the following just by chance because of sample-to-sample variation:  
+If the null hypothesis is true, it would be very unlikely, though possible, to observe a scatter plot like the following, just by chance, because of sample-to-sample variation:  
 
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Some_Relationship_Scatterplot.png)
 
@@ -75,94 +69,50 @@ If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theo
 
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png)
 
-Statistical hypothesis testing is about calculating the **probability** of observing what we actually observed **IF the null hypothesis were true**.  If that probability if very small, we can confidently assert that it is unlikely the null hypothesis is true.  
+Statistical hypothesis testing is about calculating the **probability** of observing what we actually observed **IF the null hypothesis were true**.  If that probability if very small, we can confidently reject the null hypothesis is true in favor of the alternative.  
 
 Next, we will see the process of how we calculate that probability.  
 
 # Test Statistic
+
+To calculate the probability of observing what we observed if there really was no relationship, we first calculate a test statistic.  
+
+The exact formula for a test statistic depends on what type of analysis we are performing.  But regardless of the type of analysis, test statistics follow a general patter.  
 
 A **test statistic** can be though of as a signal-to-noise ratio, where the signal is what we observed in our sample and the noise is the variability we would expect if the null hypothesis is true.  
 
 $$\text{Test Statistics}=\frac{\text{signal}}{\text{noise}}$$
 Think about this as a fraction.  
 
-__QUESTION__:  What would make this fraction big?  
+<div class="QuestionsHeading">Answer the following questions:</div>
+<div class="Questions">
+1. What would make $\frac{signal}{noise}$ big?  
+ 
+<details>
+<summary>Show/Hide Solution</summary>
+  -  If the noise was very small
+  -  If the signal was very large
+</details>
 
-__QUESTION__:  What would make this fraction small?  
+2. What would make $\frac{signal}{noise}$ small?  
+ 
+<details>
+<summary>Show/Hide Solution</summary>
+  -  If the noise was very large
+  -  If the signal was very small
+</details>
 
+</div>
 
+<br>
 
 
 # Probability  
 
-Test Statistic:
+Every test statistic that we will use in this class has a probability distribution associated with it.  The shape of that distribution will depend on context, but the general process is:  
 
-A value calculated from sample data used to determine the likelihood of the null hypothesis being true.
-Significance Level (α):
-
-The probability of rejecting the null hypothesis when it's actually true (Type I error).
-Commonly set at 0.05 or 5%.
-P-value:
-
-The probability of obtaining results as extreme as the observed results, assuming the null hypothesis is true.
-Decision Rule:
-
-A guideline for rejecting or failing to reject the null hypothesis based on the p-value and significance level.
+  1. Calculate the test statistic (ratio of our observation to the expected variability under $H_0$)  
+  2. Use the probability distribution of the test statistic to calculate the probability of observing what we observed **if the null hypothesis were true**  
 
 
-
-Basic Steps in Hypothesis Testing:
-
-State the null and alternative hypotheses.
-Choose a significance level (α).
-Collect sample data.
-Calculate the test statistic.
-Determine the p-value.
-Make a decision: If p-value < α, reject H0. Otherwise, fail to reject H0.
-Interpret the results in the context of the original question.
-
-Hypothesis testing is a fundamental concept in statistics that allows us to make inferences about population parameters based on sample data. It's a structured method for using data to decide between two competing claims about a population, typically referred to as hypotheses.
-
-Key Components of Hypothesis Testing:
-
-Null Hypothesis (H0): 
-
-This is the initial claim or assumption about a population parameter.
-It often represents the status quo or no effect.
-Example: "The average height of adult males is 170 cm."
-Alternative Hypothesis (H1 or Ha):
-
-This is the claim we're testing against the null hypothesis.
-It represents a change or effect.
-Example: "The average height of adult males is not 170 cm."
-Test Statistic:
-
-A value calculated from sample data used to determine the likelihood of the null hypothesis being true.
-Significance Level (α):
-
-The probability of rejecting the null hypothesis when it's actually true (Type I error).
-Commonly set at 0.05 or 5%.
-P-value:
-
-The probability of obtaining results as extreme as the observed results, assuming the null hypothesis is true.
-Decision Rule:
-
-A guideline for rejecting or failing to reject the null hypothesis based on the p-value and significance level.
-Basic Steps in Hypothesis Testing:
-
-State the null and alternative hypotheses.
-Choose a significance level (α).
-Collect sample data.
-Calculate the test statistic.
-Determine the p-value.
-Make a decision: If p-value < α, reject H0. Otherwise, fail to reject H0.
-Interpret the results in the context of the original question.
-
-
-
-
-Generic:  No relationship between X and Y
-Assume No Relationship, only sample-sample variability (noise)
-Observation relative to the noise
-Ratio = Test Statistic
-P-value is the probability of seeing what we observed or more extreme if there was no relationship
+__DEFINITION__:  The probability of observing what we observed assuming the null hypothesis is true is called the **p-value**.

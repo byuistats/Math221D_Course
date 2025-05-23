@@ -552,6 +552,48 @@ window.Quarto = {
 <p>A <strong>Sample</strong> is a subset of the entire population.</p>
 <p><strong>Sample Size</strong> is the number of individuals in the sample.</p>
 <p><strong>Randomization</strong> is used in the collection of a sample to minimize bias and make sure our sample is representative of the population.</p>
+<p>We typically use <em>Greek Letters</em> when representing population parameters and <em>Latin Letters</em> when representing sample statistics.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Quantity</th>
+<th>Population Parameter</th>
+<th>Sample Statistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mean</td>
+<td>μ (mu)</td>
+<td>x̄ (x-bar)</td>
+</tr>
+<tr class="even">
+<td>Standard Deviation</td>
+<td>σ (sigma)</td>
+<td>s</td>
+</tr>
+<tr class="odd">
+<td>Variance</td>
+<td>σ² (sigma squared)</td>
+<td>s²</td>
+</tr>
+<tr class="even">
+<td>Slope (Regression)</td>
+<td>β (beta)</td>
+<td>b</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="the-consequences-of-randomization" class="level1">
 <h1>The Consequences of Randomization</h1>
@@ -561,7 +603,7 @@ window.Quarto = {
 </section>
 <section id="sampling-distributions" class="level1">
 <h1>Sampling Distributions</h1>
-<p>Imagine you and 10 friends want to know about the what percent of BYU-I students whose favorite soda is Dr.&nbsp;Pepper. Each of you could go and survey 50 people each and ask about their favorite soda. All 11 of you calculate the proportion of students who prefer Dr.&nbsp;Pepper.</p>
+<p>Imagine you and 10 friends want to know about the percent of BYU-I students whose favorite soda is Dr.&nbsp;Pepper. Each of you could go and survey 50 people each and ask about their favorite soda. All 11 of you calculate the proportion of students who prefer Dr.&nbsp;Pepper.</p>
 <p>You’ll all get different results because you’ll be asking different sets of people. Now, instead of looking at your percents individually, summarize the collection of samples from all 11 of you using <code>favstats()</code> and a histogram:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
@@ -636,7 +678,7 @@ Show/Hide Solution
 <section id="the-central-limit-theorem" class="level1">
 <h1>The Central Limit Theorem</h1>
 <p>For any population with a mean, <span class="math inline">\(\mu\)</span>, and a standard deviation, <span class="math inline">\(\sigma\)</span>:</p>
-<p><strong>The Central Limit Theorem</strong> states that with a sufficiently large sample size, the sampling distribution of the sample mean will be <em>approximately normal</em> with a mean equal to the population mean, <span class="math inline">\(\mu\)</span>, and a standard deviation equal to the population standard deviation, <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span> where <span class="math inline">\(n\)</span> is the number of individuals in the sample.</p>
+<p><strong>The Central Limit Theorem</strong> states that with a sufficiently large sample size, the sampling distribution of the sample mean will be <em>approximately normal</em> with a mean equal to the population mean, <span class="math inline">\(\mu\)</span>, and a standard deviation equal to the population standard deviation divided by the square root of the sample size, <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>.</p>
 <section id="when-is-bar-x-normal" class="level2">
 <h2 class="anchored" data-anchor-id="when-is-bar-x-normal">When is <span class="math inline">\(\bar x\)</span> Normal?</h2>
 <p>How many observations are required so that the Central Limit Theorem will assure that the distribution of sample means will be approximately normal? The answer is, “it depends.”</p>
@@ -678,7 +720,6 @@ Show/Hide Solution
 <li>The standard deviation of the sample means is <span class="math inline">\(\sigma / \sqrt{n}\)</span></li>
 </ul>
 <p>Remember, these facts are always true. They do not depend on normality or the sample size. So, even though these facts are often used in conjunction with the Central Limit Theorem, they do not depend on it.</p>
-<p>Think about the simulations you have observed. The mean of the sample means was always aligned with <span class="math inline">\(\mu\)</span>. Also, if you took samples larger than <span class="math inline">\(n = 1\)</span>, the standard deviation of sample means was always smaller than <span class="math inline">\(\sigma\)</span>.</p>
 <div class="QuestionsHeading">
 Answer the following questions:
 </div>
@@ -750,14 +791,14 @@ Show/Hide Solution
 <p><br></p>
 <section id="review-of-key-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="review-of-key-concepts">Review of Key Concepts</h2>
-<p>In order to “do statistics” we need to compute probabilities. This requires we know the distribution of the population of interest. The most important distribution in this course is the normal distribution. In this lesson, we are interested in another very important distribution: the distribution of all the sample means, <span class="math inline">\(\bar{x}\)</span>. In order to do statistics with <span class="math inline">\(\bar{x}\)</span> we need the sampling distribution of <span class="math inline">\(\bar{x}\)</span> to be normal. There are two situations when the distribution of <span class="math inline">\(\bar{x}\)</span> is guaranteed to be normal (or at least very close to normal). They are:</p>
+<p>In order to do statistics with a sample mean,<span class="math inline">\(\bar{x}\)</span>, we need the sampling distribution of <span class="math inline">\(\bar{x}\)</span> to be normal. There are two situations when the distribution of <span class="math inline">\(\bar{x}\)</span> is guaranteed to be normal (or at least very close to normal). They are:</p>
 <ul>
 <li>If the parent population is normal, the distribution of the sample means <span class="math inline">\(\bar{x}\)</span> will be normal, for every sample size <span class="math inline">\(n\)</span>.</li>
 <li>Even if the parent population is not normal, the Central Limit Theorem guarantees that the distribution of the sample mean <span class="math inline">\(\bar{x}\)</span> will be approximately normal if the sample size <span class="math inline">\(n\)</span> is large enough. <strong>For this course, if</strong> <span class="math inline">\(n \geq 30\)</span>, <strong>we will say the distribution of the sample means will be approximately normal</strong> (even if the parent population is not normal).</li>
 </ul>
 <p>The mean and standard deviation of <span class="math inline">\(\bar{x}\)</span> are:</p>
 <ul>
-<li>The mean <span class="math inline">\(\mu_{\bar{x}}\)</span> of the sample means is the population mean <span class="math inline">\(\mu\)</span>.</li>
+<li>The mean of the sample means, <span class="math inline">\(\mu_{\bar{x}}\)</span>, is the population mean <span class="math inline">\(\mu\)</span>.</li>
 <li>The standard deviation <span class="math inline">\(\sigma_{\bar{x}}\)</span> of the sample means is the population standard deviation <span class="math inline">\(\sigma\)</span> divided by the square root of <span class="math inline">\(n\)</span>, <span class="math inline">\(\sigma / \sqrt{n}\)</span></li>
 </ul>
 <p><br></p>

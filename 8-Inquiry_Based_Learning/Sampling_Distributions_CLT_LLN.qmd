@@ -36,8 +36,18 @@ A **Sample** is a subset of the entire population.
 
 **Sample Size** is the number of individuals in the sample.  
 
-**Randomization** is used in the collection of a sample to minimize bias and make sure our sample is representative of the population.  
+**Randomization** is used in the collection of a sample to minimize bias and make sure our sample is representative of the population. 
 
+We typically use *Greek Letters* when representing population parameters and *Latin Letters* when representing sample statistics.  
+
+
+| Quantity              | Population Parameter        | Sample Statistic            |
+|-----------------------|------------------------------|------------------------------|
+| Mean                  | μ (mu)                       | x̄ (x-bar)                   |
+| Standard Deviation  | σ (sigma)                    | s                            |
+| Variance              | σ² (sigma squared)           | s²                           |
+| Slope (Regression)   | β (beta)                     | b  |
+| ...                   |       ...                     |           ...            |
 
 # The Consequences of Randomization
 
@@ -50,7 +60,7 @@ The good news is that we can rely on the theory of sampling distributions to qua
 
 # Sampling Distributions
 
-Imagine you and 10 friends want to know about the what percent of BYU-I students whose favorite soda is Dr. Pepper.  Each of you could go and survey 50 people each and ask about their favorite soda.  All 11 of you calculate the proportion of students who prefer Dr. Pepper.  
+Imagine you and 10 friends want to know about the percent of BYU-I students whose favorite soda is Dr. Pepper.  Each of you could go and survey 50 people each and ask about their favorite soda.  All 11 of you calculate the proportion of students who prefer Dr. Pepper.  
 
 You'll all get different results because you'll be asking different sets of people.  Now, instead of looking at your percents individually, summarize the collection of samples from all 11 of you using `favstats()` and a histogram:  
 
@@ -104,7 +114,7 @@ The Central Limit Theorem allows us to know not only know about the *mean*, but 
 
 For any population with a mean, $\mu$, and a standard deviation, $\sigma$:  
 
-**The Central Limit Theorem** states that with a sufficiently large sample size, the sampling distribution of the sample mean will be *approximately normal* with a mean equal to the population mean, $\mu$, and a standard deviation equal to the population standard deviation, $\frac{\sigma}{\sqrt{n}}$ where $n$ is the number of individuals in the sample.  
+**The Central Limit Theorem** states that with a sufficiently large sample size, the sampling distribution of the sample mean will be *approximately normal* with a mean equal to the population mean, $\mu$, and a standard deviation equal to the population standard deviation divided by the square root of the sample size, $\frac{\sigma}{\sqrt{n}}$.  
 
 
 ## When is $\bar x$ Normal?
@@ -145,8 +155,6 @@ The following facts are always true.  They do not depend on the Central Limit Th
 - The standard deviation of the sample means is $\sigma / \sqrt{n}$
 
 Remember, these facts are always true.  They do not depend on normality or the sample size.  So, even though these facts are often used in conjunction with the Central Limit Theorem, they do not depend on it.
-
-Think about the simulations you have observed.  The mean of the sample means was always aligned with $\mu$.  Also, if you took samples larger than $n = 1$, the standard deviation of sample means was always smaller than $\sigma$.
 
 
 <div class="QuestionsHeading">Answer the following questions:</div>
@@ -221,14 +229,14 @@ Take a moment to study the difference between the Central Limit Theorem and the 
 
 ## Review of Key Concepts
 
-In order to "do statistics" we need to compute probabilities. This requires we know the distribution of the population of interest. The most important distribution in this course is the normal distribution. In this lesson, we are interested in another very important distribution: the distribution of all the sample means, $\bar{x}$. In order to do statistics with $\bar{x}$ we need the sampling distribution of $\bar{x}$ to be normal. There are two situations when the distribution of $\bar{x}$ is guaranteed to be normal (or at least very close to normal). They are: 
+In order to do statistics with a sample mean,$\bar{x}$, we need the sampling distribution of $\bar{x}$ to be normal. There are two situations when the distribution of $\bar{x}$ is guaranteed to be normal (or at least very close to normal). They are: 
 
 - If the parent population is normal, the distribution of the sample means $\bar{x}$ will be normal, for every sample size $n$.
 - Even if the parent population is not normal, the Central Limit Theorem guarantees that the distribution of the sample mean $\bar{x}$ will be approximately normal if the sample size $n$ is large enough. **For this course, if** $n \geq 30$, **we will say the distribution of the sample means will be approximately normal** (even if the parent population is not normal).
 
 The mean and standard deviation of $\bar{x}$ are:
 
-- The mean $\mu_{\bar{x}}$ of the sample means is the population mean $\mu$.
+- The mean of the sample means, $\mu_{\bar{x}}$, is the population mean $\mu$.
 - The standard deviation $\sigma_{\bar{x}}$ of the sample means is the population standard deviation $\sigma$ divided by the square root of $n$, $\sigma / \sqrt{n}$
 
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introducing Hypothesis Test – Math221D Notebook</title>
+<title>Introducing Hypothesis Tests – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -404,15 +404,19 @@ window.Quarto = {
   </li>  
         <li>
     <a class="dropdown-item" href="../8-Inquiry_Based_Learning/The_Normal_Distribution.html">
- <span class="dropdown-text">The Normal Distribution (Reading)</span></a>
+ <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Sampling_Distributions_CLT_LLN.html">
  <span class="dropdown-text">Distribution of Sample Means</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Assessing_Normality.html">
+ <span class="dropdown-text">Assessing Normality</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Introducing_Hypothesis_Tests.html">
- <span class="dropdown-text">Introducing Hypothesis Test</span></a>
+ <span class="dropdown-text">Introducing Hypothesis Tests</span></a>
   </li>  
     </ul>
   </li>
@@ -456,8 +460,8 @@ window.Quarto = {
   <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a>
   <ul class="collapse">
   <li><a href="#the-null-hypothesis-h_0" id="toc-the-null-hypothesis-h_0" class="nav-link" data-scroll-target="#the-null-hypothesis-h_0">The Null Hypothesis, <span class="math inline">\(H_0\)</span></a></li>
+  <li><a href="#visualizing-the-null-hypothesis" id="toc-visualizing-the-null-hypothesis" class="nav-link" data-scroll-target="#visualizing-the-null-hypothesis">Visualizing the Null Hypothesis</a></li>
   </ul></li>
-  <li><a href="#signal-to-noise-ratio" id="toc-signal-to-noise-ratio" class="nav-link" data-scroll-target="#signal-to-noise-ratio">Signal to Noise Ratio</a></li>
   <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic">Test Statistic</a></li>
   <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">Probability</a></li>
   </ul>
@@ -468,7 +472,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introducing Hypothesis Test</h1>
+<h1 class="title">Introducing Hypothesis Tests</h1>
 </div>
 
 
@@ -487,81 +491,97 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In this lesson, we will explore the components of statistical hypothesis testing in a general way. These general principles will apply to all of the specific tests we will learn during the rest of the semester.</p>
+<p>In this lesson, we explore the components of statistical hypothesis testing in a general way. These general principles will apply to all of the specific tests we will learn about during the rest of the semester.</p>
 <p>Lesson Objectives:</p>
 <ol type="1">
 <li>Understand what the null hypothesis, <span class="math inline">\(H_0\)</span>, is and why we use it<br>
 </li>
 <li>Understand what the alternative hypothesis, <span class="math inline">\(H_a\)</span>, is<br>
 </li>
-<li>Understand how the concept of a test statistic as a “signal-to-noise” ratio<br>
-</li>
-<li>Understand what is meant by “signal”<br>
-</li>
-<li>Understand what is meant by “noise”<br>
+<li>Understand the concept of a test statistic as a “signal-to-noise” ratio<br>
+* Understand what is meant by “signal”<br>
+* Understand what is meant by “noise”<br>
 </li>
 <li>Understand the concept of a p-value</li>
 </ol>
 </section>
 <section id="hypothesis-testing" class="level1">
 <h1>Hypothesis Testing</h1>
-<p>Hypothesis testing is a fundamental concept in statistics that allows us to make inferences about population parameters based on sample data. It’s a structured method for using data to decide between two competing claims about a population, typically referred to as hypotheses.</p>
+<p>Hypothesis testing is a fundamental concept in statistics that allows us to make inferences about population parameters based on sample data. It’s a structured method for using data to decide between two competing claims about a population.</p>
 <section id="the-null-hypothesis-h_0" class="level2">
 <h2 class="anchored" data-anchor-id="the-null-hypothesis-h_0">The Null Hypothesis, <span class="math inline">\(H_0\)</span></h2>
-<p>The <strong>null hypothesis</strong> is the initial claim or assumption about a population parameter. It often represents the status quo or no effect.</p>
+<p>The <strong>null hypothesis</strong> is the initial claim or assumption about a population parameter. It often represents the status quo or “no effect”.</p>
 <p>For example, we assume that the new medication has <em>no effect</em> until we find enough evidence to prove otherwise.</p>
-<p>We write the null hypothesis as, <span class="math inline">\(H_0\)</span>, and sometimes refer to it as “H-Naught” or “H-O”.</p>
-<p>The statistical tests we will cover in the rest of the semester will follow the generic form:</p>
+<p>We write the null hypothesis as, <span class="math inline">\(H_0\)</span>, and refer to it as “H-Naught” or “H-O”.</p>
+<p>Many of the statistical tests we cover in this course follow the generic form:</p>
 <p><span class="math display">\[H_0: \text{There is no relationship between }X \text{ and }Y\]</span> ## The Alternative Hypothesis, <span class="math inline">\(H_a\)</span></p>
-<p>We tend to engage with a scientific inquiry because we do NOT believe the null hypothesis. For example, we believe that there IS an effect of a new medication. But it is the duty of the researcher to demonstrate that the</p>
-<p>The “burden of proof” is on the researcher to prove this hypothesis wrong. This means that it is the researcher’s responsibility to present enough evidence to contradict the null hypothesis.</p>
+<p>We typically engage in scientific inquiry because we do NOT believe the null hypothesis. For example, we believe that there IS an effect of a new medication.</p>
+<p>The “burden of proof” is on the researcher to prove the null hypothesis wrong. This means that it is the researcher’s responsibility to present enough evidence to contradict the null hypothesis.</p>
 <p>The counter-proposal for the null hypothesis is called the <strong>alternative hypothesis</strong>.</p>
-<p>We write the null hypothesis as, <span class="math inline">\(H_a\)</span>, and sometimes refer to it as “H-A”.</p>
-<p>The statistical tests we will cover in the rest of the semester will follow the generic form:</p>
+<p>We write the null hypothesis as, <span class="math inline">\(H_a\)</span>, and refer to it as “H-A”.<br>
+The statistical tests we will cover in the rest of the semester follow the generic form:</p>
 <p><span class="math display">\[H_a: \text{There is a relationship between }X \text{ and }Y\]</span></p>
-<p>This is the claim we’re testing against the null hypothesis. It represents a change or effect.</p>
 </section>
-</section>
-<section id="signal-to-noise-ratio" class="level1">
-<h1>Signal to Noise Ratio</h1>
+<section id="visualizing-the-null-hypothesis" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-null-hypothesis">Visualizing the Null Hypothesis</h2>
 <p>We always begin a study under the assumption that the null hypothesis is true.</p>
-<p>What would a true null hypothesis look like? In our explorations using descriptive statistics, we’ve seen many examples where there is no relationship between x and y.</p>
+<p>What would a true null hypothesis look like? As we’ve explored data using descriptive statistics, we’ve seen many examples where there is no relationship between x and y.</p>
 <p>For example, if there was no relationship between <code>Height</code> and <code>Extroversion</code>, we would expect to see something like:</p>
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/No_Relationship_Scatterplot.png" class="img-fluid"> Because of sample-to-sample variability, the points wouldn’t look exactly like this every time, but it would generally look like random scatter.</p>
-<p>If the null hypothesis is true, it would be very unlikely, though possible, to observe a relationship like the following just by chance because of sample-to-sample variation:</p>
+<p>If the null hypothesis is true, it would be very unlikely, though possible, to observe a scatter plot like the following, just by chance, because of sample-to-sample variation:</p>
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Some_Relationship_Scatterplot.png" class="img-fluid"></p>
 <p>If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance because of sample-to-sample variation:</p>
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png" class="img-fluid"></p>
-<p>Statistical hypothesis testing is about calculating the <strong>probability</strong> of observing what we actually observed <strong>IF the null hypothesis were true</strong>. If that probability if very small, we can confidently assert that it is unlikely the null hypothesis is true.</p>
+<p>Statistical hypothesis testing is about calculating the <strong>probability</strong> of observing what we actually observed <strong>IF the null hypothesis were true</strong>. If that probability if very small, we can confidently reject the null hypothesis is true in favor of the alternative.</p>
 <p>Next, we will see the process of how we calculate that probability.</p>
+</section>
 </section>
 <section id="test-statistic" class="level1">
 <h1>Test Statistic</h1>
+<p>To calculate the probability of observing what we observed if there really was no relationship, we first calculate a test statistic.</p>
+<p>The exact formula for a test statistic depends on what type of analysis we are performing. But regardless of the type of analysis, test statistics follow a general patter.</p>
 <p>A <strong>test statistic</strong> can be though of as a signal-to-noise ratio, where the signal is what we observed in our sample and the noise is the variability we would expect if the null hypothesis is true.</p>
 <p><span class="math display">\[\text{Test Statistics}=\frac{\text{signal}}{\text{noise}}\]</span> Think about this as a fraction.</p>
-<p><strong>QUESTION</strong>: What would make this fraction big?</p>
-<p><strong>QUESTION</strong>: What would make this fraction small?</p>
+<div class="QuestionsHeading">
+Answer the following questions:
+</div>
+<div class="Questions">
+<ol type="1">
+<li>What would make <span class="math inline">\(\frac{signal}{noise}\)</span> big?</li>
+</ol>
+<details>
+<summary>
+Show/Hide Solution
+</summary>
+<ul>
+<li>If the noise was very small</li>
+<li>If the signal was very large</li>
+</ul>
+</details>
+<ol start="2" type="1">
+<li>What would make <span class="math inline">\(\frac{signal}{noise}\)</span> small?</li>
+</ol>
+<details>
+<summary>
+Show/Hide Solution
+</summary>
+<ul>
+<li>If the noise was very large</li>
+<li>If the signal was very small</li>
+</ul>
+</details>
+</div>
+<p><br></p>
 </section>
 <section id="probability" class="level1">
 <h1>Probability</h1>
-<p>Test Statistic:</p>
-<p>A value calculated from sample data used to determine the likelihood of the null hypothesis being true. Significance Level (α):</p>
-<p>The probability of rejecting the null hypothesis when it’s actually true (Type I error). Commonly set at 0.05 or 5%. P-value:</p>
-<p>The probability of obtaining results as extreme as the observed results, assuming the null hypothesis is true. Decision Rule:</p>
-<p>A guideline for rejecting or failing to reject the null hypothesis based on the p-value and significance level.</p>
-<p>Basic Steps in Hypothesis Testing:</p>
-<p>State the null and alternative hypotheses. Choose a significance level (α). Collect sample data. Calculate the test statistic. Determine the p-value. Make a decision: If p-value &lt; α, reject H0. Otherwise, fail to reject H0. Interpret the results in the context of the original question.</p>
-<p>Hypothesis testing is a fundamental concept in statistics that allows us to make inferences about population parameters based on sample data. It’s a structured method for using data to decide between two competing claims about a population, typically referred to as hypotheses.</p>
-<p>Key Components of Hypothesis Testing:</p>
-<p>Null Hypothesis (H0):</p>
-<p>This is the initial claim or assumption about a population parameter. It often represents the status quo or no effect. Example: “The average height of adult males is 170 cm.” Alternative Hypothesis (H1 or Ha):</p>
-<p>This is the claim we’re testing against the null hypothesis. It represents a change or effect. Example: “The average height of adult males is not 170 cm.” Test Statistic:</p>
-<p>A value calculated from sample data used to determine the likelihood of the null hypothesis being true. Significance Level (α):</p>
-<p>The probability of rejecting the null hypothesis when it’s actually true (Type I error). Commonly set at 0.05 or 5%. P-value:</p>
-<p>The probability of obtaining results as extreme as the observed results, assuming the null hypothesis is true. Decision Rule:</p>
-<p>A guideline for rejecting or failing to reject the null hypothesis based on the p-value and significance level. Basic Steps in Hypothesis Testing:</p>
-<p>State the null and alternative hypotheses. Choose a significance level (α). Collect sample data. Calculate the test statistic. Determine the p-value. Make a decision: If p-value &lt; α, reject H0. Otherwise, fail to reject H0. Interpret the results in the context of the original question.</p>
-<p>Generic: No relationship between X and Y Assume No Relationship, only sample-sample variability (noise) Observation relative to the noise Ratio = Test Statistic P-value is the probability of seeing what we observed or more extreme if there was no relationship</p>
+<p>Every test statistic that we will use in this class has a probability distribution associated with it. The shape of that distribution will depend on context, but the general process is:</p>
+<ol type="1">
+<li>Calculate the test statistic (ratio of our observation to the expected variability under <span class="math inline">\(H_0\)</span>)<br>
+</li>
+<li>Use the probability distribution of the test statistic to calculate the probability of observing what we observed <strong>if the null hypothesis were true</strong></li>
+</ol>
+<p><strong>DEFINITION</strong>: The probability of observing what we observed assuming the null hypothesis is true is called the <strong>p-value</strong>.</p>
 
 
 </section>

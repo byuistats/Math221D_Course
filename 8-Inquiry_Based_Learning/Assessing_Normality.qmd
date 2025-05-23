@@ -1,0 +1,82 @@
+---
+title: "Assessing Normality"
+subtitle: "Introducing a New Chart"
+---
+```{r setup, include=FALSE}
+# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Assessing Normality
+
+In practice, we must confirm that the distribution of sample means is normally distributed.  This is true when:
+
+  1. The population is normally distributed
+  2. $n > 30$ because of the Central Limit Theorem
+  
+But how do you know if a population is normally distributed?  In the real world, there is no teacher to tell you when to assume a population is normal.  
+
+If our sample size is large enough, we don't have to worry.  We can trust the Central Limit Theorem.
+
+If our sample size is < 30, we can assess the normality of our *sample* to decide if we can still trust output of our hypothesis tests and confidence intervals.  
+
+[Previously](https://byuistats.github.io/Math221D_Course/Textbook/The_Normal_Distribution.html), we've used histograms to help visualize the distribution of a sample.  However, when sample sizes are small, even samples from a standard normal distribution can look skewed.
+
+All of the examples below are histograms of random samples from actual standard normal distributions:
+
+![](../Images/small_sample_normal.png)
+
+
+### A New Way to Assess Normality
+
+Statisticians use something called a `QQPlot` which works better at assessing normality.  QQPlots plot the sorted data of each point in a dataset with the theoretical percentile from a normal distribution.  If the data and theoretical percentiles line up, then we can be reasonably sure the population is normally distributed.  
+
+These are easier to use than to explain.  We use the `car` library and the function `qqPlot()` to create a chart. (Note the Capital `P` in the middle.)
+
+__Key Point__:  If most of the data points line up in the shaded region, we can consider the population as normally distributed.  
+
+
+Below are examples of QQPlots for a normal distribution and a right skewed distribution.
+
+![](../Images/QQPlot_Normal.png)
+
+
+
+![](../Images/QQPlot_Right_Skewed.png)
+
+
+These work much better for small sample sizes.  Below are several examples of QQPlots for small sample sizes:
+
+
+![](../Images/QQPlots_Normal.png)
+
+
+While not perfect, these are a vastly better tool to assess normality than a histogram.  
+
+# Practice
+
+Let's try assessing the normality of some data.  Below are 3 datasets.  Find the response variable(s) from each and determine if the data are sufficiently normally distributed:
+
+
+```{r}
+
+library(rio)
+library(tidyverse)
+library(car)
+
+old_faithful <- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/OldFaithful.xlsx')
+
+qqPlot(old_faithful$Duration)
+qqPlot(old_faithful$Wait)
+
+rent <- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/Rent.csv')
+
+
+mcat_gpa <- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/mcat_gpa.csv')
+
+
+
+```
+
+
+

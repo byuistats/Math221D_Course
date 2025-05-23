@@ -82,29 +82,30 @@ The principles are roughly the same as for discrete events.  In continuous cases
 
 It makes more sense to think of probabilities in relation to specified values.  Below are a few examples.  
 
-### 1. Total Probability
+  - **1. Total Probability:**
 
-The Total **area under the curve** is equal to 1.  
+$$\text{The Total} \textbf{ area under the curve} \text{ is equal to 1.}$$  
 
-### 2. P(x<a)
+  -  **2. P(E < a)**
 
 The probability that an event is **less** than some value, $a$, is the area under the curve to the *left* of $a$.
 
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Prob_Less_Than_Example.png)
 
-### 3. P(x>b)
+  -  **3. P(E > b)**
 
 The probability that an event is **greater** than some value, $b$, is the area under the curve to the *right* of $b$.
 
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Prob_Greater_Than_Example.png)
 
-### 4. P(a < x < b)
+  -  **4. P(a < E < b)**
 
 The probability of being between 2 numbers is the area under the curve between the 2 numbers:
 
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Normal_Probability_Example.png)
 
-### 4. The Complement Rule
+  - **4. The Complement Rule**
+  
 - The probability that a continuous random variable **does not** fall within an interval \([a, b]\) is:
   
   $$
