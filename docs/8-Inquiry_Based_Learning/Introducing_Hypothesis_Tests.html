@@ -462,6 +462,7 @@ window.Quarto = {
   <li><a href="#the-null-hypothesis-h_0" id="toc-the-null-hypothesis-h_0" class="nav-link" data-scroll-target="#the-null-hypothesis-h_0">The Null Hypothesis, <span class="math inline">\(H_0\)</span></a></li>
   <li><a href="#visualizing-the-null-hypothesis" id="toc-visualizing-the-null-hypothesis" class="nav-link" data-scroll-target="#visualizing-the-null-hypothesis">Visualizing the Null Hypothesis</a></li>
   </ul></li>
+  <li><a href="#visualizing-ho-for-group-means" id="toc-visualizing-ho-for-group-means" class="nav-link" data-scroll-target="#visualizing-ho-for-group-means">Visualizing Ho for Group Means</a></li>
   <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic">Test Statistic</a></li>
   <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">Probability</a></li>
   </ul>
@@ -532,9 +533,25 @@ The statistical tests we will cover in the rest of the semester follow the gener
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Some_Relationship_Scatterplot.png" class="img-fluid"></p>
 <p>If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance because of sample-to-sample variation:</p>
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png" class="img-fluid"></p>
-<p>Statistical hypothesis testing is about calculating the <strong>probability</strong> of observing what we actually observed <strong>IF the null hypothesis were true</strong>. If that probability if very small, we can confidently reject the null hypothesis is true in favor of the alternative.</p>
-<p>Next, we will see the process of how we calculate that probability.</p>
 </section>
+</section>
+<section id="visualizing-ho-for-group-means" class="level1">
+<h1>Visualizing Ho for Group Means</h1>
+<p>Now consider the situation where you have a categorical explanatory variable and a continuous response variable. Under the null hypothesis that there is no relationship between X and Y, the boxes in a boxplot should all line up to look roughly the same.</p>
+<p>Because of sample-to-sample variability, the boxes won’t look identical.</p>
+<p>Below is an app that simulates data under the null hypothesis. Any observed differences between boxes is part of the expected variation if there really was <em>no difference</em> at the population level. This shows how group distributions can vary just from sample to sample.</p>
+<p><strong>Try it out</strong>:</p>
+<ol type="1">
+<li>Pick a sample size and run several simulations by repeatedly clicking the button.<br>
+</li>
+<li>Repeat for a sample size of 10</li>
+<li>Repear for a sample size of 70</li>
+</ol>
+<p><strong>PONDER</strong>: What do you notice about the impact of sample size on the sample-to-sample variability?</p>
+<iframe src="https://byuistats.github.io/Null_Hypothesis_Simulation_App/" width="700" height="500" style="border:none;">
+</iframe>
+<p>Statistical hypothesis testing is about calculating the <strong>probability</strong> of observing what we actually observed <strong>IF the null hypothesis were true</strong>. If that probability is very small, we can confidently reject the null hypothesis in favor of the alternative.</p>
+<p>Next, we will see the process of how we calculate that probability.</p>
 </section>
 <section id="test-statistic" class="level1">
 <h1>Test Statistic</h1>
@@ -572,16 +589,21 @@ Show/Hide Solution
 </details>
 </div>
 <p><br></p>
+<p>The specific formulas for test statistics vary depending on the data types you are testing, and it is something R will calculate for us. As we get into specific analyses, we will look at a few of those formulas. For now, consider a test statistic as a signal-to-noise ratio. The larger it is, the stronger the evidence against the null hypothesis.</p>
+<p>But a test statistic is just a number and difficult to interpret in isolation. The calculation of the test statistics is an <em>intermediate step</em> to calculating a probability.</p>
 </section>
 <section id="probability" class="level1">
 <h1>Probability</h1>
-<p>Every test statistic that we will use in this class has a probability distribution associated with it. The shape of that distribution will depend on context, but the general process is:</p>
+<p>Every test statistic has a probability distribution associated with it. The shape of that distribution depends on context, but the general process is:</p>
 <ol type="1">
 <li>Calculate the test statistic (ratio of our observation to the expected variability under <span class="math inline">\(H_0\)</span>)<br>
 </li>
 <li>Use the probability distribution of the test statistic to calculate the probability of observing what we observed <strong>if the null hypothesis were true</strong></li>
 </ol>
 <p><strong>DEFINITION</strong>: The probability of observing what we observed assuming the null hypothesis is true is called the <strong>p-value</strong>.</p>
+<p>A <em>small</em> p-value means that what we actually observed in our sample is unlikely to have happened just by chance (because of sample-to-sample variation).</p>
+<p>A <em>large</em> p-value means that our observation is likely to have occurred if the null hypothesis were true. Our observations are consistent with sample-to-sample variation.</p>
+<p>In the next lesson we will talk more about decision rules for deciding when a p-value is <em>small enough</em> to reject <span class="math inline">\(H_0\)</span>.</p>
 
 
 </section>

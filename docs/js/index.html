@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Null Hypothesis Boxplot App</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-box-and-violin-plot@3.7.0/build/Chart.BoxPlot.js"></script>
+  <style>
+    body { font-family: sans-serif; }
+    #plotContainer { width: 600px; margin: 2em auto; }
+    canvas { background: #fff; }
+  </style>
+</head>
+<body>
+  <label for="sampleSizeInput">Sample Size per Group:</label>
+  <input type="number" id="sampleSizeInput" min="1" max="100" value="25">
+  <button id="startButton">Generate Boxplots</button>
+  <div id="plotContainer">
+    <canvas id="boxplot"></canvas>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
