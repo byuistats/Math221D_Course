@@ -547,7 +547,14 @@ window.Quarto = {
 <p>The below graph illustrates the relationship between Type I and Type II errors. The red distribution represents the Null Hypothesis, the sampling distribution of sample mean-lengths of foot-long sandwiches, assuming <span class="math inline">\(\mu_0=12\)</span>.</p>
 <p>The blue distribution represents the “TRUE” distribution with a mean, <span class="math inline">\(\mu_{truth}=11.2\)</span>. We never know this in the real world, but to illustrate, here is a situation where the <strong>true population mean</strong> is, in fact, less than 12.</p>
 <p>If we set <span class="math inline">\(\alpha = 0.01\)</span> (red shaded area), we can see that any sample mean to the right of the cutoff would <strong>fail to reject</strong> the null hypothesis. This mistake would be a Type II error.</p>
-<iframe src="https://byuistats.github.io/Alpha_Beta_Example_App/" width="700" height="500" style="border:none; overflow:hidden;" scrolling="no">
+<style>
+  .responsive-iframe {
+    width: 100%;
+    height: 80vh; /* or use other units like % or vh/vw for responsiveness */
+    border: none;
+  }
+</style>
+<iframe src="https://byuistats.github.io/Alpha_Beta_Example_App/" class="responsive-iframe" scrolling="no">
 </iframe>
 <p>While we don’t know what the “TRUE” distribution is, we can see the relationship between moving the cutoff based on <span class="math inline">\(\alpha\)</span> would do to the probability of failing to reject the null hypothesis even when it is FALSE.</p>
 
