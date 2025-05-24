@@ -36,6 +36,7 @@ We write the null hypothesis as, $H_0$, and refer to it as "H-Naught" or "H-O".
 Many of the statistical tests we cover in this course follow the generic form:  
 
 $$H_0: \text{There is no relationship between }X \text{ and }Y$$
+
 ## The Alternative Hypothesis, $H_a$
 
 We typically engage in scientific inquiry because we do NOT believe the null hypothesis.  For example, we believe that there IS an effect of a new medication.  
@@ -59,25 +60,29 @@ For example, if there was no relationship between `Height` and `Extroversion`, w
 
 
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/No_Relationship_Scatterplot.png)
+<br>
+
 Because of sample-to-sample variability, the points wouldn't look exactly like this every time, but it would generally look like random scatter.  
 
 If the null hypothesis is true, it would be very unlikely, though possible, to observe a scatter plot like the following, just by chance, because of sample-to-sample variation:  
 
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Some_Relationship_Scatterplot.png)
 
+<br>
+
 If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance because of sample-to-sample variation:  
 
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png)
+<br>
 
 
-
-# Visualizing Ho for Group Means
+# Visualizing $H_0$ for Group Means
 
 Now consider the situation where you have a categorical explanatory variable and a continuous response variable.  Under the null hypothesis that there is no relationship between X and Y, the boxes in a boxplot should all line up to look roughly the same.  
 
 Because of sample-to-sample variability, the boxes won't look identical.  
 
-Below is an app that simulates data under the null hypothesis.  Any observed differences between boxes is part of the expected variation if there really was *no difference* at the population level.  This shows how group distributions can vary just from sample to sample.  
+Below is an app that simulates data under the null hypothesis.  Any observed difference between boxes is part of the expected variation if there really was *no difference* at the population level.  This shows how group distributions can vary just from sample to sample.  
 
 __Try it out__:  
 
@@ -88,6 +93,7 @@ __Try it out__:
 __PONDER__:  What do you notice about the impact of sample size on the sample-to-sample variability?  
 
 <iframe src="https://byuistats.github.io/Null_Hypothesis_Simulation_App/" width="700" height="500" style="border:none;"></iframe>
+
 
 
 Statistical hypothesis testing is about calculating the **probability** of observing what we actually observed **IF the null hypothesis were true**.  If that probability is very small, we can confidently reject the null hypothesis in favor of the alternative.  

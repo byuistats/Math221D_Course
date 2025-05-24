@@ -460,9 +460,10 @@ window.Quarto = {
   <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a>
   <ul class="collapse">
   <li><a href="#the-null-hypothesis-h_0" id="toc-the-null-hypothesis-h_0" class="nav-link" data-scroll-target="#the-null-hypothesis-h_0">The Null Hypothesis, <span class="math inline">\(H_0\)</span></a></li>
+  <li><a href="#the-alternative-hypothesis-h_a" id="toc-the-alternative-hypothesis-h_a" class="nav-link" data-scroll-target="#the-alternative-hypothesis-h_a">The Alternative Hypothesis, <span class="math inline">\(H_a\)</span></a></li>
   <li><a href="#visualizing-the-null-hypothesis" id="toc-visualizing-the-null-hypothesis" class="nav-link" data-scroll-target="#visualizing-the-null-hypothesis">Visualizing the Null Hypothesis</a></li>
   </ul></li>
-  <li><a href="#visualizing-ho-for-group-means" id="toc-visualizing-ho-for-group-means" class="nav-link" data-scroll-target="#visualizing-ho-for-group-means">Visualizing Ho for Group Means</a></li>
+  <li><a href="#visualizing-h_0-for-group-means" id="toc-visualizing-h_0-for-group-means" class="nav-link" data-scroll-target="#visualizing-h_0-for-group-means">Visualizing <span class="math inline">\(H_0\)</span> for Group Means</a></li>
   <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic">Test Statistic</a></li>
   <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">Probability</a></li>
   </ul>
@@ -515,7 +516,10 @@ window.Quarto = {
 <p>For example, we assume that the new medication has <em>no effect</em> until we find enough evidence to prove otherwise.</p>
 <p>We write the null hypothesis as, <span class="math inline">\(H_0\)</span>, and refer to it as “H-Naught” or “H-O”.</p>
 <p>Many of the statistical tests we cover in this course follow the generic form:</p>
-<p><span class="math display">\[H_0: \text{There is no relationship between }X \text{ and }Y\]</span> ## The Alternative Hypothesis, <span class="math inline">\(H_a\)</span></p>
+<p><span class="math display">\[H_0: \text{There is no relationship between }X \text{ and }Y\]</span></p>
+</section>
+<section id="the-alternative-hypothesis-h_a" class="level2">
+<h2 class="anchored" data-anchor-id="the-alternative-hypothesis-h_a">The Alternative Hypothesis, <span class="math inline">\(H_a\)</span></h2>
 <p>We typically engage in scientific inquiry because we do NOT believe the null hypothesis. For example, we believe that there IS an effect of a new medication.</p>
 <p>The “burden of proof” is on the researcher to prove the null hypothesis wrong. This means that it is the researcher’s responsibility to present enough evidence to contradict the null hypothesis.</p>
 <p>The counter-proposal for the null hypothesis is called the <strong>alternative hypothesis</strong>.</p>
@@ -528,18 +532,20 @@ The statistical tests we will cover in the rest of the semester follow the gener
 <p>We always begin a study under the assumption that the null hypothesis is true.</p>
 <p>What would a true null hypothesis look like? As we’ve explored data using descriptive statistics, we’ve seen many examples where there is no relationship between x and y.</p>
 <p>For example, if there was no relationship between <code>Height</code> and <code>Extroversion</code>, we would expect to see something like:</p>
-<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/No_Relationship_Scatterplot.png" class="img-fluid"> Because of sample-to-sample variability, the points wouldn’t look exactly like this every time, but it would generally look like random scatter.</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/No_Relationship_Scatterplot.png" class="img-fluid"> <br></p>
+<p>Because of sample-to-sample variability, the points wouldn’t look exactly like this every time, but it would generally look like random scatter.</p>
 <p>If the null hypothesis is true, it would be very unlikely, though possible, to observe a scatter plot like the following, just by chance, because of sample-to-sample variation:</p>
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Some_Relationship_Scatterplot.png" class="img-fluid"></p>
+<p><br></p>
 <p>If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance because of sample-to-sample variation:</p>
-<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png" class="img-fluid"></p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png" class="img-fluid"> <br></p>
 </section>
 </section>
-<section id="visualizing-ho-for-group-means" class="level1">
-<h1>Visualizing Ho for Group Means</h1>
+<section id="visualizing-h_0-for-group-means" class="level1">
+<h1>Visualizing <span class="math inline">\(H_0\)</span> for Group Means</h1>
 <p>Now consider the situation where you have a categorical explanatory variable and a continuous response variable. Under the null hypothesis that there is no relationship between X and Y, the boxes in a boxplot should all line up to look roughly the same.</p>
 <p>Because of sample-to-sample variability, the boxes won’t look identical.</p>
-<p>Below is an app that simulates data under the null hypothesis. Any observed differences between boxes is part of the expected variation if there really was <em>no difference</em> at the population level. This shows how group distributions can vary just from sample to sample.</p>
+<p>Below is an app that simulates data under the null hypothesis. Any observed difference between boxes is part of the expected variation if there really was <em>no difference</em> at the population level. This shows how group distributions can vary just from sample to sample.</p>
 <p><strong>Try it out</strong>:</p>
 <ol type="1">
 <li>Pick a sample size and run several simulations by repeatedly clicking the button.<br>
@@ -551,7 +557,7 @@ The statistical tests we will cover in the rest of the semester follow the gener
 <iframe src="https://byuistats.github.io/Null_Hypothesis_Simulation_App/" width="700" height="500" style="border:none;">
 </iframe>
 <p>Statistical hypothesis testing is about calculating the <strong>probability</strong> of observing what we actually observed <strong>IF the null hypothesis were true</strong>. If that probability is very small, we can confidently reject the null hypothesis in favor of the alternative.</p>
-<p>Next, we will see the process of how we calculate that probability.</p>
+<p>Next, we will look at the process of calculating that probability.</p>
 </section>
 <section id="test-statistic" class="level1">
 <h1>Test Statistic</h1>
