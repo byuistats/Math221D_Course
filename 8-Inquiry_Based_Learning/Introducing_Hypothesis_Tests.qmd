@@ -92,7 +92,7 @@ __PONDER__:  What do you notice about the impact of sample size on the sample-to
 
 Statistical hypothesis testing is about calculating the **probability** of observing what we actually observed **IF the null hypothesis were true**.  If that probability is very small, we can confidently reject the null hypothesis in favor of the alternative.  
 
-Next, we will see the process of how we calculate that probability.  
+Next, we will look at the process of calculating that probability.  
 
 
 # Test Statistic
