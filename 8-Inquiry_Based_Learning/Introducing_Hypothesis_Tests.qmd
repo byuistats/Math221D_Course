@@ -155,3 +155,110 @@ A *large* p-value means that our observation is likely to have occurred if the n
 In the next lesson we will talk more about decision rules for deciding when a p-value is *small enough* to reject $H_0$.  
 
 
+# How Long is a Foot-Long Sandwich?  
+
+Let's look at a concrete example.  
+
+One might expect a foot-long sandwich to be 12 inches long, at least on average.  Consumers will naturally allow for some level of variation.  But if enough customers are convinced they are getting consistently short-changed, they may loudly complain, or even attempt a [lawsuit](https://www.forbes.com/sites/ericgoldman/2016/02/29/why-the-subway-footlong-lawsuits-fell-short/).  
+
+
+### The Null Hypothesis
+
+In the case of foot-long sandwiches, our null hypothesis is that the true mean length of foot-long sandwiches is 12 inches.
+
+We present the null hypothesis in the following way:
+
+$$H_0: \mu = 12$$
+This represents the claim we need to DIS-prove. We seek evidence against $H_0$ in favor of an alternative.  
+
+### The Alternative Hypothesis
+
+In the case of foot-long sandwiches, customers will typically only get upset if they are getting *less* than advertised.  We would propose an alternative:  
+
+$$H_a: \mu < 12$$
+
+It is important that the null and alternative hypotheses be determined prior to collecting the data.  It is not appropriate to use the data from your study to choose the alternative hypothesis that will be used to test the same data!  This is an example of using data twice, once to choose the test and again to conduct the test.  It is okay to use data from a previous study to determine your null and alternative hypotheses, but it is an improper use of the statistical procedures to use the data to define *and* conduct a hypothesis test.
+
+
+__KEY POINTS__:  
+
+  1. Hypotheses are statements about *population parameters*
+  2. The null hypothesis will always be a statement of equality
+  3. We never PROVE the null hypothesis is true, we can only fail to disprove it.  
+  
+  
+That last point is important.  Data collected are only evidence against $H_0$.  This is similar to the situation in a courtroom where a defendant is accused of a crime.  The defendant does not have to PROVE their innocence.  It is up to the prosecution to prove guilt. If they fail to do so, we find the defendant "not guilty", which is not the same thing as innocent.  It just means there wasn't enough evidence to convict.  
+
+
+### Test Statistic
+
+In this example, the *signal* is how far our observed mean, $\bar x$, is away from the hypothesized mean, $\mu=12$.  
+
+The *noise* is the sample-to-sample variation of the mean.  We know, based on what we've learned about sampling distributions, that this is:  $\sigma_{\bar x} = \frac{\sigma}{\sqrt{n}}$.  This is the sample-to-sample variation for sample means.  
+
+Suppose for now that sandwich-to-sandwich lengths vary by about 0.5 inches and that the distribution is normal.  If we sampled 21 random sandwiches from shops in a region and got a sample mean length of 11.82 inches, we can calculate a test statistic:
+
+
+$$
+z = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} = \frac{11.82 - 12}{0.5 / \sqrt{21}} = -1.649727
+$$
+
+Where $z$ is the test statistic, $\bar{x}$ is the sample mean, $\mu_0$ is the null hypothesis mean, $\sigma$ is the population standard deviation and $n$ is the sample size.  
+
+Based on the results from the formula above, $\bar{x}$ is about 1.65 standard deviations below the mean.  
+
+We can then use this Z-score and the standard normal distribution to calculate the probability of observing such a result or more extreme, if the null hypothesis is true.  This is the evidence we use to make a decision about the null hypothesis.  
+
+### $P$-value
+
+
+__$P$-value__:  The probability of obtaining a test statistic (such as $z$) at least as extreme as the one you calculated, assuming the null hypothesis is true. 
+
+
+In other words, our $P$-value is the probability that we would get a $z$-score that is as extreme or more extreme than $z=-1.649727$, assuming the true mean is 12 inches.
+
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(mosaic)
+
+mu <- 12
+sigma_xbar <- 0.5 / sqrt(21)
+
+normal_data <- tibble(x=seq(11.55, 12.45, length=100),
+                      y = dnorm(x, mu, sigma_xbar))
+ggplot(normal_data, aes(x,y)) +
+  geom_line() +
+  geom_area(data=normal_data %>% filter(x < 11.82), alpha=0.5, fill="lightblue") +
+  theme_classic() +
+  geom_vline(xintercept = 12, linetype=2) +
+  labs(
+    title = "Sampling Distribution of Sandwich Lengths",
+    subtitle = "Assuming the Null Hypothesis is true",
+    x = "Dist. of Sample Averages of Foot-long sandwich lengths: n=21"
+  ) +
+  geom_label(aes(x=11.75, y = .75), label="P-value", fill="lightblue")
+
+```
+
+We use "as or more extreme" because the direction (greater than or less than) depends on our alternative hypothesis.  
+
+In the case against the sandwich shop, we can use `pnorm()` to get the P-value:
+
+```{r}
+z <- (11.82-12) / (0.5/sqrt(21))
+
+pnorm(z)
+
+```
+
+
+__Conclusion__:  If the true population mean was 12 inches, there is a 4.95% chance of obtaining a sample mean of 11.82 hours or less for a sample of size 21. 
+
+At this point we have to make a decision.  Is that probability small enough to reject the null hypothesis in favor the alternative?  Are foot-long sandwich is LESS than 12 inches on average?  
+
+When the P-value is very small, we have strong evidence to reject the null hypothesis.  But how small is small enough?  
+
+In the next lesson we will talk more about decision rules for deciding when a p-value is small enough to reject $H_0$.  
+
+

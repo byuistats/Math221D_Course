@@ -11,40 +11,103 @@ Statistical significance is a crucial concept for determining whether the result
 
 ## Reviw:  P-value
 
-The **p-value** is the probability of observing results as extreme as, or more extreme than, the results obtained in your sample, *assuming the null hypothesis is true*. In other words, it indicates how likely it is that you'd see the data you did if there was actually no effect present. 
+The **p-value** is the probability of observing results as extreme as or more extreme than the results obtained in your sample *assuming the null hypothesis is true*. In other words, it indicates how likely it is that you'd see the data you did if there was actually no effect present. 
 
 A small p-value suggests strong evidence against the null hypothesis, while a large p-value suggests weak evidence.
 
 
-# Significance Level: Alpha ($\alpha$)
+## Significance Level: Alpha ($\alpha$)
 
-Before starting a study, we set a significance level, denoted by **alpha ($\alpha$)**. Alpha is the threshold that determines when a P-value is small enough to reject $H_0$.  
+*Before* starting a study, we set a threshold that can be used to determine if the $P$-value is small enough to reject the null hypothesis. This number is called the **level of significance** and is denoted by the symbol **$\alpha$** (pronounced "alpha".)
 
-__RULE__:  When $\text{P-value} < \alpha$, we **reject** the null hypothesis in favor of the alternative.  We can conclude that there is sufficient evidence that there IS a relationship between X and Y.  
+Common values for $\alpha$ are 0.05,  0.01 and 0.1.  
 
-Common values for $\alpha$ are 0.05 (5%),  0.01 (1%) and 0.1 (10%).  
+We will use the same decision rule for all hypothesis tests:
+
+  1. If the $P$-value is less than $\alpha$, we reject the null hypothesis.  
+  2. If the $P$-value is greater than $\alpha$, we fail to reject the null hypothesis.
+  
+**Memory Aid**: If $P$ is low, reject $H_O$  
+
+Where "low" means less than $\alpha$.
 
 
 ## Mistaking Randomness for Signal
 
-We can never be 100% certain that the signal observed in our sample was not just noise.  We rely on randomization in designing statistical experiments to avoid bias in our samples.  Sometimes that randomness can lead to results that look significant.  
+We can never be 100% certain that the signal observed in our sample was not just noise.  Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant.  
 
-Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different levels of the treatment (Current Therapy, Dose 1 of New Therapy and Dose 2 of New Therapy).  We randomly assign patients to each treatment group.  Each individual will have a different likelihood of 5-year survival regardless of treatment.  Randomization is used to minimize bias, but there's still a chance that the hardiest patients all end up in one of the treatment groups making it look like that treatment is better, but it wasn't the effect of the treatment.  
+Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different levels of the treatment.  We randomly assign patients to each treatment group.  Each individual will have a different likelihood of 5-year survival regardless of treatment.  
+
+There is a chance that the hardiest patients all end up in one of the treatment groups making it look like that treatment is better, but it wasn't the effect of the treatment.  
 
 When we conclude that there is a relationship between X and Y, when what we observed was actually "noise", we have committed a Type I error.  
 
-__DEFINITION__:  A **Type I Error** is when we reject the Null Hypothesis when it is, in fact, true.  
+__DEFINITION__:  **Type I Error**: Rejecting a TRUE null hypothesis.  
 
-Because $\alpha$ is our decision point for rejecting the null hypothesis, $\alpha$ is the probability of rejecting a TRUE null hypothesis.  Therefore, $\alpha$ is your probability of a **Type I** error.  
+Because $\alpha$ is our decision point for rejecting the null hypothesis, $\alpha$ is the probability of rejecting a TRUE null hypothesis, meaning $\alpha$ is the probability of a **Type I** error.  
+
+
+Let's see what an $\alpha = 0.01$ looks like in the case of against the foot-long sandwiches:  
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(mosaic)
+
+mu <- 12
+sigma_xbar <- 0.5 / sqrt(21)
+
+normal_data <- tibble(x=seq(11.55, 12.45, length=100),
+                      y = dnorm(x, mu, sigma_xbar))
+  
+z_crit <- qnorm(.01, mu, sigma_xbar)
+
+ggplot(normal_data, aes(x,y)) +
+  geom_line() +
+  geom_area(data=normal_data %>% filter(x < z_crit), alpha=0.5, fill="#FFB3B2") +
+  theme_classic() +
+  geom_vline(xintercept = 12, linetype=2) +
+  labs(
+    title = "Sampling Distribution of Sandwich Lengths",
+    subtitle = "Assuming the Null Hypothesis is true",
+    x = "Dist. of Sample Averages of Foot-long sandwich lengths: n=21"
+  ) +
+  geom_label(aes(x=11.7, y = .38), label="alpha=0.01", fill="#FFB3B2")
+
+```
+
+The red area, $\alpha$, shows the probability of getting a sample mean in that tail **when the null hypothesis is true**.  There's always a chance we get such an extreme value and end up rejecting the null when it is true.  
+
 
 If we make $\alpha$ too small, we will reject $H_0$ less often, thereby avoiding Type I errors.  But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it.  This is a Type II error.  
 
-__DEFINITION__:  A **Type II Error** is when we FAIL to reject the Null Hypothesis when it is, in fact, FALSE.  
+__DEFINITION__:  **Type II Error**: Failing to Reject a FALSE null hypothesis.
 
-For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we have missed out on an a potentially life-saving breakthrough.  
+For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we missed out on an a new, life-saving breakthrough.  
 
 ## Choosing Alpha and Understanding Error Types
 
 Choosing an appropriate alpha level involves balancing the risk of making Type I and Type II errors
 
 The "best" choice for alpha depends on the context of the research. In exploratory research, a higher alpha (e.g., 0.10) might be acceptable to avoid missing potentially important effects. In situations where making a false positive conclusion could have serious consequences, a lower alpha (e.g., 0.01 or even lower) is preferred.  
+
+
+If the $\alpha$ value (the probability of committing a Type I error) is very small, the probability of committing a Type II error will be large.  Conversely, if $\alpha$ is allowed to be very large, then the probability of committing a Type II error will be very small.  
+
+
+A level of significance of $\alpha=0.05$ seems to strike a good balance between the probabilities of committing a Type I versus a Type II error.  However, there may be instances where it will be important to choose a different value for $\alpha$.  The important thing is to choose $\alpha$ before you collect your data. Typical choices of $\alpha$ are $0.05$ (most common), $0.1$, and $0.01$.
+
+
+#### Visualizing Error
+
+The below graph illustrates the relationship between Type I and Type II errors.  The red distribution represents the Null Hypothesis, the sampling distribution of sample mean-lengths of foot-long sandwiches, assuming $\mu_0=12$.
+
+The blue distribution represents the "TRUE" distribution with a mean, $\mu_{truth}=11.2$.  We never know this in the real world, but to illustrate, here is a situation where the **true population mean** is, in fact, less than 12.  
+
+If we set $\alpha = 0.01$ (red shaded area), we can see that any sample mean to the right of the cutoff would **fail to reject** the null hypothesis.  This mistake would be a Type II error.  
+
+<iframe src="https://byuistats.github.io/Alpha_Beta_Example_App/" width="700" height="500" style="border:none;"></iframe>
+
+
+While we don't know what the "TRUE" distribution is, we can see the relationship between moving the cutoff based on $\alpha$ would do to the probability of failing to reject the null hypothesis even when it is FALSE.  
+
+
