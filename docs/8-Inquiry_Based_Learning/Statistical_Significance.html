@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Summarizing Categorical Data – Math221D Notebook</title>
+<title>Statistical Significance – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -103,6 +69,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -465,25 +460,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#summarizing-categorical-data" id="toc-summarizing-categorical-data" class="nav-link active" data-scroll-target="#summarizing-categorical-data">Summarizing Categorical Data</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#load-the-data-and-libraries" id="toc-load-the-data-and-libraries" class="nav-link" data-scroll-target="#load-the-data-and-libraries">Load the Data and Libraries</a></li>
-  <li><a href="#numerical-summaries" id="toc-numerical-summaries" class="nav-link" data-scroll-target="#numerical-summaries">Numerical Summaries</a>
-  <ul class="collapse">
-  <li><a href="#one-variable" id="toc-one-variable" class="nav-link" data-scroll-target="#one-variable">One Variable</a></li>
-  <li><a href="#two-variables" id="toc-two-variables" class="nav-link" data-scroll-target="#two-variables">Two Variables</a></li>
+  <li><a href="#reviw-p-value" id="toc-reviw-p-value" class="nav-link" data-scroll-target="#reviw-p-value">Reviw: P-value</a></li>
   </ul></li>
-  <li><a href="#visual-summaries" id="toc-visual-summaries" class="nav-link" data-scroll-target="#visual-summaries">Visual Summaries</a>
+  <li><a href="#significance-level-alpha-alpha" id="toc-significance-level-alpha-alpha" class="nav-link" data-scroll-target="#significance-level-alpha-alpha">Significance Level: Alpha (<span class="math inline">\(\alpha\)</span>)</a>
   <ul class="collapse">
-  <li><a href="#dealing-with-missing-values" id="toc-dealing-with-missing-values" class="nav-link" data-scroll-target="#dealing-with-missing-values">Dealing with missing values</a></li>
-  <li><a href="#cleaning-up-the-graph" id="toc-cleaning-up-the-graph" class="nav-link" data-scroll-target="#cleaning-up-the-graph">Cleaning up the Graph</a></li>
-  <li><a href="#a-certain-point-of-view" id="toc-a-certain-point-of-view" class="nav-link" data-scroll-target="#a-certain-point-of-view">A Certain Point of View</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a>
-  <ul class="collapse">
-  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
-  <li><a href="#proportion-table" id="toc-proportion-table" class="nav-link" data-scroll-target="#proportion-table">Proportion Table</a></li>
+  <li><a href="#mistaking-randomness-for-signal" id="toc-mistaking-randomness-for-signal" class="nav-link" data-scroll-target="#mistaking-randomness-for-signal">Mistaking Randomness for Signal</a></li>
+  <li><a href="#choosing-alpha-and-understanding-error-types" id="toc-choosing-alpha-and-understanding-error-types" class="nav-link" data-scroll-target="#choosing-alpha-and-understanding-error-types">Choosing Alpha and Understanding Error Types</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -493,7 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Summarizing Categorical Data</h1>
+<h1 class="title">Statistical Significance</h1>
 </div>
 
 
@@ -510,320 +494,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="summarizing-categorical-data" class="level1">
-<h1>Summarizing Categorical Data</h1>
-<p>In this section we will show how to summarize data numerically and visually. We will be using survey responses about Star Wars. The <a href="https://fivethirtyeight.com/features/americas-favorite-star-wars-movies-and-least-favorite-characters/">survey</a> was carried out by FiveThirtyEight about the first 6 Star Wars films. The survey contains demographic information as well as movie rankings and character favorability rankings.</p>
-<section id="load-the-data-and-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="load-the-data-and-libraries">Load the Data and Libraries</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/StarWarsData_clean.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="numerical-summaries" class="level2">
-<h2 class="anchored" data-anchor-id="numerical-summaries">Numerical Summaries</h2>
-<section id="one-variable" class="level3">
-<h3 class="anchored" data-anchor-id="one-variable">One Variable</h3>
-<p>We typically summarize categorical variables with counts or proportions. When we want to summarize a single categorical variable by itself, we can use the <code>table()</code> function to get counts. For example, if we want to tabulate the favorability of Han Solo:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sw<span class="sc">$</span><span class="st">`</span><span class="at">Favorability_Han Solo</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Neither favorably nor unfavorably (neutral) 
-                                         44 
-                         Somewhat favorably 
-                                        151 
-                       Somewhat unfavorably 
-                                          8 
-                           Unfamiliar (N/A) 
-                                         15 
-                             Very favorably 
-                                        610 
-                           Very unfavorably 
-                                          1 </code></pre>
-</div>
-</div>
-<p>This shows us the counts of respondents in each response category.</p>
-<p>We can also use the <code>prop.table()</code> function to get the proportion of respondents, rather than the counts, by inputing a table.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(sw<span class="sc">$</span><span class="st">`</span><span class="at">Favorability_Han Solo</span><span class="st">`</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Neither favorably nor unfavorably (neutral) 
-                                0.053075995 
-                         Somewhat favorably 
-                                0.182147165 
-                       Somewhat unfavorably 
-                                0.009650181 
-                           Unfamiliar (N/A) 
-                                0.018094089 
-                             Very favorably 
-                                0.735826297 
-                           Very unfavorably 
-                                0.001206273 </code></pre>
-</div>
-</div>
-<p><strong>NOTE</strong>: The <code>prop.table()</code> function needs a table as an input, not a data column.</p>
-<p><strong>Question</strong>: What percent of respondents are “Very favorable” towards Han Solo?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What percent of respondents are “Very unfavorable” towards Han Solo?<br>
-<strong>Answer</strong>:</p>
-</section>
-<section id="two-variables" class="level3">
-<h3 class="anchored" data-anchor-id="two-variables">Two Variables</h3>
-<p>We can use <strong>Contingency Tables</strong> to examine associations between 2 categorical variables. A <strong>contingency table</strong> displays the counts of combinations of 2 categorical variables each being represented as a row or a column. It is easy to create a contingency table in <code>R</code> by inputting 2 data columns into the <code>table()</code> function. The resulting table will have rows and columns which correspond to the order of input <code>table(row, column)</code>.</p>
-<p>Let’s contrast gender with whether or not a respondent is a fan of Star Wars (<code>Are You a Fan of SW</code>):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        
-          No Yes
-  Female 158 238
-  Male   119 303</code></pre>
-</div>
-</div>
-<p>We can include row and column totals by wrapping our table in the <code>addmargins()</code> function as follows:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        
-          No Yes Sum
-  Female 158 238 396
-  Male   119 303 422
-  Sum    277 541 818</code></pre>
-</div>
-</div>
-<p>This can be used to get row or column percentages. Alternatively we can use the <code>prop.table()</code> function to get proportions.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        
-                No       Yes
-  Female 0.1931540 0.2909535
-  Male   0.1454768 0.3704156</code></pre>
-</div>
-</div>
-<p>The default for <code>prop.table()</code> is to give the overall percentages (counts / table total). So the proportions add to 1 across the whole table.</p>
-<p>We can specify row or column percentages by specifying a “margin.” In R, <code>margin=1</code> corresponds to <em>rows</em> and <code>margin = 2</code> corresponds to <em>columns</em>.</p>
-<p>Compare the difference:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>), <span class="at">margin =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        
-                No       Yes
-  Female 0.3989899 0.6010101
-  Male   0.2819905 0.7180095</code></pre>
-</div>
-</div>
-<p>This table sums to 1 across the rows, meaning that about 60% of Females are fans of Star Wars and about 72% of Males are fans.</p>
-<p>Now look at <code>margin = 2</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>), <span class="at">margin =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        
-                No       Yes
-  Female 0.5703971 0.4399261
-  Male   0.4296029 0.5600739</code></pre>
-</div>
-</div>
-<p><strong>Question</strong>: What does this table show?<br>
-<strong>Answer</strong>:</p>
-<p><strong>NOTE</strong>: Which margin we choose to evaluate depends on the order we input columns into the <code>table()</code> function. Be sure to double check that you calculate the correct percentages.</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Statistical significance is a crucial concept for determining whether the results observed in a study are likely due to a real effect or simply due to chance. It’s a core component of hypothesis testing.</p>
+<section id="reviw-p-value" class="level2">
+<h2 class="anchored" data-anchor-id="reviw-p-value">Reviw: P-value</h2>
+<p>The <strong>p-value</strong> is the probability of observing results as extreme as, or more extreme than, the results obtained in your sample, <em>assuming the null hypothesis is true</em>. In other words, it indicates how likely it is that you’d see the data you did if there was actually no effect present.</p>
+<p>A small p-value suggests strong evidence against the null hypothesis, while a large p-value suggests weak evidence.</p>
 </section>
 </section>
-<section id="visual-summaries" class="level2">
-<h2 class="anchored" data-anchor-id="visual-summaries">Visual Summaries</h2>
-<p>Visually, bar charts are the optimal way to express categorical data. Pie charts, while very common, are problematic because of weaknesses in basic human perception.</p>
-<p>We can use <code>ggplot()</code> with categorical variables to get summaries of counts using the <code>geom_bar()</code> geometry.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sw, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>)) <span class="sc">+</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Summarizing_Categorical_Data_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>We can add another variable to the mix to look at things by gender using the <code>fill=</code> argument inside the aesthetics:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sw, <span class="fu">aes</span>(<span class="at">x =</span> who_shot_first, <span class="at">fill =</span> Gender)) <span class="sc">+</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Summarizing_Categorical_Data_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The default for <code>geom_bar()</code> is to stack bars. If we want side-by-side bars we can add a “position = ‘dodge’” to the geom_bar() function:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sw, <span class="fu">aes</span>(<span class="at">x =</span> who_shot_first, <span class="at">fill =</span> Gender)) <span class="sc">+</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Summarizing_Categorical_Data_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="dealing-with-missing-values" class="level3">
-<h3 class="anchored" data-anchor-id="dealing-with-missing-values">Dealing with missing values</h3>
-<p>The graphs above include missing values as its own category. The easiest way to deal with missing values is to create a subset of the data that is prepared for the graph we are interested in creating.</p>
-<p>You can filter out the missing values using <code>filter()</code> or use the combination of <code>select()</code> with <code>drop_na()</code> in the following way:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>shot_first_data <span class="ot">&lt;-</span> sw <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(who_shot_first <span class="sc">!=</span> <span class="st">""</span>,</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>         Gender <span class="sc">!=</span> <span class="st">""</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Or using drop_na()</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>shot_first_data <span class="ot">&lt;-</span> sw <span class="sc">%&gt;%</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Gender, who_shot_first) <span class="sc">%&gt;%</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>NOTE</strong>: The <code>drop_na()</code> function drops all rows with <em>ANY</em> missing values. If we use this function on the dataset with all the columns, we may end up losing information on the analysis of interest. This is why we do a <code>select()</code> first. that way we only delete rows missing relevant information.</p>
-<p>Now look at the graph without missing values.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shot_first_data, <span class="fu">aes</span>(<span class="at">x =</span> who_shot_first, <span class="at">fill =</span> Gender)) <span class="sc">+</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Summarizing_Categorical_Data_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="significance-level-alpha-alpha" class="level1">
+<h1>Significance Level: Alpha (<span class="math inline">\(\alpha\)</span>)</h1>
+<p>Before starting a study, we set a significance level, denoted by <strong>alpha (<span class="math inline">\(\alpha\)</span>)</strong>. Alpha is the threshold that determines when a P-value is small enough to reject <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>RULE</strong>: When <span class="math inline">\(\text{P-value} &lt; \alpha\)</span>, we <strong>reject</strong> the null hypothesis in favor of the alternative. We can conclude that there is sufficient evidence that there IS a relationship between X and Y.</p>
+<p>Common values for <span class="math inline">\(\alpha\)</span> are 0.05 (5%), 0.01 (1%) and 0.1 (10%).</p>
+<section id="mistaking-randomness-for-signal" class="level2">
+<h2 class="anchored" data-anchor-id="mistaking-randomness-for-signal">Mistaking Randomness for Signal</h2>
+<p>We can never be 100% certain that the signal observed in our sample was not just noise. We rely on randomization in designing statistical experiments to avoid bias in our samples. Sometimes that randomness can lead to results that look significant.</p>
+<p>Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different levels of the treatment (Current Therapy, Dose 1 of New Therapy and Dose 2 of New Therapy). We randomly assign patients to each treatment group. Each individual will have a different likelihood of 5-year survival regardless of treatment. Randomization is used to minimize bias, but there’s still a chance that the hardiest patients all end up in one of the treatment groups making it look like that treatment is better, but it wasn’t the effect of the treatment.</p>
+<p>When we conclude that there is a relationship between X and Y, when what we observed was actually “noise”, we have committed a Type I error.</p>
+<p><strong>DEFINITION</strong>: A <strong>Type I Error</strong> is when we reject the Null Hypothesis when it is, in fact, true.</p>
+<p>Because <span class="math inline">\(\alpha\)</span> is our decision point for rejecting the null hypothesis, <span class="math inline">\(\alpha\)</span> is the probability of rejecting a TRUE null hypothesis. Therefore, <span class="math inline">\(\alpha\)</span> is your probability of a <strong>Type I</strong> error.</p>
+<p>If we make <span class="math inline">\(\alpha\)</span> too small, we will reject <span class="math inline">\(H_0\)</span> less often, thereby avoiding Type I errors. But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it. This is a Type II error.</p>
+<p><strong>DEFINITION</strong>: A <strong>Type II Error</strong> is when we FAIL to reject the Null Hypothesis when it is, in fact, FALSE.</p>
+<p>For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we have missed out on an a potentially life-saving breakthrough.</p>
 </section>
-<section id="cleaning-up-the-graph" class="level3">
-<h3 class="anchored" data-anchor-id="cleaning-up-the-graph">Cleaning up the Graph</h3>
-<p>The default visualization elements in ggplot() can always be improved. Here are some options for making the chart more readable:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shot_first_data, <span class="fu">aes</span>(<span class="at">x =</span> who_shot_first, <span class="at">fill =</span> Gender)) <span class="sc">+</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Which Character Shot First?"</span>,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparing response to the Question 'Who Shot First' by Gender"</span> </span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Summarizing_Categorical_Data_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="a-certain-point-of-view" class="level3">
-<h3 class="anchored" data-anchor-id="a-certain-point-of-view">A Certain Point of View</h3>
-<p>With categorical variables, we can group differently depending on which comparisons we would like to emphasize. Above, we grouped by responses to “who shot first” and colored by gender. If we swap the x variable and the color, we get the same bars, but arranged differently.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shot_first_data, <span class="fu">aes</span>(<span class="at">x =</span> Gender, <span class="at">fill =</span> who_shot_first)) <span class="sc">+</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparing response to the Question 'Who Shot First' by Gender"</span> </span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Summarizing_Categorical_Data_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This different point of view makes it easier to see the breakdown of responses for each gender separately. We can see more clearly that the frequency of Females who do not understand the question is much more pronounced than on the Male side. Males, it seems largely agree that Han shot first.</p>
-<p>Alternatively,</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shot_first_data, <span class="fu">aes</span>(<span class="at">x =</span> who_shot_first, <span class="at">fill =</span> Gender)) <span class="sc">+</span> </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span>,</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparing response to the Question 'Who Shot First' by Gender"</span> </span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Summarizing_Categorical_Data_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Alternative to a side-by-side bar chart, we can “facet” the graph which splits up the panels on one of the variables. This can be useful when we want to emphasize specific comparisons.</p>
-<section id="separating-on-gender" class="level4">
-<h4 class="anchored" data-anchor-id="separating-on-gender">Separating on Gender</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shot_first_data, <span class="fu">aes</span>(<span class="at">x =</span> who_shot_first, <span class="at">fill =</span> Gender)) <span class="sc">+</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Summarizing_Categorical_Data_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="separating-on-who-shot-first" class="level4">
-<h4 class="anchored" data-anchor-id="separating-on-who-shot-first">Separating on ‘Who Shot First’</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(shot_first_data, <span class="fu">aes</span>(<span class="at">x =</span> Gender, <span class="at">fill =</span> Gender)) <span class="sc">+</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>who_shot_first)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Summarizing_Categorical_Data_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>How you split the graph depends on which comparison is the most important. The first graph emphasizes the differences in how the question was answered. The second makes it easy to compare female and male responses.</p>
-</section>
-</section>
-</section>
-</section>
-<section id="your-turn" class="level1">
-<h1>Your Turn</h1>
-<section id="visualization" class="level2">
-<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
-<p>Create a bar chart for favorability of Han Solo by whether or not they are fans of Star Trek (<code>fan_of_star_trek</code>).</p>
-<p>Start by making a new dataset called <code>trekky</code> that only includes the 2 relevant columns and drops the missing values.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>trekky <span class="ot">&lt;-</span> sw <span class="sc">%&gt;%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in parse(text = input): &lt;text&gt;:4:0: unexpected end of input
-2: trekky &lt;- sw %&gt;%
-3: 
-  ^</code></pre>
-</div>
-</div>
-<p><strong>Question</strong>: What observations can you make based on the visualization?<br>
-<strong>Answer</strong>:</p>
-</section>
-<section id="proportion-table" class="level2">
-<h2 class="anchored" data-anchor-id="proportion-table">Proportion Table</h2>
-<p>We would like to compare what percent of female respondents do not understand the question compared to the percent of males who do not understand the question.</p>
-<p>Create a proportion table that can answer this question:</p>
-<p><strong>Question</strong>: What percent of female respondents do not understand the question?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What percent of male respondents do not understand the question?<br>
-<strong>Answer</strong>:</p>
+<section id="choosing-alpha-and-understanding-error-types" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-alpha-and-understanding-error-types">Choosing Alpha and Understanding Error Types</h2>
+<p>Choosing an appropriate alpha level involves balancing the risk of making Type I and Type II errors</p>
+<p>The “best” choice for alpha depends on the context of the research. In exploratory research, a higher alpha (e.g., 0.10) might be acceptable to avoid missing potentially important effects. In situations where making a false positive conclusion could have serious consequences, a lower alpha (e.g., 0.01 or even lower) is preferred.</p>
 
 
 </section>

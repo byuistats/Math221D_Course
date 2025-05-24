@@ -143,10 +143,10 @@ But a test statistic is just a number and difficult to interpret in isolation.  
 Every test statistic has a probability distribution associated with it.  The shape of that distribution depends on context, but the general process is:  
 
   1. Calculate the test statistic (ratio of our observation to the expected variability under $H_0$)  
-  2. Use the probability distribution of the test statistic to calculate the probability of observing what we observed **if the null hypothesis were true**  
+  2. Use the probability distribution of the test statistic to calculate the probability of observing something more extreme than what was observed in our sample **if the null hypothesis were true**  
 
 
-__DEFINITION__:  The probability of observing what we observed assuming the null hypothesis is true is called the **p-value**.  
+__DEFINITION__:  A **p-value** is the probability of obtaining a result at least as extreme as the observed data, assuming that the null hypothesis is true.  
 
 A *small* p-value means that what we actually observed in our sample is unlikely to have happened just by chance (because of sample-to-sample variation).  
 

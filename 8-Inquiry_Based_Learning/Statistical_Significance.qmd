@@ -1,0 +1,50 @@
+---
+title: "Statistical Significance"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Introduction
+
+Statistical significance is a crucial concept for determining whether the results observed in a study are likely due to a real effect or simply due to chance. It's a core component of hypothesis testing.  
+
+## Reviw:  P-value
+
+The **p-value** is the probability of observing results as extreme as, or more extreme than, the results obtained in your sample, *assuming the null hypothesis is true*. In other words, it indicates how likely it is that you'd see the data you did if there was actually no effect present. 
+
+A small p-value suggests strong evidence against the null hypothesis, while a large p-value suggests weak evidence.
+
+
+# Significance Level: Alpha ($\alpha$)
+
+Before starting a study, we set a significance level, denoted by **alpha ($\alpha$)**. Alpha is the threshold that determines when a P-value is small enough to reject $H_0$.  
+
+__RULE__:  When $\text{P-value} < \alpha$, we **reject** the null hypothesis in favor of the alternative.  We can conclude that there is sufficient evidence that there IS a relationship between X and Y.  
+
+Common values for $\alpha$ are 0.05 (5%),  0.01 (1%) and 0.1 (10%).  
+
+
+## Mistaking Randomness for Signal
+
+We can never be 100% certain that the signal observed in our sample was not just noise.  We rely on randomization in designing statistical experiments to avoid bias in our samples.  Sometimes that randomness can lead to results that look significant.  
+
+Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different levels of the treatment (Current Therapy, Dose 1 of New Therapy and Dose 2 of New Therapy).  We randomly assign patients to each treatment group.  Each individual will have a different likelihood of 5-year survival regardless of treatment.  Randomization is used to minimize bias, but there's still a chance that the hardiest patients all end up in one of the treatment groups making it look like that treatment is better, but it wasn't the effect of the treatment.  
+
+When we conclude that there is a relationship between X and Y, when what we observed was actually "noise", we have committed a Type I error.  
+
+__DEFINITION__:  A **Type I Error** is when we reject the Null Hypothesis when it is, in fact, true.  
+
+Because $\alpha$ is our decision point for rejecting the null hypothesis, $\alpha$ is the probability of rejecting a TRUE null hypothesis.  Therefore, $\alpha$ is your probability of a **Type I** error.  
+
+If we make $\alpha$ too small, we will reject $H_0$ less often, thereby avoiding Type I errors.  But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it.  This is a Type II error.  
+
+__DEFINITION__:  A **Type II Error** is when we FAIL to reject the Null Hypothesis when it is, in fact, FALSE.  
+
+For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we have missed out on an a potentially life-saving breakthrough.  
+
+## Choosing Alpha and Understanding Error Types
+
+Choosing an appropriate alpha level involves balancing the risk of making Type I and Type II errors
+
+The "best" choice for alpha depends on the context of the research. In exploratory research, a higher alpha (e.g., 0.10) might be acceptable to avoid missing potentially important effects. In situations where making a false positive conclusion could have serious consequences, a lower alpha (e.g., 0.01 or even lower) is preferred.  
