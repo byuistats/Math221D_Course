@@ -533,3 +533,20 @@ padding-top:5px;
   height: 450px;
   max-width: 650px;
 }
+
+
+/* styles.css (Optional) */
+#graphContainer {
+  width: 80%;
+  height: 300px; /* Adjust as needed */
+  margin: 20px auto;
+  background-color: #f0f0f0; /* Example background */
+}
+
+/* Style the input */
+#numberInput {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}

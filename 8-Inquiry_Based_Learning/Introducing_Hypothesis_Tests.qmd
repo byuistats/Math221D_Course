@@ -107,6 +107,7 @@ Think about this as a fraction.
 <br>
 
 
+
 # Probability  
 
 Every test statistic that we will use in this class has a probability distribution associated with it.  The shape of that distribution will depend on context, but the general process is:  
