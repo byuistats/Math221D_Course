@@ -64,7 +64,7 @@ $$
 __QUESTION__:  In a political poll, 40% of respondents favor candidate A, 35% favor candidate B, and the rest are undecided. If one respondent is selected at random, what is the probability that they either favor candidate A or are undecided?  
 __ANSWER__:  
 
-__QUESTION__:  In a survey of 288 BYU-I students, 144 said they prefer Redneck mixers from Great Scott's for their soda, 58 said they prefer Swig and 68 preferred Fixxology.  The rest are heathens with questionable orthodoxy who have a distaste for non-alcoholic sparkling drinks.  What is the probability of randomly selecting a student that hates delicious beverages?  
+__QUESTION__:  In a survey of 288 BYU-I students, 144 said they prefer Redneck Mixers from Great Scott's for their soda, 58 said they prefer Swig and 68 preferred Fixxology.  The rest are heathens with questionable orthodoxy who have a distaste for non-alcoholic sparkling drinks.  What is the probability of randomly selecting a student that hates delicious beverages?  
 __ANSWER__:  
 
 
@@ -72,15 +72,16 @@ __ANSWER__:
 
 # Continuous Probability Distributions
 
-In many situations, we can't count the number of events.  This typically occurs when we are measuring *quantitative* information such as heights.  In practice, we do not have an infinite resolution for measuring heights.  We might measure to the quarter inch, or the centimeter.  while rounding makes things a little more like a discrete event, we understand that height is a continuous measurement and may model it with a continuous distribution.  
+In many situations, we can't count the number of events.  This typically occurs when we are measuring *quantitative* information such as heights.  In practice, we do not have an infinite resolution for measuring heights.  We might measure to the quarter inch, or the centimeter.  While rounding makes things a little more like a discrete event, we understand that height is a continuous measurement and typically model it with a continuous probability distribution.  
 
-Continuous distributions describe how probabilities are spread over all possible outcomes.  In these situations, we can't simply add up all times an event occurs.  
+Continuous probability distributions describe how probabilities are spread over all possible outcomes.  Because there are technically an infinite number of possible outcomes on a continuous scale, the probability of any specific event is zero.  Weird, right?   
 
-Calculus is required to find these probabilities.  Fortunately, you do *NOT* need to know any calculus for this class because computers will perform all the calculations for us.  However, it is important to understand a few basic principles for continuous probability distributions.  
+In continuous cases, it doesn't make sense to calculate the probability of exactly an event, $E$.  It makes more sense to think of probabilities in relation to specified values.  For example, what's the probability that a person is shorter then 72.1254 inches.  Or what's the probability of randomly selecting a person who makes MORE than \$182,000 a year.  
 
-The principles are roughly the same as for discrete events.  In continuous cases, however, it doesn't make sense to calculate the probability of exactly an event, $E$.  
+For continuous probability distributions, the Calculus is required to calculate these quantities.  Fortunately, you do *NOT* need to know any calculus for this class because computers will perform all the calculations for us.  However, it is important to understand a few basic principles for continuous probability distributions.  
 
-It makes more sense to think of probabilities in relation to specified values.  Below are a few examples.  
+The principles are roughly the same as for discrete events.  
+
 
   - **1. Total Probability:**
 
@@ -116,7 +117,7 @@ The probability of being between 2 numbers is the area under the curve between t
 
 # Key Probability Distributions
 
-Below are several examples of probability distributions that will be used for making inference about populations in different situations.  
+Below are several examples of continuous probability distributions that will be used in this class for making inference about populations in different situations.  
 
 Most of the distributions below change shape depending on certain attributes of our sample.  However, they all share 2 important characteristics:  
 
@@ -130,8 +131,8 @@ __NOTE__:  Right now, it's only important to be aware that there are different p
 |------------------|----------------------------------------------|-------------------------------------|------------------------------|
 | Z: Standard Normal           | ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Standard_Normal_Distribution_Example.png)     | Bell-shaped, symmetric            | (mean=0, std. dev. = 1)               |
 | Student's t      | ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Students_T_Examples.png)          | Bell-shaped, heavier tails        | \(df\)                      |
-| F-Distribution   | ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/F_Dist_Example.png)                   | Skewed to right                   | \(df_1, df_2\)              |
-| Chi-Squared      | ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Chi_Square_Dist_Examples.png)          | Right-skewed                      | \(df\)                      |
+| F-Distribution   | ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/F_Dist_Example.png)                   | Right skewed, always positive                   | \(df_1, df_2\)              |
+| Chi-Squared      | ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Chi_Square_Dist_Examples.png)          | Right-skewed, always positive                      | \(df\)                      |
 
 ---
 

@@ -28,9 +28,9 @@ By the end of this lesson, you should be able to:
 
 # Review
 
-A **Population Parameter** is a numerical summary (mean, median, standard deviation, proportion, etc.) based on the **entire population**.  
+A Population **Parameter** is a numerical summary (mean, median, standard deviation, proportion, etc.) based on the **entire population**.  
 
-A **Sample Statistic** is any numerical summary (mean, median, standard deviation, proportion, etc.) based on a **sample** from a population.  
+A Sample **Statistic** is any numerical summary (mean, median, standard deviation, proportion, etc.) based on a **sample** from a population.  
 
 A **Sample** is a subset of the entire population. 
 

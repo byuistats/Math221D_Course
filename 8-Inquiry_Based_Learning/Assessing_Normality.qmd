@@ -18,7 +18,7 @@ But how do you know if a population is normally distributed?  In the real world,
 
 If our sample size is large enough, we don't have to worry.  We can trust the Central Limit Theorem.
 
-If our sample size is < 30, we can assess the normality of our *sample* to decide if we can still trust output of our hypothesis tests and confidence intervals.  
+If our sample size is < 30, we can assess the normality of our *sample* to decide if we can still trust output of our statistical conclusions.  
 
 [Previously](https://byuistats.github.io/Math221D_Course/Textbook/The_Normal_Distribution.html), we've used histograms to help visualize the distribution of a sample.  However, when sample sizes are small, even samples from a standard normal distribution can look skewed.
 

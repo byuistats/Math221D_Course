@@ -238,7 +238,6 @@ pnorm(2.041)
 
 __NOTE__: The area to the left of our chosen $z$-score is also the probability that a randomly selected woman will be shorter than Serwa. The probability that a randomly selected Ghanaian woman will be shorter than Serwa is $0.979$, or $97.9\%$.
 
-<nowiki>*</nowiki>Remember that in this course, unless otherwise specified, we round to three decimal places.
 
 #### Baseball Averages
 

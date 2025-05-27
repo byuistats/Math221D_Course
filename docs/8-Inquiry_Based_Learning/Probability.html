@@ -546,18 +546,18 @@ P(\text{not } E) = 1 - P(E)
 <h2 class="anchored" data-anchor-id="practice">Practice</h2>
 <p><strong>QUESTION</strong>: In a political poll, 40% of respondents favor candidate A, 35% favor candidate B, and the rest are undecided. If one respondent is selected at random, what is the probability that they either favor candidate A or are undecided?<br>
 <strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: In a survey of 288 BYU-I students, 144 said they prefer Redneck mixers from Great Scott’s for their soda, 58 said they prefer Swig and 68 preferred Fixxology. The rest are heathens with questionable orthodoxy who have a distaste for non-alcoholic sparkling drinks. What is the probability of randomly selecting a student that hates delicious beverages?<br>
+<p><strong>QUESTION</strong>: In a survey of 288 BYU-I students, 144 said they prefer Redneck Mixers from Great Scott’s for their soda, 58 said they prefer Swig and 68 preferred Fixxology. The rest are heathens with questionable orthodoxy who have a distaste for non-alcoholic sparkling drinks. What is the probability of randomly selecting a student that hates delicious beverages?<br>
 <strong>ANSWER</strong>:</p>
 <hr>
 </section>
 </section>
 <section id="continuous-probability-distributions" class="level1">
 <h1>Continuous Probability Distributions</h1>
-<p>In many situations, we can’t count the number of events. This typically occurs when we are measuring <em>quantitative</em> information such as heights. In practice, we do not have an infinite resolution for measuring heights. We might measure to the quarter inch, or the centimeter. while rounding makes things a little more like a discrete event, we understand that height is a continuous measurement and may model it with a continuous distribution.</p>
-<p>Continuous distributions describe how probabilities are spread over all possible outcomes. In these situations, we can’t simply add up all times an event occurs.</p>
-<p>Calculus is required to find these probabilities. Fortunately, you do <em>NOT</em> need to know any calculus for this class because computers will perform all the calculations for us. However, it is important to understand a few basic principles for continuous probability distributions.</p>
-<p>The principles are roughly the same as for discrete events. In continuous cases, however, it doesn’t make sense to calculate the probability of exactly an event, <span class="math inline">\(E\)</span>.</p>
-<p>It makes more sense to think of probabilities in relation to specified values. Below are a few examples.</p>
+<p>In many situations, we can’t count the number of events. This typically occurs when we are measuring <em>quantitative</em> information such as heights. In practice, we do not have an infinite resolution for measuring heights. We might measure to the quarter inch, or the centimeter. While rounding makes things a little more like a discrete event, we understand that height is a continuous measurement and typically model it with a continuous probability distribution.</p>
+<p>Continuous probability distributions describe how probabilities are spread over all possible outcomes. Because there are technically an infinite number of possible outcomes on a continuous scale, the probability of any specific event is zero. Weird, right?</p>
+<p>In continuous cases, it doesn’t make sense to calculate the probability of exactly an event, <span class="math inline">\(E\)</span>. It makes more sense to think of probabilities in relation to specified values. For example, what’s the probability that a person is shorter then 72.1254 inches. Or what’s the probability of randomly selecting a person who makes MORE than $182,000 a year.</p>
+<p>For continuous probability distributions, the Calculus is required to calculate these quantities. Fortunately, you do <em>NOT</em> need to know any calculus for this class because computers will perform all the calculations for us. However, it is important to understand a few basic principles for continuous probability distributions.</p>
+<p>The principles are roughly the same as for discrete events.</p>
 <ul>
 <li><strong>1. Total Probability:</strong></li>
 </ul>
@@ -588,7 +588,7 @@ P(\text{not in } [a, b]) = 1 - P(a \leq X \leq b)
 </section>
 <section id="key-probability-distributions" class="level1">
 <h1>Key Probability Distributions</h1>
-<p>Below are several examples of probability distributions that will be used for making inference about populations in different situations.</p>
+<p>Below are several examples of continuous probability distributions that will be used in this class for making inference about populations in different situations.</p>
 <p>Most of the distributions below change shape depending on certain attributes of our sample. However, they all share 2 important characteristics:</p>
 <ol type="1">
 <li>The total area under the curve is 1 (total probability)</li>
@@ -626,13 +626,13 @@ P(\text{not in } [a, b]) = 1 - P(a \leq X \leq b)
 <tr class="odd">
 <td>F-Distribution</td>
 <td><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/F_Dist_Example.png" class="img-fluid"></td>
-<td>Skewed to right</td>
+<td>Right skewed, always positive</td>
 <td>(df_1, df_2)</td>
 </tr>
 <tr class="even">
 <td>Chi-Squared</td>
 <td><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Chi_Square_Dist_Examples.png" class="img-fluid"></td>
-<td>Right-skewed</td>
+<td>Right-skewed, always positive</td>
 <td>(df)</td>
 </tr>
 </tbody>
