@@ -105,7 +105,7 @@ Next, we will look at the process of calculating that probability.
 
 To calculate the probability of observing what we observed if there really was no relationship, we first calculate a test statistic.  
 
-The exact formula for a test statistic depends on what type of analysis we are performing.  But regardless of the type of analysis, test statistics follow a general patter.  
+The exact formula for a test statistic depends on what type of analysis we are performing.  But regardless of the type of analysis, test statistics follow a general pattern.  
 
 A **test statistic** can be though of as a signal-to-noise ratio, where the signal is what we observed in our sample and the noise is the variability we would expect if the null hypothesis is true.  
 
@@ -134,9 +134,10 @@ Think about this as a fraction.
 
 <br>
 
-The specific formulas for test statistics vary depending on the data types you are testing, and it is something R will calculate for us.  As we get into specific analyses, we will look at a few of those formulas.  For now, consider a test statistic as a signal-to-noise ratio.  The larger it is, the stronger the evidence against the null hypothesis.  
+As we get into specific analyses, we will look at a few of those formulas, but R will do all the calculations for us.  For now, consider a test statistic as a signal-to-noise ratio.  The larger it is, the stronger the evidence against the null hypothesis.  
 
 But a test statistic is just a number and difficult to interpret in isolation.  The calculation of the test statistics is an *intermediate step* to calculating a probability.  
+
 
 # Probability  
 
@@ -146,13 +147,11 @@ Every test statistic has a probability distribution associated with it.  The sha
   2. Use the probability distribution of the test statistic to calculate the probability of observing something more extreme than what was observed in our sample **if the null hypothesis were true**  
 
 
-__DEFINITION__:  A **p-value** is the probability of obtaining a result at least as extreme as the observed data, assuming that the null hypothesis is true.  
+__DEFINITION__:  A **$P$-value** is the probability of obtaining a result at least as extreme as the observed data, assuming that the null hypothesis is true.  
 
-A *small* p-value means that what we actually observed in our sample is unlikely to have happened just by chance (because of sample-to-sample variation).  
+A *small* p-value means that what we actually observed in our sample is unlikely to have happened just because of sample-to-sample variation.  
 
-A *large* p-value means that our observation is likely to have occurred if the null hypothesis were true.  Our observations are consistent with sample-to-sample variation.  
-
-In the next lesson we will talk more about decision rules for deciding when a p-value is *small enough* to reject $H_0$.  
+A *large* $P$-value means that our observation is likely to have occurred if the null hypothesis were true.  **Our observations are consistent with sample-to-sample variation**.  
 
 
 # How Long is a Foot-Long Sandwich?  
@@ -176,13 +175,9 @@ This represents the claim we need to DIS-prove. We seek evidence against $H_0$ i
 In the case of foot-long sandwiches, customers will typically only get upset if they are getting *less* than advertised.  We would propose an alternative:  
 
 $$H_a: \mu < 12$$
-
-It is important that the null and alternative hypotheses be determined prior to collecting the data.  It is not appropriate to use the data from your study to choose the alternative hypothesis that will be used to test the same data!  This is an example of using data twice, once to choose the test and again to conduct the test.  It is okay to use data from a previous study to determine your null and alternative hypotheses, but it is an improper use of the statistical procedures to use the data to define *and* conduct a hypothesis test.
-
-
 __KEY POINTS__:  
 
-  1. Hypotheses are statements about *population parameters*
+  1. Hypotheses are statements about *population parameters*, typically written with Greek letters
   2. The null hypothesis will always be a statement of equality
   3. We never PROVE the null hypothesis is true, we can only fail to disprove it.  
   
@@ -194,20 +189,36 @@ That last point is important.  Data collected are only evidence against $H_0$.  
 
 In this example, the *signal* is how far our observed mean, $\bar x$, is away from the hypothesized mean, $\mu=12$.  
 
-The *noise* is the sample-to-sample variation of the mean.  We know, based on what we've learned about sampling distributions, that this is:  $\sigma_{\bar x} = \frac{\sigma}{\sqrt{n}}$.  This is the sample-to-sample variation for sample means.  
+The *noise* is the sample-to-sample variation of the mean.  Because of the properties of the sampling distribution for a mean, we know the sample-to-sample variation for $\bar x$ is:  $\sigma_{\bar x} = \frac{\sigma}{\sqrt{n}}$.  This is the sample-to-sample variation for sample means.  
 
-Suppose for now that sandwich-to-sandwich lengths vary by about 0.5 inches and that the distribution is normal.  If we sampled 21 random sandwiches from shops in a region and got a sample mean length of 11.82 inches, we can calculate a test statistic:
+Suppose for now that sandwich-to-sandwich lengths vary by about 0.5 inches and that the distribution is normal.  If we sampled 21 random sandwiches from shops in a region and got a sample mean length of 11.82 inches, we can calculate a test statistic as a signal-to-noise ratio:  
+
+__SIGNAL__:  How far away is our sample mean from the hypothesized mean:  
+
+$$11.82-12 = -0.18$$ 
+
+__NOISE__:  The expected variation of sample means assuming the null hypothesis is true.  Based on the properties of the sampling distribution of $\bar x$, this is:  
+
+$$\sigma_\bar{x} = \frac{\sigma}{\sqrt{n}} = \frac{0.5}{\sqrt{21}}=0.109$$
+
+__Signal to Noise Ratio__:  
+$$\frac{-0.18}{0.109} = -1.651$$
+
+You may recognize this as a z-score:  
 
 
 $$
 z = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} = \frac{11.82 - 12}{0.5 / \sqrt{21}} = -1.649727
 $$
 
-Where $z$ is the test statistic, $\bar{x}$ is the sample mean, $\mu_0$ is the null hypothesis mean, $\sigma$ is the population standard deviation and $n$ is the sample size.  
+In this case, $z$ IS the test statistic where $\bar{x}$ is the sample mean, $\mu_0$ is the null hypothesis mean, $\sigma$ is the population standard deviation and $n$ is the sample size.  
 
-Based on the results from the formula above, $\bar{x}$ is about 1.65 standard deviations below the mean.  
+Based on the results from the formula above, $\bar{x}$ is about 1.65 standard deviations *below* the mean.  
 
-We can then use this Z-score and the standard normal distribution to calculate the probability of observing such a result or more extreme, if the null hypothesis is true.  This is the evidence we use to make a decision about the null hypothesis.  
+Because we know that $Z$ follows a *standard normal* distribution, we can calculate the probability of getting a test statistic LESS than the one we observed, if the null hypothesis is true.  
+
+This probability is the evidence we use to make a decision about the null hypothesis.  
+
 
 ### $P$-value
 
@@ -253,7 +264,7 @@ pnorm(z)
 ```
 
 
-__Conclusion__:  If the true population mean was 12 inches, there is a 4.95% chance of obtaining a sample mean of 11.82 hours or less for a sample of size 21. 
+__Conclusion__:  If the true population mean was 12 inches, there is a 4.95% chance of obtaining a sample mean of 11.82 hours or less for a sample size of 21. 
 
 At this point we have to make a decision.  Is that probability small enough to reject the null hypothesis in favor the alternative?  Are foot-long sandwich is LESS than 12 inches on average?  
 

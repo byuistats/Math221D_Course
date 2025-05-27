@@ -607,7 +607,7 @@ The statistical tests we will cover in the rest of the semester follow the gener
 <section id="test-statistic" class="level1">
 <h1>Test Statistic</h1>
 <p>To calculate the probability of observing what we observed if there really was no relationship, we first calculate a test statistic.</p>
-<p>The exact formula for a test statistic depends on what type of analysis we are performing. But regardless of the type of analysis, test statistics follow a general patter.</p>
+<p>The exact formula for a test statistic depends on what type of analysis we are performing. But regardless of the type of analysis, test statistics follow a general pattern.</p>
 <p>A <strong>test statistic</strong> can be though of as a signal-to-noise ratio, where the signal is what we observed in our sample and the noise is the variability we would expect if the null hypothesis is true.</p>
 <p><span class="math display">\[\text{Test Statistics}=\frac{\text{signal}}{\text{noise}}\]</span> Think about this as a fraction.</p>
 <div class="QuestionsHeading">
@@ -640,7 +640,7 @@ Show/Hide Solution
 </details>
 </div>
 <p><br></p>
-<p>The specific formulas for test statistics vary depending on the data types you are testing, and it is something R will calculate for us. As we get into specific analyses, we will look at a few of those formulas. For now, consider a test statistic as a signal-to-noise ratio. The larger it is, the stronger the evidence against the null hypothesis.</p>
+<p>As we get into specific analyses, we will look at a few of those formulas, but R will do all the calculations for us. For now, consider a test statistic as a signal-to-noise ratio. The larger it is, the stronger the evidence against the null hypothesis.</p>
 <p>But a test statistic is just a number and difficult to interpret in isolation. The calculation of the test statistics is an <em>intermediate step</em> to calculating a probability.</p>
 </section>
 <section id="probability" class="level1">
@@ -651,10 +651,9 @@ Show/Hide Solution
 </li>
 <li>Use the probability distribution of the test statistic to calculate the probability of observing something more extreme than what was observed in our sample <strong>if the null hypothesis were true</strong></li>
 </ol>
-<p><strong>DEFINITION</strong>: A <strong>p-value</strong> is the probability of obtaining a result at least as extreme as the observed data, assuming that the null hypothesis is true.</p>
-<p>A <em>small</em> p-value means that what we actually observed in our sample is unlikely to have happened just by chance (because of sample-to-sample variation).</p>
-<p>A <em>large</em> p-value means that our observation is likely to have occurred if the null hypothesis were true. Our observations are consistent with sample-to-sample variation.</p>
-<p>In the next lesson we will talk more about decision rules for deciding when a p-value is <em>small enough</em> to reject <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>DEFINITION</strong>: A <strong><span class="math inline">\(P\)</span>-value</strong> is the probability of obtaining a result at least as extreme as the observed data, assuming that the null hypothesis is true.</p>
+<p>A <em>small</em> p-value means that what we actually observed in our sample is unlikely to have happened just because of sample-to-sample variation.</p>
+<p>A <em>large</em> <span class="math inline">\(P\)</span>-value means that our observation is likely to have occurred if the null hypothesis were true. <strong>Our observations are consistent with sample-to-sample variation</strong>.</p>
 </section>
 <section id="how-long-is-a-foot-long-sandwich" class="level1">
 <h1>How Long is a Foot-Long Sandwich?</h1>
@@ -669,11 +668,9 @@ Show/Hide Solution
 <section id="the-alternative-hypothesis" class="level3">
 <h3 class="anchored" data-anchor-id="the-alternative-hypothesis">The Alternative Hypothesis</h3>
 <p>In the case of foot-long sandwiches, customers will typically only get upset if they are getting <em>less</em> than advertised. We would propose an alternative:</p>
-<p><span class="math display">\[H_a: \mu &lt; 12\]</span></p>
-<p>It is important that the null and alternative hypotheses be determined prior to collecting the data. It is not appropriate to use the data from your study to choose the alternative hypothesis that will be used to test the same data! This is an example of using data twice, once to choose the test and again to conduct the test. It is okay to use data from a previous study to determine your null and alternative hypotheses, but it is an improper use of the statistical procedures to use the data to define <em>and</em> conduct a hypothesis test.</p>
-<p><strong>KEY POINTS</strong>:</p>
+<p><span class="math display">\[H_a: \mu &lt; 12\]</span> <strong>KEY POINTS</strong>:</p>
 <ol type="1">
-<li>Hypotheses are statements about <em>population parameters</em></li>
+<li>Hypotheses are statements about <em>population parameters</em>, typically written with Greek letters</li>
 <li>The null hypothesis will always be a statement of equality</li>
 <li>We never PROVE the null hypothesis is true, we can only fail to disprove it.</li>
 </ol>
@@ -682,14 +679,22 @@ Show/Hide Solution
 <section id="test-statistic-1" class="level3">
 <h3 class="anchored" data-anchor-id="test-statistic-1">Test Statistic</h3>
 <p>In this example, the <em>signal</em> is how far our observed mean, <span class="math inline">\(\bar x\)</span>, is away from the hypothesized mean, <span class="math inline">\(\mu=12\)</span>.</p>
-<p>The <em>noise</em> is the sample-to-sample variation of the mean. We know, based on what we’ve learned about sampling distributions, that this is: <span class="math inline">\(\sigma_{\bar x} = \frac{\sigma}{\sqrt{n}}\)</span>. This is the sample-to-sample variation for sample means.</p>
-<p>Suppose for now that sandwich-to-sandwich lengths vary by about 0.5 inches and that the distribution is normal. If we sampled 21 random sandwiches from shops in a region and got a sample mean length of 11.82 inches, we can calculate a test statistic:</p>
+<p>The <em>noise</em> is the sample-to-sample variation of the mean. Because of the properties of the sampling distribution for a mean, we know the sample-to-sample variation for <span class="math inline">\(\bar x\)</span> is: <span class="math inline">\(\sigma_{\bar x} = \frac{\sigma}{\sqrt{n}}\)</span>. This is the sample-to-sample variation for sample means.</p>
+<p>Suppose for now that sandwich-to-sandwich lengths vary by about 0.5 inches and that the distribution is normal. If we sampled 21 random sandwiches from shops in a region and got a sample mean length of 11.82 inches, we can calculate a test statistic as a signal-to-noise ratio:</p>
+<p><strong>SIGNAL</strong>: How far away is our sample mean from the hypothesized mean:</p>
+<p><span class="math display">\[11.82-12 = -0.18\]</span></p>
+<p><strong>NOISE</strong>: The expected variation of sample means assuming the null hypothesis is true. Based on the properties of the sampling distribution of <span class="math inline">\(\bar x\)</span>, this is:</p>
+<p><span class="math display">\[\sigma_\bar{x} = \frac{\sigma}{\sqrt{n}} = \frac{0.5}{\sqrt{21}}=0.109\]</span></p>
+<p><strong>Signal to Noise Ratio</strong>:<br>
+<span class="math display">\[\frac{-0.18}{0.109} = -1.651\]</span></p>
+<p>You may recognize this as a z-score:</p>
 <p><span class="math display">\[
 z = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} = \frac{11.82 - 12}{0.5 / \sqrt{21}} = -1.649727
 \]</span></p>
-<p>Where <span class="math inline">\(z\)</span> is the test statistic, <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(\mu_0\)</span> is the null hypothesis mean, <span class="math inline">\(\sigma\)</span> is the population standard deviation and <span class="math inline">\(n\)</span> is the sample size.</p>
-<p>Based on the results from the formula above, <span class="math inline">\(\bar{x}\)</span> is about 1.65 standard deviations below the mean.</p>
-<p>We can then use this Z-score and the standard normal distribution to calculate the probability of observing such a result or more extreme, if the null hypothesis is true. This is the evidence we use to make a decision about the null hypothesis.</p>
+<p>In this case, <span class="math inline">\(z\)</span> IS the test statistic where <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(\mu_0\)</span> is the null hypothesis mean, <span class="math inline">\(\sigma\)</span> is the population standard deviation and <span class="math inline">\(n\)</span> is the sample size.</p>
+<p>Based on the results from the formula above, <span class="math inline">\(\bar{x}\)</span> is about 1.65 standard deviations <em>below</em> the mean.</p>
+<p>Because we know that <span class="math inline">\(Z\)</span> follows a <em>standard normal</em> distribution, we can calculate the probability of getting a test statistic LESS than the one we observed, if the null hypothesis is true.</p>
+<p>This probability is the evidence we use to make a decision about the null hypothesis.</p>
 </section>
 <section id="p-value" class="level3">
 <h3 class="anchored" data-anchor-id="p-value"><span class="math inline">\(P\)</span>-value</h3>
@@ -714,7 +719,7 @@ z = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} = \frac{11.82 - 12}{0.5 / \sqrt{21
 <pre><code>[1] 0.04949937</code></pre>
 </div>
 </div>
-<p><strong>Conclusion</strong>: If the true population mean was 12 inches, there is a 4.95% chance of obtaining a sample mean of 11.82 hours or less for a sample of size 21.</p>
+<p><strong>Conclusion</strong>: If the true population mean was 12 inches, there is a 4.95% chance of obtaining a sample mean of 11.82 hours or less for a sample size of 21.</p>
 <p>At this point we have to make a decision. Is that probability small enough to reject the null hypothesis in favor the alternative? Are foot-long sandwich is LESS than 12 inches on average?</p>
 <p>When the P-value is very small, we have strong evidence to reject the null hypothesis. But how small is small enough?</p>
 <p>In the next lesson we will talk more about decision rules for deciding when a p-value is small enough to reject <span class="math inline">\(H_0\)</span>.</p>
