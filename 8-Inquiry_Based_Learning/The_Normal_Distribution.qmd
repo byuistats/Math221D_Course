@@ -68,7 +68,7 @@ A normal density curve is uniquely determined by its mean, $\mu$, and its standa
 
 When the mean of a normal distribution is 0 and its standard deviation is 1, we call it the **standard normal distribution**.
 
-We will return to this example later, and we will find the area shaded in blue.
+We will return to this example later and will find the area shaded in blue.
 
 #### Characteristics of the Normal Curve
 
@@ -105,6 +105,7 @@ Gustavo's $z$-score is 1.508. As noted above, this is about one-and-a-half stand
 $$z = \frac{x -\mu }{\sigma}$$
 
 The $z$-score can be computed for data from any distribution, but it is most commonly applied to normally distributed data.
+
 
 ##### 68-95-99.7% Rule for Bell-shaped Distributions
 
@@ -176,9 +177,9 @@ We define an **unusual observation** to be something that happens less than 5% o
 
 ## Normal Probability Computations
 
-A $z$ score has what is called a **Standard Normal Distribution**.  This is a special normal distribution with a mean, $\mu$, equal to 0, and a standard deviation, $\sigma$, equal to 1.  
+A $z$ score has what is called a **Standard Normal Distribution**.  This is a special normal distribution with a mean, $\mu=0$, and a standard deviation, $\sigma=1$.  
 
-This makes it possible to take any normal distribution and *standardize* it by subtracting out the population mean and dividing by the standard deviation.  Whether we're talking about heights, reaction times, big toe lengths, or nano-meters we can use the standard normal distribuition to calculate probabilities by first calculating a z-score.  
+This makes it possible to take any normal distribution and *standardize* it by subtracting out the population mean and dividing by the standard deviation.  Whether we're talking about heights, reaction times, big toe lengths, or nano-meters we can use the standard normal distribution to calculate probabilities by first calculating a z-score.  
 
 ### Introduction to the Normal Probability Applet
 

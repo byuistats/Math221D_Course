@@ -556,9 +556,9 @@ window.Quarto = {
 <section id="review" class="level1">
 <h1>Review</h1>
 <p>A Population <strong>Parameter</strong> is a numerical summary (mean, median, standard deviation, proportion, etc.) based on the <strong>entire population</strong>.</p>
-<p>A Sample <strong>Statistic</strong> is any numerical summary (mean, median, standard deviation, proportion, etc.) based on a <strong>sample</strong> from a population.</p>
+<p>A Sample <strong>Statistic</strong> is a numerical summary (mean, median, standard deviation, proportion, etc.) based on a <strong>sample</strong> from a population.</p>
 <p>A <strong>Sample</strong> is a subset of the entire population.</p>
-<p><strong>Sample Size</strong> is the number of individuals in the sample.</p>
+<p><strong>Sample Size</strong> is the number of individuals or items in the sample.</p>
 <p><strong>Randomization</strong> is used in the collection of a sample to minimize bias and make sure our sample is representative of the population.</p>
 <p>We typically use <em>Greek Letters</em> when representing population parameters and <em>Latin Letters</em> when representing sample statistics.</p>
 <table class="caption-top table">
@@ -607,11 +607,11 @@ window.Quarto = {
 <h1>The Consequences of Randomization</h1>
 <p>Randomization guarantees that if someone else tries to recreate our study, they will get a different sample. Consequently, their <strong>sample statistics</strong> will not be the same as ours!</p>
 <p>While this should not be surprising, it does create a problem. Given sample-to-sample differences, how can we know when our conclusions are valid? We typically only have one sample to go on.</p>
-<p>The good news is that we can rely on the theory of sampling distributions to quantify the uncertainty about our sample.</p>
+<p>The good news is that we can rely on the theory of sampling distributions to quantify the sample-to-sample variability.</p>
 </section>
 <section id="sampling-distributions" class="level1">
 <h1>Sampling Distributions</h1>
-<p>Imagine you and 10 friends want to know about the percent of BYU-I students whose favorite soda is Dr.&nbsp;Pepper. Each of you could go and survey 50 people each and ask about their favorite soda. All 11 of you calculate the proportion of students who prefer Dr.&nbsp;Pepper.</p>
+<p>Imagine you and 10 friends want to know about the percent of BYU-I students whose favorite soda is Dr.&nbsp;Pepper. Each of you could go and survey 50 people each and ask about their favorite soda. All 11 of you calculate the proportion of students out of 50 who prefer Dr.&nbsp;Pepper.</p>
 <p>You’ll all get different results because you’ll be asking different sets of people. Now, instead of looking at your percents individually, summarize the collection of samples from all 11 of you using <code>favstats()</code> and a histogram:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>

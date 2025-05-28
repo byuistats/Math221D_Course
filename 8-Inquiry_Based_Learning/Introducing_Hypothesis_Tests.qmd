@@ -30,7 +30,7 @@ The **null hypothesis** is the initial claim or assumption about a population pa
 
 For example, we assume that the new medication has *no effect* until we find enough evidence to prove otherwise.  
 
-We write the null hypothesis as, $H_0$, and refer to it as "H-Naught" or "H-O".  
+We write the null hypothesis as '$H_0$', and refer to it as "H-Naught" or "H-O".  
 
 
 Many of the statistical tests we cover in this course follow the generic form:  
@@ -45,7 +45,7 @@ The "burden of proof" is on the researcher to prove the null hypothesis wrong.  
 
 The counter-proposal for the null hypothesis is called the **alternative hypothesis**.  
 
-We write the null hypothesis as, $H_a$, and refer to it as "H-A".  
+We write the null hypothesis as '$H_a$', and refer to it as "H-A".  
 The statistical tests we will cover in the rest of the semester follow the generic form:  
 
 $$H_a: \text{There is a relationship between }X \text{ and }Y$$
@@ -70,7 +70,7 @@ If the null hypothesis is true, it would be very unlikely, though possible, to o
 
 <br>
 
-If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance because of sample-to-sample variation:  
+If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance, because of sample-to-sample variation:  
 
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png)
 <br>
@@ -98,16 +98,16 @@ __PONDER__:  What do you notice about the impact of sample size on the sample-to
 
 Statistical hypothesis testing is about calculating the **probability** of observing what we actually observed **IF the null hypothesis were true**.  If that probability is very small, we can confidently reject the null hypothesis in favor of the alternative.  
 
-Next, we will look at the process of calculating that probability.  
+Next, we look at the process of calculating that probability.  
 
 
 # Test Statistic
 
 To calculate the probability of observing what we observed if there really was no relationship, we first calculate a test statistic.  
 
-The exact formula for a test statistic depends on what type of analysis we are performing.  But regardless of the type of analysis, test statistics follow a general pattern.  
+The exact formula for a test statistic depends on what type of analysis is being performed.  But regardless of the type of analysis, test statistics follow a general construct.  
 
-A **test statistic** can be though of as a signal-to-noise ratio, where the signal is what we observed in our sample and the noise is the variability we would expect if the null hypothesis is true.  
+A **test statistic** can be though of as a signal-to-noise ratio, where the signal is what we observed in our sample and the noise is the sample-to-sample variability we would expect if the null hypothesis is true.  
 
 $$\text{Test Statistics}=\frac{\text{signal}}{\text{noise}}$$
 Think about this as a fraction.  
@@ -134,9 +134,9 @@ Think about this as a fraction.
 
 <br>
 
-As we get into specific analyses, we will look at a few of those formulas, but R will do all the calculations for us.  For now, consider a test statistic as a signal-to-noise ratio.  The larger it is, the stronger the evidence against the null hypothesis.  
+As we get into specific analyses, we will look at a few of those formulas, and R will do all the calculations for us.  For now, consider a test statistic as a signal-to-noise ratio.  The larger it is, the stronger the evidence against the null hypothesis.  
 
-But a test statistic is just a number and difficult to interpret in isolation.  The calculation of the test statistics is an *intermediate step* to calculating a probability.  
+But a test statistic is just a number and difficult to interpret in isolation.  The calculation of the test statistics is an *intermediate step* to calculating the probability of observing what we observed if the null hypothesis were true.  
 
 
 # Probability  
@@ -147,7 +147,7 @@ Every test statistic has a probability distribution associated with it.  The sha
   2. Use the probability distribution of the test statistic to calculate the probability of observing something more extreme than what was observed in our sample **if the null hypothesis were true**  
 
 
-__DEFINITION__:  A **$P$-value** is the probability of obtaining a result at least as extreme as the observed data, assuming that the null hypothesis is true.  
+__KEY DEFINITION__:  A **$P$-value** is the probability of obtaining a result at least as extreme as the observed data, assuming that the null hypothesis is true.  
 
 A *small* p-value means that what we actually observed in our sample is unlikely to have happened just because of sample-to-sample variation.  
 
@@ -195,14 +195,14 @@ Suppose for now that sandwich-to-sandwich lengths vary by about 0.5 inches and t
 
 __SIGNAL__:  How far away is our sample mean from the hypothesized mean:  
 
-$$11.82-12 = -0.18$$ 
+$$11.82-12 = -0.18\ \text{in}$$ 
 
 __NOISE__:  The expected variation of sample means assuming the null hypothesis is true.  Based on the properties of the sampling distribution of $\bar x$, this is:  
 
 $$\sigma_\bar{x} = \frac{\sigma}{\sqrt{n}} = \frac{0.5}{\sqrt{21}}=0.109$$
 
 __Signal to Noise Ratio__:  
-$$\frac{-0.18}{0.109} = -1.651$$
+$$\frac{-0.18}{0.109} = -1.65$$
 
 You may recognize this as a z-score:  
 
@@ -248,7 +248,11 @@ ggplot(normal_data, aes(x,y)) +
     subtitle = "Assuming the Null Hypothesis is true",
     x = "Dist. of Sample Averages of Foot-long sandwich lengths: n=21"
   ) +
-  geom_label(aes(x=11.75, y = .75), label="P-value", fill="lightblue")
+  geom_curve(aes(x = 11.63, y = .5, xend = 11.77, yend = .2), 
+             arrow = arrow(length = unit(0.02, "npc")), 
+             curvature = 0) +
+  geom_label(aes(x = 11.63, y = .5, label = paste("P(Z < -1.65) ≈", 0.0495)), 
+             fill="lightblue", size=3.7) 
 
 ```
 

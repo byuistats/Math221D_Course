@@ -497,8 +497,8 @@ window.Quarto = {
 <p>Statistical significance is a crucial concept for determining whether the results observed in a study are likely due to a real effect or simply due to chance. It’s a core component of hypothesis testing.</p>
 <section id="reviw-p-value" class="level2">
 <h2 class="anchored" data-anchor-id="reviw-p-value">Reviw: P-value</h2>
-<p>The <strong>p-value</strong> is the probability of observing results as extreme as or more extreme than the results obtained in your sample <em>assuming the null hypothesis is true</em>. In other words, it indicates how likely it is that you’d see the data you did if there was actually no effect present.</p>
-<p>A small p-value suggests strong evidence against the null hypothesis, while a large p-value suggests weak evidence.</p>
+<p>The <strong><span class="math inline">\(P\)</span>-value</strong> is the probability of observing results as extreme as or more extreme than the results obtained in your sample <em>assuming the null hypothesis is true</em>. In other words, it indicates how likely it is to see the data you did if there was actually no effect present.</p>
+<p>A small p-value suggests strong evidence against the null hypothesis, while a large p-value suggests the observed data are consistent with sample-to-sample variability.</p>
 </section>
 <section id="significance-level-alpha-alpha" class="level2">
 <h2 class="anchored" data-anchor-id="significance-level-alpha-alpha">Significance Level: Alpha (<span class="math inline">\(\alpha\)</span>)</h2>
@@ -515,11 +515,11 @@ window.Quarto = {
 </section>
 <section id="mistaking-randomness-for-signal" class="level2">
 <h2 class="anchored" data-anchor-id="mistaking-randomness-for-signal">Mistaking Randomness for Signal</h2>
-<p>We can never be 100% certain that the signal observed in our sample was not just noise. Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant.</p>
-<p>Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different levels of the treatment. We randomly assign patients to each treatment group. Each individual will have a different likelihood of 5-year survival regardless of treatment.</p>
-<p>There is a chance that the hardiest patients all end up in one of the treatment groups making it look like that treatment is better, but it wasn’t the effect of the treatment.</p>
+<p>We can never be 100% certain that the signal observed in our sample was not just noise. Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant just by chance.</p>
+<p>Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different levels of the treatment. We randomly assign patients to each treatment group.</p>
+<p>There is a chance that the hardiest patients all end up in the same treatment group making it look like that treatment is better, but it wasn’t because of the treatment.</p>
 <p>When we conclude that there is a relationship between X and Y, when what we observed was actually “noise”, we have committed a Type I error.</p>
-<p><strong>DEFINITION</strong>: <strong>Type I Error</strong>: Rejecting a TRUE null hypothesis.</p>
+<p><strong>DEFINITION</strong>: <strong>Type I Error</strong>: Rejecting a TRUE null hypothesis. In some contexts this is called a <strong>FALSE POSITIVE</strong></p>
 <p>Because <span class="math inline">\(\alpha\)</span> is our decision point for rejecting the null hypothesis, <span class="math inline">\(\alpha\)</span> is the probability of rejecting a TRUE null hypothesis, meaning <span class="math inline">\(\alpha\)</span> is the probability of a <strong>Type I</strong> error.</p>
 <p>Let’s see what an <span class="math inline">\(\alpha = 0.01\)</span> looks like in the case of against the foot-long sandwiches:</p>
 <div class="cell">
@@ -533,7 +533,7 @@ window.Quarto = {
 </div>
 <p>The red area, <span class="math inline">\(\alpha\)</span>, shows the probability of getting a sample mean in that tail <strong>when the null hypothesis is true</strong>. There’s always a chance we get such an extreme value and end up rejecting the null when it is true.</p>
 <p>If we make <span class="math inline">\(\alpha\)</span> too small, we will reject <span class="math inline">\(H_0\)</span> less often, thereby avoiding Type I errors. But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it. This is a Type II error.</p>
-<p><strong>DEFINITION</strong>: <strong>Type II Error</strong>: Failing to Reject a FALSE null hypothesis.</p>
+<p><strong>DEFINITION</strong>: <strong>Type II Error</strong>: Failing to Reject a FALSE null hypothesis. In some contexts this is called a <strong>FALSE NEGATIVE</strong></p>
 <p>For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we missed out on an a new, life-saving breakthrough.</p>
 </section>
 <section id="choosing-alpha-and-understanding-error-types" class="level2">
@@ -544,9 +544,10 @@ window.Quarto = {
 <p>A level of significance of <span class="math inline">\(\alpha=0.05\)</span> seems to strike a good balance between the probabilities of committing a Type I versus a Type II error. However, there may be instances where it will be important to choose a different value for <span class="math inline">\(\alpha\)</span>. The important thing is to choose <span class="math inline">\(\alpha\)</span> before you collect your data. Typical choices of <span class="math inline">\(\alpha\)</span> are <span class="math inline">\(0.05\)</span> (most common), <span class="math inline">\(0.1\)</span>, and <span class="math inline">\(0.01\)</span>.</p>
 <section id="visualizing-error" class="level4">
 <h4 class="anchored" data-anchor-id="visualizing-error">Visualizing Error</h4>
-<p>The below graph illustrates the relationship between Type I and Type II errors. The red distribution represents the Null Hypothesis, the sampling distribution of sample mean-lengths of foot-long sandwiches, assuming <span class="math inline">\(\mu_0=12\)</span>.</p>
-<p>The blue distribution represents the “TRUE” distribution with a mean, <span class="math inline">\(\mu_{truth}=11.2\)</span>. We never know this in the real world, but to illustrate, here is a situation where the <strong>true population mean</strong> is, in fact, less than 12.</p>
+<p>The graph below illustrates the relationship between Type I and Type II errors. The red distribution represents the Null Hypothesis, the sampling distribution of mean lengths of foot-long sandwiches, assuming <span class="math inline">\(\mu_0=12\)</span>.</p>
+<p>The blue distribution represents the “TRUE” distribution with a mean, <span class="math inline">\(\mu_{truth}=11.2\)</span>. We never know this in the real world, but to illustrate, here is a situation where the <strong>true population mean</strong> is, in fact, less than 12. The right decision would be to REJECT <span class="math inline">\(H_0\)</span>.</p>
 <p>If we set <span class="math inline">\(\alpha = 0.01\)</span> (red shaded area), we can see that any sample mean to the right of the cutoff would <strong>fail to reject</strong> the null hypothesis. This mistake would be a Type II error.</p>
+<p>While we don’t know what the “TRUE” distribution is, we can see the relationship between moving the cutoff based on <span class="math inline">\(\alpha\)</span> would do to the probability of failing to reject the null hypothesis even when it is FALSE.</p>
 <style>
   .responsive-iframe {
     width: 100%;
@@ -556,7 +557,6 @@ window.Quarto = {
 </style>
 <iframe src="https://byuistats.github.io/Alpha_Beta_Example_App/" class="responsive-iframe" scrolling="no">
 </iframe>
-<p>While we don’t know what the “TRUE” distribution is, we can see the relationship between moving the cutoff based on <span class="math inline">\(\alpha\)</span> would do to the probability of failing to reject the null hypothesis even when it is FALSE.</p>
 
 
 </section>

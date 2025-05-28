@@ -559,7 +559,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="the-null-hypothesis-h_0">The Null Hypothesis, <span class="math inline">\(H_0\)</span></h2>
 <p>The <strong>null hypothesis</strong> is the initial claim or assumption about a population parameter. It often represents the status quo or “no effect”.</p>
 <p>For example, we assume that the new medication has <em>no effect</em> until we find enough evidence to prove otherwise.</p>
-<p>We write the null hypothesis as, <span class="math inline">\(H_0\)</span>, and refer to it as “H-Naught” or “H-O”.</p>
+<p>We write the null hypothesis as ‘<span class="math inline">\(H_0\)</span>’, and refer to it as “H-Naught” or “H-O”.</p>
 <p>Many of the statistical tests we cover in this course follow the generic form:</p>
 <p><span class="math display">\[H_0: \text{There is no relationship between }X \text{ and }Y\]</span></p>
 </section>
@@ -568,7 +568,7 @@ window.Quarto = {
 <p>We typically engage in scientific inquiry because we do NOT believe the null hypothesis. For example, we believe that there IS an effect of a new medication.</p>
 <p>The “burden of proof” is on the researcher to prove the null hypothesis wrong. This means that it is the researcher’s responsibility to present enough evidence to contradict the null hypothesis.</p>
 <p>The counter-proposal for the null hypothesis is called the <strong>alternative hypothesis</strong>.</p>
-<p>We write the null hypothesis as, <span class="math inline">\(H_a\)</span>, and refer to it as “H-A”.<br>
+<p>We write the null hypothesis as ‘<span class="math inline">\(H_a\)</span>’, and refer to it as “H-A”.<br>
 The statistical tests we will cover in the rest of the semester follow the generic form:</p>
 <p><span class="math display">\[H_a: \text{There is a relationship between }X \text{ and }Y\]</span></p>
 </section>
@@ -582,7 +582,7 @@ The statistical tests we will cover in the rest of the semester follow the gener
 <p>If the null hypothesis is true, it would be very unlikely, though possible, to observe a scatter plot like the following, just by chance, because of sample-to-sample variation:</p>
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Some_Relationship_Scatterplot.png" class="img-fluid"></p>
 <p><br></p>
-<p>If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance because of sample-to-sample variation:</p>
+<p>If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance, because of sample-to-sample variation:</p>
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png" class="img-fluid"> <br></p>
 </section>
 </section>
@@ -602,13 +602,13 @@ The statistical tests we will cover in the rest of the semester follow the gener
 <iframe src="https://byuistats.github.io/Null_Hypothesis_Simulation_App/" width="700" height="500" style="border:none;">
 </iframe>
 <p>Statistical hypothesis testing is about calculating the <strong>probability</strong> of observing what we actually observed <strong>IF the null hypothesis were true</strong>. If that probability is very small, we can confidently reject the null hypothesis in favor of the alternative.</p>
-<p>Next, we will look at the process of calculating that probability.</p>
+<p>Next, we look at the process of calculating that probability.</p>
 </section>
 <section id="test-statistic" class="level1">
 <h1>Test Statistic</h1>
 <p>To calculate the probability of observing what we observed if there really was no relationship, we first calculate a test statistic.</p>
-<p>The exact formula for a test statistic depends on what type of analysis we are performing. But regardless of the type of analysis, test statistics follow a general pattern.</p>
-<p>A <strong>test statistic</strong> can be though of as a signal-to-noise ratio, where the signal is what we observed in our sample and the noise is the variability we would expect if the null hypothesis is true.</p>
+<p>The exact formula for a test statistic depends on what type of analysis is being performed. But regardless of the type of analysis, test statistics follow a general construct.</p>
+<p>A <strong>test statistic</strong> can be though of as a signal-to-noise ratio, where the signal is what we observed in our sample and the noise is the sample-to-sample variability we would expect if the null hypothesis is true.</p>
 <p><span class="math display">\[\text{Test Statistics}=\frac{\text{signal}}{\text{noise}}\]</span> Think about this as a fraction.</p>
 <div class="QuestionsHeading">
 Answer the following questions:
@@ -640,8 +640,8 @@ Show/Hide Solution
 </details>
 </div>
 <p><br></p>
-<p>As we get into specific analyses, we will look at a few of those formulas, but R will do all the calculations for us. For now, consider a test statistic as a signal-to-noise ratio. The larger it is, the stronger the evidence against the null hypothesis.</p>
-<p>But a test statistic is just a number and difficult to interpret in isolation. The calculation of the test statistics is an <em>intermediate step</em> to calculating a probability.</p>
+<p>As we get into specific analyses, we will look at a few of those formulas, and R will do all the calculations for us. For now, consider a test statistic as a signal-to-noise ratio. The larger it is, the stronger the evidence against the null hypothesis.</p>
+<p>But a test statistic is just a number and difficult to interpret in isolation. The calculation of the test statistics is an <em>intermediate step</em> to calculating the probability of observing what we observed if the null hypothesis were true.</p>
 </section>
 <section id="probability" class="level1">
 <h1>Probability</h1>
@@ -651,7 +651,7 @@ Show/Hide Solution
 </li>
 <li>Use the probability distribution of the test statistic to calculate the probability of observing something more extreme than what was observed in our sample <strong>if the null hypothesis were true</strong></li>
 </ol>
-<p><strong>DEFINITION</strong>: A <strong><span class="math inline">\(P\)</span>-value</strong> is the probability of obtaining a result at least as extreme as the observed data, assuming that the null hypothesis is true.</p>
+<p><strong>KEY DEFINITION</strong>: A <strong><span class="math inline">\(P\)</span>-value</strong> is the probability of obtaining a result at least as extreme as the observed data, assuming that the null hypothesis is true.</p>
 <p>A <em>small</em> p-value means that what we actually observed in our sample is unlikely to have happened just because of sample-to-sample variation.</p>
 <p>A <em>large</em> <span class="math inline">\(P\)</span>-value means that our observation is likely to have occurred if the null hypothesis were true. <strong>Our observations are consistent with sample-to-sample variation</strong>.</p>
 </section>
@@ -682,11 +682,11 @@ Show/Hide Solution
 <p>The <em>noise</em> is the sample-to-sample variation of the mean. Because of the properties of the sampling distribution for a mean, we know the sample-to-sample variation for <span class="math inline">\(\bar x\)</span> is: <span class="math inline">\(\sigma_{\bar x} = \frac{\sigma}{\sqrt{n}}\)</span>. This is the sample-to-sample variation for sample means.</p>
 <p>Suppose for now that sandwich-to-sandwich lengths vary by about 0.5 inches and that the distribution is normal. If we sampled 21 random sandwiches from shops in a region and got a sample mean length of 11.82 inches, we can calculate a test statistic as a signal-to-noise ratio:</p>
 <p><strong>SIGNAL</strong>: How far away is our sample mean from the hypothesized mean:</p>
-<p><span class="math display">\[11.82-12 = -0.18\]</span></p>
+<p><span class="math display">\[11.82-12 = -0.18\ \text{in}\]</span></p>
 <p><strong>NOISE</strong>: The expected variation of sample means assuming the null hypothesis is true. Based on the properties of the sampling distribution of <span class="math inline">\(\bar x\)</span>, this is:</p>
 <p><span class="math display">\[\sigma_\bar{x} = \frac{\sigma}{\sqrt{n}} = \frac{0.5}{\sqrt{21}}=0.109\]</span></p>
 <p><strong>Signal to Noise Ratio</strong>:<br>
-<span class="math display">\[\frac{-0.18}{0.109} = -1.651\]</span></p>
+<span class="math display">\[\frac{-0.18}{0.109} = -1.65\]</span></p>
 <p>You may recognize this as a z-score:</p>
 <p><span class="math display">\[
 z = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} = \frac{11.82 - 12}{0.5 / \sqrt{21}} = -1.649727

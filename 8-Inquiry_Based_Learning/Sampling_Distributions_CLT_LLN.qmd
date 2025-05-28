@@ -30,11 +30,11 @@ By the end of this lesson, you should be able to:
 
 A Population **Parameter** is a numerical summary (mean, median, standard deviation, proportion, etc.) based on the **entire population**.  
 
-A Sample **Statistic** is any numerical summary (mean, median, standard deviation, proportion, etc.) based on a **sample** from a population.  
+A Sample **Statistic** is a numerical summary (mean, median, standard deviation, proportion, etc.) based on a **sample** from a population.  
 
 A **Sample** is a subset of the entire population. 
 
-**Sample Size** is the number of individuals in the sample.  
+**Sample Size** is the number of individuals or items in the sample.  
 
 **Randomization** is used in the collection of a sample to minimize bias and make sure our sample is representative of the population. 
 
@@ -55,12 +55,12 @@ Randomization guarantees that if someone else tries to recreate our study, they 
 
 While this should not be surprising, it does create a problem.  Given sample-to-sample differences, how can we know when our conclusions are valid?  We typically only have one sample to go on.  
 
-The good news is that we can rely on the theory of sampling distributions to quantify the uncertainty about our sample. 
+The good news is that we can rely on the theory of sampling distributions to quantify the sample-to-sample variability.  
 
 
 # Sampling Distributions
 
-Imagine you and 10 friends want to know about the percent of BYU-I students whose favorite soda is Dr. Pepper.  Each of you could go and survey 50 people each and ask about their favorite soda.  All 11 of you calculate the proportion of students who prefer Dr. Pepper.  
+Imagine you and 10 friends want to know about the percent of BYU-I students whose favorite soda is Dr. Pepper.  Each of you could go and survey 50 people each and ask about their favorite soda.  All 11 of you calculate the proportion of students out of 50 who prefer Dr. Pepper.  
 
 You'll all get different results because you'll be asking different sets of people.  Now, instead of looking at your percents individually, summarize the collection of samples from all 11 of you using `favstats()` and a histogram:  
 

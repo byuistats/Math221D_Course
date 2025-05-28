@@ -11,9 +11,9 @@ Statistical significance is a crucial concept for determining whether the result
 
 ## Reviw:  P-value
 
-The **p-value** is the probability of observing results as extreme as or more extreme than the results obtained in your sample *assuming the null hypothesis is true*. In other words, it indicates how likely it is that you'd see the data you did if there was actually no effect present. 
+The **$P$-value** is the probability of observing results as extreme as or more extreme than the results obtained in your sample *assuming the null hypothesis is true*. In other words, it indicates how likely it is to see the data you did if there was actually no effect present. 
 
-A small p-value suggests strong evidence against the null hypothesis, while a large p-value suggests weak evidence.
+A small p-value suggests strong evidence against the null hypothesis, while a large p-value suggests the observed data are consistent with sample-to-sample variability.  
 
 
 ## Significance Level: Alpha ($\alpha$)
@@ -34,15 +34,15 @@ Where "low" means less than $\alpha$.
 
 ## Mistaking Randomness for Signal
 
-We can never be 100% certain that the signal observed in our sample was not just noise.  Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant.  
+We can never be 100% certain that the signal observed in our sample was not just noise.  Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant just by chance.  
 
-Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different levels of the treatment.  We randomly assign patients to each treatment group.  Each individual will have a different likelihood of 5-year survival regardless of treatment.  
+Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different levels of the treatment.  We randomly assign patients to each treatment group.  
 
-There is a chance that the hardiest patients all end up in one of the treatment groups making it look like that treatment is better, but it wasn't the effect of the treatment.  
+There is a chance that the hardiest patients all end up in the same treatment group making it look like that treatment is better, but it wasn't because of the treatment.  
 
 When we conclude that there is a relationship between X and Y, when what we observed was actually "noise", we have committed a Type I error.  
 
-__DEFINITION__:  **Type I Error**: Rejecting a TRUE null hypothesis.  
+__DEFINITION__:  **Type I Error**: Rejecting a TRUE null hypothesis.  In some contexts this is called a **FALSE POSITIVE**
 
 Because $\alpha$ is our decision point for rejecting the null hypothesis, $\alpha$ is the probability of rejecting a TRUE null hypothesis, meaning $\alpha$ is the probability of a **Type I** error.  
 
@@ -80,7 +80,7 @@ The red area, $\alpha$, shows the probability of getting a sample mean in that t
 
 If we make $\alpha$ too small, we will reject $H_0$ less often, thereby avoiding Type I errors.  But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it.  This is a Type II error.  
 
-__DEFINITION__:  **Type II Error**: Failing to Reject a FALSE null hypothesis.
+__DEFINITION__:  **Type II Error**: Failing to Reject a FALSE null hypothesis.  In some contexts this is called a **FALSE NEGATIVE**
 
 For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we missed out on an a new, life-saving breakthrough.  
 
@@ -99,11 +99,15 @@ A level of significance of $\alpha=0.05$ seems to strike a good balance between 
 
 #### Visualizing Error
 
-The below graph illustrates the relationship between Type I and Type II errors.  The red distribution represents the Null Hypothesis, the sampling distribution of sample mean-lengths of foot-long sandwiches, assuming $\mu_0=12$.
+The graph below illustrates the relationship between Type I and Type II errors.  The red distribution represents the Null Hypothesis, the sampling distribution of mean lengths of foot-long sandwiches, assuming $\mu_0=12$.
 
-The blue distribution represents the "TRUE" distribution with a mean, $\mu_{truth}=11.2$.  We never know this in the real world, but to illustrate, here is a situation where the **true population mean** is, in fact, less than 12.  
+The blue distribution represents the "TRUE" distribution with a mean, $\mu_{truth}=11.2$.  We never know this in the real world, but to illustrate, here is a situation where the **true population mean** is, in fact, less than 12.  The right decision would be to REJECT $H_0$.  
 
 If we set $\alpha = 0.01$ (red shaded area), we can see that any sample mean to the right of the cutoff would **fail to reject** the null hypothesis.  This mistake would be a Type II error.  
+
+
+While we don't know what the "TRUE" distribution is, we can see the relationship between moving the cutoff based on $\alpha$ would do to the probability of failing to reject the null hypothesis even when it is FALSE.  
+
 
 <style>
   .responsive-iframe {
@@ -114,7 +118,4 @@ If we set $\alpha = 0.01$ (red shaded area), we can see that any sample mean to 
 </style>
 
 <iframe src="https://byuistats.github.io/Alpha_Beta_Example_App/" class="responsive-iframe" scrolling="no"></iframe>
-
-While we don't know what the "TRUE" distribution is, we can see the relationship between moving the cutoff based on $\alpha$ would do to the probability of failing to reject the null hypothesis even when it is FALSE.  
-
 

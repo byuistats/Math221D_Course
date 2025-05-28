@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Assessing Normality
 
-In practice, we must confirm that the distribution of sample means is normally distributed.  This is true when:
+In practice, we must often confirm that the distribution of sample means is normally distributed.  This is true when:
 
   1. The population is normally distributed
   2. $n > 30$ because of the Central Limit Theorem
@@ -18,7 +18,7 @@ But how do you know if a population is normally distributed?  In the real world,
 
 If our sample size is large enough, we don't have to worry.  We can trust the Central Limit Theorem.
 
-If our sample size is < 30, we can assess the normality of our *sample* to decide if we can still trust output of our statistical conclusions.  
+If $n < 30$, we can assess the normality of our *sample* to decide if we can still trust output of our statistical conclusions.  
 
 [Previously](https://byuistats.github.io/Math221D_Course/Textbook/The_Normal_Distribution.html), we've used histograms to help visualize the distribution of a sample.  However, when sample sizes are small, even samples from a standard normal distribution can look skewed.
 
@@ -29,7 +29,7 @@ All of the examples below are histograms of random samples from actual standard 
 
 ### A New Way to Assess Normality
 
-Statisticians use something called a `QQPlot` which works better at assessing normality.  QQPlots plot the sorted data of each point in a dataset with the theoretical percentile from a normal distribution.  If the data and theoretical percentiles line up, then we can be reasonably sure the population is normally distributed.  
+Statisticians use `QQPlots` which are better at assessing normality.  QQPlots plot the ordered, observed percentiles for each data point in a dataset on the x-axis with the theoretical percentile from a normal distribution on the y-axis.  If the observed percentiles and theoretical percentiles line up, then we can be reasonably sure the population is normally distributed.  
 
 These are easier to use than to explain.  We use the `car` library and the function `qqPlot()` to create a chart. (Note the Capital `P` in the middle.)
 
@@ -45,7 +45,7 @@ Below are examples of QQPlots for a normal distribution and a right skewed distr
 ![](../Images/QQPlot_Right_Skewed.png)
 
 
-These work much better for small sample sizes.  Below are several examples of QQPlots for small sample sizes:
+These work much better for small sample sizes.  Below are several examples of QQPlots for small sample sizes.  They are the same samples as shown above in the histograms.  
 
 
 ![](../Images/QQPlots_Normal.png)
