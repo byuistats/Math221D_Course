@@ -181,30 +181,10 @@ A $z$ score has what is called a **Standard Normal Distribution**.  This is a sp
 
 This makes it possible to take any normal distribution and *standardize* it by subtracting out the population mean and dividing by the standard deviation.  Whether we're talking about heights, reaction times, big toe lengths, or nano-meters we can use the standard normal distribution to calculate probabilities by first calculating a z-score.  
 
-### Introduction to the Normal Probability Applet
-
-The Normal Probability Applet is a visualization program offering statistics students insights and computations for the relationship between $z$-scores and areas under the standard normal curve. You can find a link to this applet [here](https://byuimath.com/apps/normprob.html). This app is also compatible to use on your phone, iPad, and other mobile devices.  The app is stored at .  If you want a copy you can open from your desktop, just right click the link and save it to your computer.
-
-To use this applet, follow these instructions:
-
-  * Click on an area below the curved line to shade/unshade the region.
-  * Click and drag the red lines to adjust the $z$-scores and obtain the area.
-  * Type a $z$-score into one of the bottom input boxes and hit "Enter" to get an area.
-  * Type in an area and hit "Enter" to get a $z$-score.
-
-
-<center>
-<div class="iframe-container" width="90%">
-<iframe src="https://byuimath.com/apps/normprob.html?width=600&z=1&height=400&left=1&mid=0&right=1&area=a&static=0&title=1&border=0" frameborder="0" width="650" height="450" data-external="1"></iframe>
-</div>
-</center>
-
 
 ### Converting a $z$-score to a Probability
 
-Using this applet we can calculate probabilities based on the area under the normal curve. For the following examples, please open the [Normal Probability Applet](https://byuimath.com/apps/normprob.html){target="_blank"} and practice using it to find areas under the curve.
-
-The Normal Probability Applet is nice for visualizing areas under the curve.  However, it has significant limitations.  In this class, we will use R to do the heavy lifting.  The pnorm(x, $\mu$, $\sigma$) function calculates areas under the curve the normal distribution with mean, $\mu$, and standard deviation, $\sigma$, for a given x.  
+In this class, we will use R to do the heavy lifting.  The pnorm(x, $\mu$, $\sigma$) function calculates areas under the curve the normal distribution with mean, $\mu$, and standard deviation, $\sigma$, for a given x.  
 
 The `p` in `pnorm()` stands for probability and `norm` obviously stands for the normal distribution.  
 
@@ -225,17 +205,19 @@ What proportion of young Ghanaian women reach a height that is at or below 169 c
 To find the area under a normal curve corresponding to a $z$-score of $2.041$, do the following:
 
 ```{r}
+
 pnorm(2.041)
+
 ```
 
+We can use the `mosaic` library to visualize the areas under the normal distribution:
 
-<center>
-<div width="90%">
-<div class="iframe-container" width="90%">
-<iframe src="https://byuimath.com/apps/normprob.html?width=600&z=2.041&height=400&left=1&mid=1&right=0&area=a&static=1&title=1&border=0" frameborder="0" width="650" height="450" data-external="1"></iframe>
-</div>
-</div>
-</center>
+```{r}
+library(mosaic)
+mosaic::xpnorm(169.0, mean = 159.0, sd = 4.9) 
+
+```
+
 
 __NOTE__: The area to the left of our chosen $z$-score is also the probability that a randomly selected woman will be shorter than Serwa. The probability that a randomly selected Ghanaian woman will be shorter than Serwa is $0.979$, or $97.9\%$.
 
@@ -265,18 +247,21 @@ pnorm(z)
 ```
 
 
-Using the Applet, type the $z$-score of $0.559$ in one of the boxes below the horizontal axis in the applet. Click on the areas under the curve until only the region on the right is highlighted in blue.
+Using the `xpnorm()` in the mosaic library, type the $z$-score of $0.559$. Click on the areas under the curve until only the region on the right is highlighted in purple.
 
-![](../Images/Batting_average_z-score.PNG)
+To get `xpnorm()` to give the Right Tail probability, you need to specify `lower.tail=FALSE`:
 
-The area under the curve to the right of $z = 0.559$ is $0.288$. This is the probability that a randomly selected player will have a batting average that is greater than 0.280. (Note: It is a coincidence that the area, 0.288, is close to the batting average of 0.280. There is no significance in this.)
+```{r}
+
+mosaic::xpnorm(0.559, lower.tail = FALSE)
+
+```
+
+
+The area under the curve to the right of $z = 0.559$ is $0.2881$. This is the probability that a randomly selected player will have a batting average that is greater than 0.280. (Note: It is a coincidence that the area, 0.288, is close to the batting average of 0.280. There is no significance in this.)
 
 
 ### Finding the Probability of Being Between Two Values
-
-The normal probability applet allows us to find the probability of being between two values as long as they are on opposite sides of the mean and equally distanced from the mean. By calculating two z-scores, one for each value, and then shading the area between them on the applet, we can find the probability.  This is severely limiting.  
-
-Below, we demonstrate how to find the area between *any* two values in a normal distribution.  
 
 #### Heights of Ghanaian Women
 
@@ -293,19 +278,16 @@ $$0.8888 - 0.0331 = 0.8557$$
 
 So the probability that the height of a randomly selected young Ghanaian woman will be between 150.0 cm and 165.0 cm is $0.8558$. This is the same as the proportion of all young Ghanaian women who are between 150.0 and 165.0 cm tall.
 
+We can easily get `mosaic::xpnorm()` to provide this for us automatically by providing a list of values between which we would like to calculate the area under the curve.  
+
 To find the probability of being between *any* 2 numbers for a normal distribution with mean, $\mu$, and standard deviation, $\sigma$, we can use the following R code:   
 
 ```{r}
-value1 <- 150
-value2 <- 165
-mu <- 159
-sigma <- 4.9
 
-pnorm(value2, mean = mu, sd = sigma) - pnorm(value1, mean = mu, sd = sigma)
+mosaic::xpnorm(c(150, 165), mean = 159, sd = 4.9)
 
 ```
 
-__NOTE__:  Value 1 is the lower of the two values and Value 2 is the higher value.  Also, this answer is slightly different than above due to when you round. This answer is more accurate because we rounded at the end of the probability calculations rather than rounding the z-scores, then calculating probabilities.  
 
 
 ### Calculating Percentiles using a Normal Distribution
@@ -326,7 +308,16 @@ qnorm(.90, mean = 159, sd = 4.9)
 
 The 90<sup>th</sup> percentile of the heights averages is 165.2796. That means that 90% of the Ghanaian women are shorter than 165.2796 cm tall.  
 
-<br>
+
+We can also use `xqnorm()` in the mosaic library to visualize:  
+
+```{r}
+
+mosaic::xqnorm(.9, mean=159, sd=4.9)
+
+```
+
+
 
 ## Summary
 

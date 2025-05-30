@@ -82,6 +82,30 @@ In continuous cases, it doesn't make sense to calculate the probability of exact
 
 The Calculus is required to calculate probabilities for continuous probability distributions.  Fortunately, you do *NOT* need to know any calculus for this class because computers will perform all the calculations for us.  However, it is important to understand a few basic principles for continuous probability distributions.  
 
+## The Normal Distribution
+
+We will use the **Normal Distribution** to illustrate the probability rules for continuous probability distributions.  The rules apply to *any* continuous probability distribution, but the normal distribution is one of the fundamental probability distributions in statistics.  We will learn more about it in future lessons.  For now, we use it only to illustrate the probability rules for continuous distributions.  
+
+The normal distribution is like a smooth histogram that is perfectly symmetric around the mean and has a standard deviation that determines how spread out the distribution is.  Consider below a histogram of Major League Baseball batting averages:  
+
+![](../Images/Lesson_03_Activity_06_Reading_1.jpg)
+The smooth line is a normal distribution superimposed onto the histogram of the data.  Using our data, we can calculate percentiles by adding up 
+
+Suppose we want to estimate the probability that a randomly selected player will have a batting average that is greater than 0.280. One way to do this would be to find the proportion of players in the data set who have a batting average above 0.280. We can do this by finding the number of players who fall into each of the red-colored bins below and dividing this number by the total number of players.
+
+![](../Images/L03_A06_R02.jpg)
+In other words, we could find the proportion of the total area of the bars that is shaded red out of the combined area of all the bars. This gives us the proportion of players whose batting averages are greater than 0.280.
+
+Out of the 446 players listed, there are a total of 133 players with batting averages over 0.280. This suggests that the proportion of players whose batting average exceeds 0.280 is:
+
+$$\displaystyle{\frac{133}{446}} = 0.298$$
+
+Alternatively, we can use the fact that the data follow a bell-shaped distribution to find the probability that a player has a batting average above 0.280.
+
+![](../Images/L03_A06_R03.jpg)
+
+## Probability Rules for Continuous Distributions
+
 The principles are roughly the same as for discrete events.  
 
 

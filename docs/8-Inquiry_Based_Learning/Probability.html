@@ -467,7 +467,11 @@ window.Quarto = {
   <li><a href="#fundamental-rules-for-discrete-events" id="toc-fundamental-rules-for-discrete-events" class="nav-link" data-scroll-target="#fundamental-rules-for-discrete-events">Fundamental Rules for Discrete Events</a></li>
   <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
   </ul></li>
-  <li><a href="#continuous-probability-distributions" id="toc-continuous-probability-distributions" class="nav-link" data-scroll-target="#continuous-probability-distributions">Continuous Probability Distributions</a></li>
+  <li><a href="#continuous-probability-distributions" id="toc-continuous-probability-distributions" class="nav-link" data-scroll-target="#continuous-probability-distributions">Continuous Probability Distributions</a>
+  <ul class="collapse">
+  <li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link" data-scroll-target="#the-normal-distribution">The Normal Distribution</a></li>
+  <li><a href="#probability-rules-for-continuous-distributions" id="toc-probability-rules-for-continuous-distributions" class="nav-link" data-scroll-target="#probability-rules-for-continuous-distributions">Probability Rules for Continuous Distributions</a></li>
+  </ul></li>
   <li><a href="#key-probability-distributions" id="toc-key-probability-distributions" class="nav-link" data-scroll-target="#key-probability-distributions">Key Probability Distributions</a></li>
   </ul>
 </nav>
@@ -558,6 +562,20 @@ P(\text{not } E) = 1 - P(E)
 <p>Continuous probability distributions describe how probabilities are spread over all possible outcomes. Because there are technically an infinite number of possible outcomes on a continuous scale, the probability of any specific event is zero. Weird, right?</p>
 <p>In continuous cases, it doesn’t make sense to calculate the probability of exactly an event, <span class="math inline">\(E\)</span>. It makes more sense to think of probabilities in relation to specified values. For example, what’s the probability that a person is shorter then 72.1254 inches. Or what’s the probability of randomly selecting a person who makes MORE than $182,000 a year.</p>
 <p>The Calculus is required to calculate probabilities for continuous probability distributions. Fortunately, you do <em>NOT</em> need to know any calculus for this class because computers will perform all the calculations for us. However, it is important to understand a few basic principles for continuous probability distributions.</p>
+<section id="the-normal-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="the-normal-distribution">The Normal Distribution</h2>
+<p>We will use the <strong>Normal Distribution</strong> to illustrate the probability rules for continuous probability distributions. The rules apply to <em>any</em> continuous probability distribution, but the normal distribution is one of the fundamental probability distributions in statistics. We will learn more about it in future lessons. For now, we use it only to illustrate the probability rules for continuous distributions.</p>
+<p>The normal distribution is like a smooth histogram that is perfectly symmetric around the mean and has a standard deviation that determines how spread out the distribution is. Consider below a histogram of Major League Baseball batting averages:</p>
+<p><img src="../Images/Lesson_03_Activity_06_Reading_1.jpg" class="img-fluid"> The smooth line is a normal distribution superimposed onto the histogram of the data. Using our data, we can calculate percentiles by adding up</p>
+<p>Suppose we want to estimate the probability that a randomly selected player will have a batting average that is greater than 0.280. One way to do this would be to find the proportion of players in the data set who have a batting average above 0.280. We can do this by finding the number of players who fall into each of the red-colored bins below and dividing this number by the total number of players.</p>
+<p><img src="../Images/L03_A06_R02.jpg" class="img-fluid"> In other words, we could find the proportion of the total area of the bars that is shaded red out of the combined area of all the bars. This gives us the proportion of players whose batting averages are greater than 0.280.</p>
+<p>Out of the 446 players listed, there are a total of 133 players with batting averages over 0.280. This suggests that the proportion of players whose batting average exceeds 0.280 is:</p>
+<p><span class="math display">\[\displaystyle{\frac{133}{446}} = 0.298\]</span></p>
+<p>Alternatively, we can use the fact that the data follow a bell-shaped distribution to find the probability that a player has a batting average above 0.280.</p>
+<p><img src="../Images/L03_A06_R03.jpg" class="img-fluid"></p>
+</section>
+<section id="probability-rules-for-continuous-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="probability-rules-for-continuous-distributions">Probability Rules for Continuous Distributions</h2>
 <p>The principles are roughly the same as for discrete events.</p>
 <ul>
 <li><strong>1. Total Probability:</strong></li>
@@ -586,6 +604,7 @@ P(\text{not in } [a, b]) = 1 - P(a \leq X \leq b)
 \]</span> <img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Prob_Outside_Range.png" class="img-fluid"></p></li>
 </ul>
 <hr>
+</section>
 </section>
 <section id="key-probability-distributions" class="level1">
 <h1>Key Probability Distributions</h1>

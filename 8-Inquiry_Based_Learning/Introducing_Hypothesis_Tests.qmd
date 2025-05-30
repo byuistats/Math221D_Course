@@ -12,12 +12,12 @@ In this lesson, we explore the components of statistical hypothesis testing in a
 
 Lesson Objectives:  
 
-  1. Understand what the null hypothesis, $H_0$, is and why we use it  
-  2. Understand what the alternative hypothesis, $H_a$, is  
-  3. Understand the concept of a test statistic as a "signal-to-noise" ratio  
-    * Understand what is meant by "signal"  
-    * Understand what is meant by "noise"  
-  4. Understand the concept of a p-value  
+  1. Explain what the null hypothesis, $H_0$, is and why we use it  
+  2. Explain what the alternative hypothesis, $H_a$, is  
+  3. Explain the concept of a test statistic as a "signal-to-noise" ratio  
+    * Explain what is meant by "signal"  
+    * Explain what is meant by "noise"  
+  4. Explain the concept of a p-value  
   
   
 # Hypothesis Testing

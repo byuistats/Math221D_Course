@@ -502,7 +502,6 @@ window.Quarto = {
   </ul></li>
   <li><a href="#normal-probability-computations" id="toc-normal-probability-computations" class="nav-link" data-scroll-target="#normal-probability-computations">Normal Probability Computations</a>
   <ul class="collapse">
-  <li><a href="#introduction-to-the-normal-probability-applet" id="toc-introduction-to-the-normal-probability-applet" class="nav-link" data-scroll-target="#introduction-to-the-normal-probability-applet">Introduction to the Normal Probability Applet</a></li>
   <li><a href="#converting-a-z-score-to-a-probability" id="toc-converting-a-z-score-to-a-probability" class="nav-link" data-scroll-target="#converting-a-z-score-to-a-probability">Converting a <span class="math inline">\(z\)</span>-score to a Probability</a></li>
   <li><a href="#finding-the-probability-of-being-between-two-values" id="toc-finding-the-probability-of-being-between-two-values" class="nav-link" data-scroll-target="#finding-the-probability-of-being-between-two-values">Finding the Probability of Being Between Two Values</a></li>
   <li><a href="#calculating-percentiles-using-a-normal-distribution" id="toc-calculating-percentiles-using-a-normal-distribution" class="nav-link" data-scroll-target="#calculating-percentiles-using-a-normal-distribution">Calculating Percentiles using a Normal Distribution</a></li>
@@ -683,27 +682,9 @@ Show/Hide Solution
 <h2 class="anchored" data-anchor-id="normal-probability-computations">Normal Probability Computations</h2>
 <p>A <span class="math inline">\(z\)</span> score has what is called a <strong>Standard Normal Distribution</strong>. This is a special normal distribution with a mean, <span class="math inline">\(\mu=0\)</span>, and a standard deviation, <span class="math inline">\(\sigma=1\)</span>.</p>
 <p>This makes it possible to take any normal distribution and <em>standardize</em> it by subtracting out the population mean and dividing by the standard deviation. Whether we’re talking about heights, reaction times, big toe lengths, or nano-meters we can use the standard normal distribution to calculate probabilities by first calculating a z-score.</p>
-<section id="introduction-to-the-normal-probability-applet" class="level3">
-<h3 class="anchored" data-anchor-id="introduction-to-the-normal-probability-applet">Introduction to the Normal Probability Applet</h3>
-<p>The Normal Probability Applet is a visualization program offering statistics students insights and computations for the relationship between <span class="math inline">\(z\)</span>-scores and areas under the standard normal curve. You can find a link to this applet <a href="https://byuimath.com/apps/normprob.html">here</a>. This app is also compatible to use on your phone, iPad, and other mobile devices. The app is stored at . If you want a copy you can open from your desktop, just right click the link and save it to your computer.</p>
-<p>To use this applet, follow these instructions:</p>
-<ul>
-<li>Click on an area below the curved line to shade/unshade the region.</li>
-<li>Click and drag the red lines to adjust the <span class="math inline">\(z\)</span>-scores and obtain the area.</li>
-<li>Type a <span class="math inline">\(z\)</span>-score into one of the bottom input boxes and hit “Enter” to get an area.</li>
-<li>Type in an area and hit “Enter” to get a <span class="math inline">\(z\)</span>-score.</li>
-</ul>
-<center>
-<div class="iframe-container" width="90%">
-<iframe src="https://byuimath.com/apps/normprob.html?width=600&amp;z=1&amp;height=400&amp;left=1&amp;mid=0&amp;right=1&amp;area=a&amp;static=0&amp;title=1&amp;border=0" frameborder="0" width="650" height="450" data-external="1">
-</iframe>
-</div>
-</center>
-</section>
 <section id="converting-a-z-score-to-a-probability" class="level3">
 <h3 class="anchored" data-anchor-id="converting-a-z-score-to-a-probability">Converting a <span class="math inline">\(z\)</span>-score to a Probability</h3>
-<p>Using this applet we can calculate probabilities based on the area under the normal curve. For the following examples, please open the <a href="https://byuimath.com/apps/normprob.html" target="_blank">Normal Probability Applet</a> and practice using it to find areas under the curve.</p>
-<p>The Normal Probability Applet is nice for visualizing areas under the curve. However, it has significant limitations. In this class, we will use R to do the heavy lifting. The pnorm(x, <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>) function calculates areas under the curve the normal distribution with mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>, for a given x.</p>
+<p>In this class, we will use R to do the heavy lifting. The pnorm(x, <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>) function calculates areas under the curve the normal distribution with mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>, for a given x.</p>
 <p>The <code>p</code> in <code>pnorm()</code> stands for probability and <code>norm</code> obviously stands for the normal distribution.</p>
 <p>By default, <code>pnorm()</code> gives the area of the curve to the <em>LEFT</em> of the value, <span class="math inline">\(x\)</span>, for a normal distribution with a mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>.</p>
 <p>We can calculate probabilities directly in the original units of the data, or use the z-score with a <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma=1\)</span>: <code>pnorm(z)</code>.</p>
@@ -720,14 +701,21 @@ Show/Hide Solution
 <pre><code>[1] 0.9793746</code></pre>
 </div>
 </div>
-<center>
-<div width="90%">
-<div class="iframe-container" width="90%">
-<iframe src="https://byuimath.com/apps/normprob.html?width=600&amp;z=2.041&amp;height=400&amp;left=1&amp;mid=1&amp;right=0&amp;area=a&amp;static=1&amp;title=1&amp;border=0" frameborder="0" width="650" height="450" data-external="1">
-</iframe>
+<p>We can use the <code>mosaic</code> library to visualize the areas under the normal distribution:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">xpnorm</span>(<span class="fl">169.0</span>, <span class="at">mean =</span> <span class="fl">159.0</span>, <span class="at">sd =</span> <span class="fl">4.9</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="The_Normal_Distribution_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-</center>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9793655</code></pre>
+</div>
+</div>
 <p><strong>NOTE</strong>: The area to the left of our chosen <span class="math inline">\(z\)</span>-score is also the probability that a randomly selected woman will be shorter than Serwa. The probability that a randomly selected Ghanaian woman will be shorter than Serwa is <span class="math inline">\(0.979\)</span>, or <span class="math inline">\(97.9\%\)</span>.</p>
 </section>
 <section id="baseball-averages" class="level4">
@@ -735,41 +723,52 @@ Show/Hide Solution
 <p>We now return to the example of the baseball batting averages. We want to find the probability that a randomly selected player will have a batting average that is <em>above</em> 0.280. The population mean is 0.261 and the population standard deviation is 0.034. We can use this information to find a <span class="math inline">\(z\)</span>-score. Then we use the applet to find the area under the normal curve to the right of this <span class="math inline">\(z\)</span>-score.</p>
 <p><span class="math display">\[z = \frac{x -\mu}{\sigma} = \frac{0.280 - 0.261}{0.034} = 0.559\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.280</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">0.261</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.034</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu)<span class="sc">/</span>sigma</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the LEFT:</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.280</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">0.261</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.034</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu)<span class="sc">/</span>sigma</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the LEFT:</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7118589</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Equivilantly:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Equivilantly:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7118589</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the RIGHT</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Area to the RIGHT</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(x, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2881411</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2881411</code></pre>
 </div>
 </div>
-<p>Using the Applet, type the <span class="math inline">\(z\)</span>-score of <span class="math inline">\(0.559\)</span> in one of the boxes below the horizontal axis in the applet. Click on the areas under the curve until only the region on the right is highlighted in blue.</p>
-<p><img src="../Images/Batting_average_z-score.PNG" class="img-fluid"></p>
-<p>The area under the curve to the right of <span class="math inline">\(z = 0.559\)</span> is <span class="math inline">\(0.288\)</span>. This is the probability that a randomly selected player will have a batting average that is greater than 0.280. (Note: It is a coincidence that the area, 0.288, is close to the batting average of 0.280. There is no significance in this.)</p>
+<p>Using the <code>xpnorm()</code> in the mosaic library, type the <span class="math inline">\(z\)</span>-score of <span class="math inline">\(0.559\)</span>. Click on the areas under the curve until only the region on the right is highlighted in purple.</p>
+<p>To get <code>xpnorm()</code> to give the Right Tail probability, you need to specify <code>lower.tail=FALSE</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">xpnorm</span>(<span class="fl">0.559</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="The_Normal_Distribution_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2880809</code></pre>
+</div>
+</div>
+<p>The area under the curve to the right of <span class="math inline">\(z = 0.559\)</span> is <span class="math inline">\(0.2881\)</span>. This is the probability that a randomly selected player will have a batting average that is greater than 0.280. (Note: It is a coincidence that the area, 0.288, is close to the batting average of 0.280. There is no significance in this.)</p>
 </section>
 </section>
 <section id="finding-the-probability-of-being-between-two-values" class="level3">
 <h3 class="anchored" data-anchor-id="finding-the-probability-of-being-between-two-values">Finding the Probability of Being Between Two Values</h3>
-<p>The normal probability applet allows us to find the probability of being between two values as long as they are on opposite sides of the mean and equally distanced from the mean. By calculating two z-scores, one for each value, and then shading the area between them on the applet, we can find the probability. This is severely limiting.</p>
-<p>Below, we demonstrate how to find the area between <em>any</em> two values in a normal distribution.</p>
 <section id="heights-of-ghanaian-women-1" class="level4">
 <h4 class="anchored" data-anchor-id="heights-of-ghanaian-women-1">Heights of Ghanaian Women</h4>
 <p>What is the probability that a randomly selected young Ghanaian women will be between 150.0 cm and 163.0 cm tall? Recall that the average height for young Ghanaian women is <span class="math inline">\(\mu=159.0\)</span> cm and the population standard deviation is <span class="math inline">\(\sigma=4.9\)</span> cm.</p>
@@ -778,19 +777,21 @@ Show/Hide Solution
 <p>We now answer the question by finding the area under the normal density curve (i.e.&nbsp;the probability) to the left of <span class="math inline">\(z = 1.22\)</span> which is <span class="math inline">\(0.8888\)</span> and also the area under the normal density curve to the left of <span class="math inline">\(z = -1.837\)</span> which is <span class="math inline">\(0.033\)</span>. To find the area between <span class="math inline">\(z = 1.22\)</span> and <span class="math inline">\(z = -1.837\)</span>, we subtract the smaller area from the larger.</p>
 <p><span class="math display">\[0.8888 - 0.0331 = 0.8557\]</span></p>
 <p>So the probability that the height of a randomly selected young Ghanaian woman will be between 150.0 cm and 165.0 cm is <span class="math inline">\(0.8558\)</span>. This is the same as the proportion of all young Ghanaian women who are between 150.0 and 165.0 cm tall.</p>
+<p>We can easily get <code>mosaic::xpnorm()</code> to provide this for us automatically by providing a list of values between which we would like to calculate the area under the curve.</p>
 <p>To find the probability of being between <em>any</em> 2 numbers for a normal distribution with mean, <span class="math inline">\(\mu\)</span>, and standard deviation, <span class="math inline">\(\sigma\)</span>, we can use the following R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>value1 <span class="ot">&lt;-</span> <span class="dv">150</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>value2 <span class="ot">&lt;-</span> <span class="dv">165</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">159</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="fl">4.9</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(value2, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma) <span class="sc">-</span> <span class="fu">pnorm</span>(value1, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">xpnorm</span>(<span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">165</span>), <span class="at">mean =</span> <span class="dv">159</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="The_Normal_Distribution_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8564917</code></pre>
+<pre><code>[1] 0.03312454 0.88961624</code></pre>
 </div>
 </div>
-<p><strong>NOTE</strong>: Value 1 is the lower of the two values and Value 2 is the higher value. Also, this answer is slightly different than above due to when you round. This answer is more accurate because we rounded at the end of the probability calculations rather than rounding the z-scores, then calculating probabilities.</p>
 </section>
 </section>
 <section id="calculating-percentiles-using-a-normal-distribution" class="level3">
@@ -801,13 +802,26 @@ Show/Hide Solution
 <p><strong>NOTE</strong>: R typically uses the word <em>quantile</em> when referring to <em>percentiles</em>. So the <span class="math inline">\(q\)</span> in <code>qnorm()</code> stands for <em>quantile</em>.</p>
 <p>To find the <em>height</em> of a Ghanaian woman corresponding to the 90<sup>th</sup> percentile:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">90</span>, <span class="at">mean =</span> <span class="dv">159</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">90</span>, <span class="at">mean =</span> <span class="dv">159</span>, <span class="at">sd =</span> <span class="fl">4.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 165.2796</code></pre>
 </div>
 </div>
 <p>The 90<sup>th</sup> percentile of the heights averages is 165.2796. That means that 90% of the Ghanaian women are shorter than 165.2796 cm tall.</p>
-<p><br></p>
+<p>We can also use <code>xqnorm()</code> in the mosaic library to visualize:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mosaic<span class="sc">::</span><span class="fu">xqnorm</span>(.<span class="dv">9</span>, <span class="at">mean=</span><span class="dv">159</span>, <span class="at">sd=</span><span class="fl">4.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="The_Normal_Distribution_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 165.2796</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="summary" class="level2">
