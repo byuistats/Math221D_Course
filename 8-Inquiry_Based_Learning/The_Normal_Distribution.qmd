@@ -224,7 +224,7 @@ __NOTE__: The area to the left of our chosen $z$-score is also the probability t
 
 #### Baseball Averages
 
-We now return to the example of the baseball batting averages. We want to find the probability that a randomly selected player will have a batting average that is *above* 0.280. The population mean is 0.261 and the population standard deviation is 0.034. We can use this information to find a $z$-score. Then we use the applet to find the area under the normal curve to the right of this $z$-score.
+We now return to the example of the baseball batting averages. We want to find the probability that a randomly selected player will have a batting average that is *above* 0.280. The population mean is 0.261 and the population standard deviation is 0.034. We can use this information to find a $z$-score. Then we use the `1-pnorm()` to find the area under the normal curve to the right of this $z$-score.
 
 $$z = \frac{x -\mu}{\sigma} = \frac{0.280 - 0.261}{0.034} = 0.559$$
 
