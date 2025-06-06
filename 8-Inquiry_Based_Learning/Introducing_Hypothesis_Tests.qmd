@@ -270,7 +270,7 @@ pnorm(z)
 
 __Conclusion__:  If the true population mean was 12 inches, there is a 4.95% chance of obtaining a sample mean of 11.82 hours or less for a sample size of 21. 
 
-At this point we have to make a decision.  Is that probability small enough to reject the null hypothesis in favor the alternative?  Are foot-long sandwich is LESS than 12 inches on average?  
+At this point we have to make a decision.  Is that probability small enough to reject the null hypothesis in favor the alternative?  Are foot-long sandwiches LESS than 12 inches on average?  
 
 When the P-value is very small, we have strong evidence to reject the null hypothesis.  But how small is small enough?  
 

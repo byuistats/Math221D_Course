@@ -151,8 +151,9 @@ Notice that we all have different samples and so we have different sample statis
 Click on [this link](https://docs.google.com/spreadsheets/d/1fYOYQfz4DTJyrn5UVIVes6bHD1J0DfcenwqqY9aMIRs/edit?usp=sharing) to add your sample statistics for __bill_depth_mm__ to the Google Sheet.  
 
 ```{r}
-
-
+library(googlesheets4)
+gs4_auth()
+class_samps <- read_sheet('https://docs.google.com/spreadsheets/d/1fYOYQfz4DTJyrn5UVIVes6bHD1J0DfcenwqqY9aMIRs/edit?usp=sharing')
 
 ```
 
@@ -202,35 +203,47 @@ I created a simulation that will sample a given sample size from the population 
 # Create a function for running B simulations of a given sample size, N.    
 
 favstats_simulation <- function(n_samples=500, sample_size=30){
+  
+  # Define Summary Stats Function (favstats() replacement)
+  favstats2 <- function(penguins_data){
+    pop_params <- penguins_data %>%
+    summarise(
+      Mean = mean(bill_depth_mm, na.rm=TRUE),
+      Median = median(bill_depth_mm, na.rm=TRUE),
+      SD = sd(bill_depth_mm, na.rm=TRUE),
+      Prop_Male = mean(sex=="male", na.rm=TRUE)
+    )
+    return(pop_params)
+  }
+  
   # Read in the entire population dataset:  
   penguins_population <- read_csv('https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/penguins.csv') 
   
   # Calculate the Population Parameters:  
-  pop_params <- favstats(penguins_population$bill_depth_mm)
+  #pop_params <- favstats(penguins_population$bill_depth_mm)
+  pop_params <- favstats2(penguins_population)
+    
   parms <- tibble(pop_params) %>%
-      select(mean, median, sd) %>%
-      pivot_longer(cols = c(mean, median, sd), names_to = "Summary_Statistic", values_to = "Value") 
+      pivot_longer(cols = c(1:4), names_to = "Summary_Statistic", values_to = "Value") 
   
   favs <- NULL
 
   for(i in 1:n_samples){
     penguins_samp <- penguins_population %>% sample(sample_size)
-    favs <- tibble(rbind(favs,favstats(penguins_samp$bill_depth_mm)))
+    favs <- tibble(rbind(favs,favstats2(penguins_samp)))
   }
 
     long_dat <- favs %>%
-      select(mean, median, sd) %>%
-      pivot_longer(cols = c(mean, median, sd), names_to = "Summary_Statistic", values_to = "Value") 
+      pivot_longer(cols = c(1:4), names_to = "Summary_Statistic", values_to = "Value") 
     
-  p <- ggplot(long_dat, aes(x=Value)) 
-  p +
+  p <- ggplot(long_dat, aes(x=Value)) +
     geom_histogram(bins=20, fill="gray") +
     geom_vline(data = parms, aes(xintercept = Value), color="red", linetype=2) + 
-    facet_grid(~Summary_Statistic, scales="free") +
+    facet_grid(~factor(Summary_Statistic, levels = c("Mean", "Median", "SD", "Prop_Male")), scales="free") +
     theme_bw()
     
-  results <- rbind(pop_params,apply(favs, 2, mean)); row.names(results) <- c("Population Parameter", "Mean of Sample Stat")
-  return(results[,c("median", "mean", "sd")])
+  results <- data.frame(rbind(pop_params, apply(favs, 2, mean))); row.names(results) <- c("Population Parameter", "Mean of Sample Stat")
+  return(list(p, results))
   
 }
 ```
@@ -246,7 +259,7 @@ favstats_simulation(n_samples=1000, sample_size = 30)
 
 
 # Try a bigger sample size:  
-favstats_simulation(n_samples=1000, sample_size = 100)
+favstats_simulation(n_samples=1000, sample_size = 101)
 
 
 
