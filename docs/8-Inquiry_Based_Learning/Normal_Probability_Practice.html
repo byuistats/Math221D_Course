@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Simple Linear Regression – Math221D Notebook</title>
+<title>Normal Probability Practice – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -494,19 +494,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#review" id="toc-review" class="nav-link active" data-scroll-target="#review">Review</a></li>
-  <li><a href="#linear-regression-equation" id="toc-linear-regression-equation" class="nav-link" data-scroll-target="#linear-regression-equation">Linear Regression Equation</a></li>
-  <li><a href="#in-r" id="toc-in-r" class="nav-link" data-scroll-target="#in-r">In R</a>
+  <li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link active" data-scroll-target="#the-normal-distribution">The Normal Distribution</a></li>
+  <li><a href="#normal-probability-calculator" id="toc-normal-probability-calculator" class="nav-link" data-scroll-target="#normal-probability-calculator">Normal Probability Calculator</a>
   <ul class="collapse">
-  <li><a href="#plotting-the-regression-line" id="toc-plotting-the-regression-line" class="nav-link" data-scroll-target="#plotting-the-regression-line">Plotting the Regression Line</a>
-  <ul class="collapse">
-  <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r">Base R</a></li>
+  <li><a href="#brisket-competition" id="toc-brisket-competition" class="nav-link" data-scroll-target="#brisket-competition">Brisket Competition</a></li>
+  <li><a href="#prbability-of-a-false-start" id="toc-prbability-of-a-false-start" class="nav-link" data-scroll-target="#prbability-of-a-false-start">Prbability of a “False Start”</a></li>
   </ul></li>
-  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot">GGPlot</a></li>
-  <li><a href="#hypothesis-testing-for-regression" id="toc-hypothesis-testing-for-regression" class="nav-link" data-scroll-target="#hypothesis-testing-for-regression">Hypothesis Testing for Regression</a></li>
-  <li><a href="#regression-requirements-is-our-p-value-sus" id="toc-regression-requirements-is-our-p-value-sus" class="nav-link" data-scroll-target="#regression-requirements-is-our-p-value-sus">Regression Requirements (Is our P-value sus?)</a></li>
-  </ul></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a></li>
+  <li><a href="#law-school-admissions-test-lsat" id="toc-law-school-admissions-test-lsat" class="nav-link" data-scroll-target="#law-school-admissions-test-lsat">Law School Admissions Test (LSAT)</a></li>
   </ul>
 </nav>
     </div>
@@ -515,7 +509,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Simple Linear Regression</h1>
+<h1 class="title">Normal Probability Practice</h1>
 </div>
 
 
@@ -532,312 +526,95 @@ window.Quarto = {
 </header>
 
 
-<section id="review" class="level1">
-<h1>Review</h1>
-<p>Consider the relationship between Score on a math exam and a student’s self-reported Confidence Rating.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>math <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://byuistats.github.io/BYUI_M221_Book/Data/MathSelfEfficacy.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Question</strong>: What is the explanatory (aka independent) variable, <span class="math inline">\(x\)</span>?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the response (aka the dependent) variable, <span class="math inline">\(y\)</span>?<br>
-<strong>Answer</strong>:</p>
-<p>Plot the relationship:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x =</span> ConfidenceRatingMean, <span class="at">y =</span> Score )) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship between Student Confidence Rating in Math and Test Score"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Question</strong>: Does the relationship appear linear?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the direction of the relationship? <strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What do you think is the strength of the relationship? (Strong/Moderate/Weak) <strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the correlation coefficient, r? <strong>Answer</strong>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7278648</code></pre>
-</div>
-</div>
+<section id="the-normal-distribution" class="level1">
+<h1>The Normal Distribution</h1>
+<p>Recall that the normal distribution is a probability distribution defined by its center (<span class="math inline">\(\mu\)</span>) and its spread (<span class="math inline">\(\sigma\)</span>).</p>
 </section>
-<section id="linear-regression-equation" class="level1">
-<h1>Linear Regression Equation</h1>
-<p>Recall that the correlation coefficient, <span class="math inline">\(r\)</span>, tells us something about the direction and strength of a <strong>linear</strong> relationship.</p>
-<p>Linear Regression allows us to find a functional relationship between X and Y:</p>
-<p><span class="math display">\[y = \beta_0 + \beta_1x_1 +\epsilon\]</span></p>
-<p>This is a reframing of the familiar <span class="math inline">\(y=mx+b\)</span> but we change the intercept and the slope to be Greek letters signifying <em>population parameters</em>. We also add a very important term, <span class="math inline">\(\epsilon\)</span>, which signifies the “error” around the line. Our estimate of error, <span class="math inline">\(\epsilon\)</span>, will be critical to assessing the usefulness of our model.</p>
-<p>We can estimate the slope and intercept of the line that “best fits” the data and use that line to make predictions.</p>
-<p><strong>NOTE</strong>: As before, Greek letters signify population parameters in statistics while Latin letters are often used for sample statistics. We estimate <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> with <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> respectively. This leads to an equation for predicted values:</p>
-<p><span class="math display">\[\hat{y}=b_0+b_1x_1\]</span> where <span class="math inline">\(\hat{y}\)</span> signifies a predicted value for <span class="math inline">\(y\)</span> for a given <span class="math inline">\(x\)</span>.</p>
+<section id="normal-probability-calculator" class="level1">
+<h1>Normal Probability Calculator</h1>
+<p>The code below can serve as a template for any calculations involving the normal distribution. Feel free to copy and paste this into the subsequent code chunks.</p>
+<p><strong>NOTE</strong>: R saves any objects that are named. This means that if you run <code>mu &lt;- 12</code>, R keeps track of <code>mu</code> until you change it. When doing multiple problems that all use <code>mu</code>, be sure to run the whole code chunk, which will overwrite the names from previous examples.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Value</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Population Mean</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Population Standard deviation</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Z-score:  number of standard deviations above the mean</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x<span class="sc">-</span>mu) <span class="sc">/</span> sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'x' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'z' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of observing a z-score LESS THAN the one we observed (left tail)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'z' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of observing a z-score GREATER THAN the one we observed (Right Tail)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'z' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For calculating the area between 2 numbers</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(B, mu, sigma) <span class="sc">-</span> <span class="fu">pnorm</span>(A, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'B' not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the X_bar associated with a spceific percentile</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(.<span class="dv">25</span>, mu, sigma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'mu' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try it with Mosaic library</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xpnorm</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in xpnorm(): argument "q" is missing, with no default</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xqnorm</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in xqnorm(): argument "p" is missing, with no default</code></pre>
+</div>
+</div>
+<section id="brisket-competition" class="level2">
+<h2 class="anchored" data-anchor-id="brisket-competition">Brisket Competition</h2>
+<p>Competition was tight at a Saint Louis BBQ competition. Brisket scores were normally distributed with an average score of 5.941 with a standard deviation of 0.04.</p>
+<p><strong>Question</strong>: What’s the probability of getting a score GREATER than 6?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What’s the probability of getting a score LESS than 4?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the 99th percentile of this Brisket Competition?<br>
+<strong>Answer</strong>:</p>
 </section>
-<section id="in-r" class="level1">
-<h1>In R</h1>
-<p>Recall that when we had a quantitative response variable and a categorical explanatory variable we could use the <code>t.test()</code> if the categorical variable had 2 levels or the <code>aov()</code> function if the categorical variable had multiple levels. We used the same notation for both:<br>
-<br> <code>t.test(y ~ x, data = dat)</code> and <code>aov(y ~ x, data = dat)</code> <br></p>
-<p>The <code>aov()</code> function output wasn’t as useful as the <code>t.test()</code> by itself, so we typically assigned a name to the <code>aov()</code> output then used <code>summarize()</code> to get the test statistic and p-value. We could also extract “residuals”.</p>
-<p>The same paradigm works for estimating the linear relationship between 2 quantitative variables, but we need to introduce a new function: <code>lm()</code>. The ‘lm’ stands for “linear model”. The relationship notation remains the same:<br>
-<br> <code>lm(y ~ x, data = dat)</code> <br></p>
-<p>except <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are both quantitative. Just like with <code>aov()</code> the <code>lm()</code> output by itself doesn’t give us test statistics and p-values. We will also use the <code>summarize()</code> function to get our test statistics.</p>
-<p>Let’s fit a linear model estimating the slope and intercept of the line that best fits the relationship between Confidence Rating and Test Score:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>math_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(math_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Score ~ ConfidenceRatingMean, data = math)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--38.200  -6.163   1.292   7.567  23.422 
-
-Coefficients:
-                     Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)            18.690      4.610   4.054  8.4e-05 ***
-ConfidenceRatingMean   12.695      1.022  12.424  &lt; 2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 11.27 on 137 degrees of freedom
-Multiple R-squared:  0.5298,    Adjusted R-squared:  0.5264 
-F-statistic: 154.4 on 1 and 137 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(math_lm, <span class="at">level =</span> .<span class="dv">92</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                          4 %     96 %
-(Intercept)          10.55863 26.82150
-ConfidenceRatingMean 10.89262 14.49703</code></pre>
-</div>
-</div>
-<p>The <code>lm()</code> output includes only the slope and the intercept.</p>
-<p><strong>Question</strong>: How do we interpret the intercept of 18.69?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: How do we interpret the slope of 12.69 in context?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the expected score on a test of someone who ranks themselves 5 in confidence?<br>
-<strong>Answer</strong>:</p>
-<section id="plotting-the-regression-line" class="level2">
-<h2 class="anchored" data-anchor-id="plotting-the-regression-line">Plotting the Regression Line</h2>
-<section id="base-r" class="level3">
-<h3 class="anchored" data-anchor-id="base-r">Base R</h3>
-<p>Scatter plots by themselves are nice, but we would also like to see the regression line. Simple graphics in R can be augmented by using some functions. The <code>abline()</code> function in base R, when executed right after a graphing function can add lines. We’ve used this to add vertical lines and horizontal line already in class. We can also use this function to add a regression line. We simply insert our linear model output into the <code>abline()</code> function as follows:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(math_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Just as with the other plotting functions we’ve used, we can change the color, type and width of the line:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">main =</span> <span class="st">"Title"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(math_lm, <span class="at">col =</span> <span class="st">"purple"</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="prbability-of-a-false-start" class="level2">
+<h2 class="anchored" data-anchor-id="prbability-of-a-false-start">Prbability of a “False Start”</h2>
+<p>“At high level meets, the time between the gun and first kick against the starting block is measured electronically, via sensors built in the gun and the blocks. A reaction time less than 0.1 s is considered a false start. The 0.2-second interval accounts for the sum of the time it takes for the sound of the starter’s pistol to reach the runners’ ears, and the time they take to react to it.” (https://en.wikipedia.org/wiki/100_metres) Let’s suppose that reaction times are normally distributed with a mean of 0.2 seconds and a standard deviation of 0.03.</p>
+<p>What’s the probability of a false start? (meaning a reaction time LESS than 0.1)</p>
 </section>
 </section>
-<section id="ggplot" class="level2">
-<h2 class="anchored" data-anchor-id="ggplot">GGPlot</h2>
-<p>Using <code>ggplot()</code>, we can simply add a <code>geom_smooth()</code> geometry and specify the method of “smoothing” as a linear model:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x =</span> ConfidenceRatingMean, <span class="at">y =</span> Score )) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship between Student Confidence Rating in Math and Test Score"</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>By default, this gives us a confidence interval for the slope of the regression line. We can turn that off by forcing the “standard error” to be <code>FALSE</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x =</span> ConfidenceRatingMean, <span class="at">y =</span> Score )) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship between Student Confidence Rating in Math and Test Score"</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="hypothesis-testing-for-regression" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-testing-for-regression">Hypothesis Testing for Regression</h2>
-<p>A linear equation has 2 parameters: Slope and Intercept. In most situations, the intercept isn’t very interesting by itself and is often absurd. We are most often only interested in the slope</p>
-<p><span class="math display">\[H_o: \beta_1 = 0\]</span> <span class="math display">\[H_a: \beta_1 \neq 0\]</span></p>
-<p>These are the same for all simple linear regression questions.</p>
-<p>To get the p-value and test statistics, we use the <code>summary()</code> function as we did with aov:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(math_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Score ~ ConfidenceRatingMean, data = math)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--38.200  -6.163   1.292   7.567  23.422 
-
-Coefficients:
-                     Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)            18.690      4.610   4.054  8.4e-05 ***
-ConfidenceRatingMean   12.695      1.022  12.424  &lt; 2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 11.27 on 137 degrees of freedom
-Multiple R-squared:  0.5298,    Adjusted R-squared:  0.5264 
-F-statistic: 154.4 on 1 and 137 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-</div>
-<p>We can also calculate confidence intervals for the slope by using the <code>confint()</code> function. This function requires you to tell it which model to extract a confidence intervals from. You can specify which parameter you’re interested in, and the level of confidence:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># input the model into the following function:</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(math_lm, <span class="at">level =</span> .<span class="dv">95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                         2.5 %   97.5 %
-(Intercept)           9.573588 27.80654
-ConfidenceRatingMean 10.674297 14.71535</code></pre>
-</div>
-</div>
-<p>How do we interpret this confidence interval for a slope?</p>
-<p>Technically correct: 95% Confident that the true population slope is within (10.674297, 14.71535)</p>
-<p>Contextual Explanation: For every 1 unit increase in Confidence Rating, test scores go up by between (10.674297, 14.71535) on average.</p>
-</section>
-<section id="regression-requirements-is-our-p-value-sus" class="level2">
-<h2 class="anchored" data-anchor-id="regression-requirements-is-our-p-value-sus">Regression Requirements (Is our P-value sus?)</h2>
-<p>There are certain requirements for all statistical tests to be valid. For means, we needed to make sure that the Central Limit Theorem applies. This means that we had a large enough sample size (N&gt;30) or that the population itself was normally distributed.</p>
-<p>For ANOVA, we had to check that the residuals were normally distributed and that the population standard deviations were the same.</p>
-<p>Regression analysis has 5 requirements to be valid. While this sounds daunting, in practice we can check most of them very quickly.</p>
-<ol type="1">
-<li>Relationship between X and Y is Linear</li>
-<li>The residuals, <span class="math inline">\(\epsilon\)</span>, are normally distributed</li>
-<li>The Variance of the error terms is constant for all values of X</li>
-<li>The X’s are fixed and measured without error (i.e.&nbsp;X’s can be considered as known constants)</li>
-<li>The observations are independent</li>
-</ol>
-<p>The linear relationship is assessed visually with the scatter plot. If there is obvious curvature or non-linearity then fitting a line isn’t the best model.</p>
-<p>We check the normality of the residuals with a <code>qqPlot()</code> exactly as with the <code>aov()</code> output.</p>
-<p>Recall that with ANOVA, we had to check that the variation in each group was roughly the same (largest standard deviation was less than twice as large as the smallest standard deviation). For a quantitative explanatory variable, we can’t calculate the standard deviation for a specified level of <span class="math inline">\(x\)</span> because <span class="math inline">\(x\)</span> can be any number.</p>
-<p>Constant variance in regression is checked with a new plot that looks at how the predicted values relate to the residuals. This is important because we want our predictions to be “wrong” about the same regardless of the value of the prediction. We’re looking for random scatter.</p>
-<p>Requirement 4 cannot be analyzed directly. It is important because because <span class="math inline">\(x\)</span> is the independent variable. If there is uncertainty about the input, then the simple linear regression might not be the most appropriate model.</p>
-<p>Requirement 5 also cannot be analyzed, but random sampling usually satisfies this requirement.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Requirement 1:  Check for linear relationship</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x=</span>ConfidenceRatingMean, <span class="at">y =</span> Score)) <span class="sc">+</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Req 2: Normality of residuals:</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(math_lm<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 37 89</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Req 3: Constant variance (look odd patterns). When you put lm() output into the plot function it gives you several different plots. The residual plots we're most interested in are 1 and 2</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(math_lm, <span class="at">which =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-11-3.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="your-turn" class="level1">
-<h1>Your Turn</h1>
-<p>Look at the relationship between Alcohol Consumption compared to life expectancy for selected countries.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>alcohol <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/life_expectancy_vs_alcohol_consumption.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Question</strong>: What is the response variable?<br>
+<section id="law-school-admissions-test-lsat" class="level1">
+<h1>Law School Admissions Test (LSAT)</h1>
+<p>The scores on the LSAT are approximately normal with mean of 150.7 and standard deviation of 10.2. (Source: www.lsat.org.) Queen’s School of Business in Kingston, Ontario requires a minimum LSAT score of 157 for admission.</p>
+<p><strong>Question</strong>: What is the z-score for a score of 157?<br>
 <strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the explanatory variable?<br>
+<p><strong>Question</strong>: What is the probability that a randomly selected person who took the LSAT would score above 157?<br>
 <strong>Answer</strong>:</p>
-<p>Make a presentation-worthy scatterplot using <code>ggplot()</code> including a regression line:</p>
-<p><strong>Question</strong>: Describe in words the nature of the relationship between the 2 variables (direction/strength/linearity) <strong>Answer</strong>:</p>
-<p>Calculate the correlation coefficient:</p>
-<p><strong>Question</strong>: What is the the correlation coefficient, <span class="math inline">\(r\)</span>?<br>
+<p><strong>Question</strong>: What is the probability that a randomly selected test taker will have a score between 155 and 170?<br>
 <strong>Answer</strong>:</p>
-<p>Perform a linear regression analysis for the relationship between alcohol consumption and life expectancy.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save your linear model:  </span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for constant variance:  </span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the normality of the residuals  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Question</strong>: What is the slope of the regression line?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: Interpret the slope of the regression line in context of the problem:<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the intercept of the regression line?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: Interpret the intercept of the regression line in context of the problem:<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What do you conclude about the slope of the regression line?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the confidence interval for the slope?</p>
-<p><strong>Question</strong>: Give a 1-sentence interpretation of the confidence interval in context of your research question:<br>
+<p><strong>Question</strong>: What is the 97.4th percentile of LSAT scores?<br>
 <strong>Answer</strong>:</p>
 
 

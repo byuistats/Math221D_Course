@@ -108,6 +108,8 @@ website:
         - href: ./8-Inquiry_Based_Learning/Assessing_Normality.qmd
         - href: ./8-Inquiry_Based_Learning/Introducing_Hypothesis_Tests.qmd
         - href: ./8-Inquiry_Based_Learning/Statistical_Significance.qmd
+        - href: ./8-Inquiry_Based_Learning/Linear_Regression_Intro.qmd
+
 
     - text: "R Help"
       menu:

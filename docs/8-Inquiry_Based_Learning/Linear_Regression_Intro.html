@@ -553,7 +553,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Linear_Regression_Intro_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -566,7 +566,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Linear_Regression_Intro_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -595,13 +595,17 @@ window.Quarto = {
 </section>
 <section id="in-r" class="level1">
 <h1>In R</h1>
-<p>Recall that when we had a quantitative response variable and a categorical explanatory variable we could use the <code>t.test()</code> if the categorical variable had 2 levels or the <code>aov()</code> function if the categorical variable had multiple levels. We used the same notation for both:<br>
-<br> <code>t.test(y ~ x, data = dat)</code> and <code>aov(y ~ x, data = dat)</code> <br></p>
-<p>The <code>aov()</code> function output wasn’t as useful as the <code>t.test()</code> by itself, so we typically assigned a name to the <code>aov()</code> output then used <code>summarize()</code> to get the test statistic and p-value. We could also extract “residuals”.</p>
+<p>Recall that when we had a quantitative response variable and a categorical explanatory variable we could use the <code>favstats()</code> and <code>boxplot()</code>with the general formula:</p>
+<p><br> <code>favstats(data$response_variable ~ data$explanatory_variable)</code> <code>boxplot(data$response_variable ~ data$explanatory_variable)</code> <br></p>
 <p>The same paradigm works for estimating the linear relationship between 2 quantitative variables, but we need to introduce a new function: <code>lm()</code>. The ‘lm’ stands for “linear model”. The relationship notation remains the same:<br>
-<br> <code>lm(y ~ x, data = dat)</code> <br></p>
-<p>except <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are both quantitative. Just like with <code>aov()</code> the <code>lm()</code> output by itself doesn’t give us test statistics and p-values. We will also use the <code>summarize()</code> function to get our test statistics.</p>
-<p>Let’s fit a linear model estimating the slope and intercept of the line that best fits the relationship between Confidence Rating and Test Score:</p>
+<br></p>
+<p><code>lm(data$response_variable ~ data$explanatory_variable)</code></p>
+<p>or equivalently:</p>
+<p><code>lm(response_variable ~ explanatory_variable, data = dat)</code></p>
+<p><br></p>
+<p>except <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are both quantitative. The <code>lm()</code> output by itself doesn’t give us test statistics and p-values. We will use an additional function, <code>summarize()</code>, to get the relevant information for the hypothesis test.</p>
+<p>Let’s fit a linear model estimating the slope and intercept of the line that best fits the relationship between Confidence Rating and Test Score.</p>
+<p>Start by naming the <code>lm()</code> output, then do a summary on our named object:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>math_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(math_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -637,36 +641,20 @@ ConfidenceRatingMean 10.89262 14.49703</code></pre>
 <strong>Answer</strong>:</p>
 <p><strong>Question</strong>: How do we interpret the slope of 12.69 in context?<br>
 <strong>Answer</strong>:</p>
+<p>Now that we have an estimate of the slope and the intercept, we can plug in values of <span class="math inline">\(x\)</span> into our formula, <span class="math inline">\(\hat y = b_o + b_1x = 18.69 + 12.69*x\)</span>.</p>
 <p><strong>Question</strong>: What is the expected score on a test of someone who ranks themselves 5 in confidence?<br>
 <strong>Answer</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fl">18.69</span> <span class="sc">+</span> <span class="fl">12.69</span><span class="sc">*</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 82.14</code></pre>
+</div>
+</div>
 <section id="plotting-the-regression-line" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-the-regression-line">Plotting the Regression Line</h2>
 <section id="base-r" class="level3">
 <h3 class="anchored" data-anchor-id="base-r">Base R</h3>
 <p>Scatter plots by themselves are nice, but we would also like to see the regression line. Simple graphics in R can be augmented by using some functions. The <code>abline()</code> function in base R, when executed right after a graphing function can add lines. We’ve used this to add vertical lines and horizontal line already in class. We can also use this function to add a regression line. We simply insert our linear model output into the <code>abline()</code> function as follows:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(math_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Just as with the other plotting functions we’ve used, we can change the color, type and width of the line:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">main =</span> <span class="st">"Title"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(math_lm, <span class="at">col =</span> <span class="st">"purple"</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
 </section>
 </section>
 <section id="ggplot" class="level2">
@@ -683,7 +671,7 @@ ConfidenceRatingMean 10.89262 14.49703</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Linear_Regression_Intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -700,7 +688,7 @@ ConfidenceRatingMean 10.89262 14.49703</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Linear_Regression_Intro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -708,9 +696,9 @@ ConfidenceRatingMean 10.89262 14.49703</code></pre>
 </section>
 <section id="hypothesis-testing-for-regression" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-testing-for-regression">Hypothesis Testing for Regression</h2>
-<p>A linear equation has 2 parameters: Slope and Intercept. In most situations, the intercept isn’t very interesting by itself and is often absurd. We are most often only interested in the slope</p>
+<p>A linear equation has 2 parameters: Slope and Intercept. In most situations, the intercept isn’t very interesting by itself and is often absurd. We are most often only interested in the slope:</p>
 <p><span class="math display">\[H_o: \beta_1 = 0\]</span> <span class="math display">\[H_a: \beta_1 \neq 0\]</span></p>
-<p>These are the same for all simple linear regression questions.</p>
+<p>These hypotheses are the same for all simple linear regression questions.</p>
 <p>To get the p-value and test statistics, we use the <code>summary()</code> function as we did with aov:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(math_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -751,9 +739,7 @@ ConfidenceRatingMean 10.674297 14.71535</code></pre>
 </section>
 <section id="regression-requirements-is-our-p-value-sus" class="level2">
 <h2 class="anchored" data-anchor-id="regression-requirements-is-our-p-value-sus">Regression Requirements (Is our P-value sus?)</h2>
-<p>There are certain requirements for all statistical tests to be valid. For means, we needed to make sure that the Central Limit Theorem applies. This means that we had a large enough sample size (N&gt;30) or that the population itself was normally distributed.</p>
-<p>For ANOVA, we had to check that the residuals were normally distributed and that the population standard deviations were the same.</p>
-<p>Regression analysis has 5 requirements to be valid. While this sounds daunting, in practice we can check most of them very quickly.</p>
+<p>There are certain requirements for all statistical tests to be valid. For regression analysis, we have to have 5 requirements for our statistics to be valid. While this sounds daunting, in practice we can check most of them very quickly.</p>
 <ol type="1">
 <li>Relationship between X and Y is Linear</li>
 <li>The residuals, <span class="math inline">\(\epsilon\)</span>, are normally distributed</li>
@@ -762,9 +748,8 @@ ConfidenceRatingMean 10.674297 14.71535</code></pre>
 <li>The observations are independent</li>
 </ol>
 <p>The linear relationship is assessed visually with the scatter plot. If there is obvious curvature or non-linearity then fitting a line isn’t the best model.</p>
-<p>We check the normality of the residuals with a <code>qqPlot()</code> exactly as with the <code>aov()</code> output.</p>
-<p>Recall that with ANOVA, we had to check that the variation in each group was roughly the same (largest standard deviation was less than twice as large as the smallest standard deviation). For a quantitative explanatory variable, we can’t calculate the standard deviation for a specified level of <span class="math inline">\(x\)</span> because <span class="math inline">\(x\)</span> can be any number.</p>
-<p>Constant variance in regression is checked with a new plot that looks at how the predicted values relate to the residuals. This is important because we want our predictions to be “wrong” about the same regardless of the value of the prediction. We’re looking for random scatter.</p>
+<p>We check the normality of the residuals with a <code>qqPlot(lm_output)</code>.</p>
+<p>Constant variance in regression is checked with a new plot that looks at how the predicted values relate to the residuals. This is done by: <code>plot(lm_output, which=1)</code>. This is important because we want our predictions to be “wrong” about the same regardless of the value of the prediction. We’re looking for random scatter.</p>
 <p>Requirement 4 cannot be analyzed directly. It is important because because <span class="math inline">\(x\)</span> is the independent variable. If there is uncertainty about the input, then the simple linear regression might not be the most appropriate model.</p>
 <p>Requirement 5 also cannot be analyzed, but random sampling usually satisfies this requirement.</p>
 <div class="cell">
@@ -774,7 +759,7 @@ ConfidenceRatingMean 10.674297 14.71535</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Linear_Regression_Intro_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -783,7 +768,7 @@ ConfidenceRatingMean 10.674297 14.71535</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Linear_Regression_Intro_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -796,7 +781,7 @@ ConfidenceRatingMean 10.674297 14.71535</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02-Linear_Regression_Intro_files/figure-html/unnamed-chunk-11-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Linear_Regression_Intro_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

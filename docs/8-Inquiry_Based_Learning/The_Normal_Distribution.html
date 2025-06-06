@@ -720,7 +720,7 @@ Show/Hide Solution
 </section>
 <section id="baseball-averages" class="level4">
 <h4 class="anchored" data-anchor-id="baseball-averages">Baseball Averages</h4>
-<p>We now return to the example of the baseball batting averages. We want to find the probability that a randomly selected player will have a batting average that is <em>above</em> 0.280. The population mean is 0.261 and the population standard deviation is 0.034. We can use this information to find a <span class="math inline">\(z\)</span>-score. Then we use the applet to find the area under the normal curve to the right of this <span class="math inline">\(z\)</span>-score.</p>
+<p>We now return to the example of the baseball batting averages. We want to find the probability that a randomly selected player will have a batting average that is <em>above</em> 0.280. The population mean is 0.261 and the population standard deviation is 0.034. We can use this information to find a <span class="math inline">\(z\)</span>-score. Then we use the <code>1-pnorm()</code> to find the area under the normal curve to the right of this <span class="math inline">\(z\)</span>-score.</p>
 <p><span class="math display">\[z = \frac{x -\mu}{\sigma} = \frac{0.280 - 0.261}{0.034} = 0.559\]</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">0.280</span></span>
