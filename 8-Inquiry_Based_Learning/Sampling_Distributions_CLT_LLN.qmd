@@ -152,7 +152,9 @@ For this course, if the sample size is at least 30, we will conclude that the sa
 The following facts are always true.  They do not depend on the Central Limit Theorem.  They do not depend on the sample size.  These facts hold for the sample mean $\bar x$ of any simple random sample of size $n$ drawn from a population with mean $\mu$ and standard deviation $\sigma$.
 
 - The mean of the sample means is $\mu$
-- The standard deviation of the sample means is $\sigma / \sqrt{n}$
+- The standard deviation of the sample means is $\sigma / \sqrt{n}$.  
+
+_KEY DEFINOTION__:  We call the standard deviation of the sample mean, $\sigma_{\bar{x}}$, the **standard error**.  
 
 Remember, these facts are always true.  They do not depend on normality or the sample size.  So, even though these facts are often used in conjunction with the Central Limit Theorem, they do not depend on it.
 

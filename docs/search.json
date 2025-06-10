@@ -175,6 +175,69 @@
     "text": "Assessing Normality\nIn practice, we must often confirm that the distribution of sample means is normally distributed. This is true when:\n\nThe population is normally distributed\n\\(n &gt; 30\\) because of the Central Limit Theorem\n\nBut how do you know if a population is normally distributed? In the real world, there is no teacher to tell you when to assume a population is normal.\nIf our sample size is large enough, we don’t have to worry. We can trust the Central Limit Theorem.\nIf \\(n &lt; 30\\), we can assess the normality of our sample to decide if we can still trust output of our statistical conclusions.\nPreviously, we’ve used histograms to help visualize the distribution of a sample. However, when sample sizes are small, even samples from a standard normal distribution can look skewed.\nAll of the examples below are histograms of random samples from actual standard normal distributions:\n\n\nA New Way to Assess Normality\nStatisticians use QQPlots which are better at assessing normality. QQPlots plot the ordered, observed percentiles for each data point in a dataset on the x-axis with the theoretical percentile from a normal distribution on the y-axis. If the observed percentiles and theoretical percentiles line up, then we can be reasonably sure the population is normally distributed.\nThese are easier to use than to explain. We use the car library and the function qqPlot() to create a chart. (Note the Capital P in the middle.)\nKey Point: If most of the data points line up in the shaded region, we can consider the population as normally distributed.\nBelow are examples of QQPlots for a normal distribution and a right skewed distribution.\n\n\nThese work much better for small sample sizes. Below are several examples of QQPlots for small sample sizes. They are the same samples as shown above in the histograms.\n\nWhile not perfect, these are a vastly better tool to assess normality than a histogram.\n\n\n\nPractice\nLet’s try assessing the normality of some data. Below are 3 datasets. Find the response variable(s) from each and determine if the data are sufficiently normally distributed:\n\nlibrary(rio)\nlibrary(tidyverse)\nlibrary(car)\n\nold_faithful &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/OldFaithful.xlsx')\n\nqqPlot(old_faithful$Duration)\n\n\n\n\n\n\n\n\n[1] 19 58\n\nqqPlot(old_faithful$Wait)\n\n\n\n\n\n\n\n\n[1] 265 127\n\nrent &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/Rent.csv')\n\n\nmcat_gpa &lt;- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/mcat_gpa.csv')"
   },
   {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Intro.html",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Intro.html",
+    "title": "Analysis of Variance (ANOVA)",
+    "section": "",
+    "text": "The proper analysis for situations with a quantitative response variable and a categorical explanatory variable with 3 or more levels/categories is called Analysis of Variance. This has the unfortunate acronym, ANOVA."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Intro.html#test-statistic",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Intro.html#test-statistic",
+    "title": "Analysis of Variance (ANOVA)",
+    "section": "Test Statistic",
+    "text": "Test Statistic\nThe Test Statistic for comparing &gt;2 group means is called \\(F\\).\nThe formula for \\(F\\) is complicated. But we can consider the signal-to-noise ratio as follows:\nSIGNAL: The variation between the means, ie. how far apart the group means are spread out.\nNOISE: The variation within groups. This represents the natural variation inherent in the data independent of any differences between the means.\nThe example below will illustrate what we mean by this and why this is a suitable test statistic for comparing differences between means.\n\nSeed Treatment Experiment\nImagine you’re comparing 4 pesticide seed treatments for corn seeds. These treatments are all supposed to improve emergence uniformity and crop yield.\nThe null hypothesis is that all 4 pesticides are all equally effective, meaning the average emergence is the same regardless of which treatment you use.\nWe would express this as:\n\\[H_0: \\mu_1 = \\mu_2 = \\mu_3 = \\mu_4\\]\nThe alternative hypothesis for an \\(F\\)-statistics is:\n\\[H_a: \\text{at least one } \\mu_k \\text{ is different}\\]\nNote: The \\(F\\)-test does not tell us which group is different or how many are different from each other. The \\(F\\)-test only tells us that at least one mean is different.\nTo get more data, we would test each seed treatment on multiple farms. Ideally, we’d want a good random sample of farms in the area we expect to be planting.\nIf the null hypothesis were true, any differences observed between the treatment means should be due to random variation or “noise” inherent in growing corn. The within-treatment variation is a good estimate of the “noise” because it reflects the natural variability in seed yields when the null hypothesis is true.\nIf the null hypothesis is false, we would expect the group means to be much more spread out than the within-treatment variation.\nThe test statistic is the ratio of the variation between groups and the average variation within groups. The further spread out the sample means are relative to the noise within the groups, the more evidence we have against \\(H_0\\).\nA large F-statistics means the group averages are much more spread out than the natural variability in crop emergence.\n\n\nVisualizing Between-group and Within-group Variation\nWe can get a sense the signal and noise visually."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Intro.html#the-f-distribution",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Intro.html#the-f-distribution",
+    "title": "Analysis of Variance (ANOVA)",
+    "section": "The F-Distribution",
+    "text": "The F-Distribution\nThe probability distribution of the F-statistic changes shape depending on how much data we have AND how many groups we have. These parameters in the \\(F\\)-distribution are called Degrees of Freedom, and the F-distribution has 2 sets.\nThe numerator (signal), or between groups degrees of freedom is \\(df_{between}=k-1\\), where k is the number of groups you are comparing.\nThe denominator, or within groups degrees of freedom is \\(df_{within}=n-k\\) where n is the total number of data points and k is the number of groups.\nWe will get the values of both degrees of freedom directly from the R output.\nUnlike the standard normal distribution, the \\(F\\)-distribution is not centered around zero and can never be negative because \\(F\\) is the ratio of 2 positive numbers and is, therefore, always positive.\nTo summarize:\n\n\\(F\\) is always positive because it is the ratio of 2 positive numbers\n\\(F\\) is always right skewed\n\\(F\\) changes shape depending on the number of groups (numerator degrees of freedom) and the number of total data points (denominator degrees of freedom)\n\n\nThe P-value for an F-statistic is always one-tailed. The probability of observing a test statistic, \\(F\\), if the null hypothesis is true can be visualized:\n\nIn practice, the computer calculates the test statistic, P-value, and degrees of freedom and we interpret the output as with other statistical tests.\n\nThe P-value\nThe P-value is the probability of observing an \\(F\\)-statistic higher than the one we observed if the null hypothesis were true.\nFor a cutoff a given \\(\\alpha\\):\n\nWhen \\(P\\)-value is less than \\(\\alpha\\), we REJECT the null hypothesis and say we have SUFFICIENT evidence to suggest that at least one of the group means is different\nWhen \\(P\\)-value is greater than \\(\\alpha\\), we FAIL TO REJECT the null hypothesis and say we have INSUFFICIENT evidence to suggest that any of the means are different"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Intro.html#test-requirements",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Intro.html#test-requirements",
+    "title": "Analysis of Variance (ANOVA)",
+    "section": "Test Requirements",
+    "text": "Test Requirements\nJust as with other statistical tests we’ve done so far, the \\(F\\)-test has certain requirements we must check to validate our P-values. Because of the way we calculate F, we are less concerned with the normality of the individual groups as we are with the variation within the groups.\nWhat to check:\n\nAre the standard deviations of each group “equal”?\nAre the residuals normally distributed?\n\n\nTest Equal Variances\nTo check the first requirement we can compare the biggest standard deviation to the smallest. If the ratio of the biggest to the smallest is less than 2, we conclude that the population standard deviations are “equal”.\nNOTE: Intuitively, this means that if the biggest standard deviation is more than twice as big as the smallest, then we might have cause for concern.\nThis can be checked using the standard deviations from the favstats() output (see Analysis in R below)\n\n\nNormality of Residuals\nResiduals are defined as the difference between an observation and it’s “expected” value:\n\\[residual = \\text{observed}-\\text{expected}\\]\nIn the case of ANOVA, that means we get a residual for every observation by taking the observed value and subtracting its group mean. Once again, R will provide this for us.\nFor our analysis to be valid, we need to see if the residuals are normally distributed. We can do a qqPlot() of the residuals to assess this requirement.\nIf both requirements are met, we can trust the P-value."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Intro.html#analysis-in-r",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Intro.html#analysis-in-r",
+    "title": "Analysis of Variance (ANOVA)",
+    "section": "Analysis in R",
+    "text": "Analysis in R\nTo perform an ANOVA, we use the aov() function with the familiar formula data$response ~ data$explanatory.\nThe aov() function by itself isn’t very useful on its own. We can use the summary() function to give us all the output we need to perform a hypothesis test.\nWe typically name our output using the assignment operator &lt;- to make it easier to get the information we would like.\nThe inside of aov() will look familiar, using the same ~ notation we’ve used all semester.\nThe generic process for performing an ANOVA is:\n\n# Name the ANOVA output:\noutput &lt;- aov(data$response_variable ~ data$categorical_variable)\n\n# Summarise the ANOVA output to get test statistics, DF, P-value, etc:\nsummary(output)\n\n\nCheck ANOVA Requirments:\nJust as with the other statistical tests, ANOVA has certain requirements for us to be able to trust the P-value.\n\nChecking Equal Standard Deviations:\nWe can use favstats() to extract the standard deviations of each group, then find the ratio of the max/min to see if it is less than 2.\n# extract only the standard deviations from favstats output using th `$`:\n\nsds &lt;- favstats(data$response_variable ~ data$categorical_variable)$sd\n\n# Compare the max/min to 2\n\nmax(sds) / min(sds)\n\n# if max/min &lt; 2, then we're ok\n\n\n\nAssessing Normality of the Residuals\nWe can assess normality of the residuals with a qqPlot(). We first need to extract the residuals from our output:\n# Name the output of the aov() function `output`:\n\noutput &lt;- aov(data$response_variable ~ data$categorical_variable)\n\n# do a qqPlot of the residuals (observation values - group mean) that R calculates.  We can use th `$` to tell R what part of the output we want to make into a qqPlot():  \n\nqqPlot(output$residuals)\n\nIf most of the points fall within the blue zone, we can be confident that the residuals are normally distributed."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Intro.html#step-1-read-in-data",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Intro.html#step-1-read-in-data",
+    "title": "Analysis of Variance (ANOVA)",
+    "section": "Step 1: Read in data",
+    "text": "Step 1: Read in data\nFor this demonstration we will be exploring the iris data. This dataset is built in to base R libraries, so we can access it without reading it in using “import”."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Intro.html#step-2-review-the-data",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Intro.html#step-2-review-the-data",
+    "title": "Analysis of Variance (ANOVA)",
+    "section": "Step 2: Review the data",
+    "text": "Step 2: Review the data\nThe iris data contains multiple measures on flowers that might be of interest to compare across species.\nLet’s first compare sepal lengths between species."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Intro.html#step-2-explore-the-data",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Intro.html#step-2-explore-the-data",
+    "title": "Analysis of Variance (ANOVA)",
+    "section": "Step 2: Explore the Data",
+    "text": "Step 2: Explore the Data\nHow many species do we have in our dataset?\n\ntable(iris$Species)\n\n\n    setosa versicolor  virginica \n        50         50         50 \n\n\nCreate a side-by-side boxplot of species and Sepal Length.\n\nboxplot(Sepal.Length ~ Species, data=iris, col = c(2,3,4), ylab=\"Sepal Length\", main = \"Sepal Length by Species\")\n\n\n\n\n\n\n\n\nUsing GGPlot:\n\nggplot(iris, aes(x=Species, y = Sepal.Length)) +\n  geom_boxplot(fill=c(2,3,4)) +\n  theme_bw() +\n  labs(\n    y = \"Sepal Length\",\n    title = \"Sepal Length by Species\"\n  )"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Intro.html#step-4-perform-the-appropriate-analysis",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Intro.html#step-4-perform-the-appropriate-analysis",
+    "title": "Analysis of Variance (ANOVA)",
+    "section": "Step 4: Perform the appropriate analysis",
+    "text": "Step 4: Perform the appropriate analysis\n\naov_sepal &lt;- aov(Sepal.Length ~ Species, data=iris)\nsummary(aov_sepal)\n\n             Df Sum Sq Mean Sq F value Pr(&gt;F)    \nSpecies       2  63.21  31.606   119.3 &lt;2e-16 ***\nResiduals   147  38.96   0.265                   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nBefore we make a conclusion, we want to check that we can trust our output. Every statistical test has requirements that must be satisfied if we are to trust our conclusions. For ANOVA, we need to check the normality and that the variation within groups is roughly the same.\nWe use a QQ-plot to check for normality and the ratio of the largest to the smallest standard deviation to check “equal” variation.\n\n# QQ plots show how closely the the residuals are to a normal distribution\n\nqqPlot(aov_sepal$residuals)\n\n\n\n\n\n\n\n\n[1] 107 132\n\n# Check that there is less than a 2X difference between the largest and smallest standard deviations\n\n# We can assign favstats()$sd to a variable to make it easier to use. Recall the \"$\" can also be used to extract specific output from functions\n\nsds &lt;- favstats(Sepal.Length ~ Species, data=iris)$sd\n\nmax(sds) / min(sds)\n\n[1] 1.803967\n\n\nQuestion: What is the F-statistics?\nAnswer: 119.3\nQuestion: What are the between-groups degrees of freedom?\nAnswer: 2\nQuestion: What are the within-groups degrees of freedom?\nAnswer: 147\nQuestion: What is the P-value?\nAnswer: &lt;2e-16\nQuestion: What is your conclusion?\nAnswer: Because p is less than alpha, we reject the null hypothesis. We conclude that at least one of the means of Sepal Length is different from the other group means."
+  },
+  {
     "objectID": "7-Semester_Project/Semester_Project_Instructions.html",
     "href": "7-Semester_Project/Semester_Project_Instructions.html",
     "title": "Semester Project Instructions",
@@ -1852,14 +1915,14 @@
     "href": "4-Foundations_Statistical_Inference/CLT_Class_Exercise.html#explore-the-data-on-your-own",
     "title": "Distribution of Sample Statistics",
     "section": "Explore the data on your own",
-    "text": "Explore the data on your own\nQUESTION: What is/are some potential dependent/response variables?\nANSWER:\nQUESTION: What are some potential explanatory variables?\nANSWER:\nLet’s look deeper into bill_depth_mm."
+    "text": "Explore the data on your own\n\nglimpse(penguins)\n\nRows: 30\nColumns: 10\n$ id                &lt;dbl&gt; 184, 149, 245, 268, 289, 300, 101, 282, 13, 140, 14,…\n$ species           &lt;chr&gt; \"Gentoo\", \"Adelie\", \"Gentoo\", \"Gentoo\", \"Chinstrap\",…\n$ island            &lt;chr&gt; \"Biscoe\", \"Dream\", \"Biscoe\", \"Biscoe\", \"Dream\", \"Dre…\n$ bill_length_mm    &lt;dbl&gt; 45.1, 37.8, 49.5, 44.5, 52.0, 46.7, 41.0, 46.1, 38.6…\n$ bill_depth_mm     &lt;dbl&gt; 14.5, 18.1, 16.1, 15.7, 18.1, 17.9, 20.0, 18.2, 21.2…\n$ flipper_length_mm &lt;dbl&gt; 207, 193, 224, 217, 201, 195, 203, 178, 191, 193, 19…\n$ body_mass_g       &lt;dbl&gt; 5050, 3750, 5650, 4875, 4050, 3300, 4725, 3250, 3800…\n$ sex               &lt;chr&gt; \"female\", \"male\", \"male\", NA, \"male\", \"female\", \"mal…\n$ year              &lt;dbl&gt; 2007, 2009, 2009, 2009, 2007, 2007, 2009, 2007, 2007…\n$ orig.id           &lt;chr&gt; \"184\", \"149\", \"245\", \"268\", \"289\", \"300\", \"101\", \"28…\n\n\nQUESTION: What is/are some potential dependent/response variables?\nANSWER:\nQUESTION: What are some potential explanatory variables?\nANSWER:\nLet’s look deeper into bill_depth_mm."
   },
   {
     "objectID": "4-Foundations_Statistical_Inference/CLT_Class_Exercise.html#create-a-table-of-summary-statistics-favstats-for-bill_depth_mm",
     "href": "4-Foundations_Statistical_Inference/CLT_Class_Exercise.html#create-a-table-of-summary-statistics-favstats-for-bill_depth_mm",
     "title": "Distribution of Sample Statistics",
     "section": "Create a table of summary statistics (favstats()) for bill_depth_mm:",
-    "text": "Create a table of summary statistics (favstats()) for bill_depth_mm:\nQUESTION: What is your sample mean?\nANSWER:\nQUESTION: What is your sample standard deviation?\nANSWER:\nQUESTION: What is your sample median?\nANSWER:"
+    "text": "Create a table of summary statistics (favstats()) for bill_depth_mm:\n\nboxplot(penguins$bill_depth_mm ~ penguins$species)\n\n\n\n\n\n\n\ntable(penguins$species)\n\n\n   Adelie Chinstrap    Gentoo \n       14         9         7 \n\ntable(penguins$species, penguins$year)\n\n           \n            2007 2008 2009\n  Adelie       6    3    5\n  Chinstrap    6    1    2\n  Gentoo       1    1    5\n\n\nQUESTION: What is your sample mean?\nANSWER:\nQUESTION: What is your sample standard deviation?\nANSWER:\nQUESTION: What is your sample median?\nANSWER:"
   },
   {
     "objectID": "4-Foundations_Statistical_Inference/CLT_Class_Exercise.html#create-a-frequency-table-of-sex-table",
@@ -2618,6 +2681,69 @@
     "text": "Introduction\n\n\nDesign the Study\n\n\nCollect the Data\n\n\nDescribe/Summarize the Data\n\nlibrary(tidyverse)\n\nWarning: package 'tidyverse' was built under R version 4.4.3\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(mosaic)\n\nWarning: package 'mosaic' was built under R version 4.4.3\n\n\nRegistered S3 method overwritten by 'mosaic':\n  method                           from   \n  fortify.SpatialPolygonsDataFrame ggplot2\n\nThe 'mosaic' package masks several functions from core packages in order to add \nadditional features.  The original behavior of these functions should not be affected by this.\n\nAttaching package: 'mosaic'\n\nThe following object is masked from 'package:Matrix':\n\n    mean\n\nThe following objects are masked from 'package:dplyr':\n\n    count, do, tally\n\nThe following object is masked from 'package:purrr':\n\n    cross\n\nThe following object is masked from 'package:ggplot2':\n\n    stat\n\nThe following objects are masked from 'package:stats':\n\n    binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,\n    quantile, sd, t.test, var\n\nThe following objects are masked from 'package:base':\n\n    max, mean, min, prod, range, sample, sum\n\nlibrary(rio)\n\nWarning: package 'rio' was built under R version 4.4.3\n\n\n\nAttaching package: 'rio'\n\nThe following object is masked from 'package:mosaic':\n\n    factorize\n\nlibrary(ggplot2)\n\n# Be sure to make this using ggplot()\n\n\n\nMake Inference\n\n# Perform the appropriate test for the data selected\n\n\n\nConclusion (Take Action)"
   },
   {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Practice.html",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Practice.html",
+    "title": "ANOVA Practice",
+    "section": "",
+    "text": "You are curious to compare life expectancy between female poets, novelists, and non-fiction writers.\nYou take a sample of female authors from each of the three groups to test if the average age at death is different between any of the three types of authors using a level of significance of, \\(\\alpha = 0.05\\).\n\n\n\n\nlibrary(rio)\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(car)\n\nwomenpoet &lt;- rio::import(\"https://byuistats.github.io/BYUI_M221_Book/Data/womenpoet.xls\")\n\n\n\n\nCreate a side-by-side boxplot of the age at death of each of the different author styles.\nModify the colors of each of the boxes for each group.\nCreate a summary statistics table for age at death for each author type:\nList the mean and standard deviations of age at death for:\n\nNovelists:\nPoets:\nNon-fiction:\n\n\n\n\nState your null and alternative hypotheses:\nHo:\nHa:\nPerform an Analysis of Variance test including checking for the appropriateness of our analysis.\nQuestion: What is the test statistic?\nAnswer:\nQuestion: What are the degrees of freedom for your analysis?\na. Numerator (between Groups) Degrees of Freedom\nb. Denominator (within groups) Degrees of Freedom\nAnswer:\nQuestion: What is the P-value?\nAnswer:\nQuestion: Do you reject the null hypothesis? Why?\nAnswer:\nQuestion: State your conclusion in context of the problem.\nAnswer:\nQuestion: Can we trust the p-value? a. Check for equal standard deviation (is the ratio of the largest SD / smallest SD greater than 2?) b. Check Normality of the residuals (qqPlot())\nAnswer:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Practice.html#introduction",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Practice.html#introduction",
+    "title": "ANOVA Practice",
+    "section": "",
+    "text": "You are curious to compare life expectancy between female poets, novelists, and non-fiction writers.\nYou take a sample of female authors from each of the three groups to test if the average age at death is different between any of the three types of authors using a level of significance of, \\(\\alpha = 0.05\\)."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Practice.html#load-the-data-and-libraries",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Practice.html#load-the-data-and-libraries",
+    "title": "ANOVA Practice",
+    "section": "",
+    "text": "library(rio)\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(car)\n\nwomenpoet &lt;- rio::import(\"https://byuistats.github.io/BYUI_M221_Book/Data/womenpoet.xls\")"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Practice.html#explore-the-data",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Practice.html#explore-the-data",
+    "title": "ANOVA Practice",
+    "section": "",
+    "text": "Create a side-by-side boxplot of the age at death of each of the different author styles.\nModify the colors of each of the boxes for each group.\nCreate a summary statistics table for age at death for each author type:\nList the mean and standard deviations of age at death for:\n\nNovelists:\nPoets:\nNon-fiction:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Practice.html#perform-the-appropriate-analysis",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Practice.html#perform-the-appropriate-analysis",
+    "title": "ANOVA Practice",
+    "section": "",
+    "text": "State your null and alternative hypotheses:\nHo:\nHa:\nPerform an Analysis of Variance test including checking for the appropriateness of our analysis.\nQuestion: What is the test statistic?\nAnswer:\nQuestion: What are the degrees of freedom for your analysis?\na. Numerator (between Groups) Degrees of Freedom\nb. Denominator (within groups) Degrees of Freedom\nAnswer:\nQuestion: What is the P-value?\nAnswer:\nQuestion: Do you reject the null hypothesis? Why?\nAnswer:\nQuestion: State your conclusion in context of the problem.\nAnswer:\nQuestion: Can we trust the p-value? a. Check for equal standard deviation (is the ratio of the largest SD / smallest SD greater than 2?) b. Check Normality of the residuals (qqPlot())\nAnswer:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Practice.html#introduction-1",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Practice.html#introduction-1",
+    "title": "ANOVA Practice",
+    "section": "Introduction",
+    "text": "Introduction\nA study was conducted to determine if different types of material can reduce the amount of mosquito human contact. The researchers evaluated five different types of patches 1=Odomos, 2=Deltamethrin, 3=Cyfluthrin, 4=D+O, 5=C+O.\nThe amount of mosquito human contact was measured to assess any differences between the five different types of material. Use a level of significance of 0.05."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Practice.html#load-the-data",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Practice.html#load-the-data",
+    "title": "ANOVA Practice",
+    "section": "Load the Data",
+    "text": "Load the Data\n\nMosquitoPatch &lt;- rio::import(\"https://raw.githubusercontent.com/rdcromar/Math221D/main/MosquitoPatch.csv\") %&gt;% mutate(Treatment = factor(Treatment))"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Practice.html#review-the-data",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Practice.html#review-the-data",
+    "title": "ANOVA Practice",
+    "section": "Review the Data",
+    "text": "Review the Data\nCreate a side-by-side boxplot for human contact for each of the treatment groups.\nAdd a title and change the colors of the boxes.\nCreate a summary statistics table for human contact for each of the treatment groups:\nQuestion: What do you observe?\nAnswer:\nQuestion: What is the maximum standard deviation?\nAnswer:\nQuestion: What is the minimum standard deviation?\nAnswer:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/ANOVA_Practice.html#perform-the-appropriate-analysis-1",
+    "href": "8-Inquiry_Based_Learning/ANOVA_Practice.html#perform-the-appropriate-analysis-1",
+    "title": "ANOVA Practice",
+    "section": "Perform the Appropriate Analysis",
+    "text": "Perform the Appropriate Analysis\nState your null and alternative hypotheses:\nPerform an Analysis of Variance test including checking for the appropriateness of our analysis.\nQuestion: What is the test statistic (F-value)?\nAnswer:\nQuestion: What are the degrees of freedom for your analysis?\n\nNumerator (between Groups) Degrees of Freedom\n\nDenominator (within groups) Degrees of Freedom\nAnswer:\n\nQuestion: What is the P-value?\nAnswer:\nQuestion: Do you reject the null hypothesis? Why?\nAnswer:\nQuestion: State your conclusion in context of the problem.\nAnswer:\nQuestion: Can we trust the p-value? a. Check for equal standard deviation (is the ratio of the largest SD / smallest SD greater than 2?) b. Check Normality of the residuals (qqPlot())\nAnswer:"
+  },
+  {
     "objectID": "8-Inquiry_Based_Learning/Central_Limit_Theorem_Practice.html",
     "href": "8-Inquiry_Based_Learning/Central_Limit_Theorem_Practice.html",
     "title": "CLT Practice",
@@ -2762,7 +2888,7 @@
     "href": "8-Inquiry_Based_Learning/Sampling_Distributions_CLT_LLN.html#mean-and-standard-deviation-of-the-distribution-of-sample-means",
     "title": "Distribution of Sample Means",
     "section": "Mean and Standard Deviation of the Distribution of Sample Means",
-    "text": "Mean and Standard Deviation of the Distribution of Sample Means\nThe following facts are always true. They do not depend on the Central Limit Theorem. They do not depend on the sample size. These facts hold for the sample mean \\(\\bar x\\) of any simple random sample of size \\(n\\) drawn from a population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\).\n\nThe mean of the sample means is \\(\\mu\\)\nThe standard deviation of the sample means is \\(\\sigma / \\sqrt{n}\\)\n\nRemember, these facts are always true. They do not depend on normality or the sample size. So, even though these facts are often used in conjunction with the Central Limit Theorem, they do not depend on it.\n\nAnswer the following questions:\n\n\n\nThe amount of time passengers spend waiting for a bus on a particular urban route follows a distribution that has a mean of 8.7 minutes with a standard deviation of 2.2 minutes. Transportation officials observed the waiting times for a random sample of \\(n=121\\) individual passengers and recorded the sample mean, \\(\\bar x\\). We can think of this sample mean as one value observed out of all the possible sample means that could have been observed. What is the mean of the distribution of all possible sample means?\n\n\n\nShow/Hide Solution\n\n\\[\n\\mu = 8.7~\\text{minutes}\n\\]\n\n\nUse the information in the previous problem to answer this question: What is the standard deviation of the distribution of all possible sample means?\n\n\n\nShow/Hide Solution\n\n\\[\n\\frac{\\sigma}{\\sqrt{n}} = \\frac{2.2}{\\sqrt{121}} = 0.2~\\text{minutes}\n\\]"
+    "text": "Mean and Standard Deviation of the Distribution of Sample Means\nThe following facts are always true. They do not depend on the Central Limit Theorem. They do not depend on the sample size. These facts hold for the sample mean \\(\\bar x\\) of any simple random sample of size \\(n\\) drawn from a population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\).\n\nThe mean of the sample means is \\(\\mu\\)\nThe standard deviation of the sample means is \\(\\sigma / \\sqrt{n}\\).\n\n_KEY DEFINOTION__: We call the standard deviation of the sample mean, \\(\\sigma_{\\bar{x}}\\), the standard error.\nRemember, these facts are always true. They do not depend on normality or the sample size. So, even though these facts are often used in conjunction with the Central Limit Theorem, they do not depend on it.\n\nAnswer the following questions:\n\n\n\nThe amount of time passengers spend waiting for a bus on a particular urban route follows a distribution that has a mean of 8.7 minutes with a standard deviation of 2.2 minutes. Transportation officials observed the waiting times for a random sample of \\(n=121\\) individual passengers and recorded the sample mean, \\(\\bar x\\). We can think of this sample mean as one value observed out of all the possible sample means that could have been observed. What is the mean of the distribution of all possible sample means?\n\n\n\nShow/Hide Solution\n\n\\[\n\\mu = 8.7~\\text{minutes}\n\\]\n\n\nUse the information in the previous problem to answer this question: What is the standard deviation of the distribution of all possible sample means?\n\n\n\nShow/Hide Solution\n\n\\[\n\\frac{\\sigma}{\\sqrt{n}} = \\frac{2.2}{\\sqrt{121}} = 0.2~\\text{minutes}\n\\]"
   },
   {
     "objectID": "8-Inquiry_Based_Learning/Sampling_Distributions_CLT_LLN.html#review-of-key-concepts",

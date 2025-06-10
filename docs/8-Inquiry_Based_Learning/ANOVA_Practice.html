@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assessing Normality – Math221D Notebook</title>
+<title>ANOVA Practice – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -502,11 +502,20 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#assessing-normality" id="toc-assessing-normality" class="nav-link active" data-scroll-target="#assessing-normality">Assessing Normality</a>
+  <li><a href="#life-expectancy-of-female-authors" id="toc-life-expectancy-of-female-authors" class="nav-link active" data-scroll-target="#life-expectancy-of-female-authors">Life Expectancy of Female Authors</a>
   <ul class="collapse">
-  <li><a href="#a-new-way-to-assess-normality" id="toc-a-new-way-to-assess-normality" class="nav-link" data-scroll-target="#a-new-way-to-assess-normality">A New Way to Assess Normality</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#load-the-data-and-libraries" id="toc-load-the-data-and-libraries" class="nav-link" data-scroll-target="#load-the-data-and-libraries">Load the Data and Libraries</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the Data</a></li>
+  <li><a href="#perform-the-appropriate-analysis" id="toc-perform-the-appropriate-analysis" class="nav-link" data-scroll-target="#perform-the-appropriate-analysis">Perform the Appropriate Analysis</a></li>
   </ul></li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
+  <li><a href="#testing-mosquitos" id="toc-testing-mosquitos" class="nav-link" data-scroll-target="#testing-mosquitos">Testing Mosquitos</a>
+  <ul class="collapse">
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">Introduction</a></li>
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the Data</a></li>
+  <li><a href="#review-the-data" id="toc-review-the-data" class="nav-link" data-scroll-target="#review-the-data">Review the Data</a></li>
+  <li><a href="#perform-the-appropriate-analysis-1" id="toc-perform-the-appropriate-analysis-1" class="nav-link" data-scroll-target="#perform-the-appropriate-analysis-1">Perform the Appropriate Analysis</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -515,8 +524,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assessing Normality</h1>
-<p class="subtitle lead">Introducing a New Chart</p>
+<h1 class="title">ANOVA Practice</h1>
 </div>
 
 
@@ -533,71 +541,107 @@ window.Quarto = {
 </header>
 
 
-<section id="assessing-normality" class="level1">
-<h1>Assessing Normality</h1>
-<p>In practice, we must confirm that the distribution of sample means is normally distributed. This is true when:</p>
-<ol type="1">
-<li>The population is normally distributed</li>
-<li><span class="math inline">\(n &gt; 30\)</span> because of the Central Limit Theorem</li>
-</ol>
-<p>But how do you know if a population is normally distributed? In the real world, there is no teacher to tell you when to assume a population is normal.</p>
-<p>If our sample size is large enough, we don’t have to worry. We can trust the Central Limit Theorem.</p>
-<p>If our sample size is &lt; 30, we can assess the normality of our <em>sample</em> to decide if we can still trust output of our hypothesis tests and confidence intervals.</p>
-<p><a href="https://byuistats.github.io/Math221D_Course/Textbook/The_Normal_Distribution.html">Previously</a>, we’ve used histograms to help visualize the distribution of a sample. However, when sample sizes are small, even samples from a standard normal distribution can look skewed.</p>
-<p>All of the examples below are histograms of random samples from actual standard normal distributions:</p>
-<p><img src="../Images/small_sample_normal.png" class="img-fluid"></p>
-<section id="a-new-way-to-assess-normality" class="level3">
-<h3 class="anchored" data-anchor-id="a-new-way-to-assess-normality">A New Way to Assess Normality</h3>
-<p>Statisticians use something called a <code>QQPlot</code> which works better at assessing normality. QQPlots plot the sorted data of each point in a dataset with the theoretical percentile from a normal distribution. If the data and theoretical percentiles line up, then we can be reasonably sure the population is normally distributed.</p>
-<p>These are easier to use than to explain. We use the <code>car</code> library and the function <code>qqPlot()</code> to create a chart. (Note the Capital <code>P</code> in the middle.)</p>
-<p><strong>Key Point</strong>: If most of the data points line up in the shaded region, we can consider the population as normally distributed.</p>
-<p>Below are examples of QQPlots for a normal distribution and a right skewed distribution.</p>
-<p><img src="../Images/QQPlot_Normal.png" class="img-fluid"></p>
-<p><img src="../Images/QQPlot_Right_Skewed.png" class="img-fluid"></p>
-<p>These work much better for small sample sizes. Below are several examples of QQPlots for small sample sizes:</p>
-<p><img src="../Images/QQPlots_Normal.png" class="img-fluid"></p>
-<p>While not perfect, these are a vastly better tool to assess normality than a histogram.</p>
+<section id="life-expectancy-of-female-authors" class="level1">
+<h1>Life Expectancy of Female Authors</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>You are curious to compare life expectancy between female poets, novelists, and non-fiction writers.</p>
+<p>You take a sample of female authors from each of the three groups to test if the average age at death is different between any of the three types of authors using a level of significance of, <span class="math inline">\(\alpha = 0.05\)</span>.</p>
 </section>
-</section>
-<section id="practice" class="level1">
-<h1>Practice</h1>
-<p>Let’s try assessing the normality of some data. Below are 3 datasets. Find the response variable(s) from each and determine if the data are sufficiently normally distributed:</p>
+<section id="load-the-data-and-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data-and-libraries">Load the Data and Libraries</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>old_faithful <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/OldFaithful.xlsx'</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(old_faithful<span class="sc">$</span>Duration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="10-Assessing_Normality_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>womenpoet <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/BYUI_M221_Book/Data/womenpoet.xls"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="explore-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="explore-the-data">Explore the Data</h2>
+<p>Create a side-by-side boxplot of the age at death of each of the different author styles.</p>
+<p>Modify the colors of each of the boxes for each group.</p>
+<p>Create a summary statistics table for age at death for each author type:</p>
+<p>List the mean and standard deviations of age at death for:</p>
+<ol type="1">
+<li>Novelists:</li>
+<li>Poets:</li>
+<li>Non-fiction:</li>
+</ol>
+</section>
+<section id="perform-the-appropriate-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="perform-the-appropriate-analysis">Perform the Appropriate Analysis</h2>
+<p>State your null and alternative hypotheses:</p>
+<p>Ho:</p>
+<p>Ha:</p>
+<p>Perform an Analysis of Variance test including checking for the appropriateness of our analysis.</p>
+<p><strong>Question</strong>: What is the test statistic?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What are the degrees of freedom for your analysis?<br>
+a. Numerator (between Groups) Degrees of Freedom<br>
+b. Denominator (within groups) Degrees of Freedom<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Do you reject the null hypothesis? Why?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: State your conclusion in context of the problem.<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Can we trust the p-value? a. Check for equal standard deviation (is the ratio of the largest SD / smallest SD greater than 2?) b. Check Normality of the residuals (<code>qqPlot()</code>)<br>
+<strong>Answer</strong>:</p>
+</section>
+</section>
+<section id="testing-mosquitos" class="level1">
+<h1>Testing Mosquitos</h1>
+<section id="introduction-1" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-1">Introduction</h2>
+<p>A study was conducted to determine if different types of material can reduce the amount of mosquito human contact. The researchers evaluated five different types of patches 1=Odomos, 2=Deltamethrin, 3=Cyfluthrin, 4=D+O, 5=C+O.</p>
+<p>The amount of mosquito human contact was measured to assess any differences between the five different types of material. Use a level of significance of 0.05.</p>
+</section>
+<section id="load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data">Load the Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>MosquitoPatch <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://raw.githubusercontent.com/rdcromar/Math221D/main/MosquitoPatch.csv"</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Treatment =</span> <span class="fu">factor</span>(Treatment))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 19 58</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(old_faithful<span class="sc">$</span>Wait)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="10-Assessing_Normality_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 265 127</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rent <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/Rent.csv'</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>mcat_gpa <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/mcat_gpa.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</section>
+<section id="review-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="review-the-data">Review the Data</h2>
+<p>Create a side-by-side boxplot for human contact for each of the treatment groups.</p>
+<p>Add a title and change the colors of the boxes.</p>
+<p>Create a summary statistics table for human contact for each of the treatment groups:</p>
+<p><strong>Question</strong>: What do you observe?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the maximum standard deviation?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the minimum standard deviation?<br>
+<strong>Answer</strong>:</p>
+</section>
+<section id="perform-the-appropriate-analysis-1" class="level2">
+<h2 class="anchored" data-anchor-id="perform-the-appropriate-analysis-1">Perform the Appropriate Analysis</h2>
+<p>State your null and alternative hypotheses:</p>
+<p>Perform an Analysis of Variance test including checking for the appropriateness of our analysis.</p>
+<p><strong>Question</strong>: What is the test statistic (F-value)?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What are the degrees of freedom for your analysis?</p>
+<ol type="a">
+<li>Numerator (between Groups) Degrees of Freedom<br>
+</li>
+<li>Denominator (within groups) Degrees of Freedom<br>
+<strong>Answer</strong>:</li>
+</ol>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Do you reject the null hypothesis? Why?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: State your conclusion in context of the problem.<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Can we trust the p-value? a. Check for equal standard deviation (is the ratio of the largest SD / smallest SD greater than 2?) b. Check Normality of the residuals (<code>qqPlot()</code>)<br>
+<strong>Answer</strong>:</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

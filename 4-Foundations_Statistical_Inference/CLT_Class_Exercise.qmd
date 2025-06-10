@@ -63,6 +63,7 @@ Recall a few useful functions for data exploration:
 
 ```{r}
 
+glimpse(penguins)
 
 ```
 
@@ -82,6 +83,13 @@ Let's look deeper into `bill_depth_mm`.
 
 ```{r}
 
+
+boxplot(penguins$bill_depth_mm ~ penguins$species)
+
+
+table(penguins$species)
+
+table(penguins$species, penguins$year)
 
 ```
 
