@@ -13,7 +13,7 @@ The proper analysis for situations with a **quantitative response** variable and
 
 # Hypothesis Test
 
-Recall that the generic null hypothesis is that there is NO RELATIONSHIP between $x$ and $y$.  for a categorical explanatory variable and a quantitative response variable, this means that there would be no differences between the group means for each category.  
+Recall that the generic null hypothesis is that there is NO RELATIONSHIP between $x$ and $y$.  For a categorical explanatory variable and a quantitative response variable, this means that there would be no differences between the group means for each category.  
 
 The null and alternative hypotheses are always the same for an ANOVA:
 
@@ -25,25 +25,30 @@ $$H_a: \text{at least one } \mu_k \text{ is different}$$
 
 ## Test Statistic
 
-The Test Statistic for comparing >2 group means is called $F$.  
+The Test Statistic for testing the relationship between a quantitative response variable and a categorical explanatory variable with >2 categories is called $F$.  
+
 
 The formula for $F$ is complicated.  But we can consider the signal-to-noise ratio as follows: 
 
 __SIGNAL__:  The variation *between* the means, ie. how far apart the group means are spread out.    
 
-__NOISE__:  The variation *within* groups.  This represents the natural variation inherent in the data independent of any differences between the means.  
+__NOISE__:  The variation *within* groups.  This variation represents the natural variation inherent in the data independent of any differences between the means.  
 
-The example below will illustrate what we mean by this and why this is a suitable test statistic for comparing differences between means.  
+$$ F=\frac{\text{Between-group Variation}}{\text{Within-group Variation}}$$
+
+Let's look at an example to illustrate.  
 
 ### Seed Treatment Experiment
 
 Imagine you're comparing 4 pesticide seed treatments for corn seeds.  These treatments are all supposed to improve emergence uniformity and crop yield.  
 
-The null hypothesis is that all 4 pesticides are all equally effective, meaning the average emergence is the same regardless of which treatment you use.  
+The null hypothesis is that seed treatment has no effect on crop yield.  This is typically expressed as a statistical hypothesis by stating that the **average** emergence is the same regardless of which treatment you use.  
 
 We would express this as:  
 
 $$H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4$$
+__PONDER__:  Can you see the connection between the treatment means being the same and "no relation" between treatment and emergence uniformity?  
+
 
 The alternative hypothesis for an $F$-statistics is:
 
@@ -51,11 +56,11 @@ $$H_a: \text{at least one } \mu_k \text{ is different}$$
 
 __Note__:  The $F$-test does not tell us *which* group is different or how many are different from each other.  The $F$-test only tells us that at least one mean is different.  
 
-To get more data, we would test each seed treatment on multiple farms.  Ideally, we'd want a good random sample of farms in the area we expect to be planting.  
+A good experiment would run multiple experimental trials on different farms.  Ideally, we'd want a good random sample of farms in the area we expect to be planting.  
 
 If the null hypothesis were *true*, any differences observed between the treatment means should be due to random variation or "noise" inherent in growing corn. The within-treatment variation is a good estimate of the "noise" because it reflects the natural variability in seed yields when the null hypothesis is true. 
 
-If the null hypothesis is *false*, we would expect the group means to be much more spread out than the within-treatment variation.  
+If the null hypothesis is *false*, we would expect the treatment means to be much more spread out relative to the within-treatment variation.  
 
 The test statistic is the ratio of the variation **between** groups and the average variation **within** groups.  The further spread out the sample means are relative to the noise within the groups, the more evidence we have against $H_0$.  
 
@@ -72,14 +77,13 @@ We can get a sense the signal and noise visually.
 
 ## The F-Distribution
 
-The probability distribution of the F-statistic changes shape depending on how much data we have AND how many groups we have.  These parameters in the $F$-distribution are called **Degrees of Freedom**, and the F-distribution has 2 sets.  
+The shape of the probability distribution of the F-statistic changes shape depending on how much data we have AND how many groups we have.  These parameters in the $F$-distribution are called **Degrees of Freedom**, and the F-distribution has 2 sets.  
 
 The numerator (signal), or __between groups degrees of freedom__ is $df_{between}=k-1$, where k is the number of groups you are comparing.  
 
 The denominator, or __within groups degrees of freedom__ is $df_{within}=n-k$ where n is the total number of data points and k is the number of groups.  
 
 We will get the values of both degrees of freedom directly from the R output.  
-
 Unlike the standard normal distribution, the $F$-distribution is not centered around zero and can **never be negative** because $F$ is the ratio of 2 positive numbers and is, therefore, always positive.  
 
 To summarize:
@@ -138,7 +142,7 @@ In the case of ANOVA, that means we get a residual for every observation by taki
 For our analysis to be valid, we need to see if the residuals are normally distributed.  We can do a `qqPlot()` of the residuals to assess this requirement.  
 
 
-If both requirements are met, we can trust the P-value.  
+If both requirements are met, the P-value is sound.  
 
 
 ## Analysis in R

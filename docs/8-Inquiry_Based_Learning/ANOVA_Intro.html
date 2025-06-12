@@ -563,29 +563,30 @@ window.Quarto = {
 </section>
 <section id="hypothesis-test" class="level1">
 <h1>Hypothesis Test</h1>
-<p>Recall that the generic null hypothesis is that there is NO RELATIONSHIP between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. for a categorical explanatory variable and a quantitative response variable, this means that there would be no differences between the group means for each category.</p>
+<p>Recall that the generic null hypothesis is that there is NO RELATIONSHIP between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. For a categorical explanatory variable and a quantitative response variable, this means that there would be no differences between the group means for each category.</p>
 <p>The null and alternative hypotheses are always the same for an ANOVA:</p>
 <p><span class="math display">\[H_o: \mu_1 = \mu_2 = ...\mu_k\]</span> where k is the number of groups in the data.</p>
 <p><span class="math display">\[H_a: \text{at least one } \mu_k \text{ is different}\]</span></p>
 <section id="test-statistic" class="level2">
 <h2 class="anchored" data-anchor-id="test-statistic">Test Statistic</h2>
-<p>The Test Statistic for comparing &gt;2 group means is called <span class="math inline">\(F\)</span>.</p>
+<p>The Test Statistic for testing the relationship between a quantitative response variable and a categorical explanatory variable with &gt;2 categories is called <span class="math inline">\(F\)</span>.</p>
 <p>The formula for <span class="math inline">\(F\)</span> is complicated. But we can consider the signal-to-noise ratio as follows:</p>
 <p><strong>SIGNAL</strong>: The variation <em>between</em> the means, ie. how far apart the group means are spread out.</p>
-<p><strong>NOISE</strong>: The variation <em>within</em> groups. This represents the natural variation inherent in the data independent of any differences between the means.</p>
-<p>The example below will illustrate what we mean by this and why this is a suitable test statistic for comparing differences between means.</p>
+<p><strong>NOISE</strong>: The variation <em>within</em> groups. This variation represents the natural variation inherent in the data independent of any differences between the means.</p>
+<p><span class="math display">\[ F=\frac{\text{Between-group Variation}}{\text{Within-group Variation}}\]</span></p>
+<p>Let’s look at an example to illustrate.</p>
 <section id="seed-treatment-experiment" class="level3">
 <h3 class="anchored" data-anchor-id="seed-treatment-experiment">Seed Treatment Experiment</h3>
 <p>Imagine you’re comparing 4 pesticide seed treatments for corn seeds. These treatments are all supposed to improve emergence uniformity and crop yield.</p>
-<p>The null hypothesis is that all 4 pesticides are all equally effective, meaning the average emergence is the same regardless of which treatment you use.</p>
+<p>The null hypothesis is that seed treatment has no effect on crop yield. This is typically expressed as a statistical hypothesis by stating that the <strong>average</strong> emergence is the same regardless of which treatment you use.</p>
 <p>We would express this as:</p>
-<p><span class="math display">\[H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4\]</span></p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4\]</span> <strong>PONDER</strong>: Can you see the connection between the treatment means being the same and “no relation” between treatment and emergence uniformity?</p>
 <p>The alternative hypothesis for an <span class="math inline">\(F\)</span>-statistics is:</p>
 <p><span class="math display">\[H_a: \text{at least one } \mu_k \text{ is different}\]</span></p>
 <p><strong>Note</strong>: The <span class="math inline">\(F\)</span>-test does not tell us <em>which</em> group is different or how many are different from each other. The <span class="math inline">\(F\)</span>-test only tells us that at least one mean is different.</p>
-<p>To get more data, we would test each seed treatment on multiple farms. Ideally, we’d want a good random sample of farms in the area we expect to be planting.</p>
+<p>A good experiment would run multiple experimental trials on different farms. Ideally, we’d want a good random sample of farms in the area we expect to be planting.</p>
 <p>If the null hypothesis were <em>true</em>, any differences observed between the treatment means should be due to random variation or “noise” inherent in growing corn. The within-treatment variation is a good estimate of the “noise” because it reflects the natural variability in seed yields when the null hypothesis is true.</p>
-<p>If the null hypothesis is <em>false</em>, we would expect the group means to be much more spread out than the within-treatment variation.</p>
+<p>If the null hypothesis is <em>false</em>, we would expect the treatment means to be much more spread out relative to the within-treatment variation.</p>
 <p>The test statistic is the ratio of the variation <strong>between</strong> groups and the average variation <strong>within</strong> groups. The further spread out the sample means are relative to the noise within the groups, the more evidence we have against <span class="math inline">\(H_0\)</span>.</p>
 <p>A large F-statistics means the group averages are much more spread out than the natural variability in crop emergence.</p>
 </section>
@@ -597,11 +598,11 @@ window.Quarto = {
 </section>
 <section id="the-f-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="the-f-distribution">The F-Distribution</h2>
-<p>The probability distribution of the F-statistic changes shape depending on how much data we have AND how many groups we have. These parameters in the <span class="math inline">\(F\)</span>-distribution are called <strong>Degrees of Freedom</strong>, and the F-distribution has 2 sets.</p>
+<p>The shape of the probability distribution of the F-statistic changes shape depending on how much data we have AND how many groups we have. These parameters in the <span class="math inline">\(F\)</span>-distribution are called <strong>Degrees of Freedom</strong>, and the F-distribution has 2 sets.</p>
 <p>The numerator (signal), or <strong>between groups degrees of freedom</strong> is <span class="math inline">\(df_{between}=k-1\)</span>, where k is the number of groups you are comparing.</p>
 <p>The denominator, or <strong>within groups degrees of freedom</strong> is <span class="math inline">\(df_{within}=n-k\)</span> where n is the total number of data points and k is the number of groups.</p>
-<p>We will get the values of both degrees of freedom directly from the R output.</p>
-<p>Unlike the standard normal distribution, the <span class="math inline">\(F\)</span>-distribution is not centered around zero and can <strong>never be negative</strong> because <span class="math inline">\(F\)</span> is the ratio of 2 positive numbers and is, therefore, always positive.</p>
+<p>We will get the values of both degrees of freedom directly from the R output.<br>
+Unlike the standard normal distribution, the <span class="math inline">\(F\)</span>-distribution is not centered around zero and can <strong>never be negative</strong> because <span class="math inline">\(F\)</span> is the ratio of 2 positive numbers and is, therefore, always positive.</p>
 <p>To summarize:</p>
 <ol type="1">
 <li><span class="math inline">\(F\)</span> is always positive because it is the ratio of 2 positive numbers</li>
@@ -642,7 +643,7 @@ window.Quarto = {
 <p><span class="math display">\[residual = \text{observed}-\text{expected}\]</span></p>
 <p>In the case of ANOVA, that means we get a residual for every observation by taking the observed value and subtracting its group mean. Once again, R will provide this for us.</p>
 <p>For our analysis to be valid, we need to see if the residuals are normally distributed. We can do a <code>qqPlot()</code> of the residuals to assess this requirement.</p>
-<p>If both requirements are met, we can trust the P-value.</p>
+<p>If both requirements are met, the P-value is sound.</p>
 </section>
 </section>
 <section id="analysis-in-r" class="level2">
