@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>group_by() + summarise() – Math221D Notebook</title>
+<title>2-Sample Independent T-Test Practice – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -477,8 +506,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#summarizing-data" id="toc-summarizing-data" class="nav-link active" data-scroll-target="#summarizing-data">Summarizing Data</a></li>
-  <li><a href="#grouping-by-multiple-variables" id="toc-grouping-by-multiple-variables" class="nav-link" data-scroll-target="#grouping-by-multiple-variables">Grouping by Multiple Variables</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#its-a-date" id="toc-its-a-date" class="nav-link" data-scroll-target="#its-a-date">It’s a Date!</a>
+  <ul class="collapse">
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the Data</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the Data</a></li>
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a>
+  <ul class="collapse">
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#tooth-hurty" id="toc-tooth-hurty" class="nav-link" data-scroll-target="#tooth-hurty">Tooth hurty</a>
+  <ul class="collapse">
+  <li><a href="#review-the-data" id="toc-review-the-data" class="nav-link" data-scroll-target="#review-the-data">Review The Data</a></li>
+  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#birth-weights" id="toc-birth-weights" class="nav-link" data-scroll-target="#birth-weights">Birth Weights</a>
+  <ul class="collapse">
+  <li><a href="#review-the-data-1" id="toc-review-the-data-1" class="nav-link" data-scroll-target="#review-the-data-1">Review The Data</a></li>
+  <li><a href="#hypothesis-test-2" id="toc-hypothesis-test-2" class="nav-link" data-scroll-target="#hypothesis-test-2">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-2" id="toc-confidence-interval-2" class="nav-link" data-scroll-target="#confidence-interval-2">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#miscellany" id="toc-miscellany" class="nav-link" data-scroll-target="#miscellany">Miscellany</a></li>
   </ul>
 </nav>
     </div>
@@ -487,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">group_by() + summarise()</h1>
+<h1 class="title">2-Sample Independent T-Test Practice</h1>
 </div>
 
 
@@ -504,174 +554,160 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="summarizing-data" class="level1">
-<h1>Summarizing Data</h1>
-<p>Consider the High School survey data with 60 columns and 312 respondents.</p>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
+<p>Here are several opportunities to practice analyzing 2-sample independent t-tests using R. For each question, you will:</p>
+<ul>
+<li>Read in data</li>
+<li>Identify the Response and Independent variable</li>
+<li>Create data summaries (numerical and graphical)</li>
+<li>Statistically analyze the data</li>
+<li>Check for the suitability of the statistical test (CLT, Normality)</li>
+<li>State your hypothesis test conclusions and interpret your confidence intervals</li>
+</ul>
+<p>When you finish, render this document and submit the <code>.html</code> in Canvas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and data</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv'</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The <code>mosaic</code> library is great for numerical summaries of quantitative variables using the <code>favstats()</code> function. We can create tables of the 5 number summary, mean, standard deviation, sample size, and number of missing values with one line of code:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(survey<span class="sc">$</span>Height_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  min  Q1 median      Q3 max     mean       sd   n missing
- 1.68 161    170 178.125 999 169.2412 53.54382 312       0</code></pre>
-</div>
-</div>
-<p>We can add a grouping variable to get the same summary for each level of a group, using <code>~</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(survey<span class="sc">$</span>Height_cm <span class="sc">~</span> survey<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  survey$Gender  min  Q1 median     Q3   max     mean       sd   n missing
-1        Female 5.50 160  162.5 167.15 182.8 158.6461 24.53056 152       0
-2          Male 1.68 172  177.9 182.80 999.0 179.3065 69.47610 160       0</code></pre>
-</div>
-</div>
-<p>This works great if you want to do one response/dependent variable at a time. But we often want specific summaries of data (often by groups) of more than one variable in the dataset.</p>
-<p>We can use a combination of tidyverse functions, <code>group_by()</code> and <code>summarise()</code> to create custom summary tables.</p>
-<p>The <code>group_by()</code> signals to R that whatever follows should be done for each level of the column(s) identified inside the parentheses. We can then “pipe” the grouped dataset into a summarize function and define what summary statistics we would like. <code>summarise()</code> works very much like the <a href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">mutate()</a> function in that we create a name for our summary and tell R how to make it.</p>
-<p><strong>EXAMPLE</strong>: Let’s calculate the means for Height_cm, Reaction_time, and Social_Websites_Hours for Males and Females:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-  Gender mean_height mean_react_time mean_social_media_hrs
-  &lt;chr&gt;        &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt;
-1 Female        159.           0.717                  14.4
-2 Male          179.           0.639                  14.0</code></pre>
-</div>
-</div>
-<p><strong>Pro Tip</strong>: Recall that the <code>mean()</code> function returns “NA” when there are missing values in the data. Adding <code>na.rm=TRUE</code> to your functions will make sure that you get a mean value.</p>
-<p><strong>EXAMPLE</strong>: Let’s do the same means but for handedness:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Handed) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 4
-  Handed       mean_height mean_react_time mean_social_media_hrs
-  &lt;chr&gt;              &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt;
-1 Ambidextrous        255.           0.352                  20.2
-2 Left-Handed         164.           1.45                   14.5
-3 Right-Handed        167.           0.583                  13.9</code></pre>
-</div>
-</div>
-<div class="QuestionsHeading">
-Combining Tidy Functions
-</div>
-<div class="Questions">
-<ol type="1">
-<li>Click to see how to <a href="../3-Data_Wrangling_Visualization/3-Filter.html">filter</a> outliers for reaction times (reaction times greater than 1 second), and height outliers (taller than 7 feet tall), and social media hours (more than 100 hours).</li>
-</ol>
-<details>
-<summary>
-Click to see
-</summary>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         Social_Websites_Hours <span class="sc">&lt;</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Gender, Height_cm, Reaction_time, Social_Websites_Hours)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Pipe the new clean dataset into the group_by() and summarise() as above:</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_ht =</span> <span class="fu">sd</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_react_time =</span> <span class="fu">sd</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_social_hrs =</span> <span class="fu">sd</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 7
-  Gender mean_height sd_ht mean_react_time sd_react_time mean_social_media_hrs
-  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;                 &lt;dbl&gt;
-1 Female        158.  25.1           0.444         0.134                  12.9
-2 Male          174.  23.4           0.395         0.139                  12.5
-# ℹ 1 more variable: sd_social_hrs &lt;dbl&gt;</code></pre>
-</div>
-</div>
-</details>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="grouping-by-multiple-variables" class="level1">
-<h1>Grouping by Multiple Variables</h1>
-<p>It is simple to get summary statistics for multiple grouping factors.</p>
-<p><strong>EXAMPLE</strong>: Suppose we want the same means calculated above, but for gender and handedness:</p>
+<section id="its-a-date" class="level1">
+<h1>It’s a Date!</h1>
+<p>Dating Behavior was studied in a speed dating experiment where random matching was generated and created randomization in the number of potential dates. In a survey to each participant, one question was asked about how important attraction is when they date. The attraction value is on a scale from 0 (not important at all) to 100 (very important).</p>
+<p>The researchers want to determine if males report to value attractiveness more than females. Use a level of significance of 0.05.</p>
+<section id="load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data">Load the Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender, Handed) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-# Groups:   Gender [2]
-  Gender Handed       mean_height mean_react_time mean_social_media_hrs
-  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt;
-1 Female Ambidextrous        134.           0.361                  27  
-2 Female Left-Handed         160.           0.524                  12.8
-3 Female Right-Handed        159.           0.750                  14.3
-4 Male   Ambidextrous        315.           0.348                  16.8
-5 Male   Left-Handed         167.           2.29                   16.1
-6 Male   Right-Handed        175.           0.420                  13.5</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dating <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/dating_attractive_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>I can also use the <code>n()</code> function without any inputs to count the number of observations in each group:</p>
+</section>
+<section id="explore-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="explore-the-data">Explore the Data</h2>
+<p><strong>Question</strong>: What is the <em>response</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the <em>explanatory</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p>Create a side-by-side boxplot for the amount of reported importance of attractiveness for each biosex.</p>
+<p>Add a title and change the colors of the boxes.</p>
+<p>What do you observe?</p>
+<p>Create a table of summary statistics for each group (<code>favstats()</code>):</p>
+</section>
+<section id="hypothesis-test" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
+<p>State your null and alternative hypotheses (replace the ??? with the appropriate symbol):</p>
+<p><span class="math display">\[H_0:  \mu_{F}???\mu_{M}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{F}???\mu_{M}\]</span></p>
+<p><strong>NOTE</strong>: The default for R is to set group order alphabetically. This means Group 1 = Female.</p>
+<p>Check that the samples for both groups are normally distributed</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender, Handed) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">N =</span> <span class="fu">n</span>()</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 6
-# Groups:   Gender [2]
-  Gender Handed       mean_height mean_react_time mean_social_media_hrs     N
-  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt; &lt;int&gt;
-1 Female Ambidextrous        134.           0.361                  27       3
-2 Female Left-Handed         160.           0.524                  12.8    17
-3 Female Right-Handed        159.           0.750                  14.3   132
-4 Male   Ambidextrous        315.           0.348                  16.8     6
-5 Male   Left-Handed         167.           2.29                   16.1    19
-6 Male   Right-Handed        175.           0.420                  13.5   135</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(dating<span class="sc">$</span>Importance<span class="sc">~</span>dating<span class="sc">$</span>Biosex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Two_sample_Independent_ttest_practice_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>This shows me that there are only 3 female ambidextrous students in the sample and 6 male ambidextrous students.</p>
+</div>
+<p>Do the data for each group appear normally distributed?</p>
+<p>Why is it OK to continue with the analysis?</p>
+<p>Perform a t-test.</p>
+<p><strong>Question</strong>: What is the value of the test statistic?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: How many degrees of freedom for this test?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the p-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What do you conclude?<br>
+<strong>Answer</strong>:</p>
+<section id="confidence-interval" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
+<p>Create a confidence interval for the difference of the average Importance Score between both groups:</p>
+</section>
+</section>
+</section>
+<section id="tooth-hurty" class="level1">
+<h1>Tooth hurty</h1>
+<p>A simple random sample of dental bill costs was collected at offices in Rexburg and Idaho Falls. Let <span class="math inline">\(\mu_{IF}\)</span> be the <em>population</em> mean of dental costs in Idaho Falls and <span class="math inline">\(\mu_{R}\)</span> be the <em>population</em> mean of dentals costs in Rexburg.</p>
+<p>We suspect that dental costs are higher in Rexburg because of less competition.</p>
+<p>Use the data imported below to answer the following questions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dentist <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/DentistOfficeBills_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="review-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="review-the-data">Review The Data</h2>
+<p><strong>Question</strong>: What is the <em>response</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the <em>explanatory</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p>Create summary statistics tables of dental costs for each office:</p>
+<p>Create a side-by-side boxplot for dental costs for each office.</p>
+<p>Check the normality of each group.</p>
+<p><strong>Question</strong>: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?</p>
+</section>
+<section id="hypothesis-test-1" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h2>
+<p>State your null and alternative hypotheses (replace the question marks with the appropriate symbols):</p>
+<p><span class="math display">\[H_0:  \mu_{IF}???\mu_{R}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{IF}???\mu_{R}\]</span></p>
+<p>Perform the appropriate analysis:</p>
+<p><strong>Question</strong>: What is the test statistic?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p>State your conclusion:</p>
+</section>
+<section id="confidence-interval-1" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h2>
+<p>Create a confidence interval for the difference in costs between the IF and Rexburg offices:</p>
+<p>Explain the confidence interval in context of the research question:</p>
+</section>
+</section>
+<section id="birth-weights" class="level1">
+<h1>Birth Weights</h1>
+<p>A study was conducted in which researchers obtained birth weights of infants born in Illinois during the same year. The birth weights are categorized based on the race and birthplace of the mother. Researchers want to know if there is a difference in mean birth weights of babies born to black women who were born in the United States and babies born to black women who were born in Africa. Values were recorded (in grams) for each infant born. The data are recorded in the file.</p>
+<p>Let <span class="math inline">\(\mu_A\)</span> be the <em>population</em> average of babies born to African-born mothers and <span class="math inline">\(\mu_{IL}\)</span> be the <em>population</em> mean weight of babies born to mothers in Illinois.</p>
+<p>Use the data imported below to answer the following questions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>birth_weights <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/IllinoisBirthWeightsTwoVar_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="review-the-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="review-the-data-1">Review The Data</h2>
+<p><strong>Question</strong>: What is the <em>response</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the <em>explanatory</em> variable?<br>
+<strong>Answer</strong>:</p>
+<p>Create summary statistics tables of birth weights for each country:</p>
+<p>Create a side-by-side boxplot for birth weights for each country:</p>
+<p>Check the normality of each group.</p>
+<p><strong>Question</strong>: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?</p>
+</section>
+<section id="hypothesis-test-2" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h2>
+<p>State your null and alternative hypotheses (replace the question marks with the appropriate symbols):</p>
+<p><span class="math display">\[H_0:  \mu_{A}???\mu_{IL}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{A}???\mu_{IL}\]</span></p>
+<p>Perform the appropriate analysis:</p>
+<p><strong>Question</strong>: What is the test statistic?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p>State your conclusion:</p>
+</section>
+<section id="confidence-interval-2" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-2">Confidence Interval</h2>
+<p>Create a confidence interval for the average difference in weights between babies born to mothers in Africa and Illinois:</p>
+<p>Explain the confidence interval in context of the research question:</p>
+</section>
+</section>
+<section id="miscellany" class="level1">
+<h1>Miscellany</h1>
+<p><strong>Question</strong>: A financial economist is studying married couples in which both spouses work. He wants to compare the mean income earned by husbands with the mean income earned by their wives. Should he use independent sampling or dependent sampling, and why?<br>
+<strong>Answer</strong>:</p>
 
 
 </section>

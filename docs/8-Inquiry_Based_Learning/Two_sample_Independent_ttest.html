@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>group_by() + summarise() – Math221D Notebook</title>
+<title>Independent Two-sample T-test – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -477,8 +506,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#summarizing-data" id="toc-summarizing-data" class="nav-link active" data-scroll-target="#summarizing-data">Summarizing Data</a></li>
-  <li><a href="#grouping-by-multiple-variables" id="toc-grouping-by-multiple-variables" class="nav-link" data-scroll-target="#grouping-by-multiple-variables">Grouping by Multiple Variables</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a>
+  <ul class="collapse">
+  <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic">Test Statistic</a>
+  <ul class="collapse">
+  <li><a href="#cholesterol-drug" id="toc-cholesterol-drug" class="nav-link" data-scroll-target="#cholesterol-drug">Cholesterol Drug</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#additional-examples" id="toc-additional-examples" class="nav-link" data-scroll-target="#additional-examples">Additional Examples</a>
+  <ul class="collapse">
+  <li><a href="#analysis-in-r" id="toc-analysis-in-r" class="nav-link" data-scroll-target="#analysis-in-r">Analysis in R</a></li>
+  <li><a href="#checking-requirements" id="toc-checking-requirements" class="nav-link" data-scroll-target="#checking-requirements">Checking Requirements</a></li>
+  </ul></li>
+  <li><a href="#practice-together" id="toc-practice-together" class="nav-link" data-scroll-target="#practice-together">Practice Together</a>
+  <ul class="collapse">
+  <li><a href="#read-in-data" id="toc-read-in-data" class="nav-link" data-scroll-target="#read-in-data">Read in Data</a></li>
+  <li><a href="#review-data" id="toc-review-data" class="nav-link" data-scroll-target="#review-data">Review Data</a></li>
+  <li><a href="#perform-the-appropriate-analysis" id="toc-perform-the-appropriate-analysis" class="nav-link" data-scroll-target="#perform-the-appropriate-analysis">Perform the appropriate analysis</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a>
+  <ul class="collapse">
+  <li><a href="#new-zealand-rugby" id="toc-new-zealand-rugby" class="nav-link" data-scroll-target="#new-zealand-rugby">New Zealand Rugby</a>
+  <ul class="collapse">
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the Data</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the Data</a></li>
+  <li><a href="#perform-the-appropriate-analysis-1" id="toc-perform-the-appropriate-analysis-1" class="nav-link" data-scroll-target="#perform-the-appropriate-analysis-1">Perform the Appropriate Analysis</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#chronic-obstructive-pulmonary-disease-treatment" id="toc-chronic-obstructive-pulmonary-disease-treatment" class="nav-link" data-scroll-target="#chronic-obstructive-pulmonary-disease-treatment">Chronic Obstructive Pulmonary Disease Treatment</a>
+  <ul class="collapse">
+  <li><a href="#read-in-the-data" id="toc-read-in-the-data" class="nav-link" data-scroll-target="#read-in-the-data">Read in the data</a></li>
+  <li><a href="#review-the-data" id="toc-review-the-data" class="nav-link" data-scroll-target="#review-the-data">Review the data</a></li>
+  <li><a href="#perform-the-appropriate-analysis-2" id="toc-perform-the-appropriate-analysis-2" class="nav-link" data-scroll-target="#perform-the-appropriate-analysis-2">Perform the appropriate analysis</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-3" id="toc-hypothesis-test-3" class="nav-link" data-scroll-target="#hypothesis-test-3">Hypothesis Test</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -487,7 +554,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">group_by() + summarise()</h1>
+<h1 class="title">Independent Two-sample T-test</h1>
 </div>
 
 
@@ -504,176 +571,250 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="summarizing-data" class="level1">
-<h1>Summarizing Data</h1>
-<p>Consider the High School survey data with 60 columns and 312 respondents.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv'</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The <code>mosaic</code> library is great for numerical summaries of quantitative variables using the <code>favstats()</code> function. We can create tables of the 5 number summary, mean, standard deviation, sample size, and number of missing values with one line of code:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(survey<span class="sc">$</span>Height_cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  min  Q1 median      Q3 max     mean       sd   n missing
- 1.68 161    170 178.125 999 169.2412 53.54382 312       0</code></pre>
-</div>
-</div>
-<p>We can add a grouping variable to get the same summary for each level of a group, using <code>~</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(survey<span class="sc">$</span>Height_cm <span class="sc">~</span> survey<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  survey$Gender  min  Q1 median     Q3   max     mean       sd   n missing
-1        Female 5.50 160  162.5 167.15 182.8 158.6461 24.53056 152       0
-2          Male 1.68 172  177.9 182.80 999.0 179.3065 69.47610 160       0</code></pre>
-</div>
-</div>
-<p>This works great if you want to do one response/dependent variable at a time. But we often want specific summaries of data (often by groups) of more than one variable in the dataset.</p>
-<p>We can use a combination of tidyverse functions, <code>group_by()</code> and <code>summarise()</code> to create custom summary tables.</p>
-<p>The <code>group_by()</code> signals to R that whatever follows should be done for each level of the column(s) identified inside the parentheses. We can then “pipe” the grouped dataset into a summarize function and define what summary statistics we would like. <code>summarise()</code> works very much like the <a href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">mutate()</a> function in that we create a name for our summary and tell R how to make it.</p>
-<p><strong>EXAMPLE</strong>: Let’s calculate the means for Height_cm, Reaction_time, and Social_Websites_Hours for Males and Females:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-  Gender mean_height mean_react_time mean_social_media_hrs
-  &lt;chr&gt;        &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt;
-1 Female        159.           0.717                  14.4
-2 Male          179.           0.639                  14.0</code></pre>
-</div>
-</div>
-<p><strong>Pro Tip</strong>: Recall that the <code>mean()</code> function returns “NA” when there are missing values in the data. Adding <code>na.rm=TRUE</code> to your functions will make sure that you get a mean value.</p>
-<p><strong>EXAMPLE</strong>: Let’s do the same means but for handedness:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Handed) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 4
-  Handed       mean_height mean_react_time mean_social_media_hrs
-  &lt;chr&gt;              &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt;
-1 Ambidextrous        255.           0.352                  20.2
-2 Left-Handed         164.           1.45                   14.5
-3 Right-Handed        167.           0.583                  13.9</code></pre>
-</div>
-</div>
-<div class="QuestionsHeading">
-Combining Tidy Functions
-</div>
-<div class="Questions">
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The proper analysis for situations with a <strong>quantitative response</strong> variable and a <strong>categorical explanatory</strong> variable with exactly 2 levels is called 2-Sample T-test.</p>
+</section>
+<section id="hypothesis-test" class="level1">
+<h1>Hypothesis Test</h1>
+<p>Recall that the generic null hypothesis is that there is NO RELATIONSHIP between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. For a categorical explanatory variable and a quantitative response variable, this means that there would be no differences between the group means of each category.</p>
+<p>The null and alternative hypotheses are always the same for a 2-sample t-test comparing groups is:</p>
+<p><span class="math display">\[H_o: \mu_1 = \mu_2\]</span></p>
+<p>The alternative hypothesis will depend on the context of the problem. Sometimes we may suspect <span class="math inline">\(\mu_1\)</span> to be LESS than <span class="math inline">\(\mu_2\)</span>. Other times we may suspect that <span class="math inline">\(\mu_1\)</span> to be GREATER than <span class="math inline">\(\mu_2\)</span>. In some situations, we don’t know which one is bigger, so we can frame the alternative as <span class="math inline">\(\mu_1\)</span> is NOT EQUAL to <span class="math inline">\(\mu_2\)</span>.</p>
+<p>Each of these can be written:</p>
+<p><span class="math display">\[H_a: \mu_1 &lt; \mu_2\]</span> <span class="math display">\[H_a: \mu_1 &gt; \mu_2\]</span> <span class="math display">\[H_a: \mu_1 \ne \mu_2\]</span></p>
+<p>Which one we use will depend on context of the research question.</p>
+<section id="test-statistic" class="level2">
+<h2 class="anchored" data-anchor-id="test-statistic">Test Statistic</h2>
+<p>The Test Statistic for testing the relationship between a quantitative response variable and a categorical explanatory variable with &gt;2 categories is called <span class="math inline">\(t\)</span>.</p>
+<p><strong>SIGNAL</strong>: The difference between the 2 group means.</p>
+<p><strong>NOISE</strong>: The combined standard error of the 2 groups. This is calculated by adding the <strong>variances</strong> of both groups and then taking the square root. This is not too different than the estimated standard error for the mean, which is <span class="math inline">\(\frac{s}{\sqrt{n}}\)</span>, but we’re combining them for both groups.</p>
+<p><span class="math display">\[ t=\frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}}\]</span></p>
+<section id="cholesterol-drug" class="level3">
+<h3 class="anchored" data-anchor-id="cholesterol-drug">Cholesterol Drug</h3>
+<p>Imagine you’re comparing a new cholesterol-reducing drug compared with a standard treatment. If our new drug works, we would expect the average cholesterol for those taking the new drug would be <em>lower</em> than the standard treatment.</p>
+<p>The null hypothesis is that both treatments are equivalent, on average. This is typically expressed as a statistical hypothesis by stating that the <strong>average</strong> cholesterol is the same regardless of which treatment you use.</p>
+<p>We would express this as:</p>
+<p><span class="math display">\[H_0: \mu_{\text{new}} = \mu_{\text{current}}\]</span> <strong>PONDER</strong>: Can you see the connection between the treatment means being the same and “no relation” between treatment and cholesterol?</p>
+<p>The alternative hypothesis for this <span class="math inline">\(t\)</span>-statistic is:</p>
+<p><span class="math display">\[H_a: \mu_{\text{new}} &lt; \mu_{\text{current}}\]</span> because we expect the average cholesterol measurements for those taking the new drug will be <em>lower</em> than with the current drug.</p>
+<p>If the null hypothesis were <em>true</em>, any differences observed between the treatment means should be due to random variation or “noise” inherent in the cholesterol measurements.</p>
+<p>If the null hypothesis is <em>false</em>, we would expect the difference between the treatment group means to be big relative to the experimental variation.</p>
+<p>A large <span class="math inline">\(t\)</span>-statistic means the group averages are much more spread out than the natural variability in cholesterol measurements.</p>
+</section>
+</section>
+</section>
+<section id="additional-examples" class="level1">
+<h1>Additional Examples</h1>
 <ol type="1">
-<li>Click to see how to <a href="../3-Data_Wrangling_Visualization/3-Filter.html">filter</a> outliers for reaction times (reaction times greater than 1 second), and height outliers (taller than 7 feet tall), and social media hours (more than 100 hours).</li>
+<li>Comparing salaries of men and women (randomly sample men and women separately); the null hypothesis is that biosex has no impact on salary.<br>
+</li>
+<li>Comparing average GPA of Math majors and Economics majors (randomly select from each population); the null hypothesis is that major has no impact on GPA.</li>
 </ol>
-<details>
-<summary>
-Click to see
-</summary>
+<section id="analysis-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-in-r">Analysis in R</h2>
+<p>To perform a 2-sample independent <span class="math inline">\(t\)</span>-test in R, we will use the <code>t.test()</code> function with the familiar formula <code>data$response ~ data$explanatory</code> and specify the <em>direction</em> of the alternative hypothesis (<span class="math inline">\(&gt;&lt;\ne\)</span>)</p>
+<pre><code>t.test(data$response_variable ~ data$grouping_variable, alterntive = "less")
+</code></pre>
+<p>The <code>alternative =</code> argument in the <code>t.test()</code> function can be: “less”, “greater”, or “two.sided”.</p>
+<p>When specifying an alternative hypothesis in R, a reference group must be defined. This serves as the baseline for comparison. R will assess how the mean of the second group differs from that of the first.</p>
+<p><strong>NOTE</strong>: By default, R decides which group is the reference group <strong>alphabetically</strong>. Whichever category label is first alphabetically is the reference group.</p>
+<p><strong>EXAMPLE</strong>: If my explanatory variable is <code>sex</code>, and they are labeled “Female” and “Male”, then “Female” would be the reference group. If I suspect that Females had smaller feet than males I would use <code>alternative = "less"</code>.</p>
+</section>
+<section id="checking-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="checking-requirements">Checking Requirements</h2>
+<p>Recall that a sample mean is approximately normal if:</p>
+<ol type="1">
+<li>The source population is normally distributed</li>
+<li>The sample size, <span class="math inline">\(n \ge 30\)</span></li>
+</ol>
+<p>For a 2-sample t-test, we must check that this is true for <strong>both</strong> samples. If both sample sizes are bigger than 30 then we can trust the CLT and the <span class="math inline">\(p\)</span>-value from <code>t.test()</code>.</p>
+<p>If the sample sizes are small, we can make a <code>qqPlot()</code> for both groups:</p>
+<pre><code>qqPlot(data$response_variable ~ data$explanatory_variable)</code></pre>
+</section>
+</section>
+<section id="practice-together" class="level1">
+<h1>Practice Together</h1>
+<p>Does the frequency of heart attacks increase during the World Cup?</p>
+<p>The number of heart attacks in the Greater Munich area was measured before and during the period when Germany hosted the FIFA World Cup. This study was published in the <a href="https://www.nejm.org/doi/10.1056/NEJMoa0707427">New England Journal of Medicine</a></p>
+<section id="read-in-data" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-data">Read in Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         Social_Websites_Hours <span class="sc">&lt;</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Gender, Height_cm, Reaction_time, Social_Websites_Hours)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Pipe the new clean dataset into the group_by() and summarise() as above:</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>clean <span class="sc">%&gt;%</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_ht =</span> <span class="fu">sd</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_react_time =</span> <span class="fu">sd</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_social_hrs =</span> <span class="fu">sd</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 7
-  Gender mean_height sd_ht mean_react_time sd_react_time mean_social_media_hrs
-  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;                 &lt;dbl&gt;
-1 Female        158.  25.1           0.444         0.134                  12.9
-2 Male          174.  23.4           0.395         0.139                  12.5
-# ℹ 1 more variable: sd_social_hrs &lt;dbl&gt;</code></pre>
-</div>
-</div>
-</details>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Libraries</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Data</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>fifa_heart_attacks <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/fifa_heart_attacks.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="grouping-by-multiple-variables" class="level1">
-<h1>Grouping by Multiple Variables</h1>
-<p>It is simple to get summary statistics for multiple grouping factors.</p>
-<p><strong>EXAMPLE</strong>: Suppose we want the same means calculated above, but for gender and handedness:</p>
+<section id="review-data" class="level2">
+<h2 class="anchored" data-anchor-id="review-data">Review Data</h2>
+<p>Look at the data.</p>
+<p>Create summary statistics tables of the number of heart attacks for each group.</p>
+<p>Create a side-by-side boxplot for the during the World Cup and the Control.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender, Handed) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-# Groups:   Gender [2]
-  Gender Handed       mean_height mean_react_time mean_social_media_hrs
-  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt;
-1 Female Ambidextrous        134.           0.361                  27  
-2 Female Left-Handed         160.           0.524                  12.8
-3 Female Right-Handed        159.           0.750                  14.3
-4 Male   Ambidextrous        315.           0.348                  16.8
-5 Male   Left-Handed         167.           2.29                   16.1
-6 Male   Right-Handed        175.           0.420                  13.5</code></pre>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fifa_heart_attacks, <span class="fu">aes</span>(<span class="at">x =</span> time_period, <span class="at">y =</span> heart_attacks, <span class="at">fill=</span>time_period)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Two_sample_Independent_ttest_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>I can also use the <code>n()</code> function without any inputs to count the number of observations in each group:</p>
+</div>
+<p>Do you notice any outliers or data that may need to be omitted for analysis?</p>
+<p>Check to see if the means from <strong>both</strong> groups are normally distributed:</p>
+<ol type="1">
+<li>Is n &gt; 30 for both groups?</li>
+<li>Create a qqPlot()</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender, Handed) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_height =</span> <span class="fu">mean</span>(Height_cm, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_react_time =</span> <span class="fu">mean</span>(Reaction_time, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_social_media_hrs =</span> <span class="fu">mean</span>(Social_Websites_Hours, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">N =</span> <span class="fu">n</span>()</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(fifa_heart_attacks<span class="sc">$</span>heart_attacks <span class="sc">~</span> fifa_heart_attacks<span class="sc">$</span>time_period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Two_sample_Independent_ttest_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>QUESTION</strong>: Do the observations from both groups look normally distributed?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Is this a cause for concern? Why or why not?<br>
+<strong>ANSWER</strong>:</p>
+</section>
+<section id="perform-the-appropriate-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="perform-the-appropriate-analysis">Perform the appropriate analysis</h2>
+<section id="hypothesis-test-1" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h3>
+<p>Are the individuals in each group dependent or independent of each other?</p>
+<p>Write out your null and alternative hypotheses.</p>
+<p><span class="math inline">\(H_o: \mu_{Control} = \mu_{\text{World Cup}}\)</span><br>
+<span class="math inline">\(H_a: \mu_{Control} &gt; \mu_{\text{World Cup}}\)</span></p>
+<p><strong>QUESTION</strong>: Which group is considered group 1 and which is group 2 in R?<br>
+<strong>ANSWER</strong>:</p>
+<p>Check the alphabetical order:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(fifa_heart_attacks<span class="sc">$</span>time_period)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 6
-# Groups:   Gender [2]
-  Gender Handed       mean_height mean_react_time mean_social_media_hrs     N
-  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;           &lt;dbl&gt;                 &lt;dbl&gt; &lt;int&gt;
-1 Female Ambidextrous        134.           0.361                  27       3
-2 Female Left-Handed         160.           0.524                  12.8    17
-3 Female Right-Handed        159.           0.750                  14.3   132
-4 Male   Ambidextrous        315.           0.348                  16.8     6
-5 Male   Left-Handed         167.           2.29                   16.1    19
-6 Male   Right-Handed        175.           0.420                  13.5   135</code></pre>
+<pre><code>[1] "Control"   "World Cup"</code></pre>
 </div>
 </div>
-<p>This shows me that there are only 3 female ambidextrous students in the sample and 6 male ambidextrous students.</p>
+<p>Perform the appropriate t-test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(fifa_heart_attacks<span class="sc">$</span>heart_attacks <span class="sc">~</span> fifa_heart_attacks<span class="sc">$</span>time_period, <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  fifa_heart_attacks$heart_attacks by fifa_heart_attacks$time_period
+t = -4.6172, df = 106.43, p-value = 5.464e-06
+alternative hypothesis: true difference in means between group Control and group World Cup is less than 0
+95 percent confidence interval:
+      -Inf -3.174984
+sample estimates:
+  mean in group Control mean in group World Cup 
+               14.04396                19.00000 </code></pre>
+</div>
+</div>
+<p><strong>QUESTION</strong>: What is your test statistic?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is your p-value? <strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: State your conclusion: <strong>ANSWER</strong>:</p>
+</section>
+</section>
+</section>
+<section id="your-turn" class="level1">
+<h1>Your Turn</h1>
+<section id="new-zealand-rugby" class="level2">
+<h2 class="anchored" data-anchor-id="new-zealand-rugby">New Zealand Rugby</h2>
+<p>Rugby is a popular sport in the United Kingdom, France, Australia, New Zealand and South Africa. It is gaining popularity in the US, Canada, Japan and parts of Europe. Some of the rules of the game have recently been changed to make play more exciting. In a study to examine the effects of the rule changes, Hollings and Triggs (1993) collected data on some recent games.</p>
+<p>Typically, a game consists of bursts of activity that terminate when points are scored, if the ball is moved out of the field of play or if a violation of the rules occurs. In 1992, the investigators gathered data on ten international matches which involved the New Zealand national team, the All Blacks. The first five games were the last international games played under the old rules, and the second set of five were the first internationals played under the new rules.</p>
+<p>For each of the ten games, the data give the successive times (in seconds) of each passage of play in that game.</p>
+<p>You will investigate whether the mean duration of the passages has dropped under the new rules.</p>
+<p>Use a level of significance of 0.01.</p>
+<section id="load-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="load-the-data">Load the Data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rugby <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/quiz/R/nz_rugby.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="explore-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="explore-the-data">Explore the Data</h3>
+<p>Create a side-by-side boxplot for the amount of reported passage of play before and after the rule changes.</p>
+<p>Add a title and change the colors of the boxes.</p>
+<p><strong>QUESTION</strong>: What do you observe?</p>
+<p>Create a table of summary statistics of play time for before and after the rule change. (<code>favstats()</code>):</p>
+</section>
+<section id="perform-the-appropriate-analysis-1" class="level3">
+<h3 class="anchored" data-anchor-id="perform-the-appropriate-analysis-1">Perform the Appropriate Analysis</h3>
+<section id="hypothesis-test-2" class="level4">
+<h4 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h4>
+<p><strong>QUESTION</strong>: State your null and alternative hypotheses:</p>
+<p>Ho:<br>
+Ha:</p>
+<p><strong>NOTE</strong>: The default for R is to set group order alphabetically. This means Group 1 = NewRules</p>
+<p>Compare the the time per play under the new and old rules:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in qqPlot.default(): argument "x" is missing, with no default</code></pre>
+</div>
+</div>
+<p><strong>QUESTION</strong>: Do the observations from both groups look normally distributed?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Is this a cause for concern? Why or why not?<br>
+<strong>ANSWER</strong>:</p>
+<p>Perform a t-test.</p>
+<p><strong>QUESTION</strong>: What is the value of the test statistic?</p>
+<p><strong>QUESTION</strong>: What is the p-value?</p>
+<p><strong>QUESTION</strong>: What do you conclude?</p>
+</section>
+</section>
+</section>
+</section>
+<section id="chronic-obstructive-pulmonary-disease-treatment" class="level1">
+<h1>Chronic Obstructive Pulmonary Disease Treatment</h1>
+<p>The CDC provided the following information about COPD:</p>
+<p>“Chronic obstructive pulmonary disease, or COPD, refers to a group of diseases that cause airflow blockage and breathing-related problems. It includes emphysema and chronic bronchitis. COPD makes breathing difficult for the 16 million Americans who have this disease. (Source: https://www.cdc.gov/copd, accessed December 1, 2022.)”</p>
+<p>A study was conducted in which COPD patients walked as many steps as they could. They were then randomly assigned to either a hospital-based or community-based treatment program. At the conclusion of the program, the number of steps the patients could walk without stopping was measured again. The difference in the number of steps (post - pre) is recorded in the data frame copd_rehab.</p>
+<section id="read-in-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="read-in-the-data">Read in the data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>copd <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/copd_rehab.xlsx"</span>) <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">"community"</span>, <span class="st">"hospital"</span>), <span class="at">names_to =</span> <span class="st">"Treatment"</span>, <span class="at">values_to =</span> <span class="st">"Steps"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Treatment, Steps) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="review-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="review-the-data">Review the data</h2>
+<p>Create side-by-side boxplots and summary statistics for the community and hospital groups:</p>
+<p>Check to see if the means are expected to be normally distributed.</p>
+<p>Can trust the CLT for our test statistic and P-value?</p>
+</section>
+<section id="perform-the-appropriate-analysis-2" class="level2">
+<h2 class="anchored" data-anchor-id="perform-the-appropriate-analysis-2">Perform the appropriate analysis</h2>
+<section id="hypothesis-test-3" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-3">Hypothesis Test</h3>
+<p>State your null and alternative hypotheses.</p>
+<p>Ho:</p>
+<p>Ha:</p>
+<p>Which group is considered group 1 in this data?</p>
+<p>Run the appropriate t-test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#t.test()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>State your conclusion about the hypothesis test.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

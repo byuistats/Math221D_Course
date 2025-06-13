@@ -14,6 +14,83 @@
     "text": "This course is intended to familiarize students with foundational concepts and vocabulary in statistics and introduce basic data wrangling and visualization in R.\nThose who diligently work through these materials will be well prepared for their next Statistics or Data Science course.\nThis book is designed to be a digital workbook. You can download the notes, practice problems and application activities which can be edited locally on your computer. Completed assignments will be submitted in Canvas as web-page reports.\n\n\nTo download the folder containing all of the exercises, notes and application activities by following these steps:\n\nCreate a class folder where you will save all your work throughout this semester. This can be on your computer locally or in cloud-based storage such as One-Drive or iCloud.\nClick on the link below to download the .zip file containing all contents of the course website:\n\n\n Download Course Files \n\n\nOpen the .zip file\nSave the Student_Work folder to your class folder created in step 1. This can typically be done by right clicking the folder then copying and pasting it into the new location.\n\nThese files will be the basis of your coursework.\nThere may be additional files to download throughout the semester. You can save those to your\n\n\n\nEach unit contains:\n\nPreparation readings\nPractice problems\nApplication Activities\nAssessments\n\nGetting Started guides you through getting R and R-Studio set up, introduces the tools we will use for the class, and introduces basic statistical concepts to help get you started. We learn how to use R-Studio to make lovely reports that can be viewed in a web-browser. It’s a gentle enough introduction to enable even those who have never coded before to start working with R.\nDescriptive Statistics introduces tools to help understand data. We review summary statistics and visualizations for quantitative and categorical data types and learn the basic skills to turn data into information.\nData Wrangling and Visualization takes a step further into dealing with messy data and creating better visualizations.\nFoundations of Statistical Inference introduces the key concepts for using sample data to make generalized conclusions about a population. We cover probability, hypothesis testing, confidence intervals and other concepts necessary for making the leap from sample to population.\nStatistical Tests - Part 1 and 2 cover specific inferential statistics for different data types.\nThe Semester Project is an opportunity for students to demonstrate the skills acquired during the course. You will be able to find and import data into R, clean the data, create top notch visualizations, perform appropriate statistical analysis and create a beautiful report.\nR Help provides additional resources for learning how to use R.\n\n\nBy the end of this semester, students will confidently be able to:\n\nImport data and apply basic data wrangling to moderately messy data\nDescribe data with numerical and graphical summaries\nMake evidence-based decisions regarding situations with inherent randomness\nInvestigate questions through the application of probability distributions\nPerform the appropriate statistical analysis based on specific data being analyzed including hypothesis tests and confidence intervals\nCreate web-based reports to communicate the results of statistical analyses to relevant audiences"
   },
   {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html",
+    "title": "Independent Two-sample T-test",
+    "section": "",
+    "text": "The proper analysis for situations with a quantitative response variable and a categorical explanatory variable with exactly 2 levels is called 2-Sample T-test."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#test-statistic",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#test-statistic",
+    "title": "Independent Two-sample T-test",
+    "section": "Test Statistic",
+    "text": "Test Statistic\nThe Test Statistic for testing the relationship between a quantitative response variable and a categorical explanatory variable with &gt;2 categories is called \\(t\\).\nSIGNAL: The difference between the 2 group means.\nNOISE: The combined standard error of the 2 groups. This is calculated by adding the variances of both groups and then taking the square root. This is not too different than the estimated standard error for the mean, which is \\(\\frac{s}{\\sqrt{n}}\\), but we’re combining them for both groups.\n\\[ t=\\frac{\\bar{x}_1 - \\bar{x}_2}{\\sqrt{\\frac{S_1^2}{n_1} + \\frac{S_2^2}{n_2}}}\\]\n\nCholesterol Drug\nImagine you’re comparing a new cholesterol-reducing drug compared with a standard treatment. If our new drug works, we would expect the average cholesterol for those taking the new drug would be lower than the standard treatment.\nThe null hypothesis is that both treatments are equivalent, on average. This is typically expressed as a statistical hypothesis by stating that the average cholesterol is the same regardless of which treatment you use.\nWe would express this as:\n\\[H_0: \\mu_{\\text{new}} = \\mu_{\\text{current}}\\] PONDER: Can you see the connection between the treatment means being the same and “no relation” between treatment and cholesterol?\nThe alternative hypothesis for this \\(t\\)-statistic is:\n\\[H_a: \\mu_{\\text{new}} &lt; \\mu_{\\text{current}}\\] because we expect the average cholesterol measurements for those taking the new drug will be lower than with the current drug.\nIf the null hypothesis were true, any differences observed between the treatment means should be due to random variation or “noise” inherent in the cholesterol measurements.\nIf the null hypothesis is false, we would expect the difference between the treatment group means to be big relative to the experimental variation.\nA large \\(t\\)-statistic means the group averages are much more spread out than the natural variability in cholesterol measurements."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#analysis-in-r",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#analysis-in-r",
+    "title": "Independent Two-sample T-test",
+    "section": "Analysis in R",
+    "text": "Analysis in R\nTo perform a 2-sample independent \\(t\\)-test in R, we will use the t.test() function with the familiar formula data$response ~ data$explanatory and specify the direction of the alternative hypothesis (\\(&gt;&lt;\\ne\\))\nt.test(data$response_variable ~ data$grouping_variable, alterntive = \"less\")\n\nThe alternative = argument in the t.test() function can be: “less”, “greater”, or “two.sided”.\nWhen specifying an alternative hypothesis in R, a reference group must be defined. This serves as the baseline for comparison. R will assess how the mean of the second group differs from that of the first.\nNOTE: By default, R decides which group is the reference group alphabetically. Whichever category label is first alphabetically is the reference group.\nEXAMPLE: If my explanatory variable is sex, and they are labeled “Female” and “Male”, then “Female” would be the reference group. If I suspect that Females had smaller feet than males I would use alternative = \"less\"."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#checking-requirements",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#checking-requirements",
+    "title": "Independent Two-sample T-test",
+    "section": "Checking Requirements",
+    "text": "Checking Requirements\nRecall that a sample mean is approximately normal if:\n\nThe source population is normally distributed\nThe sample size, \\(n \\ge 30\\)\n\nFor a 2-sample t-test, we must check that this is true for both samples. If both sample sizes are bigger than 30 then we can trust the CLT and the \\(p\\)-value from t.test().\nIf the sample sizes are small, we can make a qqPlot() for both groups:\nqqPlot(data$response_variable ~ data$explanatory_variable)"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#read-in-data",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#read-in-data",
+    "title": "Independent Two-sample T-test",
+    "section": "Read in Data",
+    "text": "Read in Data\n\n# Load Libraries\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\n\n# Load Data\n\nfifa_heart_attacks &lt;- import(\"https://byuistats.github.io/M221R/Data/fifa_heart_attacks.xlsx\")"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#review-data",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#review-data",
+    "title": "Independent Two-sample T-test",
+    "section": "Review Data",
+    "text": "Review Data\nLook at the data.\nCreate summary statistics tables of the number of heart attacks for each group.\nCreate a side-by-side boxplot for the during the World Cup and the Control.\n\nggplot(fifa_heart_attacks, aes(x = time_period, y = heart_attacks, fill=time_period)) +\n  geom_boxplot() +\n  theme_bw()\n\n\n\n\n\n\n\n\nDo you notice any outliers or data that may need to be omitted for analysis?\nCheck to see if the means from both groups are normally distributed:\n\nIs n &gt; 30 for both groups?\nCreate a qqPlot()\n\n\nqqPlot(fifa_heart_attacks$heart_attacks ~ fifa_heart_attacks$time_period)\n\n\n\n\n\n\n\n\nQUESTION: Do the observations from both groups look normally distributed?\nANSWER:\nQUESTION: Is this a cause for concern? Why or why not?\nANSWER:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#perform-the-appropriate-analysis",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#perform-the-appropriate-analysis",
+    "title": "Independent Two-sample T-test",
+    "section": "Perform the appropriate analysis",
+    "text": "Perform the appropriate analysis\n\nHypothesis Test\nAre the individuals in each group dependent or independent of each other?\nWrite out your null and alternative hypotheses.\n\\(H_o: \\mu_{Control} = \\mu_{\\text{World Cup}}\\)\n\\(H_a: \\mu_{Control} &gt; \\mu_{\\text{World Cup}}\\)\nQUESTION: Which group is considered group 1 and which is group 2 in R?\nANSWER:\nCheck the alphabetical order:\n\nunique(fifa_heart_attacks$time_period)\n\n[1] \"Control\"   \"World Cup\"\n\n\nPerform the appropriate t-test.\n\nt.test(fifa_heart_attacks$heart_attacks ~ fifa_heart_attacks$time_period, alternative = \"less\")\n\n\n    Welch Two Sample t-test\n\ndata:  fifa_heart_attacks$heart_attacks by fifa_heart_attacks$time_period\nt = -4.6172, df = 106.43, p-value = 5.464e-06\nalternative hypothesis: true difference in means between group Control and group World Cup is less than 0\n95 percent confidence interval:\n      -Inf -3.174984\nsample estimates:\n  mean in group Control mean in group World Cup \n               14.04396                19.00000 \n\n\nQUESTION: What is your test statistic?\nANSWER:\nQUESTION: What is your p-value? ANSWER:\nQUESTION: State your conclusion: ANSWER:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#new-zealand-rugby",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#new-zealand-rugby",
+    "title": "Independent Two-sample T-test",
+    "section": "New Zealand Rugby",
+    "text": "New Zealand Rugby\nRugby is a popular sport in the United Kingdom, France, Australia, New Zealand and South Africa. It is gaining popularity in the US, Canada, Japan and parts of Europe. Some of the rules of the game have recently been changed to make play more exciting. In a study to examine the effects of the rule changes, Hollings and Triggs (1993) collected data on some recent games.\nTypically, a game consists of bursts of activity that terminate when points are scored, if the ball is moved out of the field of play or if a violation of the rules occurs. In 1992, the investigators gathered data on ten international matches which involved the New Zealand national team, the All Blacks. The first five games were the last international games played under the old rules, and the second set of five were the first internationals played under the new rules.\nFor each of the ten games, the data give the successive times (in seconds) of each passage of play in that game.\nYou will investigate whether the mean duration of the passages has dropped under the new rules.\nUse a level of significance of 0.01.\n\nLoad the Data\n\nrugby &lt;- import(\"https://byuistats.github.io/M221R/Data/quiz/R/nz_rugby.csv\")\n\n\n\nExplore the Data\nCreate a side-by-side boxplot for the amount of reported passage of play before and after the rule changes.\nAdd a title and change the colors of the boxes.\nQUESTION: What do you observe?\nCreate a table of summary statistics of play time for before and after the rule change. (favstats()):\n\n\nPerform the Appropriate Analysis\n\nHypothesis Test\nQUESTION: State your null and alternative hypotheses:\nHo:\nHa:\nNOTE: The default for R is to set group order alphabetically. This means Group 1 = NewRules\nCompare the the time per play under the new and old rules:\n\nqqPlot()\n\nError in qqPlot.default(): argument \"x\" is missing, with no default\n\n\nQUESTION: Do the observations from both groups look normally distributed?\nANSWER:\nQUESTION: Is this a cause for concern? Why or why not?\nANSWER:\nPerform a t-test.\nQUESTION: What is the value of the test statistic?\nQUESTION: What is the p-value?\nQUESTION: What do you conclude?"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#read-in-the-data",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#read-in-the-data",
+    "title": "Independent Two-sample T-test",
+    "section": "Read in the data",
+    "text": "Read in the data\n\ncopd &lt;- import(\"https://byuistats.github.io/M221R/Data/copd_rehab.xlsx\") %&gt;% pivot_longer(cols=c(\"community\", \"hospital\"), names_to = \"Treatment\", values_to = \"Steps\") %&gt;% select(Treatment, Steps) %&gt;% arrange(Treatment)"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#review-the-data",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#review-the-data",
+    "title": "Independent Two-sample T-test",
+    "section": "Review the data",
+    "text": "Review the data\nCreate side-by-side boxplots and summary statistics for the community and hospital groups:\nCheck to see if the means are expected to be normally distributed.\nCan trust the CLT for our test statistic and P-value?"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#perform-the-appropriate-analysis-2",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html#perform-the-appropriate-analysis-2",
+    "title": "Independent Two-sample T-test",
+    "section": "Perform the appropriate analysis",
+    "text": "Perform the appropriate analysis\n\nHypothesis Test\nState your null and alternative hypotheses.\nHo:\nHa:\nWhich group is considered group 1 in this data?\nRun the appropriate t-test.\n\n#t.test()\n\nState your conclusion about the hypothesis test."
+  },
+  {
     "objectID": "8-Inquiry_Based_Learning/Statistical_Significance.html",
     "href": "8-Inquiry_Based_Learning/Statistical_Significance.html",
     "title": "Statistical Significance",
@@ -1915,14 +1992,14 @@
     "href": "4-Foundations_Statistical_Inference/CLT_Class_Exercise.html#explore-the-data-on-your-own",
     "title": "Distribution of Sample Statistics",
     "section": "Explore the data on your own",
-    "text": "Explore the data on your own\n\nglimpse(penguins)\n\nRows: 30\nColumns: 10\n$ id                &lt;dbl&gt; 184, 149, 245, 268, 289, 300, 101, 282, 13, 140, 14,…\n$ species           &lt;chr&gt; \"Gentoo\", \"Adelie\", \"Gentoo\", \"Gentoo\", \"Chinstrap\",…\n$ island            &lt;chr&gt; \"Biscoe\", \"Dream\", \"Biscoe\", \"Biscoe\", \"Dream\", \"Dre…\n$ bill_length_mm    &lt;dbl&gt; 45.1, 37.8, 49.5, 44.5, 52.0, 46.7, 41.0, 46.1, 38.6…\n$ bill_depth_mm     &lt;dbl&gt; 14.5, 18.1, 16.1, 15.7, 18.1, 17.9, 20.0, 18.2, 21.2…\n$ flipper_length_mm &lt;dbl&gt; 207, 193, 224, 217, 201, 195, 203, 178, 191, 193, 19…\n$ body_mass_g       &lt;dbl&gt; 5050, 3750, 5650, 4875, 4050, 3300, 4725, 3250, 3800…\n$ sex               &lt;chr&gt; \"female\", \"male\", \"male\", NA, \"male\", \"female\", \"mal…\n$ year              &lt;dbl&gt; 2007, 2009, 2009, 2009, 2007, 2007, 2009, 2007, 2007…\n$ orig.id           &lt;chr&gt; \"184\", \"149\", \"245\", \"268\", \"289\", \"300\", \"101\", \"28…\n\n\nQUESTION: What is/are some potential dependent/response variables?\nANSWER:\nQUESTION: What are some potential explanatory variables?\nANSWER:\nLet’s look deeper into bill_depth_mm."
+    "text": "Explore the data on your own\n\nglimpse(penguins)\n\nRows: 30\nColumns: 10\n$ id                &lt;dbl&gt; 92, 331, 18, 125, 84, 96, 173, 267, 155, 174, 320, 1…\n$ species           &lt;chr&gt; \"Adelie\", \"Chinstrap\", \"Adelie\", \"Adelie\", \"Adelie\",…\n$ island            &lt;chr&gt; \"Dream\", \"Dream\", \"Torgersen\", \"Torgersen\", \"Dream\",…\n$ bill_length_mm    &lt;dbl&gt; 34.0, 52.2, 34.4, 40.6, 37.3, 38.1, 45.1, 55.1, 50.0…\n$ bill_depth_mm     &lt;dbl&gt; 17.1, 18.8, 18.4, 19.0, 17.8, 18.6, 14.5, 16.0, 15.2…\n$ flipper_length_mm &lt;dbl&gt; 185, 197, 184, 199, 191, 190, 215, 230, 218, 213, 19…\n$ body_mass_g       &lt;dbl&gt; 3400, 3450, 3325, 4000, 3350, 3700, 5000, 5850, 5700…\n$ sex               &lt;chr&gt; \"female\", \"male\", \"female\", \"male\", \"female\", \"femal…\n$ year              &lt;dbl&gt; 2008, 2009, 2007, 2009, 2008, 2008, 2007, 2009, 2007…\n$ orig.id           &lt;chr&gt; \"92\", \"331\", \"18\", \"125\", \"84\", \"96\", \"173\", \"267\", …\n\n\nQUESTION: What is/are some potential dependent/response variables?\nANSWER:\nQUESTION: What are some potential explanatory variables?\nANSWER:\nLet’s look deeper into bill_depth_mm."
   },
   {
     "objectID": "4-Foundations_Statistical_Inference/CLT_Class_Exercise.html#create-a-table-of-summary-statistics-favstats-for-bill_depth_mm",
     "href": "4-Foundations_Statistical_Inference/CLT_Class_Exercise.html#create-a-table-of-summary-statistics-favstats-for-bill_depth_mm",
     "title": "Distribution of Sample Statistics",
     "section": "Create a table of summary statistics (favstats()) for bill_depth_mm:",
-    "text": "Create a table of summary statistics (favstats()) for bill_depth_mm:\n\nboxplot(penguins$bill_depth_mm ~ penguins$species)\n\n\n\n\n\n\n\ntable(penguins$species)\n\n\n   Adelie Chinstrap    Gentoo \n       14         9         7 \n\ntable(penguins$species, penguins$year)\n\n           \n            2007 2008 2009\n  Adelie       6    3    5\n  Chinstrap    6    1    2\n  Gentoo       1    1    5\n\n\nQUESTION: What is your sample mean?\nANSWER:\nQUESTION: What is your sample standard deviation?\nANSWER:\nQUESTION: What is your sample median?\nANSWER:"
+    "text": "Create a table of summary statistics (favstats()) for bill_depth_mm:\n\nboxplot(penguins$bill_depth_mm ~ penguins$species)\n\n\n\n\n\n\n\ntable(penguins$species)\n\n\n   Adelie Chinstrap    Gentoo \n       16         6         8 \n\ntable(penguins$species, penguins$year)\n\n           \n            2007 2008 2009\n  Adelie       4    5    7\n  Chinstrap    1    2    3\n  Gentoo       4    1    3\n\n\nQUESTION: What is your sample mean?\nANSWER:\nQUESTION: What is your sample standard deviation?\nANSWER:\nQUESTION: What is your sample median?\nANSWER:"
   },
   {
     "objectID": "4-Foundations_Statistical_Inference/CLT_Class_Exercise.html#create-a-frequency-table-of-sex-table",
@@ -2938,5 +3015,75 @@
     "title": "The Normal Distribution",
     "section": "Summary",
     "text": "Summary\n\nRemember…\n\n\n\nA normal density curve is symmetric and bell-shaped with a mean of \\(\\mu\\) and a standard deviation of \\(\\sigma\\). The curve lies above the horizontal axis and the total area under the curve is equal to 1. A standard normal distribution has a mean of 0 and a standard deviation of 1.\nA z-score is calculated as:\n\n\\[\\displaystyle{z = \\frac{\\text{value}-\\text{mean}}{\\text{standard deviation}} = \\frac{x-\\mu}{\\sigma}}\\]\n\nA z-score tells us how many standard deviations above (\\(+Z\\)) or below (\\(-Z\\)) the mean (\\(\\mu\\)) a given value (\\(x\\)) is.\nTo calculate probabilities for a normal distribution with mean, \\(\\mu\\) and standard deviation \\(\\sigma\\) for a given observation \\(x\\), use pnorm(x, mu, sigma) or 1-pnorm(x, mu, sigma) to get the desired probability (below, above). Alternatively, calculate the \\(z\\)-score and use pnorm(z) or 1-pnorm(z). In every case, the probability is given by the Area under the curve.\nThe 68-95-99.7% rule states that when data are normally distributed, approximately 68% of the population lies within \\(z=1\\) standard deviation (\\(\\sigma\\)) from the mean, approximately 95% of the data lie within \\(z=2\\) standard deviations from the mean, and approximately 99.7% of the data lie within \\(z=3\\) standard deviations from the mean. For example, this rule approximates that 2.5% of observations will be less than a z-score of \\(z=-2\\).\nPercentiles can be calculated using the qnorm(percentile, mu, sigma) function."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "",
+    "text": "Here are several opportunities to practice analyzing 2-sample independent t-tests using R. For each question, you will:\n\nRead in data\nIdentify the Response and Independent variable\nCreate data summaries (numerical and graphical)\nStatistically analyze the data\nCheck for the suitability of the statistical test (CLT, Normality)\nState your hypothesis test conclusions and interpret your confidence intervals\n\nWhen you finish, render this document and submit the .html in Canvas.\n\n# Load the libraries\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#load-the-data",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#load-the-data",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Load the Data",
+    "text": "Load the Data\n\ndating &lt;- read_csv('https://github.com/byuistats/Math221D_Course/raw/main/Data/dating_attractive_longformat.csv')"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#explore-the-data",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#explore-the-data",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Explore the Data",
+    "text": "Explore the Data\nQuestion: What is the response variable?\nAnswer:\nQuestion: What is the explanatory variable?\nAnswer:\nCreate a side-by-side boxplot for the amount of reported importance of attractiveness for each biosex.\nAdd a title and change the colors of the boxes.\nWhat do you observe?\nCreate a table of summary statistics for each group (favstats()):"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#hypothesis-test",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#hypothesis-test",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nState your null and alternative hypotheses (replace the ??? with the appropriate symbol):\n\\[H_0:  \\mu_{F}???\\mu_{M}\\]\n\\[H_a:\\mu_{F}???\\mu_{M}\\]\nNOTE: The default for R is to set group order alphabetically. This means Group 1 = Female.\nCheck that the samples for both groups are normally distributed\n\nqqPlot(dating$Importance~dating$Biosex)\n\n\n\n\n\n\n\n\nDo the data for each group appear normally distributed?\nWhy is it OK to continue with the analysis?\nPerform a t-test.\nQuestion: What is the value of the test statistic?\nAnswer:\nQuestion: How many degrees of freedom for this test?\nAnswer:\nQuestion: What is the p-value?\nAnswer:\nQuestion: What do you conclude?\nAnswer:\n\nConfidence Interval\nCreate a confidence interval for the difference of the average Importance Score between both groups:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#review-the-data",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#review-the-data",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Review The Data",
+    "text": "Review The Data\nQuestion: What is the response variable?\nAnswer:\nQuestion: What is the explanatory variable?\nAnswer:\nCreate summary statistics tables of dental costs for each office:\nCreate a side-by-side boxplot for dental costs for each office.\nCheck the normality of each group.\nQuestion: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#hypothesis-test-1",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#hypothesis-test-1",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nState your null and alternative hypotheses (replace the question marks with the appropriate symbols):\n\\[H_0:  \\mu_{IF}???\\mu_{R}\\]\n\\[H_a:\\mu_{IF}???\\mu_{R}\\]\nPerform the appropriate analysis:\nQuestion: What is the test statistic?\nAnswer:\nQuestion: What is the P-value?\nAnswer:\nState your conclusion:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#confidence-interval-1",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#confidence-interval-1",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Confidence Interval",
+    "text": "Confidence Interval\nCreate a confidence interval for the difference in costs between the IF and Rexburg offices:\nExplain the confidence interval in context of the research question:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#review-the-data-1",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#review-the-data-1",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Review The Data",
+    "text": "Review The Data\nQuestion: What is the response variable?\nAnswer:\nQuestion: What is the explanatory variable?\nAnswer:\nCreate summary statistics tables of birth weights for each country:\nCreate a side-by-side boxplot for birth weights for each country:\nCheck the normality of each group.\nQuestion: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#hypothesis-test-2",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#hypothesis-test-2",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nState your null and alternative hypotheses (replace the question marks with the appropriate symbols):\n\\[H_0:  \\mu_{A}???\\mu_{IL}\\]\n\\[H_a:\\mu_{A}???\\mu_{IL}\\]\nPerform the appropriate analysis:\nQuestion: What is the test statistic?\nAnswer:\nQuestion: What is the P-value?\nAnswer:\nState your conclusion:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#confidence-interval-2",
+    "href": "8-Inquiry_Based_Learning/Two_sample_Independent_ttest_practice.html#confidence-interval-2",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Confidence Interval",
+    "text": "Confidence Interval\nCreate a confidence interval for the average difference in weights between babies born to mothers in Africa and Illinois:\nExplain the confidence interval in context of the research question:"
   }
 ]
