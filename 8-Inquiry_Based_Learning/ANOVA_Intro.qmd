@@ -207,6 +207,23 @@ qqPlot(output$residuals)
 If most of the points fall within the blue zone, we can be confident that the residuals are normally distributed.  
 
 
+
+#### Which Means are Different?
+
+If the overall $F$-test is statistically significant ($P$-value < $\alpha$) then we can use what is called Tukey's Honest Significant Difference to look at pairwise comparisons between the groups.  We use the `TukeyHSD()` function by including either the `aov()` model output or the formula as follows:  
+
+```
+TukeyHSD(output)
+
+# Or equivalently:
+
+TukeyHSD(data$response_variable ~ data$categorical_variable)
+
+```
+
+__CAUTION__:  Only use `TukeyHSD()` when the overall $F$-test is statistically significant.
+
+
 # Practice Together
 
 ## Step 1:  Read in data
