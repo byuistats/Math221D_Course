@@ -2921,14 +2921,14 @@
   {
     "objectID": "8-Inquiry_Based_Learning/One_Sample_ttest.html",
     "href": "8-Inquiry_Based_Learning/One_Sample_ttest.html",
-    "title": "Inference for a Mean - Sigma Unknown",
+    "title": "One-Sample T-test",
     "section": "",
     "text": "By the end of this lesson, you should be able to:\n\nRecognize when a one mean inferential procedure is appropriate\n\nPerform a hypothesis test for one mean using the following steps:\n\nState the null and alternative hypotheses\n\nCalculate the test-statistic, degrees of freedom and P-value using R\n\nAssess statistical significance in order to state the conclusion for the hypothesis test in context of the research question\n\nCheck the requirements for the hypothesis test\n\n\nCreate a confidence interval for one mean using the following steps:\n\nCalculate a confidence interval for a given level of confidence using R\n\nInterpret the confidence interval\n\nCheck the requirements of the confidence interval\n\n\nState the properties of the Student’s t-distribution"
   },
   {
     "objectID": "8-Inquiry_Based_Learning/One_Sample_ttest.html#statistical-inference",
     "href": "8-Inquiry_Based_Learning/One_Sample_ttest.html#statistical-inference",
-    "title": "Inference for a Mean - Sigma Unknown",
+    "title": "One-Sample T-test",
     "section": "Statistical Inference",
     "text": "Statistical Inference\nStatistical Inference is the practice of using data sampled from a population to make conclusions about population parameters.\nThe two primary methods of statistical inference are:\n\nHypothesis Testing\nConfidence Intervals\n\nWhen we know what the population standard deviation, \\(\\sigma\\), for individuals, and are confident that the distribution of sample means is approximately normal, we can use a Z-score and the Standard Normal Distribution to calculate probabilities.\n\\[ z= \\frac{\\bar{x} - \\mu}{\\frac{\\sigma}{\\sqrt{n}}}\\]\nThough rare, there are situations where we might know the population standard deviation from published research or census data. For example, standardized test organizations publish population-level summaries which would allow us to test how our sample compares to the general population using the Z formula."
   },
@@ -2942,42 +2942,42 @@
   {
     "objectID": "8-Inquiry_Based_Learning/One_Sample_ttest.html#calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended",
     "href": "8-Inquiry_Based_Learning/One_Sample_ttest.html#calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended",
-    "title": "Inference for a Mean - Sigma Unknown",
+    "title": "One-Sample T-test",
     "section": "Calculating P-values by hand with the T-distribution (One out of ten. Would NOT RECOMMENDED)",
     "text": "Calculating P-values by hand with the T-distribution (One out of ten. Would NOT RECOMMENDED)\nSuppose we have 25 test scores defined as “data” in the code chunk below. We can calculate the \\(t\\)-statistic just like we did with the \\(z\\)-score.\nSuppose we believe that the mean score of these 25 students is significantly higher than 50. Our null and alternative hypothesis are as follows:\n\\[ H_0:  \\mu = 50 \\] \\[ H_a: \\mu &gt; 50 \\]\n\n# we can use the t-distribution, pt(), just like pnorm() but must also add the degrees of freedom\n\ndata &lt;- c(88,81,27,92,46,79,67,44,46,88,21,60,71,81,79,52,100,44,42,58,52,48,83,65,98)\n\n# Hypothesized Mean:\nmu_0 &lt;- 50\n\n# Sample size, sample Mean and sample SD\n#  The length function tells us how many data points are in the list.  \nn &lt;- length(data)\nxbar &lt;- mean(data)\ns &lt;- sd(data)\n\ns_xbar = s / sqrt(n)\n\nt &lt;- (xbar - mu_0) / s_xbar\n\n# Probability of getting a test statistic at least as extreme as the one we observed if the null hypothesis is true\n1-pt(t, n-1)\n\n[1] 0.00151866\n\n\nThis means that if the true population mean was 50, then there is only a 0.00152 probability of observing a test statistic, t, as high as the one we got (P-value)."
   },
   {
     "objectID": "8-Inquiry_Based_Learning/One_Sample_ttest.html#step-1-read-in-the-data",
     "href": "8-Inquiry_Based_Learning/One_Sample_ttest.html#step-1-read-in-the-data",
-    "title": "Inference for a Mean - Sigma Unknown",
+    "title": "One-Sample T-test",
     "section": "Step 1: Read in the data",
     "text": "Step 1: Read in the data\n\n# Load Libraries\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\n\n# Read in data\nbig5 &lt;- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv')"
   },
   {
     "objectID": "8-Inquiry_Based_Learning/One_Sample_ttest.html#step-2-review-the-data",
     "href": "8-Inquiry_Based_Learning/One_Sample_ttest.html#step-2-review-the-data",
-    "title": "Inference for a Mean - Sigma Unknown",
+    "title": "One-Sample T-test",
     "section": "Step 2: Review the Data",
     "text": "Step 2: Review the Data\nIn this step, we are looking to see if the data are as expected. Are the columns we’re interested in numeric? Categorical? and do these match expectations. We can also start to look for strange data and outliers. Visualizations can help.\nOther common issues to look for include: negative numbers that should only be positive, date values that shouldn’t exist, missing values, character variables inside what should be a number.\nIn the real world, data are messy. Reviewing the data is a critical part of an analysis.\nTake a look through the personality dataset and see if there are any anomalies that might need to be addressed."
   },
   {
     "objectID": "8-Inquiry_Based_Learning/One_Sample_ttest.html#step-3-visulize-the-data",
     "href": "8-Inquiry_Based_Learning/One_Sample_ttest.html#step-3-visulize-the-data",
-    "title": "Inference for a Mean - Sigma Unknown",
+    "title": "One-Sample T-test",
     "section": "Step 3: Visulize the data",
     "text": "Step 3: Visulize the data\nSo far we have been discussing a single, quantitative variable of interest, like test scores, reaction times, heights, etc. When we start looking at more complicated data, we will expand our repertoire of visualizations, but Histograms are very good when looking at one variable at a time, and boxplots are very good for comparison between groups.\nCreate a histogram of Extroversion. Describe some features of the data. Is it symmetric? Skewed? Are there outliers?\n\nhistogram(big5$Extroversion, main = \"Extroversion Scores\", xlab = \"Extroversion\")\n\n\n\n\n\n\n\nggplot(big5, aes(x = Extroversion)) +\n  geom_histogram(bins = 15, fill=\"lightblue\") +\n  labs(\n    x = \"Extroversion\",\n    y = \"\",\n    title = \"Extroversion Scores\"\n  ) +\n  theme_bw()"
   },
   {
     "objectID": "8-Inquiry_Based_Learning/One_Sample_ttest.html#step-4-perform-the-appropriate-analysis",
     "href": "8-Inquiry_Based_Learning/One_Sample_ttest.html#step-4-perform-the-appropriate-analysis",
-    "title": "Inference for a Mean - Sigma Unknown",
+    "title": "One-Sample T-test",
     "section": "Step 4: Perform the appropriate analysis",
     "text": "Step 4: Perform the appropriate analysis\nIn this example, we will be testing the hypothesis that Brother Cannon’s students are similar to the general population. We suspect that these youthful BYU-I students are, on average, more extroverted.\n\nHypothesis Test\nWrite out the Null and alternative hypotheses.\n\\[ H_0: \\mu_{extroversion} = 50\\]\n\\[ H_A: \\mu_{extroversion}  &gt; 50\\]\n\\[\\alpha = 0.05\\]\nPerform the one-sample t-test using the “t.test()” function in R. If you ever get stuck remembering how to use a function in R, you can run ?t.test to see documentation. The question mark will open up the help files for any given function in R.\nThe t.test() function takes as input, the data, the hypothesized mean, mu, and the direction of the alternative hypothesis.\nThe default parameters for the t.test() function are: t.test(data, mu = 0, alternative = \"two.sided\").\n\n#?t.test\n\n# One-sided Hypothesis Test\nt.test(big5$Extroversion, mu = 50, alternative = \"greater\")\n\n\n    One Sample t-test\n\ndata:  big5$Extroversion\nt = 6.6529, df = 403, p-value = 4.697e-11\nalternative hypothesis: true mean is greater than 50\n95 percent confidence interval:\n 55.25232      Inf\nsample estimates:\nmean of x \n 56.98267 \n\n\nQuestion: What is the P-value?\nAnswer: p-value = 4.697e-11\nQUESTION: What is your conclusion based on \\(\\alpha=0.05\\)?\nANSWER: Because P-value &lt; 0.05 we reject the null hypothesis in favor of the alternative.\nQuestion: State your conclusion in context of our research question?\nAnswer: We have sufficient evidence to conclude that Brother Cannon’s students are more extroverted than the general population, on average.\n\n\nConfidence Intervals\nWe can also use the t.test() function to create confidence intervals. Recall that confidence intervals are always 2-tailed. Confidence intervals are typically written in the form: (lower limit, upper limit).\n\n# Confidence Intervals are by definition 2-tailed\n# We can also change the confidence level\n\nt.test(big5$Extroversion, mu = 50, alternative = \"two.sided\", conf.level = .99)\n\n\n    One Sample t-test\n\ndata:  big5$Extroversion\nt = 6.6529, df = 403, p-value = 9.394e-11\nalternative hypothesis: true mean is not equal to 50\n99 percent confidence interval:\n 54.26631 59.69903\nsample estimates:\nmean of x \n 56.98267 \n\n\nTo get only the output for the confidence interval to be shown, we can use a $ to select specific output. Much like when pulling a specific column from a dataset, the $ can pull specific output from an analysis.\nBecause the option for the alternative = in the t.test function is “two.sided”, we don’t actually need to include it when getting confidence intervals.\nAlso, confidence intervals do not require an assumed mu value. So a more efficient way to get a confidence interval for a given set of data is:\n\nt.test(big5$Extroversion, conf.level = .99)$conf.int\n\n[1] 54.26631 59.69903\nattr(,\"conf.level\")\n[1] 0.99\n\n\nQuestion: Describe in words the interpretation of the confidence interval in context of Extroversion.\nAnswer: I am 95% confident that the true population mean of extroversion scores for Brother Cannon’s students is between 54.266 and 59.699.\n\n\nChecking Requirements\nWe still rely on the assumption that the distribution of sample means is normally distributed.\nRecall that the mean is normally distributed if:\n\nThe underlying population is normally distributed\n\nWe have a sufficiently large sample size (\\(n&gt;30\\))\n\nFor the above Extroversion data, we have \\(n=404\\) which is much larger than 40.\nIf my sample size was small, I could check the qqPlot(), which I demonstrate here:\n\nqqPlot(big5$Extroversion)\n\n\n\n\n\n\n\n\n[1] 143 163"
   },
   {
     "objectID": "8-Inquiry_Based_Learning/One_Sample_ttest.html#body-temperature-data",
     "href": "8-Inquiry_Based_Learning/One_Sample_ttest.html#body-temperature-data",
-    "title": "Inference for a Mean - Sigma Unknown",
+    "title": "One-Sample T-test",
     "section": "Body Temperature Data",
     "text": "Body Temperature Data\nThe dataset below contains information about body temperatures of healthy adults.\n\nLoad the data:\n\n# These lines load the data into the data frame body_temp:\n\nbody_temp &lt;- import(\"https://byuistats.github.io/M221R/Data/body_temp.xlsx\")\n\n\n\nReview the Data\nCreate a table of summary statistics for temperature:\n\n\nVisualize the Data\nCreate a histogram to visualize the body temperature data.\nQuestion: Describe the general shape of the distribution.\nAnswer:\n\n\nAnalyze the Data\nIt’s widely accepted that normal body temperature for healthy adults is 98.6 degrees Fahrenheit.\nSuppose we suspect that the average temperature is different than 98.6\nUse a significance level of \\(\\alpha = 0.01\\) to test whether the mean body temperature of healthy adults is equal to 98.6 degrees Fahrenheit.\nQuestion: What is the P-value?\nAnswer:\nQUESTION: What is your conclusion?\nANSWER:\n\nConfidence Interval\nCreate a 99% confidence interval for the true population average temperature of healthy adults.\nCheck the requirements for the t-test (\\(n&gt;30\\) or qqPlot()):\nQUESTION: Are the requirements for the t-test satisfied?\nANSWER:"
   },
@@ -3194,7 +3194,7 @@
   {
     "objectID": "8-Inquiry_Based_Learning/One_Sample_ttest.html#confidence-interval",
     "href": "8-Inquiry_Based_Learning/One_Sample_ttest.html#confidence-interval",
-    "title": "Inference for a Mean - Sigma Unknown",
+    "title": "One-Sample T-test",
     "section": "Confidence Interval",
     "text": "Confidence Interval\nWe can also calculate a confidence interval for the above example.\nRecall the formula for a confidence interval is, for a given \\(z^*\\) associated with a desired level of confidence:\n\\[ CI = \\bar{x} \\pm z^*\\frac{\\sigma}{\\sqrt{n}}\\]\nRecall the \\(z^*\\) for common confidence levels:\n\nlibrary(tidyverse)\nlibrary(pander)\ntibble(`Conf. Level` = c(0.99, 0.95, 0.90), `Z*` = c(2.576, 1.96, 1.645)) %&gt;% pander()\n\n\n\n\n\n\n\n\nConf. Level\nZ*\n\n\n\n\n0.99\n2.576\n\n\n0.95\n1.96\n\n\n0.9\n1.645"
   }

@@ -1,5 +1,5 @@
 ---
-title: "Inference for a Mean - Sigma Unknown"
+title: "One-Sample T-test"
 subtitle: "One-Sample T-test and Confidence Intervals"
 ---
 ```{r setup, include=FALSE}
