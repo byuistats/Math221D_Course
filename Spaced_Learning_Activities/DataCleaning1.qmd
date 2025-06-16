@@ -5,15 +5,9 @@ format: html
 
 # Introduction
 
-Take 10 minutes to:
+In this exercise, you'll practice the basics of data cleaning and visualization.  
 
-  1. Load the data
-  2. Review the data
-  3. Determine the response variable
-  4. Pick an explanatory variable
-  5. Make a clean dataset that has only your response and explanatory variable and has removed bad data (using `filter()` and `select()`)
-  6. Make a graph that visualizes the relationship between the 2
-
+Load and explore the data then respond to the questions below.  
 
 
 ```{r}
@@ -33,6 +27,9 @@ __QUESTION__:  Make a Histogram of `ListPrice`
 
 ```
 
+__QUESTION__:  What is the shape of the distribution of list prices?  
+__ANSWER__:  
+
 
 __QUESTION__:  Make a table of summary statistics for `ListPrice`
 
@@ -40,6 +37,11 @@ __QUESTION__:  Make a table of summary statistics for `ListPrice`
 
 
 ```
+
+
+
+__QUESTION__:  What is the minimum value for list prices?  
+__ANSWER__:  
 
 
 
@@ -66,8 +68,15 @@ __QUESTION__:  What percent of homes in the clean dataset are fixer-uppers?
 
 ```
 
-__QUESTION__:  Use GGPLOT to create a boxplot for ListPrice that compares Elementary Schools?  
+__QUESTION__:  Use GGPLOT to create a boxplot for `ListPrice` that compares Elementary Schools?  
+
+
+```{r}
 
 
 
+```
 
+
+__QUESTION__:  Which Elementary school appears to have the lowest distribution of housing prices?  
+__ANSWER__:  
