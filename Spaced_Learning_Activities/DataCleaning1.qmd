@@ -1,0 +1,36 @@
+---
+title: "Data Cleaning Practice"
+format: html
+---
+
+# Introduction
+
+Take 10 minutes to:
+
+  1. Load the data
+  2. Review the data
+  3. Determine the response variable
+  4. Pick an explanatory variable
+  5. Make a clean dataset that has only your response and explanatory variable and has removed bad data (using `filter()` and `select()`)
+  6. Make a graph that visualizes the relationship between the 2
+
+
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(car)
+
+olympics <- read_csv('https://raw.githubusercontent.com/byuistats/Math221D_Course/refs/heads/main/Data/Olympics.csv')
+
+olympics %>%
+  select(Name, Medal) %>%
+  drop_na() %>%
+  table()
+
+```
+
+
+
+
