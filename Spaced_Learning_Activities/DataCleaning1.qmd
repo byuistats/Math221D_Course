@@ -22,14 +22,51 @@ library(mosaic)
 library(rio)
 library(car)
 
-olympics <- read_csv('https://raw.githubusercontent.com/byuistats/Math221D_Course/refs/heads/main/Data/Olympics.csv')
-
-olympics %>%
-  select(Name, Medal) %>%
-  drop_na() %>%
-  table()
+real_estate <- read_csv('https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/MadisonCountyRealEstateA.csv')
 
 ```
+
+__QUESTION__:  Make a Histogram of `ListPrice`
+
+```{r}
+
+
+```
+
+
+__QUESTION__:  Make a table of summary statistics for `ListPrice`
+
+```{r}
+
+
+```
+
+
+
+Create a clean dataset that:
+
+  1. Removes houses that are more than $1M
+  2. Has only 1 Story houses
+  3. No Missing Elementary school information
+  4. Is in Rexburg
+  5. Contains only the columns: ListPrice, Style, Elementary, City, and IsFixerUpper
+  
+  
+```{r}
+
+
+```
+
+
+__QUESTION__:  What percent of homes in the clean dataset are fixer-uppers?
+
+```{r}
+
+
+
+```
+
+__QUESTION__:  Use GGPLOT to create a boxplot for ListPrice that compares Elementary Schools?  
 
 
 
