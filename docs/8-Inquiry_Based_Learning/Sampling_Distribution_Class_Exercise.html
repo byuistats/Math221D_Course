@@ -5217,7 +5217,7 @@ window.Quarto = {
   </li>  
         <li>
     <a class="dropdown-item" href="../8-Inquiry_Based_Learning/One_Sample_ttest.html">
- <span class="dropdown-text">Inference for a Mean - Sigma Unknown</span></a>
+ <span class="dropdown-text">One-Sample T-test</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../8-Inquiry_Based_Learning/ANOVA_Intro.html">
@@ -5226,6 +5226,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions.html">
+ <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
   </li>  
     </ul>
   </li>
@@ -5460,20 +5464,20 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>                     median     mean       sd
 Population Parameter 17.300 17.15117 1.974793
-Mean of Sample Stat  17.376 17.15082 1.963335</code></pre>
+Mean of Sample Stat  17.344 17.15083 2.006262</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats_simulation</span>(<span class="at">n_samples=</span><span class="dv">1000</span>, <span class="at">sample_size =</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                      median     mean       sd
-Population Parameter 17.3000 17.15117 1.974793
-Mean of Sample Stat  17.3595 17.15552 1.960494</code></pre>
+<pre><code>                       median     mean       sd
+Population Parameter 17.30000 17.15117 1.974793
+Mean of Sample Stat  17.33615 17.13800 1.963056</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Try a bigger sample size:  </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats_simulation</span>(<span class="at">n_samples=</span><span class="dv">1000</span>, <span class="at">sample_size =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                      median     mean       sd
-Population Parameter 17.3000 17.15117 1.974793
-Mean of Sample Stat  17.3544 17.15536 1.974577</code></pre>
+<pre><code>                       median     mean       sd
+Population Parameter 17.30000 17.15117 1.974793
+Mean of Sample Stat  17.35855 17.15016 1.977297</code></pre>
 </div>
 </div>
 

@@ -113,6 +113,7 @@ website:
         - href: ./8-Inquiry_Based_Learning/One_Sample_ttest.qmd
         - href: ./8-Inquiry_Based_Learning/ANOVA_Intro.qmd
         - href: ./8-Inquiry_Based_Learning/Two_sample_Independent_ttest.qmd
+        - href: ./8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions.qmd
 
 
     - text: "R Help"

@@ -1,0 +1,98 @@
+---
+title: "Confidence Intervals and Hypothesis Tests For Proportions - Practice"
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+
+# Introduction
+
+In this exercise, you will practice creating and interpreting confidence intervals for proportions.  
+
+
+# Bird Watching
+
+A wildlife researcher is studying a rare bird species in a southeast Idaho.  They identify a sample of 500 birds, and only 6 are found to be of this rare species. Estimate the proportion of the entire bird population that is this rare species using a 95% confidence interval.  
+
+
+
+```{r}
+
+prop.test(x = , n = , conf.level=)$conf.int
+
+```
+
+
+__QUESTION__:  Interpret the confidence interval in context of the research question:  
+__ANSWER__:  
+
+
+__QUESTION__:  Are the assumptions for the normality of $\hat p$ are met?  (Check $n\hat{p}$ and $n(1-\hat{p})$)  
+__ANSWER__:  
+
+__QUESTION__:  Perform a statistical hypothesis test to see if the population proportion, $p$, is less than 3%.  Use $\alpha=0.05$.  
+
+```{r}
+
+prop.test(x=, n=, p=, alternative=)
+
+```
+
+
+__QUESTION__:  What is the p-value for the above test?  
+__ANSWER__:  
+
+
+__QUESTION__:  State your conclusion using the technical requirements and in context of the research question.  
+__ANSWER__:  
+
+__QUESTION__:  Are the test requirements for a statistical hypothesis for a proportion met?  (Check $np$ and $n(1-p)$)  
+__ANSWER__:  
+
+
+
+# Customer Satisfaction Survey
+
+A company surveyed 150 customers about their satisfaction, and 105 responded that they were satisfied. Estimate the proportion of all customers who are satisfied with the company's service using a 99% confidence level.  
+
+
+
+```{r}
+
+```
+
+
+__QUESTION__:  Interpret the confidence interval in context of the research question:  
+__ANSWER__:  
+
+
+__QUESTION__:  Are the assumptions for the normality of $\hat p$ are met?  Why?  
+__ANSWER__:  
+
+
+# Health Study
+
+A health study surveyed 250 individuals about their exercise habits, and 140 reported exercising regularly. Construct a 97.25% confidence interval for the proportion of the general population that exercises regularly.
+
+
+
+```{r}
+
+```
+
+
+__QUESTION__:  Interpret the confidence interval in context of the research question:  
+__ANSWER__:  
+
+
+__QUESTION__:  Are the assumptions for the normality of $\hat p$ are met?  Why?  
+__ANSWER__:  
+
+
+

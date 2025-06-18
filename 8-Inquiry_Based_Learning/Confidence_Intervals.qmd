@@ -153,6 +153,43 @@ $$ CI = \bar{x} \pm z^*\frac{\sigma}{\sqrt{n}}$$
 
 Where $z^*$ is a z-score value related to a specified level of confidence.  
 
+__NOTE__:  The $z^*$ value represents the value from a standard normal distribution beyond which
+
+```{r}
+
+library(ggplot2)
+
+x <- seq(-4, 4, length.out = 1000)
+y <- dnorm(x)
+
+x <- seq(-4, 4, length.out = 1000)
+y <- dnorm(x)
+
+# Create a data frame
+data <- data.frame(x = x, y = y)
+
+# Define critical value
+crit_value <- 1.96
+
+# Plot the distribution with shaded tails
+ggplot(data, aes(x = x, y = y)) +
+  geom_line(color = "black", linewidth=1) +
+  geom_area(data = subset(data, x <= -crit_value), aes(x = x, y = y), fill = "red", alpha = 0.3) +
+  geom_area(data = subset(data, x >= crit_value), aes(x = x, y = y), fill = "red", alpha = 0.3) +
+  geom_area(data = subset(data, x >= -crit_value & x <= crit_value), aes(x = x, y = y), fill = "blue", alpha = 0.3) +
+  annotate("text", x = 0, y = 0.12, label = "95% Confidence", size = 5, fontface = "bold", color = "black") +
+  geom_vline(xintercept = c(-crit_value, crit_value), linetype = "dashed", color="blue") +
+  annotate("text", x = -crit_value, y = max(y), label = "-1.96", vjust = -0.5, hjust = 1.2, size = 4) +
+  annotate("text", x = crit_value, y = max(y), label = "1.96", vjust = -0.5, hjust = -0.2, size = 4) +
+  annotate("text", x = -3, y = 0.025, label = "0.025", color = "red", size = 4, hjust = 0) +
+  annotate("text", x = 3, y = 0.025, label = "0.025", color = "red", size = 4, hjust = 1) +
+  labs(title = "Standard Normal Distribution with Tails Colored Beyond ±1.96 SD",
+       x = "z-score", y = "Density") +
+  theme_minimal()
+
+```
+
+
 Common $z^*$ values for specified confidence levels are:
 
 ```{r, fig.width = 9, echo=FALSE}
