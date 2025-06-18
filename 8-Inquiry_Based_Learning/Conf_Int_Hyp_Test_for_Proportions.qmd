@@ -206,7 +206,7 @@ Make a $(1-\alpha)$ level confidence interval for the true population proportion
 __Question__:  Interpret the confidence interval in context of the question:  
 __Answer__:  
 
-__Question__:  Are the test requirements for the normality of $\hat{p}$ satisfied?  
+__Question__:  Are the hypothesis test requirements for the normality of $\hat{p}$ satisfied?  
 __Answer__:  
 
 __Question__:  Are the requirements for a confidence interval for $p$ satisfied?  

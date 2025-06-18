@@ -50,6 +50,7 @@ __Answer__:
 __Question__:  Based on your selected $\alpha$ and P-value, what is your conclusion?  
 __Answer__:  
 
+
 ## Confidence Interval
 
 Create a 99\% confidence interval for the true population proportion of teenagers who smoke?  
@@ -107,4 +108,43 @@ Create a 95\% confidence interval for the true population proportion of teenager
 __QUESTION__:  Interpret the confidence interval in context of the research question:  
 __ANSWER__:  
 
+
+
+# Bird Watching
+
+A wildlife researcher is studying a rare bird species in a southeast Idaho.  They identify a sample of 500 birds, and only 6 are found to be of this rare species. 
+
+
+Estimate the proportion of the entire bird population that is this rare species using a 95% confidence interval.  
+
+```{r}
+prop.test(x = , n = , conf.level=)$conf.int
+```
+
+
+__QUESTION__:  Interpret the confidence interval in context of the research question:  
+__ANSWER__:  
+
+
+__QUESTION__:  Are the assumptions for the normality of $\hat p$ are met?  (Check $n\hat{p}$ and $n(1-\hat{p})$)  
+__ANSWER__:  
+
+__QUESTION__:  Perform a statistical hypothesis test to see if the population proportion, $p$, is less than 3%.  Use $\alpha=0.05$.  
+
+```{r}
+
+prop.test(x=, n=, p=, alternative=)
+
+```
+
+
+__QUESTION__:  What is the p-value for the above test?  
+__ANSWER__:  
+
+
+__QUESTION__:  State your conclusion using the technical requirements and in context of the research question.  
+__ANSWER__:  
+
+__QUESTION__:  Are the test requirements for a statistical hypothesis for a proportion met?  (Check $np$ and $n(1-p)$)  
+__ANSWER__:  
 
