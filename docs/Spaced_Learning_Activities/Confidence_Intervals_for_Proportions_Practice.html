@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Confidence Intervals and Hypothesis Tests Practice – Math221D Notebook</title>
+<title>Confidence Intervals and Hypothesis Tests For Proportions - Practice – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -5269,17 +5269,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#teenage-smoking-habits" id="toc-teenage-smoking-habits" class="nav-link active" data-scroll-target="#teenage-smoking-habits">Teenage Smoking Habits</a>
-  <ul class="collapse">
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
-  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
-  </ul></li>
-  <li><a href="#left-handed-artists" id="toc-left-handed-artists" class="nav-link" data-scroll-target="#left-handed-artists">Left-handed Artists</a>
-  <ul class="collapse">
-  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
-  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
-  </ul></li>
-  <li><a href="#exercise-habits" id="toc-exercise-habits" class="nav-link" data-scroll-target="#exercise-habits">Exercise Habits</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#bird-watching" id="toc-bird-watching" class="nav-link" data-scroll-target="#bird-watching">Bird Watching</a></li>
+  <li><a href="#customer-satisfaction-survey" id="toc-customer-satisfaction-survey" class="nav-link" data-scroll-target="#customer-satisfaction-survey">Customer Satisfaction Survey</a></li>
+  <li><a href="#health-study" id="toc-health-study" class="nav-link" data-scroll-target="#health-study">Health Study</a></li>
   </ul>
 </nav>
     </div>
@@ -5288,8 +5281,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Confidence Intervals and Hypothesis Tests Practice</h1>
-<p class="subtitle lead">Proportions</p>
+<h1 class="title">Confidence Intervals and Hypothesis Tests For Proportions - Practice</h1>
 </div>
 
 
@@ -5306,66 +5298,51 @@ window.Quarto = {
 </header>
 
 
-<section id="teenage-smoking-habits" class="level1">
-<h1>Teenage Smoking Habits</h1>
-<p>A study was conducted to determine the proportion of American teenagers between 13 and 17 who smoke. Previous surveys showed that 15% percent of all teenagers smoke. A Gallup survey interviewed a nationally representative sample of 785 teenagers aged 13 to 17. Seventy-one (71) teenagers in the survey acknowledged having smoked at least once in the past week.</p>
-<p>We want to explore if the study provide adequate evidence to conclude that the percentage of teenagers who smoke has changed since the original study (that is, is <span class="math inline">\(p\)</span> now <em>different</em> than 15%).</p>
-<p><strong>QUESTION</strong>: What are the requirements for a valid hypothesis test for a proportion, and are they met?<br>
-<strong>ANSWER</strong>:</p>
-<p>Whether or not the test requirements are met, perform the appropriate hypothesis test and create a confidence interval for the true proportion of teenagers who smoke.</p>
-<section id="hypothesis-test" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
-<p>State the null and alternative hypotheses (replace the ??? with the correct information):</p>
-<p><span class="math display">\[H_0: p=???\]</span></p>
-<p><span class="math display">\[H_a: p???0.15\]</span> Choose your significance level:</p>
-<p><span class="math display">\[\alpha = 0.\]</span></p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In this exercise, you will practice creating and interpreting confidence intervals for proportions.</p>
+</section>
+<section id="bird-watching" class="level1">
+<h1>Bird Watching</h1>
+<p>A wildlife researcher is studying a rare bird species in a southeast Idaho. They identify a sample of 500 birds, and only 6 are found to be of this rare species. Estimate the proportion of the entire bird population that is this rare species using a 95% confidence interval.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perform the hypothesis test:  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> , <span class="at">n =</span> , <span class="at">conf.level=</span>)<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in prop.test(x = , n = , conf.level = ): argument &quot;x&quot; is missing, with no default</code></pre>
 </div>
-<p><strong>QUESTION</strong>: What is the value of the test statistic?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the P-value?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Based on your selected <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(P\)</span>-value, what is your conclusion?<br>
-<strong>ANSWER</strong>:</p>
-</section>
-<section id="confidence-interval" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
-<p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval for the true population proportion of teenagers who smoke?</p>
-</section>
-</section>
-<section id="left-handed-artists" class="level1">
-<h1>Left-handed Artists</h1>
-<p>Suppose you would like to study the connection between creativity and left-handedness. Your favorite generative AI told you that the estimated population of left-handed people in the United States is about 11%. You sample 122 Visual Arts majors and find that 20 are left handed. Is this enough evidence to demonstrate that visual arts majors have a <em>higher</em> proportion of left handed people than the general population?</p>
-<p><strong>QUESTION</strong>: What is the estimated sample proportion, <span class="math inline">\(\hat{p}\)</span>?<br>
-<strong>ANSWER</strong>:</p>
-<section id="confidence-interval-1" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h2>
-<p>Create a 90% confidence interval for the true population proportion of left-handed visual artists:</p>
-<p><strong>QUESTION</strong>: What are the requirements for a confidence interval for a proportion, and are they met?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question.<br>
-<strong>ANSWER</strong>:</p>
-</section>
-<section id="hypothesis-test-1" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h2>
-<p>Perform a hypothesis test to determine if the proportion of left-handed Visual Art majors is <em>higher</em> than the general population of 11%.</p>
-<p><strong>QUESTION</strong>: What is the value of the test statistic?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the P-value?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Based on the P-value and a confidence level of <span class="math inline">\(\alpha=.05\)</span>, what is your conclusion?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What are the requirements for a hypothesis test for a proportion, and are they met?<br>
-<strong>ANSWER</strong>:</p>
-</section>
-</section>
-<section id="exercise-habits" class="level1">
-<h1>Exercise Habits</h1>
-<p>A health study surveyed 250 individuals about their exercise habits, and 140 reported exercising regularly. Construct a 97.25% confidence interval for the proportion of the general population that exercise regularly.</p>
+</div>
 <p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question:<br>
 <strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Are the requirements for a valid confidence interval for <span class="math inline">\(p\)</span> met?<br>
+<p><strong>QUESTION</strong>: Are the assumptions for the normality of <span class="math inline">\(\hat p\)</span> are met? (Check <span class="math inline">\(n\hat{p}\)</span> and <span class="math inline">\(n(1-\hat{p})\)</span>)<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Perform a statistical hypothesis test to see if the population proportion, <span class="math inline">\(p\)</span>, is less than 3%. Use <span class="math inline">\(\alpha=0.05\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x=</span>, <span class="at">n=</span>, <span class="at">p=</span>, <span class="at">alternative=</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in prop.test(x = , n = , p = , alternative = ): argument &quot;x&quot; is missing, with no default</code></pre>
+</div>
+</div>
+<p><strong>QUESTION</strong>: What is the p-value for the above test?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: State your conclusion using the technical requirements and in context of the research question.<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Are the test requirements for a statistical hypothesis for a proportion met? (Check <span class="math inline">\(np\)</span> and <span class="math inline">\(n(1-p)\)</span>)<br>
+<strong>ANSWER</strong>:</p>
+</section>
+<section id="customer-satisfaction-survey" class="level1">
+<h1>Customer Satisfaction Survey</h1>
+<p>A company surveyed 150 customers about their satisfaction, and 105 responded that they were satisfied. Estimate the proportion of all customers who are satisfied with the company’s service using a 99% confidence level.</p>
+<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Are the assumptions for the normality of <span class="math inline">\(\hat p\)</span> are met? Why?<br>
+<strong>ANSWER</strong>:</p>
+</section>
+<section id="health-study" class="level1">
+<h1>Health Study</h1>
+<p>A health study surveyed 250 individuals about their exercise habits, and 140 reported exercising regularly. Construct a 97.25% confidence interval for the proportion of the general population that exercises regularly.</p>
+<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Are the assumptions for the normality of <span class="math inline">\(\hat p\)</span> are met? Why?<br>
 <strong>ANSWER</strong>:</p>
 
 

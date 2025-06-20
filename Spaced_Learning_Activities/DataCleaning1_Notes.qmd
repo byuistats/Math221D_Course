@@ -1,0 +1,110 @@
+---
+title: "Data Cleaning Practice"
+format: html
+---
+
+
+# Notes:  
+
+Break this into 3, then do cumulative retrieval (pair-share each day; start with the hardest one so it gets the most retrieval); possibly have some scaffolding slide, prompt words.  
+
+Groups of 3 for a week; what if you used the same topic?  Do 3 filter exercises; do 3 gg-plots, etc.  
+
+# Introduction
+
+In this exercise, you'll practice the basics of data cleaning and visualization.  
+
+Load and explore the data then respond to the questions below.  
+
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(car)
+
+real_estate <- read_csv('https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/MadisonCountyRealEstateA.csv')
+
+glimpse(real_estate)
+
+```
+
+__QUESTION__:  Make a Histogram of `ListPrice`
+
+```{r}
+
+ggplot(real_estate, aes(x = ListPrice)) +
+  geom_histogram()
+
+```
+
+__QUESTION__:  What is the shape of the distribution of list prices?  
+__ANSWER__:  
+
+
+__QUESTION__:  Make a table of summary statistics for `ListPrice`
+
+```{r}
+
+favstats(real_estate$ListPrice)
+
+```
+
+
+
+__QUESTION__:  What is the minimum value for list prices?  
+__ANSWER__:  1.47
+
+
+
+Create a clean dataset that:
+
+  1. Removes houses that are more than $1M
+  2. Has only 1 Story houses
+  3. No Missing Elementary school information
+  4. Is in Rexburg
+  5. Contains only the columns: ListPrice, Style, Elementary, City, and IsFixerUpper
+  
+  
+```{r}
+
+unique(real_estate$City)
+
+clean <- real_estate %>%
+  filter(ListPrice > 2,
+         ListPrice<1000000,
+         Style == "1 Story",
+         Elementary != "MISSING",
+         City == "REXBURG") %>%
+  select(ListPrice, Style, Elementary, City, IsFixerUpper)
+
+clean
+
+```
+
+
+__QUESTION__:  What percent of homes in the clean dataset are fixer-uppers?
+
+```{r}
+
+prop.table(table(clean$IsFixerUpper))
+
+```
+
+__QUESTION__:  Use GGPLOT to create a boxplot for `ListPrice` that compares Elementary Schools?  
+
+
+```{r}
+
+ggplot(clean, aes(y = ListPrice, x = fct_reorder(Elementary, ListPrice), fill=Elementary)) +
+  geom_boxplot() +
+  theme_bw() +
+  theme(
+    legend.position = "null"
+  )
+
+```
+
+
+__QUESTION__:  Which Elementary school appears to have the lowest distribution of housing prices?  
+__ANSWER__:  

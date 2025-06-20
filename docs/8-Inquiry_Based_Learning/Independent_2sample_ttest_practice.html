@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Confidence Intervals and Hypothesis Tests Practice – Math221D Notebook</title>
+<title>2-Sample Independent T-Test Practice – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -5208,28 +5208,28 @@ window.Quarto = {
  <span class="dropdown-text">Statistical Significance</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Linear_Regression_Intro.html">
- <span class="dropdown-text">Simple Linear Regression</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href=".././8-Inquiry_Based_Learning/Confidence_Intervals.qmd">
- <span class="dropdown-text"></span></a>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html">
+ <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../8-Inquiry_Based_Learning/One_Sample_ttest.html">
  <span class="dropdown-text">One-Sample T-test</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions.html">
+ <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Independent_2sample_ttest.html">
+ <span class="dropdown-text">Independent Two-sample T-test</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../8-Inquiry_Based_Learning/ANOVA_Intro.html">
  <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html">
- <span class="dropdown-text">Independent Two-sample T-test</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions.html">
- <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Linear_Regression_Intro.html">
+ <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
     </ul>
   </li>
@@ -5269,17 +5269,28 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#teenage-smoking-habits" id="toc-teenage-smoking-habits" class="nav-link active" data-scroll-target="#teenage-smoking-habits">Teenage Smoking Habits</a>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#its-a-date" id="toc-its-a-date" class="nav-link" data-scroll-target="#its-a-date">It’s a Date!</a>
   <ul class="collapse">
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the Data</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the Data</a></li>
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a>
+  <ul class="collapse">
   <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
   </ul></li>
-  <li><a href="#left-handed-artists" id="toc-left-handed-artists" class="nav-link" data-scroll-target="#left-handed-artists">Left-handed Artists</a>
-  <ul class="collapse">
-  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
-  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
   </ul></li>
-  <li><a href="#exercise-habits" id="toc-exercise-habits" class="nav-link" data-scroll-target="#exercise-habits">Exercise Habits</a></li>
+  <li><a href="#tooth-hurty" id="toc-tooth-hurty" class="nav-link" data-scroll-target="#tooth-hurty">Tooth hurty</a>
+  <ul class="collapse">
+  <li><a href="#review-the-data" id="toc-review-the-data" class="nav-link" data-scroll-target="#review-the-data">Review The Data</a></li>
+  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#birth-weights" id="toc-birth-weights" class="nav-link" data-scroll-target="#birth-weights">Birth Weights</a>
+  <ul class="collapse">
+  <li><a href="#review-the-data-1" id="toc-review-the-data-1" class="nav-link" data-scroll-target="#review-the-data-1">Review The Data</a></li>
+  <li><a href="#hypothesis-test-2" id="toc-hypothesis-test-2" class="nav-link" data-scroll-target="#hypothesis-test-2">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-2" id="toc-confidence-interval-2" class="nav-link" data-scroll-target="#confidence-interval-2">Confidence Interval</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -5288,8 +5299,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Confidence Intervals and Hypothesis Tests Practice</h1>
-<p class="subtitle lead">Proportions</p>
+<h1 class="title">2-Sample Independent T-Test Practice</h1>
 </div>
 
 
@@ -5306,69 +5316,159 @@ window.Quarto = {
 </header>
 
 
-<section id="teenage-smoking-habits" class="level1">
-<h1>Teenage Smoking Habits</h1>
-<p>A study was conducted to determine the proportion of American teenagers between 13 and 17 who smoke. Previous surveys showed that 15% percent of all teenagers smoke. A Gallup survey interviewed a nationally representative sample of 785 teenagers aged 13 to 17. Seventy-one (71) teenagers in the survey acknowledged having smoked at least once in the past week.</p>
-<p>We want to explore if the study provide adequate evidence to conclude that the percentage of teenagers who smoke has changed since the original study (that is, is <span class="math inline">\(p\)</span> now <em>different</em> than 15%).</p>
-<p><strong>QUESTION</strong>: What are the requirements for a valid hypothesis test for a proportion, and are they met?<br>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
+<p>Here are several opportunities to practice analyzing 2-sample independent t-tests using R. For each question, you will:</p>
+<ul>
+<li>Read in data<br>
+</li>
+<li>Identify the Response and Independent variable<br>
+</li>
+<li>Create data summaries (numerical and graphical)<br>
+</li>
+<li>Statistically analyze the data<br>
+</li>
+<li>Check for the suitability of the statistical test (CLT, Normality)<br>
+</li>
+<li>State your hypothesis test conclusions and interpret your confidence intervals</li>
+</ul>
+<p>When you finish, render this document and submit the <code>.html</code> in Canvas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="its-a-date" class="level1">
+<h1>It’s a Date!</h1>
+<p>Dating Behavior was studied in a speed dating experiment where random matching was generated and created randomization in the number of potential dates. In a survey to each participant, one question was asked about how important attraction is when they date. The attraction value is on a scale from 0 (not important at all) to 100 (very important).</p>
+<p>The researchers want to determine if males report to value attractiveness more than females. Use a level of significance of 0.05.</p>
+<section id="load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data">Load the Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dating <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://github.com/byuistats/Math221D_Course/raw/main/Data/dating_attractive_longformat.csv&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="explore-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="explore-the-data">Explore the Data</h2>
+<p><strong>QUESTION</strong>: What is the <em>response</em> variable?<br>
 <strong>ANSWER</strong>:</p>
-<p>Whether or not the test requirements are met, perform the appropriate hypothesis test and create a confidence interval for the true proportion of teenagers who smoke.</p>
+<p><strong>QUESTION</strong>: What is the <em>explanatory</em> variable?<br>
+<strong>ANSWER</strong>:</p>
+<p>Create a side-by-side boxplot for the amount of reported importance of attractiveness for each biosex.</p>
+<p>Add a title and change the colors of the boxes.</p>
+<p>Create a table of summary statistics for each group (<code>favstats()</code>):</p>
+</section>
 <section id="hypothesis-test" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
-<p>State the null and alternative hypotheses (replace the ??? with the correct information):</p>
-<p><span class="math display">\[H_0: p=???\]</span></p>
-<p><span class="math display">\[H_a: p???0.15\]</span> Choose your significance level:</p>
-<p><span class="math display">\[\alpha = 0.\]</span></p>
+<p>State your null and alternative hypotheses (replace the ??? with the appropriate symbol):</p>
+<p><span class="math display">\[H_0:  \mu_{F}???\mu_{M}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{F}???\mu_{M}\]</span></p>
+<p><strong>NOTE</strong>: The default for R is to set group order alphabetically. This means Group 1 = Female.</p>
+<p><strong>QUESTION</strong>: Check that the samples for both groups are normally distributed:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perform the hypothesis test:  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in qqPlot.default(): argument &quot;x&quot; is missing, with no default</code></pre>
 </div>
+</div>
+<p><strong>QUESTION</strong>: Do the data for each group appear normally distributed?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Why is it OK to continue with the analysis? <strong>ANSWER</strong>:</p>
+<p>Perform a t-test.</p>
 <p><strong>QUESTION</strong>: What is the value of the test statistic?<br>
 <strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the P-value?<br>
+<p><strong>QUESTION</strong>: How many degrees of freedom for this test?<br>
 <strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Based on your selected <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(P\)</span>-value, what is your conclusion?<br>
+<p><strong>QUESTION</strong>: What is the p-value?<br>
 <strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What do you conclude?<br>
+<strong>ANSWER</strong>:</p>
+<section id="confidence-interval" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
+<p>Create a confidence interval for the difference of the average Importance Score between both groups:</p>
 </section>
-<section id="confidence-interval" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
-<p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval for the true population proportion of teenagers who smoke?</p>
 </section>
 </section>
-<section id="left-handed-artists" class="level1">
-<h1>Left-handed Artists</h1>
-<p>Suppose you would like to study the connection between creativity and left-handedness. Your favorite generative AI told you that the estimated population of left-handed people in the United States is about 11%. You sample 122 Visual Arts majors and find that 20 are left handed. Is this enough evidence to demonstrate that visual arts majors have a <em>higher</em> proportion of left handed people than the general population?</p>
-<p><strong>QUESTION</strong>: What is the estimated sample proportion, <span class="math inline">\(\hat{p}\)</span>?<br>
+<section id="tooth-hurty" class="level1">
+<h1>Tooth hurty</h1>
+<p>A simple random sample of dental bill costs was collected at offices in Rexburg and Idaho Falls. Let <span class="math inline">\(\mu_{IF}\)</span> be the <em>population</em> mean of dental costs in Idaho Falls and <span class="math inline">\(\mu_{R}\)</span> be the <em>population</em> mean of dentals costs in Rexburg.</p>
+<p>We suspect that dental costs are higher in Rexburg because of less competition.</p>
+<p>Use the data imported below to answer the following questions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dentist <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://github.com/byuistats/Math221D_Course/raw/main/Data/DentistOfficeBills_longformat.csv&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="review-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="review-the-data">Review The Data</h2>
+<p><strong>QUESTION</strong>: What is the <em>response</em> variable?<br>
 <strong>ANSWER</strong>:</p>
-<section id="confidence-interval-1" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h2>
-<p>Create a 90% confidence interval for the true population proportion of left-handed visual artists:</p>
-<p><strong>QUESTION</strong>: What are the requirements for a confidence interval for a proportion, and are they met?<br>
+<p><strong>QUESTION</strong>: What is the <em>explanatory</em> variable?<br>
 <strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question.<br>
-<strong>ANSWER</strong>:</p>
+<p>Create summary statistics tables of dental costs for each office:</p>
+<p>Create a side-by-side boxplot for dental costs for each office.</p>
+<p>Check the normality of each group.</p>
+<p><strong>QUESTION</strong>: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?</p>
 </section>
 <section id="hypothesis-test-1" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h2>
-<p>Perform a hypothesis test to determine if the proportion of left-handed Visual Art majors is <em>higher</em> than the general population of 11%.</p>
-<p><strong>QUESTION</strong>: What is the value of the test statistic?<br>
+<p>State your null and alternative hypotheses (replace the question marks with the appropriate symbols):</p>
+<p><span class="math display">\[H_0:  \mu_{IF}???\mu_{R}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{IF}???\mu_{R}\]</span></p>
+<p>Perform the appropriate analysis:</p>
+<p><strong>QUESTION</strong>: What is the test statistic?<br>
 <strong>ANSWER</strong>:</p>
 <p><strong>QUESTION</strong>: What is the P-value?<br>
 <strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Based on the P-value and a confidence level of <span class="math inline">\(\alpha=.05\)</span>, what is your conclusion?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What are the requirements for a hypothesis test for a proportion, and are they met?<br>
-<strong>ANSWER</strong>:</p>
+<p>State your conclusion:</p>
+</section>
+<section id="confidence-interval-1" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h2>
+<p>Create a confidence interval for the difference in costs between the IF and Rexburg offices:</p>
+<p>Explain the confidence interval in context of the research question:</p>
 </section>
 </section>
-<section id="exercise-habits" class="level1">
-<h1>Exercise Habits</h1>
-<p>A health study surveyed 250 individuals about their exercise habits, and 140 reported exercising regularly. Construct a 97.25% confidence interval for the proportion of the general population that exercise regularly.</p>
-<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question:<br>
+<section id="birth-weights" class="level1">
+<h1>Birth Weights</h1>
+<p>A study was conducted in which researchers obtained birth weights of infants born in Illinois during the same year. The birth weights are categorized based on the race and birthplace of the mother. Researchers want to know if there is a difference in mean birth weights of babies born to black women who were born in the United States and babies born to black women who were born in Africa. Values were recorded (in grams) for each infant born. The data are recorded in the file.</p>
+<p>Let <span class="math inline">\(\mu_A\)</span> be the <em>population</em> average of babies born to African-born mothers and <span class="math inline">\(\mu_{IL}\)</span> be the <em>population</em> mean weight of babies born to mothers in Illinois.</p>
+<p>Use the data imported below to answer the following questions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>birth_weights <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://github.com/byuistats/Math221D_Course/raw/main/Data/IllinoisBirthWeightsTwoVar_longformat.csv&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="review-the-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="review-the-data-1">Review The Data</h2>
+<p><strong>QUESTION</strong>: What is the <em>response</em> variable?<br>
 <strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Are the requirements for a valid confidence interval for <span class="math inline">\(p\)</span> met?<br>
+<p><strong>QUESTION</strong>: What is the <em>explanatory</em> variable?<br>
 <strong>ANSWER</strong>:</p>
+<p>Create summary statistics tables of birth weights for each country:</p>
+<p>Create a side-by-side boxplot for birth weights for each country:</p>
+<p>Check the normality of each group.</p>
+<p><strong>QUESTION</strong>: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?<br>
+<strong>ASNWER</strong>:</p>
+</section>
+<section id="hypothesis-test-2" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h2>
+<p>State your null and alternative hypotheses (replace the question marks with the appropriate symbols):</p>
+<p><span class="math display">\[H_0:  \mu_{A}???\mu_{IL}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{A}???\mu_{IL}\]</span></p>
+<p>Perform the appropriate analysis:</p>
+<p><strong>QUESTION</strong>: What is the test statistic?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the P-value?<br>
+<strong>ANSWER</strong>:</p>
+<p>State your conclusion:</p>
+</section>
+<section id="confidence-interval-2" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-2">Confidence Interval</h2>
+<p>Create a confidence interval for the average difference in weights between babies born to mothers in Africa and Illinois:</p>
+<p>Explain the confidence interval in context of the research question:</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

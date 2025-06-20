@@ -340,21 +340,21 @@
     "href": "8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions_Practice.html",
     "title": "Confidence Intervals and Hypothesis Tests Practice",
     "section": "",
-    "text": "Recall that we can use the normal distribution to approximate the distribution of \\(\\hat{p}\\) under certain conditions.\nQuestion: What to we need to check before we assume normality for a hypothesis test?\nAnswer:\nQuestion: What to we need to check before we assume normality for confidence intervals?\nAnswer:"
+    "text": "A study was conducted to determine the proportion of American teenagers between 13 and 17 who smoke. Previous surveys showed that 15% percent of all teenagers smoke. A Gallup survey interviewed a nationally representative sample of 785 teenagers aged 13 to 17. Seventy-one (71) teenagers in the survey acknowledged having smoked at least once in the past week.\nWe want to explore if the study provide adequate evidence to conclude that the percentage of teenagers who smoke has changed since the original study (that is, is \\(p\\) now different than 15%).\nQUESTION: What are the requirements for a valid hypothesis test for a proportion, and are they met?\nANSWER:\nWhether or not the test requirements are met, perform the appropriate hypothesis test and create a confidence interval for the true proportion of teenagers who smoke.\n\n\nState the null and alternative hypotheses (replace the ??? with the correct information):\n\\[H_0: p=???\\]\n\\[H_a: p???0.15\\] Choose your significance level:\n\\[\\alpha = 0.\\]\n\n# perform the hypothesis test:  \n\nQUESTION: What is the value of the test statistic?\nANSWER:\nQUESTION: What is the P-value?\nANSWER:\nQUESTION: Based on your selected \\(\\alpha\\) and \\(P\\)-value, what is your conclusion?\nANSWER:\n\n\n\nCreate a \\((1-\\alpha)\\)% confidence interval for the true population proportion of teenagers who smoke?"
   },
   {
     "objectID": "8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions_Practice.html#hypothesis-test",
     "href": "8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions_Practice.html#hypothesis-test",
     "title": "Confidence Intervals and Hypothesis Tests Practice",
-    "section": "Hypothesis Test",
-    "text": "Hypothesis Test\nState the null and alternative hypotheses (replace the ??? with the correct information):\n\\[H_0: p=???\\]\n\\[H_a: p???0.15\\] Choose your confidence level:\n\\[\\alpha = 0.\\]\nQuestion: What is the value of the test statistic?\nAnswer:\nQuestion: What is the P-value?\nAnswer:\nQuestion: Based on your selected \\(\\alpha\\) and P-value, what is your conclusion?\nAnswer:"
+    "section": "",
+    "text": "State the null and alternative hypotheses (replace the ??? with the correct information):\n\\[H_0: p=???\\]\n\\[H_a: p???0.15\\] Choose your significance level:\n\\[\\alpha = 0.\\]\n\n# perform the hypothesis test:  \n\nQUESTION: What is the value of the test statistic?\nANSWER:\nQUESTION: What is the P-value?\nANSWER:\nQUESTION: Based on your selected \\(\\alpha\\) and \\(P\\)-value, what is your conclusion?\nANSWER:"
   },
   {
     "objectID": "8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions_Practice.html#confidence-interval",
     "href": "8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions_Practice.html#confidence-interval",
     "title": "Confidence Intervals and Hypothesis Tests Practice",
-    "section": "Confidence Interval",
-    "text": "Confidence Interval\nCreate a 99% confidence interval for the true population proportion of teenagers who smoke?"
+    "section": "",
+    "text": "Create a \\((1-\\alpha)\\)% confidence interval for the true population proportion of teenagers who smoke?"
   },
   {
     "objectID": "8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions_Practice.html#proportion-of-left-handed-artists",
@@ -368,7 +368,7 @@
     "href": "8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions_Practice.html#confidence-interval-1",
     "title": "Confidence Intervals and Hypothesis Tests Practice",
     "section": "Confidence Interval",
-    "text": "Confidence Interval\nCreate a 95% confidence interval for the true population proportion of teenagers who smoke?\nQUESTION: Interpret the confidence interval in context of the research question:\nANSWER:"
+    "text": "Confidence Interval\nCreate a 90% confidence interval for the true population proportion of left-handed visual artists:\nQUESTION: What are the requirements for a confidence interval for a proportion, and are they met?\nANSWER:\nQUESTION: Interpret the confidence interval in context of the research question.\nANSWER:"
   },
   {
     "objectID": "8-Inquiry_Based_Learning/Central_Limit_Theorem_Practice.html",
@@ -3288,5 +3288,236 @@
     "title": "Data Cleaning Practice",
     "section": "",
     "text": "Introduction\nIn this exercise, you’ll practice the basics of data cleaning and visualization.\nLoad and explore the data then respond to the questions below.\n\nlibrary(tidyverse)\n\nWarning: package 'tidyverse' was built under R version 4.4.3\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(mosaic)\n\nWarning: package 'mosaic' was built under R version 4.4.3\n\n\nRegistered S3 method overwritten by 'mosaic':\n  method                           from   \n  fortify.SpatialPolygonsDataFrame ggplot2\n\nThe 'mosaic' package masks several functions from core packages in order to add \nadditional features.  The original behavior of these functions should not be affected by this.\n\nAttaching package: 'mosaic'\n\nThe following object is masked from 'package:Matrix':\n\n    mean\n\nThe following objects are masked from 'package:dplyr':\n\n    count, do, tally\n\nThe following object is masked from 'package:purrr':\n\n    cross\n\nThe following object is masked from 'package:ggplot2':\n\n    stat\n\nThe following objects are masked from 'package:stats':\n\n    binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,\n    quantile, sd, t.test, var\n\nThe following objects are masked from 'package:base':\n\n    max, mean, min, prod, range, sample, sum\n\nlibrary(rio)\n\nWarning: package 'rio' was built under R version 4.4.3\n\n\n\nAttaching package: 'rio'\n\nThe following object is masked from 'package:mosaic':\n\n    factorize\n\nlibrary(car)\n\nWarning: package 'car' was built under R version 4.4.3\n\n\nLoading required package: carData\n\nAttaching package: 'car'\n\nThe following objects are masked from 'package:mosaic':\n\n    deltaMethod, logit\n\nThe following object is masked from 'package:dplyr':\n\n    recode\n\nThe following object is masked from 'package:purrr':\n\n    some\n\nreal_estate &lt;- read_csv('https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/MadisonCountyRealEstateA.csv')\n\nRows: 149 Columns: 18\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (11): Style, IsFixerUpper, Elementary, JrHigh, High, Subdivision, City, ...\ndbl  (7): ListPrice, Bedrooms, TotalBaths, Age, LotSize, SQFT, Taxes\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nQUESTION: Make a Histogram of ListPrice\nQUESTION: What is the shape of the distribution of list prices?\nANSWER:\nQUESTION: Make a table of summary statistics for ListPrice\nQUESTION: What is the minimum value for list prices?\nANSWER:\nCreate a clean dataset that:\n\nRemoves houses that are more than $1M\nHas only 1 Story houses\nNo Missing Elementary school information\nIs in Rexburg\nContains only the columns: ListPrice, Style, Elementary, City, and IsFixerUpper\n\nQUESTION: What percent of homes in the clean dataset are fixer-uppers?\nQUESTION: Use GGPLOT to create a boxplot for ListPrice that compares Elementary Schools?\nQUESTION: Which Elementary school appears to have the lowest distribution of housing prices?\nANSWER:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html",
+    "title": "Independent Two-sample T-test",
+    "section": "",
+    "text": "In many situations we would like to compare averages from different populations. In these situations, we take 2 random samples from each population and perform statistical tests to determine if the population means are significantly different. Because these two groups of individuals are sampled independently, we call this analysis Independent 2-Sample t-test.\nAlternatively, in many experimental designs, participants are randomly assigned into a treatment and a control group. The randomization process ensures that there is no association between participants in either group. They are independent.\nWhen 2 random samples are taken from 2 separate populations, or when a group of people are randomly assigned into treatment groups, the samples are independent.\nSome examples include:\n\nComparing salaries of men and women (randomly sample men and women separately)\nTesting a new medication compared to a placebo (participants randomly assigned to treatment groups)\nComparing average GPA of Math majors and Economics majors (randomly select from each population)"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#response-and-explanatory-variables",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#response-and-explanatory-variables",
+    "title": "Independent Two-sample T-test",
+    "section": "Response and Explanatory Variables",
+    "text": "Response and Explanatory Variables\nThe above statistical hypothesis, \\(H_o: \\mu_1 = \\mu_2\\), is equivalent to stating that the explanatory variable has no relationship to the response variable.\nFor example, suppose we want to compare reaction times between 2 groups, athletes and non-athletes. We suspect that athletes have quicker reaction times than non-athletes. We could express the null and alternative hypotheses:\n\\[H_o: \\mu_\\text{athletes} = \\mu_{non-athletes}\\]\n\\[H_a: \\mu_\\text{athletes} &lt; \\mu_\\text{non-athletes}\\] where \\(\\mu_\\text{athletes}\\) is the population average reaction time for athletes.\nNow look at how the data might be organized:\n\n\n\n\n\n\n\n\n\nReaction_Time\nGroup\n\n\n\n\n0.23\nAthlete\n\n\n0.45\nNon-athlete\n\n\n0.18\nAthlete\n\n\n0.56\nNon-athlete\n\n\n0.31\nAthlete\n\n\n0.72\nNon-athlete\n\n\n0.27\nAthlete\n\n\n0.39\nNon-athlete\n\n\n0.21\nAthlete\n\n\n0.64\nNon-athlete\n\n\n\n\n\nThinking of the data this way makes it easy to see that we can phrase our null hypothesis as: There is no relationship between group membership and reaction time."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#independent-t-test-in-r",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#independent-t-test-in-r",
+    "title": "Independent Two-sample T-test",
+    "section": "Independent t-test in R",
+    "text": "Independent t-test in R\nRecall that when we created a boxplot() or favstats() for multiple groups, the R code looked like:\nboxplot(data$response_variable ~ data$grouping_variable)\nfavstats(data$response_variable ~ data$grouping_variable)\nWe use the exact same format for a t-test with 2 groups:\nt.test(data$response_variable ~ data$grouping_variable, alterntive = \"\")\nWe do not need to specify mu in this case because the t.test() function uses mu=0 as a default. This relates to the null hypothesis of the difference between the means, which we expect to be zero if the null hypothesis is true.\nWhen specifying an alternative hypothesis in R (alternative=\"\"), a reference group must be used. The reference serves as the baseline for comparison. R will assess how the mean of the second group differs from that of the first.\nBy default, R decides which group is the reference group alphabetically. Whichever category label is first alphabetically is the reference group.\nNOTE: In R, group 1 and 2 are determined alphabetically according to the labels in the explanatory variable column.\nEXAMPLE: If my explanatory variable is sex, and they are labeled “Female” and “Male”, then “Female” would be the reference group. If I suspect that Females had smaller feet than males I would use alternative = \"less\"."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#checking-requirements",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#checking-requirements",
+    "title": "Independent Two-sample T-test",
+    "section": "Checking Requirements",
+    "text": "Checking Requirements\nWhen we looked at 1-sample t-tests, we had to check that the sample mean was normally distributed. Recall that the sample mean is approximately normal if:\n\nThe source population is normally distributed\nThe sample size, \\(n \\ge 30\\)\n\nFor a 2-sample t-test, we must check that this is true for both samples. If both sample sizes are bigger than 30 then we can trust the CLT and the statistics based on it.\nIf the sample sizes are small, we can make a qqPlot() for both groups:\nqqPlot(data$response_variable ~ data$explanatory_variable)"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#confidence-intervals",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#confidence-intervals",
+    "title": "Independent Two-sample T-test",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nRecall that confidence intervals are necessarily two-sided. So the code for a 99% confidence interval looks like:\nt.test(data$response_variable ~ data$grouping_variable, conf.level = .99)$conf.int\nWe interpret a confidence interval for the difference of means as follows:\n\nI am 99% confident that the true difference of the means is between [lower limit] and [upper limit].\n\nWe can usually do better within the context of a research question:\n\nClass 1 did, on average, between 3.21 and 5.67 percent better than class 2 on the last exam.\n\nStore A outperforms Store B by between $27,022 and $36,977 on average"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-1-read-in-data",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-1-read-in-data",
+    "title": "Independent Two-sample T-test",
+    "section": "Step 1: Read in Data",
+    "text": "Step 1: Read in Data\n\n# Load Libraries\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\n\n# Load Data\n\nfifa_heart_attacks &lt;- import(\"https://byuistats.github.io/M221R/Data/fifa_heart_attacks.xlsx\")"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-2-review-data",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-2-review-data",
+    "title": "Independent Two-sample T-test",
+    "section": "Step 2: Review Data",
+    "text": "Step 2: Review Data\nLook at the data.\nCreate summary statistics tables of the number of heart attacks for each group.\nCreate a side-by-side boxplot for the during the World Cup and the Control.\nDo you notice any outliers or data that may need to be omitted for analysis?\nCheck to see if the means from both groups are normally distributed:\n\nIs n &gt; 30 for both groups?\nCreate a qqPlot()\n\n\nqqPlot(fifa_heart_attacks$heart_attacks ~ fifa_heart_attacks$time_period)\n\n\n\n\n\n\n\n\nCan we trust that the central limit theorem applies?"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-3-prepare-data-for-analysis",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-3-prepare-data-for-analysis",
+    "title": "Independent Two-sample T-test",
+    "section": "Step 3: Prepare Data for Analysis",
+    "text": "Step 3: Prepare Data for Analysis\nThese data look ready for analysis."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-4-perform-the-appropriate-analysis",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-4-perform-the-appropriate-analysis",
+    "title": "Independent Two-sample T-test",
+    "section": "Step 4: Perform the appropriate analysis",
+    "text": "Step 4: Perform the appropriate analysis\n\nHypothesis Test\nAre the individuals in each group dependent or independent of each other?\nWrite out your null and alternative hypotheses.\nHo: Ha:\nWhich group is considered group 1 and which is group 2 in R?\nCheck the alphabetical order:\n\nunique(fifa_heart_attacks$time_period)\n\n[1] \"Control\"   \"World Cup\"\n\n\nPerform the appropriate t-test.\nWhat is your test statistic?\nWhat is your p-value?\nState your conclusion:\n\n\n97% Confidence interval\nCalculate the 97% confidence interval for the difference of the means.\nIn context of the research question, interpret the confidence interval."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#new-zealand-rugby",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#new-zealand-rugby",
+    "title": "Independent Two-sample T-test",
+    "section": "New Zealand Rugby",
+    "text": "New Zealand Rugby\nRugby is a popular sport in the United Kingdom, France, Australia, New Zealand and South Africa. It is gaining popularity in the US, Canada, Japan and parts of Europe. Some of the rules of the game have recently been changed to make play more exciting. In a study to examine the effects of the rule changes, Hollings and Triggs (1993) collected data on some recent games.\nTypically, a game consists of bursts of activity that terminate when points are scored, if the ball is moved out of the field of play or if a violation of the rules occurs. In 1992, the investigators gathered data on ten international matches which involved the New Zealand national team, the All Blacks. The first five games were the last international games played under the old rules, and the second set of five were the first internationals played under the new rules.\nFor each of the ten games, the data give the successive times (in seconds) of each passage of play in that game.\nYou will investigate whether the mean duration of the passages has dropped under the new rules.\nUse a level of significance of 0.01.\n\nLoad the Data\n\nrugby &lt;- import(\"https://byuistats.github.io/M221R/Data/quiz/R/nz_rugby.csv\")\n\n\n\nExplore the Data\nCreate a side-by-side boxplot for the amount of reported passage of play before and after the rule changes.\nAdd a title and change the colors of the boxes.\nWhat do you observe?\nCreate a table of summary statistics of play time for before and after the rule change. (favstats()):\n\n\nPerform the Appropriate Analysis\n\nHypothesis Test\nState your null and alternative hypotheses:\nNOTE: The default for R is to set group order alphabetically. This means Group 1 = NewRules\nCompare the the time per play under the new and old rules:\n\nqqPlot(rugby$time, groups = rugby$period)\n\n\n\n\n\n\n\n\nDo the data for each group appear normally distributed?\nWhy is it OK to continue with the analysis?\nPerform a t-test.\nWhat is the value of the test statistic?\nHow many degrees of freedom for this test?\nWhat is the p-value?\nWhat do you conclude?\n\n\nConfidence Interval\nCreate a confidence interval for the difference of the average Importance Score between both groups:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-1-read-in-the-data",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-1-read-in-the-data",
+    "title": "Independent Two-sample T-test",
+    "section": "Step 1: Read in the data",
+    "text": "Step 1: Read in the data\n\ncopd &lt;- import(\"https://byuistats.github.io/M221R/Data/copd_rehab.xlsx\") %&gt;% pivot_longer(cols=c(\"community\", \"hospital\"), names_to = \"Treatment\", values_to = \"Steps\") %&gt;% select(Treatment, Steps) %&gt;% arrange(Treatment)"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-2-review-the-data",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-2-review-the-data",
+    "title": "Independent Two-sample T-test",
+    "section": "Step 2: Review the data",
+    "text": "Step 2: Review the data\nCreate side-by-side boxplots and summary statistics for the community and hospital groups:\nCheck to see if the means are expected to be normally distributed.\nCan trust the CLT for our test statistic and P-value?"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-3-prepare-data-for-analysis-1",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-3-prepare-data-for-analysis-1",
+    "title": "Independent Two-sample T-test",
+    "section": "Step 3: Prepare Data for Analysis",
+    "text": "Step 3: Prepare Data for Analysis\nThe data cleansing has been performed for you. You’re welcome."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-4-perform-the-appropriate-analysis-1",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest.html#step-4-perform-the-appropriate-analysis-1",
+    "title": "Independent Two-sample T-test",
+    "section": "Step 4: Perform the appropriate analysis",
+    "text": "Step 4: Perform the appropriate analysis\n\nHypothesis Test\nState your null and alternative hypotheses.\nHo:\nHa:\nWhich group is considered group 1 in this data?\nRun the appropriate t-test.\n\n#t.test()\n\nState your conclusion about the hypothesis test.\n\n\nConfidence Interval\nCreate a 95% confidence interval for the difference between the means\nInterpret the 95% confidence interval for the mean difference between the community-based and hospital-based groups."
+  },
+  {
+    "objectID": "Spaced_Learning_Activities/DataCleaning1_Notes.html",
+    "href": "Spaced_Learning_Activities/DataCleaning1_Notes.html",
+    "title": "Data Cleaning Practice",
+    "section": "",
+    "text": "Notes:\nBreak this into 3, then do cumulative retrieval (pair-share each day; start with the hardest one so it gets the most retrieval); possibly have some scaffolding slide, prompt words.\nGroups of 3 for a week; what if you used the same topic? Do 3 filter exercises; do 3 gg-plots, etc.\n\n\nIntroduction\nIn this exercise, you’ll practice the basics of data cleaning and visualization.\nLoad and explore the data then respond to the questions below.\n\nlibrary(tidyverse)\n\nWarning: package 'tidyverse' was built under R version 4.4.3\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(mosaic)\n\nWarning: package 'mosaic' was built under R version 4.4.3\n\n\nRegistered S3 method overwritten by 'mosaic':\n  method                           from   \n  fortify.SpatialPolygonsDataFrame ggplot2\n\nThe 'mosaic' package masks several functions from core packages in order to add \nadditional features.  The original behavior of these functions should not be affected by this.\n\nAttaching package: 'mosaic'\n\nThe following object is masked from 'package:Matrix':\n\n    mean\n\nThe following objects are masked from 'package:dplyr':\n\n    count, do, tally\n\nThe following object is masked from 'package:purrr':\n\n    cross\n\nThe following object is masked from 'package:ggplot2':\n\n    stat\n\nThe following objects are masked from 'package:stats':\n\n    binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,\n    quantile, sd, t.test, var\n\nThe following objects are masked from 'package:base':\n\n    max, mean, min, prod, range, sample, sum\n\nlibrary(rio)\n\nWarning: package 'rio' was built under R version 4.4.3\n\n\n\nAttaching package: 'rio'\n\nThe following object is masked from 'package:mosaic':\n\n    factorize\n\nlibrary(car)\n\nWarning: package 'car' was built under R version 4.4.3\n\n\nLoading required package: carData\n\nAttaching package: 'car'\n\nThe following objects are masked from 'package:mosaic':\n\n    deltaMethod, logit\n\nThe following object is masked from 'package:dplyr':\n\n    recode\n\nThe following object is masked from 'package:purrr':\n\n    some\n\nreal_estate &lt;- read_csv('https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/MadisonCountyRealEstateA.csv')\n\nRows: 149 Columns: 18\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (11): Style, IsFixerUpper, Elementary, JrHigh, High, Subdivision, City, ...\ndbl  (7): ListPrice, Bedrooms, TotalBaths, Age, LotSize, SQFT, Taxes\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nglimpse(real_estate)\n\nRows: 149\nColumns: 18\n$ ListPrice    &lt;dbl&gt; 136500, 136500, 136500, 167900, 319000, 699000, 445000, 2…\n$ Bedrooms     &lt;dbl&gt; 21, 2, 2, 3, 6, 6, 6, 6, 2, 5, 3, 5, 5, 2, 5, 6, 3, 3, 3,…\n$ TotalBaths   &lt;dbl&gt; 1.5, 1.5, 1.5, 2.0, 3.0, 4.0, 3.0, 3.0, 1.0, 3.0, 2.0, 3.…\n$ Style        &lt;chr&gt; \"2 Story\", \"2 Story\", \"2 Story\", \"1 Story\", \"1 Story\", \"2…\n$ Age          &lt;dbl&gt; 3, 3, 3, 30, 6, 2, 6, 2, 750, 14, 5, 4, 3, 32, 10, 4, 2, …\n$ LotSize      &lt;dbl&gt; 0.03, 0.03, 0.03, 0.30, 5.98, 1.00, 1.00, 0.24, 0.16, 0.2…\n$ SQFT         &lt;dbl&gt; 1250, 1250, 1250, 1760, 3300, 5226, 4550, 3220, 1310, 280…\n$ Taxes        &lt;dbl&gt; NA, NA, NA, 1032, 1881, NA, 2408, 448, 641, 1970, 2019, 9…\n$ IsFixerUpper &lt;chr&gt; \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No\", \"No…\n$ Elementary   &lt;chr&gt; \"KENNEDY\", \"KENNEDY\", \"KENNEDY\", \"MISSING\", \"ARCHER\", \"HI…\n$ JrHigh       &lt;chr&gt; \"MADISON 321JH\\xa0\", \"MADISON 321JH\\xa0\", \"MADISON 321JH\\…\n$ High         &lt;chr&gt; \"MADISON 321HS\\xa0\", \"MADISON 321HS\\xa0\", \"MADISON 321HS\\…\n$ Subdivision  &lt;chr&gt; \"RIVERWOODS TOWNHOUSES\", \"RIVERWOODS TOWNHOUSES\", \"RIVERW…\n$ City         &lt;chr&gt; \"REXBURG\", \"REXBURG\", \"REXBURG\", \"REXBURG\", \"REXBURG\", \"R…\n$ County       &lt;chr&gt; \"Madison\", \"Madison\", \"Madison\", \"Madison\", \"Madison\", \"M…\n$ Fireplace    &lt;chr&gt; \"No\", \"No\", \"No\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"Yes\", \"No\"…\n$ FloodPlain   &lt;chr&gt; \"N\", \"N\", \"N\", \"U\", \"N\", \"N\", \"N\", \"N\", \"N\", \"N\", \"N\", \"N…\n$ Source       &lt;chr&gt; \"http://snakerivermls.com/\", \"Accessed January 2010\", NA,…\n\n\nQUESTION: Make a Histogram of ListPrice\n\nggplot(real_estate, aes(x = ListPrice)) +\n  geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\nQUESTION: What is the shape of the distribution of list prices?\nANSWER:\nQUESTION: Make a table of summary statistics for ListPrice\n\nfavstats(real_estate$ListPrice)\n\n  min     Q1 median     Q3    max     mean       sd   n missing\n 1.47 139500 189900 259000 924500 218137.6 126135.8 149       0\n\n\nQUESTION: What is the minimum value for list prices?\nANSWER: 1.47\nCreate a clean dataset that:\n\nRemoves houses that are more than $1M\nHas only 1 Story houses\nNo Missing Elementary school information\nIs in Rexburg\nContains only the columns: ListPrice, Style, Elementary, City, and IsFixerUpper\n\n\nunique(real_estate$City)\n\n[1] \"REXBURG\"    \"SUGAR CITY\" \"MENAN\"     \n\nclean &lt;- real_estate %&gt;%\n  filter(ListPrice &gt; 2,\n         ListPrice&lt;1000000,\n         Style == \"1 Story\",\n         Elementary != \"MISSING\",\n         City == \"REXBURG\") %&gt;%\n  select(ListPrice, Style, Elementary, City, IsFixerUpper)\n\nclean\n\n# A tibble: 70 × 5\n   ListPrice Style   Elementary City    IsFixerUpper\n       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;       \n 1    319000 1 Story ARCHER     REXBURG No          \n 2    445000 1 Story HIBBARD    REXBURG No          \n 3    274000 1 Story ADAMS      REXBURG No          \n 4    119900 1 Story ADAMS      REXBURG No          \n 5    219900 1 Story LINCOLN    REXBURG No          \n 6    149900 1 Story KENNEDY    REXBURG No          \n 7    279000 1 Story ADAMS      REXBURG No          \n 8    189900 1 Story LYMAN      REXBURG No          \n 9    305000 1 Story ADAMS      REXBURG No          \n10    184500 1 Story SOUTH      REXBURG No          \n# ℹ 60 more rows\n\n\nQUESTION: What percent of homes in the clean dataset are fixer-uppers?\n\nprop.table(table(clean$IsFixerUpper))\n\n\n        No        Yes \n0.97142857 0.02857143 \n\n\nQUESTION: Use GGPLOT to create a boxplot for ListPrice that compares Elementary Schools?\n\nggplot(clean, aes(y = ListPrice, x = fct_reorder(Elementary, ListPrice), fill=Elementary)) +\n  geom_boxplot() +\n  theme_bw() +\n  theme(\n    legend.position = \"null\"\n  )\n\n\n\n\n\n\n\n\nQUESTION: Which Elementary school appears to have the lowest distribution of housing prices?\nANSWER:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "",
+    "text": "Here are several opportunities to practice analyzing 2-sample independent t-tests using R. For each question, you will:\n\nRead in data\n\nIdentify the Response and Independent variable\n\nCreate data summaries (numerical and graphical)\n\nStatistically analyze the data\n\nCheck for the suitability of the statistical test (CLT, Normality)\n\nState your hypothesis test conclusions and interpret your confidence intervals\n\nWhen you finish, render this document and submit the .html in Canvas.\n\n# Load the libraries\n\nlibrary(rio)\nlibrary(mosaic)\nlibrary(tidyverse)\nlibrary(car)"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#load-the-data",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#load-the-data",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Load the Data",
+    "text": "Load the Data\n\ndating &lt;- read_csv('https://github.com/byuistats/Math221D_Course/raw/main/Data/dating_attractive_longformat.csv')"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#explore-the-data",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#explore-the-data",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Explore the Data",
+    "text": "Explore the Data\nQUESTION: What is the response variable?\nANSWER:\nQUESTION: What is the explanatory variable?\nANSWER:\nCreate a side-by-side boxplot for the amount of reported importance of attractiveness for each biosex.\nAdd a title and change the colors of the boxes.\nCreate a table of summary statistics for each group (favstats()):"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#hypothesis-test",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#hypothesis-test",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nState your null and alternative hypotheses (replace the ??? with the appropriate symbol):\n\\[H_0:  \\mu_{F}???\\mu_{M}\\]\n\\[H_a:\\mu_{F}???\\mu_{M}\\]\nNOTE: The default for R is to set group order alphabetically. This means Group 1 = Female.\nQUESTION: Check that the samples for both groups are normally distributed:\n\nqqPlot()\n\nError in qqPlot.default(): argument \"x\" is missing, with no default\n\n\nQUESTION: Do the data for each group appear normally distributed?\nANSWER:\nQUESTION: Why is it OK to continue with the analysis? ANSWER:\nPerform a t-test.\nQUESTION: What is the value of the test statistic?\nANSWER:\nQUESTION: How many degrees of freedom for this test?\nANSWER:\nQUESTION: What is the p-value?\nANSWER:\nQUESTION: What do you conclude?\nANSWER:\n\nConfidence Interval\nCreate a confidence interval for the difference of the average Importance Score between both groups:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#review-the-data",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#review-the-data",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Review The Data",
+    "text": "Review The Data\nQUESTION: What is the response variable?\nANSWER:\nQUESTION: What is the explanatory variable?\nANSWER:\nCreate summary statistics tables of dental costs for each office:\nCreate a side-by-side boxplot for dental costs for each office.\nCheck the normality of each group.\nQUESTION: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#hypothesis-test-1",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#hypothesis-test-1",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nState your null and alternative hypotheses (replace the question marks with the appropriate symbols):\n\\[H_0:  \\mu_{IF}???\\mu_{R}\\]\n\\[H_a:\\mu_{IF}???\\mu_{R}\\]\nPerform the appropriate analysis:\nQUESTION: What is the test statistic?\nANSWER:\nQUESTION: What is the P-value?\nANSWER:\nState your conclusion:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#confidence-interval-1",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#confidence-interval-1",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Confidence Interval",
+    "text": "Confidence Interval\nCreate a confidence interval for the difference in costs between the IF and Rexburg offices:\nExplain the confidence interval in context of the research question:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#review-the-data-1",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#review-the-data-1",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Review The Data",
+    "text": "Review The Data\nQUESTION: What is the response variable?\nANSWER:\nQUESTION: What is the explanatory variable?\nANSWER:\nCreate summary statistics tables of birth weights for each country:\nCreate a side-by-side boxplot for birth weights for each country:\nCheck the normality of each group.\nQUESTION: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?\nASNWER:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#hypothesis-test-2",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#hypothesis-test-2",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nState your null and alternative hypotheses (replace the question marks with the appropriate symbols):\n\\[H_0:  \\mu_{A}???\\mu_{IL}\\]\n\\[H_a:\\mu_{A}???\\mu_{IL}\\]\nPerform the appropriate analysis:\nQUESTION: What is the test statistic?\nANSWER:\nQUESTION: What is the P-value?\nANSWER:\nState your conclusion:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#confidence-interval-2",
+    "href": "8-Inquiry_Based_Learning/Independent_2sample_ttest_practice.html#confidence-interval-2",
+    "title": "2-Sample Independent T-Test Practice",
+    "section": "Confidence Interval",
+    "text": "Confidence Interval\nCreate a confidence interval for the average difference in weights between babies born to mothers in Africa and Illinois:\nExplain the confidence interval in context of the research question:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions_Practice.html#hypothesis-test-1",
+    "href": "8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions_Practice.html#hypothesis-test-1",
+    "title": "Confidence Intervals and Hypothesis Tests Practice",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nPerform a hypothesis test to determine if the proportion of left-handed Visual Art majors is higher than the general population of 11%.\nQUESTION: What is the value of the test statistic?\nANSWER:\nQUESTION: What is the P-value?\nANSWER:\nQUESTION: Based on the P-value and a confidence level of \\(\\alpha=.05\\), what is your conclusion?\nANSWER:\nQUESTION: What are the requirements for a hypothesis test for a proportion, and are they met?\nANSWER:"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html",
+    "href": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html",
+    "title": "Confidence Intervals for a Mean",
+    "section": "",
+    "text": "By the end of this lesson, you should be able to:\n\nExplain the meaning of a level of confidence\nCreate a confidence interval for a single mean with \\(\\sigma\\) known using the following steps:\n\nFind the point estimate (\\(\\bar{x}\\))\nCalculate the margin of error for the given level of confidence\nCalculate a confidence interval from the point estimate and the margin of error\nInterpret the confidence interval\nCheck the requirements for the confidence interval\n\nExplain how the margin of error is affected by the sample size and level of confidence\n\nStatistical Inference is the practice of using data sampled from a population to make conclusions about population parameters.\nThe two primary methods of statistical inference are:\n\nHypothesis Testing\nConfidence Intervals\n\nThis chapter lays the foundation for confidence intervals."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html#lesson-outcomes",
+    "href": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html#lesson-outcomes",
+    "title": "Confidence Intervals for a Mean",
+    "section": "",
+    "text": "By the end of this lesson, you should be able to:\n\nExplain the meaning of a level of confidence\nCreate a confidence interval for a single mean with \\(\\sigma\\) known using the following steps:\n\nFind the point estimate (\\(\\bar{x}\\))\nCalculate the margin of error for the given level of confidence\nCalculate a confidence interval from the point estimate and the margin of error\nInterpret the confidence interval\nCheck the requirements for the confidence interval\n\nExplain how the margin of error is affected by the sample size and level of confidence\n\nStatistical Inference is the practice of using data sampled from a population to make conclusions about population parameters.\nThe two primary methods of statistical inference are:\n\nHypothesis Testing\nConfidence Intervals\n\nThis chapter lays the foundation for confidence intervals."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html#point-estimators",
+    "href": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html#point-estimators",
+    "title": "Confidence Intervals for a Mean",
+    "section": "Point Estimators",
+    "text": "Point Estimators\nWe have learned about several statistics. Remember, a statistic is any number computed based on data. The sample statistics we have discussed are used to estimate population parameters.\n\n\n\n\n\n\n\n\nSample Statistic\n\n\n\n\nPopulation Parameter\n\n\n\n\n\n\n\n\nMean\n\n\n\n\n\\(\\bar x\\)\n\n\n\n\n\\(\\mu\\)\n\n\n\n\n\n\nStandard Deviation\n\n\n\n\n\\(s\\)\n\n\n\n\n\\(\\sigma\\)\n\n\n\n\n\n\nVariance\n\n\n\n\n\\(s^2\\)\n\n\n\n\n\\(\\sigma^2\\)\n\n\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\\(\\vdots\\)\n\n\n\n\n\n\nThe statistics above are called point estimators because they are just one number (one point on a number line) that is used to estimate a parameter. Parameters are generally unknown values. Think about the mean. If \\(\\mu\\) is unknown, how do we know if \\(\\bar{x}\\) is close to it?\nThe short answer is that we will never know for sure if \\(\\bar{x}\\) is close to \\(\\mu\\). This does not mean that we are helpless. The normal distribution provides a way for us to create a range of plausible values for a parameter (e.g. \\(\\mu\\)) based on a statistic (e.g. \\(\\bar{x}\\))."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html#review-distribution-of-sample-means",
+    "href": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html#review-distribution-of-sample-means",
+    "title": "Confidence Intervals for a Mean",
+    "section": "Review: Distribution of Sample Means",
+    "text": "Review: Distribution of Sample Means\nConfidence intervals rely on the validity of the assumption that the distribution of the sample mean is normally distributed.\nRecall that the distribution of sample means is normal when:\n\nThe underlying population is normally distributed\nThe sample size, n, is sufficiently large (\\(n&lt;30\\) for this class) for the Central Limit Theorem to apply\n\nThought Question: If we have a good sample from a population and can trust that the sampling distribution of the mean is approximately normal, how frequently would a sample mean be within 2 standard deviations from the true population mean?\nRemember, the standard deviation of \\(\\bar x\\) is \\(\\frac{\\sigma}{\\sqrt{n}}\\). For the variable \\(\\bar x\\), two standard deviations would be equal to \\(2 \\frac{\\sigma}{\\sqrt{n}}\\).\nANSWER: If we collect a random sample from a population and \\(\\bar x\\) is normally distributed, then about 95% of the time the sample mean \\(\\bar x\\) will be less than \\(2 \\frac{\\sigma}{\\sqrt{n}}\\) units away from the population mean \\(\\mu\\). Notice that this is true, whether or not we know \\(\\mu\\).\n\n\n\n\n\n\n\n\n\nThis means the 95% of the time, we will get a sample mean within 2 Standard Deviations of the true population mean.\nFlipping this around, if we take our sample mean and make an interval 2 standard deviations above the mean and 2 below, the interval will overlap with the true population mean about 95% of the time."
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html#an-approximate-95-confidence-interval",
+    "href": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html#an-approximate-95-confidence-interval",
+    "title": "Confidence Intervals for a Mean",
+    "section": "An Approximate 95% Confidence Interval",
+    "text": "An Approximate 95% Confidence Interval\nThe equation of an approximate 95% confidence interval would be:\n\\[ CI = \\bar{x} \\pm 2 \\frac{\\sigma}{\\sqrt{n}}\\]\nThe part that we are adding and subtracting from our point estimate is called the Margin of Error. We use the letter \\(m\\) to denote the margin of error:\n\\[m = 2 \\frac{\\sigma}{\\sqrt{n}}\\]\nUsing this definition for \\(m\\), our confidence interval can be written as\n\\[( \\bar x - m, ~ \\bar x + m )\\]"
+  },
+  {
+    "objectID": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html#interpretation",
+    "href": "8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html#interpretation",
+    "title": "Confidence Intervals for a Mean",
+    "section": "Interpretation",
+    "text": "Interpretation\nConfidence intervals are typically reported using parentheses like: (lower limit, upper limit). We say that we are \\(100*(1-\\alpha)\\%\\) confident that the true population mean is between [lower limit] and [upper limit].\n\nAverage GRE Scores of BYU-I Students\nThe published population standard deviation of the quantitative portion of the Graduate Record Examination (GRE) scores is \\(\\sigma=8.3\\).\nSuppose we take a random sample of \\(n=100\\) BYU-I students who have taken the GRE and find that their average score was \\(\\bar{x}=162.1\\)\nWe can calculate the 99% confidence interval:\n\\[ 162.1 \\pm 2.576\\frac{8.3}{\\sqrt{100}} = (159.96, 164.24)\\]\nThe interpretation of the above confidence interval would be:\nI am 99% confident that the true population mean GRE score for BYU-I students is between 159.96 and 164.24."
+  },
+  {
+    "objectID": "Spaced_Learning_Activities/Confidence_Intervals_for_Proportions_Practice.html",
+    "href": "Spaced_Learning_Activities/Confidence_Intervals_for_Proportions_Practice.html",
+    "title": "Confidence Intervals and Hypothesis Tests For Proportions - Practice",
+    "section": "",
+    "text": "Introduction\nIn this exercise, you will practice creating and interpreting confidence intervals for proportions.\n\n\nBird Watching\nA wildlife researcher is studying a rare bird species in a southeast Idaho. They identify a sample of 500 birds, and only 6 are found to be of this rare species. Estimate the proportion of the entire bird population that is this rare species using a 95% confidence interval.\n\nprop.test(x = , n = , conf.level=)$conf.int\n\nError in prop.test(x = , n = , conf.level = ): argument \"x\" is missing, with no default\n\n\nQUESTION: Interpret the confidence interval in context of the research question:\nANSWER:\nQUESTION: Are the assumptions for the normality of \\(\\hat p\\) are met? (Check \\(n\\hat{p}\\) and \\(n(1-\\hat{p})\\))\nANSWER:\nQUESTION: Perform a statistical hypothesis test to see if the population proportion, \\(p\\), is less than 3%. Use \\(\\alpha=0.05\\).\n\nprop.test(x=, n=, p=, alternative=)\n\nError in prop.test(x = , n = , p = , alternative = ): argument \"x\" is missing, with no default\n\n\nQUESTION: What is the p-value for the above test?\nANSWER:\nQUESTION: State your conclusion using the technical requirements and in context of the research question.\nANSWER:\nQUESTION: Are the test requirements for a statistical hypothesis for a proportion met? (Check \\(np\\) and \\(n(1-p)\\))\nANSWER:\n\n\nCustomer Satisfaction Survey\nA company surveyed 150 customers about their satisfaction, and 105 responded that they were satisfied. Estimate the proportion of all customers who are satisfied with the company’s service using a 99% confidence level.\nQUESTION: Interpret the confidence interval in context of the research question:\nANSWER:\nQUESTION: Are the assumptions for the normality of \\(\\hat p\\) are met? Why?\nANSWER:\n\n\nHealth Study\nA health study surveyed 250 individuals about their exercise habits, and 140 reported exercising regularly. Construct a 97.25% confidence interval for the proportion of the general population that exercises regularly.\nQUESTION: Interpret the confidence interval in context of the research question:\nANSWER:\nQUESTION: Are the assumptions for the normality of \\(\\hat p\\) are met? Why?\nANSWER:"
   }
 ]

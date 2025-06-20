@@ -108,12 +108,12 @@ website:
         - href: ./8-Inquiry_Based_Learning/Assessing_Normality.qmd
         - href: ./8-Inquiry_Based_Learning/Introducing_Hypothesis_Tests.qmd
         - href: ./8-Inquiry_Based_Learning/Statistical_Significance.qmd
-        - href: ./8-Inquiry_Based_Learning/Linear_Regression_Intro.qmd
-        - href: ./8-Inquiry_Based_Learning/Confidence_Intervals.qmd
+        - href: ./8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.qmd
         - href: ./8-Inquiry_Based_Learning/One_Sample_ttest.qmd
-        - href: ./8-Inquiry_Based_Learning/ANOVA_Intro.qmd
-        - href: ./8-Inquiry_Based_Learning/Two_sample_Independent_ttest.qmd
         - href: ./8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions.qmd
+        - href: ./8-Inquiry_Based_Learning/Independent_2sample_ttest.qmd
+        - href: ./8-Inquiry_Based_Learning/ANOVA_Intro.qmd
+        - href: ./8-Inquiry_Based_Learning/Linear_Regression_Intro.qmd
 
 
     - text: "R Help"
