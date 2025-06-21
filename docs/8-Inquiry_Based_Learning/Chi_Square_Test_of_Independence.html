@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Confidence Intervals for a Mean – Math221D Notebook</title>
+<title>Chi-square Test of Independence – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -457,11 +457,7 @@ window.Quarto = {
  <span class="dropdown-text">Statistical Significance</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Linear_Regression_Intro.html">
- <span class="dropdown-text">Simple Linear Regression</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Confidence_Intervals.html">
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html">
  <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
   </li>  
         <li>
@@ -469,16 +465,28 @@ window.Quarto = {
  <span class="dropdown-text">One-Sample T-test</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions.html">
+ <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Independent_2sample_ttest.html">
+ <span class="dropdown-text">Independent Two-sample T-test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Matched_Pairs_ttest.html">
+ <span class="dropdown-text">Matched Pairs T-test</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../8-Inquiry_Based_Learning/ANOVA_Intro.html">
  <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html">
- <span class="dropdown-text">Independent Two-sample T-test</span></a>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Linear_Regression_Intro.html">
+ <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions.html">
- <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Chi_Square_Test_of_Independence.html">
+ <span class="dropdown-text">Chi-square Test of Independence</span></a>
   </li>  
     </ul>
   </li>
@@ -518,25 +526,28 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#comparing-categorical-data-with-multiple-categories" id="toc-comparing-categorical-data-with-multiple-categories" class="nav-link active" data-scroll-target="#comparing-categorical-data-with-multiple-categories">Comparing Categorical Data with Multiple Categories</a>
   <ul class="collapse">
-  <li><a href="#lesson-outcomes" id="toc-lesson-outcomes" class="nav-link" data-scroll-target="#lesson-outcomes">Lesson Outcomes</a></li>
-  </ul></li>
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a>
   <ul class="collapse">
-  <li><a href="#point-estimators" id="toc-point-estimators" class="nav-link" data-scroll-target="#point-estimators">Point Estimators</a></li>
-  <li><a href="#review-distribution-of-sample-means" id="toc-review-distribution-of-sample-means" class="nav-link" data-scroll-target="#review-distribution-of-sample-means">Review: Distribution of Sample Means</a></li>
-  <li><a href="#an-approximate-95-confidence-interval" id="toc-an-approximate-95-confidence-interval" class="nav-link" data-scroll-target="#an-approximate-95-confidence-interval">An Approximate 95% Confidence Interval</a></li>
-  </ul></li>
-  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a>
-  <ul class="collapse">
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a>
-  <ul class="collapse">
-  <li><a href="#average-gre-scores-of-byu-i-students" id="toc-average-gre-scores-of-byu-i-students" class="nav-link" data-scroll-target="#average-gre-scores-of-byu-i-students">Average GRE Scores of BYU-I Students</a></li>
+  <li><a href="#expected-counts" id="toc-expected-counts" class="nav-link" data-scroll-target="#expected-counts">Expected Counts</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#relationship-to-hypothesis-testing" id="toc-relationship-to-hypothesis-testing" class="nav-link" data-scroll-target="#relationship-to-hypothesis-testing">Relationship to Hypothesis Testing</a></li>
-  <li><a href="#margin-of-error" id="toc-margin-of-error" class="nav-link" data-scroll-target="#margin-of-error">Margin of Error</a></li>
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a>
+  <ul class="collapse">
+  <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic">Test Statistic</a>
+  <ul class="collapse">
+  <li><a href="#degrees-of-freedom" id="toc-degrees-of-freedom" class="nav-link" data-scroll-target="#degrees-of-freedom">Degrees of Freedom</a></li>
+  </ul></li>
+  <li><a href="#test-requirements" id="toc-test-requirements" class="nav-link" data-scroll-target="#test-requirements">Test Requirements</a></li>
+  </ul></li>
+  <li><a href="#tests-for-independence-in-r" id="toc-tests-for-independence-in-r" class="nav-link" data-scroll-target="#tests-for-independence-in-r">Tests for Independence in R</a>
+  <ul class="collapse">
+  <li><a href="#check-the-requirements" id="toc-check-the-requirements" class="nav-link" data-scroll-target="#check-the-requirements">Check the Requirements</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
+  </ul></li>
+  <li><a href="#summarized-data" id="toc-summarized-data" class="nav-link" data-scroll-target="#summarized-data">Summarized Data</a></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a></li>
   </ul>
 </nav>
     </div>
@@ -545,7 +556,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Confidence Intervals for a Mean</h1>
+<h1 class="title">Chi-square Test of Independence</h1>
 </div>
 
 
@@ -562,267 +573,302 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<section id="lesson-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="lesson-outcomes">Lesson Outcomes</h2>
-<p>By the end of this lesson, you should be able to:</p>
-<ol type="1">
-<li>Explain the meaning of a level of confidence</li>
-<li>Create a confidence interval for a single mean with <span class="math inline">\(\sigma\)</span> known using the following steps:
-<ol type="a">
-<li>Find the point estimate (<span class="math inline">\(\bar{x}\)</span>)</li>
-<li>Calculate the margin of error for the given level of confidence</li>
-<li>Calculate a confidence interval from the point estimate and the margin of error</li>
-<li>Interpret the confidence interval</li>
-<li>Check the requirements for the confidence interval</li>
-</ol></li>
-<li>Explain how the margin of error is affected by the sample size and level of confidence</li>
-</ol>
-<p><strong>Statistical Inference</strong> is the practice of using data sampled from a population to make conclusions about <em>population parameters</em>.</p>
-<p>The two primary methods of statistical inference are:</p>
-<ol type="1">
-<li>Hypothesis Testing</li>
-<li>Confidence Intervals</li>
-</ol>
-<p>This chapter lays the foundation for confidence intervals.</p>
-</section>
-</section>
-<section id="background" class="level1">
-<h1>Background</h1>
-<section id="point-estimators" class="level2">
-<h2 class="anchored" data-anchor-id="point-estimators">Point Estimators</h2>
-<p>We have learned about several statistics. Remember, a statistic is any number computed based on data. The sample statistics we have discussed are used to estimate population parameters.</p>
-<center>
-<table class="table">
-<thead>
-<tr class="header">
-<th>
-</th>
-<th>
-<p>
-Sample Statistic
-</p>
-</th>
-<th>
-<p>
-Population Parameter
-</p>
-</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>
-<p>
-Mean
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\bar x\)</span>
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\mu\)</span>
-</p>
-</td>
-</tr>
-<tr class="even">
-<td>
-<p>
-Standard Deviation
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(s\)</span>
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\sigma\)</span>
-</p>
-</td>
-</tr>
-<tr class="odd">
-<td>
-<p>
-Variance
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(s^2\)</span>
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\sigma^2\)</span>
-</p>
-</td>
-</tr>
-<tr class="even">
-<td>
-<p>
-<span class="math inline">\(\vdots\)</span>
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\vdots\)</span>
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\vdots\)</span>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
-</center>
-<p>The statistics above are called <strong>point estimators</strong> because they are just one number (one point on a number line) that is used to estimate a parameter. Parameters are generally unknown values. Think about the mean. If <span class="math inline">\(\mu\)</span> is unknown, how do we know if <span class="math inline">\(\bar{x}\)</span> is close to it?</p>
-<p>The short answer is that we will never know <em>for sure</em> if <span class="math inline">\(\bar{x}\)</span> is close to <span class="math inline">\(\mu\)</span>. This does not mean that we are helpless. The normal distribution provides a way for us to create a range of plausible values for a parameter (e.g.&nbsp;<span class="math inline">\(\mu\)</span>) based on a statistic (e.g.&nbsp;<span class="math inline">\(\bar{x}\)</span>).</p>
-</section>
-<section id="review-distribution-of-sample-means" class="level2">
-<h2 class="anchored" data-anchor-id="review-distribution-of-sample-means">Review: Distribution of Sample Means</h2>
-<p>Confidence intervals rely on the validity of the assumption that the distribution of the sample mean is normally distributed.</p>
-<p>Recall that the distribution of sample means is normal when:</p>
-<ol type="1">
-<li>The underlying population is normally distributed</li>
-<li>The sample size, n, is sufficiently large (<span class="math inline">\(n&lt;30\)</span> for this class) for the Central Limit Theorem to apply</li>
-</ol>
-<p><strong>Thought Question</strong>: If we have a good sample from a population and can trust that the sampling distribution of the mean is approximately normal, how frequently would a sample mean be within 2 standard deviations from the true population mean?</p>
-<p>Remember, the standard deviation of <span class="math inline">\(\bar x\)</span> is <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>. For the variable <span class="math inline">\(\bar x\)</span>, two standard deviations would be equal to <span class="math inline">\(2 \frac{\sigma}{\sqrt{n}}\)</span>.</p>
-<p><strong>ANSWER</strong>: If we collect a random sample from a population and <span class="math inline">\(\bar x\)</span> is normally distributed, then about 95% of the time the sample mean <span class="math inline">\(\bar x\)</span> will be less than <span class="math inline">\(2 \frac{\sigma}{\sqrt{n}}\)</span> units away from the population mean <span class="math inline">\(\mu\)</span>. Notice that this is true, whether or not we know <span class="math inline">\(\mu\)</span>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Confidence_Intervals_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This means the 95% of the time, we will get a sample mean within 2 Standard Deviations of the true population mean.</p>
-<p>Flipping this around, if we take our sample mean and make an interval 2 standard deviations above the mean and 2 below, the interval will overlap with the <em>true population mean</em> about 95% of the time.</p>
-</section>
-<section id="an-approximate-95-confidence-interval" class="level2">
-<h2 class="anchored" data-anchor-id="an-approximate-95-confidence-interval">An Approximate 95% Confidence Interval</h2>
-<p>The equation of an approximate 95% confidence interval would be:</p>
-<p><span class="math display">\[ CI = \bar{x} \pm 2 \frac{\sigma}{\sqrt{n}}\]</span></p>
-<p>The part that we are adding and subtracting from our point estimate is called the <strong>Margin of Error</strong>. We use the letter <span class="math inline">\(m\)</span> to denote the margin of error:</p>
-<p><span class="math display">\[m = 2 \frac{\sigma}{\sqrt{n}}\]</span></p>
-<p>Using this definition for <span class="math inline">\(m\)</span>, our confidence interval can be written as</p>
-<p><span class="math display">\[( \bar x - m, ~ \bar x + m )\]</span></p>
-</section>
-</section>
-<section id="confidence-intervals" class="level1">
-<h1>Confidence Intervals</h1>
-<p>Recall that it is only <em>approximately</em> 95% of the area under the curve within 2 standard deviations of the mean.</p>
-<p>We want to be more precise in our confidence intervals and may want to choose a level of confidence different from 95%.</p>
-<p>The generalized formula for a confidence interval is</p>
-<p><span class="math display">\[ CI = \bar{x} \pm z^*\frac{\sigma}{\sqrt{n}}\]</span></p>
-<p>Where <span class="math inline">\(z^*\)</span> is a z-score value related to a specified level of confidence.</p>
-<p><strong>NOTE</strong>: The <span class="math inline">\(z^*\)</span> value represents the value from a standard normal distribution beyond which</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">1000</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">1000</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Define critical value</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>crit_value <span class="ot">&lt;-</span> <span class="fl">1.96</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the distribution with shaded tails</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, x <span class="sc">&lt;=</span> <span class="sc">-</span>crit_value), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, x <span class="sc">&gt;=</span> crit_value), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">data =</span> <span class="fu">subset</span>(data, x <span class="sc">&gt;=</span> <span class="sc">-</span>crit_value <span class="sc">&amp;</span> x <span class="sc">&lt;=</span> crit_value), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fl">0.12</span>, <span class="at">label =</span> <span class="st">"95% Confidence"</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="sc">-</span>crit_value, crit_value), <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color=</span><span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span>crit_value, <span class="at">y =</span> <span class="fu">max</span>(y), <span class="at">label =</span> <span class="st">"-1.96"</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="fl">1.2</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> crit_value, <span class="at">y =</span> <span class="fu">max</span>(y), <span class="at">label =</span> <span class="st">"1.96"</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fl">0.025</span>, <span class="at">label =</span> <span class="st">"0.025"</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">0.025</span>, <span class="at">label =</span> <span class="st">"0.025"</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Standard Normal Distribution with Tails Colored Beyond ±1.96 SD"</span>,</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"z-score"</span>, <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Confidence_Intervals_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Common <span class="math inline">\(z^*\)</span> values for specified confidence levels are:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<section id="comparing-categorical-data-with-multiple-categories" class="level1">
+<h1>Comparing Categorical Data with Multiple Categories</h1>
+<p>To test the relationship between 2 <em>categorical</em> variables, we perform a <span class="math inline">\(\chi^2\)</span> test of independence. [NOTE: The Greek letter, <span class="math inline">\(\chi\)</span>, is pronounced like “ki” in “kite”, <strong>not</strong> like “chi” in “tai chi”].</p>
+<p>We begin a Chi-square test with a contingency table. Recall that a contingency shows the frequency of each combination of categorical variables in a sample.</p>
+<p>The Chi-square test statistics is derived by looking at how far away are the observed frequencies away from what we would expect, if there was no relationship between the 2 variables.</p>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
+<p>Consider the relationship between regular exercise and whether they have a healthy weight. A survey of 200 people showed:</p>
+<table class="caption-top table">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 11%">
+<col style="width: 29%">
+<col style="width: 23%">
+<col style="width: 29%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Conf. Level</th>
-<th style="text-align: center;">Z*</th>
+<th></th>
+<th>Healthy Weight</th>
+<th>Not Healthy Weight</th>
+<th>Row Total</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">0.99</td>
-<td style="text-align: center;">2.576</td>
+<td>Exercises Regularly</td>
+<td>60</td>
+<td>20</td>
+<td>80</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">0.95</td>
-<td style="text-align: center;">1.96</td>
+<td>Doesn’t Exercise</td>
+<td>40</td>
+<td>80</td>
+<td>120</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">0.9</td>
-<td style="text-align: center;">1.645</td>
+<td>Column Total</td>
+<td>100</td>
+<td>100</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+<p>Does exercising make you more likely to have a healthy weight? Or are the two things completely unrelated?</p>
+<section id="expected-counts" class="level3">
+<h3 class="anchored" data-anchor-id="expected-counts">Expected Counts</h3>
+<p>Expected counts represent what we would <em>expect</em> to see in each cell of the table <em>if there was no relationship</em> between exercise and weight.</p>
+<p>If there’s no relationship, then the proportion of people with a healthy weight should be the same <em>regardless</em> of whether they exercise or not. Similarly, the proportion of people who exercise should be the same <em>regardless</em> of whether they have a healthy weight or not.</p>
+<p>Consider the expected number of people who Exercises Regularly and have a Healthy Weight.</p>
+<p>Out of the 200 people, 100 have a healthy weight. So, the overall proportion of people with a healthy weight is 100/200 = 0.5 (or 50%). If exercise has <em>no</em> effect on weight, we would <em>expect</em> 50% of the people who exercise to have a healthy weight.</p>
+<p>Because a total of 80 people exercise regularly, we would <em>expect</em> <span class="math inline">\(0.5 * 80 = 40\)</span> people to both exercise regularly <em>and</em> have a healthy weight.</p>
+<p>R will calculate the expected counts for every cell automatically.</p>
+<p><strong>Comparing Observed and Expected Counts:</strong></p>
+<p>To test the hypothesis that there is no relationship between exercise and weight, we compare what we actually observed to what we would expect if there was no relationship. Big differences between the observed and expected counts suggest that there <em>is</em> a relationship between the variables.</p>
+<ul>
+<li>For example, we <em>observed</em> 60 people who exercise and have a healthy weight, but we <em>expected</em> only 40. This is a difference of 20.</li>
+<li>Similarly, we <em>observed</em> 20 people who exercise and don’t have a healthy weight, but we <em>expected</em> 40. This is a difference of -20.</li>
+</ul>
+<p><strong>The Chi-Square Test</strong></p>
+<p>The chi-square test uses these differences between observed and expected counts to calculate a test statistic. The larger the differences, the larger the test statistic, and the stronger the evidence against the null hypothesis.</p>
+</section>
+</section>
+</section>
+<section id="hypothesis-test" class="level1">
+<h1>Hypothesis Test</h1>
+<p>The null and alternative hypotheses test for <span class="math inline">\(\chi^2\)</span> test for independence are always the same.</p>
+<p><span class="math display">\[H_0: \text{The row variable is independent of the column variable}\]</span> <span class="math display">\[H_A: \text{The row variable is not independent of the column variable}\]</span> While not a fan of the double negative, it serves a technical purpose. Mathematically, we get the same test statistic and p-value if we swap rows and columns. We cannot say the row variable depends on the column variable without also saying that the column variable depends on the row variable.</p>
+<p>Think of Alice at the Mad Hatter’s tea party:</p>
+<blockquote class="blockquote">
+<p>“Then you should say what you mean,” the March Hare went on. “I do,” Alice hastily replied; “at least-at least I mean what I say-that’s the same thing, you know.”</p>
+<p>“Not the same thing a bit!” said the Hatter. “Why, you might just as well say that ‘I see what I eat’ is the same thing as ‘I eat what I see’!”</p>
+<p>“You might just as well say,” added the March Hare, “that ‘I like what I get’ is the same thing as ‘I get what I like’!”</p>
+<p>“You might just as well say,” added the Dormouse, which seemed to be talking in its sleep, “that ‘I breathe when I sleep’ is the same thing as ‘I sleep when I breathe’!”</p>
+<p>“It is the same thing with you.” said the Hatter,”</p>
+</blockquote>
+<p>So we are resigned to conclude that we have sufficient/insufficient evidence that they are not independent.</p>
+<section id="test-statistic" class="level2">
+<h2 class="anchored" data-anchor-id="test-statistic">Test Statistic</h2>
+<p>The <span class="math inline">\(\chi^2\)</span> test statistic measures how far away the observed counts are away from what is expected if the null hypothesis is true.</p>
+<p>As with other test statistics, <span class="math inline">\(\chi^2\)</span> has a probability distribution. We use the probability distribution to calculate a P-value, which measures how likely it is to observe what we observed if the null hypothesis is true.</p>
+<p>The <span class="math inline">\(\chi^2\)</span> test statistic is based on squared differences between observed and expected counts, so it is always positive and right skewed like the F-statistic.</p>
+<section id="degrees-of-freedom" class="level3">
+<h3 class="anchored" data-anchor-id="degrees-of-freedom">Degrees of Freedom</h3>
+<p>The shape of the <span class="math inline">\(\chi^2\)</span> distribution depends on the number of row and column levels. The degrees of freedom determine the shape of the Chi-square probability distribution.</p>
+<p>The <span class="math inline">\(\chi^2\)</span> degrees of freedom are:</p>
+<p><span class="math display">\[df = (r-1)(c-1)\]</span> Where <span class="math inline">\(r\)</span> is the number of rows and <span class="math inline">\(c\)</span> is the number of columns in a summary table.</p>
+</section>
+</section>
+<section id="test-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="test-requirements">Test Requirements</h2>
+<p>For a Chi-square test to be valid, we need to have enough data so that each of the table cell combinations have adequate representation. This is similar to the 2-sample tests for proportions where we needed at least 10 expected successes and at least 10 expected failures (<span class="math inline">\(np \ge 10\)</span> and <span class="math inline">\(n(1-p)\ge10\)</span>), only now we need to check all the combinations.</p>
+<p>If all the expected counts are greater than or equal to 5, we can trust the P-value.</p>
+</section>
+</section>
+<section id="tests-for-independence-in-r" class="level1">
+<h1>Tests for Independence in R</h1>
+<p>The R code for <span class="math inline">\(\chi^2\)</span> tests for independence is simple, especially when we have raw data. We can easily create a contingency table using the <code>table_name &lt;- table(col1, col2)</code> function, then insert <code>table_name</code> into the <code>chisq.test(table_name)</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>chiropractic <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/chiropractic_data.csv'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(chiropractic,<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   location motivation
+1    Europe   Wellness
+2    Europe   Wellness
+3    Europe   Wellness
+4    Europe   Wellness
+5    Europe   Wellness
+6    Europe   Wellness
+7    Europe   Wellness
+8    Europe   Wellness
+9    Europe   Wellness
+10   Europe   Wellness
+11   Europe   Wellness
+12   Europe   Wellness
+13   Europe   Wellness
+14   Europe   Wellness
+15   Europe   Wellness</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(chiropractic<span class="sc">$</span>location)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Europe"        "Australia"     "United States"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(chiropractic<span class="sc">$</span>motivation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Wellness"   "Prevention" "At Risk"    "Sick Role"  "Self Care" </code></pre>
+</div>
+</div>
+<p>In this dataset, we have a column with “location” indicating the region of the respondents, and the motivation for visiting a chiropractor. Our null and alternative hypotheses are:</p>
+<p><span class="math display">\[H_0: \text{Why you go to a chirpractor is independent of where you live}\]</span> <span class="math display">\[H_0: \text{Why you go to a chirpractor is not independent of where you live}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>chiro_table <span class="ot">&lt;-</span> <span class="fu">table</span>(chiropractic<span class="sc">$</span>location, chiropractic<span class="sc">$</span>motivation)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>chiro_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               
+                At Risk Prevention Self Care Sick Role Wellness
+  Australia          83         59       188        68       71
+  Europe             59         28        95        77       23
+  United States      65         76       252        82       90</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(chiro_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  chiro_table
+X-squared = 49.743, df = 8, p-value = 4.58e-08</code></pre>
+</div>
+</div>
+<p><strong>Conclusion</strong>: We have sufficient evidence to conclude that why you go to the chiropractor is not independent of where you live.</p>
+<section id="check-the-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="check-the-requirements">Check the Requirements</h2>
+<p>Check that all the expected counts are greater than 5. We can extract the expected counts from the <code>chisq.test()</code> using the <code>$expected</code> and see if they are all greater than 5.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(chiro_table)<span class="sc">$</span>expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               
+                 At Risk Prevention Self Care Sick Role Wellness
+  Australia     73.77128   58.09043  190.6649  80.89894 65.57447
+  Europe        44.35714   34.92857  114.6429  48.64286 39.42857
+  United States 88.87158   69.98100  229.6922  97.45821 78.99696</code></pre>
+</div>
+</div>
+<p>A useful trick is to use a logical operator to test if each value is greater than 5:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(chiro_table)<span class="sc">$</span>expected <span class="sc">&gt;=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               
+                At Risk Prevention Self Care Sick Role Wellness
+  Australia        TRUE       TRUE      TRUE      TRUE     TRUE
+  Europe           TRUE       TRUE      TRUE      TRUE     TRUE
+  United States    TRUE       TRUE      TRUE      TRUE     TRUE</code></pre>
+</div>
+</div>
+<p>If they are all <code>TRUE</code>, then your requirements are satisfied.</p>
+</section>
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
+<p>We can use <code>ggplot()</code> to create nice bar charts to help interpret the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(chiropractic, <span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">fill =</span> motivation)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Chi_Square_Test_of_Independence_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="summarized-data" class="level1">
+<h1>Summarized Data</h1>
+<p>Sometimes we get data that are already summarized instead of raw data in columns. This often comes with a column that is actually a category label.</p>
+<p>Suppose we have a summary table:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gender</th>
+<th style="text-align: right;">Republican</th>
+<th style="text-align: right;">Democrat</th>
+<th style="text-align: right;">Independent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Female</td>
+<td style="text-align: right;">250</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Male</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">50</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p><strong>Confidence Level</strong> is related to the probability of a Type I error, <span class="math inline">\(\alpha\)</span>, in hypothesis testing. In fact, <strong>Confidence Level = 1-<span class="math inline">\(\alpha\)</span></strong>.</p>
-<p>A 95% confidence interval will miss the true population mean 5% of the time because 5% of the time you will get a mean in the one tail or the other of the sampling distribution <em>just by chance.</em></p>
-<section id="interpretation" class="level2">
-<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
-<p>Confidence intervals are typically reported using parentheses like: (lower limit, upper limit). We say that we are <span class="math inline">\(100*(1-\alpha)\%\)</span> confident that the true population mean is between [lower limit] and [upper limit].</p>
-<section id="average-gre-scores-of-byu-i-students" class="level3">
-<h3 class="anchored" data-anchor-id="average-gre-scores-of-byu-i-students">Average GRE Scores of BYU-I Students</h3>
-<p>The published population standard deviation of the quantitative portion of the Graduate Record Examination (GRE) scores is <span class="math inline">\(\sigma=8.3\)</span>.</p>
-<p>Suppose we take a random sample of <span class="math inline">\(n=100\)</span> BYU-I students who have taken the GRE and find that their average score was <span class="math inline">\(\bar{x}=162.1\)</span></p>
-<p>We can calculate the 99% confidence interval:</p>
-<p><span class="math display">\[ 162.1 \pm 2.576\frac{8.3}{\sqrt{100}} = (159.96, 164.24)\]</span></p>
-<p>The interpretation of the above confidence interval would be:</p>
-<p>I am 99% confident that the true population mean GRE score for BYU-I students is between 159.96 and 164.24.</p>
+<p>This contains a column for Gender, which is not part of the summary table that is required to input into the <code>chisq.test()</code> function.</p>
+<p>We can use the <code>select()</code> statement to include only the columns with summary data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>politics_table <span class="ot">&lt;-</span> politics <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Republican, Democrat, Independent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now use <code>politics_table</code> in the <code>chisq.test()</code> function.</p>
 </section>
-</section>
-</section>
-<section id="relationship-to-hypothesis-testing" class="level1">
-<h1>Relationship to Hypothesis Testing</h1>
-<p>Consider that the published population mean for GRE test-takers if 158.</p>
-<p><strong>QUESTION</strong>: Does the true population mean of all test-takers fall inside our confidence interval?</p>
-<p>Because 158 falls below our confidence interval, we conclude that BYU-I students score higher, on average, than the general population with 99% confidence.</p>
-</section>
-<section id="margin-of-error" class="level1">
-<h1>Margin of Error</h1>
-<p><strong>QUESTION</strong>: What happens to the margin of error, <span class="math inline">\(z^*\frac{\sigma}{\sqrt{n}}\)</span>, as the sample size increases?</p>
-<p><strong>QUESTION</strong>: What happens to the margin of error, <span class="math inline">\(z^*\frac{\sigma}{\sqrt{n}}\)</span>, as our confidence level increases? (see table above about Z* and confidence level)</p>
-<p>Consider that if I make a wide enough interval, I can be 100% confident. But to get 100% confidence, my interval will be useless. For example, I can be 100% confident that the true population averge height of BYU-I students is between 2 feet and 100 feet. More confidence means we need a wider interval.</p>
+<section id="your-turn" class="level1">
+<h1>Your Turn</h1>
+<p>A public opinion poll surveyed a simple random sample of 1000 voters. Respondents were classified by gender (female or male) and by voting preference (Republican, Democrat, or Independent). The results are presented here:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>voting <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Male"</span>), </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">200</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">300</span>, <span class="dv">150</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">50</span>))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(voting) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Gender"</span>, <span class="st">"Republican"</span>, <span class="st">"Democrat"</span>, <span class="st">"Independent"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(voting)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gender</th>
+<th style="text-align: right;">Republican</th>
+<th style="text-align: right;">Democrat</th>
+<th style="text-align: right;">Independent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Female</td>
+<td style="text-align: right;">250</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Male</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">50</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Do men’s voting preferences differ significantly from women’s voting preferences?</p>
+<p>Use a level of significance of <span class="math inline">\(\alpha = 0.05\)</span></p>
+<p><strong>QUESTION</strong>: State the null and alternative hypothesis:</p>
+<p>Ho:<br>
+Ha:</p>
+<p>Use the <code>voting</code> data table created above to make a new table that does not include the <code>Gender</code> column. ( <strong>NOTE</strong>: You may have to run the code chunk above.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>clean_voting <span class="ot">&lt;-</span> voting <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: Perform a hypothesis test:</p>
+<p><strong>QUESTION</strong>: What is the test statistic for this test?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: How many degrees of freedom are there for this test?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the p-value?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is your conclusion?<br>
+<strong>ANSWER</strong>:</p>
 
 
 </section>

@@ -185,7 +185,7 @@ __Answer__:
 __Question__:  What is the P-value?  
 __Answer__:  
 
-__Question__:  Can we trust the P-value?  
+__Question__:  Are the requirements satisfied for a matched pairs t-test?  (Can we trust the P-value?)  
 __Answer__:  
 
 __Question__:  State your conclusion about the hypothesis test.  

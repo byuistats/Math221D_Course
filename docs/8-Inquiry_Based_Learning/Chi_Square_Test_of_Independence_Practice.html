@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Confidence Intervals and Hypothesis Tests For Proportions - Practice – Math221D Notebook</title>
+<title>Chi-Square Practice – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -5208,11 +5208,7 @@ window.Quarto = {
  <span class="dropdown-text">Statistical Significance</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Linear_Regression_Intro.html">
- <span class="dropdown-text">Simple Linear Regression</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Confidence_Intervals.html">
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.html">
  <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
   </li>  
         <li>
@@ -5220,16 +5216,28 @@ window.Quarto = {
  <span class="dropdown-text">One-Sample T-test</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions.html">
+ <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Independent_2sample_ttest.html">
+ <span class="dropdown-text">Independent Two-sample T-test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Matched_Pairs_ttest.html">
+ <span class="dropdown-text">Matched Pairs T-test</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="../8-Inquiry_Based_Learning/ANOVA_Intro.html">
  <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Two_sample_Independent_ttest.html">
- <span class="dropdown-text">Independent Two-sample T-test</span></a>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Linear_Regression_Intro.html">
+ <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions.html">
- <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
+    <a class="dropdown-item" href="../8-Inquiry_Based_Learning/Chi_Square_Test_of_Independence.html">
+ <span class="dropdown-text">Chi-square Test of Independence</span></a>
   </li>  
     </ul>
   </li>
@@ -5269,10 +5277,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#bird-watching" id="toc-bird-watching" class="nav-link" data-scroll-target="#bird-watching">Bird Watching</a></li>
-  <li><a href="#customer-satisfaction-survey" id="toc-customer-satisfaction-survey" class="nav-link" data-scroll-target="#customer-satisfaction-survey">Customer Satisfaction Survey</a></li>
-  <li><a href="#health-study" id="toc-health-study" class="nav-link" data-scroll-target="#health-study">Health Study</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#aussie-alcohol" id="toc-aussie-alcohol" class="nav-link" data-scroll-target="#aussie-alcohol">Aussie Alcohol</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
+  </ul></li>
+  <li><a href="#therapy" id="toc-therapy" class="nav-link" data-scroll-target="#therapy">Therapy</a></li>
+  <li><a href="#bird-populations" id="toc-bird-populations" class="nav-link" data-scroll-target="#bird-populations">Bird Populations</a></li>
   </ul>
 </nav>
     </div>
@@ -5281,7 +5292,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Confidence Intervals and Hypothesis Tests For Proportions - Practice</h1>
+<h1 class="title">Chi-Square Practice</h1>
 </div>
 
 
@@ -5298,51 +5309,99 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>In this exercise, you will practice creating and interpreting confidence intervals for proportions.</p>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
+<p>Complete the following questions about testing for independence between 2 categorical variables. When completed, Render the <code>qmd</code> file and submit the <code>html</code>.</p>
 </section>
-<section id="bird-watching" class="level1">
-<h1>Bird Watching</h1>
-<p>A wildlife researcher is studying a rare bird species in a southeast Idaho. They identify a sample of 500 birds, and only 6 are found to be of this rare species. Estimate the proportion of the entire bird population that is this rare species using a 95% confidence interval.</p>
+<section id="aussie-alcohol" class="level1">
+<h1>Aussie Alcohol</h1>
+<p>A small study in Western Australia was done to determine the association between daily alcohol intake and hypertension (high blood pressure). The data contains a hypertension indicator (0=no, 1=yes), and the number of alcoholic drinks per day. Researchers wanted to determine if hypertension and daily alcohol intake are independent with a level of significance of 0.05.</p>
+<p>Run the following commands to read the data into R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> , <span class="at">n =</span> , <span class="at">conf.level=</span>)<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in prop.test(x = , n = , conf.level = ): argument &quot;x&quot; is missing, with no default</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This script will flip the summary data table to be easily used with geom_col()</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>bp_alcohol <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;https://byuistats.github.io/M221R/Data/quiz/R/bp_alcohol.csv&quot;</span>) </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Note:  the following code transforms a table into a tidy dataset</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>bp_alcohol_graph <span class="ot">&lt;-</span> bp_alcohol <span class="sc">%&gt;%</span> </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>( <span class="st">&quot;zero&quot;</span>, <span class="st">&quot;one_two&quot;</span>, <span class="st">&quot;three_four_five&quot;</span>, <span class="st">&quot;six_or_more&quot;</span> ), <span class="at">values_to =</span> <span class="st">&quot;Counts&quot;</span>, <span class="at">names_to =</span> <span class="st">&quot;Frequency_of_Drink&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Frequency_of_Drink =</span> <span class="fu">factor</span>(Frequency_of_Drink, <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;zero&quot;</span>, <span class="st">&quot;one_two&quot;</span>,<span class="st">&quot;three_four_five&quot;</span>, <span class="st">&quot;six_or_more&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Hypertension&quot;</span><span class="ot">=</span>V1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question:<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Are the assumptions for the normality of <span class="math inline">\(\hat p\)</span> are met? (Check <span class="math inline">\(n\hat{p}\)</span> and <span class="math inline">\(n(1-\hat{p})\)</span>)<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Perform a statistical hypothesis test to see if the population proportion, <span class="math inline">\(p\)</span>, is less than 3%. Use <span class="math inline">\(\alpha=0.05\)</span>.</p>
+<p>Use the <code>bp_alcohol_graph</code> dataset to create a side-by-side bar chart (<code>ggplot()</code>) to illustrate the counts.</p>
+<p><strong>NOTE</strong>: When you use <code>geom_bar()</code> with raw data, you do not need to specify a <code>y=</code> variable because ggplot will create the counts automatically. When you have summarized data, you need to specify <code>y=Counts</code> in <code>aes()</code> then include <code>geom_bar(stat=&quot;identity&quot;)</code> to instruct ggplot to ignore counting the frequencies.</p>
+<p><strong>Question</strong>: Which group appears to be most likely to have hypertension?<br>
+<strong>Answer</strong>:</p>
+<p>State the Null and Alternative Hypotheses:</p>
+<p>H0:<br>
+Ha:</p>
+<section id="hypothesis-test" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
+<p><strong>NOTE</strong>: The way the data were imported into <code>bp_alcohol</code>, it contains a column, V1, which is the row label. It should not be included in the input table in the <code>chisq.test()</code> function. Create a new dataset that only includes the columns: zero, one_two, three_four_five and six_or_more.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x=</span>, <span class="at">n=</span>, <span class="at">p=</span>, <span class="at">alternative=</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in prop.test(x = , n = , p = , alternative = ): argument &quot;x&quot; is missing, with no default</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>alcohol_tbl <span class="ot">&lt;-</span> bp_alcohol <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Once you’ve created the table with only the counts, perform the Chi-square test for independence:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the Chi-square test:  </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the requirements:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>QUESTION</strong>: What is the p-value for the above test?<br>
+<p><strong>Question</strong>: Are the requirements satisfied for the <span class="math inline">\(\chi\)</span>-square test for independence?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the value of the test statistic?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: State your conclusion in context of this problem:<br>
+<strong>Answer</strong>:</p>
+</section>
+</section>
+<section id="therapy" class="level1">
+<h1>Therapy</h1>
+<p>A psychologist is interested in whether the type of therapy a patient receives is related to their level of improvement. Patients were randomly assigned to one of two therapy types (Cognitive Behavioral Therapy (CBT) or Psychodynamic Therapy (PDT)). Their improvement level was categorized as “Improved,” “No Change,” or “Worsened” after six months of treatment.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data:  </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>therapy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/CBT_vs_PDT_Treatment_Data.csv&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: Create a side-by-side bar chart that groups the bars based on therapy type and colors them by improvement level.</p>
+<p><strong>QUESTION</strong>: State your null and alternative hypothesis:</p>
+<p>Ho:<br>
+Ha:</p>
+<p><strong>QUESTION</strong>: Perform a Chi-square test of independence:</p>
+<p><strong>QUESTION</strong>: What is your P-value?<br>
+<strong>ASNWER</strong>:</p>
+<p><strong>QUESTION</strong>: State your conclusion.<br>
 <strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: State your conclusion using the technical requirements and in context of the research question.<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Are the test requirements for a statistical hypothesis for a proportion met? (Check <span class="math inline">\(np\)</span> and <span class="math inline">\(n(1-p)\)</span>)<br>
+<p><strong>QUESTION</strong>: Are the requirements for a Chi-square test of independence satisfied?<br>
 <strong>ANSWER</strong>:</p>
 </section>
-<section id="customer-satisfaction-survey" class="level1">
-<h1>Customer Satisfaction Survey</h1>
-<p>A company surveyed 150 customers about their satisfaction, and 105 responded that they were satisfied. Estimate the proportion of all customers who are satisfied with the company’s service using a 99% confidence level.</p>
-<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question:<br>
+<section id="bird-populations" class="level1">
+<h1>Bird Populations</h1>
+<p>A wildlife manager would like to study the prevalence of Imperiled and Non-Imperiled bird species in different land designations (Protected, Multi-use, and Un-designated). She observes the number of species in different land designations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>birds <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/Imperiled_Bird_Habitats.csv&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: Create a side-by-side bar chart that groups the bars based on Imperiled Status and colors them by Land Designation.</p>
+<p><strong>QUESTION</strong>: State your null and alternative hypothesis:</p>
+<p>Ho:<br>
+Ha:</p>
+<p><strong>QUESTION</strong>: Perform a Chi-square test of independence:</p>
+<p><strong>QUESTION</strong>: What is your P-value?<br>
+<strong>ASNWER</strong>:</p>
+<p><strong>QUESTION</strong>: State your conclusion.<br>
 <strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Are the assumptions for the normality of <span class="math inline">\(\hat p\)</span> are met? Why?<br>
-<strong>ANSWER</strong>:</p>
-</section>
-<section id="health-study" class="level1">
-<h1>Health Study</h1>
-<p>A health study surveyed 250 individuals about their exercise habits, and 140 reported exercising regularly. Construct a 97.25% confidence interval for the proportion of the general population that exercises regularly.</p>
-<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question:<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Are the assumptions for the normality of <span class="math inline">\(\hat p\)</span> are met? Why?<br>
+<p><strong>QUESTION</strong>: Are the requirements for a Chi-square test of independence satisfied?<br>
 <strong>ANSWER</strong>:</p>
 
 
