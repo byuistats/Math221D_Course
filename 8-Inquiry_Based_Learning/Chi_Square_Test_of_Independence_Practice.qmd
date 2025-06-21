@@ -1,0 +1,181 @@
+---
+title: "Chi-Square Practice"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Instructions
+
+Complete the following questions about testing for independence between 2 categorical variables.  When completed, Render the `qmd` file and submit the `html`.
+
+
+# Aussie Alcohol
+
+A small study in Western Australia was done to determine the association between daily alcohol intake and hypertension (high blood pressure).  The data contains a hypertension indicator (0=no, 1=yes), and the number of alcoholic drinks per day.  Researchers wanted to determine if hypertension and daily alcohol intake are independent with a level of significance of 0.05.
+
+Run the following commands to read the data into R:
+
+```{r}
+# This script will flip the summary data table to be easily used with geom_col()
+library(rio)
+library(tidyverse)
+library(mosaic)
+library(car)
+
+bp_alcohol <- import("https://byuistats.github.io/M221R/Data/quiz/R/bp_alcohol.csv") 
+
+## Note:  the following code transforms a table into a tidy dataset
+
+bp_alcohol_graph <- bp_alcohol %>% 
+  pivot_longer(cols = c( "zero", "one_two", "three_four_five", "six_or_more" ), values_to = "Counts", names_to = "Frequency_of_Drink") %>%
+  mutate(Frequency_of_Drink = factor(Frequency_of_Drink, levels=c("zero", "one_two","three_four_five", "six_or_more"))) %>%
+  rename("Hypertension"=V1)
+```
+
+Create a side-by-side bar chart (`ggplot()`) to illustrate the counts. 
+
+```{r}
+
+```
+
+__Question__:  Which group appears to be most likely to have hypertension?  
+__Answer__:  
+
+
+State the Null and Alternative Hypotheses:
+
+H0:  
+Ha:  
+
+
+## Hypothesis Test
+
+__NOTE__:  The way the data were imported into `bp_alcohol`, it contains a column, V1, which is the label.  It should not be included in the input table in the `chisq.test()` function.  Create a new dataset that only includes the columns: zero, one_two, three_four_five and six_or_more.  
+
+```{r}
+
+```
+
+
+Once you've created the table with only the counts, perform the Chi-square test for independence:
+
+
+```{r}
+
+```
+
+__Question__:  Are the requirements satisfied for the $\chi$-square test for independence?  
+__Answer__:  
+
+__Question__:  How many degrees of freedom does this $\chi$-square test have?  
+__Answer__:  
+
+
+__Question__:  What is the value of the test statistic?  
+__Answer__:  
+
+__Question__:  What is the P-value?  
+__Answer__:  
+
+__Question__:  State your conclusion in context of this problem:  
+__Answer__:  
+
+
+
+# Therapy
+
+A psychologist is interested in whether the type of therapy a patient receives is related to their level of improvement. Patients were randomly assigned to one of two therapy types (Cognitive Behavioral Therapy - CBT or Psychodynamic Therapy - PDT) and their improvement level was categorized as "Improved," "No Change," or "Worsened" after six months of treatment.
+
+
+```{r}
+
+therapy <- read_csv('https://byuistats.github.io/M221R/Data/quiz/R/CBT_vs_PDT_Treatment_Data.csv')
+
+```
+
+
+```{r}
+psych_data <- tibble(ImprovementLevel = c(rep("Improved", 90), rep("No Change", 27), rep("Worsened", 6),    rep("Improved", 66), rep("No Change", 55), rep("Worsened", 10)) ,
+       Treatment = c(rep("CBT", 123), rep("PDT", 131)))
+
+chisq.test(table(psych_data))
+
+
+write.csv(psych_data, 'C:\\Users\\paulccannon\\OneDrive - BYU-Idaho\\Math221D\\New_Flow\\Math221D_Course\\Data\\CBT_vs_PDT_Treatment_Data.csv', row.names = FALSE)
+
+```
+
+
+
+# Bird Populations
+
+A wildlife manager would like to study the prevalence of Imperiled and Non-Imperiled bird species in different land designations, Protected, Multi-use, and Un-designated.  She observes the number of species in different land designations.  
+
+```{r}
+
+birds <- read_csv('https://byuistats.github.io/M221R/Data/quiz/R/Imperiled_Bird_Habitats.csv')
+
+```
+
+
+
+```{r}
+
+birds <- tibble(
+  status = c(rep("Imperiled", 43), rep("Non-Imperiled", 124)),
+  designation = c(rep("Protected", 22), rep("Multi-use", 8), rep("Undesignated", 13),
+                  rep("Protected", 40), rep("Multi-use", 39), rep("Undesignated", 45))
+)
+
+chisq.test(table(birds))
+
+ggplot(birds, aes(x = status, fill=designation)) +geom_bar(position="dodge")
+
+write.csv(birds, 'C:\\Users\\paulccannon\\OneDrive - BYU-Idaho\\Math221D\\New_Flow\\Math221D_Course\\Data\\Imperiled_Bird_Habitats.csv', row.names = FALSE)
+
+
+
+```
+
+
+
+```{r}
+
+set.seed(123)
+
+# Generate the data
+n_plots <- 150
+habitat_types <- sample(c("Forest", "Meadow", "Shrubland"),
+                            n_plots,
+                            replace = TRUE,
+                            prob = c(0.4, 0.3, 0.3)) # Unequal probabilities for variety
+deer_presence <- sample(c("Present", "Absent"),
+                            n_plots,
+                            replace = TRUE,
+                            prob = c(0.6, 0.4)) # Higher probability of deer presence
+
+wildlife_data <- tibble(
+  HabitatType = habitat_types,
+  DeerPresence = deer_presence
+)
+
+print(wildlife_data) 
+
+chisq.test(table(wildlife_data))
+
+```
+
+```{r}
+
+prevalence <- tibble()
+
+
+CONUSc	Westd	Eastd	CONUS	West	East
+Objective 1	Prevalence	Imperiled species	43	17	27	33	12	20
+Non-imperiled species	124	57	78	100	37	68
+BBS routes	2850	1020	1830	2333	846	1487
+
+```
+
