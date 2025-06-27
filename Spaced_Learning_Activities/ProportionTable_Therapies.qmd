@@ -1,0 +1,41 @@
+---
+title: "Table Proportions: Therapy"
+subtitle: "Spaced Learning Activity"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introduction
+
+This is a synthetic dataset that compares the effectiveness of 2 different psychotherapies, Psychodynamic Therapy (PDT) and Cognitive Behavioral Therapy (CBT).  
+
+```{r}
+
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(car)
+
+therapy <- read_csv('https://github.com/byuistats/Math221D_Course/raw/main/Data/CBT_vs_PDT_Treatment_Data.csv')
+
+glimpse(therapy)
+
+```
+
+
+Create a proportion table that shows the improvement level of each treatment.  (Should sum to 1 across treatment groups):
+
+```{r}
+
+prop.table(table(therapy$ImprovementLevel, therapy$Treatment), margin=2)
+
+```
+
+__QUESTION__:  What percent of CBT patients improved?  
+__ANSWER__:  
+
+
+__QUESTION__:  What percent of CBT patients worsened?  
+__ANSWER__:  

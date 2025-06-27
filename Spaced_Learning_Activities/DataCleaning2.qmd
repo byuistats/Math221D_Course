@@ -1,0 +1,51 @@
+---
+title: "Data Cleaning 2"
+subtitle: "Spaced Learning"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+Clean the Madison County real estate data and answer the following questions.  
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(car)
+
+real_estate <- read_csv('https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/MadisonCountyRealEstateA.csv')
+
+```
+
+
+
+Create a dataset that:
+
+  1. Has houses with 2 or more stories including Split Entry (`Style`)
+  2. Has 5 or more bedrooms
+
+  
+```{r}
+clean <- real_estate %>%
+  
+
+
+```
+
+__QUESTION__:  What are the mean and standard deviation of Taxes for these houses?  
+
+```{r}
+
+```
+
+
+Check to see if Taxes are normally distributed for these houses:  
+
+```{r}
+
+```
+
+
+

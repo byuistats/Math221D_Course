@@ -1,0 +1,49 @@
+---
+title: "Table Proportions: Olympics"
+subtitle: "Spaced Learning Activity"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Introduction
+
+This dataset has information about every Olympic participant and medal awards for all the Summer and Winter Olympics from 1896-2016.  
+
+
+```{r}
+
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(car)
+
+olympics <- read_csv('https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/Olympics.csv')
+
+glimpse(olympics)
+
+```
+
+
+Create a clean dataset for Summer Olympics that includes:  
+
+   1. Summer Olympics (`Season`)
+   2. Keeps only the columns NOC and Medal
+   3. Drops the missing values (`drop_na()`)
+
+```{r}
+
+summer <- olympics %>%
+  
+
+```
+
+
+Create a table that has the proportion of medals won by NOC (National Olympic Committees)
+
+
+```{r}
+
+
+```
+
