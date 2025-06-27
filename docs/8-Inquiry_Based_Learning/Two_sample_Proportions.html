@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="your name">
 
-<title>Semester Project – Math221D Notebook</title>
+<title>2-Sample Proportions – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -503,11 +531,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#design-the-study" id="toc-design-the-study" class="nav-link" data-scroll-target="#design-the-study">Design the Study</a></li>
-  <li><a href="#collect-the-data" id="toc-collect-the-data" class="nav-link" data-scroll-target="#collect-the-data">Collect the Data</a></li>
-  <li><a href="#describesummarize-the-data" id="toc-describesummarize-the-data" class="nav-link" data-scroll-target="#describesummarize-the-data">Describe/Summarize the Data</a></li>
-  <li><a href="#make-inference" id="toc-make-inference" class="nav-link" data-scroll-target="#make-inference">Make Inference</a></li>
-  <li><a href="#conclusion-take-action" id="toc-conclusion-take-action" class="nav-link" data-scroll-target="#conclusion-take-action">Conclusion (Take Action)</a></li>
+  <li><a href="#two-sample-proportion-test" id="toc-two-sample-proportion-test" class="nav-link" data-scroll-target="#two-sample-proportion-test">Two Sample Proportion Test</a>
+  <ul class="collapse">
+  <li><a href="#example-1-voting-behaviour-by-gender" id="toc-example-1-voting-behaviour-by-gender" class="nav-link" data-scroll-target="#example-1-voting-behaviour-by-gender">Example 1: Voting Behaviour by Gender</a>
+  <ul class="collapse">
+  <li><a href="#test-requirments" id="toc-test-requirments" class="nav-link" data-scroll-target="#test-requirments">Test Requirments</a></li>
+  </ul></li>
+  <li><a href="#example-2-favorite-sports" id="toc-example-2-favorite-sports" class="nav-link" data-scroll-target="#example-2-favorite-sports">Example 2: Favorite Sports</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -516,19 +547,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Semester Project</h1>
+<h1 class="title">2-Sample Proportions</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>your name </p>
-          </div>
-  </div>
     
   
     
@@ -541,98 +566,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
+<p>In statistics, two sample proportion tests are used to compare proportions or percentages between two independent groups. We here discuss these tests and provide examples of their application in R.</p>
+<p>The hypothesis test should not be surprising:</p>
+<p><span class="math display">\[H_0: p_1 = p_2\]</span> <span class="math display">\[H_a: p_1\; (&lt;,&gt;,\neq) \: p_2\]</span> where <span class="math inline">\(p_1\)</span> represents the unknown population proportion for group 1 and <span class="math inline">\(p_2\)</span> represents the unknown population proportion for group 2.</p>
 </section>
-<section id="design-the-study" class="level1">
-<h1>Design the Study</h1>
-</section>
-<section id="collect-the-data" class="level1">
-<h1>Collect the Data</h1>
-</section>
-<section id="describesummarize-the-data" class="level1">
-<h1>Describe/Summarize the Data</h1>
+<section id="two-sample-proportion-test" class="level1">
+<h1>Two Sample Proportion Test</h1>
+<p>The R code modifies slightly the <code>prop.test()</code> code for the one-sample proportion test. We simply add 2 values for X and 2 values for N. Generically, this looks like:</p>
+<p><code>prop.test(x=c(x1, x2), n=c(n1, n2), alternative = "")</code></p>
+<p>where you must specify whether or not you think group 1 is lower (<code>alternative="less"</code>), higher (<code>alternative="greater"</code>) or different (<code>alternative="two.sided"</code>) than group 2.</p>
+<section id="example-1-voting-behaviour-by-gender" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-voting-behaviour-by-gender">Example 1: Voting Behaviour by Gender</h2>
+<p>Suppose we want to test if women are more likely to identify as Democrat than men. We sample 250 men and 250 women and measure their political affiliation. We find that 80 men identify as Democrat and 102 females identify as Democrat.</p>
+<p>Just as with the two-sample t-test for means, we must define a reference group. In this example, we will use females as the reference group so that our alternative will be relative to that group.</p>
+<p><span class="math display">\[H_0: p_{femaleDem} = p_{maleDem}\]</span><br>
+<span class="math display">\[H_a: p_{femaleDem} &gt; p_{maleDem}\]</span></p>
+<p>We will use <span class="math inline">\(\alpha = 0.05\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyverse' was built under R version 4.4.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'mosaic' was built under R version 4.4.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Registered S3 method overwritten by 'mosaic':
-  method                           from   
-  fortify.SpatialPolygonsDataFrame ggplot2
-
-The 'mosaic' package masks several functions from core packages in order to add 
-additional features.  The original behavior of these functions should not be affected by this.
-
-Attaching package: 'mosaic'
-
-The following object is masked from 'package:Matrix':
-
-    mean
-
-The following objects are masked from 'package:dplyr':
-
-    count, do, tally
-
-The following object is masked from 'package:purrr':
-
-    cross
-
-The following object is masked from 'package:ggplot2':
-
-    stat
-
-The following objects are masked from 'package:stats':
-
-    binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,
-    quantile, sd, t.test, var
-
-The following objects are masked from 'package:base':
-
-    max, mean, min, prod, range, sample, sum</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'rio' was built under R version 4.4.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">80</span>), <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">250</span>), <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>
-Attaching package: 'rio'
+    2-sample test for equality of proportions with continuity correction
 
-The following object is masked from 'package:mosaic':
-
-    factorize</code></pre>
+data:  c(102, 80) out of c(250, 250)
+X-squared = 3.8099, df = 1, p-value = 0.02548
+alternative hypothesis: greater
+95 percent confidence interval:
+ 0.01350993 1.00000000
+sample estimates:
+prop 1 prop 2 
+ 0.408  0.320 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Be sure to make this using ggplot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="make-inference" class="level1">
-<h1>Make Inference</h1>
+<p>We can also create a confidence interval for the difference:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the appropriate test for the data selected</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">80</span>), <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">250</span>))<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.904086e-06 1.759941e-01
+attr(,"conf.level")
+[1] 0.95</code></pre>
 </div>
+</div>
+<p>Confidence intervals for differences can be positive and negative. In this example, a negative number would indicate that Females are less likely to be Democrat and a positive number means they are more likely to be Democrat.</p>
+<p>Our confidence interval is just above zero on the lower end. We are 95% confident that females are between 0.000% and 17.6% more likely to be Democrat than men.</p>
+<section id="test-requirments" class="level3">
+<h3 class="anchored" data-anchor-id="test-requirments">Test Requirments</h3>
+<p>Just as with 1-sample proportion tests, we must validate that we have a large enough sample size to ensure that <span class="math inline">\(\hat{p}\)</span> is approximately normally distributed. When we have 2 samples, however, we must check both <span class="math inline">\(\hat{p}\)</span>’s. For both hypothesis testing and confidence intervals we check:</p>
+<p><strong>Requirements for Hypothesis Testing and Confidence Intervals</strong></p>
+<p><span class="math display">\[ n_1\hat{p}_1 \ge 10\]</span> <span class="math display">\[n_1(1-\hat{p}_1) \ge 10\]</span> <span class="math display">\[ n_2\hat{p}_2 \ge 10\]</span> <span class="math display">\[n_2(1-\hat{p}_2) \ge 10\]</span></p>
+<p>An easy R calculator to check this is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All must be true:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">102</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>phat1 <span class="ot">&lt;-</span> x1<span class="sc">/</span>n1</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>n1<span class="sc">*</span>phat1 <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>n1<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat1) <span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="dv">80</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>phat2 <span class="ot">&lt;-</span> x2 <span class="sc">/</span> n2</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>n2<span class="sc">*</span>phat2 <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>n2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat2) <span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>If all conditions are greater than or equal to 10, we can trust our p-values and confidence intervals.</p>
 </section>
-<section id="conclusion-take-action" class="level1">
-<h1>Conclusion (Take Action)</h1>
+</section>
+<section id="example-2-favorite-sports" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-favorite-sports">Example 2: Favorite Sports</h2>
+<p>Soccer is becoming much more popular in the United States. We would like to test if this is being driven by demographic shifts in the population where the younger generation is more likely to favor soccer.</p>
+<p>A researcher samples 524 individuals under 40 and 655 individuals older than 40 and asks what their preferred sport is. Of the 524 respondents under 40, 44 identified soccer as their favorite sport. Of the 655 respondents over 40, 27 identified soccer as their favorite sport.</p>
+<p>Perform a 2-sample proportion test to determine if significantly more younger people identify soccer as their favorite sport.</p>
+<p>Create and interpret the confidence interval for the difference in the proportions.</p>
+<p>Are the requirements for the hypothesis test and confidence interval satisfied?</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

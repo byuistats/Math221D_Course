@@ -13,7 +13,8 @@ In statistics, two sample proportion tests are used to compare proportions or pe
 
 The hypothesis test should not be surprising:
 
-$$H_0: p_1 = p_2$$
+$$H_0: p_1 = p_2$$  
+
 $$H_a: p_1\; (<,>,\neq) \: p_2$$
 where $p_1$ represents the unknown population proportion for group 1 and $p_2$ represents the unknown population proportion for group 2.  
 
