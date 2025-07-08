@@ -29,7 +29,6 @@ Create a proportion table that shows the improvement level of each treatment.  (
 
 ```{r}
 
-prop.table(table(therapy$ImprovementLevel, therapy$Treatment), margin=2)
 
 ```
 
