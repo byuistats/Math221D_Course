@@ -1,0 +1,27 @@
+---
+title: "Political Party and Gender"
+subtitle: "Bar Chart"
+---
+
+
+Read in the data and answer the questions below:  
+
+```{r}
+library(rio)
+library(tidyverse)
+library(mosaic)
+library(car)
+
+party <- read_csv('https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/Voting_Gender.csv') %>% mutate(Party=factor(Party, levels = c("Democrat", "Republican", "Independent")))
+
+
+```
+
+
+Create a side-by-side bar chart of party affiliation that groups the bars based on Gender:  
+
+```{r}
+
+
+```
+
