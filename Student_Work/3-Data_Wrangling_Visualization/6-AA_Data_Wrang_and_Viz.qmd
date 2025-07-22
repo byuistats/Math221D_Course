@@ -1,0 +1,171 @@
+---
+title: Data Wrangling - Application Activity
+subtitle: Personality Revisited
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introduction
+
+The Big 5 personality test is the most widely accepted tool for modelling personality in academic psychology.  It is based on decades of statistical analysis of personality descriptions across languages and cultures.  The [big 5 traits](https://en.wikipedia.org/wiki/Big_Five_personality_traits)  are:
+
+1. Openness
+2. Conscientiousness
+3. Extroversion
+4. Agreeableness
+5. Neuroticism
+
+Brother Cannon collected personality data on students for the past several semesters, including a few metrics that may be associated with personality traits.  
+
+__NOTE__:  Scores for personality traits are given in *percentiles* relative to the general population.  
+
+In this activity, you will practice the process for approaching a dataset outlined in [class](https://byuistats.github.io/Math221D_Course/2-Tidy_Data/05-Exploring_New_Data_with_Tidyverse.html):
+
+  1. Load the data and libraries
+  2. Explore the data and generate hypotheses
+  3. Prepare the data for analysis
+  4. Perform the appropriate analysis
+  
+Data preparation will include using the `filter()` function.  For now, analysis means creating good visualizations that tell a story using `ggplot()` and base R.  
+
+# 1 - Load the Data and Libraries
+
+Run the following code to load the necessary R libraries and import the big 5 personality data:  
+
+```{r}
+library(tidyverse)
+library(car)
+library(mosaic)
+library(rio)
+
+big5 <- import("https://github.com/byuistats/Math221D_Course/raw/main/Data/All_class_combined_personality_data.csv") %>% tibble()
+
+```
+
+
+# 2 - Explore the data and generate hypotheses
+
+In this section, you will explore the dataset including drilling down into individual columns.  
+
+Recall a few useful functions for data exploration:
+
+1. `dim()` to get the number of rows and columns in a dataset
+2. `table()` for getting counts of categorical data
+3. `unique()` for getting a list of each of the distinct values of categorical data
+4. `favstats()` to get summary statistics for quantitative data
+5. `ggplot() + geom_histogram()` to visualize the distribution of a single quantitative variable
+6. `ggplot() + geom_boxplot()`   to compare the distributions of a quantitative variable for different groups
+7. `ggpot() + geom_bar()` to look at bar charts for categorical data
+
+__NOTE__:  Unless specified, you may use base R functions OR GGPlot.  
+
+```{r}
+
+```
+
+
+__QUESTION__:  How many students have responded to this survey? (i.e. how many rows)  
+__ANSWER__:  
+
+__QUESTION__:  What is the maximum number of languages spoken among respondents?  
+__ANSWER__:  
+
+__QUESTION__:  Create a histogram of Extroversion. Be sure to label your graph with a title and improved x and y axis labels.   
+```{r}
+# Put your histogram code here:  
+
+```
+
+
+__QUESTION__:  What is the highest score for Extroversion?      
+__ANSWER__:  
+
+__QUESTION__:  What problems, if any, do you notice?  
+__ANSWER__:  
+
+__QUESTION__:  Make a table of birth months:
+```{r}
+# Answer
+
+```
+
+
+__QUESTION__:  Make a bar plot of birth months:
+```{r}
+
+# Answer
+
+```
+
+
+__QUESTION__:  What problems, if any, do you notice?  
+__ANSWER__:  
+
+
+__QUESTION__:  Which month has the most births for this sample of students?  
+__ANSWER__:  
+
+
+# 3 & 4 - Prepare data for analysis and Create Visualization
+
+In this section, you will be asked to create a clean dataset for each visualization.  
+
+Recall a few useful functions for data wrangling:
+
+1. `filter()` to include or exclude specific rows
+2. `select()` to include specific columns
+
+## Extroversion
+
+__QUESTION__:  Create a new dataset called `extro` that includes only columns for birth month and extroversion scores.  Make sure it only has values that are real.  
+
+HINT: Extroversion is measured in percentiles, and you should already know what the months of the year are.
+
+```{r}
+
+extro <- 
+  
+```
+
+__QUESTION__:  **USE GGPLOT** to create a side-by-side boxplot of Extroversion scores for all birth months.
+
+```{r}
+
+ggplot()
+
+```
+
+__QUESTION__:  Based on the boxplot, which month appears to be the least extroverted?  Explain your reasoning.  
+__ANSWER__:  
+
+__QUESTION__:    Based on the boxplot, which month appears to be the most extroverted?  Explain your reasoning.  
+__ANSWER__:  
+
+
+## Neuroticism
+
+__QUESTION__:  Create a dataset called `neuro` that includes only the Section and Neuroticism columns:  
+
+```{r}
+
+neuro <- 
+  
+```
+
+__QUESTION__:  **USE GGPLOT** to create a side-by-side boxplot comparing Neuroticism for all the different sections:
+
+```{r}
+
+
+```
+
+__QUESTION__:    Based on the boxplot, which section appears to be the lowest in trait neuroticism?  Explain your reasoning.  
+__ANSWER__:  
+
+

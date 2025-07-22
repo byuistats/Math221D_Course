@@ -25,18 +25,17 @@ website:
     - text: "Descriptive Stats"
       menu:
          - text: "Descriptive Statistics"
-         - href: ./2-Descriptive_Statistics/1-Numerical_Quantitative_Data_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/1b-Practice_Numerical_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/2-Graphical_Quantitative_Data_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/2b-Practice_Graphical_Summaries.qmd
+         - href: ./2-Descriptive_Statistics/1-Numerical_Summaries_Quantitative_Data.qmd
+         - href: ./2-Descriptive_Statistics/1-Numerical_Summaries_Quantitative_Data_Practice.qmd
+         - href: ./2-Descriptive_Statistics/2-Graphical_Summaries_Quantitative_Data.qmd
+         - href: ./2-Descriptive_Statistics/2-Graphical_Summaries_Quantitative_Data_Practice.qmd
          - href: ./2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.qmd
-         - href: ./2-Descriptive_Statistics/3b-Practice_Quantitative_Summaries_Multiple_Groups.qmd
+         - href: ./2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups_Practice.qmd
          - href: ./2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/4b-Practice_Bivariate_Data.qmd
+         - href: ./2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries_Practice.qmd
          - href: ./2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.qmd
          - href: ./2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/6b-Practice_Categorical_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/7-AA_Descriptive_Statistics.qmd
+         - href: ./2-Descriptive_Statistics/6-Categorical_Data_Summaries_Practice.qmd
 
 
     - text:  "Data Wrangling"
@@ -57,68 +56,49 @@ website:
     - text: "Inferential Stats"
       menu:
          - text: "Foundations"
-         - href: ./4-Foundations_Statistical_Inference/01-Intro_to_Probability.qmd
-         - href: ./4-Foundations_Statistical_Inference/02-The_Normal_Distribution_Textbook.qmd
-         - href: ./4-Foundations_Statistical_Inference/03-Normal_Distribution_Workbook.qmd
-         - href: ./4-Foundations_Statistical_Inference/04-Normal_Probability_Practice.qmd
-         - href: ./4-Foundations_Statistical_Inference/Sampling_Distributions_CLT_LLN_Reading.qmd
+         - href: ./4-Foundations_Statistical_Inference/1-Probability.qmd
+         - href: ./4-Foundations_Statistical_Inference/2-The_Normal_Distribution.qmd
+         - href: ./4-Foundations_Statistical_Inference/2-The_Normal_Distribution_Practice.qmd
+         - href: ./4-Foundations_Statistical_Inference/3-Sampling_Distributions_CLT_LLN.qmd
+         - href: ./4-Foundations_Statistical_Inference/4-Assessing_Normality.qmd
          - text: "Central Limit Theorem Practice"
-           href: ./4-Foundations_Statistical_Inference/06-Central_Limit_Theorem_Practice.qmd
-         - href: ./4-Foundations_Statistical_Inference/07-Prob_Calculations_for_Means.qmd
-         - href: ./4-Foundations_Statistical_Inference/08-CLT_Normal_Prob_for_Means.qmd
-         - href: ./4-Foundations_Statistical_Inference/09-Prob_Calculations_for_Means_Practice.qmd
-         - href: ./4-Foundations_Statistical_Inference/10-Assessing_Normality.qmd        
+           href: ./4-Foundations_Statistical_Inference/6-Central_Limit_Theorem_Practice.qmd
+         - href: ./4-Foundations_Statistical_Inference/7-Introducing_Hypothesis_Tests.qmd
+         - href: ./4-Foundations_Statistical_Inference/8-Statistical_Significance.qmd
+    
   
     - text: "Statistical Tests I"
       menu:
-        - text: "Introduction to Hypothesis Testing"
-          href: ./5-Statistical_Tests_Part1/002-Introduction_to_Inference.qmd
         - text: "Introduction to Confidence Intervals"
-          href: ./5-Statistical_Tests_Part1/002-Confidence_Intervals.qmd
-        - href: ./5-Statistical_Tests_Part1/01-Inference_for_mean_sigma_unknown.qmd
-        - href: ./5-Statistical_Tests_Part1/02-AA_Hypothesis_Conf_Int.qmd
-        - text: "Paired T-test"
-          href: ./5-Statistical_Tests_Part1/03-Paired_ttest.qmd
-        - href: ./5-Statistical_Tests_Part1/04-Paired_ttest_Practice.qmd
-        - text: "2-Sample Independent T-test"
-          href: ./5-Statistical_Tests_Part1/05-Independent_2_sample_ttest.qmd
-        - href: ./5-Statistical_Tests_Part1/06-Independent_2_sample_ttest_practice.qmd
-        - href: ./5-Statistical_Tests_Part1/07-ANOVA_Intro.qmd
-        - href: ./5-Statistical_Tests_Part1/08-ANOVA_Practice.qmd
-        - text: "Comparing Means Activity"
-          href: ./5-Statistical_Tests_Part1/09-AA_Unit4_Review.qmd
+          href: ./5-Statistical_Tests_Part1/0-Confidence_Intervals_for_Means.qmd
+        - href: ./5-Statistical_Tests_Part1/0-Confidence_Intervals_for_Means_Practice.qmd"
+        - href: ./5-Statistical_Tests_Part1/1-One_Sample_ttest.qmd
+        - href: ./5-Statistical_Tests_Part1/1-One_Sample_ttest_Practice.qmd
+        - href: ./5-Statistical_Tests_Part1/2-Conf_Int_Hyp_Test_for_Proportions.qmd
+        - href: ./5-Statistical_Tests_Part1/2-Conf_Int_Hyp_Test_for_Proportions_Practice.qmd
+        - href: ./5-Statistical_Tests_Part1/3-Two_sample_Independent_ttest.qmd
+        - href: ./5-Statistical_Tests_Part1/3-Two_sample_Independent_ttest_practice.qmd
+        - href: ./5-Statistical_Tests_Part1/4-Matched_Pairs_ttest.qmd
+        - href: ./5-Statistical_Tests_Part1/4-Matched_Pairs_ttest_Practice.qmd
+        - href: ./5-Statistical_Tests_Part1/5-Two_sample_Proportions.qmd
+        - href: ./5-Statistical_Tests_Part1/5-Two_sample_Proportions_Practice.qmd
 
     - text: "Statistical Tests II"
       menu:
-        - href: ./6-Statistical_Tests_Part2/01-Bivariate_Data_Intro.qmd
-        - href: ./6-Statistical_Tests_Part2/02-Linear_Regression_Intro.qmd
-        - href: ./6-Statistical_Tests_Part2/03-Regression_Practice.qmd
-        - href: ./6-Statistical_Tests_Part2/Introducing_Categorical_Data_Analysis.qmd
-        - href: ./6-Statistical_Tests_Part2/One_and_Two_Sample_Proportions.qmd
-        - href: ./6-Statistical_Tests_Part2/One_and_Two_Sample_Proportion_Practice.qmd
-        - href: ./6-Statistical_Tests_Part2/11-Chi_Square_Intro.qmd
-        - href: ./6-Statistical_Tests_Part2/12-Chi_Square_Practice.qmd
-        - href: ./6-Statistical_Tests_Part2/13-AA_Who_Shot_First_Cat_Vars.qmd
+        - href: ./6-Statistical_Tests_Part2/1-ANOVA.qmd
+        - href: ./6-Statistical_Tests_Part2/1-ANOVA_Practice.qmd
+        - href: ./6-Statistical_Tests_Part2/2-Regression.qmd
+        - href: ./6-Statistical_Tests_Part2/2-Regression_Practice.qmd
+        - href: ./6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence.qmd
+        - href: ./6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence_Practice.qmd
+
+    - text: "Semester Project"
+      menu:
+        - href: ./7-Semester_Project/Data_Search.qmd
+        - href: ./7-Semester_Project/Importing_Data.qmd
+        - href: ./7-Semester_Project/Semester_Project_Template.qmd
+
         
-    - text: "Inquiry-Based Learning"
-      menu:  
-        - href: ./8-Inquiry_Based_Learning/Probability.qmd
-        - href: ./8-Inquiry_Based_Learning/The_Normal_Distribution.qmd
-        - href: ./8-Inquiry_Based_Learning/Sampling_Distributions_CLT_LLN.qmd
-        - href: ./8-Inquiry_Based_Learning/Assessing_Normality.qmd
-        - href: ./8-Inquiry_Based_Learning/Introducing_Hypothesis_Tests.qmd
-        - href: ./8-Inquiry_Based_Learning/Statistical_Significance.qmd
-        - href: ./8-Inquiry_Based_Learning/Confidence_Intervals_for_Means.qmd
-        - href: ./8-Inquiry_Based_Learning/One_Sample_ttest.qmd
-        - href: ./8-Inquiry_Based_Learning/Conf_Int_Hyp_Test_for_Proportions.qmd
-        - href: ./8-Inquiry_Based_Learning/Independent_2sample_ttest.qmd
-        - href: ./8-Inquiry_Based_Learning/Matched_Pairs_ttest.qmd
-        - href: ./8-Inquiry_Based_Learning/Two_sample_Proportions.qmd
-        - href: ./8-Inquiry_Based_Learning/ANOVA_Intro.qmd
-        - href: ./8-Inquiry_Based_Learning/Linear_Regression_Intro.qmd
-        - href: ./8-Inquiry_Based_Learning/Chi_Square_Test_of_Independence.qmd
-
-
     - text: "R Help"
       menu:
         - text: "Tidyverse Cheat Sheet"

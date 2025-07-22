@@ -1,10 +1,6 @@
 ---
 title: "Confidence Intervals and Hypothesis Tests Practice"
 subtitle: "Proportions"
-format:
-  html:
-    self-contained: true
-    embed-resources: true
 ---
 
 # Teenage Smoking Habits

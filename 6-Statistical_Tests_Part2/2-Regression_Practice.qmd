@@ -1,9 +1,5 @@
 ---
 title: "Regression Practice"
-format:
-  html:
-    self-contained: true
-    embed-resources: true
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
@@ -34,7 +30,7 @@ library(car)
 # Car Prices and Mileage
 
 <p align="center">
-![](../Images/Accura_MDX.png)
+![](https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Accura_MDX.png)
 </p>
 
 
@@ -157,7 +153,7 @@ Lastly, the car you're interested in buying has around 100,000 miles and costs $
 
 # Manatee Deaths and Motorboat Registrations in Florida
 <p align="center">
-![](../Images/manatees1.png)
+![](https://github.com/byuistats/Math221D_Cannon/raw/master/Images/manatees1.png)
 </p>
 
 Florida is a fabulous place for experiencing wildlife and recreation.  Unfortunately, sometimes those two activities conflict.
@@ -270,7 +266,7 @@ __ANSWER__:
 
 # MCAT Score and GPA
 <p align="center">
-![](../Images/MCAT_official_logo.png)
+![](https://github.com/byuistats/Math221D_Cannon/raw/master/Images/MCAT_official_logo.png)
 </p>
 
 

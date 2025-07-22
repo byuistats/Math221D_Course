@@ -1,0 +1,278 @@
+---
+title: Into The Tidyverse
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introduction
+
+Statistics is only as interesting as the research questions we create.  However, we cannot hope to answer those questions appropriately without going through the trouble of wrangling data.  
+
+The more time we spend digging into the data and noticing irregularities, the more likely we are to make better research questions and more appropriate conclusions.  It doesn't matter how sophisticated our analysis becomes if it's based on bad data. 
+
+In this activity, you will explore a survey about happiness and related factors.  By reviewing the data at a high level and then drilling into specific variables, you will gain a better idea about what this survey contains, generate interesting research questions and, with clean data, make better-informed answers to those questions.
+
+# Where do I start?
+
+For experienced statisticians, getting a new dataset is like Christmas; we can't wait to unwrap it and see what it's hiding.  For a novice, this can feel overwhelming.  
+
+In this section, we discuss 4 general guidelines that are useful regardless of subject matter.  
+
+  1. Load the data (and necessary libraries if using R)
+  2. Explore the data and generate hypotheses
+  3. Prepare the data for analysis
+  4. Perform the appropriate analysis
+
+### 1. Loading Data and Libraries
+
+So far, this step has been taken for granted.  You simply `import()` a dataset from a web source using the `rio` library.  In the real world, this step can be quite complicated.  There are different data sources, file types, permissions and more that can make loading the data more difficult.  
+
+Fortunately for you, that level of complexity is beyond the scope of this class.  However, it is important to call this out as an important step in data analysis.
+
+Load the data and libraries:
+
+```{r, echo=FALSE}
+
+## Don't worry about this line of code. It is included for purposes of rendering the document
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+
+# Load the libraries
+
+library(rio)
+library(mosaic)
+library(tidyverse)
+library(car)
+
+# Load the data
+
+happiness <- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/YoungAdults_messy.csv')
+
+
+```
+
+### 2. Data Exploration and Hypothesis Generation
+
+Knowing what to look for when you get a new dataset takes experience and curiosity. Generally, we start by looking at the whole dataset at a high level, then drill down into specific columns.
+
+#### Viewing the whole dataset
+
+There are several ways to look at the data at a high level:
+
+  a. `View(data)` opens up the whole dataset in a new window
+  b. `glimpse(data)` shows you a list of columns and a few examples.  It also shows the data types of each column.  This is useful because sometimes columns that should be number show up as a category and vice versa.  This can occur when there are typos in the dataset or categories as labeled as a number.
+  c. `head(data)` prints out the first few rows of data
+
+
+
+```{r}
+#View(happiness)
+glimpse(happiness)
+#head(happiness)
+```
+
+
+__PRO TIP__: Ask a ton of questions throughout this process! You are not always the subject matter expert for an analysis. Find someone who is and learn as much as you can from them. 
+
+As you look at the whole dataset, think about what the response variable might be and start to think about what factors might impact that response.  Start to **mentally rank** which factors you think might be most impactful.  
+
+__QUESTIONS__: For our data, what do you think is our response variable?  
+
+What other factors do you think might impact the response variable? 
+
+Keep in mind that there may be multiple response variables to explore.  
+
+### Drill down into specific columns
+
+Next we want to look at specific columns, checking for outliers or impossible values.  
+
+We usually begin with the response variable then work through the explanatory variables we think are most likely to impact the response variable.  
+
+__NOTE__: It is not always necessary to dig into every column in the data. Sometimes there are dozens (or hundreds) of columns.  We need to prioritize based on our own hypotheses or the suggestions of the data provider.  
+
+A few commonly used functions for exploring specific columns are:
+
+  * `unique()` prints out a list of all possible values of a categorical variable
+  * `table()` prints out a list of all possible values of a categorical variable AND the number of times that value occurs 
+  * `histogram()` - Making a histogram of a quantitative variable can show if the values are within an expected range
+  * `favstats()` can be used to evaluate if the max and min values are in an acceptable range.
+  
+__NOTE__: We may not always know what "acceptable range" means, but it is our responsibility to find out either by asking a subject matter expert or relying on personal experience.
+  
+Make a histogram of happiness score and see if everything looks in order.
+
+```{r}
+
+hist(happiness$Happiness_score)
+
+```
+
+Check `favstats()` to look at the max an min:
+
+```{r}
+
+favstats(happiness$Happiness_score)
+
+```
+
+Look at the unique values of `Gender`, `Alcohol` and `Lying`.
+
+```{r}
+
+unique(happiness$Gender)
+unique(happiness$Alcohol)
+unique(happiness$Lying)
+
+table(happiness$Gender)
+table(happiness$Alcohol)
+table(happiness$Lying)
+
+```
+
+Are there any values we may need to filter out?
+
+Excel uses `#N/A` as a missing value, but in R, this is treated like another level of a categorical variable.  
+
+Pick 2 more *categorical* variables and list their distinct values:
+
+```{r}
+
+unique(happiness$)
+
+unique(happiness$)
+
+```
+
+
+__NOTE__: For now, we are focusing on categorical explanatory variables. Later in the semester we will learn how to compare 2 quantitative variables.
+
+
+### Generate Hypotheses
+
+Now that we've spent time with the data, we can formalize our hypotheses and get ready to prepare the data to perform the proper analysis.
+
+__QUESTION__: Which 3 explanatory variables do you think have the biggest impact on happiness?  
+__Answer__:  
+  1. 
+  2. 
+  3. 
+
+# 3. Prepare the Data
+
+We noticed some irregularities that may need to be addressed to get the most appropriate analysis.  
+
+Let's begin by seeing if there are differences in happiness for different levels of alcohol use.
+
+__Review__:  What are the irregularities in happiness score and alcohol use?
+
+```{r}
+
+favstats(happiness$Happiness_score)
+
+# min = -40, max = 75
+
+unique(happiness$Alcohol)
+
+# Includes response:   "nunya business"
+
+```
+
+Suppose Happiness Scores are supposed to be between 0 and 15.  
+
+We also want to compare those who "drink a lot" and those who "never drink".
+
+Replace the blanks below to create a new dataset called `alcohol_use` that removes the incorrect happiness scores and includes only those who "drink a lot" and "never drink" and includes only those 2 columns
+
+```{r}
+
+alcohol_use <- happiness %>%
+  filter(Happiness_score __ 15, 
+         Happiness_score >= __,
+         Alcohol ____ c("drink a lot", "never")) %>%
+  select(Alcohol, Happiness_score)
+
+#View(alcohol_use)
+
+```
+
+Check the histogram of happiness scores in the alcohol_use data:
+
+```{r}
+
+histogram(alcohol_use$Happiness_score)
+
+```
+
+How would you describe the shape of the distribution?
+
+
+Create a side-by-side boxplot and summary statistics table for each level of alcohol use:
+
+```{r}
+boxplot(alcohol_use$Happiness_score ~ alcohol_use$Alcohol)
+```
+
+How different do the happiness scores appear to be between these two groups?
+
+Are you disappointed?
+
+It's important to understand that sometimes finding nothing is finding something.
+
+## Lying
+
+Repeat the above analysis comparing how peoples' happiness scores depend on their attitudes about lying.  
+
+  1. Create a new dataset called `lying` that excludes the `#N/A` values in `Lying` and the Happiness scores outliers, and includes only "Happiness_score" and "Lying":
+
+```{r}
+
+lying_data <- happiness %>%
+  filter(Happiness_score <= __, 
+         _______________ >= 0, 
+         Lying __ "#N/A"
+  ) %>%
+  ______(Happiness_score, Lying)
+
+#View(lying_data)
+
+```
+
+  2. Create a side-by-side boxplot and summary statistics (using `favstats()`) table for each attitude about Lying:
+
+```{r}
+
+boxplot(____________________ ~ lying_data$Lying)
+
+favstats(lying_data$Happiness_score ~ _______________)
+
+```
+
+
+# Choose your own adventure
+
+Pick another **categorical variable** with multiple groups that may impact happiness score.
+
+Be sure to clean out any 'nunya business' or '#N/A' that might be there and clean out the outliers in happiness:
+
+```{r}
+
+new_data <- happiness %>%
+  filter(
+    
+  ) %>%
+  select()
+
+
+boxplot()
+
+```
+
+What conclusions can you make?
+
+

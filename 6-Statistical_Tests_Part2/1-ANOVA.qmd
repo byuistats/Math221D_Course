@@ -21,6 +21,13 @@ $$H_o: \mu_1 = \mu_2 = ...\mu_k$$
 where k is the number of groups in the data.
 
 $$H_a: \text{at least one } \mu_k \text{ is different}$$
+## Visualizing Ho
+
+Even if the null hypothesis is true, there will be sample-to-sample variation.  Below is a simulation that looks at different boxplots that are all from the same population.  
+
+Play around and see the impact of sample size (within each group) and the expected variability between groups, even when Ho is true:  
+
+<iframe src="https://byuistats.github.io/Null_Hypothesis_Simulation_App/" width="700" height="500" style="border:none;"></iframe>
 
 
 ## Test Statistic

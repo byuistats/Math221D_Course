@@ -1,0 +1,96 @@
+---
+title: 'Practice: Numerical Summaries (Quant.)'
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Introduction
+
+This is an opportunity for you to practice creating numerical summaries of quantitative data.  
+
+We  will explore 2 datasets.  The first contains information about the duration and the time between geyser eruptions at Old Faithful in Yellowstone National park.  
+
+The second is data collected about expressions of gratitude and their impact on subjective well-being.  
+
+For each dataset, you will create numerical summaries of the data.  
+
+
+# Load libraries and Data
+```{r}
+
+library(rio)
+library(mosaic)
+library(tidyverse)
+library(car)
+
+
+old_faithful <- rio::import("https://byuistats.github.io/M221R/Data/old_faithful.xlsx")
+
+gratitude <- rio::import("https://byuistats.github.io/M221R/Data/gratitude.xlsx")
+
+```
+
+
+# Old Faithful
+
+## Calculate the Summary Statistics for Duration
+
+```{r}
+
+favstats()
+
+```
+
+__QUESTION__:  What is the mean duration time of Old Faithful eruptions?  
+__ANSWER__:  
+
+__QUESTION__:  What is the standard deviation of duration?  
+__ANSWER__:  
+
+
+
+## Calculate Summary Statistics for Wait time
+
+```{r}
+
+
+
+```
+
+__Question__: What is the mean wait time between eruptions?  
+__Answer__: 
+
+__Question__: What is the maximum wait time between eruptions?  
+__Answer__:  
+
+__Question__: The middle 50% of wait times will be between what 2 numbers?  
+__Answer__:  
+
+
+# Gratitude
+
+In this dataset, there is a column called `treatment` which has the group designation, and a single column called `happiness` which is the self-reported happiness score for the participants in the sample.  
+
+
+Create a summary statistics table and answer the questions below:
+
+```{r}
+
+```
+
+
+__Question__: What is the maximum self-reported happiness score?  
+__Answer__:  
+
+
+__Question__: What is the standard deviation of happiness scores?  
+__Answer__:  
+
+__Question__: Explain what the standard deviation means in context of this problem.  
+__Answer__:  
+

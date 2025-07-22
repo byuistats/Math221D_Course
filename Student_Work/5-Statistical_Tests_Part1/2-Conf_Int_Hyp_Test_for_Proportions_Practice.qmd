@@ -1,0 +1,130 @@
+---
+title: Confidence Intervals and Hypothesis Tests Practice
+subtitle: Proportions
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+
+# Teenage Smoking Habits
+
+A study was conducted to determine the proportion of American teenagers between 13 and 17 who smoke. Previous surveys showed that 15% percent of all teenagers smoke. A Gallup survey interviewed a nationally representative sample of 785 teenagers aged 13 to 17. Seventy-one (71) teenagers in the survey acknowledged having smoked at least once in the past week. 
+
+We want to explore if the study provide adequate evidence to conclude that the percentage of teenagers who smoke has changed since the original study (that is, is $p$ now *different* than 15%).  
+
+__QUESTION__:  What are the requirements for a valid hypothesis test for a proportion, and are they met?  
+__ANSWER__:  
+
+
+Whether or not the test requirements are met, perform the appropriate hypothesis test and create a confidence interval for the true proportion of teenagers who smoke.
+
+## Hypothesis Test
+
+State the null and alternative hypotheses (replace the ??? with the correct information):
+
+$$H_0: p=???$$  
+
+$$H_a: p???0.15$$
+Choose your significance level:  
+
+$$\alpha = 0.$$  
+
+
+```{r}
+# perform the hypothesis test:  
+
+
+```
+
+__QUESTION__:  What is the value of the test statistic?  
+__ANSWER__:  
+
+__QUESTION__:  What is the P-value?  
+__ANSWER__:  
+
+__QUESTION__:  Based on your selected $\alpha$ and $P$-value, what is your conclusion?  
+__ANSWER__:  
+
+
+## Confidence Interval
+
+Create a $(1-\alpha)$% confidence interval for the true population proportion of teenagers who smoke?  
+
+```{r}
+
+```
+
+
+
+# Left-handed Artists
+
+Suppose you would like to study the connection between creativity and left-handedness.  Your favorite generative AI told you that the estimated population of left-handed people in the United States is about 11\%. You sample 122 Visual Arts majors and find that 20 are left handed.  Is this enough evidence to demonstrate that visual arts majors have a *higher* proportion of left handed people than the general population?  
+
+__QUESTION__:  What is the estimated sample proportion, $\hat{p}$?  
+__ANSWER__:  
+
+
+## Confidence Interval
+
+Create a 90% confidence interval for the true population proportion of left-handed visual artists:  
+
+```{r}
+
+```
+
+__QUESTION__:  What are the requirements for a confidence interval for a proportion, and are they met?    
+__ANSWER__:  
+
+
+```{r}
+
+```
+
+
+__QUESTION__:  Interpret the confidence interval in context of the research question.  
+__ANSWER__:  
+
+
+## Hypothesis Test
+
+Perform a hypothesis test to determine if the proportion of left-handed Visual Art majors is *higher* than the general population of 11%.  
+
+```{r}
+
+
+```
+
+__QUESTION__:  What is the value of the test statistic?  
+__ANSWER__:  
+
+__QUESTION__:  What is the P-value?  
+__ANSWER__:  
+
+__QUESTION__:  Based on the P-value and a confidence level of $\alpha=.05$, what is your conclusion?  
+__ANSWER__:  
+
+
+__QUESTION__:  What are the requirements for a hypothesis test for a proportion, and are they met?  
+__ANSWER__:  
+
+
+
+# Exercise Habits  
+
+A health study surveyed 250 individuals about their exercise habits, and 140 reported exercising regularly. Construct a 97.25% confidence interval for the proportion of the general population that exercise regularly.
+
+
+
+```{r}
+
+```
+
+
+__QUESTION__:  Interpret the confidence interval in context of the research question:  
+__ANSWER__:  
+
+
+__QUESTION__:  Are the requirements for a valid confidence interval for $p$ met?  
+__ANSWER__:  
+

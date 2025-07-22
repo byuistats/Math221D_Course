@@ -1,10 +1,6 @@
 ---
 title: "Distribution of Sample Statistics"
 subtitle: "Class Exercise"
-format:
-  html:
-    self-contained: true
-    embed-resources: true
 ---
 
 ```{r setup, include=FALSE}

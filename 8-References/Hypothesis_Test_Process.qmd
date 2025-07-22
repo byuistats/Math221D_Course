@@ -1,0 +1,32 @@
+---
+title: "Hypothesis Test Steps"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Hypothesis Test Steps
+
+Every statistical hypothesis test will follow the form:
+
+  1. State the null ($H_0$) and alternative ($H_a$) hypotheses and choose the significance level, $\alpha$  
+      - These will always reflect statements about __population parameters__ ( $\mu$, $p$, $\beta$, etc. )  
+      - $\alpha$ is the probability of reject a true null hypothesis.  It is selected based on the severity of that type of error.  Common values include 0.1, 0.05, and 0.01.  
+    
+    
+  2. Calculate the Test Statistic based on your sample data  
+      - The math behind how this is calculated depends on the type of test, but all are some version of $\frac{signal}{noise}$  
+      - Test statistics have probability distributions with different shapes depending on what scenario is being tested.  The shape of these distributions often depends on degrees of freedom which are related to the number of data points and/or the number of groups for categorical data.  
+    
+    
+  3. Calculate the P-value, the probability of observing the test statistic that we observed (or more extreme) if the null hypothesis were true.  
+  
+  
+  4. Make your conclusion by comparing the P-value to $\alpha$  
+      - When $\text{P-value} < \alpha$ we REJECT Ho in favor of Ha.  *Sufficient evidence* to suggest that the alternative is true.  
+      - When $\text{P-value} \ge \alpha$ we FAIL TO REJECT Ho in favor of Ha.  *Insufficient evidence* to suggest that the alternative is true.  
+    
+    
+  5. Check your test requirements  
+      - Again, which test requirements will depend on data types.  
