@@ -70,7 +70,7 @@ website:
     - text: "Statistical Tests I"
       menu:
         - href: ./5-Statistical_Tests_Part1/0-Confidence_Intervals_for_Means.qmd
-        - href: ./5-Statistical_Tests_Part1/0-Confidence_Intervals_for_Means_Practice.qmd"
+        - href: ./5-Statistical_Tests_Part1/0-Confidence_Intervals_for_Means_Practice.qmd
         - href: ./5-Statistical_Tests_Part1/1-One_Sample_ttest.qmd
         - href: ./5-Statistical_Tests_Part1/1-One_Sample_ttest_Practice.qmd
         - href: ./5-Statistical_Tests_Part1/2-Conf_Int_Hyp_Test_for_Proportions.qmd
