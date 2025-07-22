@@ -53,7 +53,7 @@ yaml_to_add <- list(
 )
 
 for(i in 1:length(source_dirs)){
-  dest_dir <- paste("./Student_Work_Part2", str_remove_all(source_dirs[i], "./"), sep='/')
+  dest_dir <- paste("./Student_Work_Part", str_remove_all(source_dirs[i], "./"), sep='/')
   dir_create(dest_dir)
   
   qmd_files <- dir_ls(source_dirs[i], glob = "*.qmd")
