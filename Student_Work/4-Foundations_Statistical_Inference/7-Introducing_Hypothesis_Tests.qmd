@@ -22,8 +22,8 @@ Lesson Objectives:
     * Explain what is meant by "signal"  
     * Explain what is meant by "noise"  
   4. Explain the concept of a p-value  
-  
-  
+
+
 # Hypothesis Testing
 
 Hypothesis testing is a fundamental concept in statistics that allows us to make inferences about population parameters based on sample data. It's a structured method for using data to decide between two competing claims about a population.  
@@ -279,5 +279,26 @@ At this point we have to make a decision.  Is that probability small enough to r
 When the P-value is very small, we have strong evidence to reject the null hypothesis.  But how small is small enough?  
 
 In the next lesson we will talk more about decision rules for deciding when a p-value is small enough to reject $H_0$.  
+
+
+
+# Summary
+
+## The Process
+
+Every statistical hypothesis test will follow the form: 
+
+  1. State the null and alternative **hypotheses** and choose the significance level, $\alpha$  
+  2. Calculate the **Test Statistic** using your sample data  
+  3. Calculate the **P-value**, the probability of observing the test statistic that we observed (or more extreme) if the null hypothesis were true.  
+  4. **Make your conclusion** by comparing the P-value to $\alpha$  
+  5. **Check the test requirements**  
+
+The math behind the above calculations will vary depending on context.  We will only touch lightly on the underlying math and rely on R to execute it.  This class will focus on the application of the above process.  
+
+You may not yet understand the terminology above, but we introduce the process now as a roadmap.  We will revisit this each time we introduce a new hypothesis test, and before you know it, this will be second nature.  
+
+
+__NOTE__:  This is a new paradigm for most students.  It's perfectly fine to be confused at first.  But just as with learning to code in R, we will make sense of this framework for statistical inference.  
 
 

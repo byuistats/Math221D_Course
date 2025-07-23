@@ -41,7 +41,7 @@ add_yaml_features_and_remove_button <- function(file_path, new_features) {
 }
 
 
-source_dirs <- c("./1-Getting_Started", "./2-Descriptive_Statistics", "./3-Data_Wrangling_Visualization", "./7-Semester_Project", "4-Foundations_Statistical_Inference", "5-Statistical_Tests_Part1",  "6-Statistical_Tests_Part2")
+source_dirs <- c("./1-Getting_Started", "./2-Descriptive_Statistics", "./3-Data_Wrangling_Visualization", "./7-Semester_Project", "4-Foundations_Statistical_Inference", "5-Statistical_Tests_Part1",  "6-Statistical_Tests_Part2", "8-References")
 
 yaml_to_add <- list(
   format = list(

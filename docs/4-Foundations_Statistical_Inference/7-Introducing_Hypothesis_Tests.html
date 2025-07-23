@@ -479,6 +479,10 @@ window.Quarto = {
   <li><a href="#test-statistic-1" id="toc-test-statistic-1" class="nav-link" data-scroll-target="#test-statistic-1">Test Statistic</a></li>
   <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="math inline">\(P\)</span>-value</a></li>
   </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
+  <li><a href="#the-process" id="toc-the-process" class="nav-link" data-scroll-target="#the-process">The Process</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -691,6 +695,27 @@ z = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} = \frac{11.82 - 12}{0.5 / \sqrt{21
 <p>At this point we have to make a decision. Is that probability small enough to reject the null hypothesis in favor the alternative? Are foot-long sandwiches LESS than 12 inches on average?</p>
 <p>When the P-value is very small, we have strong evidence to reject the null hypothesis. But how small is small enough?</p>
 <p>In the next lesson we will talk more about decision rules for deciding when a p-value is small enough to reject <span class="math inline">\(H_0\)</span>.</p>
+</section>
+</section>
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<section id="the-process" class="level2">
+<h2 class="anchored" data-anchor-id="the-process">The Process</h2>
+<p>Every statistical hypothesis test will follow the form:</p>
+<ol type="1">
+<li>State the null and alternative <strong>hypotheses</strong> and choose the significance level, <span class="math inline">\(\alpha\)</span><br>
+</li>
+<li>Calculate the <strong>Test Statistic</strong> using your sample data<br>
+</li>
+<li>Calculate the <strong>P-value</strong>, the probability of observing the test statistic that we observed (or more extreme) if the null hypothesis were true.<br>
+</li>
+<li><strong>Make your conclusion</strong> by comparing the P-value to <span class="math inline">\(\alpha\)</span><br>
+</li>
+<li><strong>Check the test requirements</strong></li>
+</ol>
+<p>The math behind the above calculations will vary depending on context. We will only touch lightly on the underlying math and rely on R to execute it. This class will focus on the application of the above process.</p>
+<p>You may not yet understand the terminology above, but we introduce the process now as a roadmap. We will revisit this each time we introduce a new hypothesis test, and before you know it, this will be second nature.</p>
+<p><strong>NOTE</strong>: This is a new paradigm for most students. It’s perfectly fine to be confused at first. But just as with learning to code in R, we will make sense of this framework for statistical inference.</p>
 
 
 </section>

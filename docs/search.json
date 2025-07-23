@@ -2188,7 +2188,7 @@
     "href": "8-References/Test_Requirements.html#chi-square-test-of-independence",
     "title": "Hypothesis Test Requirements for Various Statistical Tests",
     "section": "5. Chi-square Test of Independence",
-    "text": "5. Chi-square Test of Independence\n\nTest:\n\nChi-square test for independence in contingency tables\n\n\n\nRequirements:\n\nSample Size:\n\n\nExpected cell counts should be at least 5 in each cell.\n\n\nIndependence:\n\n\nObservations should be independent."
+    "text": "5. Chi-square Test of Independence\n\nTest:\n\nChi-square test for independence in contingency tables\n\n\n\nRequirements:\n\nSample Size:\n\nExpected cell counts should be at least 5 in each cell.\n\nIndependence:\n\nObservations should be independent."
   },
   {
     "objectID": "Spaced_Learning_Activities/Confidence_Intervals_for_Proportions_Practice.html",
@@ -2217,5 +2217,12 @@
     "title": "Table Proportions: Therapy",
     "section": "",
     "text": "Introduction\nThis is a synthetic dataset that compares the effectiveness of 2 different psychotherapies, Psychodynamic Therapy (PDT) and Cognitive Behavioral Therapy (CBT).\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(car)\n\ntherapy &lt;- read_csv('https://github.com/byuistats/Math221D_Course/raw/main/Data/CBT_vs_PDT_Treatment_Data.csv')\n\nglimpse(therapy)\n\nRows: 254\nColumns: 2\n$ ImprovementLevel &lt;chr&gt; \"Improved\", \"Improved\", \"Improved\", \"Improved\", \"Impr…\n$ Treatment        &lt;chr&gt; \"CBT\", \"CBT\", \"CBT\", \"CBT\", \"CBT\", \"CBT\", \"CBT\", \"CBT…\n\n\nCreate a proportion table that shows the improvement level of each treatment. (Should sum to 1 across treatment groups):\nQUESTION: What percent of CBT patients improved?\nANSWER:\nQUESTION: What percent of CBT patients worsened?\nANSWER:"
+  },
+  {
+    "objectID": "4-Foundations_Statistical_Inference/7-Introducing_Hypothesis_Tests.html#the-process",
+    "href": "4-Foundations_Statistical_Inference/7-Introducing_Hypothesis_Tests.html#the-process",
+    "title": "Introducing Hypothesis Tests",
+    "section": "The Process",
+    "text": "The Process\nEvery statistical hypothesis test will follow the form:\n\nState the null and alternative hypotheses and choose the significance level, \\(\\alpha\\)\n\nCalculate the Test Statistic using your sample data\n\nCalculate the P-value, the probability of observing the test statistic that we observed (or more extreme) if the null hypothesis were true.\n\nMake your conclusion by comparing the P-value to \\(\\alpha\\)\n\nCheck the test requirements\n\nThe math behind the above calculations will vary depending on context. We will only touch lightly on the underlying math and rely on R to execute it. This class will focus on the application of the above process.\nYou may not yet understand the terminology above, but we introduce the process now as a roadmap. We will revisit this each time we introduce a new hypothesis test, and before you know it, this will be second nature.\nNOTE: This is a new paradigm for most students. It’s perfectly fine to be confused at first. But just as with learning to code in R, we will make sense of this framework for statistical inference."
   }
 ]

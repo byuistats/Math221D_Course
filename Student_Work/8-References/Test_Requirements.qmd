@@ -1,5 +1,9 @@
 ---
-title: "Hypothesis Test Requirements for Various Statistical Tests"
+title: Hypothesis Test Requirements for Various Statistical Tests
+format:
+  html:
+    self-contained: true
+    embed-resources: true
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
