@@ -32,7 +32,7 @@ In this activity, you will practice the process for approaching a dataset outlin
   3. Prepare the data for analysis
   4. Perform the appropriate analysis
   
-Data preparation will include using the `filter()` function.  For now, analysis means creating good visualizations that tell a story using `ggplot()` and base R.  
+Data preparation will include using the `filter()` function.  For now, analysis means creating good visualizations that tells a story using `ggplot()` and base R.  
 
 # 1 - Load the Data and Libraries
 
