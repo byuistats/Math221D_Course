@@ -1,540 +1,265 @@
-Semester,YearTaken,Section,BirthMonth,Biosex,Height_in_Inches,Number_of_Languages_Spoken,Extroversion,Agreeableness,Openness,Conscientiousness,Neuroticism,Oldest_Child,Only_Child
-SPR,2022,B,March,M,76,1,88,63,54,81,19,,
-SPR,2022,B,February,M,70,2,81,83,77,81,25,,
-SPR,2022,B,August,M,71,1,27,63,81,65,67,,
-SPR,2022,B,March,F,70,1,92,67,73,83,27,,
-SPR,2022,B,September,M,72,2,46,79,90,23,56,,
-SPR,2022,B,May,F,67,1,79,75,52,71,31,,
-SPR,2022,B,November,M,67,2,67,81,69,56,40,,
-SPR,2022,B,November,M,69,2,44,56,63,31,29,,
-SPR,2022,B,May,F,65,1,46,85,92,52,56,,
-SPR,2022,B,July,M,75,2,88,63,58,92,31,,
-SPR,2022,B,July,F,65,1,21,71,67,69,65,,
-SPR,2022,B,January,M,70,1,60,44,83,21,46,,
-SPR,2022,B,March,F,63,2,71,67,52,63,48,,
-SPR,2022,B,November,F,68,1,81,90,92,80,40,,
-SPR,2022,B,October,M,73,1,79,71,65,52,42,,
-SPR,2022,B,April,F,66,2,52,60,85,85,44,,
-SPR,2022,B,February,F,64,2,100,67,81,94,48,,
-SPR,2022,B,December,M,66,1,44,67,60,42,65,,
-SPR,2022,B,December,M,72,2,42,60,48,52,40,,
-SPR,2022,B,February,M,72,1,58,79,56,56,71,,
-SPR,2022,B,May,F,66,2,52,90,73,77,19,,
-SPR,2022,B,June,F,62,1,48,79,79,48,67,,
-SPR,2022,B,March,M,67,1,83,79,69,46,52,,
-SPR,2022,B,November,M,76,1,65,71,73,48,29,,
-SPR,2022,B,April,F,68,2,98,88,85,73,52,,
-SPR,2022,B,December,M,68,1,85,85,54,71,38,,
-SPR,2022,B,January,F,59,4,31,54,83,56,52,,
-SPR,2022,B,May,M,70,1,40,58,58,31,40,,
-SPR,2022,B,January,F,64,1,71,79,83,63,44,,
-SPR,2022,B,April,M,73,2,48,73,46,71,23,,
-SPR,2022,B,July,M,70,1,58,73,50,65,56,,
-SPR,2022,B,January,M,73,2,44,88,67,35,33,,
-SPR,2022,B,August,M,74,7,71,40,79,63,72,,
-SPR,2022,B,August,F,62,1,15,94,77,71,69,,
-SPR,2022,B,January,M,70,1,29,79,38,63,40,,
-SPR,2022,B,July,F,63,2,21,94,73,56,48,,
-SPR,2022,B,May,F,69,1,69,81,56,48,50,,
-SPR,2022,B,July,M,68,1,35,65,63,35,60,,
-SPR,2022,B,July,F,64,1,56,71,83,40,67,,
-SPR,2022,B,May,M,67,2,42,63,56,48,58,,
-SPR,2022,B,January,M,71,3,90,88,73,75,60,,
-SPR,2022,B,April,M,71,1,90,88,73,79,40,,
-SPR,2022,B,January,M,70,1,56,71,65,77,52,,
-SPR,2022,C,January,F,67,1,41,65,71,62,48,,
-SPR,2022,C,May,F,70,2,81,77,40,71,56,,
-SPR,2022,C,November,F,63,2,38,85,50,77,52,,
-SPR,2022,C,September,F,64,1,79,52,94,48,56,,
-SPR,2022,C,May,F,66,1,88,88,77,50,54,,
-SPR,2022,C,May,F,64,1,31,69,67,33,52,,
-SPR,2022,C,March,F,65,1,58,83,73,44,69,,
-SPR,2022,C,March,F,63,1,96,79,56,81,50,,
-SPR,2022,C,August,M,71,2,42,77,83,69,0,,
-SPR,2022,C,May,F,66,1,52,77,96,75,33,,
-SPR,2022,C,August,M,75,1,48,67,88,81,35,,
-SPR,2022,C,May,M,75,2,60,73,63,58,42,,
-SPR,2022,C,March,M,74,1,44,81,79,44,35,,
-SPR,2022,C,April,F,66,1,38,92,73,38,67,,
-SPR,2022,C,May,M,72,1,25,75,71,67,25,,
-SPR,2022,C,March,F,69,1,35,79,85,69,29,,
-SPR,2022,C,August,F,64,1,40,71,79,27,58,,
-SPR,2022,C,November,F,65,1,56,71,85,71,48,,
-SPR,2022,C,February,M,67,1,83,69,58,67,38,,
-SPR,2022,C,April,F,61,1,33,75,81,38,79,,
-SPR,2022,C,June,M,71,2,58,60,73,65,35,,
-SPR,2022,C,July,F,61,3,52,81,90,58,23,,
-SPR,2022,C,June,F,61,1,63,63,33,69,54,,
-SPR,2022,C,January,F,65,2,58,77,90,56,73,,
-SPR,2022,C,July,F,67,2,58,75,79,71,63,,
-SPR,2022,C,August,M,68,1,44,83,85,40,81,,
-SPR,2022,C,October,M,74,1,77,75,100,60,58,,
-SPR,2022,C,May,F,63,2,60,79,79,63,48,,
-SPR,2022,C,August,M,72,1,81,71,67,29,58,,
-SPR,2022,C,February,M,72,2,81,79,90,88,31,,
-SPR,2022,C,January,F,64,2,77,90,87,42,60,,
-SPR,2022,C,September,F,64,4,63,92,88,44,73,,
-SPR,2022,C,June,M,72,1,44,75,92,71,31,,
-FAL,2022,C,June,M,66,1,58,56,85,58,6,,
-FAL,2022,C,April,F,74,1,73,21,10,2,13,,
-FAL,2022,C,October,M,68,1,98,79,98,85,15,,
-FAL,2022,C,February,M,72,1,94,88,81,58,15,,
-FAL,2022,C,April,F,66,2,67,69,60,69,15,,
-FAL,2022,C,April,F,62,1,73,85,46,25,17,,
-FAL,2022,C,January,F,63,2,46,85,81,54,33,,
-FAL,2022,C,August,M,74,2,69,83,48,58,38,,
-FAL,2022,C,November,M,74,2,63,71,48,56,40,,
-FAL,2022,C,February,M,64,1,81,90,94,50,42,,
-FAL,2022,C,February,F,61,1,50,52,58,79,42,,
-FAL,2022,C,September,F,65,2,48,73,65,67,42,,
-FAL,2022,C,September,M,69,1,33,67,77,63,42,,
-FAL,2022,C,April,F,63,1,54,71,63,44,42,,
-FAL,2022,C,April,M,69,1,71,60,44,58,42,,
-FAL,2022,C,December,M,72,1,67,79,75,54,42,,
-FAL,2022,C,July,F,68,2,23,100,21,94,44,,
-FAL,2022,C,January,F,68,1,60,63,69,65,44,,
-FAL,2022,C,January,F,63,1,75,94,79,83,44,,
-FAL,2022,C,June,F,63,2,88,90,65,88,46,,
-FAL,2022,C,August,F,73,1,40,73,69,58,46,,
-FAL,2022,C,March,F,66,1,58,71,83,40,46,,
-FAL,2022,C,March,F,69,1,56,79,50,73,46,,
-FAL,2022,C,June,F,66,1,54,71,56,69,46,,
-FAL,2022,C,October,F,66,1,44,71,71,52,48,,
-FAL,2022,C,March,F,62,1,56,94,77,90,48,,
-FAL,2022,C,November,F,64,1,63,92,90,71,48,,
-FAL,2022,C,April,F,62,1,73,85,73,73,50,,
-FAL,2022,C,December,M,69,1,65,63,81,44,50,,
-FAL,2022,C,January,F,64.4,2,50,90,83,50,52,,
-FAL,2022,C,January,M,74,2,56,44,85,71,54,,
-FAL,2022,C,February,F,59,3,79,73,75,44,56,,
-FAL,2022,C,October,F,62,3,69,63,63,42,60,,
-FAL,2022,C,January,F,64,1.5,48,67,77,50,63,,
-FAL,2022,C,May,M,71,1,52,73,81,60,65,,
-FAL,2022,C,May,F,64,1,23,75,73,58,65,,
-FAL,2022,C,October,F,62,1,38,94,73,85,73,,
-FAL,2022,C,August,F,64,1,52,65,79,50,75,,
-FAL,2022,C,May,F,62,1,65,85,77,56,77,,
-FAL,2022,C,December,M,68,1,31,46,69,81,81,,
-FAL,2022,C,March,F,62,1,46,73,63,27,85,,
-FAL,2022,C,December,F,66,1,29,77,50,58,90,,
-FAL,2022,C,December,M,73,2,67,88,85,69,5,,
-FAL,2022,C,April,M,69,2,35,54,50,65,27,,
-FAL,2022,C,September,F,64,1,69,75,63,48,38,,
-FAL,2022,C,August,F,66.75,1,67,88,79,65,42,,
-FAL,2022,C,February,F,62,1,56,81,90,63,48,,
-FAL,2022,C,June,F,61,2,56,98,81,73,50,,
-FAL,2022,C,October,F,67,1,83,81,83,46,60,,
-FAL,2022,C,April,F,67,1,90,90,71,88,63,,
-FAL,2022,C,November,M,66,2,81,63,81,44,65,,
-FAL,2022,C,February,F,67,1,29,77,85,52,81,,
-FAL,2022,C,June,M,71,2,96,94,100,75,2,,
-FAL,2022,C,December,M,71,1,77,39,53,28,6,,
-FAL,2022,C,December,F,66,1,81,44,67,83,23,,
-FAL,2022,C,April,M,69,2,50,81,31,69,25,,
-FAL,2022,C,May,M,72,2,71,73,65,58,25,,
-FAL,2022,C,April,F,66,1,81,79,75,56,27,,
-FAL,2022,C,March,M,74,1,27,81,81,67,27,,
-FAL,2022,C,November,F,63,1,85,90,85,77,29,,
-FAL,2022,C,April,F,63,2,60,92,48,79,31,,
-FAL,2022,C,July,F,68,1,73,77,92,40,35,,
-FAL,2022,C,April,F,65,1,60,79,62,71,35,,
-FAL,2022,C,December,F,69,1,29,100,65,77,38,,
-FAL,2022,C,March,F,65,1,63,73,54,73,38,,
-FAL,2022,C,June,F,70,2,92,85,85,44,40,,
-FAL,2022,C,August,F,67,1,1,73,77,67,42,,
-FAL,2022,C,May,M,58,3,71,71,58,46,42,,
-FAL,2022,C,December,F,69,1,21,77,77,21,44,,
-FAL,2022,C,March,F,71,1,46,83,77,44,44,,
-FAL,2022,C,December,F,62,2,75,79,81,60,46,,
-FAL,2022,C,February,M,61,1,48,46,79,65,48,,
-FAL,2022,C,September,M,63,1,81,81,87,58,50,,
-FAL,2022,C,December,F,69,2,27,79,81,48,52,,
-FAL,2022,C,June,F,63,2,65,81,29,27,52,,
-FAL,2022,C,May,F,69,1,17,67,94,69,52,,
-FAL,2022,C,February,F,63,1,42,77,85,46,60,,
-FAL,2022,C,March,F,67,1,27,40,81,50,60,,
-FAL,2022,C,August,M,71,2,56,77,92,60,63,,
-FAL,2022,C,January,F,63,1,50,83,81,77,63,,
-FAL,2022,C,June,F,64,2,19,77,77,65,63,,
-FAL,2022,C,August,M,74,1,96,75,79,54,69,,
-FAL,2022,C,September,F,64,4,56,90,75,46,71,,
-FAL,2022,C,December,F,64,1,29,56,73,73,71,,
-FAL,2022,C,October,F,58,1,40,65,44,58,73,,
-FAL,2022,C,September,M,59,1,50,58,81,48,77,,
-FAL,2022,C,July,F,67,1,8,69,46,42,92,,
-WIN,2023,B,May,F,67,1,90,67,98,67,52,,
-WIN,2023,B,April,F,64,1,50,79,90,56,56,,
-WIN,2023,B,February,M,72,1.5,54,65,54,67,42,,
-WIN,2023,B,November,M,71,1,50,79,54,69,52,,
-WIN,2023,B,June,F,65,1,63,79,83,83,23,,
-WIN,2023,B,February,M,69,2,85,65,48,65,48,,
-WIN,2023,B,February,M,66,1,63,85,73,63,27,,
-WIN,2023,B,March,F,68,1,96,48,79,46,35,,
-WIN,2023,B,June,M,70,2,58,79,56,79,19,,
-WIN,2023,B,January,M,70,3,60,79,58,79,27,,
-WIN,2023,B,May,M,74,1,69,71,44,58,33,,
-WIN,2023,B,May,F,67,1,38,85,58,73,50,,
-WIN,2023,B,August,F,68,1,56,83,60,73,29,,
-WIN,2023,B,January,F,69,1,96,81,60,56,31,,
-WIN,2023,B,March,M,69,1.614,58,69,67,83,25,,
-WIN,2023,B,April,M,70,2,52,60,40,52,44,,
-WIN,2023,B,October,M,74,2,63,75,58,90,50,,
-WIN,2023,B,June,F,70,3,73,92,88,75,10,,
-WIN,2023,B,March,F,62,1,38,77,90,50,40,,
-WIN,2023,B,June,M,,1,42,73,67,35,69,,
-WIN,2023,B,January,F,64,1,40,77,38,71,27,,
-WIN,2023,B,January,M,73,1,53,75,48,65,50,,
-WIN,2023,B,May,F,63,1,48,79,71,54,56,,
-WIN,2023,B,February,F,68,1,40,81,58,81,42,,
-WIN,2023,B,May,M,72,1,60,73,58,83,17,,
-WIN,2023,B,April,F,69,1,67,75,58,81,52,,
-WIN,2023,B,November,M,70,2,69,92,75,65,6,,
-WIN,2023,B,February,F,69,1,67,63,85,73,58,,
-WIN,2023,B,November,F,64,1,75,73,88,85,56,,
-WIN,2023,B,March,M,72,2,35,71,56,52,46,,
-WIN,2023,B,December,F,66,1,79,71,83,44,48,,
-WIN,2023,B,August,F,61,2,42,83,69,79,25,,
-WIN,2023,B,November,F,66,1,71,94,75,56,48,,
-WIN,2023,B,May,M,70,1,44,63,67,50,48,,
-WIN,2023,B,January,F,60,1,71,69,65,77,50,,
-WIN,2023,B,June,M,71,1,69,75,81,48,69,,
-WIN,2023,B,October,F,71,1,15,81,58,54,65,,
-WIN,2023,B,August,F,65,1,81,58,67,50,65,,
-WIN,2023,B,October,F,62,1,29,67,67,58,48,,
-WIN,2023,B,March,M,70,1.613,69,63,88,69,35,,
-WIN,2023,B,December,M,71,1,15,25,73,71,63,,
-WIN,2023,C,April,F,63,1,56,73,71,60,56,,
-WIN,2023,C,February,F,70,1,88,75,83,42,48,,
-WIN,2023,C,October,F,64,1,17,63,83,8,81,,
-WIN,2023,C,June,F,63,1,52,52,75,63,75,,
-WIN,2023,C,June,F,81,1,73,90,96,42,71,,
-WIN,2023,C,August,F,65,1,94,85,56,73,25,,
-WIN,2023,C,May,F,71,2,69,58,65,56,33,,
-WIN,2023,C,May,M,,1,44,69,25,69,54,,
-WIN,2023,C,June,F,62,1,79,79,65,83,63,,
-WIN,2023,C,February,F,64,1,60,71,56,50,75,,
-WIN,2023,C,October,M,72,1,79,79,83,46,73,,
-WIN,2023,C,March,M,75,1,79,71,98,75,21,,
-WIN,2023,C,December,F,69,1,42,56,71,56,71,,
-WIN,2023,C,October,F,75,1,35,60,65,77,75,,
-WIN,2023,C,April,F,65,2,23,75,96,92,42,,
-WIN,2023,C,January,M,74,2,63,54,67,33,44,,
-WIN,2023,C,November,F,63,1,40,81,96,38,74,,
-WIN,2023,C,September,M,73,1,42,75,67,65,77,,
-WIN,2023,C,February,F,65,2,94,94,85,81,54,,
-WIN,2023,C,September,F,64,1,52,63,77,69,23,,
-WIN,2023,C,January,M,70,1,79,79,83,54,35,,
-WIN,2023,C,February,F,65,1,50,75,83,77,63,,
-WIN,2023,C,June,F,66,2,58,85,71,67,52,,
-WIN,2023,C,February,M,74,1,29,92,94,58,48,,
-WIN,2023,C,July,M,69,2,63,71,85,54,46,,
-WIN,2023,C,October,F,67,1,15,73,81,52,50,,
-WIN,2023,C,November,M,74,2,44,73,88,79,52,,
-WIN,2023,C,September,F,71,2,92,81,50,52,56,,
-WIN,2023,C,April,F,62,2,75,98,73,63,69,,
-WIN,2023,C,February,F,61,1,81,92,71,77,63,,
-WIN,2023,C,May,F,72,1,33,85,67,44,31,,
-WIN,2023,C,June,M,72,2,54,75,79,58,60,,
-WIN,2023,C,March,F,66,1,52,67,77,71,46,,
-WIN,2023,C,May,F,63,1,35,63,92,58,92,,
-WIN,2023,C,March,F,71,1,77,90,38,54,54,,
-WIN,2023,C,June,F,63,1,65,79,71,75,60,,
-WIN,2023,C,September,F,67,2,54,81,79,65,56,,
-WIN,2023,C,June,F,65,2,83,92,81,52,38,,
-SPR,2023,C,June,F,58,2,92,90,73,92,52,,
-SPR,2023,C,June,M,74,2,77,77,94,60,31,,
-SPR,2023,C,March,M,70,2,75,48,67,56,75,,
-SPR,2023,C,September,M,72,2,35,87.5,94,62.5,69,,
-SPR,2023,C,July,F,62,1,58,79,90,52,44,,
-SPR,2023,C,April,F,72,2,85,90,56,87.5,31,,
-SPR,2023,C,July,M,71,2,38,69,94,40,65,,
-SPR,2023,C,August,F,65,1,56,85,94,29,38,,
-SPR,2023,C,August,F,,3,,23,37.5,60,44,,
-SPR,2023,C,October,F,66,1,46,79,58,83,35,,
-SPR,2023,C,August,M,66,1,77,37.5,52,75,29,,
-SPR,2023,C,January,M,69,2,54,94,73,69,46,,
-SPR,2023,C,April,F,66,1,65,62.5,67,54,50,,
-SPR,2023,C,March,F,65,1,60,65,73,60,54,,
-SPR,2023,C,August,F,66,4,58,73,42,73,62.5,,
-SPR,2023,C,June,F,64,1,96,83,65,87.5,17,,
-SPR,2023,C,May,F,62,1,69,81,87.5,67,54,,
-SPR,2023,C,March,F,68,1,42,85,79,56,73,,
-SPR,2023,C,October,F,68,1,62.5,81,62.5,85,19,,
-SPR,2023,C,August,M,73,1,67,77,90,79,4,,
-SPR,2023,C,Johnson,M,71,2.5,800,80,98,29,4,0,0
-SPR,2023,C,August,F,60,1,60,81,61,71,60,,
-SPR,2023,C,September,F,64,2,17,79,79,54,67,,
-SPR,2023,C,May,F,68,1,79,58,54,69,33,,
-SPR,2023,C,May,M,68,1,54,67,87.5,54,58,,
-SPR,2023,C,February,M,67,3,40,67,67,40,79,,
-SPR,2023,C,October,F,62,1,50,77,79,56,60,,
-SPR,2023,C,November,M,80,1,33,54,71,63,38,,
-SPR,2023,C,December,M,70,1,71,87.5,90,40,42,,
-SPR,2023,C,December,M,72,2,60,87.5,75,73,40,,
-SPR,2023,C,July,M,75,1,96,37.5,77,56,44,,
-SPR,2023,A,December,M,71.5,2,54,90,75,58,40,,
-SPR,2023,A,September,F,60,1,81,92,58,71,58,,
-SPR,2023,A,February,M,72,3,62.5,58,81,62.5,35,,
-SPR,2023,A,December,M,74.5,2,62.5,54,98,52,65,,
-SPR,2023,A,July,M,66,1,77,65,79,50,62.5,,
-SPR,2023,A,July,F,64,1,79,65,73,90,60,,
-SPR,2023,A,July,M,75,1,44,83,87,46,62,,
-SPR,2023,A,February,M,71,2,81,83,94,75,60,,
-SPR,2023,A,April,M,75,2,50,73,71,58,52,,
-SPR,2023,A,April,F,63,1,10,62.5,90,52,35,,
-SPR,2023,A,July,M,70,2,52,73,56,54,65,,
-SPR,2023,A,October,M,73,1,25,73,44,83,19,,
-SPR,2023,A,February,M,68,1,21,62.5,23,71,77,,
-SPR,2023,A,November,M,69,2,65,54,58,75,17,,
-SPR,2023,A,March,M,68,1,65,77,52,62.5,87.5,,
-SPR,2023,A,January,M,69,2,40,65,65,52,58,,
-SPR,2023,A,January,F,67,1,46,77,96,83,37.5,,
-SPR,2023,A,April,M,75,1,27,71,54,69,33,,
-SPR,2023,A,February,M,65,3,29,87.5,100,67,60,,
-SPR,2023,A,June,F,68,1,58,71,69,56,58,,
-SPR,2023,A,February,M,61.2,1,60,92,100,65,56,,
-SPR,2023,A,January,M,70,0,81,46,85,83,35,,
-SPR,2023,A,December,F,67,1,71,73,73,58,56,,
-SPR,2023,A,October,M,70,2,27,75,67,77,15,,
-WIN,2023,D,December,M,71,2,52,80,98,29,4,0,0
-WIN,2024,D,October,M,72,2,19,54,50,83,21,,
-WIN,2024,D,July,F,71,1,29,79,65,65,52,,
-WIN,2024,D,April,F,65,1,31,65,90,77,50,,
-WIN,2024,D,July,F,64,1,21,85,81,90,60,,
-WIN,2024,D,December,M,70,2,75,73,46,40,54,,
-WIN,2024,D,April,M,73,1,65,62.5,50,81,33,,
-WIN,2024,D,October,M,73,1,69,35,96,58,17,,
-WIN,2024,D,October,M,73,2,52,85,62,71,25,,
-WIN,2024,D,August,F,68,1,27,90,75,42,54,,
-WIN,2024,D,March,M,72,1,73,65,79,54,46,,
-WIN,2024,D,January,M,76,1,33,71,94,50,73,,
-WIN,2024,D,February,F,65,1,46,77,85,46,56,,
-WIN,2024,D,July,M,71,1,25,71,71,50,60,,
-WIN,2024,D,December,M,64,2,59,41,72,56,75,,
-WIN,2024,D,February,M,74,1,90,60,75,79,21,,
-WIN,2024,D,March,M,69,1,40,73,48,60,37.5,,
-WIN,2024,D,December,M,70,1,19,81,33,85,81,,
-WIN,2024,D,January,M,71,1,17,87.5,37.5,62.5,81,,
-WIN,2024,D,September,M,72,2,85,75,69,56,12,,
-WIN,2024,D,August,M,71,1,37.5,69,96,44,65,,
-WIN,2024,D,March,F,62,3,31,73,40,35,62.5,,
-WIN,2024,D,September,F,56.75,1,50,94,79,71,56,,
-WIN,2024,D,April,M,70,2,44,73,77,40,67,,
-WIN,2024,D,April,M,67,1,40,79,50,71,35,,
-WIN,2024,D,June,M,70,1,67,56,83,52,37.5,,
-WIN,2024,D,May,F,61,1,90,96,81,65,19,,
-WIN,2024,D,December,M,74,1,21,60,87.5,27,75,,
-WIN,2024,D,February,F,68,2,29,67,83,81,17,,
-WIN,2024,D,February,M,72,3,67,56,71,58,54,,
-WIN,2024,D,January,F,64,1,83,75,62.5,58,31,,
-WIN,2024,D,February,F,64,1,40,44,69,42,65,,
-WIN,2024,D,May,F,66,4,17,77,79,96,35,,
-WIN,2024,D,March,M,74,2,98,79,54,90,25,,
-WIN,2024,D,March,M,69,1,21,79,77,58,19,,
-WIN,2024,D,May,M,74,2,81,79,67,69,15,,
-WIN,2024,C,April,F,65,3,42,54,75,62.5,48,,
-WIN,2024,C,November,F,69,1,19,87.5,65,50,46,,
-WIN,2024,C,September,F,67,2,46,60,56,69,48,,
-WIN,2024,C,March,M,74,1,44,81,96,77,48,,
-WIN,2024,C,June,F,64,1,42,98,83,65,71,,
-WIN,2024,C,July,F,68,1,54,50,35,73,35,,
-WIN,2024,C,July,F,66,1,52,94,60,73,50,,
-WIN,2024,C,June,F,70,2,98,85,94,54,48,,
-WIN,2024,C,May,M,73,1,37.5,83,85,54,25,,
-WIN,2024,C,April,F,66,1,54,71,96,54,62.5,,
-WIN,2024,C,March,M,72,2,35,62.5,87.5,52,46,,
-WIN,2024,C,October,F,64,1,73,71,75,48,52,,
-WIN,2024,C,December,F,66,2,56,69,60,50,46,,
-WIN,2024,C,January,F,61,1,62,94,44,69,54,,
-WIN,2024,C,May,F,68,1,81,58,58,83,56,,
-WIN,2024,C,June,F,70,2,67,69,69,81,44,,
-WIN,2024,C,June,M,70,2,52,75,92,73,42,,
-WIN,2024,C,November,M,70,1,62.5,69,50,48,62.5,,
-WIN,2024,C,September,F,55,2,77,77,73,42,48,,
-WIN,2024,C,April,F,62,1,81,77,83,75,29,,
-WIN,2024,C,April,F,62,1,62.5,71,81,42,79,,
-WIN,2024,C,January,F,51,2,65,75,83,81,31,,
-WIN,2024,C,February,M,69,1,21,71,83,56,73,,
-WIN,2024,C,September,F,65,1,48,87.5,96,52,65,,
-WIN,2024,C,March,F,63,1,90,71,69,71,60,,
-WIN,2024,C,January,F,63,1,75,92,92,73,42,,
-WIN,2024,C,August,M,67,1,90,81,75,77,6,,
-WIN,2024,C,October,M,72,2,19,54,50,83,21,,
-WIN,2024,C,January,M,72,2,62.5,60,96,48,33,,
-WIN,2024,C,October,F,67,1,83,87.5,60,73,37.5,,
-WIN,2024,C,March,F,67,1,58,78,75,50,62.5,,
-WIN,2024,C,January,F,63,1,46,85,73,58,54,,
-WIN,2024,C,April,M,73,1.5,75,83,58,75,33,,
-WIN,2024,C,December,F,67,2,65,81,75,56,52,,
-WIN,2024,C,August,M,70,1,48,71,79,54,35,,
-WIN,2024,C,May,F,69,1,52,77,75,77,48,,
-WIN,2024,C,June,M,71,1,62.5,67,75,62.5,44,,
-WIN,2024,C,December,F,68,1,29,67,62.5,58,69,,
-WIN,2024,C,September,F,70,1,87.5,77,69,42,54,,
-WIN,2024,C,September,M,75,1,87.5,92,65,71,35,,
-WIN,2024,C,January,F,63,1,83,81,92,90,15,,
-WIN,2024,C,January,F,65,1,81,42,27,56,65,,
-SPR,2024,D,September,M,73,0,71,77,79,33,15,,
-SPR,2024,D,August,M,70,2,23,81,56,67,33,,
-SPR,2024,D,May,M,70,1,25,71,73,27,79,,
-SPR,2024,D,February,F,65,1,60,77,90,42,46,,
-SPR,2024,D,November,M,70,3,44,65,31,77,35,,
-SPR,2024,D,October,M,67,2,90,56,83,62,46,,
-SPR,2024,D,September,F,66,1,44,73,52,48,46,,
-SPR,2024,D,November,F,65,2,85,94,58,83,33,,
-SPR,2024,D,April,M,72,1,71,73,85,48,42,,
-SPR,2024,D,August,F,64,1,50,81,79,71,37.5,,
-SPR,2024,D,May,M,68,2,46,73,94,92,73,,
-SPR,2024,D,June,M,72,2,87.5,71,79,52,4,,
-SPR,2024,D,January,F,,5,67,69,85,56,48,,
-SPR,2024,D,October,M,73,1,54,58,83,48,73,,
-SPR,2024,D,August,M,69,2,65,69,87.5,71,50,,
-SPR,2024,D,July ,F,65,1,56,75,52,83,29,,
-SPR,2024,D,September,M,74,1,19,56,92,90,35,,
-SPR,2024,D,September,F,64,1,40,79,98,33,77,,
-SPR,2024,D,April,F,66,2,54,44,90,83,67,,
-SPR,2024,D,April,M,79,2,37.5,52,69,35,71,,
-SPR,2024,D,November,F,66,1,60,56,46,79,31,,
-SPR,2024,D,April,M,70.9,2,56,65,60,75,46,,
-SPR,2024,D,September,M,69,1,31,77,73,71,65,,
-SPR,2024,D,September,F,69,1,60,73,87.5,67,65,,
-SPR,2024,D,February,M,70,2,42,44,98,15,50,,
-SPR,2024,D,September,M,76,1,31,79,81,65,65,,
-SPR,2024,D,December,F,67,2,71,85,73,60,54,,
-SPR,2024,D,January,F,67,1,62.5,62.5,56,81,42,,
-SPR,2024,D,December,F,64,2,75,60,65,19,46,,
-SPR,2024,D,December,F,64,2,73,73,92,19,54,,
-FAL,2024,D,July,F,68,1,46,65,62.5,46,52,,
-FAL,2024,D,July,M,70,1,37.5,71,69,65,69,1,0
-FAL,2024,D,February,M,72,1,58,62.5,83,65,4,0,0
-FAL,2024,D,April,M,78,1,48,52,77,87.5,44,0,0
-FAL,2024,D,October,F,61,2,42,83,67,71,37.5,1,0
-FAL,2024,D,June,M,68,1,25,85,75,48,40,0,0
-FAL,2024,D,August,F,66,1,90,77,60,29,62.5,0,0
-FAL,2024,D,March,M,73,1,73,67,71,60,31,0,0
-FAL,2024,D,November,F,65,1,15,73,35,40,62.5,1,0
-FAL,2024,D,November,M,66,1,37.5,40,37.5,60,46,,1
-FAL,2024,D,December,M,71,2,60,80,98,29,4,0,0
-FAL,2024,D,October,F,68,1,25,65,96,73,69,0,0
-FAL,2024,D,July,F,70,1,58,62.8,87.5,54,58,0,0
-FAL,2024,D,July,F,66,1,25,42,87.5,29,75,0,0
-FAL,2024,D,November,M,71,1,73,40,83,71,50,1,0
-FAL,2024,D,September,M,75,1,67,71,81,44,17,,
-FAL,2024,D,June,F,66,1,65,83,73,77,50,1,0
-FAL,2024,D,April,M,72,1,44,60,98,75,67,0,0
-FAL,2024,D,May,F,63,1,77,71,83,42,25,1,0
-FAL,2024,D,April,M,67,2,73,48,81,73,50,,
-FAL,2024,D,May,M,72,1,75,75,90,50,77,0,0
-FAL,2024,D,August,F,67,1,46,75,56,69,48,0,0
-FAL,2024,D,March,M,72,1,8,62.5,71,52,52,0,0
-FAL,2024,D,August,F,66,1,25,56,92,42,77,0,0
-FAL,2024,D,December,M,71,1,65,87.5,60,87.5,48,1,0
-FAL,2024,D,February,M,71,2,48,73,79,69,54,0,0
-FAL,2024,D,August,M,70,1,35,60,81,58,58,0,0
-FAL,2024,D,October,M,75,3,73,65,71,71,58,1,0
-FAL,2024,D,October,M,72,1,56,75,83,48,27,0,0
-FAL,2024,D,March,M,72,1,46,81,67,52,75,0,0
-FAL,2024,D,August,M,69,2,35,75,94,77,42,1,0
-FAL,2024,D,November,M,69,2,56,77,58,83,44,1,0
-FAL,2024,D,January,M,67,2,60,71,92,65,81,0,0
-FAL,2024,D,March,M,71,2,29,60,60,52,77,0,1
-FAL,2024,D,April,M,71,2,73,69,50,67,35,0,0
-FAL,2024,D,July,M,75,1,21,69,83,46,62.5,1,0
-FAL,2024,D,December,M,69,1,23,73,73,48,73,1,0
-FAL,2024,D,July,M,72,2,85,75,58,67,37.5,,
-FAL,2024,D,May,M,71,1,65,75,65,65,46,1,0
-FAL,2024,D,September,M,73,1,69,90,75,62.5,17,0,0
-FAL,2024,D,February,M,71,1,69,85,65,92,19,0,0
-FAL,2024,D,May,F,,2,42,85,62.5,71,54,0,0
-FAL,2024,D,April,M,71,1,58,81,37.5,60,37.5,0,0
-WIN,2025,D,April,F,73,1,0,35,44,29,100,1,0
-WIN,2025,D,April,M,75,1,27,81,54,67,62.5,0,0
-WIN,2025,D,April,F,67,1,29,48,85,62.5,60,1,0
-WIN,2025,D,April,F,67,1,40,58,73,37.5,71,0,0
-WIN,2025,D,April,M,74,2,69,65,40,83,58,0,0
-WIN,2025,D,August,M,71,3,42,56,62.5,67,58,0,0
-WIN,2025,D,August,M,76,2,90,69,92,48,27,0,0
-WIN,2025,D,August,M,70,1,67,69,83,67,77,0,0
-WIN,2025,D,August,M,72,2,72,50,98,92,44,1,0
-WIN,2025,D,August,F,68,1,85,62.5,81,35,58,0,0
-WIN,2025,D,August,M,69,1,54,56,73,52,52,0,0
-WIN,2025,D,August,F,68,1,56,54,67,83,33,1,0
-WIN,2025,D,August,M,70,2,69,67,96,42,65,0,0
-WIN,2025,D,December,F,63,1,29,81,85,42,79,1,0
-WIN,2025,D,December,M,73,1,69,65,62.5,75,40,1,0
-WIN,2025,D,December,F,64.8,2,65,81,71,65,46,0,0
-WIN,2025,D,December,M,67,3,50,69,50,54,56,0,0
-WIN,2025,D,December,F,63,1,42,62.5,69,37.5,44,0,0
-WIN,2025,D,December,M,74,1,73,75,77,60,35,1,0
-WIN,2025,D,December,M,72,1,29,52,48,62.5,62.5,0,0
-WIN,2025,D,December,F,66,3,87.5,75,69,96,19,0,0
-WIN,2025,D,December,M,71,2,92,69,94,52,40,1,1
-WIN,2025,D,February,F,63,1,92,83,69,37.5,10,0,0
-WIN,2025,D,February,F,67,1.5,33,75,87.5,48,62.5,1,0
-WIN,2025,D,February,F,64,2,19,92,75,58,83,1,1
-WIN,2025,D,February,F,66,1,69,58,79,35,62.5,0,0
-WIN,2025,D,February,F,61,1,71,75,77,35,42,0,0
-WIN,2025,D,February,M,68,2,23,67,81,85,50,0,0
-WIN,2025,D,February,F,62,1,65,75,83,46,27,0,0
-WIN,2025,D,January,F,64,1,46,71,65,81,29,1,0
-WIN,2025,D,January,M,74,2,33,92,71,48,52,0,0
-WIN,2025,D,January,F,59,2,19,79,48,56,50,0,0
-WIN,2025,D,January,M,65,1,60,60,85,48,15,0,0
-WIN,2025,D,January,F,65,2,31,69,46,58,50,0,0
-WIN,2025,D,January,F,64,1,92,87.5,77,52,46,0,0
-WIN,2025,D,January,M,75,3,50,77,73,65,33,0,0
-WIN,2025,D,January,M,72,1,60,56,56,58,77,1,0
-WIN,2025,D,July,F,59,1,92,79,98,40,48,0,0
-WIN,2025,D,July,M,71,1,87.5,75,75,75,21,0,0
-WIN,2025,D,July,F,59,1,71,90,65,79,15,1,0
-WIN,2025,D,July,F,66,1.5,12.5,75,83,31,67,1,0
-WIN,2025,D,July,F,62,1,58,78,73,37.5,48,1,0
-WIN,2025,D,June,M,68.9,3,37.5,77,96,50,65,0,1
-WIN,2025,D,June,F,67,1,48,60,90,71,40,1,0
-WIN,2025,D,June,F,68,1,69,81,90,65,62.5,0,0
-WIN,2025,D,June,F,,1,56,81,87.5,58,69,0,0
-WIN,2025,D,June,M,70,2,79,42,79,56,40,1,0
-WIN,2025,D,March,M,75,1,35,71,87.5,54,46,1,0
-WIN,2025,D,March,M,72,1,40,65,90,56,50,0,0
-WIN,2025,D,March,M,79,2,50,90,81,79,35,0,0
-WIN,2025,D,March,F,64,1,23,75,58,85,81,,
-WIN,2025,D,March,F,63,1,42,77,87.5,58,42,0,0
-WIN,2025,D,March,F,63,1,42,77,42,79,52,0,0
-WIN,2025,D,March,M,76,1,42,60,60,90,35,0,1
-WIN,2025,D,May,F,68,1,58,71,81,76,58,0,0
-WIN,2025,D,May,M,72,2,6,69,46,75,54,0,0
-WIN,2025,D,May,M,58,1,65,92,77,75,50,1,0
-WIN,2025,D,May,M,64,0.9,40,56,60,46,42,0,0
-WIN,2025,D,May,M,71,1,79,56,90,73,29,0,1
-WIN,2025,D,May,F,63,2,75,83,77,35,60,0,0
-WIN,2025,D,May,F,68,1,92,81,65,87.5,25,0,0
-WIN,2025,D,May,M,69,2,81,58,77,75,37.5,0,0
-WIN,2025,D,May,F,62,2,56,90,71,44,67,1,1
-WIN,2025,D,May,M,74,1,50,62.5,75,25,54,1,0
-WIN,2025,D,November,M,72,1,44,83,81,27,67,0,0
-WIN,2025,D,November,F,63,1,62.5,85,75,58,50,1,0
-WIN,2025,D,November,M,74,2,58,77,69,73,48,0,0
-WIN,2025,D,November,F,65,1,46,73,77,65,69,0,0
-WIN,2025,D,November,F,70,1,23,64,71,12.5,62.5,1,1
-WIN,2025,D,November,F,65,1,67,62,73,85,44,0,0
-WIN,2025,D,November,F,62,1.5,44,44,79,50,81,0,0
-WIN,2025,D,October,M,,1,2,52,60,81,90,0,0
-WIN,2025,D,October,M,71,2,48,37.5,87.5,69,44,0,0
-WIN,2025,D,October,F,71,4,27,87.5,67,67,54,0,0
-WIN,2025,D,October,M,71,1,33,75,75,50,67,0,0
-WIN,2025,D,October,M,70,1,44,43,83,77,50,0,0
-WIN,2025,D,October,F,71,1,69,75,65,56,54,0,0
-WIN,2025,D,October,M,69,1,94,83,90,62.5,21,0,0
-WIN,2025,D,October,M,70,3,35,42,71,21,92,1,0
-WIN,2025,D,September,M,66,2,79,58,81,60,65,0,0
-WIN,2025,D,September,M,70,1,98,69,75,79,10,1,0
-WIN,2025,D,September,M,75,1,44,54,81,62.5,48,1,1
-WIN,2025,D,September,M,72,2,83,77,69,71,33,0,0
-WIN,2025,D,September,F,60.2,2,94,83,69,79,50,1,1
-WIN,2025,D,September,M,67,2,40,80,60,70,9,1,1
-WIN,2025,D,September,F,62,1,62.5,87.5,67,52,31,1,0
-WIN,2025,D,September,M,69,1,37.5,81,71,62.5,58,0,0
-WIN,2025,D,September,M,70,2,75,83,69,54,44,0,0
-WIN,2025,D,September,F,65,2,90,79,85,52,73,1,0
-WIN,2025,D,September,F,63,1,62.5,75,69,85,46,0,0
-WIN,2025,D,September,F,65,1,56,87.5,83,75,58,,
+Major,Most_Used_Social_Media,Age,Creativity_Score,Creativity_Percentile,Year,Semester,Section,BirthMonth,Biosex,Height_in_Inches,Number_of_Languages_Spoken,Extroversion,Agreeableness,Openness,Conscientiousness,Neuroticism,How_Many_Siblings,Birth_Order,Oldest_Child
+"Fisheries, Range and Wildlife Management",Discord,25,90.26,96.67,2025,WIN,D,April,F,73,1,0,35,44,29,100,2,1,1
+"Fisheries, Range and Wildlife Management",Instagram,24,76.1,38.83,2025,WIN,D,April,M,75,1,27,81,54,67,62.5,4,2,0
+Psychology,Instagram,19,84.97,85.18,2025,WIN,D,April,F,67,1,29,48,85,62.5,60,2,1,1
+Psychology,Instagram,22,81.58,70.39,2025,WIN,D,April,F,67,1,40,58,73,37.5,71,4,5,0
+Psychology,None,24,88.93,94.91,2025,WIN,D,April,M,74,2,69,65,40,83,58,3,3,0
+Computer Science,YouTube,22,93.01,98.77,2025,WIN,D,August,M,71,3,42,56,62.5,67,58,5,4,0
+Computer Engineering,Discord,26,88.13,93.53,2025,WIN,D,August,M,76,2,90,69,92,48,27,8,2,0
+Computer Engineering,YouTube,23,84.12,82.04,2025,WIN,D,August,M,70,1,67,69,83,67,77,5,2,0
+Data Science,NA,23,87.35,91.91,2025,WIN,D,August,M,72,2,72,50,98,92,44,3,1,1
+"Fisheries, Range and Wildlife Management",Instagram,25,74.66,30.85,2025,WIN,D,August,F,68,1,85,62.5,81,35,58,3,2,0
+Geology,Instagram,26,81.33,69.08,2025,WIN,D,August,M,69,1,54,56,73,52,52,7,6,0
+Psychology,NA,19,80.71,65.77,2025,WIN,D,August,F,68,1,56,54,67,83,33,5,1,1
+Software Engineering,YouTube,23,90.32,96.74,2025,WIN,D,August,M,70,2,69,67,96,42,65,4,2,0
+Biology,Instagram,19,88.8,94.71,2025,WIN,D,December,F,63,1,29,81,85,42,79,3,1,1
+Business Management,Snapchat,24,73.39,24.51,2025,WIN,D,December,M,73,1,69,65,62.5,75,40,9,1,1
+Computer Engineering,Instagram,21,80.53,64.76,2025,WIN,D,December,F,64.8,2,65,81,71,65,46,3,3,0
+Computer Science,Instagram,25,80.81,66.27,2025,WIN,D,December,M,67,3,50,69,50,54,56,2,3,0
+"Fisheries, Range and Wildlife Management",YouTube,19,74.71,31.12,2025,WIN,D,December,F,63,1,42,62.5,69,37.5,44,6,5,0
+Geology,Facebook,28,82.37,74.35,2025,WIN,D,December,M,74,1,73,75,77,60,35,4,1,1
+Geology,Facebook,24,81.76,71.34,2025,WIN,D,December,M,72,1,29,52,48,62.5,62.5,8,3,0
+Public Administration,Facebook,50,90.04,96.43,2025,WIN,D,December,F,66,3,87.5,75,69,96,19,2,2,0
+Physics,NA,NA,73.31,24.13,2025,WIN,D,December,M,71,2,92,69,94,52,40,1,1,1
+Math Education,Instagram,18,80.3,63.44,2025,WIN,D,February,F,63,1,92,83,69,37.5,10,4,3,0
+Physics,YouTube,18,77.77,48.61,2025,WIN,D,February,F,67,1.5,33,75,87.5,48,62.5,2,1,1
+Psychology,TikTok,18,78.05,50.27,2025,WIN,D,February,F,64,2,19,92,75,58,83,0,1,1
+Psychology,TikTok,22,84.33,82.82,2025,WIN,D,February,F,66,1,69,58,79,35,62.5,3,3,0
+Psychology,Instagram,18,84.29,82.67,2025,WIN,D,February,F,61,1,71,75,77,35,42,4,3,0
+Data Science,YouTube,22,88.28,93.82,2025,WIN,D,February,M,68,2,23,67,81,85,50,3,3,0
+Mathematics,Snapchat,21,88.85,94.78,2025,WIN,D,February,F,62,1,65,75,83,46,27,6,3,0
+Data Science,Pinterest,25,79.28,57.57,2025,WIN,D,January,F,64,1,46,71,65,81,29,3,1,1
+"Fisheries, Range and Wildlife Management",NA,20,81.49,69.96,2025,WIN,D,January,M,74,2,33,92,71,48,52,3,2,0
+"Fisheries, Range and Wildlife Management",Instagram,19,75.88,37.56,2025,WIN,D,January,F,59,2,19,79,48,56,50,2,3,0
+Psychology,Instagram,21,71.6,16.9,2025,WIN,D,January,M,65,1,60,60,85,48,15,3,2,0
+Psychology,Instagram,21,86.45,89.7,2025,WIN,D,January,F,65,2,31,69,46,58,50,2,2,0
+Psychology,TikTok,19,82.18,73.43,2025,WIN,D,January,F,64,1,92,87.5,77,52,46,4,4,0
+Psychology,YouTube,22,93.18,98.85,2025,WIN,D,January,M,75,3,50,77,73,65,33,3,2,0
+NA,NA,NA,NA,NA,2025,WIN,D,January,M,72,1,60,56,56,58,77,3,1,1
+Psychology,TikTok,18,83.75,80.54,2025,WIN,D,July,F,59,1,92,79,98,40,48,3,3,0
+Psychology,Facebook,23,78.48,52.84,2025,WIN,D,July,M,71,1,87.5,75,75,75,21,3,3,0
+Industrial/organizational psychology,Pinterest,19,70.95,14.57,2025,WIN,D,July,F,59,1,71,90,65,79,15,3,1,1
+Mathematics,Instagram,21,88.98,94.99,2025,WIN,D,July,F,66,1.5,12.5,75,83,31,67,5,1,1
+Psychology,Instagram,21,75.69,36.48,2025,WIN,D,July,F,62,1,58,78,73,37.5,48,6,1,1
+Business Analytics,WhatsApp,20,82.39,74.44,2025,WIN,D,June,M,68.9,3,37.5,77,96,50,65,1,2,0
+"Fisheries, Range and Wildlife Management",TikTok,21,88.83,94,2025,WIN,D,June,F,67,1,48,60,90,71,40,3,1,1
+History,Instagram,18,91.05,97.46,2025,WIN,D,June,F,68,1,69,81,90,65,62.5,2,3,0
+Industrial/organizational psychology,Messenger,19,74.09,27.92,2025,WIN,D,June,F,NA,1,56,81,87.5,58,69,5,6,0
+International Studies,YouTube,22,87,91.1,2025,WIN,D,June,M,70,2,79,42,79,56,40,3,1,1
+Psychology,YouTube,22,86.89,90.85,2025,WIN,D,March,M,75,1,35,71,87.5,54,46,2,1,1
+Bioinformatics,Instagram,21,90.13,96.53,2025,WIN,D,March,M,72,1,40,65,90,56,50,2,2,0
+"Fisheries, Range and Wildlife Management",Instagram,22,72.15,19.04,2025,WIN,D,March,M,79,2,50,90,81,79,35,3,2,0
+"Fisheries, Range and Wildlife Management",NA,18,81.74,70.835,2025,WIN,D,March,F,64,1,23,75,58,85,81,2,NA,NA
+"Fisheries, Range and Wildlife Management",TikTok,19,92.74,98.63,2025,WIN,D,March,F,63,1,42,77,87.5,58,42,2,3,0
+"Fisheries, Range and Wildlife Management",Facebook,20,73.09,23.12,2025,WIN,D,March,F,63,1,42,77,42,79,52,5,2,0
+"Fisheries, Range and Wildlife Management",Facebook,20,72.73,21.51,2025,WIN,D,March,M,76,1,42,60,60,90,35,1,2,0
+Business Analytics,Instagram,19,79.21,57.18,2025,WIN,D,May,F,68,1,58,71,81,76,58,3,3,0
+"Fisheries, Range and Wildlife Management",Instagram,24,85.36,86.46,2025,WIN,D,May,M,72,2,6,69,46,75,54,2,2,0
+"Fisheries, Range and Wildlife Management",Messenger,22,76.32,40.08,2025,WIN,D,May,M,58,1,65,92,77,75,50,3,1,1
+"Fisheries, Range and Wildlife Management",YouTube,26,93.76,99.09,2025,WIN,D,May,M,64,0.9,40,56,60,46,42,6,4,0
+Industrial/organizational psychology,Instagram,NA,82.47,74.83,2025,WIN,D,May,M,71,1,79,56,90,73,29,0,5,0
+Psychology,YouTube,22,81.33,69.09,2025,WIN,D,May,F,63,2,75,83,77,35,60,7,8,0
+Psychology,Instagram,23,82.27,73.89,2025,WIN,D,May,F,68,1,92,81,65,87.5,25,5,3,0
+Psychology,YouTube,21,91.3,97.68,2025,WIN,D,May,M,69,2,81,58,77,75,37.5,2,2,0
+Psychology,NA,20,80.93,66.97,2025,WIN,D,May,F,62,2,56,90,71,44,67,0,1,1
+Software Engineering,Instagram,24,85.68,87.48,2025,WIN,D,May,M,74,1,50,62.5,75,25,54,3,1,1
+"Fisheries, Range and Wildlife Management",YouTube,25,74.39,29.47,2025,WIN,D,November,M,72,1,44,83,81,27,67,2,3,0
+"Fisheries, Range and Wildlife Management",Instagram,24,72.22,19.33,2025,WIN,D,November,F,63,1,62.5,85,75,58,50,3,1,1
+"Fisheries, Range and Wildlife Management",Instagram,25,81.75,71.28,2025,WIN,D,November,M,74,2,58,77,69,73,48,3,3,0
+"Fisheries, Range and Wildlife Management",Facebook,21,81.49,69.92,2025,WIN,D,November,F,65,1,46,73,77,65,69,6,5,0
+"Fisheries, Range and Wildlife Management",Tumblr,26,83.73,80.44,2025,WIN,D,November,F,70,1,23,64,71,12.5,62.5,1,1,1
+Psychology,Instagram,18,91.32,97.69,2025,WIN,D,November,F,65,1,67,62,73,85,44,7,7,0
+Psychology,Instagram,24,81.91,72.1,2025,WIN,D,November,F,62,1.5,44,44,79,50,81,4,3,0
+Bioinformatics,Discord,21,82.66,75.73,2025,WIN,D,October,M,NA,1,2,52,60,81,90,5,2,0
+Business Analytics,Instagram,26,68.58,7.92,2025,WIN,D,October,M,71,2,48,37.5,87.5,69,44,3,3,0
+Business Analytics,WhatsApp,22,82.11,73.06,2025,WIN,D,October,F,71,4,27,87.5,67,67,54,4,2,0
+Data Science,TikTok,20,75.69,36.46,2025,WIN,D,October,M,71,1,33,75,75,50,67,3,4,0
+Data Science,YouTube,24,87.7,92.69,2025,WIN,D,October,M,70,1,44,43,83,77,50,3,4,0
+Psychology,Instagram,22,79.34,57.94,2025,WIN,D,October,F,71,1,69,75,65,56,54,3,2,0
+Psychology,Instagram,22,71.55,16.71,2025,WIN,D,October,M,69,1,94,83,90,62.5,21,3,4,0
+Software Engineering,TikTok,24,78.8,55.27,2025,WIN,D,October,M,70,3,35,42,71,21,92,3,1,1
+Accounting,TikTok,22,67.31,5.48,2025,WIN,D,September,M,66,2,79,58,81,60,65,2,2,0
+Biochemistry,YouTube,22,76.18,39.29,2025,WIN,D,September,M,70,1,98,69,75,79,10,2,1,1
+Business Analytics,Instagram,20,77.59,47.58,2025,WIN,D,September,M,75,1,44,54,81,62.5,48,1,1,1
+Business Analytics,Instagram,22,80.52,64.68,2025,WIN,D,September,M,72,2,83,77,69,71,33,4,3,0
+Data Science,Facebook,22,73.41,26.215,2025,WIN,D,September,F,60.2,2,94,83,69,79,50,0,1,1
+Data Science,YouTube,NA,NA,NA,2025,WIN,D,September,M,67,2,40,80,60,70,9,1,1,1
+"Fisheries, Range and Wildlife Management",Instagram,19,69.89,11.23,2025,WIN,D,September,F,62,1,62.5,87.5,67,52,31,3,1,1
+Physics,Instagram,22,87.9,93.09,2025,WIN,D,September,M,69,1,37.5,81,71,62.5,58,3,3,0
+Psychology,Instagram,22,88.47,94.14,2025,WIN,D,September,M,70,2,75,83,69,54,44,3,2,0
+Psychology,Instagram,21,80.13,62.53,2025,WIN,D,September,F,65,2,90,79,85,52,73,2,1,1
+"Fisheries, Range and Wildlife Management",Instagram,22,60.36,4.1,2025,WIN,D,September,F,63,1,62.5,75,69,85,46,3,4,0
+Zoology,Instagram,25,77.49,46.96,2025,WIN,D,September,F,65,1,56,87.5,83,75,58,3,NA,NA
+Computer Science,Discord,20,92.23,99.27,2025,SPR,D,November,M,73,1,29,79,62.5,62.5,85,1,1,1
+Psychology,YouTube,22,76.38,35.78,2025,SPR,D,June,F,66,2,54,77,71,52,52,1,1,1
+Computer Science,YouTube,20,90.02,97.46,2025,SPR,D,November,F,65,1,19,48,71,92,54,7,6,0
+"Fisheries, Range and Wildlife Management",BeReal,21,86.89,91.72,2025,SPR,D,August,F,65,1,37.5,69,60,31,58,3,1,1
+Data Science,Discord,22,84.89,85.35,2025,SPR,D,April,M,71,1,29,67,54,52,29,3,3,0
+Psychology,NA,NA,NA,NA,2025,SPR,D,January,F,62.4,2,77,94,69,87.5,50,2,1,1
+Psychology,Instagram,21,69.17,78,2025,SPR,D,September,F,64,1,37.5,69,48,62.5,33,3,2,NA
+Psychology,Instagram,22,73.07,73,2025,SPR,D,June,F,66,1,69,62.5,60,50,42,4,3,0
+Software Engineering,YouTube,26,83.94,81.19,2025,SPR,D,August,M,67,2,62.5,65,62.5,15,35,7,1,1
+Data Science,YouTube,25,80.67,64.24,2025,SPR,D,August,M,76,2,44,54,90,73,17,4,3,0
+Psychology,None,21,88.93,94.18,2025,SPR,D,June,F,64,2,50,75,48,77,87.5,0,1,1
+General Studies,Instagram,21,76.04,33.8,2025,SPR,D,February,F,59,2,54,100,98,58,48,3,2,NA
+Psychology,WhatsApp,23,81.9,71.57,2025,SPR,D,July,F,66,2,42,48,85,37.5,19,5,5,0
+Biology,YouTube,23,78.87,52.83,2025,SPR,D,October,M,65,2,81,77,79,48,56,6,1,1
+"Fisheries, Range and Wildlife Management",NA,22,80.99,NA,2025,SPR,D,July,M,75,1,19,50,54,54,62.5,5,6,0
+Psychology,Instagram,22,81.68,70.38,2025,SPR,D,November,F,61,1,31,75,98,56,75,2,3,0
+Psychology,YouTube,24,87.69,93.54,2025,SPR,D,July,M,69,1,71,92,85,42,73,2,1,1
+Business Analytics,Instagram,20,86.29,90.05,2025,SPR,D,October,F,68,1,85,85,94,54,77,4,4,0
+Psychology,Instagram,20,83.8,80.62,2025,SPR,D,April,F,69,1,31,77,75,60,65,2,3,0
+"Fisheries, Range and Wildlife Management",YouTube,18,82.06,72.42,2025,SPR,D,August,F,70,2,35,62.5,94,85,2,5,2,0
+"Fisheries, Range and Wildlife Management",Instagram/Pinterest,19,91.07,98.43,2025,SPR,D,January,F,64,1,71,79,92,69,60,3,1,1
+Psychology,TikTok,21,NA,NA,2025,SPR,D,July,F,67,2,46,73,81,37.5,21,5,4,0
+Computer Science,YouTube,20,83.36,78.78,2025,SPR,D,May,M,74,1,46,85,79,75,46,6,2,0
+Computer Science,YouTube,23,84.42,83.32,2025,SPR,D,February,M,63,2,8,85,90,54,65,1,2,0
+Physics,Instagram,21,80.73,NA,2025,SPR,D,March,F,64,2,79,75,92,60,62.5,6,7,0
+General Studies,Pinterest,20,79.5,56.77,2025,SPR,D,May,F,63,1,69,87.5,65,48,35,3,2,0
+"Fisheries, Range and Wildlife Management",Instagram,26,76.26,35.08,2025,SPR,D,December,M,69,1,60,67,94,56,10,3,2,0
+Psychology,Instagram,21,79.75,58.69,2025,SPR,D,July,M,72,1,52,67,81,73,48,3,2,NA
+Psychology,None,22,91.26,98.26,2025,SPR,D,February,M,71,1,85,83,71,56,12.25,4,3,0
+Psychology,Instagram,18,80.77,64.9,2025,SPR,D,May,F,70,1,37,62,67,40,60,5,4,0
+Physics,TikTok,35,73.27,18.51,2025,SPR,D,June,F,65,3,6,79,85,96,48,2,2,0
+Psychology,YouTube,22,87.59,93.4,2025,SPR,D,January,M,71,2,52,79,77,56,48,5,2,0
+Computer Engineering,YouTube,21,79.9,59.37,2025,SPR,D,February,M,67,1,10,85,83,58,81,4,5,0
+Biology,YouTube,22,81.16,67.42,2025,SPR,D,April,M,69,1,46,73,48,79,35,3,1,1
+Psychology,YouTube,22,83.9,81.03,2025,SPR,D,October,M,68,1,87.5,73,92,67,17,3,4,NA
+Psychology,Messenger,21,67.99,5.9,2025,SPR,D,February,M,73,2,75,73,87.5,67,52,9,1,1
+Psychology,Facebook,25,70.7,9.18,2025,SPR,D,February,M,75,1,62.5,79,90,60,58,4,3,1
+Psychology,Facebook/Instagram,20,69.62,8.07,2025,SPR,D,March,F,68,1,44,85,67,65,69,3,3,0
+Psychology,Discord,19,84.81,85.07,2025,SPR,D,December,F,65,1,15,73,83,52,54,4,1,1
+Psychology,Instagram,18,67.33,5.25,2025,SPR,D,August,F,70,1,37.5,79,62.5,62.5,48,4,2,0
+Psychology,Instagram,19,80.7,NA,2025,SPR,D,March,F,65,4,67,73,54,40,62.5,2,1,1
+Psychology,Facebook/YouTube,21,NA,NA,2025,SPR,D,January,F,66,1,75,85,90,58,62.5,15,1,1
+Data Science,Instagram,21,86.79,91.47,2025,SPR,D,October,M,71,1,33,67,90,77,27,4,3,0
+"Fisheries, Range and Wildlife Management",YouTube,20,74.32,23.99,2025,SPR,D,December,F,68,1,4,73,65,52,79,2,2,0
+Psychology,Instagram,21,76.26,35.08,2025,SPR,D,December,M,70,2,73,52,54,52,62.5,3,1,1
+Data Science,TikTok,20,72.99,17.65,2025,SPR,D,May,F,62,2,79,73,87.5,56,77,2,1,1
+Data Science,YouTube,18,78.81,52.38,2025,SPR,D,May,F,64,1,54,73,87.5,37.5,60,0,1,1
+Business Management,YouTube,21,71.1,NA,2025,SPR,D,August,M,70,1,71,62.5,77,58,54,2,3,0
+Environmental Geoscience,YouTube,27,81.29,68.18,2025,SPR,D,April,M,71,1,88,46,77,46,29,4,3,0
+Physics,YouTube,23,72.68,16.55,2025,SPR,D,August,M,71,1,35,65,73,79,56,4,2,0
+Business Management,YouTube,23,77.47,43.3,2025,SPR,D,May,M,72,2,65,65,83,42,50,3,3,NA
+Psychology,YouTube,23,80.76,64.82,2025,SPR,D,May,F,71,1,46,77,73,35,73,9,7,0
+Data Science,NA,45,88.57,92.23,2025,SPR,D,November,M,76,2,44,60,50,81,48,4,4,0
+Psychology,Facebook/Instagram,21,81.71,70.51,2025,SPR,D,August,F,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fisheries, Range and Wildlife Management",Tumblr/Discord,21,90.19,97.61,2025,SPR,D,March,F,65,1,17,75,83,23,27,2,2,0
+Psychology,NA,25,83.54,79.57,1,FAL,D,March,M,70,3,62.5,77,96,60,48,3,2,0
+"Fisheries, Range and Wildlife Management",YouTube,20,84.66,84.34,2,FAL,D,September,M,67,1,10,79,79,40,77,1,1,1
+"Fisheries, Range and Wildlife Management",YouTube,21,88.28,94.67,1,FAL,D,February,M,65,1,48,65,87.5,58,50,4,5,0
+"Fisheries, Range and Wildlife Management",Instagram,24,78.35,49.13,3,FAL,D,October,M,70,1,62.5,69,58,79,35,4,4,0
+Psychology,Instagram,18,82.25,73.32,1,FAL,D,February,F,65,1,56,81,85,42,69,4,1,1
+"Fisheries, Range and Wildlife Management",YouTube,24,92.63,99.45,2,FAL,D,July,M,72,1,40,79,79,67,62.5,6,1,1
+Geology,TikTok,23,89.78,97.13,4,FAL,D,March,F,62,2,50,54,85,54,71,2,3,0
+Accounting,Instagram,23,72.32,15.18,2,FAL,D,March,M,74,2,94,77,62.5,71,0,4,1,1
+"Fisheries, Range and Wildlife Management",YouTube,19,91.64,98.94,2,FAL,D,December,F,64,1,83,94,96,50,44,3,1,1
+Marketing,Instagram,21,83.94,81.22,2,FAL,D,September,M,73,2,29,79,58,60,40,7,2,0
+Business Analytics,Instagram,18,81.29,68.18,1,FAL,D,July,F,70,1,48,85,58,71,48,2,2,0
+Chemistry,NA,19,91.24,98.59,2,FAL,D,October,M,71,1,46,37.5,77,83,52,9,1,1
+Software Engineering,YouTube,21,81.13,67.28,4,FAL,D,June,F,62,1,56,75,94,77,42,3,3,0
+Environmental Geoscience,YouTube,19,89.64,96.94,1,FAL,D,August,M,75,2,56,46,83,48,90,4,1,1
+Business Management,Instagram,18,82.29,73.59,1,FAL,D,December,F,62,1,50,60,77,48,81,1,2,0
+Cyber Security,Rumble,31,79.24,55.09,1,FAL,D,October,M,74,1,42,60,67,65,75,2,1,1
+"Fisheries, Range and Wildlife Management",YouTube,20,83.09,77.36,3,FAL,D,October,F,64,1,46,46,73,33,0,2,2,0
+"Fisheries, Range and Wildlife Management",YouTube,25,76.76,38.49,2,FAL,D,February,m,73,1,50,60,65,50,79,0,1,1
+Computer Engineering,YouTube,20,83.69,80.99,2,FAL,D,February,m,72,3,29,35,71,92,60,3,1,1
+Data Science,YouTube,25,78.64,50.93,3,FAL,D,July,M,70,1,33,77,60,56,73,0,1,1
+Psychology,NA,21,83.11,77.45,2,FAL,D,September,F,64,2,54,81,96,69,58,3,3,0
+Psychology,Instagram,22,75.68,68.5,3,FAL,D,March,F,65,1,60,85,65,50,75,4,1,1
+Psychology,Facebook,21,83.57,79.68,1,FAL,D,March,F,64,2,67,92,81,85,50,4,4,0
+Psychology,Instagram,19,78.7,51.38,2,FAL,D,February,F,68,1,42,85,87.5,79,48,4,1,1
+Psychology,YouTube,21,82.5,75.56,1,FAL,D,February,M,73,3,71,77,83,31,15,4,1,1
+"Fisheries, Range and Wildlife Management",Instagram,21,69.13,7.29,2,FAL,D,November,M,70,1,40,62.5,56,67,27,4,3,0
+"Fisheries, Range and Wildlife Management",YouTube,19,81.58,69.71,2,FAL,D,August,F,61,1,71,77,85,33,58,5,4,0
+Data Science,YouTube,22,83.59,79.71,1,FAL,D,February,M,68,3,48,52,77,65,46,1,2,0
+Psychology,YouTube,21,73.26,18.77,1,FAL,D,June,M,67,1,48,77,75,75,44,3,1,1
+Horticulture,Discord,18,77.12,40.98,1,FAL,D,June,F,66,1.5,62.5,75,87.5,62.5,46,5,5,0
+Psychology,Instagram,20,64.67,78,3,FAL,D,October,F,63,1,31,67,69,60,63,3,2,0
+Computer Science,YouTube,24,78.61,50.63,6,FAL,D,March,M,70,2,62.5,79,71,71,27,2,3,0
+"Fisheries, Range and Wildlife Management",TikTok,23,72.13,14.62,1,FAL,D,July,F,67,1,56,81,87.5,79,58,3,2,0
+Accounting,Instagram,20,86.2,90.15,3,FAL,D,May,F,68,1,92,81,67,83,8,4,1,1
+Psychology,NA,23,89.75,97.1,3,FAL,D,February,M,72,1,85,79,79,48,12.5,4,3,0
+Business Analytics,Instagram,22,85.84,88.77,2,FAL,D,May,M,69,2,62.5,67,46,60,35,4,5,0
+Psychology,Instagram,22,86.06,89.43,3,FAL,D,December,M,70,2,75,75,65,73,42,4,1,1
+Psychology,Instagram,18,66.12,4.18,1,FAL,D,March,F,61,2,27,81,83,62.5,73,4,4,0
+"Fisheries, Range and Wildlife Management",Tumblr,23,90.15,97.6,3,FAL,D,June,f,69,1,31,79,94,52,87.5,3,1,1
+Business Analytics,NA,18,79.13,54.44,1,FAL,D,June,F,64,1,83,62.5,77,94,27,2,1,1
+Business Analytics,Instagram,23,78.03,47.05,2,FAL,D,August,M,70,1,31,73,60,85,25,3,1,1
+Psychology,Facebook,22,72.2,14.87,3,FAL,D,June,F,60,1,29,62.5,83,37.5,75,3,3,0
+Psychology,YouTube,25,84.82,85.08,2,FAL,D,October,M,72,1,79,100,96,81,27,2,2,0
+Psychology,Instagram,20,60.96,1.83,2,FAL,D,October,F,61,2,40,85,73,92,54,1,2,0
+Business Analytics,Instagram,23,86.84,91.6,3,FAL,D,June,M,70,3,69,77,65,85,33,11,6,0
+General Studies,YouTube,18,78.29,48.83,1,FAL,D,October,M,75,1,56,75,90,62.5,23,2,1,1
+Data Science,YouTube,28,77.54,43.36,2,FAL,D,May,M,71,3,71,73,58,69,27,5,2,0
+Economics,Instagram,22,84.29,82.77,2,FAL,D,July,M,72,1,77,75,56,54,48,4,2,0
+Psychology,Instagram,22,90.1,97.52,1,FAL,D,June,M,71,2,85,100,69,65,0,4,2,0
+Software Engineering,TikTok,25,91.2,98.57,4,FAL,D,December,F,64,3,98,79,100,73,19,2,1,1
+Data Science,Instagram,18,71.56,12.79,1,FAL,D,July,M,67,2,54,50,71,37.5,67,3,1,1
+Psychology,Instagram,21,79.14,54.44,2,FAL,D,March,F,66,2,44,83,90,60,23,4,1,1
+Geology,YouTube,21,72.43,15.62,2,FAL,D,November,M,68,1,46,71,81,50,27,3,4,0
+Computer Science,YouTube,24,73.11,18.01,4,FAL,D,July,M,66,1,35,81,65,54,33,2,2,0
+Accounting,Rednotes,19,71.35,12.21,1,FAL,D,December,F,63,2,44,83,54,56,54,0,1,1
+Psychology,Instagram,21,82.99,76.94,2,FAL,D,November,M,72,2,98,85,35,46,27,3,1,1
+Business Management,TikTok,20,79.69,58.21,3,FAL,D,March,F,66,3,33,85,79,58,73,3,3,0
+Computer Engineering,YouTube,20,77.1,40.82,3,FAL,D,March,M,74,3,96,73,94,52,40,6,6,0
+Psychology,TikTok,23,86.7,91.2,2,FAL,D,February,F,66,1,58,33,73,31,40,3,3,0
+Mathematices Education,Instagram,18,76.82,38.94,1,FAL,D,January,F,69,1,69,79,65,50,73,4,5,0
+English Education Composite,YouTube,18,76.7,38.53,1,FAL,D,December,F,63,1,48,77,90,42,67,4,2,0
+"Fisheries, Range and Wildlife Management",YouTube,20,72.63,16.36,1,FAL,D,October,M,73,1,48,75,46,56,12.5,3,2,0
+Psychology,YouTube,21,88.25,94.63,1,FAL,D,July,M,68,1,40,60,94,71,40,3,1,1
+"Fisheries, Range and Wildlife Management",Instagram,25,84.33,82.92,4,FAL,D,January,m,70,2,67,83,62.5,77,12.5,1,2,0
+"Fisheries, Range and Wildlife Management",YouTube,19,70.56,10.09,2,FAL,D,March,F,65,1,35,77,79,42,21,4,1,1
+Health Psychology,Facebook,46,83.84,80.82,3,FAL,D,July,F,64,1,73,77,67,56,52,8,6,0
+Psychology,Instagram,18,73.84,21.62,1,FAL,D,May,F,64,1,42,62.5,85,62.5,40,3,1,1
+"Fisheries, Range and Wildlife Management",YouTube,23,8.21,69.69,2,FAL,D,August,F,,2,,,,,,4,4,0
+Political Science,TikTok,19,83.9,,2,FAL,D,October,F,59,2,65,85,81,69,35,0,1,1
+Psychology,Instagram,20,83.98,81.42,2,FAL,D,November,F,66,1,79,83,75,48,71,2,2,0
+Data Science,YouTube,22,79.11,54.29,1,FAL,D,October,M,72,4,42,60,67,67,81,1,1,1
+Health Psychology,Instagram,18,76.09,34.04,1,FAL,D,June,F,66,1,31,73,52,83,46,9,5,0
+"Fisheries, Range and Wildlife Management",YouTube,23,92.2,99.24,2,FAL,D,October,M,70,1,37.5,73,77,62.5,73,3,2,0
+Business Analytics,YouTube,21,76.38,35.74,2,FAL,D,January,M,68,1.5,83,71,81,71,29,5,1,1
+Psychology,Instagram,20,75.63,31.36,3,FAL,D,January,M,72,1,83,69,69,62.5,52,3,4,1
+Psychology,YouTube,18,90.82,98.2,1,FAL,D,April,F,64,2,46,69,83,50,44,5,2,0
+Business Analytics,X,21,81.85,71.28,2,FAL,D,January,M,69,2,58,79,19,77,44,2,1,1
+"Fisheries, Range and Wildlife Management",YouTube,21,73.81,21.38,2,FAL,D,November,M,73,1,62.5,54,69,79,52,2,1,1
+Psychology,YouTube,19,74.41,24.51,2,FAL,D,September,F,67,1,40,79,79,62.5,71,9,3,0
+Psychology,Instagram,21,74.09,22.84,2,FAL,D,March,F,,2,60,54,79,71,50,1,1,1
+Computer Engineering,YouTube,20,75.87,32.65,3,FAL,D,June,M,74,1,4,50,75,23,83,4,3,0
+Psychology,YouTube,18,82.61,75.04,1,FAL,D,January,F,59,1,48,73,92,69,48,2,1,1
+Psychology,NA,24,86.48,90.64,2,FAL,D,February,F,66,1,75,96,87.5,52,69,4,2,0
+"Fisheries, Range and Wildlife Management",NA,20,75.67,31.4,2,FAL,D,April,F,70,1,21,73,56,69,46,2,3,0
+Biology,Instagram,18,,,2,FAL,D,March,F,64,1,31,73,83,52,72,4,1,1
+Psychology,YouTube,21,76.39,35.88,1,FAL,D,December,M,65,1,37.5,62.5,77,60,37.5,2,1,1
+Computer Science,YouTube,21,78.86,52.78,4,FAL,D,March,M,5'11,1,46,83,75,62.5,62.5,3,1,1
+Biomedical Science,NA,23,85.5,87.63,3,FAL,D,December,M,68,2,62.5,65,58,75,27,2,3,0
+Accounting,NA,20,75.13,28.94,1,FAL,D,January,M,76,1,73,81,54,71,15,6,5,0
+Psychology,Instagram,18,70.65,10.3,1,FAL,D,June,F,5.2,3,75,69,60,54,62.5,2,3,0
+Mathematics,Instagram,18,80.12,60.7,1,FAL,D,April,F,67,2.5,58,62.5,35,54,42,2,2,0
+Psychology,Instagram,21,85.5,87.63,1,FAL,D,December,F,5'3,2,73,80,60,48,81,2,1,1
+Psychology,Instagram,22,84.63,84.23,1,FAL,D,November,M,"5'9""",2,79,56,83,67,48,3,1,1
+"Fisheries, Range and Wildlife Management",YouTube,24,69.58,8.06,1,FAL,D,October,M,5'8,1,48,62.5,60,54,58,12,2,0
+"Fisheries, Range and Wildlife Management",Facebook,19,83.88,80.97,2,FAL,D,July,F,67,1,42,60,40,58,40,5,2,0
+Biochemistry,TikTok,18,79.96,59.72,2,FAL,D,October,F,"5""5",1,94,87.5,75,92,29,2,2,0
+Psychology,Facebook,37,82.63,75.12,6,FAL,D,July,M,"5""11",1,96,69,71,75,40,4,5,0
+General Studies,TikTok,18,74.41,24.51,1,FAL,D,November,M,71,1,48,71,40,50,54,3,3,0
+Psychology,Facebook,21,91.08,98.43,1,FAL,D,July,F,67,1,67,65,73,56,67,5,3,0
+Psychology,Discord,21,85.7,88.85,3,FAL,D,March,M,72,1,42,67,81,58,65,3,1,1
+Psychology,Instagram,21,82.98,,2,FAL,D,November,M,"5'11""",2,52,60,81,56,35,4,2,0
+Business Analytics,NA,22,73.6,20.39,2,FAL,D,December,F,"66""",1,33,69,65,62.5,62.5,4,1,1
+"Fisheries, Range and Wildlife Management",Facebook,23,78.26,48.73,4,FAL,D,April,M,"5'11""",2,48,60,54,50,58,6,5,0
+Dance,Instagram,18,85.07,,1,FAL,D,January,F,63,1,35,83,83,48,71,5,5,0
+Statistics,X,24,74.75,26.31,2,FAL,D,December,M,64,1,37.5,46,52,35,65,9,8,0
+"Fisheries, Range and Wildlife Management",YouTube,19,82.01,72.05,2,FAL,D,July,M,75,1,19,58,81,52,62.5,2,1,1
+"Fisheries, Range and Wildlife Management",NA,22,77.7,44.68,3,FAL,D,March,M,71,3,19,81,67,67,0,5,1,1
+Psychology,Instagram,20,82.01,72.08,2,FAL,D,August,M,74,1,27,35,52,40,50,3,4,0
+Psychology,Instagram,23,77.31,42.21,2,FAL,D,December,M,67,1,46,73,81,48,27,3,4,0
+Psychology,Instagram,19,81.03,66.73,1,FAL,D,September,F,67,1,62.5,71,48,62.5,60,1,1,1
+"Fisheries, Range and Wildlife Management",YouTube,18,90.44,97.82,1,FAL,D,May,M,64,1,17,65,75,65,77,4,4,0
+Psychology,TikTok,21,77.02,59.61,3,FAL,D,October,F,"5'1""",1,52,90,77,56,69,3,1,1
+Business Analytics,Instagram,24,76.41,36.11,2,FAL,D,July,M,70,3,50,79,62.5,65,27,1,2,0
+Social Work,YouTube,22,80.94,66.26,,FAL,D,February,F,66,2,48,98,87.5,85,19,2,2,0
+Computer Science,Instagram,27,79.09,34.02,2,FAL,D,August,M,5'4,5,56,60,58,60,52,3,3,0
+Health Psychology,YouTube,23,80.21,61.25,2,FAL,D,December,F,"5'1""",1,25,75,85,21,95,3,1,1
+Health Psychology,Instagram,22,69.88,8.66,2,FAL,D,April,M,"5'10""",2,77,71,60,58,40,4,5,0
+"Fisheries, Range and Wildlife Management",YouTube,31,67.24,5.19,2,FAL,D,January,M,71,2,12.5,73,69,44,65,11,9,0
