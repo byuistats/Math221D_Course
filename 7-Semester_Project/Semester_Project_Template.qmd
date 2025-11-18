@@ -41,7 +41,9 @@ library(ggplot2)
 
 ## Visualizations
 
-[Use `ggplot()` to create presentation-worth graphs (histograms, scatterplots, bar charts, boxplots, etc).  Include an overall visualization of your response variable and one or two exploratory graphs showing the relationship between explanatory variables and your response.] 
+[Use `ggplot()` to create presentation-worth graphs (histograms, scatterplots, bar charts, boxplots, etc).  Include an overall visualization of your response variable and one or two exploratory graphs showing the relationship between explanatory variables and your response.
+
+__NOTE__:  The type of graphs and summaries you do depends entirely on the type of data (categorical or quantitative) that you have for your project.] 
 
 
 ```{r}
