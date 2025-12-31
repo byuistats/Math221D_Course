@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your Name">
 
-<title>Semester Project – Math221D Notebook</title>
+<title>One- and Two-sample Statistical Inference – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -354,20 +382,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-ii">    
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA.html">
- <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/1-ANOVA.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA_Practice.html">
- <span class="dropdown-text">ANOVA Practice</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/1-ANOVA_Practice.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression.html">
- <span class="dropdown-text">Simple Linear Regression</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/2-Regression.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression_Practice.html">
- <span class="dropdown-text">Regression Practice</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/2-Regression_Practice.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence.html">
@@ -435,20 +463,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#part-1-descriptive-statistics" id="toc-part-1-descriptive-statistics" class="nav-link" data-scroll-target="#part-1-descriptive-statistics">Part 1: Descriptive Statistics</a>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a>
   <ul class="collapse">
-  <li><a href="#data-import-and-preparation" id="toc-data-import-and-preparation" class="nav-link" data-scroll-target="#data-import-and-preparation">Data Import and Preparation</a></li>
-  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
-  <li><a href="#numerical-summaries" id="toc-numerical-summaries" class="nav-link" data-scroll-target="#numerical-summaries">Numerical Summaries</a></li>
+  <li><a href="#test-requirements" id="toc-test-requirements" class="nav-link" data-scroll-target="#test-requirements">Test Requirements</a></li>
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
   </ul></li>
-  <li><a href="#part-2-statistical-inference" id="toc-part-2-statistical-inference" class="nav-link" data-scroll-target="#part-2-statistical-inference">Part 2: Statistical Inference</a>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a>
   <ul class="collapse">
-  <li><a href="#state-ho-and-ha" id="toc-state-ho-and-ha" class="nav-link" data-scroll-target="#state-ho-and-ha">State Ho and Ha</a></li>
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
-  <li><a href="#confidence-interval-where-appropriate" id="toc-confidence-interval-where-appropriate" class="nav-link" data-scroll-target="#confidence-interval-where-appropriate">Confidence Interval (where appropriate)</a></li>
-  <li><a href="#check-test-requirements" id="toc-check-test-requirements" class="nav-link" data-scroll-target="#check-test-requirements">Check Test Requirements</a></li>
+  <li><a href="#summarize-the-data" id="toc-summarize-the-data" class="nav-link" data-scroll-target="#summarize-the-data">Summarize the Data</a></li>
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a>
+  <ul class="collapse">
+  <li><a href="#test-requirements-1" id="toc-test-requirements-1" class="nav-link" data-scroll-target="#test-requirements-1">Test Requirements</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a>
+  <ul class="collapse">
+  <li><a href="#summarize-the-data-1" id="toc-summarize-the-data-1" class="nav-link" data-scroll-target="#summarize-the-data-1">Summarize the Data</a></li>
+  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a>
+  <ul class="collapse">
+  <li><a href="#test-requirements-2" id="toc-test-requirements-2" class="nav-link" data-scroll-target="#test-requirements-2">Test Requirements</a></li>
+  </ul></li>
+  <li><a href="#confidence-interval-2" id="toc-confidence-interval-2" class="nav-link" data-scroll-target="#confidence-interval-2">Confidence Interval</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -457,19 +494,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Semester Project</h1>
+<h1 class="title">One- and Two-sample Statistical Inference</h1>
+<p class="subtitle lead">Application Activity</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Your Name </p>
-          </div>
-  </div>
     
   
     
@@ -482,81 +514,144 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>[Provide a brief overview of your research question. Explain why you’re interested in the topic, where you found your data and the objectives of your analysis.]</p>
-</section>
-<section id="part-1-descriptive-statistics" class="level1">
-<h1>Part 1: Descriptive Statistics</h1>
-<p>Part 1 of your semester project should include:</p>
-<ol type="1">
-<li>Reading in your data</li>
-<li>Preparing the data a. This could include filtering out missing, bad or unnecessary data</li>
-<li>Summarizing the data a. Identify and summarize your response variable
+<p>This activity is designed to provide opportunities for practicing one- and two-sample hypothesis tests and confidence intervals.</p>
+<p>From context in the background information, you should be able determine what statistical test is appropriate and what the null and alternative hypotheses should be.</p>
+<p>For each problem:</p>
 <ul>
-<li>Visual summaries using ggplot</li>
-<li>Numerical summary tables
-<ol start="2" type="a">
-<li>Explore the explanatory variables (check for outliers)</li>
-<li>Visualize the relationship between a few explanatory variables and your response variable using ggplot</li>
-</ol></li>
-</ul></li>
-</ol>
-<section id="data-import-and-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-import-and-preparation">Data Import and Preparation</h2>
+<li>Carefully read the background information<br>
+</li>
+<li>Define the null and alternative hypotheses<br>
+</li>
+<li>Perform the relevant statistical test in R<br>
+</li>
+<li>Check the test requirements<br>
+</li>
+<li>Construct and interpret the confidence interval</li>
+</ul>
+<p><strong>NOTE</strong>: If not stated, use <span class="math inline">\(\alpha=0.05\)</span>. Also, if not specified, you can create graphs using base R or ggplot().</p>
+<p>Don’t forget to load the libraries:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Be sure to make this using ggplot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="visualizations" class="level2">
-<h2 class="anchored" data-anchor-id="visualizations">Visualizations</h2>
-<p>[Use <code>ggplot()</code> to create presentation-worth graphs (histograms, scatterplots, bar charts, boxplots, etc). Include an overall visualization of your response variable and one or two exploratory graphs showing the relationship between explanatory variables and your response.</p>
-<p><strong>NOTE</strong>: The type of graphs and summaries you do depends entirely on the type of data (categorical or quantitative) that you have for your project.]</p>
+<section id="problem-1" class="level1">
+<h1>Problem 1</h1>
+<p>A nutritionist claims that the average sodium content in a certain brand of canned soup is 900 mg per serving. A student takes a random sample of 29 cans and measures the sodium content. The nutritionist wants to test if there is significantly different amount of sodium than advertised.</p>
+<p>Use the significance level, <span class="math inline">\(\alpha = 0.10\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Visuals Here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Sample Data (mg) </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sodium <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mg =</span> <span class="fu">c</span>(<span class="dv">882</span>, <span class="dv">915</span>, <span class="dv">890</span>, <span class="dv">908</span>, <span class="dv">899</span>, <span class="dv">883</span>, <span class="dv">917</span>, <span class="dv">905</span>, <span class="dv">892</span>, <span class="dv">879</span>, <span class="dv">910</span>, <span class="dv">886</span>, <span class="dv">895</span>, <span class="dv">901</span>, <span class="dv">884</span>, <span class="dv">897</span>, <span class="dv">909</span>, <span class="dv">894</span>, <span class="dv">891</span>, <span class="dv">900</span>, <span class="dv">906</span>, <span class="dv">882</span>, <span class="dv">899</span>, <span class="dv">913</span>, <span class="dv">888</span>, <span class="dv">892</span>, <span class="dv">900</span>, <span class="dv">904</span>, <span class="dv">887</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>State the hypotheses.</p>
+<p><span class="math display">\[Ho:  \]</span><br>
+<span class="math display">\[Ha:  \]</span></p>
+<p>Perform the appropriate statistical test:</p>
+<p><strong>QUESTION</strong>: What is the P-value?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: State your conclusion in context of the research question.<br>
+<strong>ASNWER</strong>:</p>
+<section id="test-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="test-requirements">Test Requirements</h2>
+<p>Check the test requirements for this hypothesis test:</p>
+<p><strong>QUESTION</strong>: What are the test requirements, and are they satisfied?<br>
+<strong>ANSWER</strong>:</p>
 </section>
-<section id="numerical-summaries" class="level2">
-<h2 class="anchored" data-anchor-id="numerical-summaries">Numerical Summaries</h2>
-<p>[Create numerical summaries (<code>favstats()</code>, <code>prop.table()</code> with row or column totals, etc.) of your response variable. Include a table of summary statistics broken out by your explanatory variable. Include a discussion of what you observe.]</p>
+<section id="confidence-interval" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
+<p>Calculate a 90% confidence interval for the population average sodium in the cans.</p>
+<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question.<br>
+<strong>ANSWER</strong>:</p>
+<hr>
+</section>
+</section>
+<section id="problem-2" class="level1">
+<h1>Problem 2</h1>
+<p>A researcher wants to compare the cholesterol levels (mg/dL) between patients taking a new drug and those taking a placebo. The researcher believes the new drug should lower cholesterol. A group of 20 subjects are randomly assigned to a treatment or a placebo group.</p>
+<p>Run the following code chunk to create a dataset called cholesterol:</p>
+<p><strong>NOTE</strong>: There are some intermediate steps in the code below to create the final dataset called <code>cholesterol</code> that will be used for the analysis. This dataset has 2 columns: <code>treatment</code> and <code>Cholesterol</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create numerical summaries</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>drug <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">180</span>, <span class="dv">185</span>, <span class="dv">190</span>, <span class="dv">195</span>, <span class="dv">188</span>, <span class="dv">182</span>, <span class="dv">190</span>, <span class="dv">193</span>, <span class="dv">189</span>, <span class="dv">185</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>placebo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">188</span>, <span class="dv">196</span>, <span class="dv">196</span>, <span class="dv">204</span>, <span class="dv">197</span>, <span class="dv">191</span>, <span class="dv">201</span>, <span class="dv">203</span>, <span class="dv">202</span>, <span class="dv">196</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>treatment <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Drug"</span>, <span class="fu">length</span>(drug)), <span class="fu">rep</span>(<span class="st">"Placebo"</span>, <span class="fu">length</span>(placebo)))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cholesterol  <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">treatment =</span> treatment,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">Cholesterol =</span> <span class="fu">c</span>(drug, placebo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-</section>
-<section id="part-2-statistical-inference" class="level1">
-<h1>Part 2: Statistical Inference</h1>
-<p>Perform at least 1 complete statistical inference appropriate to your data, including:</p>
-<ol type="1">
-<li>State your null and alternative hypotheses</li>
-<li>Perform the appropriate statistical test</li>
-<li>Create confidence intervals where appropriate</li>
-<li>Check test requirements</li>
-<li>Correct interpretation and conclusions</li>
-</ol>
-<section id="state-ho-and-ha" class="level2">
-<h2 class="anchored" data-anchor-id="state-ho-and-ha">State Ho and Ha</h2>
+<p>State the hypotheses.</p>
+<p><span class="math display">\[Ho:  \]</span><br>
+<span class="math display">\[Ha:  \]</span></p>
+<section id="summarize-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="summarize-the-data">Summarize the Data</h2>
+<p>Create a table of summary statistics comparing cholesterol levels for each treatment group:</p>
+<p><strong>QUESTION</strong>: What is the difference between the sample averages of cholesterol between the 2 groups?<br>
+<strong>ANSWER</strong>:</p>
+<p>Use <code>ggplot()</code> to create a side-by-side boxplot of the cholesterol levels of each treatment group:</p>
 </section>
 <section id="hypothesis-test" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
+<p>Perform the appropriate statistical test:</p>
+<p><strong>QUESTION</strong>: What is the P-value?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: State your conclusion in context of the research question.<br>
+<strong>ASNWER</strong>:</p>
+<section id="test-requirements-1" class="level3">
+<h3 class="anchored" data-anchor-id="test-requirements-1">Test Requirements</h3>
+<p>Check the test requirements for this hypothesis test:</p>
+<p><strong>QUESTION</strong>: What are the test requirements, and are they satisfied?<br>
+<strong>ANSWER</strong>:</p>
+</section>
+</section>
+<section id="confidence-interval-1" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h2>
+<p>Calculate a 95% confidence interval for the difference between the mean cholesterol levels:</p>
+<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question.<br>
+<strong>ANSWER</strong>:</p>
+<hr>
+</section>
+</section>
+<section id="problem-3" class="level1">
+<h1>Problem 3</h1>
+<p>A dietitian measures the weight (kg) of 15 participants before and after a 4-week diet program.</p>
+<p>Run the following code chunk to create the dataset for this question:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the appropriate test for the data selected</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">subject =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">before =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">65</span>, <span class="dv">80</span>, <span class="dv">75</span>, <span class="dv">60</span>, <span class="dv">68</span>, <span class="dv">77</span>, <span class="dv">69</span>, <span class="dv">73</span>, <span class="dv">66</span>, <span class="dv">72</span>, <span class="dv">71</span>, <span class="dv">67</span>, <span class="dv">74</span>, <span class="dv">69</span>),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">after =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">58</span>, <span class="dv">79</span>, <span class="dv">77</span>, <span class="dv">57</span>, <span class="dv">64</span>, <span class="dv">78</span>, <span class="dv">69</span>, <span class="dv">69</span>, <span class="dv">66</span>, <span class="dv">69</span>, <span class="dv">68</span>, <span class="dv">63</span>, <span class="dv">75</span>, <span class="dv">68</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>State the hypotheses.</p>
+<p><span class="math display">\[Ho:  \]</span><br>
+<span class="math display">\[Ha:  \]</span></p>
+<section id="summarize-the-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="summarize-the-data-1">Summarize the Data</h2>
+<p>Create histograms for before and after weights separately:</p>
+<p>Create a histogram of the differences (after-before):</p>
+<p><strong>QUESTION</strong>: What is the average difference between after and before weights?<br>
+<strong>ANSWER</strong>:</p>
 </section>
-<section id="confidence-interval-where-appropriate" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-where-appropriate">Confidence Interval (where appropriate)</h2>
+<section id="hypothesis-test-1" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h2>
+<p>Perform the appropriate statistical test:</p>
+<p><strong>QUESTION</strong>: What is the P-value?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: State your conclusion in context of the research question.<br>
+<strong>ASNWER</strong>:</p>
+<section id="test-requirements-2" class="level3">
+<h3 class="anchored" data-anchor-id="test-requirements-2">Test Requirements</h3>
+<p>Check the test requirements for this hypothesis test:</p>
+<p><strong>QUESTION</strong>: What are the test requirements, and are they satisfied?<br>
+<strong>ANSWER</strong>:</p>
 </section>
-<section id="check-test-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="check-test-requirements">Check Test Requirements</h2>
 </section>
-</section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
+<section id="confidence-interval-2" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-2">Confidence Interval</h2>
+<p>Calculate a 95% confidence interval for the mean difference between before and after weights:</p>
+<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question.<br>
+<strong>ANSWER</strong>:</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

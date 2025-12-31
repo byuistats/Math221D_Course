@@ -33,7 +33,7 @@ unique()
 ```
 
 
-Create a sorted bar chart for reasons why people see a chiropractor:  
+Create a sorted bar plot for reasons why people see a chiropractor:  
 
 ```{r}
 
@@ -64,7 +64,7 @@ __ANSWER__:
 
 # Visualize
 
-Use the `chiro_tbl` created above to create a grouped bar chart:  
+Use the `chiro_tbl` created above to create a grouped bar plot:  
 
 ```{r}
 

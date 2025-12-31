@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your Name">
 
-<title>Semester Project – Math221D Notebook</title>
+<title>Regression Practice – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -354,20 +353,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-ii">    
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA.html">
- <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/1-ANOVA.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA_Practice.html">
- <span class="dropdown-text">ANOVA Practice</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/1-ANOVA_Practice.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression.html">
- <span class="dropdown-text">Simple Linear Regression</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/2-Regression.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression_Practice.html">
- <span class="dropdown-text">Regression Practice</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/2-Regression_Practice.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence.html">
@@ -435,20 +434,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#part-1-descriptive-statistics" id="toc-part-1-descriptive-statistics" class="nav-link" data-scroll-target="#part-1-descriptive-statistics">Part 1: Descriptive Statistics</a>
+  <li><a href="#car-prices-and-mileage" id="toc-car-prices-and-mileage" class="nav-link" data-scroll-target="#car-prices-and-mileage">Car Prices and Mileage</a>
   <ul class="collapse">
-  <li><a href="#data-import-and-preparation" id="toc-data-import-and-preparation" class="nav-link" data-scroll-target="#data-import-and-preparation">Data Import and Preparation</a></li>
-  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
-  <li><a href="#numerical-summaries" id="toc-numerical-summaries" class="nav-link" data-scroll-target="#numerical-summaries">Numerical Summaries</a></li>
+  <li><a href="#plot-the-data-and-calculate-r" id="toc-plot-the-data-and-calculate-r" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r">Plot the Data and calculate r</a></li>
+  <li><a href="#fit-a-linear-regression-model" id="toc-fit-a-linear-regression-model" class="nav-link" data-scroll-target="#fit-a-linear-regression-model">Fit a Linear Regression Model</a></li>
+  <li><a href="#check-model-requirements" id="toc-check-model-requirements" class="nav-link" data-scroll-target="#check-model-requirements">Check Model Requirements</a></li>
+  <li><a href="#good-price" id="toc-good-price" class="nav-link" data-scroll-target="#good-price">Good Price?</a></li>
   </ul></li>
-  <li><a href="#part-2-statistical-inference" id="toc-part-2-statistical-inference" class="nav-link" data-scroll-target="#part-2-statistical-inference">Part 2: Statistical Inference</a>
+  <li><a href="#manatee-deaths-and-motorboat-registrations-in-florida" id="toc-manatee-deaths-and-motorboat-registrations-in-florida" class="nav-link" data-scroll-target="#manatee-deaths-and-motorboat-registrations-in-florida">Manatee Deaths and Motorboat Registrations in Florida</a>
   <ul class="collapse">
-  <li><a href="#state-ho-and-ha" id="toc-state-ho-and-ha" class="nav-link" data-scroll-target="#state-ho-and-ha">State Ho and Ha</a></li>
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
-  <li><a href="#confidence-interval-where-appropriate" id="toc-confidence-interval-where-appropriate" class="nav-link" data-scroll-target="#confidence-interval-where-appropriate">Confidence Interval (where appropriate)</a></li>
-  <li><a href="#check-test-requirements" id="toc-check-test-requirements" class="nav-link" data-scroll-target="#check-test-requirements">Check Test Requirements</a></li>
+  <li><a href="#plot-the-data-and-calculate-r-1" id="toc-plot-the-data-and-calculate-r-1" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r-1">Plot the Data and calculate r</a></li>
+  <li><a href="#fit-a-linear-regression-model-1" id="toc-fit-a-linear-regression-model-1" class="nav-link" data-scroll-target="#fit-a-linear-regression-model-1">Fit a Linear Regression Model</a></li>
+  <li><a href="#check-model-requirements-1" id="toc-check-model-requirements-1" class="nav-link" data-scroll-target="#check-model-requirements-1">Check Model Requirements</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#mcat-score-and-gpa" id="toc-mcat-score-and-gpa" class="nav-link" data-scroll-target="#mcat-score-and-gpa">MCAT Score and GPA</a>
+  <ul class="collapse">
+  <li><a href="#plot-the-data-and-calculate-r-2" id="toc-plot-the-data-and-calculate-r-2" class="nav-link" data-scroll-target="#plot-the-data-and-calculate-r-2">Plot the Data and calculate r</a></li>
+  <li><a href="#fit-a-linear-regression-model-2" id="toc-fit-a-linear-regression-model-2" class="nav-link" data-scroll-target="#fit-a-linear-regression-model-2">Fit a Linear Regression Model</a></li>
+  <li><a href="#check-model-requirements-2" id="toc-check-model-requirements-2" class="nav-link" data-scroll-target="#check-model-requirements-2">Check Model Requirements</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -457,19 +461,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Semester Project</h1>
+<h1 class="title">Regression Practice</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Your Name </p>
-          </div>
-  </div>
     
   
     
@@ -482,81 +480,203 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>[Provide a brief overview of your research question. Explain why you’re interested in the topic, where you found your data and the objectives of your analysis.]</p>
-</section>
-<section id="part-1-descriptive-statistics" class="level1">
-<h1>Part 1: Descriptive Statistics</h1>
-<p>Part 1 of your semester project should include:</p>
-<ol type="1">
-<li>Reading in your data</li>
-<li>Preparing the data a. This could include filtering out missing, bad or unnecessary data</li>
-<li>Summarizing the data a. Identify and summarize your response variable
+<p>In this assignment, you will practice regression analysis including:</p>
 <ul>
-<li>Visual summaries using ggplot</li>
-<li>Numerical summary tables
-<ol start="2" type="a">
-<li>Explore the explanatory variables (check for outliers)</li>
-<li>Visualize the relationship between a few explanatory variables and your response variable using ggplot</li>
-</ol></li>
+<li>Plotting bivariate data with a regression line</li>
+<li>Calculating and interpreting the correlation coefficient, r</li>
+<li>Fitting a linear regression analysis</li>
+<li>Verifying if a linear model is model is adequate:
+<ul>
+<li>Checking for linearity (scatterplot)</li>
+<li>Checking for constant variance (<code>plot(lm_output, which=1)</code>)</li>
+<li>Checking for normality of residuals (<code>qqPlot(lm_output$residuals)</code>)</li>
 </ul></li>
-</ol>
-<section id="data-import-and-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-import-and-preparation">Data Import and Preparation</h2>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Be sure to make this using ggplot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="visualizations" class="level2">
-<h2 class="anchored" data-anchor-id="visualizations">Visualizations</h2>
-<p>[Use <code>ggplot()</code> to create presentation-worth graphs (histograms, scatterplots, bar charts, boxplots, etc). Include an overall visualization of your response variable and one or two exploratory graphs showing the relationship between explanatory variables and your response.</p>
-<p><strong>NOTE</strong>: The type of graphs and summaries you do depends entirely on the type of data (categorical or quantitative) that you have for your project.]</p>
+<section id="car-prices-and-mileage" class="level1">
+<h1>Car Prices and Mileage</h1>
+<p align="center">
+<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/Accura_MDX.png" class="img-fluid">
+</p>
+<p>You are interested in purchasing an all wheel drive Acura MDX for those slick Rexburg winters. You found what you think is a good deal for on a low-mileage 2020 model but you’d like to be sure. You go on Autotrader.com and randomly select 23 Acura MDX’s and collect Price and Mileage information.</p>
+<p>Load the data and use R to answer the questions below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Visuals Here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cars <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/acuraMDX_price_vs_mileage.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="numerical-summaries" class="level2">
-<h2 class="anchored" data-anchor-id="numerical-summaries">Numerical Summaries</h2>
-<p>[Create numerical summaries (<code>favstats()</code>, <code>prop.table()</code> with row or column totals, etc.) of your response variable. Include a table of summary statistics broken out by your explanatory variable. Include a discussion of what you observe.]</p>
+<p><strong>QUESTION</strong>: What is the response/dependent variable?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the explanatory variable?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What do you think is the nature of the relationship between the two? (Positive or Negative?) <strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: How strong do you think the relationship is?<br>
+<strong>ANSWER</strong>:</p>
+<section id="plot-the-data-and-calculate-r" class="level2">
+<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r">Plot the Data and calculate r</h2>
+<p>Use <code>ggplot()</code> to create a scatter plot with the regression line, then calculate r:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create numerical summaries</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_smooth(method="lm")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong>QUESTION</strong>: Does the relationship look linear?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the correlation coefficient, r?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What does r show?<br>
+<strong>ANSWER</strong>:</p>
 </section>
-</section>
-<section id="part-2-statistical-inference" class="level1">
-<h1>Part 2: Statistical Inference</h1>
-<p>Perform at least 1 complete statistical inference appropriate to your data, including:</p>
-<ol type="1">
-<li>State your null and alternative hypotheses</li>
-<li>Perform the appropriate statistical test</li>
-<li>Create confidence intervals where appropriate</li>
-<li>Check test requirements</li>
-<li>Correct interpretation and conclusions</li>
-</ol>
-<section id="state-ho-and-ha" class="level2">
-<h2 class="anchored" data-anchor-id="state-ho-and-ha">State Ho and Ha</h2>
-</section>
-<section id="hypothesis-test" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
+<section id="fit-a-linear-regression-model" class="level2">
+<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model">Fit a Linear Regression Model</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the appropriate test for the data selected</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lm_output &lt;- lm()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong>QUESTION</strong>: What is the slope of the regression line, and what does it mean?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the intercept and what does it mean?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the p-value?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: State your conclusion in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the confidence interval for the slope?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Explain the confidence interval in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
 </section>
-<section id="confidence-interval-where-appropriate" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-where-appropriate">Confidence Interval (where appropriate)</h2>
+<section id="check-model-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="check-model-requirements">Check Model Requirements</h2>
+<p>Check the normality of the residuals:</p>
+<p>Check for constant variance (Residual by Predicted plot):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(lm_output, which = 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: Do the test requirements appear to be satisfied? Why?<br>
+<strong>ANSWER</strong>:</p>
 </section>
-<section id="check-test-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="check-test-requirements">Check Test Requirements</h2>
+<section id="good-price" class="level2">
+<h2 class="anchored" data-anchor-id="good-price">Good Price?</h2>
+<p>Lastly, the car you’re interested in buying has around 100,000 miles and costs $11,200. Could this be considered a good deal? Why?</p>
 </section>
 </section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
+<section id="manatee-deaths-and-motorboat-registrations-in-florida" class="level1">
+<h1>Manatee Deaths and Motorboat Registrations in Florida</h1>
+<p align="center">
+<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/manatees1.png" class="img-fluid">
+</p>
+<p>Florida is a fabulous place for experiencing wildlife and recreation. Unfortunately, sometimes those two activities conflict.</p>
+<p>Researchers collected over 30 years of data about water craft registrations (motor and non-motor boats) and manatee deaths. The goal of the research is to evaluate the relationship between boat registrations and manatee deaths.</p>
+<p>Load the data and use R to answer the questions below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>manatees <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/manatees.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: What is the response/dependent variable?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the explanatory variable?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What do you think is the nature of the relationship between the two? (Positive or Negative?) <strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: How strong do you think the relationship is?<br>
+<strong>ANSWER</strong>:</p>
+<section id="plot-the-data-and-calculate-r-1" class="level2">
+<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r-1">Plot the Data and calculate r</h2>
+<p>Use <code>ggplot()</code> to create a scatter plot with the regression line, then calculate r:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_smooth(method="lm")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: Does the relationship look linear?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the correlation coefficient, r?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What does r show?<br>
+<strong>ANSWER</strong>:</p>
+</section>
+<section id="fit-a-linear-regression-model-1" class="level2">
+<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model-1">Fit a Linear Regression Model</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lm_output &lt;- lm()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: What is the slope of the regression line, and what does it mean?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the intercept and what does it mean?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the p-value?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: State your conclusion in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the confidence interval for the slope?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Explain the confidence interval in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
+</section>
+<section id="check-model-requirements-1" class="level2">
+<h2 class="anchored" data-anchor-id="check-model-requirements-1">Check Model Requirements</h2>
+<p>Check the normality of the residuals:</p>
+<p>Check for constant variance (Residual by Predicted plot):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(lm_output, which = 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: Do the test requirements appear to be satisfied? Why?<br>
+<strong>ANSWER</strong>:</p>
+</section>
+</section>
+<section id="mcat-score-and-gpa" class="level1">
+<h1>MCAT Score and GPA</h1>
+<p align="center">
+<img src="https://github.com/byuistats/Math221D_Cannon/raw/master/Images/MCAT_official_logo.png" class="img-fluid">
+</p>
+<p>The MCAT is an entrance exam for medical schools. It seems likely that there is a relationship between your undergraduate GPA and how well you do on the MCAT.</p>
+<p>GPA and MCAT score data were collected on 55 prospective medical students.</p>
+<p>Load the data and respond to the questions below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mcat <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/mcat_gpa.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: What is the response/dependent variable?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the explanatory variable?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What do you think is the nature of the relationship between the two? (Positive or Negative?) <strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: How strong do you think the relationship is?<br>
+<strong>ANSWER</strong>:</p>
+<section id="plot-the-data-and-calculate-r-2" class="level2">
+<h2 class="anchored" data-anchor-id="plot-the-data-and-calculate-r-2">Plot the Data and calculate r</h2>
+<p>Use <code>ggplot()</code> to create a scatter plot with the regression line, then calculate r:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># geom_smooth(method="lm")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: Does the relationship look linear?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the correlation coefficient, r?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What does r show?<br>
+<strong>ANSWER</strong>:</p>
+</section>
+<section id="fit-a-linear-regression-model-2" class="level2">
+<h2 class="anchored" data-anchor-id="fit-a-linear-regression-model-2">Fit a Linear Regression Model</h2>
+<p><strong>QUESTION</strong>: What is the slope of the regression line, and what does it mean?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the intercept and what does it mean?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the p-value?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: State your conclusion in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the confidence interval for the slope?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Explain the confidence interval in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
+</section>
+<section id="check-model-requirements-2" class="level2">
+<h2 class="anchored" data-anchor-id="check-model-requirements-2">Check Model Requirements</h2>
+<p>Check the normality of the residuals:</p>
+<p>Check for constant variance (Residual by Predicted plot):</p>
+<p><strong>QUESTION</strong>: Do the test requirements appear to be satisfied? Why?<br>
+<strong>ANSWER</strong>:</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

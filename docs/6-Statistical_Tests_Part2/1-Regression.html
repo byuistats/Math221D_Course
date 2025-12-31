@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your Name">
 
-<title>Semester Project – Math221D Notebook</title>
+<title>Simple Linear Regression – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -354,20 +382,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-ii">    
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA.html">
- <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA_Practice.html">
- <span class="dropdown-text">ANOVA Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-Regression.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-ANOVA.html">
+ <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-ANOVA_Practice.html">
+ <span class="dropdown-text">ANOVA Practice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence.html">
@@ -393,7 +421,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Template.html">
+    <a class="dropdown-item" href="../7-Semester_Project/1-Semester_Project_Template_Part1.html">
+ <span class="dropdown-text">Semester Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../7-Semester_Project/2-Semester_Project_Template_Final_Report.html">
  <span class="dropdown-text">Semester Project</span></a>
   </li>  
     </ul>
@@ -434,21 +466,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#part-1-descriptive-statistics" id="toc-part-1-descriptive-statistics" class="nav-link" data-scroll-target="#part-1-descriptive-statistics">Part 1: Descriptive Statistics</a>
+  <li><a href="#review" id="toc-review" class="nav-link active" data-scroll-target="#review">Review</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear Regression</a></li>
+  <li><a href="#define-best" id="toc-define-best" class="nav-link" data-scroll-target="#define-best">Define “best”</a></li>
+  <li><a href="#in-r" id="toc-in-r" class="nav-link" data-scroll-target="#in-r">In R</a>
   <ul class="collapse">
-  <li><a href="#data-import-and-preparation" id="toc-data-import-and-preparation" class="nav-link" data-scroll-target="#data-import-and-preparation">Data Import and Preparation</a></li>
-  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
-  <li><a href="#numerical-summaries" id="toc-numerical-summaries" class="nav-link" data-scroll-target="#numerical-summaries">Numerical Summaries</a></li>
-  </ul></li>
-  <li><a href="#part-2-statistical-inference" id="toc-part-2-statistical-inference" class="nav-link" data-scroll-target="#part-2-statistical-inference">Part 2: Statistical Inference</a>
+  <li><a href="#plotting-the-regression-line" id="toc-plotting-the-regression-line" class="nav-link" data-scroll-target="#plotting-the-regression-line">Plotting the Regression Line</a>
   <ul class="collapse">
-  <li><a href="#state-ho-and-ha" id="toc-state-ho-and-ha" class="nav-link" data-scroll-target="#state-ho-and-ha">State Ho and Ha</a></li>
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
-  <li><a href="#confidence-interval-where-appropriate" id="toc-confidence-interval-where-appropriate" class="nav-link" data-scroll-target="#confidence-interval-where-appropriate">Confidence Interval (where appropriate)</a></li>
-  <li><a href="#check-test-requirements" id="toc-check-test-requirements" class="nav-link" data-scroll-target="#check-test-requirements">Check Test Requirements</a></li>
+  <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r">Base R</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot">GGPlot</a></li>
+  <li><a href="#hypothesis-testing-for-regression" id="toc-hypothesis-testing-for-regression" class="nav-link" data-scroll-target="#hypothesis-testing-for-regression">Hypothesis Testing for Regression</a></li>
+  <li><a href="#regression-requirements" id="toc-regression-requirements" class="nav-link" data-scroll-target="#regression-requirements">Regression Requirements</a></li>
+  </ul></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a></li>
   </ul>
 </nav>
     </div>
@@ -457,19 +488,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Semester Project</h1>
+<h1 class="title">Simple Linear Regression</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Your Name </p>
-          </div>
-  </div>
     
   
     
@@ -480,81 +505,298 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>[Provide a brief overview of your research question. Explain why you’re interested in the topic, where you found your data and the objectives of your analysis.]</p>
-</section>
-<section id="part-1-descriptive-statistics" class="level1">
-<h1>Part 1: Descriptive Statistics</h1>
-<p>Part 1 of your semester project should include:</p>
-<ol type="1">
-<li>Reading in your data</li>
-<li>Preparing the data a. This could include filtering out missing, bad or unnecessary data</li>
-<li>Summarizing the data a. Identify and summarize your response variable
-<ul>
-<li>Visual summaries using ggplot</li>
-<li>Numerical summary tables
-<ol start="2" type="a">
-<li>Explore the explanatory variables (check for outliers)</li>
-<li>Visualize the relationship between a few explanatory variables and your response variable using ggplot</li>
-</ol></li>
-</ul></li>
-</ol>
-<section id="data-import-and-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-import-and-preparation">Data Import and Preparation</h2>
+<section id="review" class="level1">
+<h1>Review</h1>
+<p>Consider the relationship between Score on a math exam and a student’s self-reported Confidence Rating.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Be sure to make this using ggplot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>math <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://byuistats.github.io/BYUI_M221_Book/Data/MathSelfEfficacy.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="visualizations" class="level2">
-<h2 class="anchored" data-anchor-id="visualizations">Visualizations</h2>
-<p>[Use <code>ggplot()</code> to create presentation-worth graphs (histograms, scatterplots, bar charts, boxplots, etc). Include an overall visualization of your response variable and one or two exploratory graphs showing the relationship between explanatory variables and your response.</p>
-<p><strong>NOTE</strong>: The type of graphs and summaries you do depends entirely on the type of data (categorical or quantitative) that you have for your project.]</p>
+<p><strong>Question</strong>: What is the explanatory variable, <span class="math inline">\(x\)</span>?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the response variable, <span class="math inline">\(y\)</span>?<br>
+<strong>Answer</strong>:</p>
+<p>Plot the relationship:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Visuals Here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x =</span> ConfidenceRatingMean, <span class="at">y =</span> Score )) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship between Student Confidence Rating in Math and Test Score"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1-Regression_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-</section>
-<section id="numerical-summaries" class="level2">
-<h2 class="anchored" data-anchor-id="numerical-summaries">Numerical Summaries</h2>
-<p>[Create numerical summaries (<code>favstats()</code>, <code>prop.table()</code> with row or column totals, etc.) of your response variable. Include a table of summary statistics broken out by your explanatory variable. Include a discussion of what you observe.]</p>
+</div>
+</div>
+<p><strong>Question</strong>: Based on the scatterplot, does the relationship appear roughly linear?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the direction of the relationship? <strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What do you think is the strength of the relationship? (Strong/Moderate/Weak) <strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the correlation coefficient, r? <strong>Answer</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create numerical summaries</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7278648</code></pre>
+</div>
 </div>
 </section>
+<section id="linear-regression" class="level1">
+<h1>Linear Regression</h1>
+<p>Recall that the correlation coefficient, <span class="math inline">\(r\)</span>, tells us something about the direction and strength of a <strong>linear</strong> relationship.</p>
+<p>A scatter plot can visualize the nature of the relationship between 2 quantitative variables.</p>
+<p>Fitting a simple linear regression model provides a way to <strong>predict</strong> what happens, <em>on average</em>, to response variable, <span class="math inline">\(y\)</span>, for a given input, <span class="math inline">\(x\)</span>.</p>
+<p>We can use data to estimate a functional relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>:</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1x_1 +\epsilon\]</span></p>
+<p>This is a reframing of the familiar <span class="math inline">\(y=mx+b\)</span> but we change the intercept and the slope to be Greek letters signifying <em>population parameters</em>. We also add a very important term, <span class="math inline">\(\epsilon\)</span>, which signifies the “error” around the line. Our estimate of error, <span class="math inline">\(\epsilon\)</span>, will be critical to assessing the usefulness of our model.</p>
+<p>We can estimate the slope and intercept of the line that “best fits” the data and use that line to make predictions.</p>
+<p><strong>NOTE</strong>: As before, Greek letters signify population parameters in statistics while Latin letters are often used for sample statistics. We estimate <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> with <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> respectively. This leads to an equation for predicted values:</p>
+<p><span class="math display">\[\hat{y}=b_0+b_1x_1\]</span> where <span class="math inline">\(\hat{y}\)</span> signifies a predicted value for <span class="math inline">\(y\)</span> for a given <span class="math inline">\(x\)</span>.</p>
 </section>
-<section id="part-2-statistical-inference" class="level1">
-<h1>Part 2: Statistical Inference</h1>
-<p>Perform at least 1 complete statistical inference appropriate to your data, including:</p>
+<section id="define-best" class="level1">
+<h1>Define “best”</h1>
+<p>There are several ways we could fit a line through the dots of a scatter plot. To define “best” we have to understand something called a “residual” in statistics.</p>
+<p><strong>DEFINITION</strong>: A residual is calculated for each data point by taking the difference between the observed value and the expected value:</p>
+<p><span class="math display">\[\text{residual}=\text{observed}-\text{expected}\]</span></p>
+</section>
+<section id="in-r" class="level1">
+<h1>In R</h1>
+<p>Recall that when we had a quantitative response variable and a categorical explanatory variable we could use the <code>favstats()</code> and <code>boxplot()</code>with the general formula:</p>
+<p><br> <code>favstats(data$response_variable ~ data$explanatory_variable)</code> <code>boxplot(data$response_variable ~ data$explanatory_variable)</code> <br></p>
+<p>The same paradigm works for estimating the linear relationship between 2 quantitative variables, but we need to introduce a new function: <code>lm()</code>. The ‘lm’ stands for “linear model”. The relationship notation remains the same:<br>
+<br></p>
+<p><code>lm(data$response_variable ~ data$explanatory_variable)</code></p>
+<p>or equivalently:</p>
+<p><code>lm(response_variable ~ explanatory_variable, data = dataset_name)</code></p>
+<p><br></p>
+<p>except <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are both quantitative. The <code>lm()</code> output by itself doesn’t give us test statistics and p-values. We will use an additional function, <code>summarize()</code>, to get the relevant information for the hypothesis test.</p>
+<p>Let’s fit a linear model estimating the slope and intercept of the line that best fits the relationship between Confidence Rating and Test Score.</p>
+<p>Start by naming the <code>lm()</code> output, then do a summary on our named object:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>math_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(math_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Score ~ ConfidenceRatingMean, data = math)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-38.200  -6.163   1.292   7.567  23.422 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            18.690      4.610   4.054  8.4e-05 ***
+ConfidenceRatingMean   12.695      1.022  12.424  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 11.27 on 137 degrees of freedom
+Multiple R-squared:  0.5298,    Adjusted R-squared:  0.5264 
+F-statistic: 154.4 on 1 and 137 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(math_lm, <span class="at">level =</span> .<span class="dv">92</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                          4 %     96 %
+(Intercept)          10.55863 26.82150
+ConfidenceRatingMean 10.89262 14.49703</code></pre>
+</div>
+</div>
+<p>The <code>lm()</code> output includes only the slope and the intercept.</p>
+<p><strong>Question</strong>: How do we interpret the intercept of 18.69?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: How do we interpret the slope of 12.69 in context?<br>
+<strong>Answer</strong>:</p>
+<p>Now that we have an estimate of the slope and the intercept, we can plug in values of <span class="math inline">\(x\)</span> into our formula, <span class="math inline">\(\hat y = b_o + b_1x = 18.69 + 12.69*x\)</span>.</p>
+<p><strong>Question</strong>: What is the expected score on a test of someone who ranks themselves 5 in confidence?<br>
+<strong>Answer</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fl">18.69</span> <span class="sc">+</span> <span class="fl">12.69</span><span class="sc">*</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 82.14</code></pre>
+</div>
+</div>
+<section id="plotting-the-regression-line" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-the-regression-line">Plotting the Regression Line</h2>
+<section id="base-r" class="level3">
+<h3 class="anchored" data-anchor-id="base-r">Base R</h3>
+<p>Scatter plots by themselves are nice, but we would also like to see the regression line. Simple graphics in R can be augmented by using some functions. The <code>abline()</code> function in base R, when executed right after a graphing function can add lines. We’ve used this to add vertical lines and horizontal line already in class. We can also use this function to add a regression line. We simply insert our linear model output into the <code>abline()</code> function as follows:</p>
+</section>
+</section>
+<section id="ggplot" class="level2">
+<h2 class="anchored" data-anchor-id="ggplot">GGPlot</h2>
+<p>Using <code>ggplot()</code>, we can simply add a <code>geom_smooth()</code> geometry and specify the method of “smoothing” as a linear model:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x =</span> ConfidenceRatingMean, <span class="at">y =</span> Score )) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship between Student Confidence Rating in Math and Test Score"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1-Regression_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>By default, this gives us a confidence interval for the slope of the regression line. We can turn that off by forcing the “standard error” to be <code>FALSE</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x =</span> ConfidenceRatingMean, <span class="at">y =</span> Score )) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship between Student Confidence Rating in Math and Test Score"</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1-Regression_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-testing-for-regression" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-testing-for-regression">Hypothesis Testing for Regression</h2>
+<p>A linear equation has 2 parameters: Slope and Intercept. In most situations, the intercept isn’t very interesting by itself and is often absurd. We are most often only interested in the slope:</p>
+<p><span class="math display">\[H_o: \beta_1 = 0\]</span> <span class="math display">\[H_a: \beta_1 \neq 0\]</span></p>
+<p>These hypotheses are the same for all simple linear regression questions.</p>
+<p>To get the p-value and test statistics, we use the <code>summary()</code> function as we did with aov:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(math_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Score ~ ConfidenceRatingMean, data = math)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-38.200  -6.163   1.292   7.567  23.422 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            18.690      4.610   4.054  8.4e-05 ***
+ConfidenceRatingMean   12.695      1.022  12.424  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 11.27 on 137 degrees of freedom
+Multiple R-squared:  0.5298,    Adjusted R-squared:  0.5264 
+F-statistic: 154.4 on 1 and 137 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>We can also calculate confidence intervals for the slope by using the <code>confint()</code> function. This function requires you to tell it which model to extract a confidence intervals from. You can specify which parameter you’re interested in, and the level of confidence:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># input the model into the following function:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(math_lm, <span class="at">level =</span> .<span class="dv">95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         2.5 %   97.5 %
+(Intercept)           9.573588 27.80654
+ConfidenceRatingMean 10.674297 14.71535</code></pre>
+</div>
+</div>
+<p>How do we interpret this confidence interval for a slope?</p>
+<p>Technically correct: 95% Confident that the true population slope is within (10.674297, 14.71535)</p>
+<p>Contextual Explanation: For every 1 unit increase in Confidence Rating, test scores go up by between (10.674297, 14.71535) on average.</p>
+</section>
+<section id="regression-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="regression-requirements">Regression Requirements</h2>
+<p>There are certain requirements for all statistical tests to be valid. For regression analysis, we have to have 5 requirements for our statistics to be valid. While this sounds daunting, in practice we can check most of them very quickly.</p>
 <ol type="1">
-<li>State your null and alternative hypotheses</li>
-<li>Perform the appropriate statistical test</li>
-<li>Create confidence intervals where appropriate</li>
-<li>Check test requirements</li>
-<li>Correct interpretation and conclusions</li>
+<li>Relationship between X and Y is Linear</li>
+<li>The residuals, <span class="math inline">\(\epsilon\)</span>, are normally distributed</li>
+<li>The Variance of the error terms is constant for all values of X</li>
+<li>The X’s are fixed and measured without error (i.e.&nbsp;X’s can be considered as known constants)</li>
+<li>The observations are independent</li>
 </ol>
-<section id="state-ho-and-ha" class="level2">
-<h2 class="anchored" data-anchor-id="state-ho-and-ha">State Ho and Ha</h2>
-</section>
-<section id="hypothesis-test" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
+<p>The linear relationship is assessed visually with the scatter plot. If there is obvious curvature or non-linearity then fitting a line isn’t the best model.</p>
+<p>We check the normality of the residuals with a <code>qqPlot(lm_output)</code>.</p>
+<p>Constant variance in regression is checked with a new plot that looks at how the predicted values relate to the residuals. This is done by: <code>plot(lm_output, which=1)</code>. This is important because we want our predictions to be “wrong” about the same regardless of the value of the prediction. We’re looking for random scatter.</p>
+<p>Requirement 4 cannot be analyzed directly. It is important because because <span class="math inline">\(x\)</span> is the independent variable. If there is uncertainty about the input, then the simple linear regression might not be the most appropriate model.</p>
+<p>Requirement 5 also cannot be analyzed, but random sampling usually satisfies this requirement.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the appropriate test for the data selected</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Requirement 1:  Check for linear relationship</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x=</span>ConfidenceRatingMean, <span class="at">y =</span> Score)) <span class="sc">+</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1-Regression_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Req 2: Normality of residuals:</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(math_lm<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1-Regression_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 37 89</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Req 3: Constant variance (look odd patterns). When you put lm() output into the plot function it gives you several different plots. The residual plots we're most interested in are 1 and 2</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(math_lm, <span class="at">which =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1-Regression_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="confidence-interval-where-appropriate" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-where-appropriate">Confidence Interval (where appropriate)</h2>
 </section>
-<section id="check-test-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="check-test-requirements">Check Test Requirements</h2>
-</section>
-</section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
+<section id="your-turn" class="level1">
+<h1>Your Turn</h1>
+<p>Look at the relationship between Alcohol Consumption compared to life expectancy for selected countries.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>alcohol <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/life_expectancy_vs_alcohol_consumption.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Question</strong>: What is the response variable?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the explanatory variable?<br>
+<strong>Answer</strong>:</p>
+<p>Make a presentation-worthy scatterplot using <code>ggplot()</code> including a regression line:</p>
+<p><strong>Question</strong>: Describe in words the nature of the relationship between the 2 variables (direction/strength/linearity) <strong>Answer</strong>:</p>
+<p>Calculate the correlation coefficient:</p>
+<p><strong>Question</strong>: What is the the correlation coefficient, <span class="math inline">\(r\)</span>?<br>
+<strong>Answer</strong>:</p>
+<p>Perform a linear regression analysis for the relationship between alcohol consumption and life expectancy.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save your linear model:  </span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for constant variance:  </span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the normality of the residuals  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Question</strong>: What is the slope of the regression line?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Interpret the slope of the regression line in context of the problem:<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the intercept of the regression line?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Interpret the intercept of the regression line in context of the problem:<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What do you conclude about the slope of the regression line?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the confidence interval for the slope?</p>
+<p><strong>Question</strong>: Give a 1-sentence interpretation of the confidence interval in context of your research question:<br>
+<strong>Answer</strong>:</p>
 
 
 </section>

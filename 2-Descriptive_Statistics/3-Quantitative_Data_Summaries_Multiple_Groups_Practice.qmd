@@ -92,6 +92,6 @@ Create a side-by-side boxplot of uptake for each `Treatment` used in the experim
 ```
 
 
-__QUESTION__:  Based on the above summaries, which combination of variables would you suggest to *maximize* CO2 uptake?  
+__QUESTION__:  Based on the above summaries, which combination of Type and Treatment do you think would result in the largest CO2 uptake?  
 __ANSWER__:  
 

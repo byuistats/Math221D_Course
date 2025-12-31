@@ -438,6 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#lesson-outcomes" id="toc-lesson-outcomes" class="nav-link" data-scroll-target="#lesson-outcomes">Lesson Outcomes</a></li>
   <li><a href="#load-the-data-and-libraries" id="toc-load-the-data-and-libraries" class="nav-link" data-scroll-target="#load-the-data-and-libraries">Load the data and libraries</a></li>
   </ul></li>
+  <li><a href="#categorical-data-review" id="toc-categorical-data-review" class="nav-link" data-scroll-target="#categorical-data-review">Categorical Data Review</a></li>
   <li><a href="#summarizing-a-quantitative-variable-for-multiple-categories" id="toc-summarizing-a-quantitative-variable-for-multiple-categories" class="nav-link" data-scroll-target="#summarizing-a-quantitative-variable-for-multiple-categories">Summarizing a Quantitative Variable for Multiple Categories</a>
   <ul class="collapse">
   <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
@@ -472,7 +473,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In this section, we will demonstrate how to numerically and visually summarize a <strong>quantitative response</strong> variable for each level of a <strong>categorical explanatory</strong> variable.</p>
+<p>In this section, we will review data types (categorical and quantitative) and demonstrate how to numerically and visually summarize a <strong>quantitative response</strong> variable for each level of a <strong>categorical explanatory</strong> variable.</p>
 <section id="lesson-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="lesson-outcomes">Lesson Outcomes</h2>
 <ol type="1">
@@ -495,6 +496,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>big5 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
+<section id="categorical-data-review" class="level1">
+<h1>Categorical Data Review</h1>
+<p>Recall that a categorical variable in a dataset consists of labels identifying to which group or category the individual belongs. For example, if we collected data about voter registration, we could have 4 categories: Democrat, Republican, Independent, and Not Affiliated.</p>
+<p><strong>DEFINITION</strong>: <em>Levels</em> of a categorical variable are all the possible group identifiers. In the above example, the levels of voter registration would be Democrat, Republican, Independent, and Not Affiliated.</p>
+<p><strong>CODE</strong>: To view the levels of a categorical variable in R, we can input the column of interest into the <code>unique()</code> function, such as <code>unique(voter_data$registration)</code>. for a dataset called <code>voter_data</code> with a column called <code>registration</code> which included how voters are registered, this code would output all the <em>levels</em> of the categorical variable.</p>
+<p>Below, we will see how to use <code>favstats()</code> to get summary statistics broken out for every level of a categorical variable.</p>
 </section>
 <section id="summarizing-a-quantitative-variable-for-multiple-categories" class="level1">
 <h1>Summarizing a Quantitative Variable for Multiple Categories</h1>

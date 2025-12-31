@@ -489,7 +489,10 @@ window.Quarto = {
   <li><a href="#step-1-read-in-data" id="toc-step-1-read-in-data" class="nav-link" data-scroll-target="#step-1-read-in-data">Step 1: Read in data</a></li>
   <li><a href="#step-2-review-the-data" id="toc-step-2-review-the-data" class="nav-link" data-scroll-target="#step-2-review-the-data">Step 2: Review the data</a></li>
   <li><a href="#step-2-explore-the-data" id="toc-step-2-explore-the-data" class="nav-link" data-scroll-target="#step-2-explore-the-data">Step 2: Explore the Data</a></li>
-  <li><a href="#step-4-perform-the-appropriate-analysis" id="toc-step-4-perform-the-appropriate-analysis" class="nav-link" data-scroll-target="#step-4-perform-the-appropriate-analysis">Step 4: Perform the appropriate analysis</a></li>
+  <li><a href="#step-4-perform-the-appropriate-analysis" id="toc-step-4-perform-the-appropriate-analysis" class="nav-link" data-scroll-target="#step-4-perform-the-appropriate-analysis">Step 4: Perform the appropriate analysis</a>
+  <ul class="collapse">
+  <li><a href="#which-means-are-different-1" id="toc-which-means-are-different-1" class="nav-link" data-scroll-target="#which-means-are-different-1">Which Means are Different</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your turn!</a></li>
   </ul>
@@ -605,7 +608,7 @@ Unlike the standard normal distribution, the <span class="math inline">\(F\)</sp
 <h3 class="anchored" data-anchor-id="normality-of-residuals">Normality of Residuals</h3>
 <p>Residuals are defined as the difference between an observation and it’s “expected” value:</p>
 <p><span class="math display">\[residual = \text{observed}-\text{expected}\]</span></p>
-<p>In the case of ANOVA, that means we get a residual for every observation by taking the observed value and subtracting its group mean. Once again, R will provide this for us.</p>
+<p>In the case of ANOVA, the expected value is simply the group average. We get the residual for each observation by taking the observed value and subtracting its group mean. Once again, R will provide this for us.</p>
 <p>For our analysis to be valid, we need to see if the residuals are normally distributed. We can do a <code>qqPlot()</code> of the residuals to assess this requirement.</p>
 <p>If both requirements are met, the P-value is sound.</p>
 </section>
@@ -619,10 +622,10 @@ Unlike the standard normal distribution, the <span class="math inline">\(F\)</sp
 <p>The generic process for performing an ANOVA is:</p>
 <pre><code>
 # Name the ANOVA output:
-output &lt;- aov(data$response_variable ~ data$categorical_variable)
+aov_output &lt;- aov(data$response_variable ~ data$categorical_variable)
 
 # Summarise the ANOVA output to get test statistics, DF, P-value, etc:
-summary(output)
+summary(aov_output)
 </code></pre>
 <section id="check-anova-requirments" class="level3">
 <h3 class="anchored" data-anchor-id="check-anova-requirments">Check ANOVA Requirments:</h3>
@@ -640,30 +643,31 @@ max(sds) / min(sds)
 
 # if max/min &lt; 2, then we're ok
 </code></pre>
+<p>This gives us a valuable rule by which to decide if there is a violation of the constant variance requirement for the F-test.</p>
+<p>We can visualize this just as we did with the regression analysis by plotting the residuals against their predicted values.</p>
+<pre><code>plot(aov_output, which = 1)</code></pre>
+<p>In an ANOVA, the predicted value is the group mean. Because every observation in the group has the same predicted value, the residuals line up on vertical lines according to their group average. We can visually assess if one of the groups looks like there is much smaller variability than the others.</p>
 </section>
 <section id="assessing-normality-of-the-residuals" class="level4">
 <h4 class="anchored" data-anchor-id="assessing-normality-of-the-residuals">Assessing Normality of the Residuals</h4>
 <p>We can assess normality of the residuals with a <code>qqPlot()</code>. We first need to extract the residuals from our output:</p>
 <pre><code># Name the output of the aov() function `output`:
 
-output &lt;- aov(data$response_variable ~ data$categorical_variable)
+aov_output &lt;- aov(data$response_variable ~ data$categorical_variable)
 
 # do a qqPlot of the residuals (observation values - group mean) that R calculates.  We can use th `$` to tell R what part of the output we want to make into a qqPlot():  
 
-qqPlot(output$residuals)
+qqPlot(aov_output$residuals)
 </code></pre>
 <p>If most of the points fall within the blue zone, we can be confident that the residuals are normally distributed.</p>
 </section>
 <section id="which-means-are-different" class="level4">
 <h4 class="anchored" data-anchor-id="which-means-are-different">Which Means are Different?</h4>
-<p>If the overall <span class="math inline">\(F\)</span>-test is statistically significant (<span class="math inline">\(P\)</span>-value &lt; <span class="math inline">\(\alpha\)</span>) then we can use what is called Tukey’s Honest Significant Difference to look at pairwise comparisons between the groups. We use the <code>TukeyHSD()</code> function by including either the <code>aov()</code> model output or the formula as follows:</p>
-<pre><code>TukeyHSD(output)
-
-# Or equivalently:
-
-TukeyHSD(data$response_variable ~ data$categorical_variable)
+<p>If the overall <span class="math inline">\(F\)</span>-test is statistically significant (<span class="math inline">\(P\)</span>-value &lt; <span class="math inline">\(\alpha\)</span>) then we can use what is called Tukey’s Honest Significant Difference to look at pairwise comparisons between the groups. We use the <code>TukeyHSD()</code> function by including the <code>aov()</code> model output:</p>
+<pre><code>TukeyHSD(aov_output)
 </code></pre>
 <p><strong>CAUTION</strong>: Only use <code>TukeyHSD()</code> when the overall <span class="math inline">\(F\)</span>-test is statistically significant.</p>
+<p>We can easily plot the confidence</p>
 </section>
 </section>
 </section>
@@ -683,7 +687,7 @@ TukeyHSD(data$response_variable ~ data$categorical_variable)
 <h2 class="anchored" data-anchor-id="step-2-explore-the-data">Step 2: Explore the Data</h2>
 <p>How many species do we have in our dataset?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     setosa versicolor  virginica 
@@ -692,7 +696,7 @@ TukeyHSD(data$response_variable ~ data$categorical_variable)
 </div>
 <p>Create a side-by-side boxplot of species and Sepal Length.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">ylab=</span><span class="st">"Sepal Length"</span>, <span class="at">main =</span> <span class="st">"Sepal Length by Species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">ylab=</span><span class="st">"Sepal Length"</span>, <span class="at">main =</span> <span class="st">"Sepal Length by Species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -703,13 +707,13 @@ TukeyHSD(data$response_variable ~ data$categorical_variable)
 </div>
 <p>Using GGPlot:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Sepal Length"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Sepal Length by Species"</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Sepal Length"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Sepal Length by Species"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -722,8 +726,8 @@ TukeyHSD(data$response_variable ~ data$categorical_variable)
 <section id="step-4-perform-the-appropriate-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="step-4-perform-the-appropriate-analysis">Step 4: Perform the appropriate analysis</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>aov_sepal <span class="ot">&lt;-</span> <span class="fu">aov</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov_sepal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>aov_sepal <span class="ot">&lt;-</span> <span class="fu">aov</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov_sepal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
 Species       2  63.21  31.606   119.3 &lt;2e-16 ***
@@ -735,9 +739,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Before we make a conclusion, we want to check that we can trust our output. Every statistical test has requirements that must be satisfied if we are to trust our conclusions. For ANOVA, we need to check the normality and that the variation within groups is roughly the same.</p>
 <p>We use a QQ-plot to check for normality and the ratio of the largest to the smallest standard deviation to check “equal” variation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QQ plots show how closely the the residuals are to a normal distribution</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(aov_sepal<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QQ plots show how closely the the residuals are to a normal distribution</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(aov_sepal<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -748,15 +752,23 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 107 132</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that there is less than a 2X difference between the largest and smallest standard deviations</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We can assign favstats()$sd to a variable to make it easier to use. Recall the "$" can also be used to extract specific output from functions</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="fu">favstats</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)<span class="sc">$</span>sd</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(sds) <span class="sc">/</span> <span class="fu">min</span>(sds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that there is less than a 2X difference between the largest and smallest standard deviations</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We can assign favstats()$sd to a variable to make it easier to use. Recall the "$" can also be used to extract specific output from functions</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="fu">favstats</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data=</span>iris)<span class="sc">$</span>sd</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(sds) <span class="sc">/</span> <span class="fu">min</span>(sds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.803967</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov_sepal, <span class="at">which=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1-ANOVA_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><strong>Question</strong>: What is the F-statistics?<br>
@@ -769,6 +781,26 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <strong>Answer</strong>: &lt;2e-16</p>
 <p><strong>Question</strong>: What is your conclusion?<br>
 <strong>Answer</strong>: Because p is less than alpha, we reject the null hypothesis. We conclude that at least one of the means of Sepal Length is different from the other group means.</p>
+<section id="which-means-are-different-1" class="level3">
+<h3 class="anchored" data-anchor-id="which-means-are-different-1">Which Means are Different</h3>
+<p>In the event that the overall test statistics is significant, we can look deeper into the pair-wise differences using the <code>TukeyHSD()</code> function as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(aov_sepal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = Sepal.Length ~ Species, data = iris)
+
+$Species
+                      diff       lwr       upr p adj
+versicolor-setosa    0.930 0.6862273 1.1737727     0
+virginica-setosa     1.582 1.3382273 1.8257727     0
+virginica-versicolor 0.652 0.4082273 0.8957727     0</code></pre>
+</div>
+</div>
+<p>The output gives us confidence intervals and P-values for each of the pairwise differences between the means.</p>
+</section>
 </section>
 </section>
 <section id="your-turn" class="level1">
@@ -778,8 +810,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>State your null and alternative hypotheses:</p>
 <p>Perform an ANOVA:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#aov_petal &lt;- aov()</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(aov_petal)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#aov_petal &lt;- aov()</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(aov_petal)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Question</strong>: What is the F-statistics?<br>
 <strong>Answer</strong>:</p>
@@ -790,8 +822,10 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><strong>Question</strong>: What is the P-value?<br>
 <strong>Answer</strong>:</p>
 <p>Check ANOVA requirements (max_sd/min_sd &lt; 2, normal residuals)</p>
-<p><strong>Question</strong>: What is your conclusion?<br>
+<p><strong>Question</strong>: What is your conclusion for the hypothesis test?<br>
 <strong>Answer</strong>:</p>
+<p><strong>QUESTION</strong>: Which group means are significantly different from each other?</p>
+<p><strong>ANSWER</strong>:</p>
 
 
 </section>

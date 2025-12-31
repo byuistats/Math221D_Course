@@ -164,7 +164,7 @@ The average is only half the story!
 
 ## Standard Deviation
 
-The **standard deviation** is a measure of the *spread* in the distribution. If the data tend to be close together, then the standard deviation is relatively small. If the data tend to be more spread out, then the standard deviation is relatively large.  
+The **standard deviation** is a measure of the *spread* in the distribution.  The standard deviation for a sample is denoted by the latin letter, $s$. If the data tend to be close together, then the standard deviation is relatively small. If the data tend to be more spread out, then the standard deviation is relatively large.  
 
 __KEY POINT__:  Think of the standard deviation as the "average distance" of each data point away from the mean.  
 

@@ -215,7 +215,7 @@ In this case, $z$ IS the test statistic where $\bar{x}$ is the sample mean, $\mu
 
 Based on the results from the formula above, $\bar{x}$ is about 1.65 standard deviations *below* the mean.  
 
-Because we know that $Z$ follows a *standard normal* distribution, we can calculate the probability of getting a test statistic LESS than the one we observed, if the null hypothesis is true.  
+Because we know that when x-bar is normally distributed, then $Z$ follows a *standard normal* distribution.  We can calculate the probability of getting a test statistic LESS than the one we observed, if the null hypothesis is true.  
 
 This probability is the evidence we use to make a decision about the null hypothesis.  
 

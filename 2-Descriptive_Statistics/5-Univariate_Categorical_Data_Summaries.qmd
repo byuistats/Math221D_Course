@@ -11,7 +11,7 @@ In this section, you will learn:
 
   1. How to create a table in R with counts  
   2. How to create a table in R with proportions  
-  3. How to create bar charts for counts  
+  3. How to create bar plots for counts  
   
 We will use the creativity data collected in class.
 
@@ -36,9 +36,9 @@ creativity <- import('https://github.com/byuistats/Math221D_Course/raw/main/Data
 
 So far, we have focused on summarizing quantitative data.  For categorical data, we do our analysis and visualizations based on the **counts** of each of the levels.  We must first make a table of counts or percentages, then create a visualization and perform the analysis.  
 
-We summarize categorical data numerically using counts or percentages, and visually using bar charts.  
+We summarize categorical data numerically using counts or percentages, and visually using bar plots.  
 
-__NOTE__:  Later we will learn a much better way to create bar charts using raw data, but for now, we have to create the summary tables first.  
+__NOTE__:  Later we will learn a much better way to create bar plots using raw data, but for now, we have to create the summary tables first.  
 
 
 ## Creating a Table

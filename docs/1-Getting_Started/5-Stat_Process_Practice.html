@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your Name">
 
-<title>Semester Project – Math221D Notebook</title>
+<title>Statistical Process Practice Problems – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -435,20 +400,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#part-1-descriptive-statistics" id="toc-part-1-descriptive-statistics" class="nav-link" data-scroll-target="#part-1-descriptive-statistics">Part 1: Descriptive Statistics</a>
+  <li><a href="#sampling-schemes" id="toc-sampling-schemes" class="nav-link" data-scroll-target="#sampling-schemes">Sampling Schemes</a></li>
+  <li><a href="#experiment-vs-observational-studies" id="toc-experiment-vs-observational-studies" class="nav-link" data-scroll-target="#experiment-vs-observational-studies">Experiment vs Observational Studies</a>
   <ul class="collapse">
-  <li><a href="#data-import-and-preparation" id="toc-data-import-and-preparation" class="nav-link" data-scroll-target="#data-import-and-preparation">Data Import and Preparation</a></li>
-  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
-  <li><a href="#numerical-summaries" id="toc-numerical-summaries" class="nav-link" data-scroll-target="#numerical-summaries">Numerical Summaries</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
   </ul></li>
-  <li><a href="#part-2-statistical-inference" id="toc-part-2-statistical-inference" class="nav-link" data-scroll-target="#part-2-statistical-inference">Part 2: Statistical Inference</a>
+  <li><a href="#new-drug" id="toc-new-drug" class="nav-link" data-scroll-target="#new-drug">New Drug</a>
   <ul class="collapse">
-  <li><a href="#state-ho-and-ha" id="toc-state-ho-and-ha" class="nav-link" data-scroll-target="#state-ho-and-ha">State Ho and Ha</a></li>
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
-  <li><a href="#confidence-interval-where-appropriate" id="toc-confidence-interval-where-appropriate" class="nav-link" data-scroll-target="#confidence-interval-where-appropriate">Confidence Interval (where appropriate)</a></li>
-  <li><a href="#check-test-requirements" id="toc-check-test-requirements" class="nav-link" data-scroll-target="#check-test-requirements">Check Test Requirements</a></li>
+  <li><a href="#background-1" id="toc-background-1" class="nav-link" data-scroll-target="#background-1">Background</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#population-vs-sample" id="toc-population-vs-sample" class="nav-link" data-scroll-target="#population-vs-sample">Population vs Sample</a>
+  <ul class="collapse">
+  <li><a href="#background-2" id="toc-background-2" class="nav-link" data-scroll-target="#background-2">Background</a></li>
+  </ul></li>
+  <li><a href="#statistical-process" id="toc-statistical-process" class="nav-link" data-scroll-target="#statistical-process">Statistical Process</a></li>
   </ul>
 </nav>
     </div>
@@ -457,19 +422,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Semester Project</h1>
+<h1 class="title">Statistical Process Practice Problems</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Your Name </p>
-          </div>
-  </div>
     
   
     
@@ -482,79 +441,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>[Provide a brief overview of your research question. Explain why you’re interested in the topic, where you found your data and the objectives of your analysis.]</p>
+<p>These questions will help deepen your understanding of the statistical process that we refer to throughout the semester.</p>
+<hr>
 </section>
-<section id="part-1-descriptive-statistics" class="level1">
-<h1>Part 1: Descriptive Statistics</h1>
-<p>Part 1 of your semester project should include:</p>
-<ol type="1">
-<li>Reading in your data</li>
-<li>Preparing the data a. This could include filtering out missing, bad or unnecessary data</li>
-<li>Summarizing the data a. Identify and summarize your response variable
-<ul>
-<li>Visual summaries using ggplot</li>
-<li>Numerical summary tables
-<ol start="2" type="a">
-<li>Explore the explanatory variables (check for outliers)</li>
-<li>Visualize the relationship between a few explanatory variables and your response variable using ggplot</li>
-</ol></li>
-</ul></li>
-</ol>
-<section id="data-import-and-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-import-and-preparation">Data Import and Preparation</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Be sure to make this using ggplot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="sampling-schemes" class="level1">
+<h1>Sampling Schemes</h1>
+<p>In each of the following scenarios, state which type of random sample is being performed.</p>
+<p><strong>Scenario 1</strong>: Students in an Introductory Statistics class at BYU-Idaho were studying prices of cold cereal at grocery stores in Rexburg. To get a sample of cold cereal prices, they went to Albertson’s and rolled a die to decide which box from the left of the top shelf they would start on. They then recorded every 6th cereal after the first, moving from left to right down the shelves, recording the name, size, and price of each cereal in their sample.</p>
+<p><strong>QUESTION</strong>: Which sampling method did they use?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>Scenario 2</strong>: A study conducted by researchers from the Department of Education wanted to know the average debt of college students in the United States. In order to obtain a sample representative of all students, the researchers divided college students into the four classes (freshman, sophomore, junior, and senior) and then took a random sample of students from each class.</p>
+<p><strong>QUESTION</strong>: Which sampling method did they use?<br>
+<strong>ANSWER</strong>:</p>
+<hr>
 </section>
-<section id="visualizations" class="level2">
-<h2 class="anchored" data-anchor-id="visualizations">Visualizations</h2>
-<p>[Use <code>ggplot()</code> to create presentation-worth graphs (histograms, scatterplots, bar charts, boxplots, etc). Include an overall visualization of your response variable and one or two exploratory graphs showing the relationship between explanatory variables and your response.</p>
-<p><strong>NOTE</strong>: The type of graphs and summaries you do depends entirely on the type of data (categorical or quantitative) that you have for your project.]</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Visuals Here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="numerical-summaries" class="level2">
-<h2 class="anchored" data-anchor-id="numerical-summaries">Numerical Summaries</h2>
-<p>[Create numerical summaries (<code>favstats()</code>, <code>prop.table()</code> with row or column totals, etc.) of your response variable. Include a table of summary statistics broken out by your explanatory variable. Include a discussion of what you observe.]</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create numerical summaries</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="experiment-vs-observational-studies" class="level1">
+<h1>Experiment vs Observational Studies</h1>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>A sample of 504 patients in early stages of Alzheimer’s disease is divided into two groups. One group receives an experimental drug and the other a placebo. The advance of the disease is tracked at one-month intervals over the next year.</p>
+<p><strong>QUESTION</strong>: Is this a designed experiment or an observational study? Explain your answer.<br>
+<strong>ANSWER</strong>:</p>
+<hr>
 </section>
 </section>
-<section id="part-2-statistical-inference" class="level1">
-<h1>Part 2: Statistical Inference</h1>
-<p>Perform at least 1 complete statistical inference appropriate to your data, including:</p>
-<ol type="1">
-<li>State your null and alternative hypotheses</li>
-<li>Perform the appropriate statistical test</li>
-<li>Create confidence intervals where appropriate</li>
-<li>Check test requirements</li>
-<li>Correct interpretation and conclusions</li>
-</ol>
-<section id="state-ho-and-ha" class="level2">
-<h2 class="anchored" data-anchor-id="state-ho-and-ha">State Ho and Ha</h2>
-</section>
-<section id="hypothesis-test" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the appropriate test for the data selected</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="confidence-interval-where-appropriate" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-where-appropriate">Confidence Interval (where appropriate)</h2>
-</section>
-<section id="check-test-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="check-test-requirements">Check Test Requirements</h2>
+<section id="new-drug" class="level1">
+<h1>New Drug</h1>
+<section id="background-1" class="level2">
+<h2 class="anchored" data-anchor-id="background-1">Background</h2>
+<p>Say that you are a researcher for a large pharmaceutical company that has produced a new drug that is believed to help reduce the risk of developing arthritis. You test the drug and compare it to a placebo by randomly choosing one group of men and women in their 50’s to take the drug and one group of men and women in their 50’s to take a placebo. Each participant takes the drug or placebo for a period of 10 years, after which the effects of the drug are measured against the effects of the placebo.</p>
+<p><strong>QUESTION</strong>: What (or who) are the experimental units or subject?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the population of the study?<br>
+<strong>ANSWER</strong>:</p>
+<hr>
 </section>
 </section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
+<section id="population-vs-sample" class="level1">
+<h1>Population vs Sample</h1>
+<section id="background-2" class="level2">
+<h2 class="anchored" data-anchor-id="background-2">Background</h2>
+<p>Each presidential election, many different groups want to know how popular each candidate is among the electorate. In the recent election, one marketing research firm was asked by a special interest group to help estimate the proportion of Americans who supported a particular candidate. From a list of all registered voters, 8000 names were randomly selected. An automated phone-call was made to each of the 8000 individuals selected asking them to answer a few questions indicating their voting preferences. The marketing firm received 2969 responses.</p>
+<p><strong>QUESTION</strong>: What is the population of this study?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the sample of this study?<br>
+<strong>ANSWER</strong>:</p>
+<hr>
+</section>
+</section>
+<section id="statistical-process" class="level1">
+<h1>Statistical Process</h1>
+<p>Amy is doing statistical research for her semester project. On Monday she does a graph of one of the variables in her data.</p>
+<p><strong>QUESTION</strong>: Which step of the statistical process is Amy working on?<br>
+<strong>ANSWER</strong>:</p>
 
 
 </section>

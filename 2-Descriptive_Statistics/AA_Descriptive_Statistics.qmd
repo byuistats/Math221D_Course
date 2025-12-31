@@ -25,7 +25,7 @@ In this activity, you will practice everything we've covered up to this point in
   + Categorical data (one and two variables)  
     + Identifying levels of a categorical variable (`unique()`)  
     + Frequency and proportion tables (`table(data$variable)`, `prop.table(table(data$variable))`)  
-    + Univariate, sorted bar charts (`barplot(sorted_table_name)`)  
+    + Univariate, SORTED bar charts (`barplot(SORTED_table_name)`)  
     + Contingency tables (`table(row, column)`)  
     + Row/Column Percents (`prop.table(tbl_name, margin = )`)  
     + Bivariate bar charts (`barplot(table_name, beside=TRUE, col=c(2,3,4,...))`)  
@@ -209,7 +209,7 @@ __ANSWER__:
 
 
 
-Create a sorted bar chart of the counts of reasons students chose their school (`reason`):  
+Create a *SORTED* bar chart of the counts of reasons students chose their school (`reason`):  
 
 ```{r}
 
@@ -240,7 +240,7 @@ __QUESTION__:  What percent of male respondents are in a romantic relationship?
 __ANSWER__:  
 
 
-Create a bar chart that groups bars based on `sex` and colors the bars by `romantic`.
+Create a bar chart that groups bars based on `sex` on the x-axis and adds a legend for the colors of the bars by `romantic`.
 
 ```{r}
 

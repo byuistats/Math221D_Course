@@ -586,14 +586,17 @@ window.Quarto = {
 <h1>Problem 2</h1>
 <p>A researcher wants to compare the cholesterol levels (mg/dL) between patients taking a new drug and those taking a placebo. The researcher believes the new drug should lower cholesterol. A group of 20 subjects are randomly assigned to a treatment or a placebo group.</p>
 <p>Run the following code chunk to create a dataset called cholesterol:</p>
+<p><strong>NOTE</strong>: There are some intermediate steps in the code below to create the final dataset called <code>cholesterol</code> that will be used for the analysis. This dataset has 2 columns: <code>treatment</code> and <code>Cholesterol</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>drug <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">180</span>, <span class="dv">185</span>, <span class="dv">190</span>, <span class="dv">195</span>, <span class="dv">188</span>, <span class="dv">182</span>, <span class="dv">190</span>, <span class="dv">193</span>, <span class="dv">189</span>, <span class="dv">185</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>placebo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">205</span>, <span class="dv">210</span>, <span class="dv">215</span>, <span class="dv">208</span>, <span class="dv">202</span>, <span class="dv">210</span>, <span class="dv">213</span>, <span class="dv">209</span>, <span class="dv">205</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>placebo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">188</span>, <span class="dv">196</span>, <span class="dv">196</span>, <span class="dv">204</span>, <span class="dv">197</span>, <span class="dv">191</span>, <span class="dv">201</span>, <span class="dv">203</span>, <span class="dv">202</span>, <span class="dv">196</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>treatment <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Drug"</span>, <span class="fu">length</span>(drug)), <span class="fu">rep</span>(<span class="st">"Placebo"</span>, <span class="fu">length</span>(placebo)))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>cholesterol  <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">treatment =</span> treatment,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">Cholesterol =</span> <span class="fu">c</span>(drug, placebo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cholesterol  <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">treatment =</span> treatment,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">Cholesterol =</span> <span class="fu">c</span>(drug, placebo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>State the hypotheses.</p>
+<p><span class="math display">\[Ho:  \]</span><br>
+<span class="math display">\[Ha:  \]</span></p>
 <section id="summarize-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="summarize-the-data">Summarize the Data</h2>
 <p>Create a table of summary statistics comparing cholesterol levels for each treatment group:</p>
@@ -603,9 +606,6 @@ window.Quarto = {
 </section>
 <section id="hypothesis-test" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
-<p>State the hypotheses.</p>
-<p><span class="math display">\[Ho:  \]</span><br>
-<span class="math display">\[Ha:  \]</span></p>
 <p>Perform the appropriate statistical test:</p>
 <p><strong>QUESTION</strong>: What is the P-value?<br>
 <strong>ANSWER</strong>:</p>
@@ -633,8 +633,11 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">subject =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">before =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">65</span>, <span class="dv">80</span>, <span class="dv">75</span>, <span class="dv">60</span>, <span class="dv">68</span>, <span class="dv">77</span>, <span class="dv">69</span>, <span class="dv">73</span>, <span class="dv">66</span>, <span class="dv">72</span>, <span class="dv">71</span>, <span class="dv">67</span>, <span class="dv">74</span>, <span class="dv">69</span>),</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">after =</span> <span class="fu">c</span>(<span class="dv">68</span>, <span class="dv">63</span>, <span class="dv">78</span>, <span class="dv">73</span>, <span class="dv">58</span>, <span class="dv">65</span>, <span class="dv">76</span>, <span class="dv">67</span>, <span class="dv">70</span>, <span class="dv">64</span>, <span class="dv">70</span>, <span class="dv">69</span>, <span class="dv">65</span>, <span class="dv">72</span>, <span class="dv">67</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">after =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">58</span>, <span class="dv">79</span>, <span class="dv">77</span>, <span class="dv">57</span>, <span class="dv">64</span>, <span class="dv">78</span>, <span class="dv">69</span>, <span class="dv">69</span>, <span class="dv">66</span>, <span class="dv">69</span>, <span class="dv">68</span>, <span class="dv">63</span>, <span class="dv">75</span>, <span class="dv">68</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>State the hypotheses.</p>
+<p><span class="math display">\[Ho:  \]</span><br>
+<span class="math display">\[Ha:  \]</span></p>
 <section id="summarize-the-data-1" class="level2">
 <h2 class="anchored" data-anchor-id="summarize-the-data-1">Summarize the Data</h2>
 <p>Create histograms for before and after weights separately:</p>
@@ -644,9 +647,6 @@ window.Quarto = {
 </section>
 <section id="hypothesis-test-1" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h2>
-<p>State the hypotheses.</p>
-<p><span class="math display">\[Ho:  \]</span><br>
-<span class="math display">\[Ha:  \]</span></p>
 <p>Perform the appropriate statistical test:</p>
 <p><strong>QUESTION</strong>: What is the P-value?<br>
 <strong>ANSWER</strong>:</p>
@@ -671,6 +671,9 @@ window.Quarto = {
 <h1>Problem 4</h1>
 <p>A company claims that at least 85% of its products pass quality control. A quality inspector randomly samples 100 units and finds that 78 pass. Is this sufficient evidence to suggest that the actual percent of products that pass quality control is less than 85%?</p>
 <p>Use <span class="math inline">\(\alpha = 0.01\)</span>.</p>
+<p>State the null and alternative hypotheses.</p>
+<p><span class="math display">\[H_o:  \]</span><br>
+<span class="math display">\[H_a:  \]</span></p>
 <section id="data-summarization" class="level2">
 <h2 class="anchored" data-anchor-id="data-summarization">Data Summarization</h2>
 <p><strong>QUESTION</strong>: What is your sample proportion of units that pass quality control, <span class="math inline">\(\hat{p}\)</span>:<br>
@@ -678,9 +681,6 @@ window.Quarto = {
 </section>
 <section id="hypothesis-test-2" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h2>
-<p>State the null and alternative hypotheses.</p>
-<p><span class="math display">\[H_o:  \]</span><br>
-<span class="math display">\[H_a:  \]</span></p>
 <p>Perform the appropriate statistical test:</p>
 <p><strong>QUESTION</strong>: What is the P-value?<br>
 <strong>ANSWER</strong>:</p>
@@ -701,6 +701,9 @@ window.Quarto = {
 <section id="problem-5" class="level1">
 <h1>Problem 5</h1>
 <p>A researcher compares the proportion of success between two different treatments. Treatment A had 45 successes out of 120 patients, treatment B had 50 successes out of 130 patients.</p>
+<p>State the hypotheses.</p>
+<p><span class="math display">\[H_o:  \]</span><br>
+<span class="math display">\[H_a:  \]</span></p>
 <section id="data-summarization-1" class="level2">
 <h2 class="anchored" data-anchor-id="data-summarization-1">Data Summarization</h2>
 <p><strong>QUESTION</strong>: What is your sample proportion of success for each treatment?</p>
@@ -709,9 +712,6 @@ window.Quarto = {
 </section>
 <section id="hypothesis-test-3" class="level2">
 <h2 class="anchored" data-anchor-id="hypothesis-test-3">Hypothesis Test</h2>
-<p>State the hypotheses.</p>
-<p><span class="math display">\[H_o:  \]</span><br>
-<span class="math display">\[H_a:  \]</span></p>
 <p>Perform the appropriate statistical test:</p>
 <p><strong>QUESTION</strong>: What is the P-value?<br>
 <strong>ANSWER</strong>:</p>

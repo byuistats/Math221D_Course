@@ -488,7 +488,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Summarize bivariate data in contingency tables</li>
 <li>Calculate row and column percents</li>
-<li>Create side-by-side, grouped bar charts</li>
+<li>Create side-by-side, grouped bar plots</li>
 </ol>
 </section>
 <section id="a-more-civilized-age" class="level2">
@@ -602,13 +602,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="visual-summaries" class="level2">
 <h2 class="anchored" data-anchor-id="visual-summaries">Visual Summaries</h2>
-<p>The best way to visualize 2 categorical variables is with a grouped, side-by-side bar chart. Soon we will learn a better way to make visualizations in R. For now, it’s a bit clunky to get the right type of graph that makes sense. But here’s the process:</p>
+<p>The best way to visualize 2 categorical variables is with a grouped, side-by-side bar plot. Soon we will learn a better way to make visualizations in R. For now, it’s a bit clunky to get the right type of graph that makes sense. But here’s the process:</p>
 <ol type="1">
 <li>Create and name a contingency table. Your <em>column</em> variable will be how the bars are grouped, and the <em>row</em> variable will determine the colors of the grouped bars</li>
 <li>Input the table name into the <code>barplot()</code> including the additional inputs: <code>beside=TRUE</code> which puts the bars next to each other, and <code>legend=TRUE</code> which will add a legend showing which bars correspond to which colors</li>
 <li>The default colors are atrocious. You can specify the colors by adding the additional input <code>col=c(2,3,4)</code> or <code>col=c("lightblue", "lightgreen", "darkred",...)</code> including as many colors as there are levels in the <em>row</em> variable.</li>
 </ol>
-<p>Visually, bar charts are the optimal way to express categorical data. Pie charts, while very common, are problematic because of weaknesses in basic human perception.</p>
+<p>Visually, bar plots are the optimal way to express categorical data. Pie charts, while very common, are problematic because of weaknesses in basic human perception.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tbl1 <span class="ot">&lt;-</span> <span class="fu">table</span>(sw<span class="sc">$</span>Gender, sw<span class="sc">$</span><span class="st">`</span><span class="at">Are You a Fan of SW?</span><span class="st">`</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -683,7 +683,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Error: object 'tbl3' not found</code></pre>
 </div>
 </div>
-<p>Swap the row and column inputs and create the bar chart with the opposite grouping:</p>
+<p>Swap the row and column inputs and create the bar plot with the opposite grouping:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tbl4 <span class="ot">&lt;-</span> <span class="fu">table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">

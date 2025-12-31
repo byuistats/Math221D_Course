@@ -59,7 +59,7 @@ telepaths
     a. Mean, standard deviation, and sample size of Sleep Hours on non-school nights 
     b. Mean, standard deviation, and sample size of the percent of recommended sleep
 
-**HINT**:  Use the `unique()` function to see what the options are for a given categorical variable.
+
 
 ```{r}
 # Your Code

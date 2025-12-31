@@ -40,7 +40,7 @@ library(car)
 library(mosaic)
 library(rio)
 
-big5 <- import("https://github.com/byuistats/Math221D_Course/raw/main/Data/All_class_combined_personality_data.csv") %>% tibble()
+big5 <- import("https://github.com/byuistats/Math221D_Course/raw/main/Data/All_class_combined_personality_data_historical.csv") %>% tibble()
 
 ```
 

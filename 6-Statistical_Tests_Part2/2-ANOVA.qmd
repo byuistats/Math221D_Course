@@ -1,0 +1,426 @@
+---
+title: "Analysis of Variance (ANOVA)"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introduction
+
+The proper analysis for situations with a **quantitative response** variable and a **categorical explanatory** variable with 3 or more levels/categories is called Analysis of Variance.  This has the unfortunate acronym, ANOVA.  
+
+
+# Hypothesis Test
+
+Recall that the generic null hypothesis is that there is NO RELATIONSHIP between $x$ and $y$.  For a categorical explanatory variable and a quantitative response variable, this means that there would be no differences between the group means for each category.  
+
+The null and alternative hypotheses are always the same for an ANOVA:
+
+$$H_o: \mu_1 = \mu_2 = ...\mu_k$$
+where k is the number of groups in the data.
+
+$$H_a: \text{at least one } \mu_k \text{ is different}$$
+## Visualizing Ho
+
+Even if the null hypothesis is true, there will be sample-to-sample variation.  Below is a simulation that looks at different boxplots that are all from the same population.  
+
+Play around and see the impact of sample size (within each group) and the expected variability between groups, even when Ho is true:  
+
+<iframe src="https://byuistats.github.io/Null_Hypothesis_Simulation_App/" width="700" height="500" style="border:none;"></iframe>
+
+
+## Test Statistic
+
+The Test Statistic for testing the relationship between a quantitative response variable and a categorical explanatory variable with >2 categories is called $F$.  
+
+
+The formula for $F$ is complicated.  But we can consider the signal-to-noise ratio as follows: 
+
+__SIGNAL__:  The variation *between* the means, ie. how far apart the group means are spread out.    
+
+__NOISE__:  The variation *within* groups.  This variation represents the natural variation inherent in the data independent of any differences between the means.  
+
+$$ F=\frac{\text{Between-group Variation}}{\text{Within-group Variation}}$$
+
+Let's look at an example to illustrate.  
+
+### Seed Treatment Experiment
+
+Imagine you're comparing 4 pesticide seed treatments for corn seeds.  These treatments are all supposed to improve emergence uniformity and crop yield.  
+
+The null hypothesis is that seed treatment has no effect on crop yield.  This is typically expressed as a statistical hypothesis by stating that the **average** emergence is the same regardless of which treatment you use.  
+
+We would express this as:  
+
+$$H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4$$
+__PONDER__:  Can you see the connection between the treatment means being the same and "no relation" between treatment and emergence uniformity?  
+
+
+The alternative hypothesis for an $F$-statistics is:
+
+$$H_a: \text{at least one } \mu_k \text{ is different}$$
+
+__Note__:  The $F$-test does not tell us *which* group is different or how many are different from each other.  The $F$-test only tells us that at least one mean is different.  
+
+A good experiment would run multiple experimental trials on different farms.  Ideally, we'd want a good random sample of farms in the area we expect to be planting.  
+
+If the null hypothesis were *true*, any differences observed between the treatment means should be due to random variation or "noise" inherent in growing corn. The within-treatment variation is a good estimate of the "noise" because it reflects the natural variability in seed yields when the null hypothesis is true. 
+
+If the null hypothesis is *false*, we would expect the treatment means to be much more spread out relative to the within-treatment variation.  
+
+The test statistic is the ratio of the variation **between** groups and the average variation **within** groups.  The further spread out the sample means are relative to the noise within the groups, the more evidence we have against $H_0$.  
+
+A large F-statistics means the group averages are much more spread out than the natural variability in crop emergence.  
+
+### Visualizing Between-group and Within-group Variation
+
+We can get a sense the signal and noise visually.
+
+
+![](../Images/one-way-anova-basics.png)
+
+
+
+## The F-Distribution
+
+The shape of the probability distribution of the F-statistic changes shape depending on how much data we have AND how many groups we have.  These parameters in the $F$-distribution are called **Degrees of Freedom**, and the F-distribution has 2 sets.  
+
+The numerator (signal), or __between groups degrees of freedom__ is $df_{between}=k-1$, where k is the number of groups you are comparing.  
+
+The denominator, or __within groups degrees of freedom__ is $df_{within}=n-k$ where n is the total number of data points and k is the number of groups.  
+
+We will get the values of both degrees of freedom directly from the R output.  
+Unlike the standard normal distribution, the $F$-distribution is not centered around zero and can **never be negative** because $F$ is the ratio of 2 positive numbers and is, therefore, always positive.  
+
+To summarize:
+
+  1. $F$ is always positive because it is the ratio of 2 positive numbers
+  2. $F$ is always right skewed
+  3. $F$ changes shape depending on the number of groups (numerator degrees of freedom) and the number of total data points (denominator degrees of freedom)
+
+
+![](../Images/F_distribution.png)
+
+The P-value for an F-statistic is always one-tailed.  The probability of observing a test statistic, $F$, if the null hypothesis is true can be visualized:
+
+![](../Images/Fdistr_pvalue.png)
+
+
+In practice, the computer calculates the test statistic, P-value, and degrees of freedom and we interpret the output as with other statistical tests. 
+
+
+### The P-value
+
+The P-value is the probability of observing an $F$-statistic higher than the one we observed if the null hypothesis were true.  
+
+For a cutoff a given $\alpha$:  
+
+  1. When $P$-value is less than $\alpha$, we REJECT the null hypothesis and say we have SUFFICIENT evidence to suggest that at least one of the group means is different
+  2. When $P$-value is greater than $\alpha$, we FAIL TO REJECT the null hypothesis and say we have INSUFFICIENT evidence to suggest that any of the means are different
+  
+
+
+## Test Requirements
+
+Just as with other statistical tests we've done so far, the $F$-test has certain requirements we must check to validate our P-values.  Because of the way we calculate F, we are less concerned with the normality of the individual groups as we are with the variation within the groups.  
+
+What to check:
+
+  1. Are the standard deviations of each group "equal"?
+  2. Are the residuals normally distributed?  
+
+### Test Equal Variances
+
+To check the first requirement we can compare the biggest standard deviation to the smallest.  If the ratio of the biggest to the smallest is less than 2, we conclude that the population standard deviations are "equal". 
+
+__NOTE__: Intuitively, this means that if the biggest standard deviation is more than twice as big as the smallest, then we might have cause for concern. 
+
+This can be checked using the standard deviations from the `favstats()` output (see Analysis in R below)
+
+### Normality of Residuals
+
+Residuals are defined as the difference between an observation and it's "expected" value:
+
+$$residual = \text{observed}-\text{expected}$$
+
+In the case of ANOVA, the expected value is simply the group average.  We get the residual for each observation by taking the observed value and subtracting its group mean.  Once again, R will provide this for us.  
+
+For our analysis to be valid, we need to see if the residuals are normally distributed.  We can do a `qqPlot()` of the residuals to assess this requirement.  
+
+
+If both requirements are met, the P-value is sound.  
+
+
+## Analysis in R
+
+To perform an ANOVA, we use the `aov()` function with the familiar formula `data$response ~ data$explanatory`.
+
+The `aov()` function by itself isn't very useful on its own.  We can use the `summary()` function to give us all the output we need to perform a hypothesis test.
+
+We typically name our output using the assignment operator `<-` to make it easier to get the information we would like.  
+
+The inside of `aov()` will look familiar, using the same `~` notation we've used all semester.
+
+The generic process for performing an ANOVA is:  
+
+
+```
+
+# Name the ANOVA output:
+aov_output <- aov(data$response_variable ~ data$categorical_variable)
+
+# Summarise the ANOVA output to get test statistics, DF, P-value, etc:
+summary(aov_output)
+
+```
+
+### Check ANOVA Requirments:
+
+Just as with the other statistical tests, ANOVA has certain requirements for us to be able to trust the P-value.  
+
+#### Checking Equal Standard Deviations:
+
+We can use `favstats()` to extract the standard deviations of each group, then find the ratio of the max/min to see if it is less than 2.  
+
+```
+# extract only the standard deviations from favstats output using th `$`:
+
+sds <- favstats(data$response_variable ~ data$categorical_variable)$sd
+
+# Compare the max/min to 2
+
+max(sds) / min(sds)
+
+# if max/min < 2, then we're ok
+
+```
+
+This gives us a valuable rule by which to decide if there is a violation of the constant variance requirement for the F-test.  
+
+We can visualize this just as we did with the regression analysis by plotting the residuals against their predicted values.  
+
+```
+plot(aov_output, which = 1)
+```
+
+In an ANOVA, the predicted value is the group mean.  Because every observation in the group has the same predicted value, the residuals line up on vertical lines according to their group average.  We can visually assess if one of the groups looks like there is much smaller variability than the others.  
+
+
+#### Assessing Normality of the Residuals
+
+We can assess normality of the residuals with a `qqPlot()`.  We first need to extract the residuals from our output:
+
+```
+# Name the output of the aov() function `output`:
+
+aov_output <- aov(data$response_variable ~ data$categorical_variable)
+
+# do a qqPlot of the residuals (observation values - group mean) that R calculates.  We can use th `$` to tell R what part of the output we want to make into a qqPlot():  
+
+qqPlot(aov_output$residuals)
+
+```
+
+If most of the points fall within the blue zone, we can be confident that the residuals are normally distributed.  
+
+
+
+#### Which Means are Different?
+
+If the overall $F$-test is statistically significant ($P$-value < $\alpha$) then we can use what is called Tukey's Honest Significant Difference to look at pairwise comparisons between the groups.  We use the `TukeyHSD()` function by including the `aov()` model output:  
+
+```
+TukeyHSD(aov_output)
+
+```
+
+__CAUTION__:  Only use `TukeyHSD()` when the overall $F$-test is statistically significant.
+
+
+We can easily plot the confidence
+
+
+# Practice Together
+
+## Step 1:  Read in data
+
+For this demonstration we will be exploring the iris data.  This dataset is built in to base R libraries, so we can access it without reading it in using "import".
+
+## Step 2:  Review the data
+```{r, include = FALSE, echo = FALSE}
+
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(car)
+
+#head(iris)
+#View(iris)
+
+favstats(Sepal.Length ~ Species, data=iris)
+
+```
+
+
+The iris data contains multiple measures on flowers that might be of interest to compare across species.   
+
+Let's first compare sepal lengths between species.
+
+## Step 2: Explore the Data
+
+How many species do we have in our dataset?
+
+```{r}
+table(iris$Species)
+```
+
+
+Create a side-by-side boxplot of species and Sepal Length.
+
+
+```{r}
+
+boxplot(Sepal.Length ~ Species, data=iris, col = c(2,3,4), ylab="Sepal Length", main = "Sepal Length by Species")
+
+```
+
+Using GGPlot:
+
+```{r}
+ggplot(iris, aes(x=Species, y = Sepal.Length)) +
+  geom_boxplot(fill=c(2,3,4)) +
+  theme_bw() +
+  labs(
+    y = "Sepal Length",
+    title = "Sepal Length by Species"
+  )
+```
+
+
+
+## Step 4: Perform the appropriate analysis
+
+
+
+```{r}
+
+aov_sepal <- aov(Sepal.Length ~ Species, data=iris)
+summary(aov_sepal)
+
+```
+
+Before we make a conclusion, we want to check that we can trust our output.  Every statistical test has requirements that must be satisfied if we are to trust our conclusions.  For ANOVA, we need to check the normality and that the variation within groups is roughly the same.  
+
+We use a QQ-plot to check for normality and the ratio of the largest to the smallest standard deviation to check "equal" variation.
+
+```{r}
+
+# QQ plots show how closely the the residuals are to a normal distribution
+
+qqPlot(aov_sepal$residuals)
+
+# Check that there is less than a 2X difference between the largest and smallest standard deviations
+
+# We can assign favstats()$sd to a variable to make it easier to use. Recall the "$" can also be used to extract specific output from functions
+
+sds <- favstats(Sepal.Length ~ Species, data=iris)$sd
+
+max(sds) / min(sds)
+
+plot(aov_sepal, which=1)
+
+```
+
+
+__Question__:  What is the F-statistics?  
+__Answer__:   119.3
+
+__Question__:  What are the between-groups degrees of freedom?  
+__Answer__:  2
+
+__Question__:  What are the within-groups degrees of freedom?  
+__Answer__:  147
+
+__Question__:  What is the P-value?  
+__Answer__:  <2e-16
+
+__Question__:  What is your conclusion?  
+__Answer__:  Because p is less than alpha, we reject the null hypothesis.  We conclude that at least one of the means of Sepal Length is different from the other group means.  
+
+
+### Which Means are Different
+
+In the event that the overall test statistics is significant, we can look deeper into the pair-wise differences using the `TukeyHSD()` function as follows:
+
+```{r}
+
+TukeyHSD(aov_sepal)
+
+```
+
+The output gives us confidence intervals and P-values for each of the pairwise differences between the means. 
+
+
+# Your turn!
+
+Let's go through the same steps but compare Petal Length. 
+
+Make a side-by-side boxplot of Petal Length for each species.
+
+```{r}
+
+
+```
+
+
+State your null and alternative hypotheses:
+
+
+
+```{r}
+
+
+```
+
+Perform an ANOVA:
+
+```{r}
+
+#aov_petal <- aov()
+#summary(aov_petal)
+
+
+```
+
+__Question__:  What is the F-statistics?  
+__Answer__:  
+
+__Question__:  What are the between-groups degrees of freedom?  
+__Answer__:  
+
+__Question__:  What are the within-groups degrees of freedom?  
+__Answer__:  
+
+__Question__:  What is the P-value?  
+__Answer__:  
+
+
+Check ANOVA requirements (max_sd/min_sd < 2, normal residuals)
+
+```{r}
+
+```
+
+__Question__:  What is your conclusion for the hypothesis test?  
+__Answer__:  
+
+
+__QUESTION__:  Which group means are significantly different from each other?  
+
+```{r}
+
+
+```
+
+__ANSWER__:  

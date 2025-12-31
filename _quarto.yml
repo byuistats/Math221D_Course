@@ -84,10 +84,10 @@ website:
 
     - text: "Statistical Tests II"
       menu:
-        - href: ./6-Statistical_Tests_Part2/1-ANOVA.qmd
-        - href: ./6-Statistical_Tests_Part2/1-ANOVA_Practice.qmd
-        - href: ./6-Statistical_Tests_Part2/2-Regression.qmd
-        - href: ./6-Statistical_Tests_Part2/2-Regression_Practice.qmd
+        - href: ./6-Statistical_Tests_Part2/1-Regression.qmd
+        - href: ./6-Statistical_Tests_Part2/1-Regression_Practice.qmd
+        - href: ./6-Statistical_Tests_Part2/2-ANOVA.qmd
+        - href: ./6-Statistical_Tests_Part2/2-ANOVA_Practice.qmd
         - href: ./6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence.qmd
         - href: ./6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence_Practice.qmd
 
@@ -95,7 +95,8 @@ website:
       menu:
         - href: ./7-Semester_Project/Data_Search.qmd
         - href: ./7-Semester_Project/Importing_Data.qmd
-        - href: ./7-Semester_Project/Semester_Project_Template.qmd
+        - href: ./7-Semester_Project/1-Semester_Project_Template_Part1.qmd
+        - href: ./7-Semester_Project/2-Semester_Project_Template_Final_Report.qmd
 
         
     - text: "R Help"

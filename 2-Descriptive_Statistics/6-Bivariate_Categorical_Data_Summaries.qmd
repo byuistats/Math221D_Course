@@ -16,7 +16,7 @@ In this section, we introduce numerical and graphical summaries of comparing cat
 
   1.  Summarize bivariate data in contingency tables
   2.  Calculate row and column percents
-  3.  Create side-by-side, grouped bar charts
+  3.  Create side-by-side, grouped bar plots
 
 ## A More Civilized Age
 
@@ -140,14 +140,14 @@ __ANSWER__:
 
 ## Visual Summaries
 
-The best way to visualize 2 categorical variables is with a grouped, side-by-side bar chart.  Soon we will learn a better way to make visualizations in R.  For now, it's a bit clunky to get the right type of graph that makes sense.  But here's the process:  
+The best way to visualize 2 categorical variables is with a grouped, side-by-side bar plot.  Soon we will learn a better way to make visualizations in R.  For now, it's a bit clunky to get the right type of graph that makes sense.  But here's the process:  
 
   1.  Create and name a contingency table.  Your *column* variable will be how the bars are grouped, and the *row* variable will determine the colors of the grouped bars
   2.  Input the table name into the `barplot()` including the additional inputs:  `beside=TRUE` which puts the bars next to each other, and `legend=TRUE` which will add a legend showing which bars correspond to which colors
   3. The default colors are atrocious.  You can specify the colors by adding the additional input `col=c(2,3,4)` or `col=c("lightblue", "lightgreen", "darkred",...)` including as many colors as there are levels in the *row* variable.  
 
 
-Visually, bar charts are the optimal way to express categorical data.  Pie charts, while very common, are problematic because of weaknesses in basic human perception. 
+Visually, bar plots are the optimal way to express categorical data.  Pie charts, while very common, are problematic because of weaknesses in basic human perception. 
 
 
 ```{r}
@@ -220,7 +220,7 @@ barplot(tbl3, beside = TRUE, legend=TRUE)
 ```
 
 
-Swap the row and column inputs and create the bar chart with the opposite grouping: 
+Swap the row and column inputs and create the bar plot with the opposite grouping: 
 
 ```{r}
 tbl4 <- table()

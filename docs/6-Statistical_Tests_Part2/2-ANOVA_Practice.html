@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your Name">
 
-<title>Semester Project – Math221D Notebook</title>
+<title>ANOVA Practice – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -354,20 +382,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-ii">    
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA.html">
- <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/1-ANOVA.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA_Practice.html">
- <span class="dropdown-text">ANOVA Practice</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/1-ANOVA_Practice.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression.html">
- <span class="dropdown-text">Simple Linear Regression</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/2-Regression.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression_Practice.html">
- <span class="dropdown-text">Regression Practice</span></a>
+    <a class="dropdown-item" href=".././6-Statistical_Tests_Part2/2-Regression_Practice.qmd">
+ <span class="dropdown-text"></span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence.html">
@@ -434,21 +462,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#part-1-descriptive-statistics" id="toc-part-1-descriptive-statistics" class="nav-link" data-scroll-target="#part-1-descriptive-statistics">Part 1: Descriptive Statistics</a>
+  <li><a href="#life-expectancy-of-female-authors" id="toc-life-expectancy-of-female-authors" class="nav-link active" data-scroll-target="#life-expectancy-of-female-authors">Life Expectancy of Female Authors</a>
   <ul class="collapse">
-  <li><a href="#data-import-and-preparation" id="toc-data-import-and-preparation" class="nav-link" data-scroll-target="#data-import-and-preparation">Data Import and Preparation</a></li>
-  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
-  <li><a href="#numerical-summaries" id="toc-numerical-summaries" class="nav-link" data-scroll-target="#numerical-summaries">Numerical Summaries</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#load-the-data-and-libraries" id="toc-load-the-data-and-libraries" class="nav-link" data-scroll-target="#load-the-data-and-libraries">Load the Data and Libraries</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the Data</a></li>
+  <li><a href="#perform-the-appropriate-analysis" id="toc-perform-the-appropriate-analysis" class="nav-link" data-scroll-target="#perform-the-appropriate-analysis">Perform the Appropriate Analysis</a></li>
   </ul></li>
-  <li><a href="#part-2-statistical-inference" id="toc-part-2-statistical-inference" class="nav-link" data-scroll-target="#part-2-statistical-inference">Part 2: Statistical Inference</a>
+  <li><a href="#testing-mosquitos" id="toc-testing-mosquitos" class="nav-link" data-scroll-target="#testing-mosquitos">Testing Mosquitos</a>
   <ul class="collapse">
-  <li><a href="#state-ho-and-ha" id="toc-state-ho-and-ha" class="nav-link" data-scroll-target="#state-ho-and-ha">State Ho and Ha</a></li>
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
-  <li><a href="#confidence-interval-where-appropriate" id="toc-confidence-interval-where-appropriate" class="nav-link" data-scroll-target="#confidence-interval-where-appropriate">Confidence Interval (where appropriate)</a></li>
-  <li><a href="#check-test-requirements" id="toc-check-test-requirements" class="nav-link" data-scroll-target="#check-test-requirements">Check Test Requirements</a></li>
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">Introduction</a></li>
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the Data</a></li>
+  <li><a href="#review-the-data" id="toc-review-the-data" class="nav-link" data-scroll-target="#review-the-data">Review the Data</a></li>
+  <li><a href="#perform-the-appropriate-analysis-1" id="toc-perform-the-appropriate-analysis-1" class="nav-link" data-scroll-target="#perform-the-appropriate-analysis-1">Perform the Appropriate Analysis</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -457,19 +484,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Semester Project</h1>
+<h1 class="title">ANOVA Practice</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Your Name </p>
-          </div>
-  </div>
     
   
     
@@ -480,83 +501,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>[Provide a brief overview of your research question. Explain why you’re interested in the topic, where you found your data and the objectives of your analysis.]</p>
+<section id="life-expectancy-of-female-authors" class="level1">
+<h1>Life Expectancy of Female Authors</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>You are curious to compare life expectancy between female poets, novelists, and non-fiction writers.</p>
+<p>You take a sample of female authors from each of the three groups to test if the average age at death is different between any of the three types of authors using a level of significance of, <span class="math inline">\(\alpha = 0.05\)</span>.</p>
 </section>
-<section id="part-1-descriptive-statistics" class="level1">
-<h1>Part 1: Descriptive Statistics</h1>
-<p>Part 1 of your semester project should include:</p>
-<ol type="1">
-<li>Reading in your data</li>
-<li>Preparing the data a. This could include filtering out missing, bad or unnecessary data</li>
-<li>Summarizing the data a. Identify and summarize your response variable
-<ul>
-<li>Visual summaries using ggplot</li>
-<li>Numerical summary tables
-<ol start="2" type="a">
-<li>Explore the explanatory variables (check for outliers)</li>
-<li>Visualize the relationship between a few explanatory variables and your response variable using ggplot</li>
-</ol></li>
-</ul></li>
-</ol>
-<section id="data-import-and-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-import-and-preparation">Data Import and Preparation</h2>
+<section id="load-the-data-and-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data-and-libraries">Load the Data and Libraries</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Be sure to make this using ggplot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>womenpoet <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/BYUI_M221_Book/Data/womenpoet.xls"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="visualizations" class="level2">
-<h2 class="anchored" data-anchor-id="visualizations">Visualizations</h2>
-<p>[Use <code>ggplot()</code> to create presentation-worth graphs (histograms, scatterplots, bar charts, boxplots, etc). Include an overall visualization of your response variable and one or two exploratory graphs showing the relationship between explanatory variables and your response.</p>
-<p><strong>NOTE</strong>: The type of graphs and summaries you do depends entirely on the type of data (categorical or quantitative) that you have for your project.]</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Visuals Here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="numerical-summaries" class="level2">
-<h2 class="anchored" data-anchor-id="numerical-summaries">Numerical Summaries</h2>
-<p>[Create numerical summaries (<code>favstats()</code>, <code>prop.table()</code> with row or column totals, etc.) of your response variable. Include a table of summary statistics broken out by your explanatory variable. Include a discussion of what you observe.]</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create numerical summaries</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="part-2-statistical-inference" class="level1">
-<h1>Part 2: Statistical Inference</h1>
-<p>Perform at least 1 complete statistical inference appropriate to your data, including:</p>
+<section id="explore-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="explore-the-data">Explore the Data</h2>
+<p>Create a side-by-side boxplot of the age at death of each of the different author styles.</p>
+<p>Modify the colors of each of the boxes for each group.</p>
+<p>Create a summary statistics table for age at death for each author type:</p>
+<p>List the mean and standard deviations of age at death for:</p>
 <ol type="1">
-<li>State your null and alternative hypotheses</li>
-<li>Perform the appropriate statistical test</li>
-<li>Create confidence intervals where appropriate</li>
-<li>Check test requirements</li>
-<li>Correct interpretation and conclusions</li>
+<li>Novelists:</li>
+<li>Poets:</li>
+<li>Non-fiction:</li>
 </ol>
-<section id="state-ho-and-ha" class="level2">
-<h2 class="anchored" data-anchor-id="state-ho-and-ha">State Ho and Ha</h2>
 </section>
-<section id="hypothesis-test" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
+<section id="perform-the-appropriate-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="perform-the-appropriate-analysis">Perform the Appropriate Analysis</h2>
+<p>State your null and alternative hypotheses:</p>
+<p>Ho:</p>
+<p>Ha:</p>
+<p>Perform an Analysis of Variance test including checking for the appropriateness of our analysis.</p>
+<p><strong>Question</strong>: What is the test statistic?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What are the degrees of freedom for your analysis?<br>
+a. Numerator (between Groups) Degrees of Freedom<br>
+b. Denominator (within groups) Degrees of Freedom<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Do you reject the null hypothesis? Why?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: State your conclusion in context of the problem.<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Can we trust the p-value? a. Check for equal standard deviation (is the ratio of the largest SD / smallest SD greater than 2?) b. Check Normality of the residuals (<code>qqPlot()</code>)<br>
+<strong>Answer</strong>:</p>
+</section>
+</section>
+<section id="testing-mosquitos" class="level1">
+<h1>Testing Mosquitos</h1>
+<section id="introduction-1" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-1">Introduction</h2>
+<p>A study was conducted to determine if different types of material can reduce the amount of mosquito human contact. The researchers evaluated five different types of patches 1=Odomos, 2=Deltamethrin, 3=Cyfluthrin, 4=D+O, 5=C+O.</p>
+<p>The amount of mosquito human contact was measured to assess any differences between the five different types of material. Use a level of significance of 0.05.</p>
+</section>
+<section id="load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data">Load the Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform the appropriate test for the data selected</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>MosquitoPatch <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://raw.githubusercontent.com/rdcromar/Math221D/main/MosquitoPatch.csv"</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Treatment =</span> <span class="fu">factor</span>(Treatment))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="confidence-interval-where-appropriate" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-where-appropriate">Confidence Interval (where appropriate)</h2>
+<section id="review-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="review-the-data">Review the Data</h2>
+<p>Create a side-by-side boxplot for human contact for each of the treatment groups.</p>
+<p>Add a title and change the colors of the boxes.</p>
+<p>Create a summary statistics table for human contact for each of the treatment groups:</p>
+<p><strong>Question</strong>: What do you observe?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the maximum standard deviation?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the minimum standard deviation?<br>
+<strong>Answer</strong>:</p>
 </section>
-<section id="check-test-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="check-test-requirements">Check Test Requirements</h2>
-</section>
-</section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
+<section id="perform-the-appropriate-analysis-1" class="level2">
+<h2 class="anchored" data-anchor-id="perform-the-appropriate-analysis-1">Perform the Appropriate Analysis</h2>
+<p>State your null and alternative hypotheses:</p>
+<p>Perform an Analysis of Variance test including checking for the appropriateness of our analysis.</p>
+<p><strong>Question</strong>: What is the test statistic (F-value)?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What are the degrees of freedom for your analysis?</p>
+<ol type="a">
+<li>Numerator (between Groups) Degrees of Freedom<br>
+</li>
+<li>Denominator (within groups) Degrees of Freedom<br>
+<strong>Answer</strong>:</li>
+</ol>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Do you reject the null hypothesis? Why?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: State your conclusion in context of the problem.<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Can we trust the p-value? a. Check for equal standard deviation (is the ratio of the largest SD / smallest SD greater than 2?) b. Check Normality of the residuals (<code>qqPlot()</code>)<br>
+<strong>Answer</strong>:</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

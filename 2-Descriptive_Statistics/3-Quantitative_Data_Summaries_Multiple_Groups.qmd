@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Introduction
 
-In this section, we will demonstrate how to numerically and visually summarize a **quantitative response** variable for each level of a **categorical explanatory** variable.  
+In this section, we will review data types (categorical and quantitative) and demonstrate how to numerically and visually summarize a **quantitative response** variable for each level of a **categorical explanatory** variable.  
 
 ## Lesson Outcomes  
 
@@ -33,15 +33,24 @@ big5 <- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/mast
 
 ```
 
+# Categorical Data Review
+
+Recall that a categorical variable in a dataset consists of labels identifying to which group or category the individual belongs.  For example, if we collected data about voter registration, we could have 4 categories:  Democrat, Republican, Independent, and Not Affiliated.  
+
+__DEFINITION__:  *Levels* of a categorical variable are all the possible group identifiers.  In the above example, the levels of voter registration would be Democrat, Republican, Independent, and Not Affiliated. 
+
+__CODE__: To view the levels of a categorical variable in R, we can input the column of interest into the `unique()` function, such as `unique(voter_data$registration)`.  for a dataset called `voter_data` with a column called `registration` which included how voters are registered, this code would output all the *levels* of the categorical variable.  
+
+Below, we will see how to use `favstats()` to get summary statistics broken out for every level of a categorical variable.  
+
 # Summarizing a Quantitative Variable for Multiple Categories
+
 
 Sometimes we would like to compare summary statistics between groups.  Much of this class will be about how to make formal, rigorous comparisons between groups. But for now, let's look at how to get different summaries of quantitative variables for multiple categories.
 
 ## Summary Statistics
 
 We can easily extend `favstats()` to output our favorite statistics for multiple groups.  
-
-
 
 We first must identify the quantitative response variable we want to compare, then tell R which categorical explanatory variable we would like to compare.  
 

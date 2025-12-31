@@ -532,7 +532,7 @@ window.Quarto = {
 </li>
 <li>Frequency and proportion tables (<code>table(data$variable)</code>, <code>prop.table(table(data$variable))</code>)<br>
 </li>
-<li>Univariate, sorted bar charts (<code>barplot(sorted_table_name)</code>)<br>
+<li>Univariate, SORTED bar charts (<code>barplot(SORTED_table_name)</code>)<br>
 </li>
 <li>Contingency tables (<code>table(row, column)</code>)<br>
 </li>
@@ -637,7 +637,7 @@ window.Quarto = {
 <p>Create a proportion table table for <code>sex</code></p>
 <p><strong>QUESTION</strong>: What percent of respondents are female?<br>
 <strong>ANSWER</strong>:</p>
-<p>Create a sorted bar chart of the counts of reasons students chose their school (<code>reason</code>):</p>
+<p>Create a <em>SORTED</em> bar chart of the counts of reasons students chose their school (<code>reason</code>):</p>
 <p><strong>QUESTION</strong>: Which reason appears to be the most popular?<br>
 <strong>ANSWER</strong>:</p>
 <p>Create and name a contingency table looking at the relationship between gender and whether or not they are in a romantic relationship.</p>
@@ -646,7 +646,7 @@ window.Quarto = {
 <strong>ANSWER</strong>:</p>
 <p><strong>QUESTION</strong>: What percent of male respondents are in a romantic relationship?<br>
 <strong>ANSWER</strong>:</p>
-<p>Create a bar chart that groups bars based on <code>sex</code> and colors the bars by <code>romantic</code>.</p>
+<p>Create a bar chart that groups bars based on <code>sex</code> on the x-axis and adds a legend for the colors of the bars by <code>romantic</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start by naming the table</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tbl_relationship <span class="ot">&lt;-</span> <span class="fu">table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
