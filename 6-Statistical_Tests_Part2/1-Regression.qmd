@@ -89,7 +89,20 @@ __DEFINITION__:  A residual is calculated for each data point by taking the diff
 
 $$\text{residual}=\text{observed}-\text{expected}$$
 
+Residuals can be positive or negative depending on whether or not an observation is above or below the expected value.  
 
+For regression analysis, the expected value is the regression line.  This is what happens, *on average*, for a given value of $x$.  Residuals look at the difference between the points and the regression line:  
+
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/residuals_for_regression.png)
+
+The regression line is the line that *minimizes* the squared residuals and is considered the "best fit" line.  
+
+If our simple linear model adequately explains the relationship between $x$ and $y$, then the residuals well have certain properties.  Ideally, the residuals:
+
+    1. Are normally distributed
+    2. Have constant variance across the range of predicted values
+
+We will show how to evaluate these when introducing the test requirements for a statistical hypothesis test below. 
 
 
 # In R
@@ -221,9 +234,9 @@ Contextual Explanation:  For every 1 unit increase in Confidence Rating, test sc
 There are certain requirements for all statistical tests to be valid.  For regression analysis, we have to have 5 requirements for our statistics to be valid.  While this sounds daunting, in practice we can check most of them very quickly.  
 
   1. Relationship between X and Y is Linear
-  2. The residuals, $\epsilon$, are normally distributed
-  3. The Variance of the error terms is constant for all values of X
-  4. The X’s are fixed and measured without error (i.e. X’s can be considered as known constants)
+  2. The residuals, $\epsilon_i$, are normally distributed
+  3. The variance of the $\epsilon_i$ is constant for all values of $x$
+  4. The $x_i$ are fixed and measured without error (i.e. $x_i$ can be considered as known constants)
   5. The observations are independent
 
 The linear relationship is assessed visually with the scatter plot.  If there is obvious curvature or non-linearity then fitting a line isn't the best model.  
@@ -270,7 +283,7 @@ __Question__:  What is the explanatory variable?
 __Answer__:  
 
 
-Make a presentation-worthy scatterplot using `ggplot()` including a regression line:
+Make a presentation-worthy scatter plot using `ggplot()` including a regression line:
 
 ```{r}
 
