@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Your Name">
 
-<title>Data Wrangling - Application Activity – Math221D Notebook</title>
+<title>Semester Project – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -230,21 +231,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Mutate.html">
+ <span class="dropdown-text">mutate()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-Factors.html">
+ <span class="dropdown-text">Factors in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/7-Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-AA_Data_Wrang_and_Viz.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/8-AA_Data_Wrang_and_Viz.html">
  <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
   </li>  
         <li class="dropdown-header">Bonus Material</li>
         <li>
     <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">
- <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
@@ -353,20 +358,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-ii">    
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA.html">
- <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA_Practice.html">
- <span class="dropdown-text">ANOVA Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-Regression.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-ANOVA.html">
+ <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-ANOVA_Practice.html">
+ <span class="dropdown-text">ANOVA Practice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence.html">
@@ -392,7 +397,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Template.html">
+    <a class="dropdown-item" href="../7-Semester_Project/1-Semester_Project_Template_Part1.html">
+ <span class="dropdown-text">Semester Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../7-Semester_Project/2-Semester_Project_Template_Final_Report.html">
  <span class="dropdown-text">Semester Project</span></a>
   </li>  
     </ul>
@@ -434,12 +443,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#load-the-data-and-libraries" id="toc-load-the-data-and-libraries" class="nav-link" data-scroll-target="#load-the-data-and-libraries">1 - Load the Data and Libraries</a></li>
-  <li><a href="#explore-the-data-and-generate-hypotheses" id="toc-explore-the-data-and-generate-hypotheses" class="nav-link" data-scroll-target="#explore-the-data-and-generate-hypotheses">2 - Explore the data and generate hypotheses</a></li>
-  <li><a href="#prepare-data-for-analysis-and-create-visualization" id="toc-prepare-data-for-analysis-and-create-visualization" class="nav-link" data-scroll-target="#prepare-data-for-analysis-and-create-visualization">3 &amp; 4 - Prepare data for analysis and Create Visualization</a>
+  <li><a href="#part-1-descriptive-statistics" id="toc-part-1-descriptive-statistics" class="nav-link" data-scroll-target="#part-1-descriptive-statistics">Part 1: Descriptive Statistics</a>
   <ul class="collapse">
-  <li><a href="#extroversion" id="toc-extroversion" class="nav-link" data-scroll-target="#extroversion">Extroversion</a></li>
-  <li><a href="#neuroticism" id="toc-neuroticism" class="nav-link" data-scroll-target="#neuroticism">Neuroticism</a></li>
+  <li><a href="#data-import-and-preparation" id="toc-data-import-and-preparation" class="nav-link" data-scroll-target="#data-import-and-preparation">Data Import and Preparation</a></li>
+  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
+  <li><a href="#numerical-summaries" id="toc-numerical-summaries" class="nav-link" data-scroll-target="#numerical-summaries">Numerical Summaries</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -449,14 +457,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Wrangling - Application Activity</h1>
-<p class="subtitle lead">Personality Revisited</p>
+<h1 class="title">Semester Project</h1>
+<p class="subtitle lead">Part 1</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Your Name </p>
+          </div>
+  </div>
     
   
     
@@ -469,128 +483,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>The Big 5 personality test is the most widely accepted tool for modelling personality in academic psychology. It is based on decades of statistical analysis of personality descriptions across languages and cultures. The <a href="https://en.wikipedia.org/wiki/Big_Five_personality_traits">big 5 traits</a> are:</p>
-<ol type="1">
-<li>Openness</li>
-<li>Conscientiousness</li>
-<li>Extroversion</li>
-<li>Agreeableness</li>
-<li>Neuroticism</li>
-</ol>
-<p>Brother Cannon collected personality data on students for the past several semesters, including a few metrics that may be associated with personality traits.</p>
-<p><strong>NOTE</strong>: Scores for personality traits are given in <em>percentiles</em> relative to the general population.</p>
-<p>In this activity, you will practice the process for approaching a dataset outlined in <a href="https://byuistats.github.io/Math221D_Course/2-Tidy_Data/05-Exploring_New_Data_with_Tidyverse.html">class</a>:</p>
-<ol type="1">
-<li>Load the data and libraries</li>
-<li>Explore the data and generate hypotheses</li>
-<li>Prepare the data for analysis</li>
-<li>Perform the appropriate analysis</li>
-</ol>
-<p>Data preparation will include using the <code>filter()</code> function. For now, analysis means creating good visualizations that tells a story using <code>ggplot()</code> and base R.</p>
+<p>[Provide a brief overview of your research question. Explain why you’re interested in the topic, where you found your data and the objectives of your analysis.]</p>
 </section>
-<section id="load-the-data-and-libraries" class="level1">
-<h1>1 - Load the Data and Libraries</h1>
-<p>Run the following code to load the necessary R libraries and import the big 5 personality data:</p>
+<section id="part-1-descriptive-statistics" class="level1">
+<h1>Part 1: Descriptive Statistics</h1>
+<p>Part 1 of your semester project should include:</p>
+<ol type="1">
+<li>Reading in your data</li>
+<li>Preparing the data a. This could include filtering out missing, bad or unnecessary data</li>
+<li>Summarizing the data a. Identify and summarize your response variable
+<ul>
+<li>Visual summaries using ggplot</li>
+<li>Numerical summary tables
+<ol start="2" type="a">
+<li>Explore the explanatory variables (check for outliers)</li>
+<li>Visualize the relationship between a few explanatory variables and your response variable using ggplot</li>
+</ol></li>
+</ul></li>
+</ol>
+<section id="data-import-and-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-import-and-preparation">Data Import and Preparation</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>big5 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/All_class_combined_personality_data_historical.csv"</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Be sure to make this using ggplot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="explore-the-data-and-generate-hypotheses" class="level1">
-<h1>2 - Explore the data and generate hypotheses</h1>
-<p>In this section, you will explore the dataset including drilling down into individual columns.</p>
-<p>Recall a few useful functions for data exploration:</p>
-<ol type="1">
-<li><code>dim()</code> to get the number of rows and columns in a dataset</li>
-<li><code>table()</code> for getting counts of categorical data</li>
-<li><code>unique()</code> for getting a list of each of the distinct values of categorical data</li>
-<li><code>favstats()</code> to get summary statistics for quantitative data</li>
-<li><code>ggplot() + geom_histogram()</code> to visualize the distribution of a single quantitative variable</li>
-<li><code>ggplot() + geom_boxplot()</code> to compare the distributions of a quantitative variable for different groups</li>
-<li><code>ggpot() + geom_bar()</code> to look at bar charts for categorical data</li>
-</ol>
-<p><strong>NOTE</strong>: Unless specified, you may use base R functions OR GGPlot.</p>
-<p><strong>QUESTION</strong>: How many students have responded to this survey? (i.e.&nbsp;how many rows)<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the maximum number of languages spoken among respondents?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Create a histogram of Extroversion. Be sure to label your graph with a title and improved x and y axis labels.</p>
+<section id="visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="visualizations">Visualizations</h2>
+<p>[Use <code>ggplot()</code> to create presentation-worth graphs (histograms, scatterplots, bar charts, boxplots, etc). Include an overall visualization of your response variable and one or two exploratory graphs showing the relationship between explanatory variables and your response.</p>
+<p><strong>NOTE</strong>: The type of graphs and summaries you do depends entirely on the type of data (categorical or quantitative) that you have for your project.]</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Put your histogram code here:  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Visuals Here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>QUESTION</strong>: What is the highest score for Extroversion?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What problems, if any, do you notice?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Make a table of birth months:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>QUESTION</strong>: Make a bar plot of birth months:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Answer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>QUESTION</strong>: What problems, if any, do you notice?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Which month has the most births for this sample of students?<br>
-<strong>ANSWER</strong>:</p>
 </section>
-<section id="prepare-data-for-analysis-and-create-visualization" class="level1">
-<h1>3 &amp; 4 - Prepare data for analysis and Create Visualization</h1>
-<p>In this section, you will be asked to create a clean dataset for each visualization.</p>
-<p>Recall a few useful functions for data wrangling:</p>
-<ol type="1">
-<li><code>filter()</code> to include or exclude specific rows</li>
-<li><code>select()</code> to include specific columns</li>
-</ol>
-<section id="extroversion" class="level2">
-<h2 class="anchored" data-anchor-id="extroversion">Extroversion</h2>
-<p><strong>QUESTION</strong>: Create a new dataset called <code>extro</code> that includes only columns for birth month and extroversion scores. Make sure it only has values that are real.</p>
-<p>HINT: Extroversion is measured in percentiles, and you should already know what the months of the year are.</p>
+<section id="numerical-summaries" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-summaries">Numerical Summaries</h2>
+<p>[Create numerical summaries (<code>favstats()</code>, <code>prop.table()</code> with row or column totals, etc.) of your response variable. Include a table of summary statistics broken out by your explanatory variable. Include a discussion of what you observe.]</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>extro <span class="ot">&lt;-</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in parse(text = input): &lt;text&gt;:4:0: unexpected end of input
-2: extro &lt;- 
-3:   
-  ^</code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create numerical summaries</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p><strong>QUESTION</strong>: <strong>USE GGPLOT</strong> to create a side-by-side boxplot of Extroversion scores for all birth months.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="6-AA_Data_Wrang_and_Viz_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>QUESTION</strong>: Based on the boxplot, which month appears to be the least extroverted? Explain your reasoning.<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Based on the boxplot, which month appears to be the most extroverted? Explain your reasoning.<br>
-<strong>ANSWER</strong>:</p>
-</section>
-<section id="neuroticism" class="level2">
-<h2 class="anchored" data-anchor-id="neuroticism">Neuroticism</h2>
-<p><strong>QUESTION</strong>: Create a dataset called <code>neuro</code> that includes only the Section and Neuroticism columns:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>neuro <span class="ot">&lt;-</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in parse(text = input): &lt;text&gt;:4:0: unexpected end of input
-2: neuro &lt;- 
-3:   
-  ^</code></pre>
-</div>
-</div>
-<p><strong>QUESTION</strong>: <strong>USE GGPLOT</strong> to create a side-by-side boxplot comparing Neuroticism for all the different sections:</p>
-<p><strong>QUESTION</strong>: Based on the boxplot, which section appears to be the lowest in trait neuroticism? Explain your reasoning.<br>
-<strong>ANSWER</strong>:</p>
 
 
 </section>

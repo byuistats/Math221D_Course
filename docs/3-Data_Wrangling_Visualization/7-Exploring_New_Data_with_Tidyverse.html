@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Who Shot First? – Math221D Notebook</title>
+<title>Into The Tidyverse – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -230,21 +230,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Mutate.html">
+ <span class="dropdown-text">mutate()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-Factors.html">
+ <span class="dropdown-text">Factors in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/7-Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-AA_Data_Wrang_and_Viz.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/8-AA_Data_Wrang_and_Viz.html">
  <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
   </li>  
         <li class="dropdown-header">Bonus Material</li>
         <li>
     <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">
- <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
@@ -353,20 +357,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-ii">    
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA.html">
- <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA_Practice.html">
- <span class="dropdown-text">ANOVA Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-Regression.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-ANOVA.html">
+ <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-ANOVA_Practice.html">
+ <span class="dropdown-text">ANOVA Practice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence.html">
@@ -392,7 +396,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Template.html">
+    <a class="dropdown-item" href="../7-Semester_Project/1-Semester_Project_Template_Part1.html">
+ <span class="dropdown-text">Semester Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../7-Semester_Project/2-Semester_Project_Template_Final_Report.html">
  <span class="dropdown-text">Semester Project</span></a>
   </li>  
     </ul>
@@ -434,15 +442,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#report" id="toc-report" class="nav-link" data-scroll-target="#report">Report</a></li>
-  <li><a href="#data-and-analysis" id="toc-data-and-analysis" class="nav-link" data-scroll-target="#data-and-analysis">Data and Analysis</a>
+  <li><a href="#where-do-i-start" id="toc-where-do-i-start" class="nav-link" data-scroll-target="#where-do-i-start">Where do I start?</a>
   <ul class="collapse">
-  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the data</a></li>
-  <li><a href="#one-sample-proportion-test" id="toc-one-sample-proportion-test" class="nav-link" data-scroll-target="#one-sample-proportion-test">One-sample Proportion Test</a></li>
-  <li><a href="#two-sample-proportion-test" id="toc-two-sample-proportion-test" class="nav-link" data-scroll-target="#two-sample-proportion-test">Two-sample Proportion Test</a></li>
-  <li><a href="#choose-your-own-adventure" id="toc-choose-your-own-adventure" class="nav-link" data-scroll-target="#choose-your-own-adventure">Choose your own adventure</a></li>
-  <li><a href="#chi-square-test-for-independence" id="toc-chi-square-test-for-independence" class="nav-link" data-scroll-target="#chi-square-test-for-independence">Chi-square Test for Independence</a></li>
+  <li><a href="#loading-data-and-libraries" id="toc-loading-data-and-libraries" class="nav-link" data-scroll-target="#loading-data-and-libraries">1. Loading Data and Libraries</a></li>
+  <li><a href="#data-exploration-and-hypothesis-generation" id="toc-data-exploration-and-hypothesis-generation" class="nav-link" data-scroll-target="#data-exploration-and-hypothesis-generation">2. Data Exploration and Hypothesis Generation</a></li>
+  <li><a href="#drill-down-into-specific-columns" id="toc-drill-down-into-specific-columns" class="nav-link" data-scroll-target="#drill-down-into-specific-columns">Drill down into specific columns</a></li>
+  <li><a href="#generate-hypotheses" id="toc-generate-hypotheses" class="nav-link" data-scroll-target="#generate-hypotheses">Generate Hypotheses</a></li>
   </ul></li>
+  <li><a href="#prepare-the-data" id="toc-prepare-the-data" class="nav-link" data-scroll-target="#prepare-the-data">3. Prepare the Data</a>
+  <ul class="collapse">
+  <li><a href="#lying" id="toc-lying" class="nav-link" data-scroll-target="#lying">Lying</a></li>
+  </ul></li>
+  <li><a href="#choose-your-own-adventure" id="toc-choose-your-own-adventure" class="nav-link" data-scroll-target="#choose-your-own-adventure">Choose your own adventure</a></li>
   </ul>
 </nav>
     </div>
@@ -451,8 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Who Shot First?</h1>
-<p class="subtitle lead">Categorical Data Application Activity</p>
+<h1 class="title">Into The Tidyverse</h1>
 </div>
 
 
@@ -471,135 +481,279 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Use the Star Wars dataset to answer the following questions:</p>
-<ol type="1">
-<li>Do less than 20% of respondents feel Very Favorably towards Emperor Palpatine? (1-sample Z test for proportion)</li>
-<li>What is the difference in proportions of females and males who are Very Favorable towards Jar-Jar Binks? (2-sample Proportion)</li>
-<li>Come up with one other 2-sample proportion test using anything from the Star Wars dataset.</li>
-<li>Test to see if income and response to “Which Character Shot First?” are Independent (Chi-square)</li>
-</ol>
-<p>For the proportion tests:</p>
-<ol type="1">
-<li>Define the null and alternative hypotheses</li>
-<li>Include an explanation and conclusion for hypothesis tests</li>
-<li>Include Confidence intervals and a sentence explaining each</li>
-<li>Check the requirements for the hypothesis test and the confidence intervals</li>
-</ol>
-<p>For the Chi-square test:</p>
-<ol type="1">
-<li>Define the null and alternative hypotheses</li>
-<li>Include an explanation of the conclusion for</li>
-<li>Be sure to check the hypothesis requirements for a test of independence</li>
-</ol>
+<p>Statistics is only as interesting as the research questions we create. However, we cannot hope to answer those questions appropriately without going through the trouble of wrangling data.</p>
+<p>The more time we spend digging into the data and noticing irregularities, the more likely we are to make better research questions and more appropriate conclusions. It doesn’t matter how sophisticated our analysis becomes if it’s based on bad data.</p>
+<p>In this activity, you will explore a survey about happiness and related factors. By reviewing the data at a high level and then drilling into specific variables, you will gain a better idea about what this survey contains, generate interesting research questions and, with clean data, make better-informed answers to those questions.</p>
 </section>
-<section id="report" class="level1">
-<h1>Report</h1>
-<p>Turn in the HTML file created when you knit/render the rmd file.</p>
+<section id="where-do-i-start" class="level1">
+<h1>Where do I start?</h1>
+<p>For experienced statisticians, getting a new dataset is like Christmas; we can’t wait to unwrap it and see what it’s hiding. For a novice, this can feel overwhelming.</p>
+<p>In this section, we discuss 4 general guidelines that are useful regardless of subject matter.</p>
+<ol type="1">
+<li>Load the data (and necessary libraries if using R)</li>
+<li>Explore the data and generate hypotheses</li>
+<li>Prepare the data for analysis</li>
+<li>Perform the appropriate analysis</li>
+</ol>
+<section id="loading-data-and-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="loading-data-and-libraries">1. Loading Data and Libraries</h3>
+<p>So far, this step has been taken for granted. You simply <code>import()</code> a dataset from a web source using the <code>rio</code> library. In the real world, this step can be quite complicated. There are different data sources, file types, permissions and more that can make loading the data more difficult.</p>
+<p>Fortunately for you, that level of complexity is beyond the scope of this class. However, it is important to call this out as an important step in data analysis.</p>
+<p>Load the data and libraries:</p>
 </section>
-<section id="data-and-analysis" class="level1">
-<h1>Data and Analysis</h1>
-<p>Load the data</p>
+<section id="data-exploration-and-hypothesis-generation" class="level3">
+<h3 class="anchored" data-anchor-id="data-exploration-and-hypothesis-generation">2. Data Exploration and Hypothesis Generation</h3>
+<p>Knowing what to look for when you get a new dataset takes experience and curiosity. Generally, we start by looking at the whole dataset at a high level, then drill down into specific columns.</p>
+<section id="viewing-the-whole-dataset" class="level4">
+<h4 class="anchored" data-anchor-id="viewing-the-whole-dataset">Viewing the whole dataset</h4>
+<p>There are several ways to look at the data at a high level:</p>
+<ol type="a">
+<li><code>View(data)</code> opens up the whole dataset in a new window</li>
+<li><code>glimpse(data)</code> shows you a list of columns and a few examples. It also shows the data types of each column. This is useful because sometimes columns that should be number show up as a category and vice versa. This can occur when there are typos in the dataset or categories as labeled as a number.</li>
+<li><code>head(data)</code> prints out the first few rows of data</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sw <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/StarWarsData_clean.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="explore-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="explore-the-data">Explore the data</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#View(happiness)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(happiness)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "Are You a Fan of SW?"               "Favorability_Han Solo"             
- [3] "Favorability_Luke Skywalker"        "Favorability_Princess Leia Organa" 
- [5] "Favorability_Anakin Skywalker"      "Favorability_Obi Wan Kenobi"       
- [7] "Favorability_Emperor Palpatine"     "Favorability_Darth Vader"          
- [9] "Favorability_Lando Calrissian"      "Favorability_Boba Fett"            
-[11] "Favorability_C-3P0"                 "Favorability_R2 D2"                
-[13] "Favorability_Jar Jar Binks"         "Favorability_Padme Amidala"        
-[15] "Favorability_Yoda"                  "who_shot_first"                    
-[17] "Familiar_with_expanded_universe"    "are_you_a_fan_of_expanded_universe"
-[19] "fan_of_star_trek"                   "Gender"                            
-[21] "Age"                                "Household.Income"                  
-[23] "Education"                          "Location"                          </code></pre>
+<pre><code>Rows: 1,004
+Columns: 18
+$ Gender                     &lt;chr&gt; "female", "female", "female", "female", "fe…
+$ Age                        &lt;int&gt; 20, 19, 20, 22, 20, 20, 20, 19, 18, 19, 19,…
+$ Height                     &lt;int&gt; 163, 163, 176, 172, 170, 186, 177, 184, 166…
+$ Weight                     &lt;int&gt; 48, 58, 67, 59, 59, 77, 50, 90, 55, 60, 60,…
+$ Number_of_siblings         &lt;int&gt; 1, 2, 2, 1, 1, 1, 1, 1, 1, 3, 2, 1, 10, 1, …
+$ Dominant_hand              &lt;chr&gt; "right handed", "right handed", "right hand…
+$ Education                  &lt;chr&gt; "college/bachelor degree", "college/bachelo…
+$ Only_child                 &lt;chr&gt; "no", "no", "no", "yes", "no", "no", "no", …
+$ Fear_score                 &lt;int&gt; 38, 32, 22, 72, 36, 38, 40, 56, 64, 80, 34,…
+$ Religiosity_score          &lt;int&gt; 60, 33, 83, 50, 77, 53, 73, 60, 60, 83, 60,…
+$ Smoking                    &lt;chr&gt; "never smoked", "never smoked", "tried smok…
+$ Alcohol                    &lt;chr&gt; "drink a lot", "drink a lot", "drink a lot"…
+$ I_live_a_healthy_lifestyle &lt;chr&gt; "Agree", "Neither Agree nor Disagree", "Nei…
+$ I_like_music               &lt;chr&gt; "Strongly Agree", "Agree", "Strongly Agree"…
+$ Music_diversity_score      &lt;int&gt; 33, 44, 63, 34, 51, 58, 48, 43, 38, 58, 46,…
+$ Punctuality                &lt;chr&gt; "i am always on time", "i am often early", …
+$ Lying                      &lt;chr&gt; "never", "sometimes", "sometimes", "only to…
+$ Happiness_score            &lt;int&gt; 13, 10, 11, 6, 11, 10, 12, 12, 7, 11, 10, 9…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sw<span class="sc">$</span><span class="st">`</span><span class="at">Favorability_Han Solo</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#head(happiness)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>PRO TIP</strong>: Ask a ton of questions throughout this process! You are not always the subject matter expert for an analysis. Find someone who is and learn as much as you can from them.</p>
+<p>As you look at the whole dataset, think about what the response variable might be and start to think about what factors might impact that response. Start to <strong>mentally rank</strong> which factors you think might be most impactful.</p>
+<p><strong>QUESTIONS</strong>: For our data, what do you think is our response variable?</p>
+<p>What other factors do you think might impact the response variable?</p>
+<p>Keep in mind that there may be multiple response variables to explore.</p>
+</section>
+</section>
+<section id="drill-down-into-specific-columns" class="level3">
+<h3 class="anchored" data-anchor-id="drill-down-into-specific-columns">Drill down into specific columns</h3>
+<p>Next we want to look at specific columns, checking for outliers or impossible values.</p>
+<p>We usually begin with the response variable then work through the explanatory variables we think are most likely to impact the response variable.</p>
+<p><strong>NOTE</strong>: It is not always necessary to dig into every column in the data. Sometimes there are dozens (or hundreds) of columns. We need to prioritize based on our own hypotheses or the suggestions of the data provider.</p>
+<p>A few commonly used functions for exploring specific columns are:</p>
+<ul>
+<li><code>unique()</code> prints out a list of all possible values of a categorical variable</li>
+<li><code>table()</code> prints out a list of all possible values of a categorical variable AND the number of times that value occurs</li>
+<li><code>histogram()</code> - Making a histogram of a quantitative variable can show if the values are within an expected range</li>
+<li><code>favstats()</code> can be used to evaluate if the max and min values are in an acceptable range.</li>
+</ul>
+<p><strong>NOTE</strong>: We may not always know what “acceptable range” means, but it is our responsibility to find out either by asking a subject matter expert or relying on personal experience.</p>
+<p>Make a histogram of happiness score and see if everything looks in order.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(happiness<span class="sc">$</span>Happiness_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="7-Exploring_New_Data_with_Tidyverse_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Check <code>favstats()</code> to look at the max an min:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(happiness<span class="sc">$</span>Happiness_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> min Q1 median Q3 max     mean       sd    n missing
+ -40  9     11 12  75 10.59661 3.218161 1004       0</code></pre>
+</div>
+</div>
+<p>Look at the unique values of <code>Gender</code>, <code>Alcohol</code> and <code>Lying</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "female"         "male"           "nunya business"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "drink a lot"    "social drinker" "never"          "nunya business"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "never"                         "sometimes"                    
+[3] "only to avoid hurting someone" "everytime it suits me"        
+[5] "#N/A"                         </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(happiness<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-                                            
-                                          5 
-Neither favorably nor unfavorably (neutral) 
-                                         44 
-                         Somewhat favorably 
-                                        151 
-                       Somewhat unfavorably 
-                                          8 
-                           Unfamiliar (N/A) 
-                                         15 
-                             Very favorably 
-                                        610 
-                           Very unfavorably 
-                                          1 </code></pre>
+        female           male nunya business 
+           591            412              1 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(sw<span class="sc">$</span><span class="st">`</span><span class="at">Favorability_Han Solo</span><span class="st">`</span>, sw<span class="sc">$</span>Gender))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                                             
-                                                  Female Male Sum
-                                                0      2    3   5
-  Neither favorably nor unfavorably (neutral)   1     22   21  44
-  Somewhat favorably                            4     71   76 151
-  Somewhat unfavorably                          1      3    4   8
-  Unfamiliar (N/A)                              0      9    6  15
-  Very favorably                               10    289  311 610
-  Very unfavorably                              0      0    1   1
-  Sum                                          16    396  422 834</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(sw<span class="sc">$</span><span class="st">`</span><span class="at">Favorability_Emperor Palpatine</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(happiness<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-                                            
-                                         20 
-Neither favorably nor unfavorably (neutral) 
-                                        213 
-                         Somewhat favorably 
-                                        143 
-                       Somewhat unfavorably 
-                                         68 
-                           Unfamiliar (N/A) 
-                                        156 
-                             Very favorably 
-                                        110 
-                           Very unfavorably 
-                                        124 
-                                        Sum 
-                                        834 </code></pre>
+   drink a lot          never nunya business social drinker 
+           222            120              5            657 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(happiness<span class="sc">$</span>Lying)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                         #N/A         everytime it suits me 
+                            2                           137 
+                        never only to avoid hurting someone 
+                           50                           270 
+                    sometimes 
+                          545 </code></pre>
+</div>
+</div>
+<p>Are there any values we may need to filter out?</p>
+<p>Excel uses <code>#N/A</code> as a missing value, but in R, this is treated like another level of a categorical variable.</p>
+<p>Pick 2 more <em>categorical</em> variables and list their distinct values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:2:18: unexpected ')'
+1: 
+2: unique(happiness$)
+                    ^</code></pre>
+</div>
+</div>
+<p><strong>NOTE</strong>: For now, we are focusing on categorical explanatory variables. Later in the semester we will learn how to compare 2 quantitative variables.</p>
+</section>
+<section id="generate-hypotheses" class="level3">
+<h3 class="anchored" data-anchor-id="generate-hypotheses">Generate Hypotheses</h3>
+<p>Now that we’ve spent time with the data, we can formalize our hypotheses and get ready to prepare the data to perform the proper analysis.</p>
+<p><strong>QUESTION</strong>: Which 3 explanatory variables do you think have the biggest impact on happiness?<br>
+<strong>Answer</strong>:<br>
+1. 2. 3.</p>
+</section>
+</section>
+<section id="prepare-the-data" class="level1">
+<h1>3. Prepare the Data</h1>
+<p>We noticed some irregularities that may need to be addressed to get the most appropriate analysis.</p>
+<p>Let’s begin by seeing if there are differences in happiness for different levels of alcohol use.</p>
+<p><strong>Review</strong>: What are the irregularities in happiness score and alcohol use?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(happiness<span class="sc">$</span>Happiness_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> min Q1 median Q3 max     mean       sd    n missing
+ -40  9     11 12  75 10.59661 3.218161 1004       0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># min = -40, max = 75</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(happiness<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "drink a lot"    "social drinker" "never"          "nunya business"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Includes response:   "nunya business"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Suppose Happiness Scores are supposed to be between 0 and 15.</p>
+<p>We also want to compare those who “drink a lot” and those who “never drink”.</p>
+<p>Replace the blanks below to create a new dataset called <code>alcohol_use</code> that removes the incorrect happiness scores and includes only those who “drink a lot” and “never drink” and includes only those 2 columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>alcohol_use <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Happiness_score __ <span class="dv">15</span>, </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>         Happiness_score <span class="sc">&gt;=</span> __,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>         Alcohol ____ <span class="fu">c</span>(<span class="st">"drink a lot"</span>, <span class="st">"never"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Alcohol, Happiness_score)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#View(alcohol_use)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:3:26: unexpected input
+2: alcohol_use &lt;- happiness %&gt;%
+3:   filter(Happiness_score _
+                            ^</code></pre>
+</div>
+</div>
+<p>Check the histogram of happiness scores in the alcohol_use data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(alcohol_use<span class="sc">$</span>Happiness_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: object 'alcohol_use' not found</code></pre>
+</div>
+</div>
+<p>How would you describe the shape of the distribution?</p>
+<p>Create a side-by-side boxplot and summary statistics table for each level of alcohol use:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(alcohol_use<span class="sc">$</span>Happiness_score <span class="sc">~</span> alcohol_use<span class="sc">$</span>Alcohol)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(predvars, data, env): object 'alcohol_use' not found</code></pre>
+</div>
+</div>
+<p>How different do the happiness scores appear to be between these two groups?</p>
+<p>Are you disappointed?</p>
+<p>It’s important to understand that sometimes finding nothing is finding something.</p>
+<section id="lying" class="level2">
+<h2 class="anchored" data-anchor-id="lying">Lying</h2>
+<p>Repeat the above analysis comparing how peoples’ happiness scores depend on their attitudes about lying.</p>
+<ol type="1">
+<li>Create a new dataset called <code>lying</code> that excludes the <code>#N/A</code> values in <code>Lying</code> and the Happiness scores outliers, and includes only “Happiness_score” and “Lying”:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>lying_data <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Happiness_score <span class="sc">&lt;=</span> __, </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>         _______________ <span class="sc">&gt;=</span> <span class="dv">0</span>, </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>         Lying __ <span class="st">"#N/A"</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">______</span>(Happiness_score, Lying)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co">#View(lying_data)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:3:30: unexpected input
+2: lying_data &lt;- happiness %&gt;%
+3:   filter(Happiness_score &lt;= __
+                                ^</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Create a side-by-side boxplot and summary statistics (using <code>favstats()</code>) table for each attitude about Lying:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(____________________ <span class="sc">~</span> lying_data<span class="sc">$</span>Lying)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(lying_data<span class="sc">$</span>Happiness_score <span class="sc">~</span> _______________)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in parse(text = input): &lt;text&gt;:2:10: unexpected input
+1: 
+2: boxplot(__
+            ^</code></pre>
 </div>
 </div>
 </section>
-<section id="one-sample-proportion-test" class="level2">
-<h2 class="anchored" data-anchor-id="one-sample-proportion-test">One-sample Proportion Test</h2>
-<p>What proportion of respondents are very favorable towards Emperor Palpatine?</p>
-<p>Is this significantly less than 20%?</p>
 </section>
-<section id="two-sample-proportion-test" class="level2">
-<h2 class="anchored" data-anchor-id="two-sample-proportion-test">Two-sample Proportion Test</h2>
-<p>What percent of female respondents are favorable towards Jar-Jar Binks?</p>
-<p>What percent of male respondents are favorable towards Jar-Jar Binks?</p>
-<p>Are they significantly different?</p>
-</section>
-<section id="choose-your-own-adventure" class="level2">
-<h2 class="anchored" data-anchor-id="choose-your-own-adventure">Choose your own adventure</h2>
-<p>Compare 2 proportions of your choosing and perform a <code>prop.test()</code>.</p>
-</section>
-<section id="chi-square-test-for-independence" class="level2">
-<h2 class="anchored" data-anchor-id="chi-square-test-for-independence">Chi-square Test for Independence</h2>
-<p>Test to see if how you responded to the question “Who Shot First” is independent of income category.</p>
-<p>State your conclusion:</p>
+<section id="choose-your-own-adventure" class="level1">
+<h1>Choose your own adventure</h1>
+<p>Pick another <strong>categorical variable</strong> with multiple groups that may impact happiness score.</p>
+<p>Be sure to clean out any ‘nunya business’ or ‘#N/A’ that might be there and clean out the outliers in happiness:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> happiness <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>()</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in boxplot.default(): argument "x" is missing, with no default</code></pre>
+</div>
+</div>
+<p>What conclusions can you make?</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

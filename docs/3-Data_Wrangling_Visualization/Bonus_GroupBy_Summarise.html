@@ -230,21 +230,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Mutate.html">
+ <span class="dropdown-text">mutate()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-Factors.html">
+ <span class="dropdown-text">Factors in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/7-Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-AA_Data_Wrang_and_Viz.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/8-AA_Data_Wrang_and_Viz.html">
  <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
   </li>  
         <li class="dropdown-header">Bonus Material</li>
         <li>
     <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">
- <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
@@ -353,20 +357,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-ii">    
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA.html">
- <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA_Practice.html">
- <span class="dropdown-text">ANOVA Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-Regression.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-ANOVA.html">
+ <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-ANOVA_Practice.html">
+ <span class="dropdown-text">ANOVA Practice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence.html">
@@ -392,7 +396,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Template.html">
+    <a class="dropdown-item" href="../7-Semester_Project/1-Semester_Project_Template_Part1.html">
+ <span class="dropdown-text">Semester Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../7-Semester_Project/2-Semester_Project_Template_Final_Report.html">
  <span class="dropdown-text">Semester Project</span></a>
   </li>  
     </ul>
@@ -492,7 +500,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This works great if you want to do one response/dependent variable at a time. But we often want specific summaries of data (often by groups) of more than one variable in the dataset.</p>
 <p>We can use a combination of tidyverse functions, <code>group_by()</code> and <code>summarise()</code> to create custom summary tables.</p>
-<p>The <code>group_by()</code> signals to R that whatever follows should be done for each level of the column(s) identified inside the parentheses. We can then “pipe” the grouped dataset into a summarize function and define what summary statistics we would like. <code>summarise()</code> works very much like the <a href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">mutate()</a> function in that we create a name for our summary and tell R how to make it.</p>
+<p>The <code>group_by()</code> signals to R that whatever follows should be done for each level of the column(s) identified inside the parentheses. We can then “pipe” the grouped dataset into a summarize function and define what summary statistics we would like. <code>summarise()</code> works very much like the <a href="../3-Data_Wrangling_Visualization/5-Mutate.html">mutate()</a> function in that we create a name for our summary and tell R how to make it.</p>
 <p><strong>EXAMPLE</strong>: Let’s calculate the means for Height_cm, Reaction_time, and Social_Websites_Hours for Males and Females:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>

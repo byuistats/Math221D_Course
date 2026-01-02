@@ -18,7 +18,7 @@ library(mosaic)
 library(tidyverse)
 library(car)
 
-survey <- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv') %>% tibble()
+survey <- read_csv('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv') 
 ```
 
 To create a new column, "pipe" the raw data into the `mutate()` statement. Inside the parentheses, give the new column a name and set it equal to what you want that column to be.  
@@ -60,7 +60,7 @@ clean <- survey %>%
 <div class="QuestionsHeading">Combining Tidy Functions</div>
 <div class="Questions">
 
-1. Click to see how to [filter](../3-Data_Wrangling_Visualization/3-Filter.qmd) outliers of ht_to_wt ratio and [select](../3-Data_Wrangling_Visualization/03-Select.qmd) only the columns of interest.
+1. Click to see how to [filter](../3-Data_Wrangling_Visualization/3-Filter.qmd) outliers of ht_to_wt ratio and [select](../3-Data_Wrangling_Visualization/4-Select.qmd) only the columns of interest.
 
 <details>
 <summary>Click to see</summary>

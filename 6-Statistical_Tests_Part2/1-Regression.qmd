@@ -97,13 +97,15 @@ For regression analysis, the expected value is the regression line.  This is wha
 
 The regression line is the line that *minimizes* the squared residuals and is considered the "best fit" line.  
 
-If our simple linear model adequately explains the relationship between $x$ and $y$, then the residuals well have certain properties.  Ideally, the residuals:
+If our simple linear model adequately explains the relationship between $x$ and $y$, the residuals should have the following properties:
 
     1. Are normally distributed
     2. Have constant variance across the range of predicted values
 
-We will show how to evaluate these when introducing the test requirements for a statistical hypothesis test below. 
+We will show how to evaluate these conditions below when discussing the hypothesis test requirements.  But you can visualize what this looks like in the following graph: 
 
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Normal_Residuals_Constant_Variance.png)
+Notice the normal distributions centered at the line all have the same standard deviation across the whole range of $x_i$.  
 
 # In R
 
@@ -162,11 +164,6 @@ __Answer__:
 
 
 ## Plotting the Regression Line
-
-### Base R
-
-Scatter plots by themselves are nice, but we would also like to see the regression line.  Simple graphics in R can be augmented by using some functions.  The `abline()` function in base R, when executed right after a graphing function can add lines.  We've used this to add vertical lines and horizontal line already in class.  We can also use this function to add a regression line.  We simply insert our linear model output into the `abline()` function as follows:
-
 
 ## GGPlot
 

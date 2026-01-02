@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Simple Linear Regression – Math221D Notebook</title>
+<title>Factors in R – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,35 +103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -259,21 +230,25 @@ window.Quarto = {
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Mutate.html">
+ <span class="dropdown-text">mutate()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-Factors.html">
+ <span class="dropdown-text">Factors in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/7-Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-AA_Data_Wrang_and_Viz.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/8-AA_Data_Wrang_and_Viz.html">
  <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
   </li>  
         <li class="dropdown-header">Bonus Material</li>
         <li>
     <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">
- <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
@@ -382,20 +357,20 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-ii">    
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA.html">
- <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-ANOVA_Practice.html">
- <span class="dropdown-text">ANOVA Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-Regression.html">
  <span class="dropdown-text">Simple Linear Regression</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-Regression_Practice.html">
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/1-Regression_Practice.html">
  <span class="dropdown-text">Regression Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-ANOVA.html">
+ <span class="dropdown-text">Analysis of Variance (ANOVA)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../6-Statistical_Tests_Part2/2-ANOVA_Practice.html">
+ <span class="dropdown-text">ANOVA Practice</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../6-Statistical_Tests_Part2/3-Chi_Square_Test_of_Independence.html">
@@ -421,7 +396,11 @@ window.Quarto = {
  <span class="dropdown-text">Downloading Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../7-Semester_Project/Semester_Project_Template.html">
+    <a class="dropdown-item" href="../7-Semester_Project/1-Semester_Project_Template_Part1.html">
+ <span class="dropdown-text">Semester Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../7-Semester_Project/2-Semester_Project_Template_Final_Report.html">
  <span class="dropdown-text">Semester Project</span></a>
   </li>  
     </ul>
@@ -462,19 +441,17 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#review" id="toc-review" class="nav-link active" data-scroll-target="#review">Review</a></li>
-  <li><a href="#linear-regression-equation" id="toc-linear-regression-equation" class="nav-link" data-scroll-target="#linear-regression-equation">Linear Regression Equation</a></li>
-  <li><a href="#in-r" id="toc-in-r" class="nav-link" data-scroll-target="#in-r">In R</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors">Factors</a></li>
+  <li><a href="#creating-a-factor-variable" id="toc-creating-a-factor-variable" class="nav-link" data-scroll-target="#creating-a-factor-variable">Creating a Factor Variable</a>
   <ul class="collapse">
-  <li><a href="#plotting-the-regression-line" id="toc-plotting-the-regression-line" class="nav-link" data-scroll-target="#plotting-the-regression-line">Plotting the Regression Line</a>
+  <li><a href="#categorical-variable-stored-as-a-number" id="toc-categorical-variable-stored-as-a-number" class="nav-link" data-scroll-target="#categorical-variable-stored-as-a-number">Categorical variable stored as a number</a></li>
+  <li><a href="#changing-the-order-of-levels-of-a-character-string" id="toc-changing-the-order-of-levels-of-a-character-string" class="nav-link" data-scroll-target="#changing-the-order-of-levels-of-a-character-string">Changing the order of levels of a character string</a></li>
+  </ul></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your turn</a>
   <ul class="collapse">
-  <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r">Base R</a></li>
+  <li><a href="#bonus" id="toc-bonus" class="nav-link" data-scroll-target="#bonus">BONUS</a></li>
   </ul></li>
-  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot">GGPlot</a></li>
-  <li><a href="#hypothesis-testing-for-regression" id="toc-hypothesis-testing-for-regression" class="nav-link" data-scroll-target="#hypothesis-testing-for-regression">Hypothesis Testing for Regression</a></li>
-  <li><a href="#regression-requirements-is-our-p-value-sus" id="toc-regression-requirements-is-our-p-value-sus" class="nav-link" data-scroll-target="#regression-requirements-is-our-p-value-sus">Regression Requirements (Is our P-value sus?)</a></li>
-  </ul></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a></li>
   </ul>
 </nav>
     </div>
@@ -483,7 +460,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Simple Linear Regression</h1>
+<h1 class="title">Factors in R</h1>
 </div>
 
 
@@ -500,256 +477,229 @@ window.Quarto = {
 </header>
 
 
-<section id="review" class="level1">
-<h1>Review</h1>
-<p>Consider the relationship between Score on a math exam and a student’s self-reported Confidence Rating.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>math <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://byuistats.github.io/BYUI_M221_Book/Data/MathSelfEfficacy.xlsx'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Question</strong>: What is the explanatory (aka independent) variable, <span class="math inline">\(x\)</span>?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the response (aka the dependent) variable, <span class="math inline">\(y\)</span>?<br>
-<strong>Answer</strong>:</p>
-<p>Plot the relationship:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2-Regression_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x =</span> ConfidenceRatingMean, <span class="at">y =</span> Score )) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship between Student Confidence Rating in Math and Test Score"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2-Regression_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Question</strong>: Does the relationship appear linear?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the direction of the relationship? <strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What do you think is the strength of the relationship? (Strong/Moderate/Weak) <strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the correlation coefficient, r? <strong>Answer</strong>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7278648</code></pre>
-</div>
-</div>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Recall that a categorical variable contains information relating to group participation. Each possible category is called a <em>level</em> of the categorical variable. For example, a researcher might collect data on voter registration. The dataset could have a column called <code>voter_registration</code> which would contain information about all the respondents. There might be 4 <em>levels</em> of <code>voter_registration</code> such as: Democrat, Republican, Independent, and Not Affiliated. Each respondent would be in one of those levels.</p>
+<p>R will typically treat any column with any letters in it as a string of characters. R does not interpret the meaning of those strings of characters and thus, without more instruction, orders them alphabetically.</p>
+<p>There are times when we might want to give R additional instruction to improve our analyses and visualizations. This is where factors come in.</p>
 </section>
-<section id="linear-regression-equation" class="level1">
-<h1>Linear Regression Equation</h1>
-<p>Recall that the correlation coefficient, <span class="math inline">\(r\)</span>, tells us something about the direction and strength of a <strong>linear</strong> relationship.</p>
-<p>Linear Regression allows us to find a functional relationship between X and Y:</p>
-<p><span class="math display">\[y = \beta_0 + \beta_1x_1 +\epsilon\]</span></p>
-<p>This is a reframing of the familiar <span class="math inline">\(y=mx+b\)</span> but we change the intercept and the slope to be Greek letters signifying <em>population parameters</em>. We also add a very important term, <span class="math inline">\(\epsilon\)</span>, which signifies the “error” around the line. Our estimate of error, <span class="math inline">\(\epsilon\)</span>, will be critical to assessing the usefulness of our model.</p>
-<p>We can estimate the slope and intercept of the line that “best fits” the data and use that line to make predictions.</p>
-<p><strong>NOTE</strong>: As before, Greek letters signify population parameters in statistics while Latin letters are often used for sample statistics. We estimate <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> with <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> respectively. This leads to an equation for predicted values:</p>
-<p><span class="math display">\[\hat{y}=b_0+b_1x_1\]</span> where <span class="math inline">\(\hat{y}\)</span> signifies a predicted value for <span class="math inline">\(y\)</span> for a given <span class="math inline">\(x\)</span>.</p>
-</section>
-<section id="in-r" class="level1">
-<h1>In R</h1>
-<p>Recall that when we had a quantitative response variable and a categorical explanatory variable we could use the <code>favstats()</code> and <code>boxplot()</code>with the general formula:</p>
-<p><br> <code>favstats(data$response_variable ~ data$explanatory_variable)</code> <code>boxplot(data$response_variable ~ data$explanatory_variable)</code> <br></p>
-<p>The same paradigm works for estimating the linear relationship between 2 quantitative variables, but we need to introduce a new function: <code>lm()</code>. The ‘lm’ stands for “linear model”. The relationship notation remains the same:<br>
-<br></p>
-<p><code>lm(data$response_variable ~ data$explanatory_variable)</code></p>
-<p>or equivalently:</p>
-<p><code>lm(response_variable ~ explanatory_variable, data = dat)</code></p>
-<p><br></p>
-<p>except <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are both quantitative. The <code>lm()</code> output by itself doesn’t give us test statistics and p-values. We will use an additional function, <code>summarize()</code>, to get the relevant information for the hypothesis test.</p>
-<p>Let’s fit a linear model estimating the slope and intercept of the line that best fits the relationship between Confidence Rating and Test Score.</p>
-<p>Start by naming the <code>lm()</code> output, then do a summary on our named object:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>math_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Score <span class="sc">~</span> ConfidenceRatingMean, <span class="at">data =</span> math)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(math_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Score ~ ConfidenceRatingMean, data = math)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--38.200  -6.163   1.292   7.567  23.422 
-
-Coefficients:
-                     Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)            18.690      4.610   4.054  8.4e-05 ***
-ConfidenceRatingMean   12.695      1.022  12.424  &lt; 2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 11.27 on 137 degrees of freedom
-Multiple R-squared:  0.5298,    Adjusted R-squared:  0.5264 
-F-statistic: 154.4 on 1 and 137 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(math_lm, <span class="at">level =</span> .<span class="dv">92</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                          4 %     96 %
-(Intercept)          10.55863 26.82150
-ConfidenceRatingMean 10.89262 14.49703</code></pre>
-</div>
-</div>
-<p>The <code>lm()</code> output includes only the slope and the intercept.</p>
-<p><strong>Question</strong>: How do we interpret the intercept of 18.69?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: How do we interpret the slope of 12.69 in context?<br>
-<strong>Answer</strong>:</p>
-<p>Now that we have an estimate of the slope and the intercept, we can plug in values of <span class="math inline">\(x\)</span> into our formula, <span class="math inline">\(\hat y = b_o + b_1x = 18.69 + 12.69*x\)</span>.</p>
-<p><strong>Question</strong>: What is the expected score on a test of someone who ranks themselves 5 in confidence?<br>
-<strong>Answer</strong>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fl">18.69</span> <span class="sc">+</span> <span class="fl">12.69</span><span class="sc">*</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 82.14</code></pre>
-</div>
-</div>
-<section id="plotting-the-regression-line" class="level2">
-<h2 class="anchored" data-anchor-id="plotting-the-regression-line">Plotting the Regression Line</h2>
-<section id="base-r" class="level3">
-<h3 class="anchored" data-anchor-id="base-r">Base R</h3>
-<p>Scatter plots by themselves are nice, but we would also like to see the regression line. Simple graphics in R can be augmented by using some functions. The <code>abline()</code> function in base R, when executed right after a graphing function can add lines. We’ve used this to add vertical lines and horizontal line already in class. We can also use this function to add a regression line. We simply insert our linear model output into the <code>abline()</code> function as follows:</p>
-</section>
-</section>
-<section id="ggplot" class="level2">
-<h2 class="anchored" data-anchor-id="ggplot">GGPlot</h2>
-<p>Using <code>ggplot()</code>, we can simply add a <code>geom_smooth()</code> geometry and specify the method of “smoothing” as a linear model:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x =</span> ConfidenceRatingMean, <span class="at">y =</span> Score )) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship between Student Confidence Rating in Math and Test Score"</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2-Regression_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>By default, this gives us a confidence interval for the slope of the regression line. We can turn that off by forcing the “standard error” to be <code>FALSE</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x =</span> ConfidenceRatingMean, <span class="at">y =</span> Score )) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship between Student Confidence Rating in Math and Test Score"</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2-Regression_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="hypothesis-testing-for-regression" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-testing-for-regression">Hypothesis Testing for Regression</h2>
-<p>A linear equation has 2 parameters: Slope and Intercept. In most situations, the intercept isn’t very interesting by itself and is often absurd. We are most often only interested in the slope:</p>
-<p><span class="math display">\[H_o: \beta_1 = 0\]</span> <span class="math display">\[H_a: \beta_1 \neq 0\]</span></p>
-<p>These hypotheses are the same for all simple linear regression questions.</p>
-<p>To get the p-value and test statistics, we use the <code>summary()</code> function as we did with aov:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(math_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Score ~ ConfidenceRatingMean, data = math)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--38.200  -6.163   1.292   7.567  23.422 
-
-Coefficients:
-                     Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)            18.690      4.610   4.054  8.4e-05 ***
-ConfidenceRatingMean   12.695      1.022  12.424  &lt; 2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 11.27 on 137 degrees of freedom
-Multiple R-squared:  0.5298,    Adjusted R-squared:  0.5264 
-F-statistic: 154.4 on 1 and 137 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-</div>
-<p>We can also calculate confidence intervals for the slope by using the <code>confint()</code> function. This function requires you to tell it which model to extract a confidence intervals from. You can specify which parameter you’re interested in, and the level of confidence:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># input the model into the following function:</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(math_lm, <span class="at">level =</span> .<span class="dv">95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                         2.5 %   97.5 %
-(Intercept)           9.573588 27.80654
-ConfidenceRatingMean 10.674297 14.71535</code></pre>
-</div>
-</div>
-<p>How do we interpret this confidence interval for a slope?</p>
-<p>Technically correct: 95% Confident that the true population slope is within (10.674297, 14.71535)</p>
-<p>Contextual Explanation: For every 1 unit increase in Confidence Rating, test scores go up by between (10.674297, 14.71535) on average.</p>
-</section>
-<section id="regression-requirements-is-our-p-value-sus" class="level2">
-<h2 class="anchored" data-anchor-id="regression-requirements-is-our-p-value-sus">Regression Requirements (Is our P-value sus?)</h2>
-<p>There are certain requirements for all statistical tests to be valid. For regression analysis, we have to have 5 requirements for our statistics to be valid. While this sounds daunting, in practice we can check most of them very quickly.</p>
+<section id="factors" class="level1">
+<h1>Factors</h1>
+<p><strong>DEFINITION</strong>: A <strong>factor</strong> represents a <em>categorical variable</em> with a numerical coding and associated levels. It creates additional information about the variable that R uses for analyses and visualizations.</p>
+<p>Factors are often used:</p>
 <ol type="1">
-<li>Relationship between X and Y is Linear</li>
-<li>The residuals, <span class="math inline">\(\epsilon\)</span>, are normally distributed</li>
-<li>The Variance of the error terms is constant for all values of X</li>
-<li>The X’s are fixed and measured without error (i.e.&nbsp;X’s can be considered as known constants)</li>
-<li>The observations are independent</li>
+<li>To specify the order of the levels of a categorical variable</li>
+<li>To make sure R knows that a categorical variable is labeled with numerical values</li>
 </ol>
-<p>The linear relationship is assessed visually with the scatter plot. If there is obvious curvature or non-linearity then fitting a line isn’t the best model.</p>
-<p>We check the normality of the residuals with a <code>qqPlot(lm_output)</code>.</p>
-<p>Constant variance in regression is checked with a new plot that looks at how the predicted values relate to the residuals. This is done by: <code>plot(lm_output, which=1)</code>. This is important because we want our predictions to be “wrong” about the same regardless of the value of the prediction. We’re looking for random scatter.</p>
-<p>Requirement 4 cannot be analyzed directly. It is important because because <span class="math inline">\(x\)</span> is the independent variable. If there is uncertainty about the input, then the simple linear regression might not be the most appropriate model.</p>
-<p>Requirement 5 also cannot be analyzed, but random sampling usually satisfies this requirement.</p>
+<p>The second situation is not always obvious when reviewing the data. You may have a column of data indicating random assignments of subjects into 5 treatment groups with levels 1, 2, 3, 4, or 5. It is important to instruct R to treat this categorical variable as categorical, not numeric. Failure to do so can lead to improper analysis and incorrect conclusions.</p>
+</section>
+<section id="creating-a-factor-variable" class="level1">
+<h1>Creating a Factor Variable</h1>
+<p>Let’s revisit the survey of Portuguese students from 2 private schools.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Requirement 1:  Check for linear relationship</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(math, <span class="fu">aes</span>(<span class="at">x=</span>ConfidenceRatingMean, <span class="at">y =</span> Score)) <span class="sc">+</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2-Regression_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Req 2: Normality of residuals:</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(math_lm<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2-Regression_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>student <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/student_data_kaggle.csv'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(student)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 37 89</code></pre>
+<pre><code>Rows: 395
+Columns: 33
+$ school     &lt;chr&gt; "GP", "GP", "GP", "GP", "GP", "GP", "GP", "GP", "GP", "GP",…
+$ sex        &lt;chr&gt; "F", "F", "F", "F", "F", "M", "M", "F", "M", "M", "F", "F",…
+$ age        &lt;dbl&gt; 18, 17, 15, 15, 16, 16, 16, 17, 15, 15, 15, 15, 15, 15, 15,…
+$ address    &lt;chr&gt; "U", "U", "U", "U", "U", "U", "U", "U", "U", "U", "U", "U",…
+$ famsize    &lt;chr&gt; "GT3", "GT3", "LE3", "GT3", "GT3", "LE3", "LE3", "GT3", "LE…
+$ Pstatus    &lt;chr&gt; "A", "T", "T", "T", "T", "T", "T", "A", "A", "T", "T", "T",…
+$ Medu       &lt;dbl&gt; 4, 1, 1, 4, 3, 4, 2, 4, 3, 3, 4, 2, 4, 4, 2, 4, 4, 3, 3, 4,…
+$ Fedu       &lt;dbl&gt; 4, 1, 1, 2, 3, 3, 2, 4, 2, 4, 4, 1, 4, 3, 2, 4, 4, 3, 2, 3,…
+$ Mjob       &lt;chr&gt; "at_home", "at_home", "at_home", "health", "other", "servic…
+$ Fjob       &lt;chr&gt; "teacher", "other", "other", "services", "other", "other", …
+$ reason     &lt;chr&gt; "course", "course", "other", "home", "home", "reputation", …
+$ guardian   &lt;chr&gt; "mother", "father", "mother", "mother", "father", "mother",…
+$ traveltime &lt;dbl&gt; 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 3, 1, 2, 1, 1, 1, 3, 1, 1,…
+$ studytime  &lt;dbl&gt; 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 3, 1, 2, 3, 1, 3, 2, 1, 1,…
+$ failures   &lt;dbl&gt; 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0,…
+$ schoolsup  &lt;chr&gt; "yes", "no", "yes", "no", "no", "no", "no", "yes", "no", "n…
+$ famsup     &lt;chr&gt; "no", "yes", "no", "yes", "yes", "yes", "no", "yes", "yes",…
+$ paid       &lt;chr&gt; "no", "no", "yes", "yes", "yes", "yes", "no", "no", "yes", …
+$ activities &lt;chr&gt; "no", "no", "no", "yes", "no", "yes", "no", "no", "no", "ye…
+$ nursery    &lt;chr&gt; "yes", "no", "yes", "yes", "yes", "yes", "yes", "yes", "yes…
+$ higher     &lt;chr&gt; "yes", "yes", "yes", "yes", "yes", "yes", "yes", "yes", "ye…
+$ internet   &lt;chr&gt; "no", "yes", "yes", "yes", "no", "yes", "yes", "no", "yes",…
+$ romantic   &lt;chr&gt; "no", "no", "no", "yes", "no", "no", "no", "no", "no", "no"…
+$ famrel     &lt;dbl&gt; 4, 5, 4, 3, 4, 5, 4, 4, 4, 5, 3, 5, 4, 5, 4, 4, 3, 5, 5, 3,…
+$ freetime   &lt;dbl&gt; 3, 3, 3, 2, 3, 4, 4, 1, 2, 5, 3, 2, 3, 4, 5, 4, 2, 3, 5, 1,…
+$ goout      &lt;dbl&gt; 4, 3, 2, 2, 2, 2, 4, 4, 2, 1, 3, 2, 3, 3, 2, 4, 3, 2, 5, 3,…
+$ Dalc       &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1,…
+$ Walc       &lt;dbl&gt; 1, 1, 3, 1, 2, 2, 1, 1, 1, 1, 2, 1, 3, 2, 1, 2, 2, 1, 4, 3,…
+$ health     &lt;dbl&gt; 3, 3, 3, 5, 5, 5, 3, 1, 1, 5, 2, 4, 5, 3, 3, 2, 2, 4, 5, 5,…
+$ absences   &lt;dbl&gt; 6, 4, 10, 2, 4, 10, 0, 6, 0, 0, 0, 4, 2, 2, 0, 4, 6, 4, 16,…
+$ G1         &lt;dbl&gt; 5, 5, 7, 15, 6, 15, 12, 6, 16, 14, 10, 10, 14, 10, 14, 14, …
+$ G2         &lt;dbl&gt; 6, 5, 8, 14, 10, 15, 12, 5, 18, 15, 8, 12, 14, 10, 16, 14, …
+$ G3         &lt;dbl&gt; 6, 6, 10, 15, 10, 15, 11, 6, 19, 15, 9, 12, 14, 11, 16, 14,…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Req 3: Constant variance (look odd patterns). When you put lm() output into the plot function it gives you several different plots. The residual plots we're most interested in are 1 and 2</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(math_lm, <span class="at">which =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="categorical-variable-stored-as-a-number" class="level2">
+<h2 class="anchored" data-anchor-id="categorical-variable-stored-as-a-number">Categorical variable stored as a number</h2>
+<p>The <a href="https://www.kaggle.com/datasets/whenamancodes/student-performance">website</a> indicates that <code>traveltime</code> is a categorical variable with 1 being less than 15 minutes, 2 is between 15 and 30 minutes, 3 indicates 30 minutes to 1 hour, and 4 is greater than 1 hour.</p>
+<p>A <code>glimpse()</code> of the data shows <code>&lt;dbl&gt;</code> next to the row for <code>traveltime</code> which stands for “double” which is numerical data type.</p>
+<p>If we want to make sure R treats this like a categorical variable and not a number, we can change it to a factor.</p>
+<p>In the example below, we create a new dataset called <code>new_student</code> and use a <code>mutate()</code> statement to create a new column called <code>traveltime_factor</code> that changes the original <code>traveltime</code> variable into a factor.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>new_student <span class="ot">&lt;-</span> student <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">traveltime_factor =</span> <span class="fu">factor</span>(traveltime)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(new_student)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 395
+Columns: 34
+$ school            &lt;chr&gt; "GP", "GP", "GP", "GP", "GP", "GP", "GP", "GP", "GP"…
+$ sex               &lt;chr&gt; "F", "F", "F", "F", "F", "M", "M", "F", "M", "M", "F…
+$ age               &lt;dbl&gt; 18, 17, 15, 15, 16, 16, 16, 17, 15, 15, 15, 15, 15, …
+$ address           &lt;chr&gt; "U", "U", "U", "U", "U", "U", "U", "U", "U", "U", "U…
+$ famsize           &lt;chr&gt; "GT3", "GT3", "LE3", "GT3", "GT3", "LE3", "LE3", "GT…
+$ Pstatus           &lt;chr&gt; "A", "T", "T", "T", "T", "T", "T", "A", "A", "T", "T…
+$ Medu              &lt;dbl&gt; 4, 1, 1, 4, 3, 4, 2, 4, 3, 3, 4, 2, 4, 4, 2, 4, 4, 3…
+$ Fedu              &lt;dbl&gt; 4, 1, 1, 2, 3, 3, 2, 4, 2, 4, 4, 1, 4, 3, 2, 4, 4, 3…
+$ Mjob              &lt;chr&gt; "at_home", "at_home", "at_home", "health", "other", …
+$ Fjob              &lt;chr&gt; "teacher", "other", "other", "services", "other", "o…
+$ reason            &lt;chr&gt; "course", "course", "other", "home", "home", "reputa…
+$ guardian          &lt;chr&gt; "mother", "father", "mother", "mother", "father", "m…
+$ traveltime        &lt;dbl&gt; 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 3, 1, 2, 1, 1, 1, 3…
+$ studytime         &lt;dbl&gt; 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 3, 1, 2, 3, 1, 3, 2…
+$ failures          &lt;dbl&gt; 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ schoolsup         &lt;chr&gt; "yes", "no", "yes", "no", "no", "no", "no", "yes", "…
+$ famsup            &lt;chr&gt; "no", "yes", "no", "yes", "yes", "yes", "no", "yes",…
+$ paid              &lt;chr&gt; "no", "no", "yes", "yes", "yes", "yes", "no", "no", …
+$ activities        &lt;chr&gt; "no", "no", "no", "yes", "no", "yes", "no", "no", "n…
+$ nursery           &lt;chr&gt; "yes", "no", "yes", "yes", "yes", "yes", "yes", "yes…
+$ higher            &lt;chr&gt; "yes", "yes", "yes", "yes", "yes", "yes", "yes", "ye…
+$ internet          &lt;chr&gt; "no", "yes", "yes", "yes", "no", "yes", "yes", "no",…
+$ romantic          &lt;chr&gt; "no", "no", "no", "yes", "no", "no", "no", "no", "no…
+$ famrel            &lt;dbl&gt; 4, 5, 4, 3, 4, 5, 4, 4, 4, 5, 3, 5, 4, 5, 4, 4, 3, 5…
+$ freetime          &lt;dbl&gt; 3, 3, 3, 2, 3, 4, 4, 1, 2, 5, 3, 2, 3, 4, 5, 4, 2, 3…
+$ goout             &lt;dbl&gt; 4, 3, 2, 2, 2, 2, 4, 4, 2, 1, 3, 2, 3, 3, 2, 4, 3, 2…
+$ Dalc              &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ Walc              &lt;dbl&gt; 1, 1, 3, 1, 2, 2, 1, 1, 1, 1, 2, 1, 3, 2, 1, 2, 2, 1…
+$ health            &lt;dbl&gt; 3, 3, 3, 5, 5, 5, 3, 1, 1, 5, 2, 4, 5, 3, 3, 2, 2, 4…
+$ absences          &lt;dbl&gt; 6, 4, 10, 2, 4, 10, 0, 6, 0, 0, 0, 4, 2, 2, 0, 4, 6,…
+$ G1                &lt;dbl&gt; 5, 5, 7, 15, 6, 15, 12, 6, 16, 14, 10, 10, 14, 10, 1…
+$ G2                &lt;dbl&gt; 6, 5, 8, 14, 10, 15, 12, 5, 18, 15, 8, 12, 14, 10, 1…
+$ G3                &lt;dbl&gt; 6, 6, 10, 15, 10, 15, 11, 6, 19, 15, 9, 12, 14, 11, …
+$ traveltime_factor &lt;fct&gt; 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 3, 1, 2, 1, 1, 1, 3…</code></pre>
+</div>
+</div>
+<p>Notice the <code>glimpse()</code> of the new dataset has a new column called <code>traveltime_factor</code> that has <code>&lt;fct&gt;</code> next to it indicating that this is a factor data type.</p>
+<p>At this point, we can use the new factor column for our analyses and visualizations and R will treat it correctly.</p>
+<p>I can see what all the levels of this factor are by using the <code>levels()</code> function as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(new_student<span class="sc">$</span>traveltime_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1" "2" "3" "4"</code></pre>
+</div>
+</div>
+</section>
+<section id="changing-the-order-of-levels-of-a-character-string" class="level2">
+<h2 class="anchored" data-anchor-id="changing-the-order-of-levels-of-a-character-string">Changing the order of levels of a character string</h2>
+<p>By default, R treats any text information as a string of characters and orders them alphabetically. We can use factors to specify the order of the levels of the categorical variable.</p>
+<p>For example, consider the <code>reason</code> column of data indicating the reason families chose these schools. While <code>reason</code> is a categorical variable, the <code>glimpse()</code> shows it as a <code>&lt;chr&gt;</code> data type, meaning it is a character string.</p>
+<p>The <code>table()</code> function gives the frequency of occurrence for each of the reasons.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(student<span class="sc">$</span>reason)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    course       home      other reputation 
+       145        109         36        105 </code></pre>
+</div>
+</div>
+<p>The bar plot also arranges the bars alphabetically:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> student, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> reason)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2-Regression_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="6-Factors_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Suppose we want to put the <code>other</code> category at the end. We can use the <code>factor()</code> function to specify the order of the levels by including an input for <code>levels = c()</code>. The list, <code>c()</code>, must include all the levels of the variable or it will create missing values.</p>
+<p>The following code chunk creates a new dataset and uses a mutate statement to create a new column called <code>reason_factor</code> that also specifies the order of the levels:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>new_student <span class="ot">&lt;-</span> student <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">traveltime_factor =</span> <span class="fu">factor</span>(traveltime), </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">reason_factor =</span> <span class="fu">factor</span>(reason, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"course"</span>, <span class="st">"home"</span>, <span class="st">"reputation"</span>, <span class="st">"other"</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(new_student)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 395
+Columns: 35
+$ school            &lt;chr&gt; "GP", "GP", "GP", "GP", "GP", "GP", "GP", "GP", "GP"…
+$ sex               &lt;chr&gt; "F", "F", "F", "F", "F", "M", "M", "F", "M", "M", "F…
+$ age               &lt;dbl&gt; 18, 17, 15, 15, 16, 16, 16, 17, 15, 15, 15, 15, 15, …
+$ address           &lt;chr&gt; "U", "U", "U", "U", "U", "U", "U", "U", "U", "U", "U…
+$ famsize           &lt;chr&gt; "GT3", "GT3", "LE3", "GT3", "GT3", "LE3", "LE3", "GT…
+$ Pstatus           &lt;chr&gt; "A", "T", "T", "T", "T", "T", "T", "A", "A", "T", "T…
+$ Medu              &lt;dbl&gt; 4, 1, 1, 4, 3, 4, 2, 4, 3, 3, 4, 2, 4, 4, 2, 4, 4, 3…
+$ Fedu              &lt;dbl&gt; 4, 1, 1, 2, 3, 3, 2, 4, 2, 4, 4, 1, 4, 3, 2, 4, 4, 3…
+$ Mjob              &lt;chr&gt; "at_home", "at_home", "at_home", "health", "other", …
+$ Fjob              &lt;chr&gt; "teacher", "other", "other", "services", "other", "o…
+$ reason            &lt;chr&gt; "course", "course", "other", "home", "home", "reputa…
+$ guardian          &lt;chr&gt; "mother", "father", "mother", "mother", "father", "m…
+$ traveltime        &lt;dbl&gt; 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 3, 1, 2, 1, 1, 1, 3…
+$ studytime         &lt;dbl&gt; 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 3, 1, 2, 3, 1, 3, 2…
+$ failures          &lt;dbl&gt; 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ schoolsup         &lt;chr&gt; "yes", "no", "yes", "no", "no", "no", "no", "yes", "…
+$ famsup            &lt;chr&gt; "no", "yes", "no", "yes", "yes", "yes", "no", "yes",…
+$ paid              &lt;chr&gt; "no", "no", "yes", "yes", "yes", "yes", "no", "no", …
+$ activities        &lt;chr&gt; "no", "no", "no", "yes", "no", "yes", "no", "no", "n…
+$ nursery           &lt;chr&gt; "yes", "no", "yes", "yes", "yes", "yes", "yes", "yes…
+$ higher            &lt;chr&gt; "yes", "yes", "yes", "yes", "yes", "yes", "yes", "ye…
+$ internet          &lt;chr&gt; "no", "yes", "yes", "yes", "no", "yes", "yes", "no",…
+$ romantic          &lt;chr&gt; "no", "no", "no", "yes", "no", "no", "no", "no", "no…
+$ famrel            &lt;dbl&gt; 4, 5, 4, 3, 4, 5, 4, 4, 4, 5, 3, 5, 4, 5, 4, 4, 3, 5…
+$ freetime          &lt;dbl&gt; 3, 3, 3, 2, 3, 4, 4, 1, 2, 5, 3, 2, 3, 4, 5, 4, 2, 3…
+$ goout             &lt;dbl&gt; 4, 3, 2, 2, 2, 2, 4, 4, 2, 1, 3, 2, 3, 3, 2, 4, 3, 2…
+$ Dalc              &lt;dbl&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+$ Walc              &lt;dbl&gt; 1, 1, 3, 1, 2, 2, 1, 1, 1, 1, 2, 1, 3, 2, 1, 2, 2, 1…
+$ health            &lt;dbl&gt; 3, 3, 3, 5, 5, 5, 3, 1, 1, 5, 2, 4, 5, 3, 3, 2, 2, 4…
+$ absences          &lt;dbl&gt; 6, 4, 10, 2, 4, 10, 0, 6, 0, 0, 0, 4, 2, 2, 0, 4, 6,…
+$ G1                &lt;dbl&gt; 5, 5, 7, 15, 6, 15, 12, 6, 16, 14, 10, 10, 14, 10, 1…
+$ G2                &lt;dbl&gt; 6, 5, 8, 14, 10, 15, 12, 5, 18, 15, 8, 12, 14, 10, 1…
+$ G3                &lt;dbl&gt; 6, 6, 10, 15, 10, 15, 11, 6, 19, 15, 9, 12, 14, 11, …
+$ traveltime_factor &lt;fct&gt; 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 3, 1, 2, 1, 1, 1, 3…
+$ reason_factor     &lt;fct&gt; course, course, other, home, home, reputation, home,…</code></pre>
+</div>
+</div>
+<p>Notice the <code>glimpse()</code> indicates that the new column, <code>reason_factor</code>, is a <code>&lt;fct&gt;</code>.</p>
+<p>We can check the order of the levels using the <code>levels()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(new_student<span class="sc">$</span>reason_factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "course"     "home"       "reputation" "other"     </code></pre>
+</div>
+</div>
+<p>The bar plot should also reflect the new order:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> new_student, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> reason_factor)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6-Factors_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -757,43 +707,18 @@ ConfidenceRatingMean 10.674297 14.71535</code></pre>
 </section>
 </section>
 <section id="your-turn" class="level1">
-<h1>Your Turn</h1>
-<p>Look at the relationship between Alcohol Consumption compared to life expectancy for selected countries.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>alcohol <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/life_expectancy_vs_alcohol_consumption.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Question</strong>: What is the response variable?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the explanatory variable?<br>
-<strong>Answer</strong>:</p>
-<p>Make a presentation-worthy scatterplot using <code>ggplot()</code> including a regression line:</p>
-<p><strong>Question</strong>: Describe in words the nature of the relationship between the 2 variables (direction/strength/linearity) <strong>Answer</strong>:</p>
-<p>Calculate the correlation coefficient:</p>
-<p><strong>Question</strong>: What is the the correlation coefficient, <span class="math inline">\(r\)</span>?<br>
-<strong>Answer</strong>:</p>
-<p>Perform a linear regression analysis for the relationship between alcohol consumption and life expectancy.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save your linear model:  </span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for constant variance:  </span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the normality of the residuals  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Question</strong>: What is the slope of the regression line?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: Interpret the slope of the regression line in context of the problem:<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the intercept of the regression line?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: Interpret the intercept of the regression line in context of the problem:<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What do you conclude about the slope of the regression line?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the confidence interval for the slope?</p>
-<p><strong>Question</strong>: Give a 1-sentence interpretation of the confidence interval in context of your research question:<br>
-<strong>Answer</strong>:</p>
+<h1>Your turn</h1>
+<p>Practice creating a new column in the dataset that changes one of the categorical variables into a factor and changes the order of the levels.</p>
+<p><strong>QUESTION</strong>: Create a <code>table()</code> of the father’s job, <code>Fjob</code>.</p>
+<p>Note this gives all the levels of the variable, <code>Fjob</code>.</p>
+<p><strong>QUESTION</strong>: Create a new dataset that includes a new column which is a factor of <code>Fjob</code>. Put the <code>other</code> category at the end.</p>
+<p><strong>QUESTION</strong>: Create a bar plot using the new factor in the new dataset. Check that <code>other</code> is at the end.</p>
+<section id="bonus" class="level3">
+<h3 class="anchored" data-anchor-id="bonus">BONUS</h3>
+<p>Create a side-by-side boxplot of final grades (<code>G3</code>) that compares the levels of the factor version of <code>Fjob</code> created above:</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

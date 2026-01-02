@@ -259,21 +259,25 @@ window.Quarto = {
  <span class="dropdown-text">select()</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Exploring_New_Data_with_Tidyverse.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/5-Mutate.html">
+ <span class="dropdown-text">mutate()</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-Factors.html">
+ <span class="dropdown-text">Factors in R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/7-Exploring_New_Data_with_Tidyverse.html">
  <span class="dropdown-text">Into The Tidyverse</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/6-AA_Data_Wrang_and_Viz.html">
+    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/8-AA_Data_Wrang_and_Viz.html">
  <span class="dropdown-text">Data Wrangling - Application Activity</span></a>
   </li>  
         <li class="dropdown-header">Bonus Material</li>
         <li>
     <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.html">
  <span class="dropdown-text">Level up your Tidy-ness</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_Mutate.html">
- <span class="dropdown-text">mutate()</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.html">
@@ -471,10 +475,7 @@ window.Quarto = {
   <li><a href="#define-best" id="toc-define-best" class="nav-link" data-scroll-target="#define-best">Define “best”</a></li>
   <li><a href="#in-r" id="toc-in-r" class="nav-link" data-scroll-target="#in-r">In R</a>
   <ul class="collapse">
-  <li><a href="#plotting-the-regression-line" id="toc-plotting-the-regression-line" class="nav-link" data-scroll-target="#plotting-the-regression-line">Plotting the Regression Line</a>
-  <ul class="collapse">
-  <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r">Base R</a></li>
-  </ul></li>
+  <li><a href="#plotting-the-regression-line" id="toc-plotting-the-regression-line" class="nav-link" data-scroll-target="#plotting-the-regression-line">Plotting the Regression Line</a></li>
   <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot">GGPlot</a></li>
   <li><a href="#hypothesis-testing-for-regression" id="toc-hypothesis-testing-for-regression" class="nav-link" data-scroll-target="#hypothesis-testing-for-regression">Hypothesis Testing for Regression</a></li>
   <li><a href="#regression-requirements" id="toc-regression-requirements" class="nav-link" data-scroll-target="#regression-requirements">Regression Requirements</a></li>
@@ -569,10 +570,11 @@ window.Quarto = {
 <p>For regression analysis, the expected value is the regression line. This is what happens, <em>on average</em>, for a given value of <span class="math inline">\(x\)</span>. Residuals look at the difference between the points and the regression line:</p>
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/residuals_for_regression.png" class="img-fluid"></p>
 <p>The regression line is the line that <em>minimizes</em> the squared residuals and is considered the “best fit” line.</p>
-<p>If our simple linear model adequately explains the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, then the residuals well have certain properties. Ideally, the residuals:</p>
+<p>If our simple linear model adequately explains the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, the residuals should have the following properties:</p>
 <pre><code>1. Are normally distributed
 2. Have constant variance across the range of predicted values</code></pre>
-<p>We will show how to evaluate these when introducing the test requirements for a statistical hypothesis test below.</p>
+<p>We will show how to evaluate these conditions below when discussing the hypothesis test requirements. But you can visualize what this looks like in the following graph:</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Normal_Residuals_Constant_Variance.png" class="img-fluid"> Notice the normal distributions centered at the line all have the same standard deviation across the whole range of <span class="math inline">\(x_i\)</span>.</p>
 </section>
 <section id="in-r" class="level1">
 <h1>In R</h1>
@@ -633,10 +635,6 @@ ConfidenceRatingMean 10.89262 14.49703</code></pre>
 </div>
 <section id="plotting-the-regression-line" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-the-regression-line">Plotting the Regression Line</h2>
-<section id="base-r" class="level3">
-<h3 class="anchored" data-anchor-id="base-r">Base R</h3>
-<p>Scatter plots by themselves are nice, but we would also like to see the regression line. Simple graphics in R can be augmented by using some functions. The <code>abline()</code> function in base R, when executed right after a graphing function can add lines. We’ve used this to add vertical lines and horizontal line already in class. We can also use this function to add a regression line. We simply insert our linear model output into the <code>abline()</code> function as follows:</p>
-</section>
 </section>
 <section id="ggplot" class="level2">
 <h2 class="anchored" data-anchor-id="ggplot">GGPlot</h2>

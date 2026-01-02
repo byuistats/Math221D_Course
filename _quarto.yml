@@ -46,11 +46,12 @@ website:
         - href: ./3-Data_Wrangling_Visualization/2-Wrangling_Basics.qmd
         - href: ./3-Data_Wrangling_Visualization/3-Filter.qmd
         - href: ./3-Data_Wrangling_Visualization/4-Select.qmd
-        - href: ./3-Data_Wrangling_Visualization/5-Exploring_New_Data_with_Tidyverse.qmd
-        - href: ./3-Data_Wrangling_Visualization/6-AA_Data_Wrang_and_Viz.qmd
+        - href: ./3-Data_Wrangling_Visualization/5-Mutate.qmd
+        - href: ./3-Data_Wrangling_Visualization/6-Factors.qmd
+        - href: ./3-Data_Wrangling_Visualization/7-Exploring_New_Data_with_Tidyverse.qmd
+        - href: ./3-Data_Wrangling_Visualization/8-AA_Data_Wrang_and_Viz.qmd
         - text: "Bonus Material"
         - href: ./3-Data_Wrangling_Visualization/Bonus_More_Tidy_Practice.qmd
-        - href: ./3-Data_Wrangling_Visualization/Bonus_Mutate.qmd
         - href: ./3-Data_Wrangling_Visualization/Bonus_GroupBy_Summarise.qmd
 
     - text: "Inferential Stats"
