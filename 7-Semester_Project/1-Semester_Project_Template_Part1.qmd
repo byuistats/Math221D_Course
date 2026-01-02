@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 Part 1 of your semester project should include:  
 
-  1. Reading in your data
+  1. Get your data into R
   2. Preparing the data
     a. This could include filtering out missing, bad or unnecessary data
   3. Summarizing the data
@@ -55,7 +55,7 @@ __NOTE__:  The type of graphs and summaries you do depends entirely on the type 
 
 ## Numerical Summaries
 
-[Create numerical summaries (`favstats()`, `prop.table()` with row or column totals, etc.) of your response variable.  Include a table of summary statistics broken out by your explanatory variable.  Include a discussion of what you observe.]
+[Create numerical summaries (`favstats()` OR `prop.table()` with row or column totals __depending on the type of data__) of your response variable.  Include a table of summary statistics broken out by your explanatory variable.  Include a discussion of what you observe.]
 
 ```{r}
 # Create numerical summaries

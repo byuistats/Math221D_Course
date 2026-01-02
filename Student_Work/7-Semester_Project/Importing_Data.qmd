@@ -1,0 +1,66 @@
+---
+title: Downloading Data
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introduction
+
+So far in class, we have encountered only fairly clean data examples carefully managed and stored in an easy to access location.  We have been able to use the `import()` function from the `rio` library with a link to a well-contained data resource.  
+
+When we encounter data in the wild, it can be much more complicated to extract and clean up.  However, good research should be transparent, with data sources cited and, where possible, published.  We can often find links to raw data for graphs.
+
+In these notes we will see how we can use tools we've already used to import data directly from the internet (or a saved file on your computer) and learn some new skills about how to clean up the data for specific needs.
+
+# Importing Data from the Internet
+
+We will first look at an example of downloading data from the internet and then loading the data into R using `import()`.
+
+[Our World in Data](https://ourworldindata.org/) collects a wide range of data from various sources, typically government-published statistics.  They publish research and create thousands of graphs.  They also allow users to access the raw data relating to their research and visualizations.  
+
+1. Click through Our World in Data and find a graph that looks interesting.  Most graphs on this site will have a Download button below the visualization.  
+
+2. Click the *Download* button usually at the bottom of a chart.  This site opens up another window that asks if you want to download the image or the Full data.  
+
+3. Instead of *left* clicking the download button for the raw data, *right* click and select *Save As*.  This allows you to decide where to save the file.  It is a best practice to save the file into the same directory as the R file you're working in.  So if you have a Math221D folder, save it there.  The important thing is that you are able to find it.  
+
+Once it is in a folder on your computer, you can use `import()` to read it in from that location.  
+
+# Importing a File From Your Computer
+
+## Mac Instructions:
+1. Open Finder, which is the smiley face icon located on the bottom of your screen.
+2. Navigate to the folder where your file is located by clicking through the folders.
+3. Once you've found your file, right-click on it (or hold down the Control key while clicking), and select "Get Info".
+4. In the window that pops up, you'll see a field called "Where:", which shows you the file path. It looks something like `/Users/YourUsername/Documents/YourFile.csv`. You can copy this path by selecting it and pressing Command + C.
+
+## PC Instructions:
+1. Open File Explorer, which is usually the folder icon located on your taskbar or in the Start menu.
+2. Navigate to the folder where your file is located by clicking through the folders.
+3. Once you've found your file, right-click on it and select "Properties".
+4. In the Properties window, you'll see a field called "Location" or "Location:" which shows you the file path. It looks something like `C:\Users\YourUsername\Documents\YourFile.csv`. You can copy this path by selecting it and pressing Ctrl + C.
+
+In both cases, the file path tells the computer where to find your file, similar to how a street address tells someone where to find a physical location. You can use this file path to access your file from anywhere on your computer.
+
+Unfortunately, R doesn't like single backslashes, `\`.  If you're on a PC you can either add a second `\` or switch them to `/`
+
+```{r, ignore = TRUE}
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(ggplot2)
+
+war <- import('C:\\Users\\paulccannon\\OneDrive - BYU-Idaho\\Math221inR\\countries-in-conflict-data.csv')
+war <- import('C:/Users/paulccannon/OneDrive - BYU-Idaho/Math221inR/countries-in-conflict-data.csv')
+
+
+```
+
+
+The `rio::import()` function can handle many different types data types (.xlsx, .xls, .csv, .txt, and many others).  If you run into a data file type that `rio` can't import, there are other libraries that have similar functions that can do the same thing.  But we limit the scope for this class to sources that `rio` can handle.  

@@ -1,0 +1,348 @@
+---
+title: The Normal Distribution
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+## Lesson Outcomes
+
+By the end of this lesson, you should be able to:
+
+1. State the properties of a normal distribution
+2. Calculate the z-score for an individual observation, given the population mean and standard deviation
+3. Interpret a z-score
+4. Use the normal distribution to calculate probabilities for one observation
+5. Approximate probabilities from a normal distribution using the 68-95-99.7 rule 
+6. Calculate a percentile using the normal distribution
+
+<br>
+
+## Normal Distributions and Normal Computations
+
+### Baseball Batting Averages
+
+![](../Images/Baseball.jpg)
+
+
+In baseball, a player called the "pitcher" throws a ball to a player called the "batter." The batter swings a wooden or metal bat and tries to hit the ball. A "hit" is made when the batter successfully hits the ball and runs to a point in the field called first base. A player's batting average is calculated as the ratio of the number of hits a player makes divided by the number of times the player has attempted to hit the ball or in other words, been "at bat." Sean Lahman reported the batting averages of several professional baseball players in the United States. (Lahman, 2010) The file [BattingAverages.xlsx](../Data/BattingAverages.xlsx) contains his data.
+
+The following histogram summarizes the batting averages for these professional baseball players:
+
+![](../Images/Lesson_03_Activity_06_Reading_1.jpg)
+
+Notice the bell-shaped distribution of the data.
+
+Suppose we want to estimate the probability that a randomly selected player will have a batting average that is greater than 0.280. One way to do this would be to find the proportion of players in the data set who have a batting average above 0.280. We can do this by finding the number of players who fall into each of the red-colored bins below and dividing this number by the total number of players.
+
+![](../Images/L03_A06_R02.jpg)
+
+In other words, we could find the proportion of the total area of the bars that is shaded red out of the combined area of all the bars. This gives us the proportion of players whose batting averages are greater than 0.280.
+
+Out of the 446 players listed, there are a total of 133 players with batting averages over 0.280. This suggests that the proportion of players whose batting average exceeds 0.280 is:
+
+$$\displaystyle{\frac{133}{446}} = 0.298$$
+
+Alternatively, we can use the fact that the data follow a bell-shaped distribution to find the probability that a player has a batting average above 0.280.
+
+### Density Curves
+
+The bell-shaped curve superimposed on the histogram above is called a density curve. It is essentially a smooth histogram. Notice how closely this curve follows the observed data.
+
+The density curve illustrated on the histogram of the batting average data is special. It is called a **normal density curve**. This density curve is symmetric and has a bell-shape.
+
+The normal density curve is also referred to as a normal distribution or a "Gaussian" distribution (after Carl Friedrich Gauss.)
+
+The normal density curve appears in many applications in business, nature, medicine, psychology, sociology, and more. We will use the normal density curve extensively in this course.
+
+All density curves, including normal density curves, have two basic properties:
+
+1. The total area under the curve equals 1.
+2. The density curve always lies on or above the horizontal axis.
+
+Because of these two properties, the area under the curve can be treated as a probability. If we want to find the probability that a randomly selected baseball player will have a batting average between some range of values, we only need to find the area under the curve in that range. This is illustrated by the region shaded in blue in the figure below.
+
+![](../Images/L03_A06_R03.jpg)
+
+A normal density curve is uniquely determined by its mean, $\mu$, and its standard deviation, $\sigma$. So, if random variables follow a normal distribution with a known mean and standard deviation, then we can calculate any probabilities related to that variable by finding the area under the curve.
+
+When the mean of a normal distribution is 0 and its standard deviation is 1, we call it the **standard normal distribution**.
+
+We will return to this example later and will find the area shaded in blue.
+
+#### Characteristics of the Normal Curve
+
+##### Introduction to $z$-scores
+
+In Ghana, the mean height of young adult women is normally distributed with mean $159.0$ cm and standard deviation $4.9$ cm. (Monden & Smits, 2009) Serwa, a female BYU-Idaho student from Ghana, is $169.0$ cm tall. Her height is $169.0 - 159.0 = 10$ cm greater than the mean. When compared to the standard deviation, she is about two standard deviations ($\approx 2 \times 4.9$ cm) taller than the mean. 
+
+The heights of men are also normally distributed. The mean height of young adult men in Brazil is $173.0$ cm ("Oramento," 2010), and the standard deviation for the population is $6.3$ cm. (Castilho & Lahr, 2001) A Brazilian BYU-Idaho student, Gustavo, is $182.5$ cm tall. Compared to other Brazilians, he is taller than the mean height of Brazilian men.
+
+<div class="QuestionsHeading">Answer the following question:</div>
+<div class="Questions">
+1. Approximately how many standard deviations above the mean is Gustavo's height?
+
+<details>
+<summary>Show/Hide Solution</summary>
+-  Gustavo's height is $182.5 - 173.0 = 9.5 \text{ cm  }$    above the mean. The standard deviation of the height of Brazilian men is 6.3 cm, so his height is   $\displaystyle{ \frac{9.5}{6.3} =1.508 }$  standard deviations above the mean.
+</details>
+</div>
+<br>
+
+##### Computing $z$-scores
+
+When we examined the heights of Serwa and Gustavo, we compared their height to the standard deviation. If we look carefully at the steps we did, we subtracted the mean height for people of the same gender and nationality from each individual's height, respectively.
+
+This shows how much taller or shorter the person is than the mean height. In order to compare the height difference to the standard deviation, we divide the difference by the standard deviation. This gives the number of standard deviations the individual is above or below the mean.
+
+For example, Serwa's height is 169.0 cm. If we subtract the mean and divide by the standard deviation, we get
+$$z = \frac{169.0 - 159.0}{4.9} = 2.041$$
+We call this number a $z$-score. The $z$-score for a data value tells how many standard deviations away from the mean the observation lies. If the $z$-score is positive, then the observed value lies above the mean. A negative $z$-score implies that the value was below the mean.
+
+We compute the $z$-score for Gustavo's height similarly, and obtain
+$$z = \frac{182.5 - 173.0}{6.3} = 1.508$$
+Gustavo's $z$-score is 1.508. As noted above, this is about one-and-a-half standard deviations above the mean. In general, if an observation $x$ is taken from a random process with mean $\mu$ and standard deviation $\sigma$, then the $z$-score is
+$$z = \frac{x -\mu }{\sigma}$$
+
+The $z$-score can be computed for data from any distribution, but it is most commonly applied to normally distributed data.
+
+
+##### 68-95-99.7% Rule for Bell-shaped Distributions
+
+Heights of women (or men) in a particular population follow a normal distribution. Most people's heights are close to the mean. A few are very tall or very short. We would like to make a more precise statement than this.
+
+<div class="Emphasis">
+For any bell-shaped distribution,
+
+  - 68% of the data will lie within 1 standard deviation of the mean,
+  - 95% of the data will lie within 2 standard deviations of the mean, and
+  - 99.7% of the data will lie within 3 standard deviations of the mean.
+
+This is called the 68-95-99.7% Rule for Bell-shaped Distributions. Some statistics books refer to this as the Empirical Rule.
+<br>
+</div>
+<br>
+
+![](../Images/L03_A06_R04.jpg)
+
+Approximately 68% of the observations from a bell-shaped distribution will be between the values of $\mu -~\sigma~$and $\mu +~\sigma$. Consider the heights of young adult women in Ghana. We expect that about 68% of Ghanaian women have a height between the values of
+$$\mu -~\sigma = 159.0 - 4.9 = 154.1~\text{cm}$$
+and
+$$\mu +~\sigma = 159.0 + 4.9 = 163.9~\text{cm}.$$
+
+So, if a female is chosen at random from all the young adult women in Ghana, about 68% of those chosen will have a height between 154.1 and 163.9 cm. Similarly, 95% of the women’s heights will be between the values of
+$$\mu - 2\sigma = 159.0 - 2(4.9) = 149.2~\text{cm}$$
+and
+$$\mu + 2\sigma = 159.0 + 2(4.9) = 168.8~\text{cm}.$$
+
+Finally, 99.7% of the women's heights will be between
+$$\mu - 3\sigma = 159.0 - 3(4.9) = 144.3~\text{cm}$$
+and
+$$\mu + 3\sigma = 159.0 + 3(4.9) = 173.7~\text{cm}.$$
+
+#### Unusual Events
+
+If a $z$-score is extreme (either a large positive number or a large negative number), then that suggests that that observed value is very far from the mean. The 68-95-99.7% rule states that 95% of the observed data values will be within two standard deviations of the mean. This means that 5% of the observations will be more than 2 standard deviations away from the mean (either to the left or to the right).
+
+We define an **unusual observation** to be something that happens less than 5% of the time. For normally distributed data, we determine if an observation is unusual based on its $z$-score. We call an observation unusual if $z < -2$ or if $z > 2$.  In other words, we will call an event unusual if the absolute value of its $z$-score is greater than 2.
+
+<div class="QuestionsHeading">Answer the following questions:</div>
+<div class="Questions">
+2. Out of Serwa and Gustavo, who is physically taller?
+ 
+<details>
+<summary>Show/Hide Solution</summary>
+-  Gustavo is taller.  He is 182.5 cm tall, and Serwa is 169.0 cm tall.
+</details>
+
+3. Relative to their own gender and nationality, who is relatively taller?
+
+<details>
+<summary>Show/Hide Solution</summary>
+-  Relative to other Ghanaian women, Serwa is very tall.  Gustavo is tall relative to Brazilian men, but relative to people of his gender and nationality, he is not relatively taller than Serwa.  Serwa has a higher $z$-score.
+</details>
+
+4. Are either of these heights unusual?
+
+<details>
+<summary>Show/Hide Solution</summary>
+-  Serwa's height is unusual.  Her $z$-score is: $z = 2.041$ This is more than two standard deviations away from the mean. Gustavo's height is not unusual.  His $z$-score is less than two standard deviations away from the mean.
+</details>
+</div>
+
+<center>"Piled Higher and Deeper" by Jorge Cham</center> 
+<br>
+
+![](../Images/Phd1030.png)
+
+## Normal Probability Computations
+
+A $z$ score has what is called a **Standard Normal Distribution**.  This is a special normal distribution with a mean, $\mu=0$, and a standard deviation, $\sigma=1$.  
+
+This makes it possible to take any normal distribution and *standardize* it by subtracting out the population mean and dividing by the standard deviation.  Whether we're talking about heights, reaction times, big toe lengths, or nano-meters we can use the standard normal distribution to calculate probabilities by first calculating a z-score.  
+
+
+### Converting a $z$-score to a Probability
+
+In this class, we will use R to do the heavy lifting.  The pnorm(x, $\mu$, $\sigma$) function calculates areas under the curve the normal distribution with mean, $\mu$, and standard deviation, $\sigma$, for a given x.  
+
+The `p` in `pnorm()` stands for probability and `norm` obviously stands for the normal distribution.  
+
+By default, `pnorm()` gives the area of the curve to the *LEFT* of the value, $x$, for a normal distribution with a mean, $\mu$, and standard deviation, $\sigma$.  
+
+We can calculate probabilities directly in the original units of the data, or use the z-score with a $\mu=0$ and $\sigma=1$:  `pnorm(z)`.  
+
+__NOTE__: `pnorm()` has a default value for the mean, $\mu = 0$ and standard deviation, $\sigma = 1$ so we don't have to input those values when we use a z-score with the __standard normal distribution__.  
+
+#### Heights of Ghanaian Women
+
+We will use the example of Serwa's height to find the proportion of young Ghanaian women who are shorter than Serwa. Recall that for the height of young Ghanaian women, the population mean is 159.0 cm and the population standard deviation is 4.9 cm. Serwa's height is 169.0 cm. We found the $z$-score of Serwa's height as:
+
+$$z = \frac{x -\mu}{\sigma} = \frac{169.0- 159.0}{4.9} = 2.041$$
+
+What proportion of young Ghanaian women reach a height that is at or below 169 cm? To answer this question, we need to find the area under a normal density curve (i.e. the probability) that is to the left of $z = 2.041$.
+
+To find the area under a normal curve corresponding to a $z$-score of $2.041$, do the following:
+
+```{r}
+
+pnorm(2.041)
+
+```
+
+We can use the `mosaic` library to visualize the areas under the normal distribution:
+
+```{r}
+library(mosaic)
+mosaic::xpnorm(169.0, mean = 159.0, sd = 4.9) 
+
+```
+
+
+__NOTE__: The area to the left of our chosen $z$-score is also the probability that a randomly selected woman will be shorter than Serwa. The probability that a randomly selected Ghanaian woman will be shorter than Serwa is $0.979$, or $97.9\%$.
+
+
+#### Baseball Averages
+
+We now return to the example of the baseball batting averages. We want to find the probability that a randomly selected player will have a batting average that is *above* 0.280. The population mean is 0.261 and the population standard deviation is 0.034. We can use this information to find a $z$-score. Then we use the `1-pnorm()` to find the area under the normal curve to the right of this $z$-score.
+
+$$z = \frac{x -\mu}{\sigma} = \frac{0.280 - 0.261}{0.034} = 0.559$$
+
+```{r}
+x <- 0.280
+mu <- 0.261
+sigma <- 0.034
+
+z <- (x-mu)/sigma
+
+# Area to the LEFT:
+pnorm(x, mu, sigma)
+## Equivilantly:
+pnorm(z)
+
+# Area to the RIGHT
+1-pnorm(x, mu, sigma)
+1-pnorm(z)
+
+```
+
+
+Using the `xpnorm()` in the mosaic library, type the $z$-score of $0.559$. Click on the areas under the curve until only the region on the right is highlighted in purple.
+
+To get `xpnorm()` to give the Right Tail probability, you need to specify `lower.tail=FALSE`:
+
+```{r}
+
+mosaic::xpnorm(0.559, lower.tail = FALSE)
+
+```
+
+
+The area under the curve to the right of $z = 0.559$ is $0.2881$. This is the probability that a randomly selected player will have a batting average that is greater than 0.280. (Note: It is a coincidence that the area, 0.288, is close to the batting average of 0.280. There is no significance in this.)
+
+
+### Finding the Probability of Being Between Two Values
+
+#### Heights of Ghanaian Women
+
+What is the probability that a randomly selected young Ghanaian women will be between 150.0 cm and 163.0 cm tall? Recall that the average height for young Ghanaian women is $\mu=159.0$ cm and the population standard deviation is $\sigma=4.9$ cm.
+
+We want to find the probability that a randomly selected woman's height is between $150.0$ cm and $165.0$ cm. To do this we find the $z$-score for both values:
+
+$$z_1 = \frac{x- \mu}{\sigma} = \frac{150.0 - 159.0}{4.9} = -1.837$$
+$$z_2 = \frac{x - \mu}{\sigma} = \frac{165.0 -159.0}{4.9} = 1.22$$
+
+We now answer the question by finding the area under the normal density curve (i.e. the probability) to the left of $z = 1.22$ which is $0.8888$ and also the area under the normal density curve to the left of $z = -1.837$ which is $0.033$. To find the area between $z = 1.22$ and $z = -1.837$, we subtract the smaller area from the larger.
+
+$$0.8888 - 0.0331 = 0.8557$$
+
+So the probability that the height of a randomly selected young Ghanaian woman will be between 150.0 cm and 165.0 cm is $0.8558$. This is the same as the proportion of all young Ghanaian women who are between 150.0 and 165.0 cm tall.
+
+We can easily get `mosaic::xpnorm()` to provide this for us automatically by providing a list of values between which we would like to calculate the area under the curve.  
+
+To find the probability of being between *any* 2 numbers for a normal distribution with mean, $\mu$, and standard deviation, $\sigma$, we can use the following R code:   
+
+```{r}
+
+mosaic::xpnorm(c(150, 165), mean = 159, sd = 4.9)
+
+```
+
+
+
+### Calculating Percentiles using a Normal Distribution
+
+A percentile is a number such that a specified percentage of the population are at or below this number. For example, the 25<sup>th</sup> percentile is the number in a data set that is greater than or equal to 25% of all the values in the data set.  
+
+We can find percentiles *for a given dataset* by using the `quantile()` function as described in the chapter on [summarizing data](https://byuistats.github.io/Math221D_Course/Textbook/Spread.html)
+
+However, to calculate percentiles *from a normal distribution*, we use the `qnorm(percentile, mu, sigma)` function.
+
+__NOTE__: R typically uses the word *quantile* when referring to *percentiles*.  So the $q$ in `qnorm()` stands for *quantile*.
+
+To find the *height* of a Ghanaian woman corresponding to the 90<sup>th</sup> percentile:
+
+```{r}
+qnorm(.90, mean = 159, sd = 4.9)
+```
+
+The 90<sup>th</sup> percentile of the heights averages is 165.2796. That means that 90% of the Ghanaian women are shorter than 165.2796 cm tall.  
+
+
+We can also use `xqnorm()` in the mosaic library to visualize:  
+
+```{r}
+
+mosaic::xqnorm(.9, mean=159, sd=4.9)
+
+```
+
+
+
+## Summary
+
+<div class="SummaryHeading">Remember...</div>
+<div class="Summary">
+
+1. A **normal density curve** is symmetric and bell-shaped with a mean of $\mu$ and a standard deviation of $\sigma$. The curve lies above the horizontal axis and the total area under the curve is equal to 1. A **standard normal distribution** has a mean of 0 and a standard deviation of 1. 
+
+2. A **z-score** is calculated as: 
+
+$$\displaystyle{z = \frac{\text{value}-\text{mean}}{\text{standard deviation}} = \frac{x-\mu}{\sigma}}$$
+
+3. A **z-score** tells us how many standard deviations above ($+Z$) or below ($-Z$) the mean ($\mu$) a given value ($x$) is.
+
+4. To calculate probabilities for a normal distribution with mean, $\mu$ and standard deviation $\sigma$ for a given observation $x$, use `pnorm(x, mu, sigma)` or `1-pnorm(x, mu, sigma)` to get the desired probability (below, above).  Alternatively, calculate the $z$-score and use `pnorm(z)` or `1-pnorm(z)`.  In every case, the **probability is** given by the **Area** under the curve.  
+
+5. The **68-95-99.7% rule** states that when data are normally distributed, approximately 68% of the population lies within $z=1$ standard deviation ($\sigma$) from the mean, approximately 95% of the data lie within $z=2$ standard deviations from the mean, and approximately 99.7% of the data lie within $z=3$ standard deviations from the mean. For example, this rule approximates that 2.5% of observations will be less than a z-score of $z=-2$.
+
+6. Percentiles can be calculated using the `qnorm(percentile, mu, sigma)` function. 
+
+<br/>
+
+</div>
+<br>

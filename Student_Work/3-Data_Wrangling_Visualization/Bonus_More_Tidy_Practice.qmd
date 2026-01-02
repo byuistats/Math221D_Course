@@ -1,0 +1,216 @@
+---
+title: Level up your Tidy-ness
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Putting it All Together
+
+Here are two more data wrangling questions to test your skills. Try as best you can to work each step on your own before checking solutions.
+
+The questions relate to the High School survey used in other examples.  
+
+```{r}
+# Load libraries and data
+
+library(rio)
+library(mosaic)
+library(tidyverse)
+library(car)
+
+survey <- import('https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv') %>% tibble()
+
+```
+
+
+# Telepaths, Gender and Sleep
+
+Suppose we want to see who gets more sleep on non-school nights, males or females whose chosen superpower would be telepathy.  Also, create a column that is the ratio of sleep hours on non-school nights to 8.  This calculates the percent of recommended sleep on non-school nights.    
+
+  1. Create a dataset that includes columns Gender, Superpower, Sleep_Hours_Non-Schoolnight, and the ratio of non-schoolnight sleep hours divided by 8, for Males and Females who choose Telepathy as their superpower.
+
+```{r}
+# Your Code:
+
+```
+
+
+<details>
+<summary>Solution</summary>
+```{r}
+unique(survey$Superpower)
+
+telepaths <- survey %>%
+  select(Gender, Superpower, Sleep_Hours_Non_Schoolnight) %>%
+  filter(Superpower=="Telepathy") %>%
+  mutate(
+    percent_of_recommended = Sleep_Hours_Non_Schoolnight / 8
+  )
+
+telepaths
+```
+</details>
+
+
+  2. Create a summary table comparing males and females whose preferred super power is telepathy that includes:
+  
+    a. Mean, standard deviation, and sample size of Sleep Hours on non-school nights 
+    b. Mean, standard deviation, and sample size of the percent of recommended sleep
+
+
+
+```{r}
+# Your Code
+
+```
+
+
+<details>
+<summary>Solution</summary>
+```{r}
+telepaths %>%
+  group_by(Gender) %>%
+  summarise(
+    mn_hrs = mean(Sleep_Hours_Non_Schoolnight),
+    mn_percent_recommended = mean(percent_of_recommended),
+    count = n()
+  )
+
+```
+</details>
+
+
+# Vegetarians and Height
+
+1. How many vegetarians say meat is their favorite food?
+
+**HINT**: This can be done with a single filter statement
+
+```{r}
+# Your Code:
+
+```
+
+
+<details>
+<summary>Solution</summary>
+```{r}
+
+survey %>%
+  filter(Favorite_Food == "Meat",
+         Vegetarian == "Yes")
+
+```
+</details>
+
+2. Compare mean, and standard deviation of heights between those who are vegetarian and those who aren't.  Include the number of respondents in your analysis.
+
+Be sure to filter out any major outliers in heights first.
+
+```{r}
+# Your Code:
+
+```
+
+<details>
+<summary>Solution</summary>
+```{r}
+
+survey %>%
+  select(Height_cm, Vegetarian) %>%
+  filter(Height_cm < 214,
+         Height_cm > 100) %>%
+  group_by(Vegetarian) %>%
+  summarise(
+    med_ht = median(Height_cm),
+    mean_ht = mean(Height_cm),
+    sd_ht = sd(Height_cm),
+    count = n()
+  )
+
+```
+
+After removing outliers, it looks like vegetarians are shorter, on average. 
+
+```{r}
+# Bonus Boxplot:
+veg <- survey %>%
+  select(Height_cm, Vegetarian) %>%
+  filter(Height_cm < 214,
+         Height_cm > 100)
+
+
+boxplot(veg$Height_cm ~ veg$Vegetarian, col = c(5,6), main = "Heights (cm) of Vegetarians and Non-Vegetarians", xlab="vegetarian", ylab = "Height (cm)")
+
+```
+
+
+</details>
+
+
+  3. Create a dataset that:
+      a. Includes a column that is percent of recommended sleep (Sleep_Hours_Schoolnight divided by 8 using a mutate statement)
+      
+      b. Includes only columns for Favourite_physical_activity, Reaction_time, percent_recommended_sleep (part a)
+  
+      c. Includes only students whose favorite physical activity is Walking/Hiking, Basketball, Swimming, Soccer
+  
+      d. Filters Reaction Times to be less than 1 second
+
+```{r}
+# Your Code:
+
+```
+
+<details>
+<summary>Solution</summary>
+```{r}
+phys_act <- survey %>%
+  mutate(
+    pct_recommended_sleep = Sleep_Hours_Schoolnight / 8
+  ) %>%
+  filter(Favourite_physical_activity %in% c('Walking/Hiking', "Basketball", "Swimming", "Soccer"),
+         Reaction_time < 1) %>%
+  select(Favourite_physical_activity, Reaction_time, pct_recommended_sleep)
+```
+</details>
+
+Use the clean dataset to:
+
+  4. Create a side-by-side boxplot for the percent of recommended sleep comparing favourite physical activity
+
+```{r}
+# Your Code:
+
+```
+
+<details>
+<summary>Solution</summary>
+```{r}
+boxplot(phys_act$pct_recommended_sleep ~ phys_act$Favourite_physical_activity, xlab = "Favorite Physical Activity", ylab = "% Recommended Sleep on School Nights", main = "School Night Sleep by Favorite Physical Activity", col = c(2,3,4,5))
+```
+
+</details>
+
+  5. Create a side-by-side boxplot for the reaction times comparing favourite physical activity
+
+```{r}
+# Your Code:
+
+
+```
+
+<details>
+<summary>Solution</summary>
+```{r}
+boxplot(phys_act$Reaction_time ~ phys_act$Favourite_physical_activity, xlab = "Favorite Physical Activity", ylab = "Reaction Time", main = "Reaction Time Results by Favorite Physical Activity", col = c(2,3,4,5))
+```
+</details>
+
+__Which physical activity group has the quickest reaction time?__

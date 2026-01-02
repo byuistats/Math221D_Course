@@ -1,0 +1,192 @@
+---
+title: Factors in R
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+
+# Introduction
+
+Recall that a categorical variable contains information relating to group participation.  Each possible category is called a *level* of the categorical variable.  For example, a researcher might collect data on voter registration.  The dataset could have a column called `voter_registration` which would contain information about all the respondents.  There might be 4 *levels* of `voter_registration` such as:  Democrat, Republican, Independent, and Not Affiliated.  Each respondent would be in one of those levels.  
+
+R will typically treat any column with any letters in it as a string of characters.  R does not interpret the meaning of those strings of characters and thus, without more instruction, orders them alphabetically.  
+
+There are times when we might want to give R additional instruction to improve our analyses and visualizations.  This is where factors come in.  
+
+
+# Factors  
+
+__DEFINITION__:  A **factor** represents a *categorical variable* with a numerical coding and associated levels.  It creates additional information about the variable that R uses for analyses and visualizations.  
+
+Factors are often used:  
+
+  1. To specify the order of the levels of a categorical variable
+  2. To make sure R knows that a categorical variable is labeled with numerical values 
+  
+The second situation is not always obvious when reviewing the data.  You may have a column of data indicating random assignments of subjects into 5 treatment groups with levels 1, 2, 3, 4, or 5.  It is important to instruct R to treat this categorical variable as categorical, not numeric.  Failure to do so can lead to improper analysis and incorrect conclusions.   
+
+
+# Creating a Factor Variable
+
+Let's revisit the survey of Portuguese students from 2 private schools.    
+
+```{r}
+# Load libraries and data
+
+library(rio)
+library(mosaic)
+library(tidyverse)
+library(car)
+
+student <- read_csv('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/student_data_kaggle.csv')
+
+glimpse(student)
+
+```
+
+## Categorical variable stored as a number
+
+The [website](https://www.kaggle.com/datasets/whenamancodes/student-performance) indicates that `traveltime` is a categorical variable with 1 being less than 15 minutes, 2 is between 15 and 30 minutes, 3 indicates 30 minutes to 1 hour, and 4 is greater than 1 hour.  
+
+A `glimpse()` of the data shows `<dbl>` next to the row for `traveltime` which stands for "double" which is numerical data type.  
+
+If we want to make sure R treats this like a categorical variable and not a number, we can change it to a factor.  
+
+In the example below, we create a new dataset called `new_student` and use a `mutate()` statement to create a new column called `traveltime_factor` that changes the original `traveltime` variable into a factor.  
+
+```{r}
+
+new_student <- student %>%
+  mutate(
+    traveltime_factor = factor(traveltime)
+  )
+
+glimpse(new_student)
+
+```
+
+Notice the `glimpse()` of the new dataset has a new column called `traveltime_factor` that has `<fct>` next to it indicating that this is a factor data type.  
+
+At this point, we can use the new factor column for our analyses and visualizations and R will treat it correctly.  
+
+I can see what all the levels of this factor are by using the `levels()` function as follows:  
+
+```{r}
+
+levels(new_student$traveltime_factor)
+
+```
+
+
+## Changing the order of levels of a character string
+
+By default, R treats any text information as a string of characters and orders them alphabetically.  We can use factors to specify the order of the levels of the categorical variable.  
+
+For example, consider the `reason` column of data indicating the reason families chose these schools.  While `reason` is a categorical variable, the `glimpse()` shows it as a `<chr>` data type, meaning it is a character string. 
+
+
+The `table()` function gives the frequency of occurrence for each of the reasons.  
+
+
+```{r}
+
+table(student$reason)
+
+```
+
+The bar plot also arranges the bars alphabetically:  
+
+```{r}
+
+ggplot(data = student, mapping = aes(x = reason)) +
+  geom_bar() +
+  theme_bw()
+
+```
+
+Suppose we want to put the `other` category at the end.  We can use the `factor()` function to specify the order of the levels by including an input for `levels = c()`.  The list, `c()`, must include all the levels of the variable or it will create missing values.  
+
+The following code chunk creates a new dataset and uses a mutate statement to create a new column called `reason_factor` that also specifies the order of the levels:  
+
+```{r}
+
+new_student <- student %>%
+  mutate(
+    traveltime_factor = factor(traveltime), 
+    reason_factor = factor(reason, levels = c("course", "home", "reputation", "other"))
+  )
+
+glimpse(new_student)
+
+```
+
+Notice the `glimpse()` indicates that the new column, `reason_factor`, is a `<fct>`.  
+
+We can check the order of the levels using the `levels()` function:  
+
+```{r}
+
+levels(new_student$reason_factor)
+
+```
+
+The bar plot should also reflect the new order:  
+
+```{r}
+
+ggplot(data = new_student, mapping = aes(x = reason_factor)) +
+  geom_bar() +
+  theme_bw()
+
+```
+
+
+
+# Your turn
+
+Practice creating a new column in the dataset that changes one of the categorical variables into a factor and changes the order of the levels.  
+
+__QUESTION__:  Create a `table()` of the father's job, `Fjob`.  
+
+```{r}
+
+
+
+```
+
+Note this gives all the levels of the variable, `Fjob`.  
+
+__QUESTION__:  Create a new dataset that includes a new column which is a factor of `Fjob`.  Put the `other` category at the end.  
+
+```{r}
+
+
+
+```
+
+__QUESTION__:  Create a bar plot using the new factor in the new dataset.  Check that `other` is at the end.  
+
+```{r}
+
+
+
+```
+
+
+
+### BONUS
+
+Create a side-by-side boxplot of final grades (`G3`) that compares the levels of the factor version of `Fjob` created above:  
+
+```{r}
+
+
+
+```
+

@@ -1,0 +1,68 @@
+---
+title: Semester Project
+subtitle: Part 1
+author: Your Name
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introduction
+
+[Provide a brief overview of your research question.  Explain why you're interested in the topic, where you found your  data and the objectives of your analysis.]
+
+
+# Part 1:  Descriptive Statistics
+
+Part 1 of your semester project should include:  
+
+  1. Get your data into R
+  2. Preparing the data
+    a. This could include filtering out missing, bad or unnecessary data
+  3. Summarizing the data
+    a. Identify and summarize your response variable
+      * Visual summaries using ggplot
+      * Numerical summary tables
+    b. Explore the explanatory variables (check for outliers)
+    c. Visualize the relationship between a few explanatory variables and your response variable using ggplot
+
+
+## Data Import and Preparation
+
+```{r}
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(ggplot2)
+
+# Be sure to make this using ggplot()
+
+```
+
+## Visualizations
+
+[Use `ggplot()` to create presentation-worth graphs (histograms, scatterplots, bar charts, boxplots, etc).  Include an overall visualization of your response variable and one or two exploratory graphs showing the relationship between explanatory variables and your response.
+
+__NOTE__:  The type of graphs and summaries you do depends entirely on the type of data (categorical or quantitative) that you have for your project.] 
+
+
+```{r}
+# Create Visuals Here
+
+```
+
+
+## Numerical Summaries
+
+[Create numerical summaries (`favstats()` OR `prop.table()` with row or column totals __depending on the type of data__) of your response variable.  Include a table of summary statistics broken out by your explanatory variable.  Include a discussion of what you observe.]
+
+```{r}
+# Create numerical summaries
+
+```
+

@@ -1,0 +1,220 @@
+---
+title: Confidence Intervals and Hypothesis Tests for Proportions
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Introduction
+
+At the end of this lesson, you should be able to:
+
+  1. Understand the conditions where the sampling distribution of $\hat p$ is normal
+  2. Calculate a confidence intervals for a population proportion
+  3. Check the normality requirements for a confidence interval
+  4. Perform a hypothesis test for a population proportion
+  5. Check the normality requirements for a hypothesis test for one proportion
+
+
+# The Distribution of Sample Statistics
+
+Categorical data is often summarized as a percent.  If we randomly select 500 students and find 276 have brown hair, we can estimate the *population* proportion using $\hat{p} = \frac{X}{N}$ where $X$ is the number with brown hair and N is the number in our sample.  We often interchange percents and proportions, but strictly speaking, a proportion is a number between 0 and 1.  This can be interpreted as a probability as well.
+
+If another researcher were to collect a different sample of 500 from the same population, they would almost certainly get a different number of people with brown hair than the first study.  We can imagine taking many samples of 500 students and imagine the theoretical distribution of all possible $\hat{p}$.  If we are taking good samples, most of these $\hat{p}$'s should be near the population proportion, $p$. 
+
+In fact, under certain conditions we can know the approximate distribution of $\hat{p}$.  As you probably guessed, the distribution of $\hat{p}$ is approximately normal with:
+
+$$\mu_{\hat{p}} = p$$ 
+
+$$\sigma_{\hat{p}} = \sqrt{\frac{p(1-p)}{N}}$$
+
+That is to say, the mean of all sample proportions is the population proportion.  
+
+Just as it was with a sample mean, $\bar{x}$, we have to check certain conditions to assume the distribution is approximately normal.  For $\bar{x}$, we needed the population to be normally distributed or to have a sample size greater than 30.  The principle of having a large enough sample applies, but it's different for a proportion. 
+
+We can assume the distribution is approximately normal if:
+
+$$np \geq 10$$
+
+$$n(1-p) \geq 10$$
+
+In plain English, this means our sample size has to be big enough to have at least 10 expected "successes" and 10 expected "failures".  For example, if we're estimating the proportion of left handed people, we would need a sample size large enough to have at least 10 left handed people and 10 right handed people.  
+
+
+# Confidence Intervals for Proportions
+
+We can take advantage of the fact that 95% of the time, if our sample adequately represents the population, our sample proportion, $\hat p$, will be within about 2 standard errors of the truth.  
+
+We can calculate confidence intervals for proportions using the `prop.test(x=, n=, conf.level = )$conf.int`, for a given confidence level, where $x$ is the number of "successes" and $n$ is the total sample size.  
+
+## Handedness
+
+Suppose we want to calculate estimate the true proportion of left-handed students in visual arts.  We can take a random sample of 100 art majors and ask if they are left-handed. Suppose we find 15 art majors are left handed.  
+
+We can calculate a 95% confidence interval for the true population proportion of left-handed art students as follows:
+
+```{r}
+
+prop.test(x=15,n=100, conf.level=.95)$conf.int
+
+```
+
+__Interpretation__:  I am 95% confident that the true proportion of left-handed art majors is between 0.089 and 0.239.  
+
+
+The above confidence interval assumes that the conditions for $\hat p$ to be normally distributed are met.  We have to check that:  
+
+  1. $n\hat{p} \ge 10$
+  2. $n(1-\hat{p}) \ge 10$
+
+
+That is, there are at least 10 yeses and 10 no's in our sample, which is the case.  
+
+## Your Turn
+
+Suppose you want to estimate the proportion of students who regularly drink energy drinks on campus.  You randomly select 235 students and find that 88 consume energy drinks multiple times a week.  
+
+Create a 99% confidence interval for the true proportion of students who regularly consume energy drinks:
+
+```{r}
+
+
+
+```
+
+
+__QUESTION__:  Interpret the confidence interval in context of the research question:  
+__ANSWER__:  
+
+
+
+__QUESTION__:  Are the assumptions for the normality of $\hat p$ are met?  Why?  
+__ANSWER__:  
+
+
+# Hypothesis Test for One Proportion
+
+
+# Introduction
+
+In statistics, one-sample proportion tests are used to compare proportions or percentages to a hypothesized value. These tests are useful when dealing with categorical data. We here discuss these tests and provide examples of their application in R.
+
+The hypothesis test should look very familiar:
+
+$$H_0: p = p_0$$
+$$H_a: p\; (<,>,\neq) \: p_0$$
+where $p_0$ is some hypothesized value for the population proportion.  
+
+So far, we have been using Greek letters to represent population parameters.  We deviate from that now due to the fact that the Greek letter for p, $\pi$, already has a long-established meaning in mathematics.  In the hypothesis definition above, $p$ represents the population proportion.  
+
+# One Sample Proportion Test
+
+The one sample proportion test is used to determine whether the proportion of successes based on a single sample differs significantly from a hypothesized value.
+
+## Example 1: One Sample Proportion Test
+
+Suppose we want to test whether the proportion of students who passed an exam is significantly less than 0.75. We have a sample of 100 students, of which 72 passed.
+
+$$\hat{p} = \frac{X}{N} = \frac{72}{100} = .72$$
+
+If we want to test if this is significantly less than 75%, we can use the `prop.test()` which is very similar to `t.test()`.  Instead of putting in a sample mean, $\bar{x}$, with a hypothesized $\mu$, we put in $X$ and $N$ and a hypothesized $p$.  Setting the alternative and confidence level operates the same as `t.test()`.  
+
+Confidence intervals for proportions for proportions can also be obtained just as with `t.test()`.
+
+```{r}
+# One Sample Proportion Test Example
+# Hypothesized proportion: 0.75
+# Sample size: 100
+# Number of successes: 72
+
+prop.test(x = 72, n = 100, p = 0.75, alternative = "less")
+
+
+prop.test(x = 72, n = 100, conf.level = .9)$conf.int
+
+```
+
+
+### The distribution of $\hat{p}$
+
+Recall that the sampling distribution for $\hat{p}$ is approximately normally distributed when our sample has more than 10 expeted "successes" and more than 10 expected "failures".  We test this by looking at:   
+
+__Hypothesis \sp Test Requirements:__
+
+$$np \geq 10$$
+$$n(1-p) \geq 10$$
+
+We use p, not $\hat{p}$ for hypothesis testing because hypothesis testing always *assumes the null hypothesis is true*.  Confidence intervals, on the other hand, make no such assumption.
+
+To see if the calculated confidence interval is appropriate, we use $\hat{p}$.
+
+__Confidence Interval Requirements:__
+$$n\hat{p} \geq 10$$
+$$n(1-\hat{p}) \geq 10$$
+Can we trust the p-value and confidence interval?
+
+You can use a calculator for this, or simply use R as a calculator:
+
+```{r}
+x <- 72
+n <- 100
+p_hat <- x/n
+p <- .75
+
+# For Hypothesis Testing:
+n*p >= 10
+n*(1-p) >= 10
+
+# For Confidence Intervals:
+n*p_hat >= 10
+n*(1-p_hat) >=10
+
+```
+
+
+## Example 2:  Handedness
+
+Suppose the United States national average percent of left-handed people is 11%.  A researcher wants to know if visual arts majors are significantly more likely to be left handed.  She samples 250 visual arts majors and finds that 36 are left handed.
+
+Perform a one-sample proportion to see if visual arts majors are significantly more left-handed than the general population.
+
+State the null and alternative hypotheses and your significance level.
+
+$$H_0: p = $$
+$$H_a: p $$
+$$\alpha = $$
+```{r}
+
+```
+
+__Question__:  What is the value of the test statistics for this test?  
+__Answer__:  
+
+__Question__:  What is the P-Value?  
+__Answer__:  
+
+__Question__:  State your conclusion in context of this problem:  
+__Answer__:  
+
+
+Make a $(1-\alpha)$ level confidence interval for the true population proportion.
+
+```{r}
+
+```
+
+__Question__:  Interpret the confidence interval in context of the question:  
+__Answer__:  
+
+__Question__:  Are the hypothesis test requirements for the normality of $\hat{p}$ satisfied?  
+__Answer__:  
+
+__Question__:  Are the requirements for a confidence interval for $p$ satisfied?  
+__Answer__:  
+
+
+

@@ -20,6 +20,7 @@ website:
         - href: ./1-Getting_Started/3-Introducing_R.qmd
         - href: ./1-Getting_Started/4-Installing_Packages.qmd
         - href: ./1-Getting_Started/5-Stat_Process.qmd
+        - href: ./1-Getting_Started/5-Stat_Process_Practice.qmd
         - href: ./1-Getting_Started/6-Response_and_Explanatory_Variables.qmd
 
     - text: "Descriptive Stats"

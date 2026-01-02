@@ -1,0 +1,86 @@
+---
+title: Statistical Process Practice Problems
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+# Introduction
+
+These questions will help deepen your understanding of the statistical process that we refer to throughout the semester.  
+
+---
+
+# Sampling Schemes
+
+In each of the following scenarios, state which type of random sample is being performed.
+
+__Scenario 1__:  Students in an Introductory Statistics class at BYU-Idaho were studying prices of cold cereal at grocery stores in Rexburg. To get a sample of cold cereal prices, they went to Albertson's and rolled a die to decide which box from the left of the top shelf they would start on. They then recorded every 6th cereal after the first, moving from left to right down the shelves, recording the name, size, and price of each cereal in their sample. 
+
+__QUESTION__:  Which sampling method did they use?  
+__ANSWER__:  
+
+
+__Scenario 2__:  A study conducted by researchers from the Department of Education wanted to know the average debt of college students in the United States. In order to obtain a sample representative of all students, the researchers divided college students into the four classes (freshman, sophomore, junior, and senior) and then took a random sample of students from each class. 
+
+__QUESTION__:  Which sampling method did they use?  
+__ANSWER__:  
+
+
+---
+
+# Experiment vs Observational Study
+
+## Background
+
+A sample of 504 patients in early stages of Alzheimer's disease is divided into two groups.  One group receives an experimental drug and the other a placebo.  The advance of the disease is tracked at one-month intervals over the next year.  
+
+
+__QUESTION__:  Is this a designed experiment or an observational study? Explain your answer.  
+__ANSWER__:  
+
+
+---
+
+# Population vs Sample
+
+## New Drug
+
+### Background  
+
+Say that you are a researcher for a large pharmaceutical company that has produced a new drug that is believed to help reduce the risk of developing arthritis. You test the drug and compare it to a placebo by randomly choosing one group of men and women in their 50's to take the drug and one group of men and women in their 50's to take a placebo. Each participant takes the drug or placebo for a period of 10 years, after which the effects of the drug are measured against the effects of the placebo. 
+
+__QUESTION__:  What (or who) are the experimental units or subject?  
+__ANSWER__:  
+
+__QUESTION__:  What is the population of the study?  
+__ANSWER__:  
+
+
+## Elections
+
+### Background
+
+Each presidential election, many different groups want to know how popular each candidate is among the electorate. In the recent election, one marketing research firm was asked by a special interest group to help estimate the proportion of Americans who supported a particular candidate.  From a list of all registered voters, 8000 names were randomly selected. An automated phone-call was made to each of the 8000 individuals selected asking them to answer a few questions indicating their voting preferences. The marketing firm received 2969 responses. 
+
+__QUESTION__:  What is the population of this study?  
+__ANSWER__:  
+
+__QUESTION__:  What is the sample of this study?  
+__ANSWER__:  
+
+
+---
+
+# Statistical Process 
+
+Amy is doing statistical research for her semester project. On Monday she does a graph of one of the variables in her data. 
+
+__QUESTION__:  Which step of the statistical process is Amy working on?  
+__ANSWER__:  
+
+
