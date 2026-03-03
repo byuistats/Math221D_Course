@@ -5,7 +5,12 @@ title: "Interactive Course Map"
 Here’s the course‑map tool running inside the site:
 
 ::: {frame}
-<iframe src="https://221dcoursemapapp.streamlit.app/" width="100%" height="800"></iframe>
+<iframe
+  src="https://221dcoursemapapp.streamlit.app/?embed=true"
+  width="100%"
+  height="800"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
 :::
-
 
