@@ -1,0 +1,52 @@
+---
+title: "GGPlot Practice"
+subtitle: "Bivariate Data"
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Poverty and Crime
+
+    1. Determine which is the explanatory variable (x) and which is the response variable (y)  
+    2. Use `ggplot()` to make a scatter plot looking at the relationship between violent crime and poverty percentage.  
+    3. Include a trend line.  
+
+## Read in the data
+
+```{r}
+
+library(tidyverse)
+library(mosaic)
+library(rio)
+library(car)
+
+
+data <- import('https://online.stat.psu.edu/stat462/sites/onlinecourses.science.psu.edu.stat462/files/data/poverty/index.txt') %>% tibble()
+
+
+
+```
+
+
+## Create the Plot
+
+```{r}
+
+
+```
+
+
+# Extra Credit:
+
+Remove the outlier with ViolCrime > 60 and redo the graph: 
+
+```{r}
+
+```
+

@@ -103,6 +103,7 @@ website:
         
     - text: "R Help"
       menu:
+        - href: ./8-References/Course_Map.qmd
         - text: "Tidyverse Cheat Sheet"
           href: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
         - text: "R for Data Science"
