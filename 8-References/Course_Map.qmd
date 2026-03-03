@@ -2,7 +2,9 @@
 title: "Interactive Course Map"
 ---
 
-Here’s the course‑map tool running inside the site:
+Here’s the course‑map tool which can be found here:   
+
+[site](https://221dcoursemapapp.streamlit.app/)  
 
 ::: {frame}
 <iframe

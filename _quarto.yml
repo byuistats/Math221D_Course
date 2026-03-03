@@ -101,7 +101,7 @@ website:
         - href: ./7-Semester_Project/2-Semester_Project_Template_Final_Report.qmd
 
         
-    - text: "R Help"
+    - text: "Resources"
       menu:
         - href: ./8-References/Course_Map.qmd
         - text: "Tidyverse Cheat Sheet"
