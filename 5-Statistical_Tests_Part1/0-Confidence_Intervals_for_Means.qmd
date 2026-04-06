@@ -26,9 +26,9 @@ __Statistical Inference__ is the practice of using data sampled from a populatio
 
 The two primary methods of statistical inference are:  
 
-  1. Hypothesis Testing
-  2. Confidence Intervals
-  
+  1. Confidence Intervals  
+  2. Hypothesis Testing  
+
 This chapter lays the foundation for confidence intervals.  
 
 # Background
@@ -125,7 +125,7 @@ ggplot(df, aes(x = x, y = y)) +
 
 This means the 95% of the time, we will get a sample mean within 2 Standard Deviations of the true population mean.  
 
-Flipping this around, if we take our sample mean and make an interval 2 standard deviations above the mean and 2 below, the interval will overlap with the *true population mean* about 95% of the time.   
+Flipping this around, if we take our **sample mean, $\bar{x}$,** and make an interval 2 standard deviations, $2\frac{\sigma}{\sqrt{n}}$ above the mean and 2 below, the interval will overlap with the *true population mean* about 95% of the time.   
 
 ## An Approximate 95% Confidence Interval
 
