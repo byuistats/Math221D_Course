@@ -6,6 +6,10 @@ project:
     - "!Student_Work/"
   resources:
     - "Images/**"
+
+execute: 
+  error: true
+  warning: false
     
 website:
   title: "Math221D Notebook"
@@ -27,16 +31,16 @@ website:
       menu:
          - text: "Descriptive Statistics"
          - href: ./2-Descriptive_Statistics/1-Numerical_Summaries_Quantitative_Data.qmd
-         - href: ./2-Descriptive_Statistics/1-Numerical_Summaries_Quantitative_Data_Practice.qmd
+         - href: ./2-Descriptive_Statistics/1b-Numerical_Summaries_Quantitative_Data_Practice.qmd
          - href: ./2-Descriptive_Statistics/2-Graphical_Summaries_Quantitative_Data.qmd
-         - href: ./2-Descriptive_Statistics/2-Graphical_Summaries_Quantitative_Data_Practice.qmd
+         - href: ./2-Descriptive_Statistics/2b-Graphical_Summaries_Quantitative_Data_Practice.qmd
          - href: ./2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups.qmd
-         - href: ./2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups_Practice.qmd
+         - href: ./2-Descriptive_Statistics/3b-Quantitative_Data_Summaries_Multiple_Groups_Practice.qmd
          - href: ./2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries_Practice.qmd
+         - href: ./2-Descriptive_Statistics/4b-Bivariate_Quantitative_Data_Summaries_Practice.qmd
          - href: ./2-Descriptive_Statistics/5-Univariate_Categorical_Data_Summaries.qmd
          - href: ./2-Descriptive_Statistics/6-Bivariate_Categorical_Data_Summaries.qmd
-         - href: ./2-Descriptive_Statistics/6-Categorical_Data_Summaries_Practice.qmd
+         - href: ./2-Descriptive_Statistics/6b-Categorical_Data_Summaries_Practice.qmd
 
 
     - text:  "Data Wrangling"
@@ -60,29 +64,27 @@ website:
          - text: "Foundations"
          - href: ./4-Foundations_Statistical_Inference/1-Probability.qmd
          - href: ./4-Foundations_Statistical_Inference/2-The_Normal_Distribution.qmd
-         - href: ./4-Foundations_Statistical_Inference/2-The_Normal_Distribution_Practice.qmd
+         - href: ./4-Foundations_Statistical_Inference/2b-The_Normal_Distribution_Practice.qmd
          - href: ./4-Foundations_Statistical_Inference/3-Sampling_Distributions_CLT_LLN.qmd
          - href: ./4-Foundations_Statistical_Inference/4-Assessing_Normality.qmd
          - text: "Central Limit Theorem Practice"
            href: ./4-Foundations_Statistical_Inference/6-Central_Limit_Theorem_Practice.qmd
-         - href: ./4-Foundations_Statistical_Inference/7-Introducing_Hypothesis_Tests.qmd
-         - href: ./4-Foundations_Statistical_Inference/8-Statistical_Significance.qmd
-    
   
     - text: "Statistical Tests I"
       menu:
-        - href: ./5-Statistical_Tests_Part1/0-Confidence_Intervals_for_Means.qmd
-        - href: ./5-Statistical_Tests_Part1/0-Confidence_Intervals_for_Means_Practice.qmd
-        - href: ./5-Statistical_Tests_Part1/1-One_Sample_ttest.qmd
-        - href: ./5-Statistical_Tests_Part1/1-One_Sample_ttest_Practice.qmd
-        - href: ./5-Statistical_Tests_Part1/2-Conf_Int_Hyp_Test_for_Proportions.qmd
-        - href: ./5-Statistical_Tests_Part1/2-Conf_Int_Hyp_Test_for_Proportions_Practice.qmd
-        - href: ./5-Statistical_Tests_Part1/3-Two_sample_Independent_ttest.qmd
-        - href: ./5-Statistical_Tests_Part1/3-Two_sample_Independent_ttest_practice.qmd
-        - href: ./5-Statistical_Tests_Part1/4-Matched_Pairs_ttest.qmd
-        - href: ./5-Statistical_Tests_Part1/4-Matched_Pairs_ttest_Practice.qmd
-        - href: ./5-Statistical_Tests_Part1/5-Two_sample_Proportions.qmd
-        - href: ./5-Statistical_Tests_Part1/5-Two_sample_Proportions_Practice.qmd
+        - href: ./5-Statistical_Tests_Part1/1-Confidence_Intervals_for_Means.qmd
+        - href: ./5-Statistical_Tests_Part1/1-Introducing_T-Distribution.qmd
+        - href: ./5-Statistical_Tests_Part1/1b-Confidence_Intervals_for_Means_Practice.qmd
+        - href: ./5-Statistical_Tests_Part1/2-One_Sample_ttest.qmd
+        - href: ./5-Statistical_Tests_Part1/2b-One_Sample_ttest_Practice.qmd
+        - href: ./5-Statistical_Tests_Part1/3-Conf_Int_Hyp_Test_for_Proportions.qmd
+        - href: ./5-Statistical_Tests_Part1/3b-Conf_Int_Hyp_Test_for_Proportions_Practice.qmd
+        - href: ./5-Statistical_Tests_Part1/4-Two_sample_Independent_ttest.qmd
+        - href: ./5-Statistical_Tests_Part1/4b-Two_sample_Independent_ttest_practice.qmd
+        - href: ./5-Statistical_Tests_Part1/5-Matched_Pairs_ttest.qmd
+        - href: ./5-Statistical_Tests_Part1/5b-Matched_Pairs_ttest_Practice.qmd
+        - href: ./5-Statistical_Tests_Part1/6-Two_sample_Proportions.qmd
+        - href: ./5-Statistical_Tests_Part1/6b-Two_sample_Proportions_Practice.qmd
 
     - text: "Statistical Tests II"
       menu:

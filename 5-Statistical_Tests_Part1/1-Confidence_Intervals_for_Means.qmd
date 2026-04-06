@@ -1,10 +1,7 @@
 ---
 title: "Confidence Intervals for a Mean"
 ---
-```{r setup, include=FALSE}
-# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
-```
+
 
 # Introduction
 
@@ -126,6 +123,8 @@ ggplot(df, aes(x = x, y = y)) +
 This means the 95% of the time, we will get a sample mean within 2 Standard Deviations of the true population mean.  
 
 Flipping this around, if we take our **sample mean, $\bar{x}$,** and make an interval 2 standard deviations, $2\frac{\sigma}{\sqrt{n}}$ above the mean and 2 below, the interval will overlap with the *true population mean* about 95% of the time.   
+
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/CI_Illustration.png)
 
 ## An Approximate 95% Confidence Interval
 

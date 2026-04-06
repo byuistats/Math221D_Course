@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2-Sample Proportion Practice – Math221D Notebook</title>
+<title>Confidence Intervals For Means - Practice – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -165,7 +199,7 @@ window.Quarto = {
  <span class="dropdown-text">Numerical Quantitative Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../2-Descriptive_Statistics/1-Numerical_Summaries_Quantitative_Data_Practice.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/1b-Numerical_Summaries_Quantitative_Data_Practice.html">
  <span class="dropdown-text">Practice: Numerical Summaries (Quant.)</span></a>
   </li>  
         <li>
@@ -173,7 +207,7 @@ window.Quarto = {
  <span class="dropdown-text">Graphical Quantitative Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../2-Descriptive_Statistics/2-Graphical_Summaries_Quantitative_Data_Practice.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/2b-Graphical_Summaries_Quantitative_Data_Practice.html">
  <span class="dropdown-text">Practice: Graphical Summaries (Quant.)</span></a>
   </li>  
         <li>
@@ -181,7 +215,7 @@ window.Quarto = {
  <span class="dropdown-text">Quantitative Data Summaries - Multiple Groups</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups_Practice.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/3b-Quantitative_Data_Summaries_Multiple_Groups_Practice.html">
  <span class="dropdown-text">Practice: Summarizing Multiple Groups</span></a>
   </li>  
         <li>
@@ -189,7 +223,7 @@ window.Quarto = {
  <span class="dropdown-text">Summarizing Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries_Practice.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/4b-Bivariate_Quantitative_Data_Summaries_Practice.html">
  <span class="dropdown-text">Practice: Bivariate Data</span></a>
   </li>  
         <li>
@@ -201,7 +235,7 @@ window.Quarto = {
  <span class="dropdown-text">Categorical Data Summaries - 2 Variables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../2-Descriptive_Statistics/6-Categorical_Data_Summaries_Practice.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/6b-Categorical_Data_Summaries_Practice.html">
  <span class="dropdown-text">Practice: Summarizing Categorical Data</span></a>
   </li>  
     </ul>
@@ -270,7 +304,7 @@ window.Quarto = {
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/2-The_Normal_Distribution_Practice.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/2b-The_Normal_Distribution_Practice.html">
  <span class="dropdown-text">Normal Probability Practice</span></a>
   </li>  
         <li>
@@ -285,14 +319,6 @@ window.Quarto = {
     <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/6-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem Practice</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7-Introducing_Hypothesis_Tests.html">
- <span class="dropdown-text">Introducing Hypothesis Tests</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/8-Statistical_Significance.html">
- <span class="dropdown-text">Statistical Significance</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -301,51 +327,55 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-i">    
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/0-Confidence_Intervals_for_Means.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Confidence_Intervals_for_Means.html">
  <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/0-Confidence_Intervals_for_Means_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Introducing_T-Distribution.html">
+ <span class="dropdown-text">Introducing the T-Distribution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1b-Confidence_Intervals_for_Means_Practice.html">
  <span class="dropdown-text">Confidence Intervals For Means - Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-One_Sample_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-One_Sample_ttest.html">
  <span class="dropdown-text">One-Sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-One_Sample_ttest_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2b-One_Sample_ttest_Practice.html">
  <span class="dropdown-text">Don’t Take it Personally</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-Conf_Int_Hyp_Test_for_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Conf_Int_Hyp_Test_for_Proportions.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3b-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Two_sample_Independent_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Two_sample_Independent_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Two_sample_Independent_ttest_practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4b-Two_sample_Independent_ttest_practice.html">
  <span class="dropdown-text">2-Sample Independent T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Matched_Pairs_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5-Matched_Pairs_ttest.html">
  <span class="dropdown-text">Matched Pairs T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Matched_Pairs_ttest_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5b-Matched_Pairs_ttest_Practice.html">
  <span class="dropdown-text">Matched Pairs T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5-Two_sample_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6-Two_sample_Proportions.html">
  <span class="dropdown-text">2-Sample Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5-Two_sample_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6b-Two_sample_Proportions_Practice.html">
  <span class="dropdown-text">2-Sample Proportion Practice</span></a>
   </li>  
     </ul>
@@ -448,17 +478,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#a-penny-saved" id="toc-a-penny-saved" class="nav-link" data-scroll-target="#a-penny-saved">A Penny Saved?</a>
-  <ul class="collapse">
-  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
-  </ul></li>
-  <li><a href="#couples-retreat" id="toc-couples-retreat" class="nav-link" data-scroll-target="#couples-retreat">Couples Retreat?</a>
-  <ul class="collapse">
-  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
-  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
-  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#creativity" id="toc-creativity" class="nav-link" data-scroll-target="#creativity">Creativity</a></li>
+  <li><a href="#medical-malpractice-lawsuits" id="toc-medical-malpractice-lawsuits" class="nav-link" data-scroll-target="#medical-malpractice-lawsuits">Medical Malpractice Lawsuits</a></li>
+  <li><a href="#old-faithful" id="toc-old-faithful" class="nav-link" data-scroll-target="#old-faithful">Old Faithful</a></li>
   </ul>
 </nav>
     </div>
@@ -467,7 +490,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">2-Sample Proportion Practice</h1>
+<h1 class="title">Confidence Intervals For Means - Practice</h1>
 </div>
 
 
@@ -484,59 +507,53 @@ window.Quarto = {
 </header>
 
 
-<section id="instructions" class="level1">
-<h1>Instructions</h1>
-<p>Complete the following questions about testing differences between 2 proportions. When completed, Render the <code>qmd</code> file and submit the <code>html</code>.</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In this exercise, you will create several confidence intervals for an unknown <strong>population mean</strong>, <span class="math inline">\(\mu\)</span>, based on your sample mean, <span class="math inline">\(\bar x\)</span>.</p>
+<p>Start by loading the libraries:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="a-penny-saved" class="level1">
-<h1>A Penny Saved?</h1>
-<p>A random sample of BYU-Idaho students was surveyed and asked if they were in favor of retaining the penny as a form of currency in the United States. Out of the 116 women surveyed, 80 said that they were in favor of retaining the penny as a form of currency. Of the 137 men surveyed, 91 said that they were in favor of retaining the penny. For these questions, let group 1 represent women and group 2 represent men.</p>
-<p><strong>Question</strong>: Are the requirements satisfied for assuming normality? Explain.<br>
-<strong>Answer</strong>:</p>
-<p>Regardless of whether or not the requirements are satisfied, complete the following:</p>
-<section id="confidence-interval" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
-<p>Create a 95% confidence interval for the difference in the proportion of females to males who prefer to keep the penny:</p>
-<p><strong>Question</strong>: Interpret the confidence interval in context of the question:<br>
-<strong>Answer</strong>:</p>
+<section id="creativity" class="level1">
+<h1>Creativity</h1>
+<p>Create a 95% confidence interval for the <strong>true population average</strong> creativity percentile (<code>Creativity_Percentile</code>) of Brother Cannon’s students (<span class="math inline">\(\mu_{\text{creativity}}\)</span>):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>creativity <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/creativity_personality_Clean.csv'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(, <span class="at">conf.level =</span> )<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in t_test.default(, conf.level = ): argument "x" is missing, with no default</code></pre>
+</div>
+</div>
+<p><strong>QUESTION</strong>: Explain the confidence interval in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
+<p>Create a 93% confidence interval for the <strong>true population average</strong> number of siblings (<code>How_Many_Siblings</code>) of Brother Cannon’s students(<span class="math inline">\(\mu_{\text{number of siblings}}\)</span>):</p>
+<p><strong>QUESTION</strong>: Explain the confidence interval in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
 </section>
-<section id="hypothesis-test" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
-<p>You also want to see if there is a difference between the proportion of women who want to keep the penny and the proportion of men who want to keep the penny. Use a level of significance of <span class="math inline">\(\alpha = 0.05\)</span>.</p>
-<p>State your null and alternative hypotheses:</p>
-<p><span class="math display">\[H_0: p_{female}???p_{male}\]</span><br>
-<span class="math display">\[H_a: p_{female}???p_{male}\]</span></p>
-<p><strong>Question</strong>: What is the test statistic?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: What is the P-value?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: Based on your decision rule, state your conclusion in context of the problem:<br>
-<strong>Answer</strong>:</p>
+<section id="medical-malpractice-lawsuits" class="level1">
+<h1>Medical Malpractice Lawsuits</h1>
+<p>Create a 99% Confidence interval for the <strong>true population average</strong> payout for operating on the wrong patient (<code>Wrong_Patient</code>) in malpractice lawsuits (<span class="math inline">\(\mu_{\text{payout}}\)</span>):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>malpractice <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://github.com/byuistats/Math221D_Course/raw/main/Data/WrongSiteWrongPatient.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: Explain the confidence interval in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
 </section>
-</section>
-<section id="couples-retreat" class="level1">
-<h1>Couples Retreat?</h1>
-<p>A marriage counselor conducted a study of couples, categorizing each of the couples as “communicative” or “non-communicative”. Among other things, the counselor wanted to see whether the percentage of communicative couples whose marriage ended in separation or divorce was the same as the percentage of non-communicative couples whose marriage ended in separation or divorce.</p>
-<p>Of the 97 couples classified as “communicative”, 17 ended in separation or divorce. Of the 56 couples classified as “non-communicative”, 13 ended in separation or divorce.</p>
-<section id="hypothesis-test-1" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h2>
-<p>Construct a null and alternative hypothesis for the study:</p>
-<p><span class="math display">\[H_0: \]</span><br>
-<span class="math display">\[H_a: \]</span></p>
-<p>Perform the appropriate analysis:</p>
-<p><strong>Question</strong>: What is the P-value?<br>
-<strong>Answer</strong>:</p>
-<p><strong>Question</strong>: Based on your decision rule, state your conclusion in context of the problem:<br>
-<strong>Answer</strong>:</p>
-</section>
-<section id="confidence-interval-1" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h2>
-<p>Create a 95% confidence interval for the difference in the proportion of divorces between communicative and non-communicative couples:</p>
-<p><strong>Question</strong>: Interpret the confidence interval in context of the question:<br>
-<strong>Answer</strong>:</p>
+<section id="old-faithful" class="level1">
+<h1>Old Faithful</h1>
+<p>Create a 90% Confidence Interval for the <strong>true population average</strong> wait time for an Old Faithful eruption (<span class="math inline">\(\mu_{\text{wait time}}\)</span>):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>old_faithful <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/old_faithful.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>QUESTION</strong>: Explain the confidence interval in context of the research question:<br>
+<strong>ANSWER</strong>:</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

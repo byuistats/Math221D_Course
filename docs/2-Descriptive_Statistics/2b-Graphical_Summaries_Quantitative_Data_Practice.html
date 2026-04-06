@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2-Sample Independent T-Test Practice – Math221D Notebook</title>
+<title>Practice: Graphical Summaries (Quant.) – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,35 +103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -199,7 +170,7 @@ window.Quarto = {
  <span class="dropdown-text">Numerical Quantitative Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../2-Descriptive_Statistics/1-Numerical_Summaries_Quantitative_Data_Practice.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/1b-Numerical_Summaries_Quantitative_Data_Practice.html">
  <span class="dropdown-text">Practice: Numerical Summaries (Quant.)</span></a>
   </li>  
         <li>
@@ -207,7 +178,7 @@ window.Quarto = {
  <span class="dropdown-text">Graphical Quantitative Data Summaries</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../2-Descriptive_Statistics/2-Graphical_Summaries_Quantitative_Data_Practice.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/2b-Graphical_Summaries_Quantitative_Data_Practice.html">
  <span class="dropdown-text">Practice: Graphical Summaries (Quant.)</span></a>
   </li>  
         <li>
@@ -215,7 +186,7 @@ window.Quarto = {
  <span class="dropdown-text">Quantitative Data Summaries - Multiple Groups</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../2-Descriptive_Statistics/3-Quantitative_Data_Summaries_Multiple_Groups_Practice.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/3b-Quantitative_Data_Summaries_Multiple_Groups_Practice.html">
  <span class="dropdown-text">Practice: Summarizing Multiple Groups</span></a>
   </li>  
         <li>
@@ -223,7 +194,7 @@ window.Quarto = {
  <span class="dropdown-text">Summarizing Bivariate Data</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../2-Descriptive_Statistics/4-Bivariate_Quantitative_Data_Summaries_Practice.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/4b-Bivariate_Quantitative_Data_Summaries_Practice.html">
  <span class="dropdown-text">Practice: Bivariate Data</span></a>
   </li>  
         <li>
@@ -235,7 +206,7 @@ window.Quarto = {
  <span class="dropdown-text">Categorical Data Summaries - 2 Variables</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../2-Descriptive_Statistics/6-Categorical_Data_Summaries_Practice.html">
+    <a class="dropdown-item" href="../2-Descriptive_Statistics/6b-Categorical_Data_Summaries_Practice.html">
  <span class="dropdown-text">Practice: Summarizing Categorical Data</span></a>
   </li>  
     </ul>
@@ -304,7 +275,7 @@ window.Quarto = {
  <span class="dropdown-text">The Normal Distribution</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/2-The_Normal_Distribution_Practice.html">
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/2b-The_Normal_Distribution_Practice.html">
  <span class="dropdown-text">Normal Probability Practice</span></a>
   </li>  
         <li>
@@ -319,14 +290,6 @@ window.Quarto = {
     <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/6-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem Practice</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7-Introducing_Hypothesis_Tests.html">
- <span class="dropdown-text">Introducing Hypothesis Tests</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/8-Statistical_Significance.html">
- <span class="dropdown-text">Statistical Significance</span></a>
-  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -335,51 +298,55 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-i">    
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/0-Confidence_Intervals_for_Means.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Confidence_Intervals_for_Means.html">
  <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/0-Confidence_Intervals_for_Means_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Introducing_T-Distribution.html">
+ <span class="dropdown-text">Introducing the T-Distribution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1b-Confidence_Intervals_for_Means_Practice.html">
  <span class="dropdown-text">Confidence Intervals For Means - Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-One_Sample_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-One_Sample_ttest.html">
  <span class="dropdown-text">One-Sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-One_Sample_ttest_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2b-One_Sample_ttest_Practice.html">
  <span class="dropdown-text">Don’t Take it Personally</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-Conf_Int_Hyp_Test_for_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Conf_Int_Hyp_Test_for_Proportions.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3b-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Two_sample_Independent_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Two_sample_Independent_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Two_sample_Independent_ttest_practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4b-Two_sample_Independent_ttest_practice.html">
  <span class="dropdown-text">2-Sample Independent T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Matched_Pairs_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5-Matched_Pairs_ttest.html">
  <span class="dropdown-text">Matched Pairs T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Matched_Pairs_ttest_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5b-Matched_Pairs_ttest_Practice.html">
  <span class="dropdown-text">Matched Pairs T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5-Two_sample_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6-Two_sample_Proportions.html">
  <span class="dropdown-text">2-Sample Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5-Two_sample_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6b-Two_sample_Proportions_Practice.html">
  <span class="dropdown-text">2-Sample Proportion Practice</span></a>
   </li>  
     </ul>
@@ -482,27 +449,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#its-a-date" id="toc-its-a-date" class="nav-link" data-scroll-target="#its-a-date">It’s a Date!</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#load-libraries-and-data" id="toc-load-libraries-and-data" class="nav-link" data-scroll-target="#load-libraries-and-data">Load libraries and Data</a></li>
+  <li><a href="#old-faithful" id="toc-old-faithful" class="nav-link" data-scroll-target="#old-faithful">Old Faithful</a></li>
+  <li><a href="#gratitude" id="toc-gratitude" class="nav-link" data-scroll-target="#gratitude">Gratitude</a>
   <ul class="collapse">
-  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the Data</a></li>
-  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the Data</a></li>
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a>
-  <ul class="collapse">
-  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#tooth-hurty" id="toc-tooth-hurty" class="nav-link" data-scroll-target="#tooth-hurty">Tooth hurty</a>
-  <ul class="collapse">
-  <li><a href="#review-the-data" id="toc-review-the-data" class="nav-link" data-scroll-target="#review-the-data">Review The Data</a></li>
-  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
-  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
-  </ul></li>
-  <li><a href="#birth-weights" id="toc-birth-weights" class="nav-link" data-scroll-target="#birth-weights">Birth Weights</a>
-  <ul class="collapse">
-  <li><a href="#review-the-data-1" id="toc-review-the-data-1" class="nav-link" data-scroll-target="#review-the-data-1">Review The Data</a></li>
-  <li><a href="#hypothesis-test-2" id="toc-hypothesis-test-2" class="nav-link" data-scroll-target="#hypothesis-test-2">Hypothesis Test</a></li>
-  <li><a href="#confidence-interval-2" id="toc-confidence-interval-2" class="nav-link" data-scroll-target="#confidence-interval-2">Confidence Interval</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">Histogram</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -512,7 +464,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">2-Sample Independent T-Test Practice</h1>
+<h1 class="title">Practice: Graphical Summaries (Quant.)</h1>
 </div>
 
 
@@ -529,156 +481,41 @@ window.Quarto = {
 </header>
 
 
-<section id="instructions" class="level1">
-<h1>Instructions</h1>
-<p>Here are several opportunities to practice analyzing 2-sample independent t-tests using R. For each question, you will:</p>
-<ul>
-<li>Read in data<br>
-</li>
-<li>Identify the Response and Independent variable<br>
-</li>
-<li>Create data summaries (numerical and graphical)<br>
-</li>
-<li>Statistically analyze the data<br>
-</li>
-<li>Check for the suitability of the statistical test (CLT, Normality)<br>
-</li>
-<li>State your hypothesis test conclusions and interpret your confidence intervals</li>
-</ul>
-<p>When you finish, render this document and submit the <code>.html</code> in Canvas.</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This is an opportunity for you to practice creating graphical summaries of quantitative data.</p>
+<p>We will explore 2 datasets. The first contains information about the duration and the time between geyser eruptions at Old Faithful in Yellowstone National park.</p>
+<p>The second is data collected about expressions of gratitude and their impact on subjective well-being.</p>
+<p>For each dataset, you will create numerical summaries of the data.</p>
+</section>
+<section id="load-libraries-and-data" class="level1">
+<h1>Load libraries and Data</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the libraries</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>old_faithful <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/old_faithful.xlsx"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>gratitude <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/gratitude.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="its-a-date" class="level1">
-<h1>It’s a Date!</h1>
-<p>Dating Behavior was studied in a speed dating experiment where random matching was generated and created randomization in the number of potential dates. In a survey to each participant, one question was asked about how important attraction is when they date. The attraction value is on a scale from 0 (not important at all) to 100 (very important).</p>
-<p>The researchers want to determine if males report to value attractiveness more than females. Use a level of significance of 0.05.</p>
-<section id="load-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="load-the-data">Load the Data</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dating <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/dating_attractive_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="old-faithful" class="level1">
+<h1>Old Faithful</h1>
+<p>Create a histogram and a boxplot for Duration of Old Faithful eruptions:</p>
+<p><strong>QUESTION</strong>: Describe the shape of the distribution of duration.<br>
+<strong>ANSWER</strong>:</p>
 </section>
-<section id="explore-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="explore-the-data">Explore the Data</h2>
-<p><strong>QUESTION</strong>: What is the <em>response</em> variable?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the <em>explanatory</em> variable?<br>
-<strong>ANSWER</strong>:</p>
-<p>Create a side-by-side boxplot for the amount of reported importance of attractiveness for each biosex.</p>
-<p>Add a title and change the colors of the boxes.</p>
-<p>Create a table of summary statistics for each group (<code>favstats()</code>):</p>
-</section>
-<section id="hypothesis-test" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
-<p>State your null and alternative hypotheses (replace the ??? with the appropriate symbol):</p>
-<p><span class="math display">\[H_0:  \mu_{F}???\mu_{M}\]</span></p>
-<p><span class="math display">\[H_a:\mu_{F}???\mu_{M}\]</span></p>
-<p><strong>NOTE</strong>: The default for R is to set group order alphabetically. This means Group 1 = Female.</p>
-<p><strong>QUESTION</strong>: Check that the samples for both groups are normally distributed:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in qqPlot.default(): argument "x" is missing, with no default</code></pre>
-</div>
-</div>
-<p><strong>QUESTION</strong>: Do the data for each group appear normally distributed?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Why is it OK to continue with the analysis? <strong>ANSWER</strong>:</p>
-<p>Perform a t-test.</p>
-<p><strong>QUESTION</strong>: What is the value of the test statistic?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: How many degrees of freedom for this test?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the p-value?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What do you conclude?<br>
-<strong>ANSWER</strong>:</p>
-<section id="confidence-interval" class="level3">
-<h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
-<p>Create a confidence interval for the difference of the average Importance Score between both groups:</p>
-</section>
-</section>
-</section>
-<section id="tooth-hurty" class="level1">
-<h1>Tooth hurty</h1>
-<p>A simple random sample of dental bill costs was collected at offices in Rexburg and Idaho Falls. Let <span class="math inline">\(\mu_{IF}\)</span> be the <em>population</em> mean of dental costs in Idaho Falls and <span class="math inline">\(\mu_{R}\)</span> be the <em>population</em> mean of dentals costs in Rexburg.</p>
-<p>We suspect that dental costs are higher in Rexburg because of less competition.</p>
-<p>Use the data imported below to answer the following questions.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dentist <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/DentistOfficeBills_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="review-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="review-the-data">Review The Data</h2>
-<p><strong>QUESTION</strong>: What is the <em>response</em> variable?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the <em>explanatory</em> variable?<br>
-<strong>ANSWER</strong>:</p>
-<p>Create summary statistics tables of dental costs for each office:</p>
-<p>Create a side-by-side boxplot for dental costs for each office.</p>
-<p>Check the normality of each group.</p>
-<p><strong>QUESTION</strong>: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?</p>
-</section>
-<section id="hypothesis-test-1" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h2>
-<p>State your null and alternative hypotheses (replace the question marks with the appropriate symbols):</p>
-<p><span class="math display">\[H_0:  \mu_{IF}???\mu_{R}\]</span></p>
-<p><span class="math display">\[H_a:\mu_{IF}???\mu_{R}\]</span></p>
-<p>Perform the appropriate analysis:</p>
-<p><strong>QUESTION</strong>: What is the test statistic?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the P-value?<br>
-<strong>ANSWER</strong>:</p>
-<p>State your conclusion:</p>
-</section>
-<section id="confidence-interval-1" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h2>
-<p>Create a confidence interval for the difference in costs between the IF and Rexburg offices:</p>
-<p>Explain the confidence interval in context of the research question:</p>
-</section>
-</section>
-<section id="birth-weights" class="level1">
-<h1>Birth Weights</h1>
-<p>A study was conducted in which researchers obtained birth weights of infants born in Illinois during the same year. The birth weights are categorized based on the race and birthplace of the mother. Researchers want to know if there is a difference in mean birth weights of babies born to black women who were born in the United States and babies born to black women who were born in Africa. Values were recorded (in grams) for each infant born. The data are recorded in the file.</p>
-<p>Let <span class="math inline">\(\mu_A\)</span> be the <em>population</em> average of babies born to African-born mothers and <span class="math inline">\(\mu_{IL}\)</span> be the <em>population</em> mean weight of babies born to mothers in Illinois.</p>
-<p>Use the data imported below to answer the following questions.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>birth_weights <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/IllinoisBirthWeightsTwoVar_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="review-the-data-1" class="level2">
-<h2 class="anchored" data-anchor-id="review-the-data-1">Review The Data</h2>
-<p><strong>QUESTION</strong>: What is the <em>response</em> variable?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the <em>explanatory</em> variable?<br>
-<strong>ANSWER</strong>:</p>
-<p>Create summary statistics tables of birth weights for each country:</p>
-<p>Create a side-by-side boxplot for birth weights for each country:</p>
-<p>Check the normality of each group.</p>
-<p><strong>QUESTION</strong>: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?<br>
-<strong>ASNWER</strong>:</p>
-</section>
-<section id="hypothesis-test-2" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h2>
-<p>State your null and alternative hypotheses (replace the question marks with the appropriate symbols):</p>
-<p><span class="math display">\[H_0:  \mu_{A}???\mu_{IL}\]</span></p>
-<p><span class="math display">\[H_a:\mu_{A}???\mu_{IL}\]</span></p>
-<p>Perform the appropriate analysis:</p>
-<p><strong>QUESTION</strong>: What is the test statistic?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the P-value?<br>
-<strong>ANSWER</strong>:</p>
-<p>State your conclusion:</p>
-</section>
-<section id="confidence-interval-2" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-2">Confidence Interval</h2>
-<p>Create a confidence interval for the average difference in weights between babies born to mothers in Africa and Illinois:</p>
-<p>Explain the confidence interval in context of the research question:</p>
+<section id="gratitude" class="level1">
+<h1>Gratitude</h1>
+<p>In this dataset, there is a column called <code>treatment</code> which has the group designation, and a single column called <code>happiness</code> which is the self-reported happiness score for the participants in the sample.</p>
+<section id="histogram" class="level2">
+<h2 class="anchored" data-anchor-id="histogram">Histogram</h2>
+<p>Create a histogram and boxplot for happiness scores:</p>
+<p><strong>Question</strong>: What is the general shape of the distribution?<br>
+<strong>Answer</strong>:</p>
 
 
 </section>
