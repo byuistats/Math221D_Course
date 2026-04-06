@@ -154,7 +154,7 @@ Where $z^*$ is a z-score value related to a specified level of confidence.
 
 __NOTE__:  The $z^*$ value represents the value from a standard normal distribution beyond which
 
-```{r}
+```{r, echo=FALSE}
 
 library(ggplot2)
 
