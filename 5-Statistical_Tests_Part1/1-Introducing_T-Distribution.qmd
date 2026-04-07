@@ -10,13 +10,17 @@ $$CI = \bar{x} \pm z^* \left( \frac{\sigma}{\sqrt{n}} \right)$$
 
 This works perfectly **if** we know the true population standard deviation ($\sigma$). But in the real world, we almost never know $\sigma$.  
 
-A reasonable idea is to use the *sample* standard deviation, $s$, instead of the population standard deviation, $\sigma$.  As with most things in life, there's no free lunch.  
+A reasonable idea is to use the *sample* standard deviation, $s$, instead of the population standard deviation, $\sigma$.  
+
+$$CI = \bar{x} \pm z^* \left( \frac{s}{\sqrt{n}} \right)$$
+
+Unfortunately, there's no such thing as a free lunch.  We can no longer use the percentiles, $z^*$, from a standard normal distribution.    
 
 # Student's T-Distribution
 
-When we replace $\sigma$ with $s$, we introduce **extra uncertainty**. The $t$-distribution was created specifically to account for the additional uncertainty.  
+When we replace $\sigma$ with $s$, we introduce **extra uncertainty**. The $t$-distribution was created specifically to account for that additional uncertainty.  
 
-The $t$-distribution is similar to the normal distribution.  They are both symmetric and centered at zero, but $t$ changes shape depending on how much data we have.  The more data we have, the closer the $t$ is to the standard normal distribution, $z$.  
+The $t$-distribution is similar to the standard normal distribution.  They are both symmetric and centered at zero, but $t$ changes shape depending on how much data we have.  The more data we have, the closer the $t$ is to the standard normal distribution, $z$.  
 
 Technically, the shape of the $t$-distribution depends on something called *degrees of freedom*.  
 
@@ -32,7 +36,7 @@ The $t$-distribution looks like the Normal, $z$, distribution, but it has **heav
 
 # Confidence Intervals with the $t$-Distribution  
 
-The formula for a confidence interval should look very familiar:  
+The formula for a confidence interval using percentiles from a given $t^*$ distribution should look very familiar:  
 
 $$ CI = \bar{x} \pm t^*\frac{s}{\sqrt{n}}$$  
 

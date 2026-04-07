@@ -68,7 +68,7 @@ We have learned about several statistics.  Remember, a statistic is any number c
 </table>
 </center>
 
-The statistics above are called **point estimators** because they are just one number (one point on a number line) that is used to estimate a parameter.  Parameters are generally unknown values.  Think about the mean.  If $\mu$ is unknown, how do we know if $\bar{x}$ is close to it?  
+The statistics above are called **point estimators** because they are just one number (one point on a number line) that is used to estimate a population parameter.  Parameters are generally unknown values.  Think about the mean.  If $\mu$ is unknown, how do we know if $\bar{x}$ is close to it?  
 
 The short answer is that we will never know *for sure* if $\bar{x}$ is close to $\mu$.  This does not mean that we are helpless.  The normal distribution provides a way for us to create a range of plausible values for a parameter (e.g. $\mu$) based on a statistic (e.g. $\bar{x}$).
 
@@ -125,6 +125,7 @@ This means the 95% of the time, we will get a sample mean within 2 Standard Devi
 Flipping this around, if we take our **sample mean, $\bar{x}$,** and make an interval 2 standard deviations, $2\frac{\sigma}{\sqrt{n}}$ above the mean and 2 below, the interval will overlap with the *true population mean* about 95% of the time.   
 
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/CI_Illustration.png)
+
 
 ## An Approximate 95% Confidence Interval
 

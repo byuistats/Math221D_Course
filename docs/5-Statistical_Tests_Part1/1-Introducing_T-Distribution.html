@@ -518,12 +518,14 @@ window.Quarto = {
 <p>In the previous chapter, we calculated Confidence Intervals using the <strong>Z-score</strong> formula:</p>
 <p><span class="math display">\[CI = \bar{x} \pm z^* \left( \frac{\sigma}{\sqrt{n}} \right)\]</span></p>
 <p>This works perfectly <strong>if</strong> we know the true population standard deviation (<span class="math inline">\(\sigma\)</span>). But in the real world, we almost never know <span class="math inline">\(\sigma\)</span>.</p>
-<p>A reasonable idea is to use the <em>sample</em> standard deviation, <span class="math inline">\(s\)</span>, instead of the population standard deviation, <span class="math inline">\(\sigma\)</span>. As with most things in life, there’s no free lunch.</p>
+<p>A reasonable idea is to use the <em>sample</em> standard deviation, <span class="math inline">\(s\)</span>, instead of the population standard deviation, <span class="math inline">\(\sigma\)</span>.</p>
+<p><span class="math display">\[CI = \bar{x} \pm z^* \left( \frac{s}{\sqrt{n}} \right)\]</span></p>
+<p>Unfortunately, there’s no such thing as a free lunch. We can no longer use the percentiles, <span class="math inline">\(z^*\)</span>, from a standard normal distribution.</p>
 </section>
 <section id="students-t-distribution" class="level1">
 <h1>Student’s T-Distribution</h1>
-<p>When we replace <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(s\)</span>, we introduce <strong>extra uncertainty</strong>. The <span class="math inline">\(t\)</span>-distribution was created specifically to account for the additional uncertainty.</p>
-<p>The <span class="math inline">\(t\)</span>-distribution is similar to the normal distribution. They are both symmetric and centered at zero, but <span class="math inline">\(t\)</span> changes shape depending on how much data we have. The more data we have, the closer the <span class="math inline">\(t\)</span> is to the standard normal distribution, <span class="math inline">\(z\)</span>.</p>
+<p>When we replace <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(s\)</span>, we introduce <strong>extra uncertainty</strong>. The <span class="math inline">\(t\)</span>-distribution was created specifically to account for that additional uncertainty.</p>
+<p>The <span class="math inline">\(t\)</span>-distribution is similar to the standard normal distribution. They are both symmetric and centered at zero, but <span class="math inline">\(t\)</span> changes shape depending on how much data we have. The more data we have, the closer the <span class="math inline">\(t\)</span> is to the standard normal distribution, <span class="math inline">\(z\)</span>.</p>
 <p>Technically, the shape of the <span class="math inline">\(t\)</span>-distribution depends on something called <em>degrees of freedom</em>.</p>
 <p><strong>DEFINITION</strong>: <strong>Degrees of freedom</strong>, <span class="math inline">\(df = n-1\)</span> where <span class="math inline">\(n\)</span> is our sample size.</p>
 <section id="visualizing-the-difference" class="level2">
@@ -534,7 +536,7 @@ window.Quarto = {
 </section>
 <section id="confidence-intervals-with-the-t-distribution" class="level1">
 <h1>Confidence Intervals with the <span class="math inline">\(t\)</span>-Distribution</h1>
-<p>The formula for a confidence interval should look very familiar:</p>
+<p>The formula for a confidence interval using percentiles from a given <span class="math inline">\(t^*\)</span> distribution should look very familiar:</p>
 <p><span class="math display">\[ CI = \bar{x} \pm t^*\frac{s}{\sqrt{n}}\]</span></p>
 <p>where <span class="math inline">\(t^*\)</span> is selected based on the desired level of confidence. For <span class="math inline">\(z^*\)</span>, this was a fixed value for a given level of confidence. For the situation where we don’t know <span class="math inline">\(\sigma\)</span>, we have to use <span class="math inline">\(\pm t^*\)</span> that corresponds to the area under the curve for the given number of degrees of freedom, <span class="math inline">\(n-1\)</span>.</p>
 <p>The following table shows <span class="math inline">\(t\)</span> values for different scenarios:</p>
