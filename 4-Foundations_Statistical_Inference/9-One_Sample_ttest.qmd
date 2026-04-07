@@ -34,57 +34,34 @@ The two primary methods of statistical inference are:
 
  
 
-Recall that when we know what the population standard deviation, $\sigma$, for individuals, and are confident that the distribution of sample means is approximately normal, we can use a Z-score and the Standard Normal Distribution to calculate probabilities.  
+Recall that when we know what the population standard deviation, $\sigma$, for individuals, and are confident that the distribution of sample means is approximately normal, we can use a $z$-score for a mean and the Standard Normal Distribution to calculate probabilities.  
 
 $$ z= \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}$$
 
+We can use `pnorm(z)` to get the left-tail probability of observing our sample mean for a given (or hypothesized) $\mu$.  
+
 Though rare, there are situations where we might know the population standard deviation from published research or census data. For example, standardized test organizations publish population-level summaries which would allow us to test how our sample compares to the general population using the Z formula.
 
-
-## Confidence Interval
-
-We can also calculate a confidence interval for the above example.  
-
-Recall the formula for a confidence interval is, for a given $z^*$ associated with a desired level of confidence:
-
-$$ CI = \bar{x} \pm z^*\frac{\sigma}{\sqrt{n}}$$
-
-Recall the $z^*$ for common confidence levels:
-
-```{r, fig.width = 9}
-library(tidyverse)
-library(pander)
-tibble(`Conf. Level` = c(0.99, 0.95, 0.90), `Z*` = c(2.576, 1.96, 1.645)) %>% pander()
-```
-
-
-
-# Student's T-Distribution
+## Student's T-Distribution
 
 In most cases, we perform statistical analyses on samples from a population where we don't know the population standard deviation, $\sigma$.  
 
 A simple solution is to use the *sample* standard deviation, $s$, instead of $\sigma$. 
-We calculate test statistics very similarly to a Z-score.   
+
+The test statistic for a 1-sample t-test looks a lot like a z-score, but substitutes $\sigma$ with the sample standard deviation, $s$.  
 
 $$ t = \frac{\bar{x} - \mu}{\frac{s}{\sqrt{n}}}$$
 
-Unfortunately, the above test statistic is not a standard normal distribution.  We can no longer use `pnorm()` to calculate probabilities because the distribution of $t$ is not normal.  
+As with the normal distribution above, we can use R to calculate probabilities with the $t$-distribution.  For a given sample size, $n$, and the calculated $t$-value above, we can use the function `pt(t_value, df=n-1)` to get the probability of getting a sample mean less than our observed $\bar{x}$.  
 
-We use a distribution that is similar to the Normal distribution but whose shape depends on how much data we have. The Student's t-distribution requires a t-value (like a z-score) and something called degrees of freedom.  
-
-__Degrees of Freedom__ for a t-distribution are defined:
+__RECALL__: _Degrees of Freedom_ for a $t$-distribution are defined:
 
 $$df  = n-1 $$
 
 
-The T-distribution is very similar to the standard normal.  It is symmetrical around zero. However, the shape depends on how much data you have.  The more data you have, the closer the $t$ is to the standard normal.  This is illustrated in the graph below:
-
-![](../Images/T_dist.png)
-
-Even though $t$ is not normally distributed, R is fully capable of calculating probabilities for many probability distributions including the t-distribution.  We can use the `pt()` function which requires a t-value *and* degrees of freedom.
-
-
 ## Calculating P-values by hand with the T-distribution (One out of ten. Would NOT RECOMMENDED)
+
+Here is an example of performing a hypothesis test using the $t$-distribution by hand.  
 
 Suppose we have 25 test scores defined as "data" in the code chunk below.  We can calculate the $t$-statistic just like we did with the $z$-score.  
 
@@ -117,21 +94,14 @@ t <- (xbar - mu_0) / s_xbar
 
 ```
 
-This means that if the true population mean was 50, then there is only a 0.00152 probability of observing a test statistic, t, as high as the one we got (__P-value__).  
+This means that if the true population mean was 50, then there is only a 0.00152 probability of observing a test statistic, $t$, as high or higher as the one we got ( __P-value__ ).  
 
 
 # The Easy Way
 
-The good news is that the more complicated the math becomes, the less of it we have to do! Instead of using R like a calculator to calculate $z$ or $t$-scores and calculating probabilities "by hand" (using `pnorm()` or `pt()`), we can use R functions with the data directly and get much more useful output.  
+The good news is that we can use R functions with the data directly and get all the calculations automatically.  
 
-For situations where we want to make inference about a population from our sample data, we will be following these basic steps:
-
-  1. Read in the data
-  2. Review the data
-  3. Visualize the data
-  4. Perform the appropriate analysis
-
-This will be true regardless of the type of data and analysis.  Let's begin by looking at a familiar dataset.  In the following example, we will focus on the Extroversion scores from Brother Cannon's Math 221 classes.  
+In the following example, we will focus on the Extroversion scores of a sample of Math 221 students.    
 
 ## Step 1:  Read in the data
 
@@ -150,36 +120,11 @@ big5 <- import('https://raw.githubusercontent.com/byuistats/Math221D_Cannon/mast
 
 ```
 
-## Step 2:  Review the Data
-
-In this step, we are looking to see if the data are as expected.  Are the columns we're interested in numeric? Categorical? and do these match expectations.  We can also start to look for strange data and outliers.  Visualizations can help.  
-
-Other common issues to look for include:  negative numbers that should only be positive, date values that shouldn't exist, missing values, character variables inside what should be a number.  
-
-In the real world, data are messy.  Reviewing the data is a critical part of an analysis.  
-
-Take a look through the personality dataset and see if there are any anomalies that might need to be addressed.
-
-```{r, echo = FALSE, include=FALSE}
-
-#View(big5)
-glimpse(big5)
-#head(big5)
-
-favstats(big5$Extroversion)
-
-```
-
-
-## Step 3:  Visulize the data
-
-So far we have been discussing a single, quantitative variable of interest, like test scores, reaction times, heights, etc.  Histograms are very good when looking at one variable at a time.   
-
 Create a histogram of Extroversion.  Describe some features of the data.  Is it symmetric? Skewed? Are there outliers?
 
 ```{r}
 
-histogram(big5$Extroversion, main = "Extroversion Scores", xlab = "Extroversion")
+#histogram(big5$Extroversion, main = "Extroversion Scores", xlab = "Extroversion")
 
 ggplot(big5, aes(x = Extroversion)) +
   geom_histogram(bins = 15, fill="lightblue") +
@@ -193,8 +138,6 @@ ggplot(big5, aes(x = Extroversion)) +
 ```
 
 
-## Step 4:  Perform the appropriate analysis
-
 In this example, we will be testing the hypothesis that Math 221 students are similar to the general population.  We suspect that these youthful BYU-I students are, on average, more extroverted.
 
 ### Hypothesis Test
@@ -207,9 +150,16 @@ $$ H_A: \mu_{extroversion}  > 50$$
 
 $$\alpha = 0.05$$
 
-Perform the one-sample t-test using the "t.test()" function in R.  If you ever get stuck remembering how to use a function in R, you can run `?t.test` to see documentation. The question mark will open up the help files for any given function in R.  
+__NOTE__: We use the hypothesized value of 50 above because if Math 221 students were similar, on average, to the general population, they would have an average percentile of 50.  
 
-The `t.test()` function takes as input, the data, the hypothesized mean, mu, and the direction of the alternative hypothesis.  
+__NOTE__: The direction of the alternative hypothesis will depend on the context of the research question.  If you believe your drug lowers cholesterol, then you may have `alternative = "less"`.  If you genuinely do not know if the population mean is higher or lower, you can use `alternative = "two.sided"`.  
+
+
+Perform the one-sample t-test using the "t.test()" function in R.  
+
+__HINT__:  If you ever get stuck remembering how to use a function in R, you can run `?t.test` to see documentation. The question mark will open up the help files for any given function in R.  
+
+The `t.test()` function takes as inputs the data, the hypothesized mean, $\mu$, and the direction of the alternative hypothesis.  
 
 The default parameters for the `t.test()` function are:  `t.test(data, mu = 0, alternative = "two.sided")`.  
 
@@ -231,30 +181,17 @@ __QUESTION__:  What is your conclusion based on $\alpha=0.05$?
 __ANSWER__:  Because P-value < 0.05 we reject the null hypothesis in favor of the alternative.  
 
 __Question__:  State your conclusion in context of our research question?  
-__Answer__:  We have sufficient evidence to conclude that Brother Cannon's students are more extroverted than the general population, on average.  
+__Answer__:  We have sufficient evidence to conclude that Math 221 students are more extroverted than the general population, on average.  
 
 
 
-### Confidence Intervals
+### Confidence Interval Review
 
-We can also use the `t.test()` function to create confidence intervals.  Recall that __confidence intervals are always 2-tailed__.  Confidence intervals are typically written in the form:  (lower limit, upper limit).  
+We can also use the `t.test()` function to create confidence intervals.   __Confidence intervals are always 2-tailed__ and are typically written in the form:  (lower limit, upper limit).
 
+Confidence intervals do not assumed anything about $\mu$, so an efficient way to get a confidence interval for a given set of data is to leave out anything relating to the hypotheses and extract only the confidence interval.  
 
-```{r}
-# Confidence Intervals are by definition 2-tailed
-# We can also change the confidence level
-
-t.test(big5$Extroversion, mu = 50, alternative = "two.sided", conf.level = .99)
-
-```
-
-
-To get only the output for the confidence interval to be shown, we can use a `$` to select specific output.  Much like when pulling a specific column from a dataset, the `$` can pull specific output from an analysis.  
-
-Because the option for the `alternative =`  in the t.test function is "two.sided", we don't actually need to include it when getting confidence intervals.  
-
-Also, confidence intervals do not require an assumed mu value.  So a more efficient way to get a confidence interval for a given set of data is:  
-
+Recall that to extract only the confidence interval output, we can use `$`.  
 
 ```{r}
 
@@ -264,18 +201,19 @@ t.test(big5$Extroversion, conf.level = .99)$conf.int
 ```
 
 __Question__:  Describe in words the interpretation of the confidence interval in context of Extroversion.  
-__Answer__:  I am 95% confident that the true population mean of extroversion scores for Brother Cannon's students is between 54.266 and 59.699.  
+__Answer__:  I am 99% confident that the true population mean of extroversion scores for Math 221 students is between 54.266 and 59.699.  
+
 
 ### Checking Requirements
 
-We still rely on the assumption that the distribution of sample means is normally distributed.  
+These confidence intervals and hypothesis tests depend on the assumption that the distribution of sample means is normally distributed.  
 
-Recall that the mean is normally distributed if:  
+Recall that the distribution of sample means is approximately normal if:  
 
   1. The underlying population is normally distributed  
   2. We have a sufficiently large sample size ($n>30$)
   
-For the above Extroversion data, we have $n=404$ which is much larger than 40.  
+For the above Extroversion data, we have $n=404$ which is much larger than 30.  
 
 If my sample size was small, I could check the `qqPlot()`, which I demonstrate here:
 

@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Introduction
 
-In this lesson, we explore the components of statistical hypothesis testing in a general way.  These general principles will apply to all of the specific tests we will learn about during the rest of the semester.  
+In this lesson, we explore the components of statistical hypothesis testing in a general way.  These principles will apply to all of the specific tests we will learn about during the rest of the semester.  
 
 Lesson Objectives:  
 
@@ -66,14 +66,12 @@ If the null hypothesis is true, it would be very unlikely, though possible, to o
 
 <br>
 
-If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance, because of sample-to-sample variation:  
+If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following only because of random sampling variation:  
 
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png)
 <br>
 
-Statistical hypothesis testing is about calculating the **probability** of observing what we actually observed **IF the null hypothesis were true**.  
-
-__DEFINITION__:  A **$P$-value** is the probability of observing what we saw if the null hypothesis were true.  
+Statistical hypothesis testing is about calculating the **probability** of observing what we actually observed **IF the null hypothesis were true**.  This is what is called a **$P$-value**.    
 
 A small $P$-value suggests strong evidence against the null hypothesis, while a large p-value suggests the observed data are consistent with sample-to-sample variability.  
 
@@ -84,11 +82,11 @@ But how low is low enough?
 
 ## Significance Level: Alpha ($\alpha$)
 
-*Before* starting a study, we set a threshold that can be used to determine if the $P$-value is small enough to reject the null hypothesis. This number is called the **level of significance** and is denoted by the symbol **$\alpha$** (pronounced "alpha".)
+*Before* starting a study, we set a threshold that can be used to determine if the $P$-value is small enough to reject the null hypothesis. This number is called the **significance level** and is denoted by the symbol **$\alpha$** (pronounced "alpha".)
 
 Common values for $\alpha$ are 0.05,  0.01 and 0.1.  
 
-We will use the same decision rule for all hypothesis tests:
+We will use the same decision rule for all hypothesis tests:  
 
   1. If the $P$-value is less than $\alpha$, we reject the null hypothesis.  
   2. If the $P$-value is greater than $\alpha$, we fail to reject the null hypothesis.  
@@ -102,9 +100,9 @@ Where "low" means less than $\alpha$.
 
 Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant just by chance.  
 
-Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different types of treatment.  We randomly assign patients to each treatment group.  
+Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different treatments.  We randomly assign patients to each treatment group.  
 
-There is a chance that the hardiest patients all end up in the same treatment group making it look like that treatment is better, but it wasn't because of the treatment.  
+There is a chance that the hardiest patients all end up in the same treatment group making it look like their treatment is better, but it wasn't because of the treatment.  
 
 When we conclude that there is a relationship between X and Y, when what we observed was actually "noise", we have committed a Type I error.  
 
@@ -112,9 +110,9 @@ __DEFINITION__:  **Type I Error**: Rejecting a TRUE null hypothesis.  In some co
 
 Because $\alpha$ is our decision point for rejecting the null hypothesis, $\alpha$ is the probability of rejecting a TRUE null hypothesis, meaning $\alpha$ is the probability of a **Type I** error.  
 
-If we make $\alpha$ too small, we will reject $H_0$ less often and avoid Type I errors.  But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it.  This is a Type II error.  
+If we make $\alpha$ very small, we will reject $H_0$ less often and avoid Type I errors.  But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it.  This is a Type II error.  
 
-__DEFINITION__:  **Type II Error**: Failing to Reject a FALSE null hypothesis.  In some contexts this is called a **FALSE NEGATIVE**
+__DEFINITION__:  **Type II Error**: Failing to Reject a FALSE null hypothesis.  In some contexts this is called a **FALSE NEGATIVE**.  
 
 For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we missed out on an a new, life-saving breakthrough.  
 

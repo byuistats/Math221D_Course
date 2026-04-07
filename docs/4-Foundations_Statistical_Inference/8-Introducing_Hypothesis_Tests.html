@@ -481,7 +481,7 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In this lesson, we explore the components of statistical hypothesis testing in a general way. These general principles will apply to all of the specific tests we will learn about during the rest of the semester.</p>
+<p>In this lesson, we explore the components of statistical hypothesis testing in a general way. These principles will apply to all of the specific tests we will learn about during the rest of the semester.</p>
 <p>Lesson Objectives:</p>
 <ol type="1">
 <li>Explain what the null hypothesis, <span class="math inline">\(H_0\)</span>, is in general terms and why we use it<br>
@@ -521,17 +521,16 @@ The statistical tests we will cover in the rest of the semester follow the gener
 <p>If the null hypothesis is true, it would be very unlikely, though possible, to observe a scatter plot like the following, just by chance, because of sample-to-sample variation:</p>
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Some_Relationship_Scatterplot.png" class="img-fluid"></p>
 <p><br></p>
-<p>If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance, because of sample-to-sample variation:</p>
+<p>If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following only because of random sampling variation:</p>
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png" class="img-fluid"> <br></p>
-<p>Statistical hypothesis testing is about calculating the <strong>probability</strong> of observing what we actually observed <strong>IF the null hypothesis were true</strong>.</p>
-<p><strong>DEFINITION</strong>: A <strong><span class="math inline">\(P\)</span>-value</strong> is the probability of observing what we saw if the null hypothesis were true.</p>
+<p>Statistical hypothesis testing is about calculating the <strong>probability</strong> of observing what we actually observed <strong>IF the null hypothesis were true</strong>. This is what is called a <strong><span class="math inline">\(P\)</span>-value</strong>.</p>
 <p>A small <span class="math inline">\(P\)</span>-value suggests strong evidence against the null hypothesis, while a large p-value suggests the observed data are consistent with sample-to-sample variability.</p>
 <p>When the <span class="math inline">\(P\)</span>-value is low enough, we would rather reject the null hypothesis claim in favor of the alternative.</p>
 <p>But how low is low enough?</p>
 </section>
 <section id="significance-level-alpha-alpha" class="level2">
 <h2 class="anchored" data-anchor-id="significance-level-alpha-alpha">Significance Level: Alpha (<span class="math inline">\(\alpha\)</span>)</h2>
-<p><em>Before</em> starting a study, we set a threshold that can be used to determine if the <span class="math inline">\(P\)</span>-value is small enough to reject the null hypothesis. This number is called the <strong>level of significance</strong> and is denoted by the symbol <strong><span class="math inline">\(\alpha\)</span></strong> (pronounced “alpha”.)</p>
+<p><em>Before</em> starting a study, we set a threshold that can be used to determine if the <span class="math inline">\(P\)</span>-value is small enough to reject the null hypothesis. This number is called the <strong>significance level</strong> and is denoted by the symbol <strong><span class="math inline">\(\alpha\)</span></strong> (pronounced “alpha”.)</p>
 <p>Common values for <span class="math inline">\(\alpha\)</span> are 0.05, 0.01 and 0.1.</p>
 <p>We will use the same decision rule for all hypothesis tests:</p>
 <ol type="1">
@@ -545,13 +544,13 @@ The statistical tests we will cover in the rest of the semester follow the gener
 <section id="mistaking-randomness-for-signal" class="level2">
 <h2 class="anchored" data-anchor-id="mistaking-randomness-for-signal">Mistaking Randomness for Signal</h2>
 <p>Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant just by chance.</p>
-<p>Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different types of treatment. We randomly assign patients to each treatment group.</p>
-<p>There is a chance that the hardiest patients all end up in the same treatment group making it look like that treatment is better, but it wasn’t because of the treatment.</p>
+<p>Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different treatments. We randomly assign patients to each treatment group.</p>
+<p>There is a chance that the hardiest patients all end up in the same treatment group making it look like their treatment is better, but it wasn’t because of the treatment.</p>
 <p>When we conclude that there is a relationship between X and Y, when what we observed was actually “noise”, we have committed a Type I error.</p>
 <p><strong>DEFINITION</strong>: <strong>Type I Error</strong>: Rejecting a TRUE null hypothesis. In some contexts this is called a <strong>FALSE POSITIVE</strong></p>
 <p>Because <span class="math inline">\(\alpha\)</span> is our decision point for rejecting the null hypothesis, <span class="math inline">\(\alpha\)</span> is the probability of rejecting a TRUE null hypothesis, meaning <span class="math inline">\(\alpha\)</span> is the probability of a <strong>Type I</strong> error.</p>
-<p>If we make <span class="math inline">\(\alpha\)</span> too small, we will reject <span class="math inline">\(H_0\)</span> less often and avoid Type I errors. But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it. This is a Type II error.</p>
-<p><strong>DEFINITION</strong>: <strong>Type II Error</strong>: Failing to Reject a FALSE null hypothesis. In some contexts this is called a <strong>FALSE NEGATIVE</strong></p>
+<p>If we make <span class="math inline">\(\alpha\)</span> very small, we will reject <span class="math inline">\(H_0\)</span> less often and avoid Type I errors. But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it. This is a Type II error.</p>
+<p><strong>DEFINITION</strong>: <strong>Type II Error</strong>: Failing to Reject a FALSE null hypothesis. In some contexts this is called a <strong>FALSE NEGATIVE</strong>.</p>
 <p>For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we missed out on an a new, life-saving breakthrough.</p>
 </section>
 <section id="choosing-alpha-and-understanding-error-types" class="level2">
