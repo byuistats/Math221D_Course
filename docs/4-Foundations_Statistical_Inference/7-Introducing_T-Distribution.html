@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2-Sample Proportions – Math221D Notebook</title>
+<title>Introducing the T-Distribution – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -319,6 +319,30 @@ window.Quarto = {
     <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/6-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem Practice</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7-Confidence_Intervals_for_Means.html">
+ <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7-Introducing_T-Distribution.html">
+ <span class="dropdown-text">Introducing the T-Distribution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7b-Confidence_Intervals_for_Means_Practice.html">
+ <span class="dropdown-text">Confidence Intervals For Means - Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/8-Introducing_Hypothesis_Tests.html">
+ <span class="dropdown-text">Introducing Hypothesis Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/8b-Statistical_Significance.html">
+ <span class="dropdown-text">Statistical Significance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/9-One_Sample_ttest.html">
+ <span class="dropdown-text">One-Sample T-test</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -327,55 +351,35 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-i">    
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Confidence_Intervals_for_Means.html">
- <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Introducing_T-Distribution.html">
- <span class="dropdown-text">Introducing the T-Distribution</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1b-Confidence_Intervals_for_Means_Practice.html">
- <span class="dropdown-text">Confidence Intervals For Means - Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-One_Sample_ttest.html">
- <span class="dropdown-text">One-Sample T-test</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2b-One_Sample_ttest_Practice.html">
- <span class="dropdown-text">Don’t Take it Personally</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Conf_Int_Hyp_Test_for_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Conf_Int_Hyp_Test_for_Proportions.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3b-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1b-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Two_sample_Independent_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-Two_sample_Independent_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4b-Two_sample_Independent_ttest_practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2b-Two_sample_Independent_ttest_practice.html">
  <span class="dropdown-text">2-Sample Independent T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5-Matched_Pairs_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Matched_Pairs_ttest.html">
  <span class="dropdown-text">Matched Pairs T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5b-Matched_Pairs_ttest_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3b-Matched_Pairs_ttest_Practice.html">
  <span class="dropdown-text">Matched Pairs T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6-Two_sample_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Two_sample_Proportions.html">
  <span class="dropdown-text">2-Sample Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6b-Two_sample_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4b-Two_sample_Proportions_Practice.html">
  <span class="dropdown-text">2-Sample Proportion Practice</span></a>
   </li>  
     </ul>
@@ -478,15 +482,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#two-sample-proportion-test" id="toc-two-sample-proportion-test" class="nav-link" data-scroll-target="#two-sample-proportion-test">Two Sample Proportion Test</a>
+  <li><a href="#the-problem-we-dont-know-sigma" id="toc-the-problem-we-dont-know-sigma" class="nav-link active" data-scroll-target="#the-problem-we-dont-know-sigma">The Problem: We Don’t Know <span class="math inline">\(\sigma\)</span></a></li>
+  <li><a href="#students-t-distribution" id="toc-students-t-distribution" class="nav-link" data-scroll-target="#students-t-distribution">Student’s T-Distribution</a>
   <ul class="collapse">
-  <li><a href="#example-1-voting-behaviour-by-gender" id="toc-example-1-voting-behaviour-by-gender" class="nav-link" data-scroll-target="#example-1-voting-behaviour-by-gender">Example 1: Voting Behaviour by Gender</a>
+  <li><a href="#visualizing-the-difference" id="toc-visualizing-the-difference" class="nav-link" data-scroll-target="#visualizing-the-difference">Visualizing the Difference</a></li>
+  </ul></li>
+  <li><a href="#confidence-intervals-with-the-t-distribution" id="toc-confidence-intervals-with-the-t-distribution" class="nav-link" data-scroll-target="#confidence-intervals-with-the-t-distribution">Confidence Intervals with the <span class="math inline">\(t\)</span>-Distribution</a>
   <ul class="collapse">
-  <li><a href="#test-requirments" id="toc-test-requirments" class="nav-link" data-scroll-target="#test-requirments">Test Requirments</a></li>
+  <li><a href="#confidence-intervals-in-r" id="toc-confidence-intervals-in-r" class="nav-link" data-scroll-target="#confidence-intervals-in-r">Confidence Intervals in R</a></li>
   </ul></li>
-  <li><a href="#example-2-favorite-sports" id="toc-example-2-favorite-sports" class="nav-link" data-scroll-target="#example-2-favorite-sports">Example 2: Favorite Sports</a></li>
-  </ul></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a></li>
   </ul>
 </nav>
     </div>
@@ -495,7 +500,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">2-Sample Proportions</h1>
+<h1 class="title">Introducing the T-Distribution</h1>
 </div>
 
 
@@ -512,99 +517,116 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>In statistics, two sample proportion tests are used to compare proportions or percentages between two independent groups. We here discuss these tests and provide examples of their application in R.</p>
-<p>The hypothesis test should not be surprising:</p>
-<p><span class="math display">\[H_0: p_1 = p_2\]</span></p>
-<p><span class="math display">\[H_a: p_1\; (&lt;,&gt;,\neq) \: p_2\]</span> where <span class="math inline">\(p_1\)</span> represents the unknown population proportion for group 1 and <span class="math inline">\(p_2\)</span> represents the unknown population proportion for group 2.</p>
+<section id="the-problem-we-dont-know-sigma" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-we-dont-know-sigma">The Problem: We Don’t Know <span class="math inline">\(\sigma\)</span></h2>
+<p>In the previous section, we calculated Confidence Intervals using the <strong>Z-score</strong> formula:</p>
+<p><span class="math display">\[CI = \bar{x} \pm z^* \left( \frac{\sigma}{\sqrt{n}} \right)\]</span></p>
+<p>This works perfectly <strong>if</strong> we know the true population standard deviation (<span class="math inline">\(\sigma\)</span>). But in the real world, this is rarely the case.</p>
+<p>A reasonable idea is to use the <em>sample</em> standard deviation, <span class="math inline">\(s\)</span>, instead of the population standard deviation, <span class="math inline">\(\sigma\)</span>, which would look like:</p>
+<p><span class="math display">\[\text{Reasonable but incorrect CI} = \bar{x} \pm z^* \left( \frac{s}{\sqrt{n}} \right)\]</span></p>
+<p><em>Unfortunately</em>, there’s no such thing as a free lunch. We can no longer use percentiles, <span class="math inline">\(z^*\)</span>, from a standard normal distribution to calculate the confidence interval.</p>
 </section>
-<section id="two-sample-proportion-test" class="level1">
-<h1>Two Sample Proportion Test</h1>
-<p>The R code modifies slightly the <code>prop.test()</code> code for the one-sample proportion test. We simply add 2 values for X and 2 values for N. Generically, this looks like:</p>
-<p><code>prop.test(x=c(x1, x2), n=c(n1, n2), alternative = "")</code></p>
-<p>where you must specify whether or not you think group 1 is lower (<code>alternative="less"</code>), higher (<code>alternative="greater"</code>) or different (<code>alternative="two.sided"</code>) than group 2.</p>
-<section id="example-1-voting-behaviour-by-gender" class="level2">
-<h2 class="anchored" data-anchor-id="example-1-voting-behaviour-by-gender">Example 1: Voting Behaviour by Gender</h2>
-<p>Suppose we want to test if women are more likely to identify as Democrat than men. We sample 250 men and 250 women and measure their political affiliation. We find that 80 men identify as Democrat and 102 females identify as Democrat.</p>
-<p>Just as with the two-sample t-test for means, we must define a reference group. In this example, we will use females as the reference group so that our alternative will be relative to that group.</p>
-<p><span class="math display">\[H_0: p_{femaleDem} = p_{maleDem}\]</span><br>
-<span class="math display">\[H_a: p_{femaleDem} &gt; p_{maleDem}\]</span></p>
-<p>We will use <span class="math inline">\(\alpha = 0.05\)</span></p>
+<section id="students-t-distribution" class="level1">
+<h1>Student’s T-Distribution</h1>
+<p>When we replace <span class="math inline">\(\sigma\)</span> with <span class="math inline">\(s\)</span>, we introduce <strong>extra uncertainty</strong>. The <span class="math inline">\(t\)</span>-distribution was created specifically to account for that additional uncertainty.</p>
+<p>The <span class="math inline">\(t\)</span>-distribution is similar to the standard normal distribution. They are both symmetric and centered at zero, but <span class="math inline">\(t\)</span> changes shape depending on how much data we have. The more data we have, the closer the <span class="math inline">\(t\)</span> is to the standard normal distribution.</p>
+<p>Technically, the shape of the <span class="math inline">\(t\)</span>-distribution depends on something called <em>degrees of freedom</em>.</p>
+<p><strong>DEFINITION</strong>: <strong>Degrees of freedom</strong> is defined as <span class="math inline">\(df = n-1\)</span> where <span class="math inline">\(n\)</span> is our sample size.</p>
+<section id="visualizing-the-difference" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-difference">Visualizing the Difference</h2>
+<p>The <span class="math inline">\(t\)</span>-distribution looks like the Normal, <span class="math inline">\(z\)</span>, distribution, but it has <strong>heavier tails</strong>. Below are several examples of <span class="math inline">\(t\)</span>-distributions for different values of degrees of freedom.</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main//Images/T_dist.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="confidence-intervals-with-the-t-distribution" class="level1">
+<h1>Confidence Intervals with the <span class="math inline">\(t\)</span>-Distribution</h1>
+<p>We can now derive the proper formula for a confidence interval when <span class="math inline">\(\sigma\)</span> is unknown using percentiles from a given <span class="math inline">\(t^*\)</span>:</p>
+<p><span class="math display">\[Correct \text{ CI} = \bar{x} \pm t^*\frac{s}{\sqrt{n}}\]</span></p>
+<p>where <span class="math inline">\(t^*\)</span> is selected based on the desired level of confidence. We use <span class="math inline">\(\pm t^*\)</span> that corresponds to the area under the curve of a <span class="math inline">\(t\)</span>-distribution with the appropriate number of degrees of freedom, <span class="math inline">\(n-1\)</span>.</p>
+<p>The following table shows <span class="math inline">\(t\)</span> values for different scenarios:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(df\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\text{90\% Conf}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\text{95\% Conf}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\text{99\% Conf}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;">2.015</td>
+<td style="text-align: center;">2.571</td>
+<td style="text-align: center;">4.032</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>10</strong></td>
+<td style="text-align: center;">1.812</td>
+<td style="text-align: center;">2.228</td>
+<td style="text-align: center;">3.169</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>50</strong></td>
+<td style="text-align: center;">1.676</td>
+<td style="text-align: center;">2.009</td>
+<td style="text-align: center;">2.678</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>100</strong></td>
+<td style="text-align: center;">1.660</td>
+<td style="text-align: center;">1.984</td>
+<td style="text-align: center;">2.626</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong><span class="math inline">\(\infty\)</span> (Z-score)</strong></td>
+<td style="text-align: center;"><strong>1.645</strong></td>
+<td style="text-align: center;"><strong>1.960</strong></td>
+<td style="text-align: center;"><strong>2.576</strong></td>
+</tr>
+</tbody>
+</table>
+<section id="confidence-intervals-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-intervals-in-r">Confidence Intervals in R</h2>
+<p>Fortunately, R handles all these calculations automatically. There’s no need to look up these values. For now, it’s only important to understand a little about what’s happening behind the scenes in R.</p>
+<p>The <code>t.test()</code> function in R can be used to calculate confidence intervals based on the <span class="math inline">\(t\)</span>-distribution. Generically, we input the sample data we want to use to create a confidence interval for the population mean, and specify the confidence level (as a decimal) as follows:</p>
+<pre><code>t.test(data$y, conf.level = 0.95)$conf.int
+</code></pre>
+<p><strong>NOTE</strong>: The <code>t.test()</code> function will be used for more than confidence intervals and will provide lots of output that isn’t currently needed. For now, we can use the selector, <code>$</code>, to instruct R to only return the confidence interval and avoid the unnecessary output.</p>
+<p>Let’s create a 99% confidence interval for the average extroversion score for Math 221 students.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">80</span>), <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">250</span>), <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    2-sample test for equality of proportions with continuity correction
-
-data:  c(102, 80) out of c(250, 250)
-X-squared = 3.8099, df = 1, p-value = 0.02548
-alternative hypothesis: greater
-95 percent confidence interval:
- 0.01350993 1.00000000
-sample estimates:
-prop 1 prop 2 
- 0.408  0.320 </code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>big5 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>We can also create a confidence interval for the difference:</p>
+<p>Using the <code>t.test()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">80</span>), <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">250</span>))<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(big5<span class="sc">$</span>Extroversion, <span class="at">conf.level =</span> <span class="fl">0.99</span>)<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.904086e-06 1.759941e-01
+<pre><code>[1] 54.26631 59.69903
 attr(,"conf.level")
-[1] 0.95</code></pre>
+[1] 0.99</code></pre>
 </div>
 </div>
-<p>Confidence intervals for differences can be positive and negative. In this example, a negative number would indicate that Females are less likely to be Democrat and a positive number means they are more likely to be Democrat.</p>
-<p>Our confidence interval is just above zero on the lower end. We are 95% confident that females are between 0.000% and 17.6% more likely to be Democrat than men.</p>
-<section id="test-requirments" class="level3">
-<h3 class="anchored" data-anchor-id="test-requirments">Test Requirments</h3>
-<p>Just as with 1-sample proportion tests, we must validate that we have a large enough sample size to ensure that <span class="math inline">\(\hat{p}\)</span> is approximately normally distributed. When we have 2 samples, however, we must check both <span class="math inline">\(\hat{p}\)</span>’s. For both hypothesis testing and confidence intervals we check:</p>
-<p><strong>Requirements for Hypothesis Testing and Confidence Intervals</strong></p>
-<p><span class="math display">\[ n_1\hat{p}_1 \ge 10\]</span> <span class="math display">\[n_1(1-\hat{p}_1) \ge 10\]</span> <span class="math display">\[ n_2\hat{p}_2 \ge 10\]</span> <span class="math display">\[n_2(1-\hat{p}_2) \ge 10\]</span></p>
-<p>An easy R calculator to check this is:</p>
+<p><strong>Interpretation</strong>: We are 99% confident that the true mean Extroversion percentile of Math 221 students is between 54.27 and 59.70.</p>
+</section>
+</section>
+<section id="your-turn" class="level1">
+<h1>Your Turn</h1>
+<p>Creating a 93% confidence interval for the true mean Neuroticism percentile of Math 221 students:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All must be true:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">102</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">250</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>phat1 <span class="ot">&lt;-</span> x1<span class="sc">/</span>n1</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>n1<span class="sc">*</span>phat1 <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>n1<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat1) <span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="dv">80</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">250</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>phat2 <span class="ot">&lt;-</span> x2 <span class="sc">/</span> n2</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>n2<span class="sc">*</span>phat2 <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>n2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat2) <span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in t_test.default(): argument "x" is missing, with no default</code></pre>
 </div>
 </div>
-<p>If all conditions are greater than or equal to 10, we can trust our p-values and confidence intervals.</p>
-</section>
-</section>
-<section id="example-2-favorite-sports" class="level2">
-<h2 class="anchored" data-anchor-id="example-2-favorite-sports">Example 2: Favorite Sports</h2>
-<p>Soccer is becoming much more popular in the United States. We would like to test if this is being driven by demographic shifts in the population where the younger generation is more likely to favor soccer.</p>
-<p>A researcher samples 524 individuals under 40 and 655 individuals older than 40 and asks what their preferred sport is. Of the 524 respondents under 40, 44 identified soccer as their favorite sport. Of the 655 respondents over 40, 27 identified soccer as their favorite sport.</p>
-<p>Perform a 2-sample proportion test to determine if significantly more younger people identify soccer as their favorite sport.</p>
-<p>Create and interpret the confidence interval for the difference in the proportions.</p>
-<p>Are the requirements for the hypothesis test and confidence interval satisfied?</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

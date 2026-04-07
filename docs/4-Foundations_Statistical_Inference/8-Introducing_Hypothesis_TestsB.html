@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistical Significance – Math221D Notebook</title>
+<title>Introducing Hypothesis Tests – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -285,6 +285,30 @@ window.Quarto = {
     <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/6-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem Practice</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7-Confidence_Intervals_for_Means.html">
+ <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7-Introducing_T-Distribution.html">
+ <span class="dropdown-text">Introducing the T-Distribution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7b-Confidence_Intervals_for_Means_Practice.html">
+ <span class="dropdown-text">Confidence Intervals For Means - Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/8-Introducing_Hypothesis_Tests.html">
+ <span class="dropdown-text">Introducing Hypothesis Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/8b-Statistical_Significance.html">
+ <span class="dropdown-text">Statistical Significance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/9-One_Sample_ttest.html">
+ <span class="dropdown-text">One-Sample T-test</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -293,55 +317,35 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-i">    
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Confidence_Intervals_for_Means.html">
- <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Introducing_T-Distribution.html">
- <span class="dropdown-text">Introducing the T-Distribution</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1b-Confidence_Intervals_for_Means_Practice.html">
- <span class="dropdown-text">Confidence Intervals For Means - Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-One_Sample_ttest.html">
- <span class="dropdown-text">One-Sample T-test</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2b-One_Sample_ttest_Practice.html">
- <span class="dropdown-text">Don’t Take it Personally</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Conf_Int_Hyp_Test_for_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Conf_Int_Hyp_Test_for_Proportions.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3b-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1b-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Two_sample_Independent_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-Two_sample_Independent_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4b-Two_sample_Independent_ttest_practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2b-Two_sample_Independent_ttest_practice.html">
  <span class="dropdown-text">2-Sample Independent T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5-Matched_Pairs_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Matched_Pairs_ttest.html">
  <span class="dropdown-text">Matched Pairs T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5b-Matched_Pairs_ttest_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3b-Matched_Pairs_ttest_Practice.html">
  <span class="dropdown-text">Matched Pairs T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6-Two_sample_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Two_sample_Proportions.html">
  <span class="dropdown-text">2-Sample Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6b-Two_sample_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4b-Two_sample_Proportions_Practice.html">
  <span class="dropdown-text">2-Sample Proportion Practice</span></a>
   </li>  
     </ul>
@@ -444,9 +448,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a>
   <ul class="collapse">
-  <li><a href="#reviw-p-value" id="toc-reviw-p-value" class="nav-link" data-scroll-target="#reviw-p-value">Reviw: P-value</a></li>
+  <li><a href="#the-null-hypothesis-h_0" id="toc-the-null-hypothesis-h_0" class="nav-link" data-scroll-target="#the-null-hypothesis-h_0">The Null Hypothesis, <span class="math inline">\(H_0\)</span></a></li>
+  <li><a href="#the-alternative-hypothesis-h_a" id="toc-the-alternative-hypothesis-h_a" class="nav-link" data-scroll-target="#the-alternative-hypothesis-h_a">The Alternative Hypothesis, <span class="math inline">\(H_a\)</span></a></li>
+  <li><a href="#visualizing-the-null-hypothesis" id="toc-visualizing-the-null-hypothesis" class="nav-link" data-scroll-target="#visualizing-the-null-hypothesis">Visualizing the Null Hypothesis</a></li>
   <li><a href="#significance-level-alpha-alpha" id="toc-significance-level-alpha-alpha" class="nav-link" data-scroll-target="#significance-level-alpha-alpha">Significance Level: Alpha (<span class="math inline">\(\alpha\)</span>)</a></li>
   <li><a href="#mistaking-randomness-for-signal" id="toc-mistaking-randomness-for-signal" class="nav-link" data-scroll-target="#mistaking-randomness-for-signal">Mistaking Randomness for Signal</a></li>
   <li><a href="#choosing-alpha-and-understanding-error-types" id="toc-choosing-alpha-and-understanding-error-types" class="nav-link" data-scroll-target="#choosing-alpha-and-understanding-error-types">Choosing Alpha and Understanding Error Types</a></li>
@@ -459,7 +466,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Statistical Significance</h1>
+<h1 class="title">Introducing Hypothesis Tests</h1>
 </div>
 
 
@@ -478,11 +485,53 @@ window.Quarto = {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Statistical significance is a crucial concept for determining whether the results observed in a study are likely due to a real effect or simply due to chance. It’s a core component of hypothesis testing.</p>
-<section id="reviw-p-value" class="level2">
-<h2 class="anchored" data-anchor-id="reviw-p-value">Reviw: P-value</h2>
-<p>The <strong><span class="math inline">\(P\)</span>-value</strong> is the probability of observing results as extreme as or more extreme than the results obtained in your sample <em>assuming the null hypothesis is true</em>. In other words, it indicates how likely it is to see the data you did if there was actually no effect present.</p>
-<p>A small p-value suggests strong evidence against the null hypothesis, while a large p-value suggests the observed data are consistent with sample-to-sample variability.</p>
+<p>In this lesson, we explore the components of statistical hypothesis testing in a general way. These general principles will apply to all of the specific tests we will learn about during the rest of the semester.</p>
+<p>Lesson Objectives:</p>
+<ol type="1">
+<li>Explain what the null hypothesis, <span class="math inline">\(H_0\)</span>, is in general terms and why we use it<br>
+</li>
+<li>Explain what the alternative hypothesis, <span class="math inline">\(H_a\)</span>, is in general terms<br>
+</li>
+<li>Explain the concept of a <span class="math inline">\(P\)</span>-value in general terms</li>
+</ol>
+</section>
+<section id="hypothesis-testing" class="level1">
+<h1>Hypothesis Testing</h1>
+<p>Hypothesis testing is a fundamental concept in statistics that allows us to make inferences about population parameters based on sample data. It’s a structured method for using data to decide between two competing claims about a population.</p>
+<section id="the-null-hypothesis-h_0" class="level2">
+<h2 class="anchored" data-anchor-id="the-null-hypothesis-h_0">The Null Hypothesis, <span class="math inline">\(H_0\)</span></h2>
+<p>The <strong>null hypothesis</strong> is the initial claim or assumption about a population parameter. It often represents the status quo or “no effect”.</p>
+<p>For example, we assume that the new medication has <em>no effect</em> until we find enough evidence to prove otherwise.</p>
+<p>We write the null hypothesis as ‘<span class="math inline">\(H_0\)</span>’, and refer to it as “H-Naught” or “H-O”.</p>
+<p>Many of the statistical tests we cover in this course follow the generic form:</p>
+<p><span class="math display">\[H_0: \text{There is no relationship between }X \text{ and }Y\]</span></p>
+</section>
+<section id="the-alternative-hypothesis-h_a" class="level2">
+<h2 class="anchored" data-anchor-id="the-alternative-hypothesis-h_a">The Alternative Hypothesis, <span class="math inline">\(H_a\)</span></h2>
+<p>We typically engage in scientific inquiry because we do NOT believe the null hypothesis. For example, we believe that there IS an effect of a new medication.</p>
+<p>The “burden of proof” is on the researcher to prove the null hypothesis wrong. This means that it is the researcher’s responsibility to present enough evidence to contradict the null hypothesis.</p>
+<p>The counter-proposal for the null hypothesis is called the <strong>alternative hypothesis</strong>.</p>
+<p>We write the null hypothesis as ‘<span class="math inline">\(H_a\)</span>’, and refer to it as “H-A”.<br>
+The statistical tests we will cover in the rest of the semester follow the generic form:</p>
+<p><span class="math display">\[H_a: \text{There is a relationship between }X \text{ and }Y\]</span></p>
+</section>
+<section id="visualizing-the-null-hypothesis" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-null-hypothesis">Visualizing the Null Hypothesis</h2>
+<p>We always begin a study under the assumption that the null hypothesis is true.</p>
+<p>What would a true null hypothesis look like? As we’ve explored data using descriptive statistics, we’ve seen many examples where there is no relationship between x and y.</p>
+<p>For example, if there was no relationship between <code>Height</code> and <code>Extroversion</code>, we would expect to see something like:</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/No_Relationship_Scatterplot.png" class="img-fluid"> <br></p>
+<p>Because of sample-to-sample variability, the points wouldn’t look exactly like this every time, but it would generally look like random scatter.</p>
+<p>If the null hypothesis is true, it would be very unlikely, though possible, to observe a scatter plot like the following, just by chance, because of sample-to-sample variation:</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Some_Relationship_Scatterplot.png" class="img-fluid"></p>
+<p><br></p>
+<p>If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance, because of sample-to-sample variation:</p>
+<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png" class="img-fluid"> <br></p>
+<p>Statistical hypothesis testing is about calculating the <strong>probability</strong> of observing what we actually observed <strong>IF the null hypothesis were true</strong>.</p>
+<p><strong>DEFINITION</strong>: A <strong><span class="math inline">\(P\)</span>-value</strong> is the probability of observing what we saw if the null hypothesis were true.</p>
+<p>A small <span class="math inline">\(P\)</span>-value suggests strong evidence against the null hypothesis, while a large p-value suggests the observed data are consistent with sample-to-sample variability.</p>
+<p>When the <span class="math inline">\(P\)</span>-value is low enough, we would rather reject the null hypothesis claim in favor of the alternative.</p>
+<p>But how low is low enough?</p>
 </section>
 <section id="significance-level-alpha-alpha" class="level2">
 <h2 class="anchored" data-anchor-id="significance-level-alpha-alpha">Significance Level: Alpha (<span class="math inline">\(\alpha\)</span>)</h2>
@@ -499,24 +548,13 @@ window.Quarto = {
 </section>
 <section id="mistaking-randomness-for-signal" class="level2">
 <h2 class="anchored" data-anchor-id="mistaking-randomness-for-signal">Mistaking Randomness for Signal</h2>
-<p>We can never be 100% certain that the signal observed in our sample was not just noise. Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant just by chance.</p>
-<p>Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different levels of the treatment. We randomly assign patients to each treatment group.</p>
+<p>Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant just by chance.</p>
+<p>Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different types of treatment. We randomly assign patients to each treatment group.</p>
 <p>There is a chance that the hardiest patients all end up in the same treatment group making it look like that treatment is better, but it wasn’t because of the treatment.</p>
 <p>When we conclude that there is a relationship between X and Y, when what we observed was actually “noise”, we have committed a Type I error.</p>
 <p><strong>DEFINITION</strong>: <strong>Type I Error</strong>: Rejecting a TRUE null hypothesis. In some contexts this is called a <strong>FALSE POSITIVE</strong></p>
 <p>Because <span class="math inline">\(\alpha\)</span> is our decision point for rejecting the null hypothesis, <span class="math inline">\(\alpha\)</span> is the probability of rejecting a TRUE null hypothesis, meaning <span class="math inline">\(\alpha\)</span> is the probability of a <strong>Type I</strong> error.</p>
-<p>Let’s see what an <span class="math inline">\(\alpha = 0.01\)</span> looks like in the case of against the foot-long sandwiches:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Statistical_Significance_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The red area, <span class="math inline">\(\alpha\)</span>, shows the probability of getting a sample mean in that tail <strong>when the null hypothesis is true</strong>. There’s always a chance we get such an extreme value and end up rejecting the null when it is true.</p>
-<p>If we make <span class="math inline">\(\alpha\)</span> too small, we will reject <span class="math inline">\(H_0\)</span> less often, thereby avoiding Type I errors. But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it. This is a Type II error.</p>
+<p>If we make <span class="math inline">\(\alpha\)</span> too small, we will reject <span class="math inline">\(H_0\)</span> less often and avoid Type I errors. But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it. This is a Type II error.</p>
 <p><strong>DEFINITION</strong>: <strong>Type II Error</strong>: Failing to Reject a FALSE null hypothesis. In some contexts this is called a <strong>FALSE NEGATIVE</strong></p>
 <p>For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we missed out on an a new, life-saving breakthrough.</p>
 </section>

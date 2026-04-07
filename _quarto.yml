@@ -69,22 +69,23 @@ website:
          - href: ./4-Foundations_Statistical_Inference/4-Assessing_Normality.qmd
          - text: "Central Limit Theorem Practice"
            href: ./4-Foundations_Statistical_Inference/6-Central_Limit_Theorem_Practice.qmd
-  
+         - href: ./4-Foundations_Statistical_Inference/7-Confidence_Intervals_for_Means.qmd
+         - href: ./4-Foundations_Statistical_Inference/7-Introducing_T-Distribution.qmd
+         - href: ./4-Foundations_Statistical_Inference/7b-Confidence_Intervals_for_Means_Practice.qmd
+         - href: ./4-Foundations_Statistical_Inference/8-Introducing_Hypothesis_Tests.qmd
+         - href: ./4-Foundations_Statistical_Inference/8b-Statistical_Significance.qmd
+         - href: ./4-Foundations_Statistical_Inference/9-One_Sample_ttest.qmd
+
     - text: "Statistical Tests I"
       menu:
-        - href: ./5-Statistical_Tests_Part1/1-Confidence_Intervals_for_Means.qmd
-        - href: ./5-Statistical_Tests_Part1/1-Introducing_T-Distribution.qmd
-        - href: ./5-Statistical_Tests_Part1/1b-Confidence_Intervals_for_Means_Practice.qmd
-        - href: ./5-Statistical_Tests_Part1/2-One_Sample_ttest.qmd
-        - href: ./5-Statistical_Tests_Part1/2b-One_Sample_ttest_Practice.qmd
-        - href: ./5-Statistical_Tests_Part1/3-Conf_Int_Hyp_Test_for_Proportions.qmd
-        - href: ./5-Statistical_Tests_Part1/3b-Conf_Int_Hyp_Test_for_Proportions_Practice.qmd
-        - href: ./5-Statistical_Tests_Part1/4-Two_sample_Independent_ttest.qmd
-        - href: ./5-Statistical_Tests_Part1/4b-Two_sample_Independent_ttest_practice.qmd
-        - href: ./5-Statistical_Tests_Part1/5-Matched_Pairs_ttest.qmd
-        - href: ./5-Statistical_Tests_Part1/5b-Matched_Pairs_ttest_Practice.qmd
-        - href: ./5-Statistical_Tests_Part1/6-Two_sample_Proportions.qmd
-        - href: ./5-Statistical_Tests_Part1/6b-Two_sample_Proportions_Practice.qmd
+        - href: ./5-Statistical_Tests_Part1/1-Conf_Int_Hyp_Test_for_Proportions.qmd
+        - href: ./5-Statistical_Tests_Part1/1b-Conf_Int_Hyp_Test_for_Proportions_Practice.qmd
+        - href: ./5-Statistical_Tests_Part1/2-Two_sample_Independent_ttest.qmd
+        - href: ./5-Statistical_Tests_Part1/2b-Two_sample_Independent_ttest_practice.qmd
+        - href: ./5-Statistical_Tests_Part1/3-Matched_Pairs_ttest.qmd
+        - href: ./5-Statistical_Tests_Part1/3b-Matched_Pairs_ttest_Practice.qmd
+        - href: ./5-Statistical_Tests_Part1/4-Two_sample_Proportions.qmd
+        - href: ./5-Statistical_Tests_Part1/4b-Two_sample_Proportions_Practice.qmd
 
     - text: "Statistical Tests II"
       menu:

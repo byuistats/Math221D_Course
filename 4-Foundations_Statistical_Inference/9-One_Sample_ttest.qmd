@@ -2,10 +2,6 @@
 title: "One-Sample T-test"
 subtitle: "One-Sample T-test and Confidence Intervals"
 ---
-```{r setup, include=FALSE}
-# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
-```
 
 # Lesson Objectives
 
@@ -33,10 +29,12 @@ __Statistical Inference__ is the practice of using data sampled from a populatio
 
 The two primary methods of statistical inference are:  
 
-  1. Hypothesis Testing
-  2. Confidence Intervals
+  1. Confidence Intervals  
+  2. Hypothesis Testing  
 
-When we know what the population standard deviation, $\sigma$, for individuals, and are confident that the distribution of sample means is approximately normal, we can use a Z-score and the Standard Normal Distribution to calculate probabilities.  
+ 
+
+Recall that when we know what the population standard deviation, $\sigma$, for individuals, and are confident that the distribution of sample means is approximately normal, we can use a Z-score and the Standard Normal Distribution to calculate probabilities.  
 
 $$ z= \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}$$
 
@@ -175,7 +173,7 @@ favstats(big5$Extroversion)
 
 ## Step 3:  Visulize the data
 
-So far we have been discussing a single, quantitative variable of interest, like test scores, reaction times, heights, etc.  When we start looking at more complicated data, we will expand our repertoire of visualizations, but Histograms are very good when looking at one variable at a time, and boxplots are very good for comparison between groups.  
+So far we have been discussing a single, quantitative variable of interest, like test scores, reaction times, heights, etc.  Histograms are very good when looking at one variable at a time.   
 
 Create a histogram of Extroversion.  Describe some features of the data.  Is it symmetric? Skewed? Are there outliers?
 
@@ -197,7 +195,7 @@ ggplot(big5, aes(x = Extroversion)) +
 
 ## Step 4:  Perform the appropriate analysis
 
-In this example, we will be testing the hypothesis that Brother Cannon's students are similar to the general population.  We suspect that these youthful BYU-I students are, on average, more extroverted.
+In this example, we will be testing the hypothesis that Math 221 students are similar to the general population.  We suspect that these youthful BYU-I students are, on average, more extroverted.
 
 ### Hypothesis Test
 

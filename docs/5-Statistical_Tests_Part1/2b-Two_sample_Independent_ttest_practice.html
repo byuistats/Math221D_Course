@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Level up your Tidy-ness – Math221D Notebook</title>
+<title>2-Sample Independent T-Test Practice – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -453,9 +482,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link active" data-scroll-target="#putting-it-all-together">Putting it All Together</a></li>
-  <li><a href="#telepaths-gender-and-sleep" id="toc-telepaths-gender-and-sleep" class="nav-link" data-scroll-target="#telepaths-gender-and-sleep">Telepaths, Gender and Sleep</a></li>
-  <li><a href="#vegetarians-and-height" id="toc-vegetarians-and-height" class="nav-link" data-scroll-target="#vegetarians-and-height">Vegetarians and Height</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#its-a-date" id="toc-its-a-date" class="nav-link" data-scroll-target="#its-a-date">It’s a Date!</a>
+  <ul class="collapse">
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data">Load the Data</a></li>
+  <li><a href="#explore-the-data" id="toc-explore-the-data" class="nav-link" data-scroll-target="#explore-the-data">Explore the Data</a></li>
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a>
+  <ul class="collapse">
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#tooth-hurty" id="toc-tooth-hurty" class="nav-link" data-scroll-target="#tooth-hurty">Tooth hurty</a>
+  <ul class="collapse">
+  <li><a href="#review-the-data" id="toc-review-the-data" class="nav-link" data-scroll-target="#review-the-data">Review The Data</a></li>
+  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#birth-weights" id="toc-birth-weights" class="nav-link" data-scroll-target="#birth-weights">Birth Weights</a>
+  <ul class="collapse">
+  <li><a href="#review-the-data-1" id="toc-review-the-data-1" class="nav-link" data-scroll-target="#review-the-data-1">Review The Data</a></li>
+  <li><a href="#hypothesis-test-2" id="toc-hypothesis-test-2" class="nav-link" data-scroll-target="#hypothesis-test-2">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval-2" id="toc-confidence-interval-2" class="nav-link" data-scroll-target="#confidence-interval-2">Confidence Interval</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -464,7 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Level up your Tidy-ness</h1>
+<h1 class="title">2-Sample Independent T-Test Practice</h1>
 </div>
 
 
@@ -481,250 +529,159 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="putting-it-all-together" class="level1">
-<h1>Putting it All Together</h1>
-<p>Here are two more data wrangling questions to test your skills. Try as best you can to work each step on your own before checking solutions.</p>
-<p>The questions relate to the High School survey used in other examples.</p>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
+<p>Here are several opportunities to practice analyzing 2-sample independent t-tests using R. For each question, you will:</p>
+<ul>
+<li>Read in data<br>
+</li>
+<li>Identify the Response and Independent variable<br>
+</li>
+<li>Create data summaries (numerical and graphical)<br>
+</li>
+<li>Statistically analyze the data<br>
+</li>
+<li>Check for the suitability of the statistical test (CLT, Normality)<br>
+</li>
+<li>State your hypothesis test conclusions and interpret your confidence intervals</li>
+</ul>
+<p>When you finish, render this document and submit the <code>.html</code> in Canvas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries and data</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>survey <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://github.com/byuistats/Math221D_Cannon/raw/master/Data/HighSchoolSeniors_subset.csv'</span>) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="telepaths-gender-and-sleep" class="level1">
-<h1>Telepaths, Gender and Sleep</h1>
-<p>Suppose we want to see who gets more sleep on non-school nights, males or females whose chosen superpower would be telepathy. Also, create a column that is the ratio of sleep hours on non-school nights to 8. This calculates the percent of recommended sleep on non-school nights.</p>
-<ol type="1">
-<li>Create a dataset that includes columns Gender, Superpower, Sleep_Hours_Non-Schoolnight, and the ratio of non-schoolnight sleep hours divided by 8, for Males and Females who choose Telepathy as their superpower.</li>
-</ol>
+<section id="its-a-date" class="level1">
+<h1>It’s a Date!</h1>
+<p>Dating Behavior was studied in a speed dating experiment where random matching was generated and created randomization in the number of potential dates. In a survey to each participant, one question was asked about how important attraction is when they date. The attraction value is on a scale from 0 (not important at all) to 100 (very important).</p>
+<p>The researchers want to determine if males report to value attractiveness more than females. Use a level of significance of 0.05.</p>
+<section id="load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-data">Load the Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dating <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/dating_attractive_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<details>
-<summary>
-Solution
-</summary>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(survey<span class="sc">$</span>Superpower)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Telepathy"      "Invisibility"   "Fly"            "Freeze time"   
-[5] "Super strength"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>telepaths <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Gender, Superpower, Sleep_Hours_Non_Schoolnight) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Superpower<span class="sc">==</span><span class="st">"Telepathy"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent_of_recommended =</span> Sleep_Hours_Non_Schoolnight <span class="sc">/</span> <span class="dv">8</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>telepaths</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 81 × 4
-   Gender Superpower Sleep_Hours_Non_Schoolnight percent_of_recommended
-   &lt;chr&gt;  &lt;chr&gt;                            &lt;dbl&gt;                  &lt;dbl&gt;
- 1 Male   Telepathy                            7                  0.875
- 2 Female Telepathy                            9                  1.12 
- 3 Male   Telepathy                            9                  1.12 
- 4 Female Telepathy                            8                  1    
- 5 Female Telepathy                            9                  1.12 
- 6 Male   Telepathy                           11                  1.38 
- 7 Female Telepathy                           11                  1.38 
- 8 Female Telepathy                            9                  1.12 
- 9 Female Telepathy                            9                  1.12 
-10 Female Telepathy                           10                  1.25 
-# ℹ 71 more rows</code></pre>
-</div>
-</div>
-</details>
-<ol start="2" type="1">
-<li>Create a summary table comparing males and females whose preferred super power is telepathy that includes:</li>
-</ol>
-<pre><code>a. Mean, standard deviation, and sample size of Sleep Hours on non-school nights 
-b. Mean, standard deviation, and sample size of the percent of recommended sleep</code></pre>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<details>
-<summary>
-Solution
-</summary>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>telepaths <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Gender) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_hrs =</span> <span class="fu">mean</span>(Sleep_Hours_Non_Schoolnight),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mn_percent_recommended =</span> <span class="fu">mean</span>(percent_of_recommended),</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>()</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-  Gender mn_hrs mn_percent_recommended count
-  &lt;chr&gt;   &lt;dbl&gt;                  &lt;dbl&gt; &lt;int&gt;
-1 Female   8.73                   1.09    60
-2 Male     8.19                   1.02    21</code></pre>
-</div>
-</div>
-</details>
 </section>
-<section id="vegetarians-and-height" class="level1">
-<h1>Vegetarians and Height</h1>
-<ol type="1">
-<li>How many vegetarians say meat is their favorite food?</li>
-</ol>
-<p><strong>HINT</strong>: This can be done with a single filter statement</p>
+<section id="explore-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="explore-the-data">Explore the Data</h2>
+<p><strong>QUESTION</strong>: What is the <em>response</em> variable?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the <em>explanatory</em> variable?<br>
+<strong>ANSWER</strong>:</p>
+<p>Create a side-by-side boxplot for the amount of reported importance of attractiveness for each biosex.</p>
+<p>Add a title and change the colors of the boxes.</p>
+<p>Create a table of summary statistics for each group (<code>favstats()</code>):</p>
+</section>
+<section id="hypothesis-test" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
+<p>State your null and alternative hypotheses (replace the ??? with the appropriate symbol):</p>
+<p><span class="math display">\[H_0:  \mu_{F}???\mu_{M}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{F}???\mu_{M}\]</span></p>
+<p><strong>NOTE</strong>: The default for R is to set group order alphabetically. This means Group 1 = Female.</p>
+<p><strong>QUESTION</strong>: Check that the samples for both groups are normally distributed:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in qqPlot.default(): argument "x" is missing, with no default</code></pre>
 </div>
-<details>
-<summary>
-Solution
-</summary>
+</div>
+<p><strong>QUESTION</strong>: Do the data for each group appear normally distributed?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: Why is it OK to continue with the analysis? <strong>ANSWER</strong>:</p>
+<p>Perform a t-test.</p>
+<p><strong>QUESTION</strong>: What is the value of the test statistic?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: How many degrees of freedom for this test?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the p-value?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What do you conclude?<br>
+<strong>ANSWER</strong>:</p>
+<section id="confidence-interval" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
+<p>Create a confidence interval for the difference of the average Importance Score between both groups:</p>
+</section>
+</section>
+</section>
+<section id="tooth-hurty" class="level1">
+<h1>Tooth hurty</h1>
+<p>A simple random sample of dental bill costs was collected at offices in Rexburg and Idaho Falls. Let <span class="math inline">\(\mu_{IF}\)</span> be the <em>population</em> mean of dental costs in Idaho Falls and <span class="math inline">\(\mu_{R}\)</span> be the <em>population</em> mean of dentals costs in Rexburg.</p>
+<p>We suspect that dental costs are higher in Rexburg because of less competition.</p>
+<p>Use the data imported below to answer the following questions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Favorite_Food <span class="sc">==</span> <span class="st">"Meat"</span>,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>         Vegetarian <span class="sc">==</span> <span class="st">"Yes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 60
-  Country Region DataYear ClassGrade Gender Ageyears Handed       Height_cm
-  &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
-1 USA     NC         2022         11 Male         16 Right-Handed       178
-# ℹ 52 more variables: Footlength_cm &lt;dbl&gt;, Armspan_cm &lt;dbl&gt;,
-#   Languages_spoken &lt;dbl&gt;, Travel_to_School &lt;chr&gt;,
-#   Travel_time_to_School &lt;int&gt;, Reaction_time &lt;dbl&gt;,
-#   Score_in_memory_game &lt;dbl&gt;, Favourite_physical_activity &lt;chr&gt;,
-#   Imprtance_reducing_pllutin &lt;int&gt;, Imprtance_recycling_rubbish &lt;int&gt;,
-#   Imprtance_cnserving_water &lt;int&gt;, Imprtance_saving_energy &lt;int&gt;,
-#   Imprtance_wning_cmputer &lt;int&gt;, Imprtance_Internet_access &lt;int&gt;, …</code></pre>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dentist <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/DentistOfficeBills_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</details>
-<ol start="2" type="1">
-<li>Compare mean, and standard deviation of heights between those who are vegetarian and those who aren’t. Include the number of respondents in your analysis.</li>
-</ol>
-<p>Be sure to filter out any major outliers in heights first.</p>
+<section id="review-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="review-the-data">Review The Data</h2>
+<p><strong>QUESTION</strong>: What is the <em>response</em> variable?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the <em>explanatory</em> variable?<br>
+<strong>ANSWER</strong>:</p>
+<p>Create summary statistics tables of dental costs for each office:</p>
+<p>Create a side-by-side boxplot for dental costs for each office.</p>
+<p>Check the normality of each group.</p>
+<p><strong>QUESTION</strong>: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?</p>
+</section>
+<section id="hypothesis-test-1" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h2>
+<p>State your null and alternative hypotheses (replace the question marks with the appropriate symbols):</p>
+<p><span class="math display">\[H_0:  \mu_{IF}???\mu_{R}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{IF}???\mu_{R}\]</span></p>
+<p>Perform the appropriate analysis:</p>
+<p><strong>QUESTION</strong>: What is the test statistic?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the P-value?<br>
+<strong>ANSWER</strong>:</p>
+<p>State your conclusion:</p>
+</section>
+<section id="confidence-interval-1" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h2>
+<p>Create a confidence interval for the difference in costs between the IF and Rexburg offices:</p>
+<p>Explain the confidence interval in context of the research question:</p>
+</section>
+</section>
+<section id="birth-weights" class="level1">
+<h1>Birth Weights</h1>
+<p>A study was conducted in which researchers obtained birth weights of infants born in Illinois during the same year. The birth weights are categorized based on the race and birthplace of the mother. Researchers want to know if there is a difference in mean birth weights of babies born to black women who were born in the United States and babies born to black women who were born in Africa. Values were recorded (in grams) for each infant born. The data are recorded in the file.</p>
+<p>Let <span class="math inline">\(\mu_A\)</span> be the <em>population</em> average of babies born to African-born mothers and <span class="math inline">\(\mu_{IL}\)</span> be the <em>population</em> mean weight of babies born to mothers in Illinois.</p>
+<p>Use the data imported below to answer the following questions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>birth_weights <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://github.com/byuistats/Math221D_Course/raw/main/Data/IllinoisBirthWeightsTwoVar_longformat.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<details>
-<summary>
-Solution
-</summary>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Height_cm, Vegetarian) <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>         Height_cm <span class="sc">&gt;</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Vegetarian) <span class="sc">%&gt;%</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">med_ht =</span> <span class="fu">median</span>(Height_cm),</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_ht =</span> <span class="fu">mean</span>(Height_cm),</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_ht =</span> <span class="fu">sd</span>(Height_cm),</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>()</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  Vegetarian med_ht mean_ht sd_ht count
-  &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
-1 No           170.    171.  10.8   285
-2 Yes          163     162.  17.1    15</code></pre>
-</div>
-</div>
-<p>After removing outliers, it looks like vegetarians are shorter, on average.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bonus Boxplot:</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>veg <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Height_cm, Vegetarian) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Height_cm <span class="sc">&lt;</span> <span class="dv">214</span>,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>         Height_cm <span class="sc">&gt;</span> <span class="dv">100</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(veg<span class="sc">$</span>Height_cm <span class="sc">~</span> veg<span class="sc">$</span>Vegetarian, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>), <span class="at">main =</span> <span class="st">"Heights (cm) of Vegetarians and Non-Vegetarians"</span>, <span class="at">xlab=</span><span class="st">"vegetarian"</span>, <span class="at">ylab =</span> <span class="st">"Height (cm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Bonus_More_Tidy_Practice_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</details>
-<ol start="3" type="1">
-<li>Create a dataset that:
-<ol type="a">
-<li><p>Includes a column that is percent of recommended sleep (Sleep_Hours_Schoolnight divided by 8 using a mutate statement)</p></li>
-<li><p>Includes only columns for Favourite_physical_activity, Reaction_time, percent_recommended_sleep (part a)</p></li>
-<li><p>Includes only students whose favorite physical activity is Walking/Hiking, Basketball, Swimming, Soccer</p></li>
-<li><p>Filters Reaction Times to be less than 1 second</p></li>
-</ol></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<details>
-<summary>
-Solution
-</summary>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>phys_act <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct_recommended_sleep =</span> Sleep_Hours_Schoolnight <span class="sc">/</span> <span class="dv">8</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Favourite_physical_activity <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'Walking/Hiking'</span>, <span class="st">"Basketball"</span>, <span class="st">"Swimming"</span>, <span class="st">"Soccer"</span>),</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>         Reaction_time <span class="sc">&lt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Favourite_physical_activity, Reaction_time, pct_recommended_sleep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</details>
-<p>Use the clean dataset to:</p>
-<ol start="4" type="1">
-<li>Create a side-by-side boxplot for the percent of recommended sleep comparing favourite physical activity</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<details>
-<summary>
-Solution
-</summary>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(phys_act<span class="sc">$</span>pct_recommended_sleep <span class="sc">~</span> phys_act<span class="sc">$</span>Favourite_physical_activity, <span class="at">xlab =</span> <span class="st">"Favorite Physical Activity"</span>, <span class="at">ylab =</span> <span class="st">"% Recommended Sleep on School Nights"</span>, <span class="at">main =</span> <span class="st">"School Night Sleep by Favorite Physical Activity"</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Bonus_More_Tidy_Practice_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</details>
-<ol start="5" type="1">
-<li>Create a side-by-side boxplot for the reaction times comparing favourite physical activity</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your Code:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<details>
-<summary>
-Solution
-</summary>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(phys_act<span class="sc">$</span>Reaction_time <span class="sc">~</span> phys_act<span class="sc">$</span>Favourite_physical_activity, <span class="at">xlab =</span> <span class="st">"Favorite Physical Activity"</span>, <span class="at">ylab =</span> <span class="st">"Reaction Time"</span>, <span class="at">main =</span> <span class="st">"Reaction Time Results by Favorite Physical Activity"</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Bonus_More_Tidy_Practice_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</details>
-<p><strong>Which physical activity group has the quickest reaction time?</strong></p>
+<section id="review-the-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="review-the-data-1">Review The Data</h2>
+<p><strong>QUESTION</strong>: What is the <em>response</em> variable?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the <em>explanatory</em> variable?<br>
+<strong>ANSWER</strong>:</p>
+<p>Create summary statistics tables of birth weights for each country:</p>
+<p>Create a side-by-side boxplot for birth weights for each country:</p>
+<p>Check the normality of each group.</p>
+<p><strong>QUESTION</strong>: Do the samples from both groups appear to be normally distributed? If not, is it a cause for concern for our statistical inference?<br>
+<strong>ASNWER</strong>:</p>
+</section>
+<section id="hypothesis-test-2" class="level2">
+<h2 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis Test</h2>
+<p>State your null and alternative hypotheses (replace the question marks with the appropriate symbols):</p>
+<p><span class="math display">\[H_0:  \mu_{A}???\mu_{IL}\]</span></p>
+<p><span class="math display">\[H_a:\mu_{A}???\mu_{IL}\]</span></p>
+<p>Perform the appropriate analysis:</p>
+<p><strong>QUESTION</strong>: What is the test statistic?<br>
+<strong>ANSWER</strong>:</p>
+<p><strong>QUESTION</strong>: What is the P-value?<br>
+<strong>ANSWER</strong>:</p>
+<p>State your conclusion:</p>
+</section>
+<section id="confidence-interval-2" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval-2">Confidence Interval</h2>
+<p>Create a confidence interval for the average difference in weights between babies born to mothers in Africa and Illinois:</p>
+<p>Explain the confidence interval in context of the research question:</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

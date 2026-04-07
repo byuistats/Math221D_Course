@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Confidence Intervals for a Mean – Math221D Notebook</title>
+<title>Matched Pairs T-Test Practice – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -285,6 +319,30 @@ window.Quarto = {
     <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/6-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem Practice</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7-Confidence_Intervals_for_Means.html">
+ <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7-Introducing_T-Distribution.html">
+ <span class="dropdown-text">Introducing the T-Distribution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7b-Confidence_Intervals_for_Means_Practice.html">
+ <span class="dropdown-text">Confidence Intervals For Means - Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/8-Introducing_Hypothesis_Tests.html">
+ <span class="dropdown-text">Introducing Hypothesis Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/8b-Statistical_Significance.html">
+ <span class="dropdown-text">Statistical Significance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/9-One_Sample_ttest.html">
+ <span class="dropdown-text">One-Sample T-test</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -293,55 +351,35 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-i">    
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Confidence_Intervals_for_Means.html">
- <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Introducing_T-Distribution.html">
- <span class="dropdown-text">Introducing the T-Distribution</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1b-Confidence_Intervals_for_Means_Practice.html">
- <span class="dropdown-text">Confidence Intervals For Means - Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-One_Sample_ttest.html">
- <span class="dropdown-text">One-Sample T-test</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2b-One_Sample_ttest_Practice.html">
- <span class="dropdown-text">Don’t Take it Personally</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Conf_Int_Hyp_Test_for_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Conf_Int_Hyp_Test_for_Proportions.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3b-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1b-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Two_sample_Independent_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-Two_sample_Independent_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4b-Two_sample_Independent_ttest_practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2b-Two_sample_Independent_ttest_practice.html">
  <span class="dropdown-text">2-Sample Independent T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5-Matched_Pairs_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Matched_Pairs_ttest.html">
  <span class="dropdown-text">Matched Pairs T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5b-Matched_Pairs_ttest_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3b-Matched_Pairs_ttest_Practice.html">
  <span class="dropdown-text">Matched Pairs T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6-Two_sample_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Two_sample_Proportions.html">
  <span class="dropdown-text">2-Sample Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6b-Two_sample_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4b-Two_sample_Proportions_Practice.html">
  <span class="dropdown-text">2-Sample Proportion Practice</span></a>
   </li>  
     </ul>
@@ -444,25 +482,29 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#helmet-measurements" id="toc-helmet-measurements" class="nav-link" data-scroll-target="#helmet-measurements">Helmet Measurements</a>
   <ul class="collapse">
-  <li><a href="#lesson-outcomes" id="toc-lesson-outcomes" class="nav-link" data-scroll-target="#lesson-outcomes">Lesson Outcomes</a></li>
-  </ul></li>
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a>
+  <li><a href="#step-1-load-the-data" id="toc-step-1-load-the-data" class="nav-link" data-scroll-target="#step-1-load-the-data">Step 1: Load the Data</a></li>
+  <li><a href="#step-2-explore-the-data-and-generate-hypotheses" id="toc-step-2-explore-the-data-and-generate-hypotheses" class="nav-link" data-scroll-target="#step-2-explore-the-data-and-generate-hypotheses">Step 2: Explore the Data and Generate Hypotheses</a></li>
+  <li><a href="#step-3-prepare-the-data-for-analysis" id="toc-step-3-prepare-the-data-for-analysis" class="nav-link" data-scroll-target="#step-3-prepare-the-data-for-analysis">Step 3: Prepare the data for analysis</a></li>
+  <li><a href="#step-4-perform-the-appropriate-analyses" id="toc-step-4-perform-the-appropriate-analyses" class="nav-link" data-scroll-target="#step-4-perform-the-appropriate-analyses">Step 4: Perform the Appropriate Analyses</a>
   <ul class="collapse">
-  <li><a href="#point-estimators" id="toc-point-estimators" class="nav-link" data-scroll-target="#point-estimators">Point Estimators</a></li>
-  <li><a href="#review-distribution-of-sample-means" id="toc-review-distribution-of-sample-means" class="nav-link" data-scroll-target="#review-distribution-of-sample-means">Review: Distribution of Sample Means</a></li>
-  <li><a href="#an-approximate-95-confidence-interval" id="toc-an-approximate-95-confidence-interval" class="nav-link" data-scroll-target="#an-approximate-95-confidence-interval">An Approximate 95% Confidence Interval</a></li>
-  </ul></li>
-  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a>
-  <ul class="collapse">
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a>
-  <ul class="collapse">
-  <li><a href="#average-gre-scores-of-byu-i-students" id="toc-average-gre-scores-of-byu-i-students" class="nav-link" data-scroll-target="#average-gre-scores-of-byu-i-students">Average GRE Scores of BYU-I Students</a></li>
+  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
+  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#relationship-to-hypothesis-testing" id="toc-relationship-to-hypothesis-testing" class="nav-link" data-scroll-target="#relationship-to-hypothesis-testing">Relationship to Hypothesis Testing</a></li>
-  <li><a href="#margin-of-error" id="toc-margin-of-error" class="nav-link" data-scroll-target="#margin-of-error">Margin of Error</a></li>
+  <li><a href="#cholesterol" id="toc-cholesterol" class="nav-link" data-scroll-target="#cholesterol">Cholesterol</a>
+  <ul class="collapse">
+  <li><a href="#step-1-load-the-data-1" id="toc-step-1-load-the-data-1" class="nav-link" data-scroll-target="#step-1-load-the-data-1">Step 1: Load the Data</a></li>
+  <li><a href="#step-2-review-the-data-generate-hypotheses" id="toc-step-2-review-the-data-generate-hypotheses" class="nav-link" data-scroll-target="#step-2-review-the-data-generate-hypotheses">Step 2: Review the Data Generate Hypotheses</a></li>
+  <li><a href="#step-3-prepare-the-data-for-analysis-1" id="toc-step-3-prepare-the-data-for-analysis-1" class="nav-link" data-scroll-target="#step-3-prepare-the-data-for-analysis-1">Step 3: Prepare the data for analysis</a></li>
+  <li><a href="#step-4-perform-the-appropriate-analysis" id="toc-step-4-perform-the-appropriate-analysis" class="nav-link" data-scroll-target="#step-4-perform-the-appropriate-analysis">Step 4: Perform the appropriate analysis</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -471,7 +513,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Confidence Intervals for a Mean</h1>
+<h1 class="title">Matched Pairs T-Test Practice</h1>
 </div>
 
 
@@ -488,242 +530,122 @@ window.Quarto = {
 </header>
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<section id="lesson-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="lesson-outcomes">Lesson Outcomes</h2>
-<p>By the end of this lesson, you should be able to:</p>
-<ol type="1">
-<li>Explain the meaning of a level of confidence</li>
-<li>Create a confidence interval for a single mean with <span class="math inline">\(\sigma\)</span> known using the following steps:
-<ol type="a">
-<li>Find the point estimate (<span class="math inline">\(\bar{x}\)</span>)</li>
-<li>Calculate the margin of error for the given level of confidence</li>
-<li>Calculate a confidence interval from the point estimate and the margin of error</li>
-<li>Interpret the confidence interval</li>
-<li>Check the requirements for the confidence interval</li>
-</ol></li>
-<li>Explain how the margin of error is affected by the sample size and level of confidence</li>
-</ol>
-<p><strong>Statistical Inference</strong> is the practice of using data sampled from a population to make conclusions about <em>population parameters</em>.</p>
-<p>The two primary methods of statistical inference are:</p>
-<ol type="1">
-<li>Confidence Intervals<br>
-</li>
-<li>Hypothesis Testing</li>
-</ol>
-<p>This chapter lays the foundation for confidence intervals.</p>
+<section id="instructions" class="level1">
+<h1>Instructions</h1>
+<p>Here are several opportunities to practice analyzing dependent samples using R. For each question, you will:</p>
+<ul>
+<li>Read in data</li>
+<li>Create data summaries (numerical and graphical)</li>
+<li>Statistically analyze the data</li>
+<li>Check for the suitability of the statistical test (CLT, Normality)</li>
+<li>State your hypothesis test conclusions and interpret your confidence intervals</li>
+</ul>
 </section>
-</section>
-<section id="background" class="level1">
-<h1>Background</h1>
-<section id="point-estimators" class="level2">
-<h2 class="anchored" data-anchor-id="point-estimators">Point Estimators</h2>
-<p>We have learned about several statistics. Remember, a statistic is any number computed based on data. The sample statistics we have discussed are used to estimate population parameters.</p>
-<center>
-<table class="table">
-<thead>
-<tr class="header">
-<th>
-</th>
-<th>
-<p>
-Sample Statistic
-</p>
-</th>
-<th>
-<p>
-Population Parameter
-</p>
-</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>
-<p>
-Mean
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\bar x\)</span>
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\mu\)</span>
-</p>
-</td>
-</tr>
-<tr class="even">
-<td>
-<p>
-Standard Deviation
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(s\)</span>
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\sigma\)</span>
-</p>
-</td>
-</tr>
-<tr class="odd">
-<td>
-<p>
-Variance
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(s^2\)</span>
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\sigma^2\)</span>
-</p>
-</td>
-</tr>
-<tr class="even">
-<td>
-<p>
-<span class="math inline">\(\vdots\)</span>
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\vdots\)</span>
-</p>
-</td>
-<td>
-<p>
-<span class="math inline">\(\vdots\)</span>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
-</center>
-<p>The statistics above are called <strong>point estimators</strong> because they are just one number (one point on a number line) that is used to estimate a population parameter. Parameters are generally unknown values. Think about the mean. If <span class="math inline">\(\mu\)</span> is unknown, how do we know if <span class="math inline">\(\bar{x}\)</span> is close to it?</p>
-<p>The short answer is that we will never know <em>for sure</em> if <span class="math inline">\(\bar{x}\)</span> is close to <span class="math inline">\(\mu\)</span>. This does not mean that we are helpless. The normal distribution provides a way for us to create a range of plausible values for a parameter (e.g.&nbsp;<span class="math inline">\(\mu\)</span>) based on a statistic (e.g.&nbsp;<span class="math inline">\(\bar{x}\)</span>).</p>
-</section>
-<section id="review-distribution-of-sample-means" class="level2">
-<h2 class="anchored" data-anchor-id="review-distribution-of-sample-means">Review: Distribution of Sample Means</h2>
-<p>Confidence intervals rely on the validity of the assumption that the distribution of the sample mean is normally distributed.</p>
-<p>Recall that the distribution of sample means is normal when:</p>
-<ol type="1">
-<li>The underlying population is normally distributed</li>
-<li>The sample size, n, is sufficiently large (<span class="math inline">\(n&lt;30\)</span> for this class) for the Central Limit Theorem to apply</li>
-</ol>
-<p><strong>Thought Question</strong>: If we have a good sample from a population and can trust that the sampling distribution of the mean is approximately normal, how frequently would a sample mean be within 2 standard deviations from the true population mean?</p>
-<p>Remember, the standard deviation of <span class="math inline">\(\bar x\)</span> is <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>. For the variable <span class="math inline">\(\bar x\)</span>, two standard deviations would be equal to <span class="math inline">\(2 \frac{\sigma}{\sqrt{n}}\)</span>.</p>
-<p><strong>ANSWER</strong>: If we collect a random sample from a population and <span class="math inline">\(\bar x\)</span> is normally distributed, then about 95% of the time the sample mean <span class="math inline">\(\bar x\)</span> will be less than <span class="math inline">\(2 \frac{\sigma}{\sqrt{n}}\)</span> units away from the population mean <span class="math inline">\(\mu\)</span>. Notice that this is true, whether or not we know <span class="math inline">\(\mu\)</span>.</p>
+<section id="helmet-measurements" class="level1">
+<h1>Helmet Measurements</h1>
+<p>After purchasing a batch of flight helmets that did not fit the heads of many pilots, the NZ Airforce decided to measure the head sizes of all recruits. Before this was carried out, information was collected to determine the feasibility of using cheap cardboard calipers to make the measurements, instead of metal ones which were expensive and uncomfortable.</p>
+<p>The data lists the head diameters of 18 recruits measured once using cardboard calipers and again using metal calipers. One question is whether there is <em>any</em> systematic difference between the two measurement tools.</p>
+<p><strong>NOTE</strong>: Define the difference as cardboard - metal.</p>
+<p>Use <span class="math inline">\(\alpha = 0.05\)</span> significance level.</p>
+<section id="step-1-load-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-load-the-data">Step 1: Load the Data</h2>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="1-Confidence_Intervals_for_Means_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>helmet_fit <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/quiz/R/helmet_fit.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<p>This means the 95% of the time, we will get a sample mean within 2 Standard Deviations of the true population mean.</p>
-<p>Flipping this around, if we take our <strong>sample mean, <span class="math inline">\(\bar{x}\)</span>,</strong> and make an interval 2 standard deviations, <span class="math inline">\(2\frac{\sigma}{\sqrt{n}}\)</span> above the mean and 2 below, the interval will overlap with the <em>true population mean</em> about 95% of the time.</p>
-<p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/CI_Illustration.png" class="img-fluid"></p>
 </section>
-<section id="an-approximate-95-confidence-interval" class="level2">
-<h2 class="anchored" data-anchor-id="an-approximate-95-confidence-interval">An Approximate 95% Confidence Interval</h2>
-<p>The equation of an approximate 95% confidence interval would be:</p>
-<p><span class="math display">\[ CI = \bar{x} \pm 2 \frac{\sigma}{\sqrt{n}}\]</span></p>
-<p>The part that we are adding and subtracting from our point estimate is called the <strong>Margin of Error</strong>. We use the letter <span class="math inline">\(m\)</span> to denote the margin of error:</p>
-<p><span class="math display">\[m = 2 \frac{\sigma}{\sqrt{n}}\]</span></p>
-<p>Using this definition for <span class="math inline">\(m\)</span>, our confidence interval can be written as</p>
-<p><span class="math display">\[( \bar x - m, ~ \bar x + m )\]</span></p>
+<section id="step-2-explore-the-data-and-generate-hypotheses" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-explore-the-data-and-generate-hypotheses">Step 2: Explore the Data and Generate Hypotheses</h2>
+<p>Create histograms and summary statistic tables for the measurements for each type of tool:</p>
 </section>
+<section id="step-3-prepare-the-data-for-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-prepare-the-data-for-analysis">Step 3: Prepare the data for analysis</h2>
+<p>Give the summary statistics (<code>favstats()</code>) for the <em>differences</em> in the measured head diameters.</p>
+<p><strong>Question</strong>: What does a negative number mean given the definition of the difference?<br>
+<strong>Answer</strong>:</p>
+<p>Create a <code>qqPlot()</code> of the differences:</p>
 </section>
-<section id="confidence-intervals" class="level1">
-<h1>Confidence Intervals</h1>
-<p>Recall that it is only <em>approximately</em> 95% of the area under the curve within 2 standard deviations of the mean.</p>
-<p>We want to be more precise in our confidence intervals and may want to choose a level of confidence different from 95%.</p>
-<p>The generalized formula for a confidence interval is</p>
-<p><span class="math display">\[ CI = \bar{x} \pm z^*\frac{\sigma}{\sqrt{n}}\]</span></p>
-<p>Where <span class="math inline">\(z^*\)</span> is a z-score value related to a specified level of confidence.</p>
-<p><strong>NOTE</strong>: The <span class="math inline">\(z^*\)</span> value represents the value from a standard normal distribution beyond which</p>
+<section id="step-4-perform-the-appropriate-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-perform-the-appropriate-analyses">Step 4: Perform the Appropriate Analyses</h2>
+<section id="hypothesis-test" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h3>
+<p>Make the following null and alternative hypothesis correct by deleting what doesn’t belong:</p>
+<p><span class="math display">\[H_0: \mu_d  &gt; &lt; = \ne 0\]</span></p>
+<p><span class="math display">\[ H_a: \mu_d &gt; &lt; = \ne 0\]</span></p>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="1-Confidence_Intervals_for_Means_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a t-test for the mean of the differences between cardboard and caliper data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<p>Common <span class="math inline">\(z^*\)</span> values for specified confidence levels are:</p>
+<p><strong>Question</strong>: What is the value of the test statistic, <span class="math inline">\(t\)</span>?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: How many degrees of freedom does this test statistics have?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Can we trust this P-value? (eg. How many differences in our sample? Check the <code>qqPlot()</code> of the differences for normality)<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: State your conclusion about the hypothesis test.<br>
+<strong>Answer</strong>:</p>
+</section>
+<section id="confidence-intervals" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-intervals">Confidence Intervals</h3>
+<p>Create a 95% confidence interval for the true average difference between the cardboard and the metal measurement tools:</p>
+<p><strong>Question</strong>: Give a one-sentence explanation of your confidence interval.<br>
+<strong>Answer</strong>:</p>
+</section>
+</section>
+</section>
+<section id="cholesterol" class="level1">
+<h1>Cholesterol</h1>
+<p>A study was conducted at a major northeastern American medical center regarding blood cholesterol levels and heart-attack incidents. A total of 28 heart-attack patients had their cholesterol levels measured two days after the heart attack and again four days after the heart attack. Researchers want to see if cholesterol levels reduced significantly four days after the attack versus two days after the attack.</p>
+<p>Use the level of significance of 0.05.</p>
+<section id="step-1-load-the-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-load-the-data-1">Step 1: Load the Data</h2>
 <div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 19%">
-<col style="width: 11%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Conf. Level</th>
-<th style="text-align: center;">Z*</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">0.99</td>
-<td style="text-align: center;">2.576</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">0.95</td>
-<td style="text-align: center;">1.96</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">0.9</td>
-<td style="text-align: center;">1.645</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cholesterol <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/quiz/R/cholesterol.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p><strong>Confidence Level</strong> is related to the probability of a Type I error, <span class="math inline">\(\alpha\)</span>, in hypothesis testing. In fact, <strong>Confidence Level = 1-<span class="math inline">\(\alpha\)</span></strong>.</p>
-<p>A 95% confidence interval will miss the true population mean 5% of the time because 5% of the time you will get a mean in the one tail or the other of the sampling distribution <em>just by chance.</em></p>
-<section id="interpretation" class="level2">
-<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
-<p>Confidence intervals are typically reported using parentheses like: (lower limit, upper limit). We say that we are <span class="math inline">\(100*(1-\alpha)\%\)</span> confident that the true population mean is between [lower limit] and [upper limit].</p>
-<section id="average-gre-scores-of-byu-i-students" class="level3">
-<h3 class="anchored" data-anchor-id="average-gre-scores-of-byu-i-students">Average GRE Scores of BYU-I Students</h3>
-<p>The published population standard deviation of the quantitative portion of the Graduate Record Examination (GRE) scores is <span class="math inline">\(\sigma=8.3\)</span>.</p>
-<p>Suppose we take a random sample of <span class="math inline">\(n=100\)</span> BYU-I students who have taken the GRE and find that their average score was <span class="math inline">\(\bar{x}=162.1\)</span></p>
-<p>We can calculate the 99% confidence interval:</p>
-<p><span class="math display">\[ 162.1 \pm 2.576\frac{8.3}{\sqrt{100}} = (159.96, 164.24)\]</span></p>
-<p>The interpretation of the above confidence interval would be:</p>
-<p>I am 99% confident that the true population mean GRE score for BYU-I students is between 159.96 and 164.24.</p>
 </section>
+<section id="step-2-review-the-data-generate-hypotheses" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-review-the-data-generate-hypotheses">Step 2: Review the Data Generate Hypotheses</h2>
+<p>Create histograms and summary statistics tables for the cholesterol measurements at 2 days and at 4 days.</p>
 </section>
+<section id="step-3-prepare-the-data-for-analysis-1" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-prepare-the-data-for-analysis-1">Step 3: Prepare the data for analysis</h2>
+<p>Decide how you are going to define the difference (chol_day2 - chol_day4 or chol_day4 - chol_day2).</p>
+<p>What does a negative number mean:</p>
+<p>What are your null and alternative hypotheses:</p>
+<p><span class="math display">\[H_0: \mu_d  &gt; &lt; = \ne 0\]</span></p>
+<p><span class="math display">\[ H_a: \mu_d &gt; &lt; = \ne 0\]</span></p>
+<p>Create a <code>qqPlot()</code> of the differences and determine if you can trust the statistical tests.</p>
 </section>
-<section id="relationship-to-hypothesis-testing" class="level1">
-<h1>Relationship to Hypothesis Testing</h1>
-<p>Consider that the published population mean for GRE test-takers if 158.</p>
-<p><strong>QUESTION</strong>: Does the true population mean of all test-takers fall inside our confidence interval?</p>
-<p>Because 158 falls below our confidence interval, we conclude that BYU-I students score higher, on average, than the general population with 99% confidence.</p>
+<section id="step-4-perform-the-appropriate-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-perform-the-appropriate-analysis">Step 4: Perform the appropriate analysis</h2>
+<section id="hypothesis-test-1" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h3>
+<p>Perform a t-test for the differences.</p>
+<p><strong>Question</strong>: What is the value of the test statistic, <span class="math inline">\(t\)</span>?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: How many degrees of freedom does this test statistics have?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the P-value?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: Are the requirements satisfied for a matched pairs t-test? (Can we trust the P-value?)<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: State your conclusion about the hypothesis test.<br>
+<strong>Answer</strong>:</p>
 </section>
-<section id="margin-of-error" class="level1">
-<h1>Margin of Error</h1>
-<p><strong>QUESTION</strong>: What happens to the margin of error, <span class="math inline">\(z^*\frac{\sigma}{\sqrt{n}}\)</span>, as the sample size increases?</p>
-<p><strong>QUESTION</strong>: What happens to the margin of error, <span class="math inline">\(z^*\frac{\sigma}{\sqrt{n}}\)</span>, as our confidence level increases? (see table above about Z* and confidence level)</p>
-<p>Consider that if I make a wide enough interval, I can be 100% confident. But to get 100% confidence, my interval will be useless. For example, I can be 100% confident that the true population averge height of BYU-I students is between 2 feet and 100 feet. More confidence means we need a wider interval.</p>
+<section id="confidence-interval" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h3>
+<p>Create a 95% confidence interval for the difference in cholesterol scores:</p>
+<p><strong>Question</strong>: Explain your confidence interval in context of the research question<br>
+<strong>Answer</strong>:</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Confidence Intervals and Hypothesis Tests Practice – Math221D Notebook</title>
+<title>2-Sample Proportions – Math221D Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -319,6 +319,30 @@ window.Quarto = {
     <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/6-Central_Limit_Theorem_Practice.html">
  <span class="dropdown-text">Central Limit Theorem Practice</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7-Confidence_Intervals_for_Means.html">
+ <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7-Introducing_T-Distribution.html">
+ <span class="dropdown-text">Introducing the T-Distribution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/7b-Confidence_Intervals_for_Means_Practice.html">
+ <span class="dropdown-text">Confidence Intervals For Means - Practice</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/8-Introducing_Hypothesis_Tests.html">
+ <span class="dropdown-text">Introducing Hypothesis Tests</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/8b-Statistical_Significance.html">
+ <span class="dropdown-text">Statistical Significance</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/9-One_Sample_ttest.html">
+ <span class="dropdown-text">One-Sample T-test</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -327,55 +351,35 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-statistical-tests-i">    
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Confidence_Intervals_for_Means.html">
- <span class="dropdown-text">Confidence Intervals for a Mean</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Introducing_T-Distribution.html">
- <span class="dropdown-text">Introducing the T-Distribution</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1b-Confidence_Intervals_for_Means_Practice.html">
- <span class="dropdown-text">Confidence Intervals For Means - Practice</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-One_Sample_ttest.html">
- <span class="dropdown-text">One-Sample T-test</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2b-One_Sample_ttest_Practice.html">
- <span class="dropdown-text">Don’t Take it Personally</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Conf_Int_Hyp_Test_for_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1-Conf_Int_Hyp_Test_for_Proportions.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests for Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3b-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/1b-Conf_Int_Hyp_Test_for_Proportions_Practice.html">
  <span class="dropdown-text">Confidence Intervals and Hypothesis Tests Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Two_sample_Independent_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2-Two_sample_Independent_ttest.html">
  <span class="dropdown-text">Independent Two-sample T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4b-Two_sample_Independent_ttest_practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/2b-Two_sample_Independent_ttest_practice.html">
  <span class="dropdown-text">2-Sample Independent T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5-Matched_Pairs_ttest.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3-Matched_Pairs_ttest.html">
  <span class="dropdown-text">Matched Pairs T-test</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/5b-Matched_Pairs_ttest_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/3b-Matched_Pairs_ttest_Practice.html">
  <span class="dropdown-text">Matched Pairs T-Test Practice</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6-Two_sample_Proportions.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4-Two_sample_Proportions.html">
  <span class="dropdown-text">2-Sample Proportions</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/6b-Two_sample_Proportions_Practice.html">
+    <a class="dropdown-item" href="../5-Statistical_Tests_Part1/4b-Two_sample_Proportions_Practice.html">
  <span class="dropdown-text">2-Sample Proportion Practice</span></a>
   </li>  
     </ul>
@@ -478,17 +482,15 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#teenage-smoking-habits" id="toc-teenage-smoking-habits" class="nav-link active" data-scroll-target="#teenage-smoking-habits">Teenage Smoking Habits</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#two-sample-proportion-test" id="toc-two-sample-proportion-test" class="nav-link" data-scroll-target="#two-sample-proportion-test">Two Sample Proportion Test</a>
   <ul class="collapse">
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
-  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence Interval</a></li>
-  </ul></li>
-  <li><a href="#left-handed-artists" id="toc-left-handed-artists" class="nav-link" data-scroll-target="#left-handed-artists">Left-handed Artists</a>
+  <li><a href="#example-1-voting-behaviour-by-gender" id="toc-example-1-voting-behaviour-by-gender" class="nav-link" data-scroll-target="#example-1-voting-behaviour-by-gender">Example 1: Voting Behaviour by Gender</a>
   <ul class="collapse">
-  <li><a href="#confidence-interval-1" id="toc-confidence-interval-1" class="nav-link" data-scroll-target="#confidence-interval-1">Confidence Interval</a></li>
-  <li><a href="#hypothesis-test-1" id="toc-hypothesis-test-1" class="nav-link" data-scroll-target="#hypothesis-test-1">Hypothesis Test</a></li>
+  <li><a href="#test-requirments" id="toc-test-requirments" class="nav-link" data-scroll-target="#test-requirments">Test Requirments</a></li>
   </ul></li>
-  <li><a href="#exercise-habits" id="toc-exercise-habits" class="nav-link" data-scroll-target="#exercise-habits">Exercise Habits</a></li>
+  <li><a href="#example-2-favorite-sports" id="toc-example-2-favorite-sports" class="nav-link" data-scroll-target="#example-2-favorite-sports">Example 2: Favorite Sports</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -497,8 +499,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Confidence Intervals and Hypothesis Tests Practice</h1>
-<p class="subtitle lead">Proportions</p>
+<h1 class="title">2-Sample Proportions</h1>
 </div>
 
 
@@ -515,69 +516,99 @@ window.Quarto = {
 </header>
 
 
-<section id="teenage-smoking-habits" class="level1">
-<h1>Teenage Smoking Habits</h1>
-<p>A study was conducted to determine the proportion of American teenagers between 13 and 17 who smoke. Previous surveys showed that 15% percent of all teenagers smoke. A Gallup survey interviewed a nationally representative sample of 785 teenagers aged 13 to 17. Seventy-one (71) teenagers in the survey acknowledged having smoked at least once in the past week.</p>
-<p>We want to explore if the study provide adequate evidence to conclude that the percentage of teenagers who smoke has changed since the original study (that is, is <span class="math inline">\(p\)</span> now <em>different</em> than 15%).</p>
-<p><strong>QUESTION</strong>: What are the requirements for a valid hypothesis test for a proportion, and are they met?<br>
-<strong>ANSWER</strong>:</p>
-<p>Whether or not the test requirements are met, perform the appropriate hypothesis test and create a confidence interval for the true proportion of teenagers who smoke.</p>
-<section id="hypothesis-test" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h2>
-<p>State the null and alternative hypotheses (replace the ??? with the correct information):</p>
-<p><span class="math display">\[H_0: p=???\]</span></p>
-<p><span class="math display">\[H_a: p???0.15\]</span> Choose your significance level:</p>
-<p><span class="math display">\[\alpha = 0.\]</span></p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In statistics, two sample proportion tests are used to compare proportions or percentages between two independent groups. We here discuss these tests and provide examples of their application in R.</p>
+<p>The hypothesis test should not be surprising:</p>
+<p><span class="math display">\[H_0: p_1 = p_2\]</span></p>
+<p><span class="math display">\[H_a: p_1\; (&lt;,&gt;,\neq) \: p_2\]</span> where <span class="math inline">\(p_1\)</span> represents the unknown population proportion for group 1 and <span class="math inline">\(p_2\)</span> represents the unknown population proportion for group 2.</p>
+</section>
+<section id="two-sample-proportion-test" class="level1">
+<h1>Two Sample Proportion Test</h1>
+<p>The R code modifies slightly the <code>prop.test()</code> code for the one-sample proportion test. We simply add 2 values for X and 2 values for N. Generically, this looks like:</p>
+<p><code>prop.test(x=c(x1, x2), n=c(n1, n2), alternative = "")</code></p>
+<p>where you must specify whether or not you think group 1 is lower (<code>alternative="less"</code>), higher (<code>alternative="greater"</code>) or different (<code>alternative="two.sided"</code>) than group 2.</p>
+<section id="example-1-voting-behaviour-by-gender" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-voting-behaviour-by-gender">Example 1: Voting Behaviour by Gender</h2>
+<p>Suppose we want to test if women are more likely to identify as Democrat than men. We sample 250 men and 250 women and measure their political affiliation. We find that 80 men identify as Democrat and 102 females identify as Democrat.</p>
+<p>Just as with the two-sample t-test for means, we must define a reference group. In this example, we will use females as the reference group so that our alternative will be relative to that group.</p>
+<p><span class="math display">\[H_0: p_{femaleDem} = p_{maleDem}\]</span><br>
+<span class="math display">\[H_a: p_{femaleDem} &gt; p_{maleDem}\]</span></p>
+<p>We will use <span class="math inline">\(\alpha = 0.05\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perform the hypothesis test:  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">80</span>), <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">250</span>), <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    2-sample test for equality of proportions with continuity correction
+
+data:  c(102, 80) out of c(250, 250)
+X-squared = 3.8099, df = 1, p-value = 0.02548
+alternative hypothesis: greater
+95 percent confidence interval:
+ 0.01350993 1.00000000
+sample estimates:
+prop 1 prop 2 
+ 0.408  0.320 </code></pre>
 </div>
-<p><strong>QUESTION</strong>: What is the value of the test statistic?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the P-value?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Based on your selected <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(P\)</span>-value, what is your conclusion?<br>
-<strong>ANSWER</strong>:</p>
+</div>
+<p>We can also create a confidence interval for the difference:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">102</span>, <span class="dv">80</span>), <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">250</span>, <span class="dv">250</span>))<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.904086e-06 1.759941e-01
+attr(,"conf.level")
+[1] 0.95</code></pre>
+</div>
+</div>
+<p>Confidence intervals for differences can be positive and negative. In this example, a negative number would indicate that Females are less likely to be Democrat and a positive number means they are more likely to be Democrat.</p>
+<p>Our confidence interval is just above zero on the lower end. We are 95% confident that females are between 0.000% and 17.6% more likely to be Democrat than men.</p>
+<section id="test-requirments" class="level3">
+<h3 class="anchored" data-anchor-id="test-requirments">Test Requirments</h3>
+<p>Just as with 1-sample proportion tests, we must validate that we have a large enough sample size to ensure that <span class="math inline">\(\hat{p}\)</span> is approximately normally distributed. When we have 2 samples, however, we must check both <span class="math inline">\(\hat{p}\)</span>’s. For both hypothesis testing and confidence intervals we check:</p>
+<p><strong>Requirements for Hypothesis Testing and Confidence Intervals</strong></p>
+<p><span class="math display">\[ n_1\hat{p}_1 \ge 10\]</span> <span class="math display">\[n_1(1-\hat{p}_1) \ge 10\]</span> <span class="math display">\[ n_2\hat{p}_2 \ge 10\]</span> <span class="math display">\[n_2(1-\hat{p}_2) \ge 10\]</span></p>
+<p>An easy R calculator to check this is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All must be true:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="dv">102</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>phat1 <span class="ot">&lt;-</span> x1<span class="sc">/</span>n1</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>n1<span class="sc">*</span>phat1 <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>n1<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat1) <span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="dv">80</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>phat2 <span class="ot">&lt;-</span> x2 <span class="sc">/</span> n2</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>n2<span class="sc">*</span>phat2 <span class="sc">&gt;=</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>n2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat2) <span class="sc">&gt;=</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>If all conditions are greater than or equal to 10, we can trust our p-values and confidence intervals.</p>
 </section>
-<section id="confidence-interval" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h2>
-<p>Create a <span class="math inline">\((1-\alpha)\)</span>% confidence interval for the true population proportion of teenagers who smoke?</p>
 </section>
-</section>
-<section id="left-handed-artists" class="level1">
-<h1>Left-handed Artists</h1>
-<p>Suppose you would like to study the connection between creativity and left-handedness. Your favorite generative AI told you that the estimated population of left-handed people in the United States is about 11%. You sample 122 Visual Arts majors and find that 20 are left handed. Is this enough evidence to demonstrate that visual arts majors have a <em>higher</em> proportion of left handed people than the general population?</p>
-<p><strong>QUESTION</strong>: What is the estimated sample proportion, <span class="math inline">\(\hat{p}\)</span>?<br>
-<strong>ANSWER</strong>:</p>
-<section id="confidence-interval-1" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h2>
-<p>Create a 90% confidence interval for the true population proportion of left-handed visual artists:</p>
-<p><strong>QUESTION</strong>: What are the requirements for a confidence interval for a proportion, and are they met?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question.<br>
-<strong>ANSWER</strong>:</p>
-</section>
-<section id="hypothesis-test-1" class="level2">
-<h2 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis Test</h2>
-<p>Perform a hypothesis test to determine if the proportion of left-handed Visual Art majors is <em>higher</em> than the general population of 11%.</p>
-<p><strong>QUESTION</strong>: What is the value of the test statistic?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What is the P-value?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Based on the P-value and a confidence level of <span class="math inline">\(\alpha=.05\)</span>, what is your conclusion?<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: What are the requirements for a hypothesis test for a proportion, and are they met?<br>
-<strong>ANSWER</strong>:</p>
-</section>
-</section>
-<section id="exercise-habits" class="level1">
-<h1>Exercise Habits</h1>
-<p>A health study surveyed 250 individuals about their exercise habits, and 140 reported exercising regularly. Construct a 97.25% confidence interval for the proportion of the general population that exercise regularly.</p>
-<p><strong>QUESTION</strong>: Interpret the confidence interval in context of the research question:<br>
-<strong>ANSWER</strong>:</p>
-<p><strong>QUESTION</strong>: Are the requirements for a valid confidence interval for <span class="math inline">\(p\)</span> met?<br>
-<strong>ANSWER</strong>:</p>
+<section id="example-2-favorite-sports" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-favorite-sports">Example 2: Favorite Sports</h2>
+<p>Soccer is becoming much more popular in the United States. We would like to test if this is being driven by demographic shifts in the population where the younger generation is more likely to favor soccer.</p>
+<p>A researcher samples 524 individuals under 40 and 655 individuals older than 40 and asks what their preferred sport is. Of the 524 respondents under 40, 44 identified soccer as their favorite sport. Of the 655 respondents over 40, 27 identified soccer as their favorite sport.</p>
+<p>Perform a 2-sample proportion test to determine if significantly more younger people identify soccer as their favorite sport.</p>
+<p>Create and interpret the confidence interval for the difference in the proportions.</p>
+<p>Are the requirements for the hypothesis test and confidence interval satisfied?</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
