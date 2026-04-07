@@ -487,12 +487,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#the-easy-way" id="toc-the-easy-way" class="nav-link" data-scroll-target="#the-easy-way">The Easy Way</a>
   <ul class="collapse">
-  <li><a href="#step-1-read-in-the-data" id="toc-step-1-read-in-the-data" class="nav-link" data-scroll-target="#step-1-read-in-the-data">Step 1: Read in the data</a>
-  <ul class="collapse">
-  <li><a href="#hypothesis-test" id="toc-hypothesis-test" class="nav-link" data-scroll-target="#hypothesis-test">Hypothesis Test</a></li>
   <li><a href="#confidence-interval-review" id="toc-confidence-interval-review" class="nav-link" data-scroll-target="#confidence-interval-review">Confidence Interval Review</a></li>
   <li><a href="#checking-requirements" id="toc-checking-requirements" class="nav-link" data-scroll-target="#checking-requirements">Checking Requirements</a></li>
-  </ul></li>
   </ul></li>
   <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a>
   <ul class="collapse">
@@ -588,128 +584,105 @@ window.Quarto = {
 <section id="calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended" class="level2">
 <h2 class="anchored" data-anchor-id="calculating-p-values-by-hand-with-the-t-distribution-one-out-of-ten.-would-not-recommended">Calculating P-values by hand with the T-distribution (One out of ten. Would NOT RECOMMENDED)</h2>
 <p>Here is an example of performing a hypothesis test using the <span class="math inline">\(t\)</span>-distribution by hand.</p>
-<p>Suppose we have 25 test scores defined as “data” in the code chunk below. We can calculate the <span class="math inline">\(t\)</span>-statistic just like we did with the <span class="math inline">\(z\)</span>-score.</p>
-<p>Suppose we believe that the mean score of these 25 students is significantly higher than 50. Our null and alternative hypothesis are as follows:</p>
-<p><span class="math display">\[ H_0:  \mu = 50 \]</span> <span class="math display">\[ H_a: \mu &gt; 50 \]</span></p>
+<p>Suppose we have a sample of 25 test scores of Math 221 students. We believe that the true population mean of Math 221 students is significantly <strong>higher</strong> than overall average of 50.</p>
+<p>Our null and alternative hypothesis are as follows:</p>
+<p><span class="math display">\[ H_0:  \mu_{\text{M221 Students}} = 50 \]</span> We would read this: The population average test score of Math 221 students is equal to the general population average of 50.</p>
+<p><span class="math display">\[ H_a: \mu_{\text{M221 Students}} &gt; 50 \]</span> We would read this: The population average test score of Math 221 students is <em>greater</em> than the general population average of 50.</p>
+<p><strong>NOTE</strong>: The direction of the alternative hypothesis (“greater”, “less”, “two.sided”) will depend on the context of the research question. If you believe your drug lowers cholesterol, then you may have <code>alternative = "less"</code>. If you genuinely do not know if the population mean is higher or lower, you can use <code>alternative = "two.sided"</code>.</p>
+<p>We could then use <code>favstats(data)</code> to get everything we need to plug into the formula and calculate the probabilities using the <span class="math inline">\(t\)</span>-distribution.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use the t-distribution, pt(), just like pnorm() but must also add the degrees of freedom</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">88</span>,<span class="dv">81</span>,<span class="dv">27</span>,<span class="dv">92</span>,<span class="dv">46</span>,<span class="dv">79</span>,<span class="dv">67</span>,<span class="dv">44</span>,<span class="dv">46</span>,<span class="dv">88</span>,<span class="dv">21</span>,<span class="dv">60</span>,<span class="dv">71</span>,<span class="dv">81</span>,<span class="dv">79</span>,<span class="dv">52</span>,<span class="dv">100</span>,<span class="dv">44</span>,<span class="dv">42</span>,<span class="dv">58</span>,<span class="dv">52</span>,<span class="dv">48</span>,<span class="dv">83</span>,<span class="dv">65</span>,<span class="dv">98</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use the t-distribution, pt(), just like pnorm() but must also add the degrees of freedom</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Hypothesized Mean:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>mu_0 <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample size, sample Mean and sample SD</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#  The length function tells us how many data points are in the list.  </span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(data)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(data)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(data)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>s_xbar <span class="ot">=</span> s <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu_0) <span class="sc">/</span> s_xbar</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of getting a test statistic at least as extreme as the one we observed if the null hypothesis is true</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pt</span>(t, n<span class="dv">-1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>test_scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">88</span>,<span class="dv">81</span>,<span class="dv">27</span>,<span class="dv">92</span>,<span class="dv">46</span>,<span class="dv">79</span>,<span class="dv">67</span>,<span class="dv">44</span>,<span class="dv">46</span>,<span class="dv">88</span>,<span class="dv">21</span>,<span class="dv">60</span>,<span class="dv">71</span>,<span class="dv">81</span>,<span class="dv">79</span>,<span class="dv">52</span>,<span class="dv">100</span>,<span class="dv">44</span>,<span class="dv">42</span>,<span class="dv">58</span>,<span class="dv">52</span>,<span class="dv">48</span>,<span class="dv">83</span>,<span class="dv">65</span>,<span class="dv">98</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the output of the favstats() function  </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="ot">&lt;-</span> <span class="fu">favstats</span>(test_scores)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>summary_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> min Q1 median Q3 max  mean       sd  n missing
+  21 46     65 81 100 64.48 21.96232 25       0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the output to extract the important values for calculating t:  </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> summary_stats<span class="sc">$</span>mean</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> summary_stats<span class="sc">$</span>sd</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> summary_stats<span class="sc">$</span>n</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the standard deviation of a sample mean:  </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>s_xbar <span class="ot">=</span> s <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Hypothesized Mean:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>mu_0 <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu_0) <span class="sc">/</span> s_xbar</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.296556</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probability of getting a test statistic at least as extreme as the one we observed if the null hypothesis is true</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">pt</span>(t, <span class="at">df =</span> n<span class="dv">-1</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.00151866</code></pre>
 </div>
 </div>
-<p>This means that if the true population mean was 50, then there is only a 0.00152 probability of observing a test statistic, <span class="math inline">\(t\)</span>, as high or higher as the one we got ( <strong>P-value</strong> ).</p>
+<p><strong>Question</strong>: What is the test statistic, <span class="math inline">\(t\)</span>?<br>
+<strong>Answer</strong>:</p>
+<p><strong>Question</strong>: What is the probability of observing <span class="math inline">\(t\)</span> “greater” then the one we observed if the population mean was really 50? (The P-value)<br>
+<strong>Answer</strong>:</p>
 </section>
 </section>
 <section id="the-easy-way" class="level1">
 <h1>The Easy Way</h1>
 <p>The good news is that we can use R functions with the data directly and get all the calculations automatically.</p>
-<p>In the following example, we will focus on the Extroversion scores of a sample of Math 221 students.</p>
-<section id="step-1-read-in-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-read-in-the-data">Step 1: Read in the data</h2>
+<p>Let’s redo the example above using the <code>t.test()</code> function in R.</p>
+<p>Using the <code>t.test()</code> function for a hypothesis test requires inputting the data, the hypothesized mean, <span class="math inline">\(\mu\)</span>, and the direction of the alternative hypothesis.</p>
+<p><strong>NOTE</strong>: The default parameters for the <code>t.test()</code> function are: <code>t.test(data, mu = 0, alternative = "two.sided")</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Libraries</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>big5 <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">'https://raw.githubusercontent.com/byuistats/Math221D_Cannon/master/Data/All_class_combined_personality_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Create a histogram of Extroversion. Describe some features of the data. Is it symmetric? Skewed? Are there outliers?</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#histogram(big5$Extroversion, main = "Extroversion Scores", xlab = "Extroversion")</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(big5, <span class="fu">aes</span>(<span class="at">x =</span> Extroversion)) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>, <span class="at">fill=</span><span class="st">"lightblue"</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Extroversion"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">""</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Extroversion Scores"</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="9-One_Sample_ttest_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>In this example, we will be testing the hypothesis that Math 221 students are similar to the general population. We suspect that these youthful BYU-I students are, on average, more extroverted.</p>
-<section id="hypothesis-test" class="level3">
-<h3 class="anchored" data-anchor-id="hypothesis-test">Hypothesis Test</h3>
-<p>Write out the Null and alternative hypotheses.</p>
-<p><span class="math display">\[ H_0: \mu_{extroversion} = 50\]</span></p>
-<p><span class="math display">\[ H_A: \mu_{extroversion}  &gt; 50\]</span></p>
-<p><span class="math display">\[\alpha = 0.05\]</span></p>
-<p><strong>NOTE</strong>: We use the hypothesized value of 50 above because if Math 221 students were similar, on average, to the general population, they would have an average percentile of 50.</p>
-<p><strong>NOTE</strong>: The direction of the alternative hypothesis will depend on the context of the research question. If you believe your drug lowers cholesterol, then you may have <code>alternative = "less"</code>. If you genuinely do not know if the population mean is higher or lower, you can use <code>alternative = "two.sided"</code>.</p>
-<p>Perform the one-sample t-test using the “t.test()” function in R.</p>
-<p><strong>HINT</strong>: If you ever get stuck remembering how to use a function in R, you can run <code>?t.test</code> to see documentation. The question mark will open up the help files for any given function in R.</p>
-<p>The <code>t.test()</code> function takes as inputs the data, the hypothesized mean, <span class="math inline">\(\mu\)</span>, and the direction of the alternative hypothesis.</p>
-<p>The default parameters for the <code>t.test()</code> function are: <code>t.test(data, mu = 0, alternative = "two.sided")</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#?t.test</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># One-sided Hypothesis Test</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(big5<span class="sc">$</span>Extroversion, <span class="at">mu =</span> <span class="dv">50</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-sided Hypothesis Test</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(test_scores, <span class="at">mu =</span> <span class="dv">50</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
 
-data:  big5$Extroversion
-t = 6.6529, df = 403, p-value = 4.697e-11
+data:  test_scores
+t = 3.2966, df = 24, p-value = 0.001519
 alternative hypothesis: true mean is greater than 50
 95 percent confidence interval:
- 55.25232      Inf
+ 56.96501      Inf
 sample estimates:
 mean of x 
- 56.98267 </code></pre>
+    64.48 </code></pre>
 </div>
 </div>
+<p>Dig through the output and answer the following questions:</p>
+<p><strong>Question</strong>: What is the test statistic, <span class="math inline">\(t\)</span>?<br>
+<strong>Answer</strong>:</p>
 <p><strong>Question</strong>: What is the P-value?<br>
-<strong>Answer</strong>: p-value = 4.697e-11</p>
+<strong>Answer</strong>:</p>
+<p>Check that your answers match the “by hand” method above.</p>
 <p><strong>QUESTION</strong>: What is your conclusion based on <span class="math inline">\(\alpha=0.05\)</span>?<br>
 <strong>ANSWER</strong>: Because P-value &lt; 0.05 we reject the null hypothesis in favor of the alternative.</p>
 <p><strong>Question</strong>: State your conclusion in context of our research question?<br>
 <strong>Answer</strong>: We have sufficient evidence to conclude that Math 221 students are more extroverted than the general population, on average.</p>
-</section>
 <section id="confidence-interval-review" class="level3">
 <h3 class="anchored" data-anchor-id="confidence-interval-review">Confidence Interval Review</h3>
 <p>We can also use the <code>t.test()</code> function to create confidence intervals. <strong>Confidence intervals are always 2-tailed</strong> and are typically written in the form: (lower limit, upper limit).</p>
 <p>Confidence intervals do not assumed anything about <span class="math inline">\(\mu\)</span>, so an efficient way to get a confidence interval for a given set of data is to leave out anything relating to the hypotheses and extract only the confidence interval.</p>
 <p>Recall that to extract only the confidence interval output, we can use <code>$</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(big5<span class="sc">$</span>Extroversion, <span class="at">conf.level =</span> .<span class="dv">99</span>)<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(test_scores, <span class="at">conf.level =</span> .<span class="dv">99</span>)<span class="sc">$</span>conf.int</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 54.26631 59.69903
+<pre><code>[1] 52.19455 76.76545
 attr(,"conf.level")
 [1] 0.99</code></pre>
 </div>
 </div>
 <p><strong>Question</strong>: Describe in words the interpretation of the confidence interval in context of Extroversion.<br>
-<strong>Answer</strong>: I am 99% confident that the true population mean of extroversion scores for Math 221 students is between 54.266 and 59.699.</p>
+<strong>Answer</strong>: I am 99% confident that the true population mean test score for Math 221 students is between 52.19455 and 76.76545.</p>
 </section>
 <section id="checking-requirements" class="level3">
 <h3 class="anchored" data-anchor-id="checking-requirements">Checking Requirements</h3>
@@ -723,19 +696,20 @@ attr(,"conf.level")
 <p>For the above Extroversion data, we have <span class="math inline">\(n=404\)</span> which is much larger than 30.</p>
 <p>If my sample size was small, I could check the <code>qqPlot()</code>, which I demonstrate here:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(big5<span class="sc">$</span>Extroversion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(test_scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="9-One_Sample_ttest_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="9-One_Sample_ttest_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 143 163</code></pre>
+<pre><code>[1] 11  3</code></pre>
 </div>
 </div>
-</section>
 </section>
 </section>
 <section id="your-turn" class="level1">
@@ -746,9 +720,12 @@ attr(,"conf.level")
 <section id="load-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="load-the-data">Load the data:</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These lines load the data into the data frame body_temp:</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>body_temp <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/body_temp.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These lines load the data into the data frame body_temp:</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>body_temp <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"https://byuistats.github.io/M221R/Data/body_temp.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in import("https://byuistats.github.io/M221R/Data/body_temp.xlsx"): could not find function "import"</code></pre>
+</div>
 </div>
 </section>
 <section id="review-the-data" class="level3">
