@@ -73,7 +73,6 @@ website:
          - href: ./4-Foundations_Statistical_Inference/7-Introducing_T-Distribution.qmd
          - href: ./4-Foundations_Statistical_Inference/7b-Confidence_Intervals_for_Means_Practice.qmd
          - href: ./4-Foundations_Statistical_Inference/8-Introducing_Hypothesis_Tests.qmd
-         - href: ./4-Foundations_Statistical_Inference/8b-Statistical_Significance.qmd
          - href: ./4-Foundations_Statistical_Inference/9-One_Sample_ttest.qmd
 
     - text: "Statistical Tests I"

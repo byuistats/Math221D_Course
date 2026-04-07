@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -336,10 +302,6 @@ window.Quarto = {
  <span class="dropdown-text">Introducing Hypothesis Tests</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/8b-Statistical_Significance.html">
- <span class="dropdown-text">Statistical Significance</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../4-Foundations_Statistical_Inference/9-One_Sample_ttest.html">
  <span class="dropdown-text">One-Sample T-test</span></a>
   </li>  
@@ -488,20 +450,9 @@ window.Quarto = {
   <li><a href="#the-null-hypothesis-h_0" id="toc-the-null-hypothesis-h_0" class="nav-link" data-scroll-target="#the-null-hypothesis-h_0">The Null Hypothesis, <span class="math inline">\(H_0\)</span></a></li>
   <li><a href="#the-alternative-hypothesis-h_a" id="toc-the-alternative-hypothesis-h_a" class="nav-link" data-scroll-target="#the-alternative-hypothesis-h_a">The Alternative Hypothesis, <span class="math inline">\(H_a\)</span></a></li>
   <li><a href="#visualizing-the-null-hypothesis" id="toc-visualizing-the-null-hypothesis" class="nav-link" data-scroll-target="#visualizing-the-null-hypothesis">Visualizing the Null Hypothesis</a></li>
-  </ul></li>
-  <li><a href="#visualizing-h_0-for-group-means" id="toc-visualizing-h_0-for-group-means" class="nav-link" data-scroll-target="#visualizing-h_0-for-group-means">Visualizing <span class="math inline">\(H_0\)</span> for Group Means</a></li>
-  <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic">Test Statistic</a></li>
-  <li><a href="#probability" id="toc-probability" class="nav-link" data-scroll-target="#probability">Probability</a></li>
-  <li><a href="#how-long-is-a-foot-long-sandwich" id="toc-how-long-is-a-foot-long-sandwich" class="nav-link" data-scroll-target="#how-long-is-a-foot-long-sandwich">How Long is a Foot-Long Sandwich?</a>
-  <ul class="collapse">
-  <li><a href="#the-null-hypothesis" id="toc-the-null-hypothesis" class="nav-link" data-scroll-target="#the-null-hypothesis">The Null Hypothesis</a></li>
-  <li><a href="#the-alternative-hypothesis" id="toc-the-alternative-hypothesis" class="nav-link" data-scroll-target="#the-alternative-hypothesis">The Alternative Hypothesis</a></li>
-  <li><a href="#test-statistic-1" id="toc-test-statistic-1" class="nav-link" data-scroll-target="#test-statistic-1">Test Statistic</a></li>
-  <li><a href="#p-value" id="toc-p-value" class="nav-link" data-scroll-target="#p-value"><span class="math inline">\(P\)</span>-value</a></li>
-  </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
-  <ul class="collapse">
-  <li><a href="#the-process" id="toc-the-process" class="nav-link" data-scroll-target="#the-process">The Process</a></li>
+  <li><a href="#significance-level-alpha-alpha" id="toc-significance-level-alpha-alpha" class="nav-link" data-scroll-target="#significance-level-alpha-alpha">Significance Level: Alpha (<span class="math inline">\(\alpha\)</span>)</a></li>
+  <li><a href="#mistaking-randomness-for-signal" id="toc-mistaking-randomness-for-signal" class="nav-link" data-scroll-target="#mistaking-randomness-for-signal">Mistaking Randomness for Signal</a></li>
+  <li><a href="#choosing-alpha-and-understanding-error-types" id="toc-choosing-alpha-and-understanding-error-types" class="nav-link" data-scroll-target="#choosing-alpha-and-understanding-error-types">Choosing Alpha and Understanding Error Types</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -533,15 +484,11 @@ window.Quarto = {
 <p>In this lesson, we explore the components of statistical hypothesis testing in a general way. These general principles will apply to all of the specific tests we will learn about during the rest of the semester.</p>
 <p>Lesson Objectives:</p>
 <ol type="1">
-<li>Explain what the null hypothesis, <span class="math inline">\(H_0\)</span>, is and why we use it<br>
+<li>Explain what the null hypothesis, <span class="math inline">\(H_0\)</span>, is in general terms and why we use it<br>
 </li>
-<li>Explain what the alternative hypothesis, <span class="math inline">\(H_a\)</span>, is<br>
+<li>Explain what the alternative hypothesis, <span class="math inline">\(H_a\)</span>, is in general terms<br>
 </li>
-<li>Explain the concept of a test statistic as a “signal-to-noise” ratio<br>
-* Explain what is meant by “signal”<br>
-* Explain what is meant by “noise”<br>
-</li>
-<li>Explain the concept of a p-value</li>
+<li>Explain the concept of a <span class="math inline">\(P\)</span>-value in general terms</li>
 </ol>
 </section>
 <section id="hypothesis-testing" class="level1">
@@ -576,168 +523,61 @@ The statistical tests we will cover in the rest of the semester follow the gener
 <p><br></p>
 <p>If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following just by chance, because of sample-to-sample variation:</p>
 <p><img src="https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png" class="img-fluid"> <br></p>
+<p>Statistical hypothesis testing is about calculating the <strong>probability</strong> of observing what we actually observed <strong>IF the null hypothesis were true</strong>.</p>
+<p><strong>DEFINITION</strong>: A <strong><span class="math inline">\(P\)</span>-value</strong> is the probability of observing what we saw if the null hypothesis were true.</p>
+<p>A small <span class="math inline">\(P\)</span>-value suggests strong evidence against the null hypothesis, while a large p-value suggests the observed data are consistent with sample-to-sample variability.</p>
+<p>When the <span class="math inline">\(P\)</span>-value is low enough, we would rather reject the null hypothesis claim in favor of the alternative.</p>
+<p>But how low is low enough?</p>
 </section>
-</section>
-<section id="visualizing-h_0-for-group-means" class="level1">
-<h1>Visualizing <span class="math inline">\(H_0\)</span> for Group Means</h1>
-<p>Now consider the situation where you have a categorical explanatory variable and a continuous response variable. Under the null hypothesis that there is no relationship between X and Y, the boxes in a boxplot should all line up to look roughly the same.</p>
-<p>Because of sample-to-sample variability, the boxes won’t look identical.</p>
-<p>Below is an app that simulates data under the null hypothesis. Any observed difference between boxes is part of the expected variation if there really was <em>no difference</em> at the population level. This shows how group distributions can vary just from sample to sample.</p>
-<p><strong>Try it out</strong>:</p>
+<section id="significance-level-alpha-alpha" class="level2">
+<h2 class="anchored" data-anchor-id="significance-level-alpha-alpha">Significance Level: Alpha (<span class="math inline">\(\alpha\)</span>)</h2>
+<p><em>Before</em> starting a study, we set a threshold that can be used to determine if the <span class="math inline">\(P\)</span>-value is small enough to reject the null hypothesis. This number is called the <strong>level of significance</strong> and is denoted by the symbol <strong><span class="math inline">\(\alpha\)</span></strong> (pronounced “alpha”.)</p>
+<p>Common values for <span class="math inline">\(\alpha\)</span> are 0.05, 0.01 and 0.1.</p>
+<p>We will use the same decision rule for all hypothesis tests:</p>
 <ol type="1">
-<li>Pick a sample size and run several simulations by repeatedly clicking the button.<br>
+<li>If the <span class="math inline">\(P\)</span>-value is less than <span class="math inline">\(\alpha\)</span>, we reject the null hypothesis.<br>
 </li>
-<li>Repeat for a sample size of 10</li>
-<li>Repear for a sample size of 70</li>
+<li>If the <span class="math inline">\(P\)</span>-value is greater than <span class="math inline">\(\alpha\)</span>, we fail to reject the null hypothesis.</li>
 </ol>
-<p><strong>PONDER</strong>: What do you notice about the impact of sample size on the sample-to-sample variability?</p>
-<iframe src="https://byuistats.github.io/Null_Hypothesis_Simulation_App/" width="700" height="500" style="border:none;">
+<p><strong>Memory Aid</strong>: If <span class="math inline">\(P\)</span> is low, reject <span class="math inline">\(H_O\)</span></p>
+<p>Where “low” means less than <span class="math inline">\(\alpha\)</span>.</p>
+</section>
+<section id="mistaking-randomness-for-signal" class="level2">
+<h2 class="anchored" data-anchor-id="mistaking-randomness-for-signal">Mistaking Randomness for Signal</h2>
+<p>Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant just by chance.</p>
+<p>Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different types of treatment. We randomly assign patients to each treatment group.</p>
+<p>There is a chance that the hardiest patients all end up in the same treatment group making it look like that treatment is better, but it wasn’t because of the treatment.</p>
+<p>When we conclude that there is a relationship between X and Y, when what we observed was actually “noise”, we have committed a Type I error.</p>
+<p><strong>DEFINITION</strong>: <strong>Type I Error</strong>: Rejecting a TRUE null hypothesis. In some contexts this is called a <strong>FALSE POSITIVE</strong></p>
+<p>Because <span class="math inline">\(\alpha\)</span> is our decision point for rejecting the null hypothesis, <span class="math inline">\(\alpha\)</span> is the probability of rejecting a TRUE null hypothesis, meaning <span class="math inline">\(\alpha\)</span> is the probability of a <strong>Type I</strong> error.</p>
+<p>If we make <span class="math inline">\(\alpha\)</span> too small, we will reject <span class="math inline">\(H_0\)</span> less often and avoid Type I errors. But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it. This is a Type II error.</p>
+<p><strong>DEFINITION</strong>: <strong>Type II Error</strong>: Failing to Reject a FALSE null hypothesis. In some contexts this is called a <strong>FALSE NEGATIVE</strong></p>
+<p>For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we missed out on an a new, life-saving breakthrough.</p>
+</section>
+<section id="choosing-alpha-and-understanding-error-types" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-alpha-and-understanding-error-types">Choosing Alpha and Understanding Error Types</h2>
+<p>Choosing an appropriate alpha level involves balancing the risk of making Type I and Type II errors</p>
+<p>The “best” choice for alpha depends on the context of the research. In exploratory research, a higher alpha (e.g., 0.10) might be acceptable to avoid missing potentially important effects. In situations where making a false positive conclusion could have serious consequences, a lower alpha (e.g., 0.01 or even lower) is preferred.</p>
+<p>If the <span class="math inline">\(\alpha\)</span> value (the probability of committing a Type I error) is very small, the probability of committing a Type II error will be large. Conversely, if <span class="math inline">\(\alpha\)</span> is allowed to be very large, then the probability of committing a Type II error will be very small.</p>
+<p>A level of significance of <span class="math inline">\(\alpha=0.05\)</span> seems to strike a good balance between the probabilities of committing a Type I versus a Type II error. However, there may be instances where it will be important to choose a different value for <span class="math inline">\(\alpha\)</span>. The important thing is to choose <span class="math inline">\(\alpha\)</span> before you collect your data. Typical choices of <span class="math inline">\(\alpha\)</span> are <span class="math inline">\(0.05\)</span> (most common), <span class="math inline">\(0.1\)</span>, and <span class="math inline">\(0.01\)</span>.</p>
+<section id="visualizing-error" class="level4">
+<h4 class="anchored" data-anchor-id="visualizing-error">Visualizing Error</h4>
+<p>The graph below illustrates the relationship between Type I and Type II errors. The red distribution represents the Null Hypothesis, the sampling distribution of mean lengths of foot-long sandwiches, assuming <span class="math inline">\(\mu_0=12\)</span>.</p>
+<p>The blue distribution represents the “TRUE” distribution with a mean, <span class="math inline">\(\mu_{truth}=11.2\)</span>. We never know this in the real world, but to illustrate, here is a situation where the <strong>true population mean</strong> is, in fact, less than 12. The right decision would be to REJECT <span class="math inline">\(H_0\)</span>.</p>
+<p>If we set <span class="math inline">\(\alpha = 0.01\)</span> (red shaded area), we can see that any sample mean to the right of the cutoff would <strong>fail to reject</strong> the null hypothesis. This mistake would be a Type II error.</p>
+<p>While we don’t know what the “TRUE” distribution is, we can see the relationship between moving the cutoff based on <span class="math inline">\(\alpha\)</span> would do to the probability of failing to reject the null hypothesis even when it is FALSE.</p>
+<style>
+  .responsive-iframe {
+    width: 100%;
+    height: 80vh; /* or use other units like % or vh/vw for responsiveness */
+    border: none;
+  }
+</style>
+<iframe src="https://byuistats.github.io/Alpha_Beta_Example_App/" class="responsive-iframe" scrolling="no">
 </iframe>
-<p>Statistical hypothesis testing is about calculating the <strong>probability</strong> of observing what we actually observed <strong>IF the null hypothesis were true</strong>. If that probability is very small, we can confidently reject the null hypothesis in favor of the alternative.</p>
-<p>Next, we look at the process of calculating that probability.</p>
-</section>
-<section id="test-statistic" class="level1">
-<h1>Test Statistic</h1>
-<p>To calculate the probability of observing what we observed if there really was no relationship, we first calculate a test statistic.</p>
-<p>The exact formula for a test statistic depends on what type of analysis is being performed. But regardless of the type of analysis, test statistics follow a general construct.</p>
-<p>A <strong>test statistic</strong> can be though of as a signal-to-noise ratio, where the signal is what we observed in our sample and the noise is the sample-to-sample variability we would expect if the null hypothesis is true.</p>
-<p><span class="math display">\[\text{Test Statistics}=\frac{\text{signal}}{\text{noise}}\]</span> Think about this as a fraction.</p>
-<div class="QuestionsHeading">
-Answer the following questions:
-</div>
-<div class="Questions">
-<ol type="1">
-<li>What would make <span class="math inline">\(\frac{signal}{noise}\)</span> big?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>If the noise was very small</li>
-<li>If the signal was very large</li>
-</ul>
-</details>
-<ol start="2" type="1">
-<li>What would make <span class="math inline">\(\frac{signal}{noise}\)</span> small?</li>
-</ol>
-<details>
-<summary>
-Show/Hide Solution
-</summary>
-<ul>
-<li>If the noise was very large</li>
-<li>If the signal was very small</li>
-</ul>
-</details>
-</div>
-<p><br></p>
-<p>As we get into specific analyses, we will look at a few of those formulas, and R will do all the calculations for us. For now, consider a test statistic as a signal-to-noise ratio. The larger it is, the stronger the evidence against the null hypothesis.</p>
-<p>But a test statistic is just a number and difficult to interpret in isolation. The calculation of the test statistics is an <em>intermediate step</em> to calculating the probability of observing what we observed if the null hypothesis were true.</p>
-</section>
-<section id="probability" class="level1">
-<h1>Probability</h1>
-<p>Every test statistic has a probability distribution associated with it. The shape of that distribution depends on context, but the general process is:</p>
-<ol type="1">
-<li>Calculate the test statistic (ratio of our observation to the expected variability under <span class="math inline">\(H_0\)</span>)<br>
-</li>
-<li>Use the probability distribution of the test statistic to calculate the probability of observing something more extreme than what was observed in our sample <strong>if the null hypothesis were true</strong></li>
-</ol>
-<p><strong>KEY DEFINITION</strong>: A <strong><span class="math inline">\(P\)</span>-value</strong> is the probability of obtaining a result at least as extreme as the observed data, assuming that the null hypothesis is true.</p>
-<p>A <em>small</em> p-value means that what we actually observed in our sample is unlikely to have happened just because of sample-to-sample variation.</p>
-<p>A <em>large</em> <span class="math inline">\(P\)</span>-value means that our observation is likely to have occurred if the null hypothesis were true. <strong>Our observations are consistent with sample-to-sample variation</strong>.</p>
-</section>
-<section id="how-long-is-a-foot-long-sandwich" class="level1">
-<h1>How Long is a Foot-Long Sandwich?</h1>
-<p>Let’s look at a concrete example.</p>
-<p>One might expect a foot-long sandwich to be 12 inches long, at least on average. Consumers will naturally allow for some level of variation. But if enough customers are convinced they are getting consistently short-changed, they may loudly complain, or even attempt a <a href="https://www.forbes.com/sites/ericgoldman/2016/02/29/why-the-subway-footlong-lawsuits-fell-short/">lawsuit</a>.</p>
-<section id="the-null-hypothesis" class="level3">
-<h3 class="anchored" data-anchor-id="the-null-hypothesis">The Null Hypothesis</h3>
-<p>In the case of foot-long sandwiches, our null hypothesis is that the true mean length of foot-long sandwiches is 12 inches.</p>
-<p>We present the null hypothesis in the following way:</p>
-<p><span class="math display">\[H_0: \mu = 12\]</span> This represents the claim we need to DIS-prove. We seek evidence against <span class="math inline">\(H_0\)</span> in favor of an alternative.</p>
-</section>
-<section id="the-alternative-hypothesis" class="level3">
-<h3 class="anchored" data-anchor-id="the-alternative-hypothesis">The Alternative Hypothesis</h3>
-<p>In the case of foot-long sandwiches, customers will typically only get upset if they are getting <em>less</em> than advertised. We would propose an alternative:</p>
-<p><span class="math display">\[H_a: \mu &lt; 12\]</span> <strong>KEY POINTS</strong>:</p>
-<ol type="1">
-<li>Hypotheses are statements about <em>population parameters</em>, typically written with Greek letters</li>
-<li>The null hypothesis will always be a statement of equality</li>
-<li>We never PROVE the null hypothesis is true, we can only fail to disprove it.</li>
-</ol>
-<p>That last point is important. Data collected are only evidence against <span class="math inline">\(H_0\)</span>. This is similar to the situation in a courtroom where a defendant is accused of a crime. The defendant does not have to PROVE their innocence. It is up to the prosecution to prove guilt. If they fail to do so, we find the defendant “not guilty”, which is not the same thing as innocent. It just means there wasn’t enough evidence to convict.</p>
-</section>
-<section id="test-statistic-1" class="level3">
-<h3 class="anchored" data-anchor-id="test-statistic-1">Test Statistic</h3>
-<p>In this example, the <em>signal</em> is how far our observed mean, <span class="math inline">\(\bar x\)</span>, is away from the hypothesized mean, <span class="math inline">\(\mu=12\)</span>.</p>
-<p>The <em>noise</em> is the sample-to-sample variation of the mean. Because of the properties of the sampling distribution for a mean, we know the sample-to-sample variation for <span class="math inline">\(\bar x\)</span> is: <span class="math inline">\(\sigma_{\bar x} = \frac{\sigma}{\sqrt{n}}\)</span>. This is the sample-to-sample variation for sample means.</p>
-<p>Suppose for now that sandwich-to-sandwich lengths vary by about 0.5 inches and that the distribution is normal. If we sampled 21 random sandwiches from shops in a region and got a sample mean length of 11.82 inches, we can calculate a test statistic as a signal-to-noise ratio:</p>
-<p><strong>SIGNAL</strong>: How far away is our sample mean from the hypothesized mean:</p>
-<p><span class="math display">\[11.82-12 = -0.18\ \text{in}\]</span></p>
-<p><strong>NOISE</strong>: The expected variation of sample means assuming the null hypothesis is true. Based on the properties of the sampling distribution of <span class="math inline">\(\bar x\)</span>, this is:</p>
-<p><span class="math display">\[\sigma_\bar{x} = \frac{\sigma}{\sqrt{n}} = \frac{0.5}{\sqrt{21}}=0.109\]</span></p>
-<p><strong>Signal to Noise Ratio</strong>:<br>
-<span class="math display">\[\frac{-0.18}{0.109} = -1.65\]</span></p>
-<p>You may recognize this as a z-score:</p>
-<p><span class="math display">\[
-z = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} = \frac{11.82 - 12}{0.5 / \sqrt{21}} = -1.649727
-\]</span></p>
-<p>In this case, <span class="math inline">\(z\)</span> IS the test statistic where <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(\mu_0\)</span> is the null hypothesis mean, <span class="math inline">\(\sigma\)</span> is the population standard deviation and <span class="math inline">\(n\)</span> is the sample size.</p>
-<p>Based on the results from the formula above, <span class="math inline">\(\bar{x}\)</span> is about 1.65 standard deviations <em>below</em> the mean.</p>
-<p>Because we know that when x-bar is normally distributed, then <span class="math inline">\(Z\)</span> follows a <em>standard normal</em> distribution. We can calculate the probability of getting a test statistic LESS than the one we observed, if the null hypothesis is true.</p>
-<p>This probability is the evidence we use to make a decision about the null hypothesis.</p>
-</section>
-<section id="p-value" class="level3">
-<h3 class="anchored" data-anchor-id="p-value"><span class="math inline">\(P\)</span>-value</h3>
-<p><strong><span class="math inline">\(P\)</span>-value</strong>: The probability of obtaining a test statistic (such as <span class="math inline">\(z\)</span>) at least as extreme as the one you calculated, assuming the null hypothesis is true.</p>
-<p>In other words, our <span class="math inline">\(P\)</span>-value is the probability that we would get a <span class="math inline">\(z\)</span>-score that is as extreme or more extreme than <span class="math inline">\(z=-1.649727\)</span>, assuming the true mean is 12 inches.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="8-Introducing_Hypothesis_Tests_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>We use “as or more extreme” because the direction (greater than or less than) depends on our alternative hypothesis.</p>
-<p>In the case against the sandwich shop, we can use <code>pnorm()</code> to get the P-value:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (<span class="fl">11.82</span><span class="dv">-12</span>) <span class="sc">/</span> (<span class="fl">0.5</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">21</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.04949937</code></pre>
-</div>
-</div>
-<p><strong>Conclusion</strong>: If the true population mean was 12 inches, there is a 4.95% chance of obtaining a sample mean of 11.82 hours or less for a sample size of 21.</p>
-<p>At this point we have to make a decision. Is that probability small enough to reject the null hypothesis in favor the alternative? Are foot-long sandwiches LESS than 12 inches on average?</p>
-<p>When the P-value is very small, we have strong evidence to reject the null hypothesis. But how small is small enough?</p>
-<p>In the next lesson we will talk more about decision rules for deciding when a p-value is small enough to reject <span class="math inline">\(H_0\)</span>.</p>
-</section>
-</section>
-<section id="summary" class="level1">
-<h1>Summary</h1>
-<section id="the-process" class="level2">
-<h2 class="anchored" data-anchor-id="the-process">The Process</h2>
-<p>Every statistical hypothesis test will follow the form:</p>
-<ol type="1">
-<li>State the null and alternative <strong>hypotheses</strong> and choose the significance level, <span class="math inline">\(\alpha\)</span><br>
-</li>
-<li>Calculate the <strong>Test Statistic</strong> using your sample data<br>
-</li>
-<li>Calculate the <strong>P-value</strong>, the probability of observing the test statistic that we observed (or more extreme) if the null hypothesis were true.<br>
-</li>
-<li><strong>Make your conclusion</strong> by comparing the P-value to <span class="math inline">\(\alpha\)</span><br>
-</li>
-<li><strong>Check the test requirements</strong></li>
-</ol>
-<p>The math behind the above calculations will vary depending on context. We will only touch lightly on the underlying math and rely on R to execute it. This class will focus on the application of the above process.</p>
-<p>You may not yet understand the terminology above, but we introduce the process now as a roadmap. We will revisit this each time we introduce a new hypothesis test, and before you know it, this will be second nature.</p>
-<p><strong>NOTE</strong>: This is a new paradigm for most students. It’s perfectly fine to be confused at first. But just as with learning to code in R, we will make sense of this framework for statistical inference.</p>
 
 
+</section>
 </section>
 </section>
 

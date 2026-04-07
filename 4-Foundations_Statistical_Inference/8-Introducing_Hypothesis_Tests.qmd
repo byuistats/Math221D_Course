@@ -12,13 +12,9 @@ In this lesson, we explore the components of statistical hypothesis testing in a
 
 Lesson Objectives:  
 
-  1. Explain what the null hypothesis, $H_0$, is and why we use it  
-  2. Explain what the alternative hypothesis, $H_a$, is  
-  3. Explain the concept of a test statistic as a "signal-to-noise" ratio  
-    * Explain what is meant by "signal"  
-    * Explain what is meant by "noise"  
-  4. Explain the concept of a p-value  
-
+  1. Explain what the null hypothesis, $H_0$, is in general terms and why we use it  
+  2. Explain what the alternative hypothesis, $H_a$, is in general terms  
+  3. Explain the concept of a $P$-value in general terms  
 
 # Hypothesis Testing
 
@@ -75,226 +71,86 @@ If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theo
 ![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png)
 <br>
 
+Statistical hypothesis testing is about calculating the **probability** of observing what we actually observed **IF the null hypothesis were true**.  
 
-# Visualizing $H_0$ for Group Means
+__DEFINITION__:  A **$P$-value** is the probability of observing what we saw if the null hypothesis were true.  
 
-Now consider the situation where you have a categorical explanatory variable and a continuous response variable.  Under the null hypothesis that there is no relationship between X and Y, the boxes in a boxplot should all line up to look roughly the same.  
+A small $P$-value suggests strong evidence against the null hypothesis, while a large p-value suggests the observed data are consistent with sample-to-sample variability.  
 
-Because of sample-to-sample variability, the boxes won't look identical.  
+When the $P$-value is low enough, we would rather reject the null hypothesis claim in favor of the alternative.  
 
-Below is an app that simulates data under the null hypothesis.  Any observed difference between boxes is part of the expected variation if there really was *no difference* at the population level.  This shows how group distributions can vary just from sample to sample.  
+But how low is low enough?  
 
-__Try it out__:  
 
-  1. Pick a sample size and run several simulations by repeatedly clicking the button.  
-  2. Repeat for a sample size of 10
-  3. Repear for a sample size of 70
+## Significance Level: Alpha ($\alpha$)
+
+*Before* starting a study, we set a threshold that can be used to determine if the $P$-value is small enough to reject the null hypothesis. This number is called the **level of significance** and is denoted by the symbol **$\alpha$** (pronounced "alpha".)
+
+Common values for $\alpha$ are 0.05,  0.01 and 0.1.  
+
+We will use the same decision rule for all hypothesis tests:
+
+  1. If the $P$-value is less than $\alpha$, we reject the null hypothesis.  
+  2. If the $P$-value is greater than $\alpha$, we fail to reject the null hypothesis.  
   
-__PONDER__:  What do you notice about the impact of sample size on the sample-to-sample variability?  
+**Memory Aid**: If $P$ is low, reject $H_O$  
 
-<iframe src="https://byuistats.github.io/Null_Hypothesis_Simulation_App/" width="700" height="500" style="border:none;"></iframe>
+Where "low" means less than $\alpha$.
 
 
+## Mistaking Randomness for Signal
 
-Statistical hypothesis testing is about calculating the **probability** of observing what we actually observed **IF the null hypothesis were true**.  If that probability is very small, we can confidently reject the null hypothesis in favor of the alternative.  
+Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant just by chance.  
 
-Next, we look at the process of calculating that probability.  
+Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different types of treatment.  We randomly assign patients to each treatment group.  
 
+There is a chance that the hardiest patients all end up in the same treatment group making it look like that treatment is better, but it wasn't because of the treatment.  
 
-# Test Statistic
+When we conclude that there is a relationship between X and Y, when what we observed was actually "noise", we have committed a Type I error.  
 
-To calculate the probability of observing what we observed if there really was no relationship, we first calculate a test statistic.  
+__DEFINITION__:  **Type I Error**: Rejecting a TRUE null hypothesis.  In some contexts this is called a **FALSE POSITIVE**
 
-The exact formula for a test statistic depends on what type of analysis is being performed.  But regardless of the type of analysis, test statistics follow a general construct.  
+Because $\alpha$ is our decision point for rejecting the null hypothesis, $\alpha$ is the probability of rejecting a TRUE null hypothesis, meaning $\alpha$ is the probability of a **Type I** error.  
 
-A **test statistic** can be though of as a signal-to-noise ratio, where the signal is what we observed in our sample and the noise is the sample-to-sample variability we would expect if the null hypothesis is true.  
+If we make $\alpha$ too small, we will reject $H_0$ less often and avoid Type I errors.  But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it.  This is a Type II error.  
 
-$$\text{Test Statistics}=\frac{\text{signal}}{\text{noise}}$$
-Think about this as a fraction.  
+__DEFINITION__:  **Type II Error**: Failing to Reject a FALSE null hypothesis.  In some contexts this is called a **FALSE NEGATIVE**
 
-<div class="QuestionsHeading">Answer the following questions:</div>
-<div class="Questions">
-1. What would make $\frac{signal}{noise}$ big?  
- 
-<details>
-<summary>Show/Hide Solution</summary>
-  -  If the noise was very small
-  -  If the signal was very large
-</details>
+For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we missed out on an a new, life-saving breakthrough.  
 
-2. What would make $\frac{signal}{noise}$ small?  
- 
-<details>
-<summary>Show/Hide Solution</summary>
-  -  If the noise was very large
-  -  If the signal was very small
-</details>
 
-</div>
+## Choosing Alpha and Understanding Error Types
 
-<br>
+Choosing an appropriate alpha level involves balancing the risk of making Type I and Type II errors
 
-As we get into specific analyses, we will look at a few of those formulas, and R will do all the calculations for us.  For now, consider a test statistic as a signal-to-noise ratio.  The larger it is, the stronger the evidence against the null hypothesis.  
+The "best" choice for alpha depends on the context of the research. In exploratory research, a higher alpha (e.g., 0.10) might be acceptable to avoid missing potentially important effects. In situations where making a false positive conclusion could have serious consequences, a lower alpha (e.g., 0.01 or even lower) is preferred.  
 
-But a test statistic is just a number and difficult to interpret in isolation.  The calculation of the test statistics is an *intermediate step* to calculating the probability of observing what we observed if the null hypothesis were true.  
 
+If the $\alpha$ value (the probability of committing a Type I error) is very small, the probability of committing a Type II error will be large.  Conversely, if $\alpha$ is allowed to be very large, then the probability of committing a Type II error will be very small.  
 
-# Probability  
 
-Every test statistic has a probability distribution associated with it.  The shape of that distribution depends on context, but the general process is:  
+A level of significance of $\alpha=0.05$ seems to strike a good balance between the probabilities of committing a Type I versus a Type II error.  However, there may be instances where it will be important to choose a different value for $\alpha$.  The important thing is to choose $\alpha$ before you collect your data. Typical choices of $\alpha$ are $0.05$ (most common), $0.1$, and $0.01$.
 
-  1. Calculate the test statistic (ratio of our observation to the expected variability under $H_0$)  
-  2. Use the probability distribution of the test statistic to calculate the probability of observing something more extreme than what was observed in our sample **if the null hypothesis were true**  
 
+#### Visualizing Error
 
-__KEY DEFINITION__:  A **$P$-value** is the probability of obtaining a result at least as extreme as the observed data, assuming that the null hypothesis is true.  
+The graph below illustrates the relationship between Type I and Type II errors.  The red distribution represents the Null Hypothesis, the sampling distribution of mean lengths of foot-long sandwiches, assuming $\mu_0=12$.
 
-A *small* p-value means that what we actually observed in our sample is unlikely to have happened just because of sample-to-sample variation.  
+The blue distribution represents the "TRUE" distribution with a mean, $\mu_{truth}=11.2$.  We never know this in the real world, but to illustrate, here is a situation where the **true population mean** is, in fact, less than 12.  The right decision would be to REJECT $H_0$.  
 
-A *large* $P$-value means that our observation is likely to have occurred if the null hypothesis were true.  **Our observations are consistent with sample-to-sample variation**.  
+If we set $\alpha = 0.01$ (red shaded area), we can see that any sample mean to the right of the cutoff would **fail to reject** the null hypothesis.  This mistake would be a Type II error.  
 
 
-# How Long is a Foot-Long Sandwich?  
+While we don't know what the "TRUE" distribution is, we can see the relationship between moving the cutoff based on $\alpha$ would do to the probability of failing to reject the null hypothesis even when it is FALSE.  
 
-Let's look at a concrete example.  
 
-One might expect a foot-long sandwich to be 12 inches long, at least on average.  Consumers will naturally allow for some level of variation.  But if enough customers are convinced they are getting consistently short-changed, they may loudly complain, or even attempt a [lawsuit](https://www.forbes.com/sites/ericgoldman/2016/02/29/why-the-subway-footlong-lawsuits-fell-short/).  
+<style>
+  .responsive-iframe {
+    width: 100%;
+    height: 80vh; /* or use other units like % or vh/vw for responsiveness */
+    border: none;
+  }
+</style>
 
-
-### The Null Hypothesis
-
-In the case of foot-long sandwiches, our null hypothesis is that the true mean length of foot-long sandwiches is 12 inches.
-
-We present the null hypothesis in the following way:
-
-$$H_0: \mu = 12$$
-This represents the claim we need to DIS-prove. We seek evidence against $H_0$ in favor of an alternative.  
-
-### The Alternative Hypothesis
-
-In the case of foot-long sandwiches, customers will typically only get upset if they are getting *less* than advertised.  We would propose an alternative:  
-
-$$H_a: \mu < 12$$
-__KEY POINTS__:  
-
-  1. Hypotheses are statements about *population parameters*, typically written with Greek letters
-  2. The null hypothesis will always be a statement of equality
-  3. We never PROVE the null hypothesis is true, we can only fail to disprove it.  
-  
-  
-That last point is important.  Data collected are only evidence against $H_0$.  This is similar to the situation in a courtroom where a defendant is accused of a crime.  The defendant does not have to PROVE their innocence.  It is up to the prosecution to prove guilt. If they fail to do so, we find the defendant "not guilty", which is not the same thing as innocent.  It just means there wasn't enough evidence to convict.  
-
-
-### Test Statistic
-
-In this example, the *signal* is how far our observed mean, $\bar x$, is away from the hypothesized mean, $\mu=12$.  
-
-The *noise* is the sample-to-sample variation of the mean.  Because of the properties of the sampling distribution for a mean, we know the sample-to-sample variation for $\bar x$ is:  $\sigma_{\bar x} = \frac{\sigma}{\sqrt{n}}$.  This is the sample-to-sample variation for sample means.  
-
-Suppose for now that sandwich-to-sandwich lengths vary by about 0.5 inches and that the distribution is normal.  If we sampled 21 random sandwiches from shops in a region and got a sample mean length of 11.82 inches, we can calculate a test statistic as a signal-to-noise ratio:  
-
-__SIGNAL__:  How far away is our sample mean from the hypothesized mean:  
-
-$$11.82-12 = -0.18\ \text{in}$$ 
-
-__NOISE__:  The expected variation of sample means assuming the null hypothesis is true.  Based on the properties of the sampling distribution of $\bar x$, this is:  
-
-$$\sigma_\bar{x} = \frac{\sigma}{\sqrt{n}} = \frac{0.5}{\sqrt{21}}=0.109$$
-
-__Signal to Noise Ratio__:  
-$$\frac{-0.18}{0.109} = -1.65$$
-
-You may recognize this as a z-score:  
-
-
-$$
-z = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} = \frac{11.82 - 12}{0.5 / \sqrt{21}} = -1.649727
-$$
-
-In this case, $z$ IS the test statistic where $\bar{x}$ is the sample mean, $\mu_0$ is the null hypothesis mean, $\sigma$ is the population standard deviation and $n$ is the sample size.  
-
-Based on the results from the formula above, $\bar{x}$ is about 1.65 standard deviations *below* the mean.  
-
-Because we know that when x-bar is normally distributed, then $Z$ follows a *standard normal* distribution.  We can calculate the probability of getting a test statistic LESS than the one we observed, if the null hypothesis is true.  
-
-This probability is the evidence we use to make a decision about the null hypothesis.  
-
-
-### $P$-value
-
-
-__$P$-value__:  The probability of obtaining a test statistic (such as $z$) at least as extreme as the one you calculated, assuming the null hypothesis is true. 
-
-
-In other words, our $P$-value is the probability that we would get a $z$-score that is as extreme or more extreme than $z=-1.649727$, assuming the true mean is 12 inches.
-
-
-```{r, echo=FALSE}
-library(tidyverse)
-library(mosaic)
-
-mu <- 12
-sigma_xbar <- 0.5 / sqrt(21)
-
-normal_data <- tibble(x=seq(11.55, 12.45, length=100),
-                      y = dnorm(x, mu, sigma_xbar))
-ggplot(normal_data, aes(x,y)) +
-  geom_line() +
-  geom_area(data=normal_data %>% filter(x < 11.82), alpha=0.5, fill="lightblue") +
-  theme_classic() +
-  geom_vline(xintercept = 12, linetype=2) +
-  labs(
-    title = "Sampling Distribution of Sandwich Lengths",
-    subtitle = "Assuming the Null Hypothesis is true",
-    x = "Dist. of Sample Averages of Foot-long sandwich lengths: n=21"
-  ) +
-  geom_curve(aes(x = 11.63, y = .5, xend = 11.77, yend = .2), 
-             arrow = arrow(length = unit(0.02, "npc")), 
-             curvature = 0) +
-  geom_label(aes(x = 11.63, y = .5, label = paste("P(Z < -1.65) ≈", 0.0495)), 
-             fill="lightblue", size=3.7) 
-
-```
-
-We use "as or more extreme" because the direction (greater than or less than) depends on our alternative hypothesis.  
-
-In the case against the sandwich shop, we can use `pnorm()` to get the P-value:
-
-```{r}
-z <- (11.82-12) / (0.5/sqrt(21))
-
-pnorm(z)
-
-```
-
-
-__Conclusion__:  If the true population mean was 12 inches, there is a 4.95% chance of obtaining a sample mean of 11.82 hours or less for a sample size of 21. 
-
-At this point we have to make a decision.  Is that probability small enough to reject the null hypothesis in favor the alternative?  Are foot-long sandwiches LESS than 12 inches on average?  
-
-When the P-value is very small, we have strong evidence to reject the null hypothesis.  But how small is small enough?  
-
-In the next lesson we will talk more about decision rules for deciding when a p-value is small enough to reject $H_0$.  
-
-
-
-# Summary
-
-## The Process
-
-Every statistical hypothesis test will follow the form: 
-
-  1. State the null and alternative **hypotheses** and choose the significance level, $\alpha$  
-  2. Calculate the **Test Statistic** using your sample data  
-  3. Calculate the **P-value**, the probability of observing the test statistic that we observed (or more extreme) if the null hypothesis were true.  
-  4. **Make your conclusion** by comparing the P-value to $\alpha$  
-  5. **Check the test requirements**  
-
-The math behind the above calculations will vary depending on context.  We will only touch lightly on the underlying math and rely on R to execute it.  This class will focus on the application of the above process.  
-
-You may not yet understand the terminology above, but we introduce the process now as a roadmap.  We will revisit this each time we introduce a new hypothesis test, and before you know it, this will be second nature.  
-
-
-__NOTE__:  This is a new paradigm for most students.  It's perfectly fine to be confused at first.  But just as with learning to code in R, we will make sense of this framework for statistical inference.  
-
+<iframe src="https://byuistats.github.io/Alpha_Beta_Example_App/" class="responsive-iframe" scrolling="no"></iframe>
 
