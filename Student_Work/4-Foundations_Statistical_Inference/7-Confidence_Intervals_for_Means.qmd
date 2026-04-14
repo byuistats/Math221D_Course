@@ -5,10 +5,7 @@ format:
     self-contained: true
     embed-resources: true
 ---
-```{r setup, include=FALSE}
-# Ignore this bit of code.  This makes it so that you can render the qmd file even when there are errors in your code.
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
-```
+
 
 # Introduction
 
@@ -30,9 +27,9 @@ __Statistical Inference__ is the practice of using data sampled from a populatio
 
 The two primary methods of statistical inference are:  
 
-  1. Hypothesis Testing
-  2. Confidence Intervals
-  
+  1. Confidence Intervals  
+  2. Hypothesis Testing  
+
 This chapter lays the foundation for confidence intervals.  
 
 # Background
@@ -75,13 +72,19 @@ We have learned about several statistics.  Remember, a statistic is any number c
 </table>
 </center>
 
-The statistics above are called **point estimators** because they are just one number (one point on a number line) that is used to estimate a parameter.  Parameters are generally unknown values.  Think about the mean.  If $\mu$ is unknown, how do we know if $\bar{x}$ is close to it?  
+The statistics above are called **point estimators** because they are just one number that is used to estimate a population parameter.  Population Parameters are generally unknown.  
 
-The short answer is that we will never know *for sure* if $\bar{x}$ is close to $\mu$.  This does not mean that we are helpless.  The normal distribution provides a way for us to create a range of plausible values for a parameter (e.g. $\mu$) based on a statistic (e.g. $\bar{x}$).
+Consider the mean.  If $\mu$ is unknown, how do we know if $\bar{x}$ is close to it?  
+
+The short answer is that we will never know *for sure* if $\bar{x}$ is close to $\mu$.  This does not mean that we are helpless.  We can rely on the **Central Limit Theorem** and the **Law of Large Numbers** to predict a *range*  of reasonable values for $\mu$ based on our sample.  
 
 
+__DEFINITION__:  A **confidence interval** is a range of values, derived from sample data, that is likely to contain the value of an unknown population parameter.  
+
+We start by looking at confidence intervals for an unknown population mean, $\mu$.
 
 ## Review:  Distribution of Sample Means
+
 
 Confidence intervals rely on the validity of the assumption that the distribution of the sample mean is normally distributed.  
 
@@ -94,9 +97,9 @@ Recall that the distribution of sample means is normal when:
 __Thought Question__:  If we have a good sample from a population and can trust that the sampling distribution of the mean is approximately normal, how frequently would a sample mean be within 2 standard deviations from the true population mean?  
 
 
-Remember, the standard deviation of $\bar x$ is $\frac{\sigma}{\sqrt{n}}$.  For the variable $\bar x$, two standard deviations would be equal to $2 \frac{\sigma}{\sqrt{n}}$.  
+Remember, the standard deviation of $\bar x$ is $\frac{\sigma}{\sqrt{n}}$.  For the $\bar x$, two standard deviations would be equal to $2 \frac{\sigma}{\sqrt{n}}$.  
 
-__ANSWER__:  If we collect a random sample from a population and $\bar x$ is normally distributed, then about 95% of the time the sample mean $\bar x$ will be less than $2 \frac{\sigma}{\sqrt{n}}$ units away from the population mean $\mu$.  Notice that this is true, whether or not we know $\mu$.
+__ANSWER__:  If we collect a random sample from a population and $\bar x$ is normally distributed, then about 95% of the time (based on the 68-95-99.7 rule!) the sample mean $\bar x$ will be within $2 \frac{\sigma}{\sqrt{n}}$ units away from the population mean $\mu$. 
 
 ```{r, echo=FALSE}
 library(ggplot2)
@@ -127,9 +130,12 @@ ggplot(df, aes(x = x, y = y)) +
   theme_minimal() 
 ```
 
-This means the 95% of the time, we will get a sample mean within 2 Standard Deviations of the true population mean.  
+This means that about 95% of the time, we will get a sample mean within 2 Standard Deviations of the true population mean.  
 
-Flipping this around, if we take our sample mean and make an interval 2 standard deviations above the mean and 2 below, the interval will overlap with the *true population mean* about 95% of the time.   
+Flipping this around, we can take our **sample mean, $\bar{x}$,** and make an interval 2 standard deviations, $2\frac{\sigma}{\sqrt{n}}$ above the sample mean and 2 below, the interval will overlap with the *true population mean* about 95% of the time.   
+
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/CI_Illustration.png)
+
 
 ## An Approximate 95% Confidence Interval
 
@@ -155,11 +161,11 @@ The generalized formula for a confidence interval is
 
 $$ CI = \bar{x} \pm z^*\frac{\sigma}{\sqrt{n}}$$
 
-Where $z^*$ is a z-score value related to a specified level of confidence.  
+__Thought Question__:  What would an approximate $z^*$ value be for a 68% confidence interval?  99.7%?  
 
-__NOTE__:  The $z^*$ value represents the value from a standard normal distribution beyond which
+The $z^*$ is a percentile from the standard normal distribution that corresponds to a desired area under the curve between it and its negative.  For example:  
 
-```{r}
+```{r, echo=FALSE}
 
 library(ggplot2)
 
@@ -194,7 +200,9 @@ ggplot(data, aes(x = x, y = y)) +
 ```
 
 
-Common $z^*$ values for specified confidence levels are:
+__NOTE__:  1.96 is the exact $z^*$ (to two significant digits) for 95% confidence interval which is very close to the approximate 2 above.  
+
+Common $z^*$ values for confidence intervals are:
 
 ```{r, fig.width = 9, echo=FALSE}
 library(tidyverse)
@@ -203,16 +211,13 @@ tibble(`Conf. Level` = c(0.99, 0.95, 0.90), `Z*` = c(2.576, 1.96, 1.645)) %>% pa
 ```
 
 
-
-**Confidence Level** is related to the probability of a Type I error, $\alpha$, in hypothesis testing.  In fact, __Confidence Level = 1-$\alpha$__.  
-
 A 95% confidence interval will miss the true population mean 5% of the time because 5% of the time you will get a mean in the one tail or the other of the sampling distribution *just by chance.*
 
 
 
 ## Interpretation
 
-Confidence intervals are typically reported using parentheses like:  (lower limit, upper limit).  We say that we are $100*(1-\alpha)\%$ confident that the true population mean is between [lower limit] and [upper limit].  
+Confidence intervals are typically reported using parentheses like:  (lower limit, upper limit).  We say that we are $C\%$ confident that the true population mean is between [lower limit] and [upper limit].  
 
 ### Average GRE Scores of BYU-I Students
 
@@ -228,19 +233,11 @@ The interpretation of the above confidence interval would be:
 
 I am 99% confident that the true population mean GRE score for BYU-I students is between 159.96 and 164.24.  
 
-# Relationship to Hypothesis Testing
-
-Consider that the published population mean for GRE test-takers if 158.  
-
-__QUESTION__:  Does the true population mean of all test-takers fall inside our confidence interval?  
-
-Because 158 falls below our confidence interval, we conclude that BYU-I students score higher, on average, than the general population with 99% confidence.   
-
 
 # Margin of Error
 
-__QUESTION__:  What happens to the margin of error, $z^*\frac{\sigma}{\sqrt{n}}$, as the sample size increases?  
+__QUESTION__:  What happens to the margin of error, $z^*\frac{\sigma}{\sqrt{n}}$, as the sample size, $n$, increases?  
 
 __QUESTION__:  What happens to the margin of error, $z^*\frac{\sigma}{\sqrt{n}}$, as our confidence level increases?  (see table above about Z* and confidence level)
 
-Consider that if I make a wide enough interval, I can be 100% confident.  But to get 100% confidence, my interval will be useless.  For example, I can be 100% confident that the true population averge height of BYU-I students is between 2 feet and 100 feet.  More confidence means we need a wider interval.  
+Consider that if I make a wide enough interval, I can be 100% confident.  But to get 100% confidence, my interval will be useless.  For example, I can be 100% confident that the true population average height of BYU-I students is between 2 feet and 100 feet.  More confidence means we need a wider interval.  

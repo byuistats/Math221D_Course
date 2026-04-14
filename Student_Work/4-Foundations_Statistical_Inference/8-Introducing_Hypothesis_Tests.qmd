@@ -1,0 +1,158 @@
+---
+title: Introducing Hypothesis Tests
+format:
+  html:
+    self-contained: true
+    embed-resources: true
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRUE)
+```
+
+
+# Introduction
+
+In this lesson, we explore the components of statistical hypothesis testing in a general way.  These principles will apply to all of the specific tests we will learn about during the rest of the semester.  
+
+Lesson Objectives:  
+
+  1. Explain what the null hypothesis, $H_0$, is in general terms and why we use it  
+  2. Explain what the alternative hypothesis, $H_a$, is in general terms  
+  3. Explain the concept of a $P$-value in general terms  
+
+# Hypothesis Testing
+
+Hypothesis testing is a fundamental concept in statistics that allows us to make inferences about population parameters based on sample data. It's a structured method for using data to decide between two competing claims about a population.  
+
+## The Null Hypothesis, $H_0$
+
+The **null hypothesis** is the initial claim or assumption about a population parameter.  It often represents the status quo or "no effect".  
+
+For example, we assume that the new medication has *no effect* until we find enough evidence to prove otherwise.  
+
+We write the null hypothesis as '$H_0$', and refer to it as "H-Naught" or "H-O".  
+
+
+Many of the statistical tests we cover in this course follow the generic form:  
+
+$$H_0: \text{There is no relationship between }X \text{ and }Y$$
+
+## The Alternative Hypothesis, $H_a$
+
+We typically engage in scientific inquiry because we do NOT believe the null hypothesis.  For example, we believe that there IS an effect of a new medication.  
+
+The "burden of proof" is on the researcher to prove the null hypothesis wrong.  This means that it is the researcher's responsibility to present enough evidence to contradict the null hypothesis.  
+
+The counter-proposal for the null hypothesis is called the **alternative hypothesis**.  
+
+We write the null hypothesis as '$H_a$', and refer to it as "H-A".  
+The statistical tests we will cover in the rest of the semester follow the generic form:  
+
+$$H_a: \text{There is a relationship between }X \text{ and }Y$$
+
+## Visualizing the Null Hypothesis  
+
+We always begin a study under the assumption that the null hypothesis is true.  
+
+What would a true null hypothesis look like?  As we've explored data using descriptive statistics, we've seen many examples where there is no relationship between x and y.  
+
+For example, if there was no relationship between `Height` and `Extroversion`, we would expect to see something like:
+
+
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/No_Relationship_Scatterplot.png)
+<br>
+
+Because of sample-to-sample variability, the points wouldn't look exactly like this every time, but it would generally look like random scatter.  
+
+If the null hypothesis is true, it would be very unlikely, though possible, to observe a scatter plot like the following, just by chance, because of sample-to-sample variation:  
+
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Some_Relationship_Scatterplot.png)
+
+<br>
+
+If the null hypothesis is true, it would be ASTRONOMICALLY unlikely, though theoretically possible, to observe a relationship like the following only because of random sampling variation:  
+
+![](https://github.com/byuistats/Math221D_Course/raw/main/Images/Strong_Relationship_Scatterplot.png)
+<br>
+
+Statistical hypothesis testing is about calculating the **probability** of observing what we actually observed **IF the null hypothesis were true**.  This is what is called a **$P$-value**.    
+
+A small $P$-value suggests strong evidence against the null hypothesis, while a large p-value suggests the observed data are consistent with sample-to-sample variability.  
+
+When the $P$-value is low enough, we would rather reject the null hypothesis claim in favor of the alternative.  
+
+But how low is low enough?  
+
+
+## Significance Level: Alpha ($\alpha$)
+
+*Before* starting a study, we set a threshold that can be used to determine if the $P$-value is small enough to reject the null hypothesis. This number is called the **significance level** and is denoted by the symbol **$\alpha$** (pronounced "alpha".)
+
+Common values for $\alpha$ are 0.05,  0.01 and 0.1.  
+
+We will use the same decision rule for all hypothesis tests:  
+
+  1. If the $P$-value is less than $\alpha$, we reject the null hypothesis.  
+  2. If the $P$-value is greater than $\alpha$, we fail to reject the null hypothesis.  
+  
+**Memory Aid**: If $P$ is low, reject $H_O$  
+
+Where "low" means less than $\alpha$.
+
+
+## Mistaking Randomness for Signal
+
+Randomization is used to design statistical experiments to avoid bias in our samples, but sometimes that randomness can lead to results that look significant just by chance.  
+
+Consider a clinical trial looking at 5-year survival rates for a new cancer therapy with 3 different treatments.  We randomly assign patients to each treatment group.  
+
+There is a chance that the hardiest patients all end up in the same treatment group making it look like their treatment is better, but it wasn't because of the treatment.  
+
+When we conclude that there is a relationship between X and Y, when what we observed was actually "noise", we have committed a Type I error.  
+
+__DEFINITION__:  **Type I Error**: Rejecting a TRUE null hypothesis.  In some contexts this is called a **FALSE POSITIVE**
+
+Because $\alpha$ is our decision point for rejecting the null hypothesis, $\alpha$ is the probability of rejecting a TRUE null hypothesis, meaning $\alpha$ is the probability of a **Type I** error.  
+
+If we make $\alpha$ very small, we will reject $H_0$ less often and avoid Type I errors.  But that means that we are MORE likely to fail to reject the null hypothesis when we SHOULD have rejected it.  This is a Type II error.  
+
+__DEFINITION__:  **Type II Error**: Failing to Reject a FALSE null hypothesis.  In some contexts this is called a **FALSE NEGATIVE**.  
+
+For example, if we failed to find evidence that the new cancer therapy worked but it really WAS effective, then we missed out on an a new, life-saving breakthrough.  
+
+
+## Choosing Alpha and Understanding Error Types
+
+Choosing an appropriate alpha level involves balancing the risk of making Type I and Type II errors
+
+The "best" choice for alpha depends on the context of the research. In exploratory research, a higher alpha (e.g., 0.10) might be acceptable to avoid missing potentially important effects. In situations where making a false positive conclusion could have serious consequences, a lower alpha (e.g., 0.01 or even lower) is preferred.  
+
+
+If the $\alpha$ value (the probability of committing a Type I error) is very small, the probability of committing a Type II error will be large.  Conversely, if $\alpha$ is allowed to be very large, then the probability of committing a Type II error will be very small.  
+
+
+A level of significance of $\alpha=0.05$ seems to strike a good balance between the probabilities of committing a Type I versus a Type II error.  However, there may be instances where it will be important to choose a different value for $\alpha$.  The important thing is to choose $\alpha$ before you collect your data. Typical choices of $\alpha$ are $0.05$ (most common), $0.1$, and $0.01$.
+
+
+#### Visualizing Error
+
+The graph below illustrates the relationship between Type I and Type II errors.  The red distribution represents the Null Hypothesis, the sampling distribution of mean lengths of foot-long sandwiches, assuming $\mu_0=12$.
+
+The blue distribution represents the "TRUE" distribution with a mean, $\mu_{truth}=11.2$.  We never know this in the real world, but to illustrate, here is a situation where the **true population mean** is, in fact, less than 12.  The right decision would be to REJECT $H_0$.  
+
+If we set $\alpha = 0.01$ (red shaded area), we can see that any sample mean to the right of the cutoff would **fail to reject** the null hypothesis.  This mistake would be a Type II error.  
+
+
+While we don't know what the "TRUE" distribution is, we can see the relationship between moving the cutoff based on $\alpha$ would do to the probability of failing to reject the null hypothesis even when it is FALSE.  
+
+
+<style>
+  .responsive-iframe {
+    width: 100%;
+    height: 80vh; /* or use other units like % or vh/vw for responsiveness */
+    border: none;
+  }
+</style>
+
+<iframe src="https://byuistats.github.io/Alpha_Beta_Example_App/" class="responsive-iframe" scrolling="no"></iframe>
+
