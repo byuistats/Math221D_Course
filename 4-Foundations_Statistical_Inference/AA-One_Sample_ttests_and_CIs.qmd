@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, error = TRU
 
 # Introduction
 
-In this activity, you will execute statistical hypothesis tests and generate confidence intervals for each of the Big 5 personality traits using data collected from a random sample of Brother Cannon's Math 221 students.  
+In this activity, you will execute statistical hypothesis tests and generate confidence intervals for each of the Big 5 personality traits using data collected from a random sample of Stat 225 Math 221 students.  
 
 __Question__:  What is the population of this analysis?  
 __Answer__:  
@@ -77,9 +77,9 @@ t.test(extrov, mu = 50, alternative = "greater")
 
 Technical:  Because the p-value is less than $\alpha$, I reject the null hypothesis.  
 
-Contextual:  I have sufficient evidence to suggest that Brother Cannon's students are, on average, more Extroverted than the general population.  
+Contextual:  I have sufficient evidence to suggest that Stat 225 students are, on average, more Extroverted than the general population.  
 
-5. Create a Confidence Interval for the average extroversion of Brother Cannon's students:  
+5. Create a Confidence Interval for the average extroversion of Stat 225 students:  
 
 ```{r}
 # For a Confidence Interval:
@@ -88,11 +88,11 @@ t.test(extrov, conf.level = 1-.025)$conf.int
 
 6. Explain your confidence interval:  
 
-I am 97.5% confident that the true average extroversion of Brother Cannon's students is somewhere between the 54.62 and 59.34 percentiles.  
+I am 97.5% confident that the true average extroversion of Stat 225 students is somewhere between the 54.62 and 59.34 percentiles.  
 
 # Agreeableness
 
-State your null and alternative hypotheses.  For example, do you think Brother Cannon's students are more, less, or just different than the general population?  
+State your null and alternative hypotheses.  For example, do you think Stat 225 students are more, less, or just different than the general population?  
 
 $$H_o:  \mu  $$  
 $$H_a:  \mu $$  
@@ -122,7 +122,7 @@ Technical:
 
 Contextual:  
 
-5. Create a Confidence Interval for the average agreeableness of Brother Cannon's students:  
+5. Create a Confidence Interval for the average agreeableness of Stat 225 students:  
 
 ```{r}
 # For a Confidence Interval:
@@ -165,7 +165,7 @@ Technical:
 
 Contextual:  
 
-5. Create a Confidence Interval for the average openness of Brother Cannon's students:  
+5. Create a Confidence Interval for the average openness of Stat 225 students:  
 
 ```{r}
 # For a Confidence Interval:
@@ -208,7 +208,7 @@ Technical:
 
 Contextual:  
 
-5. Create a Confidence Interval for the average neuroticism of Brother Cannon's students:  
+5. Create a Confidence Interval for the average neuroticism of Stat 225 students:  
 
 ```{r}
 # For a Confidence Interval:
@@ -251,7 +251,7 @@ Technical:
 
 Contextual:  
 
-5. Create a Confidence Interval for the average conscientiousness of Brother Cannon's students:  
+5. Create a Confidence Interval for the average conscientiousness of Stat 225 students:  
 
 ```{r}
 # For a Confidence Interval:

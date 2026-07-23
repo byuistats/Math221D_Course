@@ -1,0 +1,118 @@
+---
+title: "Importing Data from Google Sheets"
+format: html
+---
+
+
+
+```{r}
+
+library(tidyverse)
+library(googlesheets4)
+gs4_deauth()
+data <- read_sheet('https://docs.google.com/spreadsheets/d/18O7bkzp-7pz9q5B87v4HSsHr2KKfnf3F8-lk_txcZQU/edit?resourcekey=&gid=1741405223#gid=1741405223')
+
+glimpse(data)
+#View(data)
+
+```
+
+
+# cleaning functions
+
+```{r}
+
+ht_to_inches_fun <- function(vec){
+  ht_in_inches <- case_when(
+    as.numeric(vec[1]) > 12 ~ as.numeric(vec[1]),
+    (as.numeric(vec[1]) < 12) & (length(vec) > 1) ~ as.numeric(vec[1])*12 + as.numeric(vec[2])
+  )
+  
+  return(ht_in_inches)
+}
+
+ht_to_inches_fun(c("5", "11"))
+
+
+pctile_clean <- function(vec){
+  clean_vec <- as.numeric(str_replace_all(vec, "[^0-9.]", ""))
+  outp <- (clean_vec*100)*(clean_vec<1)+(clean_vec>1)*clean_vec
+  outp
+}
+
+```
+
+
+```{r}
+
+clean <- data %>%
+  mutate(
+    age_in_years = as.numeric(str_extract_all(age_in_years, "[:digit:]+")),
+    height_in_inches = map(str_extract_all(height_in_inches, "[:digit:]+"), ht_to_inches_fun) %>% unlist(),
+    conscientiousness_percentile = map(conscientiousness_percentile, pctile_clean)%>% unlist(),
+    extroversion_percentile =  map(extroversion_percentile, pctile_clean)%>% unlist(),
+    openness_percentile =  map(openness_percentile, pctile_clean)%>% unlist(),
+    neuroticism_percentile =  map(neuroticism_percentile, pctile_clean)%>% unlist(),
+    agreeableness_percentile =  map(agreeableness_percentile, pctile_clean)%>% unlist(),
+    creativity_score = map(creativity_score, pctile_clean) %>% unlist(),
+    creativity_percentile = map(creativity_percentile, pctile_clean)%>% unlist(),
+    major_trunc = substr(tolower(str_remove_all(major, " |[:punct:]")), 1,5)
+  )
+
+glimpse(clean)
+
+
+#View(clean)
+
+
+```
+
+
+```{r}
+
+ggplot(clean, aes(x = agreeableness_percentile)) +
+  geom_histogram(bins = 12)
+
+```
+
+
+```{r}
+
+mean(clean$neuroticism_percentile)
+
+median(clean$neuroticism_percentile)
+
+
+histogram(clean$neuroticism_percentile)
+
+```
+
+
+
+```{r}
+
+mean(clean$creativity_percentile)
+
+median(clean$creativity_percentile)
+
+mean(clean$neuroticism_percentile)
+
+
+```
+
+
+
+# Write the Clean csv
+
+```{r}
+
+#write.csv(clean, "C:\\Users\\paulccannon\\OneDrive - BYU-Idaho\\Stat225\\Math221D_Course\\Data\\cleaned_personality_creativity.csv", row.names=FALSE)
+
+```
+
+
+
+
+
+
+

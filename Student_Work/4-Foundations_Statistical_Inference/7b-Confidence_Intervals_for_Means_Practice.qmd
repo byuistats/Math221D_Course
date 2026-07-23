@@ -30,7 +30,7 @@ library(car)
 
 # Creativity
 
-Create a 95% confidence interval for the __true population average__ creativity percentile (`Creativity_Percentile`) of Brother Cannon's students ($\mu_{\text{creativity}}$):  
+Create a 95% confidence interval for the __true population average__ creativity percentile (`Creativity_Percentile`) of Stat 225 students ($\mu_{\text{creativity}}$):  
 
 ```{r}
 
@@ -43,7 +43,7 @@ __QUESTION__:  Explain the confidence interval in context of the research questi
 __ANSWER__:  
 
 
-Create a 93% confidence interval for the __true population average__ number of siblings (`How_Many_Siblings`) of Brother Cannon's students($\mu_{\text{number of siblings}}$):  
+Create a 93% confidence interval for the __true population average__ number of siblings (`How_Many_Siblings`) of Stat 225 students($\mu_{\text{number of siblings}}$):  
 
 ```{r}
 

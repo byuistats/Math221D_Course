@@ -131,14 +131,14 @@ barplot(prop_table_major, las=2)
 
 # Your Turn
 
-__QUESTION__:  Create a bar plot for `BirthMonth` that is ordered in decreasing order to see which birth month is most common among Brother Cannon's students:
+__QUESTION__:  Create a bar plot for `BirthMonth` that is ordered in decreasing order to see which birth month is most common among Stat 225 students:
 
 ```{r}
 
 ```
 
 
-__QUESTION__:  Create a bar plot for `Most_Used_Social_Media` among this sample of Brother Cannon's students:  
+__QUESTION__:  Create a bar plot for `Most_Used_Social_Media` among this sample of Stat 225 students:  
 
 ```{r}
 

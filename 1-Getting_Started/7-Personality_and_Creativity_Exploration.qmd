@@ -1,0 +1,27 @@
+---
+title: "In-class Data Collection Exploration"
+---
+
+```{r}
+
+library(tidyverse)
+library(car)
+library(mosaic)
+library(rio)
+
+
+personality <- read_csv('https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/cleaned_personality_creativity.csv')
+
+
+```
+
+# Let's Explore!
+
+```{r}
+
+
+```
+
+
+
+

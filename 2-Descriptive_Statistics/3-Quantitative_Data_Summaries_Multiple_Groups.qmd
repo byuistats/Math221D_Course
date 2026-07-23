@@ -19,7 +19,7 @@ In this section, we will review data types (categorical and quantitative) and de
 
 ## Load the data and libraries
 
-  We will use the Big 5 Personality data of a random sample of Brother Cannon's students.  
+  We will use the Big 5 Personality data of a random sample of Stat 225 students.  
 
 ```{r}
 

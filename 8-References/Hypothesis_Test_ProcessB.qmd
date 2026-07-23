@@ -19,11 +19,11 @@ title: "Hypothesis Test Process"
       * **Reject** the null hypothesis, $H_0$, in favor of the alternative  
       * "When $P$ is low, reject $H_0$"  
       * **Sufficient Evidence** to support the alternative  
-        i.  Bring back to context of the research question.  For example: I have sufficient evidence to suggest that Brother Cannon's students are, on average, more agreeable than the general population.  
+        i.  Bring back to context of the research question.  For example: I have sufficient evidence to suggest that Stat 225 students are, on average, more agreeable than the general population.  
       * Opportunity for a **Type I Error**, rejecting a true null hypothesis  
       
       
   2. $\text{P-value} \ge \alpha$:  
       * **Fail to Reject** the null hypothesis, $H_0$  
       * **Insufficient Evidence** to support the alternative  
-        i.  Bring back to context of the research question.  For example: I have insufficient evidence to suggest that Brother Cannon's students are, on average, less open than the general population.  
+        i.  Bring back to context of the research question.  For example: I have insufficient evidence to suggest that Stat 225 students are, on average, less open than the general population.  
