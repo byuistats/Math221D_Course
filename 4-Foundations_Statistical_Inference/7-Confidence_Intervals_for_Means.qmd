@@ -87,7 +87,7 @@ Confidence intervals rely on the validity of the assumption that the distributio
 Recall that the distribution of sample means is normal when:  
 
   1. The underlying population is normally distributed
-  2. The sample size, n, is sufficiently large ($n<30$ for this class) for the Central Limit Theorem to apply
+  2. The sample size, n, is sufficiently large ($n>30$ for this class) for the Central Limit Theorem to apply
   
 
 __Thought Question__:  If we have a good sample from a population and can trust that the sampling distribution of the mean is approximately normal, how frequently would a sample mean be within 2 standard deviations from the true population mean?  

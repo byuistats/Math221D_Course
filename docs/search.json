@@ -739,7 +739,7 @@
     "href": "4-Foundations_Statistical_Inference/7-Confidence_Intervals_for_Means.html#review-distribution-of-sample-means",
     "title": "Confidence Intervals for a Mean",
     "section": "Review: Distribution of Sample Means",
-    "text": "Review: Distribution of Sample Means\nConfidence intervals rely on the validity of the assumption that the distribution of the sample mean is normally distributed.\nRecall that the distribution of sample means is normal when:\n\nThe underlying population is normally distributed\nThe sample size, n, is sufficiently large (\\(n&lt;30\\) for this class) for the Central Limit Theorem to apply\n\nThought Question: If we have a good sample from a population and can trust that the sampling distribution of the mean is approximately normal, how frequently would a sample mean be within 2 standard deviations from the true population mean?\nRemember, the standard deviation of \\(\\bar x\\) is \\(\\frac{\\sigma}{\\sqrt{n}}\\). For the \\(\\bar x\\), two standard deviations would be equal to \\(2 \\frac{\\sigma}{\\sqrt{n}}\\).\nANSWER: If we collect a random sample from a population and \\(\\bar x\\) is normally distributed, then about 95% of the time (based on the 68-95-99.7 rule!) the sample mean \\(\\bar x\\) will be within \\(2 \\frac{\\sigma}{\\sqrt{n}}\\) units away from the population mean \\(\\mu\\).\n\n\n\n\n\n\n\n\n\nThis means that about 95% of the time, we will get a sample mean within 2 Standard Deviations of the true population mean.\nFlipping this around, we can take our sample mean, \\(\\bar{x}\\), and make an interval 2 standard deviations, \\(2\\frac{\\sigma}{\\sqrt{n}}\\) above the sample mean and 2 below, the interval will overlap with the true population mean about 95% of the time."
+    "text": "Review: Distribution of Sample Means\nConfidence intervals rely on the validity of the assumption that the distribution of the sample mean is normally distributed.\nRecall that the distribution of sample means is normal when:\n\nThe underlying population is normally distributed\nThe sample size, n, is sufficiently large (\\(n&gt;30\\) for this class) for the Central Limit Theorem to apply\n\nThought Question: If we have a good sample from a population and can trust that the sampling distribution of the mean is approximately normal, how frequently would a sample mean be within 2 standard deviations from the true population mean?\nRemember, the standard deviation of \\(\\bar x\\) is \\(\\frac{\\sigma}{\\sqrt{n}}\\). For the \\(\\bar x\\), two standard deviations would be equal to \\(2 \\frac{\\sigma}{\\sqrt{n}}\\).\nANSWER: If we collect a random sample from a population and \\(\\bar x\\) is normally distributed, then about 95% of the time (based on the 68-95-99.7 rule!) the sample mean \\(\\bar x\\) will be within \\(2 \\frac{\\sigma}{\\sqrt{n}}\\) units away from the population mean \\(\\mu\\).\n\n\n\n\n\n\n\n\n\nThis means that about 95% of the time, we will get a sample mean within 2 Standard Deviations of the true population mean.\nFlipping this around, we can take our sample mean, \\(\\bar{x}\\), and make an interval 2 standard deviations, \\(2\\frac{\\sigma}{\\sqrt{n}}\\) above the sample mean and 2 below, the interval will overlap with the true population mean about 95% of the time."
   },
   {
     "objectID": "4-Foundations_Statistical_Inference/7-Confidence_Intervals_for_Means.html#an-approximate-95-confidence-interval",
@@ -2280,5 +2280,75 @@
     "title": "One-Sample T-test",
     "section": "Student’s T-Distribution",
     "text": "Student’s T-Distribution\nIn most cases, we perform statistical analyses on samples from a population where we don’t know the population standard deviation, \\(\\sigma\\).\nA simple solution is to use the sample standard deviation, \\(s\\), instead of \\(\\sigma\\).\nThe test statistic for a 1-sample t-test looks a lot like a z-score, but substitutes \\(\\sigma\\) with the sample standard deviation, \\(s\\).\n\\[ t = \\frac{\\bar{x} - \\mu}{\\frac{s}{\\sqrt{n}}}\\]\nAs with the normal distribution above, we can use R to calculate probabilities with the \\(t\\)-distribution. For a given sample size, \\(n\\), and the calculated \\(t\\)-value above, we can use the function pt(t_value, df=n-1) to get the probability of getting a sample mean less than our observed \\(\\bar{x}\\).\nRECALL: Degrees of Freedom for a \\(t\\)-distribution are defined:\n\\[df  = n-1 \\]"
+  },
+  {
+    "objectID": "7-Semester_Project/2-Semester_Project_Template_Part2.html",
+    "href": "7-Semester_Project/2-Semester_Project_Template_Part2.html",
+    "title": "Semester Project",
+    "section": "",
+    "text": "[Provide a brief overview of your research question. Explain why you’re interested in the topic, where you found your data and the objectives of your analysis.]"
+  },
+  {
+    "objectID": "7-Semester_Project/2-Semester_Project_Template_Part2.html#data-import-and-preparation",
+    "href": "7-Semester_Project/2-Semester_Project_Template_Part2.html#data-import-and-preparation",
+    "title": "Semester Project",
+    "section": "Data Import and Preparation",
+    "text": "Data Import and Preparation\n\nlibrary(tidyverse)\nlibrary(mosaic)\nlibrary(rio)\nlibrary(ggplot2)\n\n# Be sure to make this using ggplot()"
+  },
+  {
+    "objectID": "7-Semester_Project/2-Semester_Project_Template_Part2.html#visualizations",
+    "href": "7-Semester_Project/2-Semester_Project_Template_Part2.html#visualizations",
+    "title": "Semester Project",
+    "section": "Visualizations",
+    "text": "Visualizations\n[Use ggplot() to create presentation-worth graphs (histograms, scatterplots, bar charts, boxplots, etc). Include an overall visualization of your response variable and one or two exploratory graphs showing the relationship between explanatory variables and your response.\nNOTE: The type of graphs and summaries you do depends entirely on the type of data (categorical or quantitative) that you have for your project.]\n\n# Create Visuals Here"
+  },
+  {
+    "objectID": "7-Semester_Project/2-Semester_Project_Template_Part2.html#numerical-summaries",
+    "href": "7-Semester_Project/2-Semester_Project_Template_Part2.html#numerical-summaries",
+    "title": "Semester Project",
+    "section": "Numerical Summaries",
+    "text": "Numerical Summaries\n[Create numerical summaries (favstats(), prop.table() with row or column totals, etc.) of your response variable. Include a table of summary statistics broken out by your explanatory variable. Include a discussion of what you observe.]\n\n# Create numerical summaries"
+  },
+  {
+    "objectID": "7-Semester_Project/2-Semester_Project_Template_Part2.html#state-ho-and-ha",
+    "href": "7-Semester_Project/2-Semester_Project_Template_Part2.html#state-ho-and-ha",
+    "title": "Semester Project",
+    "section": "State Ho and Ha",
+    "text": "State Ho and Ha"
+  },
+  {
+    "objectID": "7-Semester_Project/2-Semester_Project_Template_Part2.html#hypothesis-test",
+    "href": "7-Semester_Project/2-Semester_Project_Template_Part2.html#hypothesis-test",
+    "title": "Semester Project",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\n\n# Perform the appropriate test for the data selected"
+  },
+  {
+    "objectID": "7-Semester_Project/2-Semester_Project_Template_Part2.html#confidence-interval-where-appropriate",
+    "href": "7-Semester_Project/2-Semester_Project_Template_Part2.html#confidence-interval-where-appropriate",
+    "title": "Semester Project",
+    "section": "Confidence Interval (where appropriate)",
+    "text": "Confidence Interval (where appropriate)"
+  },
+  {
+    "objectID": "7-Semester_Project/2-Semester_Project_Template_Part2.html#check-test-requirements",
+    "href": "7-Semester_Project/2-Semester_Project_Template_Part2.html#check-test-requirements",
+    "title": "Semester Project",
+    "section": "Check Test Requirements",
+    "text": "Check Test Requirements"
+  },
+  {
+    "objectID": "1-Getting_Started/7-Personality_and_Creativity_Exploration.html",
+    "href": "1-Getting_Started/7-Personality_and_Creativity_Exploration.html",
+    "title": "In-class Data Collection Exploration",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(car)\nlibrary(mosaic)\nlibrary(rio)\n\n\npersonality &lt;- read_csv('https://github.com/byuistats/Math221D_Course/raw/refs/heads/main/Data/cleaned_personality_creativity.csv')\n\n\nLet’s Explore!"
+  },
+  {
+    "objectID": "Personality_Creativity_GoogleSheets.html",
+    "href": "Personality_Creativity_GoogleSheets.html",
+    "title": "Importing Data from Google Sheets",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(googlesheets4)\ngs4_deauth()\ndata &lt;- read_sheet('https://docs.google.com/spreadsheets/d/18O7bkzp-7pz9q5B87v4HSsHr2KKfnf3F8-lk_txcZQU/edit?resourcekey=&gid=1741405223#gid=1741405223')\n\nglimpse(data)\n\nRows: 178\nColumns: 16\n$ Timestamp                    &lt;dttm&gt; 2026-04-22 14:43:27, 2026-04-22 12:00:55…\n$ year                         &lt;dbl&gt; 2026, 2026, 2026, 2026, 2026, 2026, 2026,…\n$ semester                     &lt;chr&gt; \"spring\", \"spring\", \"spring\", \"spring\", \"…\n$ birth_month                  &lt;chr&gt; \"April\", \"October\", \"August\", \"December\",…\n$ major                        &lt;chr&gt; \"Psychology\", \"Biology\", \"Psychology\", \"A…\n$ height_in_inches             &lt;list&gt; 68, 68, 66.5, 78, 55, 65, 75, 71, 69, \"5…\n$ biosex                       &lt;chr&gt; \"Male\", \"Male\", \"Female\", \"Male\", \"Male\",…\n$ age_in_years                 &lt;list&gt; 49, 22, 23, 23, 23, 21, 23, 23, 22, 20, …\n$ most_used_social_media       &lt;chr&gt; \"ChatGPT\", \"Discord\", \"Facebook\", \"Facebo…\n$ conscientiousness_percentile &lt;list&gt; 63, 83, 81, 58, 0.79, 0.88, 50, 50, 0.52…\n$ extroversion_percentile      &lt;list&gt; 19, 0, 60, 69, 0.6, 0.27, 40, 79, 0.33, …\n$ openness_percentile          &lt;list&gt; 69, 58, 65, 75, 0.83, 0.35, 67, 63, 0.69…\n$ agreeableness_percentile     &lt;list&gt; 65, 17, 100, 71, 0.75, 0.46, 46, 69, 0.4…\n$ neuroticism_percentile       &lt;list&gt; 92, 90, 54, 27, 0.33, 0.29, 65, 52, 0.56…\n$ creativity_score             &lt;list&gt; 77.69, 76.83, 78, 90.68, 0.385, 79.87, 8…\n$ creativity_percentile        &lt;list&gt; 50, 38.98, 78, 98.06, 0.915, 0.5924, 94.…\n\n#View(data)\n\n\ncleaning functions\n\nht_to_inches_fun &lt;- function(vec){\n  ht_in_inches &lt;- case_when(\n    as.numeric(vec[1]) &gt; 12 ~ as.numeric(vec[1]),\n    (as.numeric(vec[1]) &lt; 12) & (length(vec) &gt; 1) ~ as.numeric(vec[1])*12 + as.numeric(vec[2])\n  )\n  \n  return(ht_in_inches)\n}\n\nht_to_inches_fun(c(\"5\", \"11\"))\n\n[1] 71\n\npctile_clean &lt;- function(vec){\n  clean_vec &lt;- as.numeric(str_replace_all(vec, \"[^0-9.]\", \"\"))\n  outp &lt;- (clean_vec*100)*(clean_vec&lt;1)+(clean_vec&gt;1)*clean_vec\n  outp\n}\n\n\nclean &lt;- data %&gt;%\n  mutate(\n    age_in_years = as.numeric(str_extract_all(age_in_years, \"[:digit:]+\")),\n    height_in_inches = map(str_extract_all(height_in_inches, \"[:digit:]+\"), ht_to_inches_fun) %&gt;% unlist(),\n    conscientiousness_percentile = map(conscientiousness_percentile, pctile_clean)%&gt;% unlist(),\n    extroversion_percentile =  map(extroversion_percentile, pctile_clean)%&gt;% unlist(),\n    openness_percentile =  map(openness_percentile, pctile_clean)%&gt;% unlist(),\n    neuroticism_percentile =  map(neuroticism_percentile, pctile_clean)%&gt;% unlist(),\n    agreeableness_percentile =  map(agreeableness_percentile, pctile_clean)%&gt;% unlist(),\n    creativity_score = map(creativity_score, pctile_clean) %&gt;% unlist(),\n    creativity_percentile = map(creativity_percentile, pctile_clean)%&gt;% unlist(),\n    major_trunc = substr(tolower(str_remove_all(major, \" |[:punct:]\")), 1,5)\n  )\n\nglimpse(clean)\n\nRows: 178\nColumns: 17\n$ Timestamp                    &lt;dttm&gt; 2026-04-22 14:43:27, 2026-04-22 12:00:55…\n$ year                         &lt;dbl&gt; 2026, 2026, 2026, 2026, 2026, 2026, 2026,…\n$ semester                     &lt;chr&gt; \"spring\", \"spring\", \"spring\", \"spring\", \"…\n$ birth_month                  &lt;chr&gt; \"April\", \"October\", \"August\", \"December\",…\n$ major                        &lt;chr&gt; \"Psychology\", \"Biology\", \"Psychology\", \"A…\n$ height_in_inches             &lt;dbl&gt; 68, 68, 66, 78, 55, 65, 75, 71, 69, 68, 6…\n$ biosex                       &lt;chr&gt; \"Male\", \"Male\", \"Female\", \"Male\", \"Male\",…\n$ age_in_years                 &lt;dbl&gt; 49, 22, 23, 23, 23, 21, 23, 23, 22, 20, 2…\n$ most_used_social_media       &lt;chr&gt; \"ChatGPT\", \"Discord\", \"Facebook\", \"Facebo…\n$ conscientiousness_percentile &lt;dbl&gt; 63, 83, 81, 58, 79, 88, 50, 50, 52, 40, 5…\n$ extroversion_percentile      &lt;dbl&gt; 19, 0, 60, 69, 60, 27, 40, 79, 33, 48, 31…\n$ openness_percentile          &lt;dbl&gt; 69, 58, 65, 75, 83, 35, 67, 63, 69, 71, 9…\n$ agreeableness_percentile     &lt;dbl&gt; 65, 17, 100, 71, 75, 46, 46, 69, 42, 79, …\n$ neuroticism_percentile       &lt;dbl&gt; 92, 90, 54, 27, 33, 29, 65, 52, 56, 67, 7…\n$ creativity_score             &lt;dbl&gt; 77.69, 76.83, 78.00, 90.68, 38.50, 79.87,…\n$ creativity_percentile        &lt;dbl&gt; 50.00, 38.98, 78.00, 98.06, 91.50, 59.24,…\n$ major_trunc                  &lt;chr&gt; \"psych\", \"biolo\", \"psych\", \"accou\", \"geol…\n\n#View(clean)\n\n\nggplot(clean, aes(x = agreeableness_percentile)) +\n  geom_histogram(bins = 12)\n\n\n\n\n\n\n\n\n\nmean(clean$neuroticism_percentile)\n\n[1] 53.26404\n\nmedian(clean$neuroticism_percentile)\n\n[1] 52\n\nhistogram(clean$neuroticism_percentile)\n\nError in `histogram()`:\n! could not find function \"histogram\"\n\n\n\nmean(clean$creativity_percentile)\n\n[1] NA\n\nmedian(clean$creativity_percentile)\n\n[1] NA\n\nmean(clean$neuroticism_percentile)\n\n[1] 53.26404\n\n\n\n\nWrite the Clean csv\n\n#write.csv(clean, \"C:\\\\Users\\\\paulccannon\\\\OneDrive - BYU-Idaho\\\\Stat225\\\\Math221D_Course\\\\Data\\\\cleaned_personality_creativity.csv\", row.names=FALSE)"
   }
 ]
