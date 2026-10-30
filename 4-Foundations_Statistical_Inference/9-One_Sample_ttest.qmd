@@ -212,7 +212,7 @@ The dataset below contains information about body temperatures of healthy adults
 ### Load the data:
 
 ```{r}
-
+library(rio)
 # These lines load the data into the data frame body_temp:
 
 body_temp <- import("https://byuistats.github.io/M221R/Data/body_temp.xlsx")

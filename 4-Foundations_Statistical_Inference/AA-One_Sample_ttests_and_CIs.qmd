@@ -75,9 +75,9 @@ t.test(extrov, mu = 50, alternative = "greater")
 
 4. Explain your conclusion:  
 
-Technical:  Because the p-value is less than $\alpha$, I reject the null hypothesis.  
+Technical:  Because the p-value is more than $\alpha$, I fail to reject the null hypothesis.  
 
-Contextual:  I have sufficient evidence to suggest that Stat 225 students are, on average, more Extroverted than the general population.  
+Contextual:  I have insufficient evidence to suggest that Stat 225 students are, on average, more Extroverted than the general population.  
 
 5. Create a Confidence Interval for the average extroversion of Stat 225 students:  
 
@@ -88,7 +88,7 @@ t.test(extrov, conf.level = 1-.025)$conf.int
 
 6. Explain your confidence interval:  
 
-I am 97.5% confident that the true average extroversion of Stat 225 students is somewhere between the 54.62 and 59.34 percentiles.  
+I am 97.5% confident that the true average extroversion of Stat 225 students is somewhere between the 48.2411 and 55.41891 percentiles.  
 
 # Agreeableness
 
